@@ -1,0 +1,24 @@
+{
+    "name": "mao",
+    "displayName": "Mao",
+    "description": "",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.32.0"
+    },
+    "categories": [
+        "Themes"
+    ],
+    "contributes": {
+        "themes": [
+            {
+                "label": "Mao",
+                "uiTheme": "vs-dark",
+                "path": "./themes/mao-color-theme.json"
+            }
+        ]
+    },
+    "devDependencies": {
+        "color": "^3.1.0"
+    }
+}
