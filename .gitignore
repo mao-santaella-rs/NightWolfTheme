@@ -1,6 +1,7 @@
 node_modules/
 public/
 design/
+themes/mao-color-theme.json
 
 .sass-cache/
 *.css.map

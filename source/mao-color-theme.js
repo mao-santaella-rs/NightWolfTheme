@@ -6,7 +6,7 @@ let colorBlack = Color.rgb(0,0,0)
 let colorPrincipal = Color.rgb(16, 30, 44)
 let colorP_darken = colorPrincipal.darken(0.3)
 let colorP_light = colorPrincipal.lighten(0.3)
-let colorP_lighten = colorPrincipal.lighten(1.5)
+let colorP_lighten = colorPrincipal.lighten(1)
 let colorP_lighter = colorPrincipal.lighten(2);
 let colorP_lightest = colorPrincipal.lighten(4.5);
 
@@ -31,37 +31,108 @@ let colorWarningLight = Color.rgb(255, 235, 150);
 let colorDanger = Color.rgb(240, 80, 80)
 let colorDangerDark = colorDanger.darken(0.4);
 
-let selectionColor = colorP_lighter;
+let selectionColor = colorP_lighten;
+let contrastColor = Color.rgb(255, 0, 255)
+let contrastColorLight = contrastColor.lighten(0.5);
+let contrastColorDark = contrastColor.darken(0.5);
 
-console.log(selectionColor.darken(0.6).hex());
-
+console.log(contrastColorLight.hex());
 
 let theme = {
   name: "Mao",
   type: "dark",
   colors: {
-    "contrastActiveBorder": null,
-    "contrastBorder": colorP_lighten.hex(),
-    "focusBorder": colorP_lighten.hex(),
-    "foreground": colorText.hex(),
+    contrastActiveBorder: null,
+    contrastBorder: null,
+    focusBorder: colorP_lighten.hex(),
+    foreground: colorText.hex(),
     "widget.shadow": colorPrincipal.hex(),
-    "selection.background": "#4373c2",
-    "errorForeground": colorDanger.hex(),
+    "selection.background": colorInfo.hex(),
+    errorForeground: colorDanger.hex(),
 
-    "button.background": "#7e57c2",
+    // Editor in general
+    "editor.background": colorPrincipal.hex(),
+    "editor.foreground": colorText.hex(),
+    "editorLineNumber.foreground": colorP_lighten.hex(),
+    "editorLineNumber.activeForeground": colorP_lightest.hex(),
+    "editorCursor.foreground": contrastColorLight.hex(),
+
+    "editor.selectionBackground": selectionColor.lighten(0.5).hex(),
+    "editor.selectionForeground": colorText.hex(),
+    "editor.selectionHighlightBackground": selectionColor.hex(),
+    "editor.inactiveSelectionBackground": selectionColor.hex(),
+
+    "editor.wordHighlightBackground": selectionColor.hex(),
+    "editor.wordHighlightStrongBackground": selectionColor.hex(),
+
+    "editor.findMatchBackground": colorP_lightest.hex(),
+    "editor.findMatchHighlightBackground": colorP_lighten.hex(),
+    "editor.findRangeHighlightBackground": null,
+    "editor.hoverHighlightBackground": contrastColor.hex(),
+    "editor.lineHighlightBackground": colorP_light.hex(),
+    "editor.lineHighlightBorder": null,
+    "editorLink.activeForeground": null,
+    "editor.rangeHighlightBackground": contrastColor.hex(),
+    "editorWhitespace.foreground": null,
+    "editorIndentGuide.background": colorP_lighten.hex(),
+    "editorIndentGuide.activeBackground": colorP_lightest.hex(),
+    "editorRuler.foreground": colorP_lighten.hex(),
+
+    "editorCodeLens.foreground": colorInfoLight.hex(),
+    "editorBracketMatch.background": colorP_lighten.hex(),
+    "editorBracketMatch.border": null,
+
+    "editorOverviewRuler.currentContentForeground": contrastColor.hex(),
+    "editorOverviewRuler.incomingContentForeground": contrastColor.hex(),
+    "editorOverviewRuler.commonContentForeground": contrastColor.hex(),
+
+    "editorError.foreground": colorDanger.hex(),
+    "editorError.border": null,
+    "editorWarning.foreground": colorWarningDark.hex(),
+    "editorWarning.border": null,
+
+    "editorGutter.background": colorPrincipal.hex(),
+    "editorGutter.modifiedBackground": colorWarning.hex(),
+    "editorGutter.addedBackground": colorSuccesLight.hex(),
+    "editorGutter.deletedBackground": colorDanger.hex(),
+
+    "editorWidget.border": colorP_lighten.hex(),
+
+    "editorSuggestWidget.background": colorP_lighten.hex(),
+    "editorSuggestWidget.border": colorP_lighten.hex(),
+    "editorSuggestWidget.foreground": colorText.hex(),
+    "editorSuggestWidget.highlightForeground": colorWhite.hex(),
+    "editorSuggestWidget.selectedBackground": colorP_lightest.hex(),
+
+    "editorHoverWidget.background": colorPrincipal.hex(),
+    "editorHoverWidget.border": colorP_lightest.hex(),
+    "editorMarkerNavigation.background": colorP_lighten.hex(),
+    "editorMarkerNavigationError.background": colorDanger.hex(),
+    "editorMarkerNavigationWarning.background": colorWarning.hex(),
+
+    // Botones
     "button.foreground": colorWhite.hex(),
-    "button.hoverBackground": "#7e57c2",
+    "button.background": contrastColor.hex(),
+    "button.hoverBackground": contrastColorDark.hex(),
 
+    // Botones de las extenciones
+    "extensionButton.prominentForeground": colorWhite.hex(),
+    "extensionButton.prominentBackground": contrastColor.hex(),
+    "extensionButton.prominentHoverBackground": contrastColorDark.hex(),
+
+    // inputs
+    // Dropdowns
     "dropdown.background": colorPrincipal.hex(),
     "dropdown.border": colorP_lighten.hex(),
     "dropdown.foreground": colorText.hex(),
-
+    // Inputs text
     "input.background": colorP_light.hex(),
     "input.border": colorP_lighten.hex(),
     "input.foreground": colorText.hex(),
     "input.placeholderForeground": colorP_lightest.hex(),
-
+    // Input Select
     "inputOption.activeBorder": colorP_lightest.hex(),
+    // Input Validation
     "inputValidation.errorBackground": colorDangerDark.hex(),
     "inputValidation.errorBorder": colorDanger.hex(),
     "inputValidation.infoBackground": colorInfoDark.hex(),
@@ -69,24 +140,27 @@ let theme = {
     "inputValidation.warningBackground": colorWarningDark.hex(),
     "inputValidation.warningBorder": colorWarning.hex(),
 
+    // Scrollbar
     "scrollbar.shadow": colorBlack.hex(),
     "scrollbarSlider.activeBackground": colorP_lighten.hex(),
     "scrollbarSlider.background": colorP_lighten.hex(),
     "scrollbarSlider.hoverBackground": colorP_lighten.hex(),
 
+    // Badges are small information labels, for example, search results count.
     "badge.background": colorP_lightest.hex(),
     "badge.foreground": colorWhite.hex(),
 
-    "progress.background": "#7e57c2",
-
-    "breadcrumb.foreground": "#A599E9",
-    "breadcrumb.focusForeground": colorWhite.hex(),
+    // Breadcrumbs
+    "breadcrumb.foreground": colorInfo.hex(),
+    "breadcrumb.focusForeground": colorInfoLight.hex(),
     "breadcrumb.activeSelectionForeground": colorWhite.hex(),
-    "breadcrumbPicker.background": "#001122",
+    "breadcrumbPicker.background": colorP_darken.hex(),
 
+    // Barra de la izquierda
+    // Colors for list and trees like the File Explorer.
     "list.activeSelectionBackground": colorP_lighter.hex(),
     "list.activeSelectionForeground": colorWhite.hex(),
-    "list.invalidItemForeground": "#975f94",
+    "list.invalidItemForeground": contrastColorDark.hex(),
     "list.dropBackground": colorPrincipal.hex(),
     "list.focusBackground": colorPrincipal.hex(),
     "list.focusForeground": colorWhite.hex(),
@@ -96,6 +170,7 @@ let theme = {
     "list.inactiveSelectionBackground": colorP_light.hex(),
     "list.inactiveSelectionForeground": colorP_lightest.hex(),
 
+    // Activity bar es la barra de iconos de la derecha
     "activityBar.background": colorPrincipal.hex(),
     "activityBar.dropBackground": colorP_lightest.hex(),
     "activityBar.foreground": colorP_lightest.hex(),
@@ -103,86 +178,45 @@ let theme = {
     "activityBarBadge.background": colorP_lighter.hex(),
     "activityBarBadge.foreground": colorWhite.hex(),
 
+    // Es la barra de la izquierda que contiene el tree view y el explorer
     "sideBar.background": colorPrincipal.hex(),
-    "sideBar.foreground": colorP_lightest.hex(),
-    "sideBar.border": colorPrincipal.hex(),
+    "sideBar.foreground": colorText.hex(),
+    "sideBar.border": colorP_lighten.hex(),
     "sideBarTitle.foreground": colorP_lightest.hex(),
     "sideBarSectionHeader.background": colorPrincipal.hex(),
     "sideBarSectionHeader.foreground": colorP_lightest.hex(),
 
-    "editorGroup.background": "#32374C",
-    "editorGroup.border": colorPrincipal.hex(),
-    "editorGroup.dropBackground": "#7e57c2",
+    // EditorGroup es la agrupacion de archivos abiertos
+    "editorGroup.background": colorP_lighter.hex(),
+    "editorGroup.border": colorP_lighten.hex(),
+    "editorGroup.dropBackground": contrastColor.hex(),
     "editorGroupHeader.noTabsBackground": colorPrincipal.hex(),
     "editorGroupHeader.tabsBackground": colorPrincipal.hex(),
-    "editorGroupHeader.tabsBorder": "#262A39",
+    "editorGroupHeader.tabsBorder": colorP_lighten.hex(),
 
-    "tab.activeBackground": "#0b2942",
+    // Las pestanas de los archivos abiertos
+    "tab.activeBackground": colorP_light.hex(),
     "tab.activeForeground": colorText.hex(),
-    "tab.border": "#272B3B",
-    "tab.activeBorder": "#262A39",
-    "tab.unfocusedActiveBorder": "#262A39",
+    "tab.activeBorder": colorP_lightest.hex(),
+    "tab.border": colorP_light.hex(),
     "tab.inactiveBackground": colorP_darken.hex(),
-    "tab.inactiveForeground": colorP_lightest.hex(),
-    "tab.unfocusedActiveForeground": colorP_lightest.hex(),
-    "tab.unfocusedInactiveForeground": colorP_lightest.hex(),
+    "tab.inactiveForeground": colorText.hex(),
+    "tab.unfocusedActiveForeground": colorText.hex(),
+    "tab.unfocusedActiveBorder": colorP_lighter.hex(),
+    "tab.unfocusedInactiveForeground": colorText.hex(),
 
+    "menubar.selectionForeground": colorWhite.hex(),
+    "menubar.selectionBackground": colorP_darken.hex(),
+    "menubar.selectionBorder": null,
+    "menu.foreground": colorP_lightest.hex(),
+    "menu.background": colorP_darken.hex(),
+    "menu.selectionForeground": colorWhite.hex(),
+    "menu.selectionBackground": colorP_lighter.hex(),
+    "menu.selectionBorder": null,
+    "menu.separatorBackground": colorP_lighter.hex(),
 
-    "editor.background": colorPrincipal.hex(),
-    "editor.foreground": colorText.hex(),
-    "editorLineNumber.foreground": "#4b6479",
-    "editorLineNumber.activeForeground": "#C5E4FD",
-    "editorCursor.foreground": "#80a4c2",
-
-    "editor.selectionBackground": selectionColor.hex(),
-    "editor.selectionForeground": colorText.hex(),
-    "editor.selectionHighlightBackground": selectionColor.lighten(0.5).hex(),
-    "editor.inactiveSelectionBackground": selectionColor.lighten(1).hex(),
-
-    "editor.wordHighlightBackground": selectionColor.hex(),
-    "editor.wordHighlightStrongBackground": selectionColor.hex(),
-
-    
-    "editor.findMatchBackground": "#5f7e97",
-    "editor.findMatchHighlightBackground": "#2E3248",
-    "editor.findRangeHighlightBackground": null,
-    "editor.hoverHighlightBackground": "#7e57c2",
-    "editor.lineHighlightBackground": "#0003",
-    "editor.lineHighlightBorder": null,
-    "editorLink.activeForeground": null,
-    "editor.rangeHighlightBackground": "#7e57c2",
-    "editorWhitespace.foreground": null,
-    "editorIndentGuide.background": "#5e81ce",
-    "editorIndentGuide.activeBackground": "#7E97AC",
-    "editorRuler.foreground": "#5e81ce",
-    "editorCodeLens.foreground": "#5e82ce",
-    "editorBracketMatch.background": "#5f7e97",
-    "editorBracketMatch.border": null,
-    "editorOverviewRuler.currentContentForeground": "#7e57c2",
-    "editorOverviewRuler.incomingContentForeground": "#7e57c2",
-    "editorOverviewRuler.commonContentForeground": "#7e57c2",
-    "editorError.foreground": colorDanger.hex(),
-    "editorError.border": null,
-    "editorWarning.foreground": "#b39554",
-    "editorWarning.border": null,
-    "editorGutter.background": colorPrincipal.hex(),
-    "editorGutter.modifiedBackground": "#e2b93d",
-    "editorGutter.addedBackground": "#9CCC65",
-    "editorGutter.deletedBackground": colorDanger.hex(),
-    "editorWidget.border": "#262A39",
-    "editorSuggestWidget.background": "#2C3043",
-    "editorSuggestWidget.border": "#2B2F40",
-    "editorSuggestWidget.foreground": colorText.hex(),
-    "editorSuggestWidget.highlightForeground": colorWhite.hex(),
-    "editorSuggestWidget.selectedBackground": colorP_lightest.hex(),
-    "editorHoverWidget.background": colorPrincipal.hex(),
-    "editorHoverWidget.border": colorP_lightest.hex(),
-    "editorMarkerNavigation.background": colorP_lighten.hex(),
-    "editorMarkerNavigationError.background": colorDanger.hex(),
-    "editorMarkerNavigationWarning.background": colorWarning.hex(),
-
-    "diffEditor.insertedTextBackground": "#99b76d",
-    "diffEditor.insertedTextBorder": "#addb67",
+    "diffEditor.insertedTextBackground": colorSuccesLight.hex(),
+    "diffEditor.insertedTextBorder": colorSuccesLight.hex(),
     "diffEditor.removedTextBackground": colorDanger.hex(),
     "diffEditor.removedTextBorder": colorDanger.hex(),
     "editorWidget.background": colorP_lighten.hex(),
@@ -192,42 +226,44 @@ let theme = {
 
     "peekView.border": colorP_lightest.hex(),
     "peekViewEditor.background": colorPrincipal.hex(),
-    "peekViewEditor.matchHighlightBackground": "#7e57c2",
+    "peekViewEditor.matchHighlightBackground": contrastColor.hex(),
     "peekViewResult.background": colorPrincipal.hex(),
     "peekViewResult.fileForeground": colorP_lightest.hex(),
     "peekViewResult.lineForeground": colorP_lightest.hex(),
     "peekViewResult.matchHighlightBackground": colorWhite.hex(),
-    "peekViewResult.selectionBackground": "#2E3250",
+    "peekViewResult.selectionBackground": colorP_lighten.hex(),
     "peekViewResult.selectionForeground": colorP_lightest.hex(),
     "peekViewTitle.background": colorPrincipal.hex(),
-    "peekViewTitleDescription.foreground": "#697098",
+    "peekViewTitleDescription.foreground": colorP_lightest.hex(),
     "peekViewTitleLabel.foreground": colorP_lightest.hex(),
 
     "merge.currentHeaderBackground": colorP_lightest.hex(),
     "merge.currentContentBackground": null,
-    "merge.incomingHeaderBackground": "#7e57c2",
+    "merge.incomingHeaderBackground": contrastColor.hex(),
     "merge.incomingContentBackground": null,
     "merge.border": null,
 
     "panel.background": colorPrincipal.hex(),
-    "panel.border": colorP_lightest.hex(),
+    "panel.border": colorP_lighten.hex(),
     "panelTitle.activeBorder": colorP_lightest.hex(),
     "panelTitle.activeForeground": colorWhite.hex(),
     "panelTitle.inactiveForeground": colorText.hex(),
 
     "statusBar.background": colorPrincipal.hex(),
-    "statusBar.foreground": "#676E95",
-    "statusBar.border": "#262A39",
-    "statusBar.debuggingBackground": "#202431",
-    "statusBar.debuggingForeground": null,
-    "statusBar.debuggingBorder": "#1F2330",
+    "statusBar.foreground": colorP_lightest.hex(),
+    "statusBar.border": colorP_lighten.hex(),
+
+    "statusBar.debuggingBackground": colorWarning.hex(),
+    "statusBar.debuggingForeground": colorBlack.hex(),
+    "statusBar.debuggingBorder": colorWarningDark.hex(),
+
     "statusBar.noFolderForeground": null,
     "statusBar.noFolderBackground": colorPrincipal.hex(),
-    "statusBar.noFolderBorder": "#25293A",
-    "statusBarItem.activeBackground": "#202431",
-    "statusBarItem.hoverBackground": "#202431",
-    "statusBarItem.prominentBackground": "#202431",
-    "statusBarItem.prominentHoverBackground": "#202431",
+    "statusBar.noFolderBorder": contrastColor.hex(),
+    "statusBarItem.activeBackground": colorP_lighten.hex(),
+    "statusBarItem.hoverBackground": colorP_lighten.hex(),
+    "statusBarItem.prominentBackground": colorP_lighten.hex(),
+    "statusBarItem.prominentHoverBackground": colorP_lighten.hex(),
 
     "titleBar.activeBackground": colorPrincipal.hex(),
     "titleBar.activeForeground": colorText.hex(),
@@ -238,11 +274,7 @@ let theme = {
     "notifications.foreground": colorWhite.hex(),
     "notificationLink.foreground": "#80CBC4",
 
-    "extensionButton.prominentForeground": colorWhite.hex(),
-    "extensionButton.prominentBackground": "#7e57c2cc",
-    "extensionButton.prominentHoverBackground": "#7e57c2",
-
-    "pickerGroup.foreground": "#d1aaff",
+    "pickerGroup.foreground": contrastColorLight.hex(),
     "pickerGroup.border": colorPrincipal.hex(),
 
     "terminal.ansiWhite": colorWhite.hex(),
@@ -273,6 +305,8 @@ let theme = {
     "gitDecoration.conflictingResourceForeground": colorWarningLight.hex(),
 
     "source.elm": colorP_lightest.hex(),
+    // Background color of the progress bar shown for long running operations.
+    "progress.background": contrastColor.hex(),
 
     // languages
     "string.quoted.single.js": colorWhite.hex(),
@@ -1260,7 +1294,7 @@ let theme = {
       name: "JavaScript Variables",
       scope: ["variable.js", "variable.other.js"],
       settings: {
-        foreground: colorText.hex()
+        foreground: colorVariable.hex()
       }
     },
     {
