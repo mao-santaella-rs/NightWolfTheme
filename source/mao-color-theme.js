@@ -12,14 +12,27 @@ let colorP_lightest = colorPrincipal.lighten(4.5);
 
 let colorText = colorPrincipal.lighten(6);
 
-let colorEspecialWord = Color.rgb(188,97,219)
-let colorVariable = Color.rgb(217,152,92)
-let colorFunction = Color.rgb(71,174,245)
-let colorParameter = Color.rgb(0,200,200)
-let colorString = Color.rgb(130,200,100)
-let colorInstanceVariable = Color.rgb(255,100,120)
-let colorRegularText = Color.rgb(179,179,179)
+let colorEspecialWord = Color.rgb(188, 97, 219)
+let colorContrastText = Color.rgb(255, 120, 120)
+let colorRegularText = colorText
+let colorVariable = Color.rgb(255, 210, 130)
+let colorVariableInstance = Color.rgb(150,150,255)
+let colorFunction = Color.rgb(80,200,255)
+let colorParameter = Color.rgb(0,255,255)
+let colorString = Color.rgb(170,230,130)
+let colorNumber = colorRegularText
 let colorComent = Color.rgb(102,102,102)
+let colorBoolean = colorContrastText
+let colorNullUnd = colorContrastText
+
+let colorHtmlTag = colorContrastText
+let colorMetaTag = Color.rgb(200,200,200)
+let colorTagAttribute = colorVariable
+
+let colorCssSelector = colorParameter
+let colorCssValue = colorText
+let colorCssTag = colorContrastText
+let colorCssUnits = colorVariableInstance
 
 let colorInfo = Color.rgb(100, 180, 250)
 let colorInfoDark = colorInfo.darken(0.6);
@@ -35,6 +48,13 @@ let selectionColor = colorP_lighten;
 let contrastColor = Color.rgb(255, 0, 255)
 let contrastColorLight = contrastColor.lighten(0.5);
 let contrastColorDark = contrastColor.darken(0.5);
+
+
+//colors for test
+let colorTestA = Color.rgb(255,255,0)
+let colorTestB = Color.rgb(0,255,0)
+let colorTestC = Color.rgb(255,100,0)
+
 
 console.log(contrastColorLight.hex());
 
@@ -282,7 +302,7 @@ let theme = {
     "terminal.ansiBlue": "#82AAFF",
     "terminal.ansiCyan": "#21c7a8",
     "terminal.ansiGreen": "#22da6e",
-    "terminal.ansiMagenta": "#C792EA",
+    "terminal.ansiMagenta": colorEspecialWord.hex(),
     "terminal.ansiRed": colorDanger.hex(),
     "terminal.ansiYellow": "#addb67",
     "terminal.ansiBrightWhite": colorWhite.hex(),
@@ -290,7 +310,7 @@ let theme = {
     "terminal.ansiBrightBlue": "#82AAFF",
     "terminal.ansiBrightCyan": "#7fdbca",
     "terminal.ansiBrightGreen": "#22da6e",
-    "terminal.ansiBrightMagenta": "#C792EA",
+    "terminal.ansiBrightMagenta": colorEspecialWord.hex(),
     "terminal.ansiBrightRed": colorDanger.hex(),
     "terminal.ansiBrightYellow": colorWarningLight.hex(),
 
@@ -312,7 +332,7 @@ let theme = {
     "string.quoted.single.js": colorWhite.hex(),
     "meta.objectliteral.js": "#82AAFF",
 
-    "punctuation.definition.generic.begin.html": colorInstanceVariable.hex()
+    "punctuation.definition.generic.begin.html": colorTestA.hex()
   },
   tokenColors: [
     {
@@ -324,7 +344,7 @@ let theme = {
         "meta.diff.header.to-file"
       ],
       settings: {
-        foreground: "#a2bffc",
+        foreground: colorInfoLight.hex(),
         fontStyle: "italic"
       }
     },
@@ -332,7 +352,7 @@ let theme = {
       name: "Deleted",
       scope: "markup.deleted.diff",
       settings: {
-        foreground: "#EF5350",
+        foreground: colorDanger.hex(),
         fontStyle: "italic"
       }
     },
@@ -340,7 +360,7 @@ let theme = {
       name: "Inserted",
       scope: "markup.inserted.diff",
       settings: {
-        foreground: "#addb67",
+        foreground: colorSuccesLight.hex(),
         fontStyle: "italic"
       }
     },
@@ -355,7 +375,7 @@ let theme = {
       name: "Comment",
       scope: "comment",
       settings: {
-        foreground: "#637777",
+        foreground: colorComent.hex(),
         fontStyle: "italic"
       }
     },
@@ -363,28 +383,29 @@ let theme = {
       name: "String",
       scope: "string",
       settings: {
-        foreground: "#addb67"
+        foreground: colorString.hex()
       }
     },
     {
       name: "String Quoted",
       scope: ["string.quoted", "variable.other.readwrite.js"],
       settings: {
-        foreground: "#ecc48d"
+        foreground: colorString.hex()
       }
     },
     {
       name: "Support Constant Math",
       scope: "support.constant.math",
       settings: {
-        foreground: "#addb67"
+        // test
+        foreground: colorTestA.hex()
       }
     },
     {
       name: "Number",
       scope: ["constant.numeric", "constant.character.numeric"],
       settings: {
-        foreground: "#F78C6C",
+        foreground: colorNumber.hex(),
         fontStyle: ""
       }
     },
@@ -396,28 +417,28 @@ let theme = {
         "variable.other.constant"
       ],
       settings: {
-        foreground: "#82AAFF"
+        foreground: colorVariable.hex()
       }
     },
     {
       name: "User-defined constant",
       scope: ["constant.character", "constant.other"],
       settings: {
-        foreground: "#82AAFF"
+        foreground: colorVariable.hex()
       }
     },
     {
       name: "Constant Character Escape",
       scope: "constant.character.escape",
       settings: {
-        foreground: "#F78C6C"
+        foreground: colorString.hex()
       }
     },
     {
       name: "RegExp String",
       scope: ["string.regexp", "string.regexp keyword.other"],
       settings: {
-        foreground: "#5ca7e4"
+        foreground: colorRegularText.hex()
       }
     },
     {
@@ -431,14 +452,15 @@ let theme = {
       name: "Variable",
       scope: "variable",
       settings: {
-        foreground: "#addb67"
+        foreground: colorVariable.hex()
       }
     },
     {
+      // css !importatnt
       name: "Keyword",
       scope: ["punctuation.accessor", "keyword"],
       settings: {
-        foreground: "#c792ea",
+        foreground: colorEspecialWord.hex(),
         fontStyle: "italic"
       }
     },
@@ -453,18 +475,26 @@ let theme = {
         "storage.type.property.tsx"
       ],
       settings: {
-        foreground: "#c792ea",
+        foreground: colorEspecialWord.lighten(0.25).hex(),
         fontStyle: "italic"
+      }
+    },
+    {
+      name: "javascript portotype",
+      scope: ["support.variable.property.js"],
+      settings: {
+        foreground: colorParameter.hex()
       }
     },
     {
       name: "Storage type",
       scope: "storage.type",
       settings: {
-        foreground: "#82AAFF"
+        foreground: colorFunction.hex(),
       }
     },
     {
+      // nn
       name: "Storage type",
       scope: "storage.type.function.arrow.js",
       settings: {
@@ -475,7 +505,7 @@ let theme = {
       name: "Class name",
       scope: ["entity.name.class", "meta.class entity.name.type.class"],
       settings: {
-        foreground: "#ffcb8b"
+        foreground: "#ffcb8b",
       }
     },
     {
@@ -497,7 +527,7 @@ let theme = {
       name: "Meta Tag",
       scope: ["punctuation.definition.tag", "meta.tag"],
       settings: {
-        foreground: "#7fdbca"
+        foreground: colorMetaTag.hex(),
       }
     },
     {
@@ -515,7 +545,7 @@ let theme = {
         "meta.tag.html"
       ],
       settings: {
-        foreground: "#7fdbca",
+        foreground: colorHtmlTag.hex(),
         fontStyle: ""
       }
     },
@@ -524,14 +554,15 @@ let theme = {
       scope: "entity.other.attribute-name",
       settings: {
         fontStyle: "italic",
-        foreground: "#addb67"
+        foreground: colorTagAttribute.hex()
       }
     },
     {
       name: "Entity Name Tag Custom",
       scope: "entity.name.tag.custom",
       settings: {
-        foreground: "#addb67"
+        // foreground: "#addb67",
+        foreground: colorTestA.hex(),
       }
     },
     {
@@ -545,7 +576,8 @@ let theme = {
       name: "Support Constant Property Value meta",
       scope: "support.constant.meta.property-value",
       settings: {
-        foreground: "#7fdbca"
+        // foreground: "#7fdbca"
+        foreground: colorTestA.hex()
       }
     },
     {
@@ -566,7 +598,7 @@ let theme = {
       name: "Invalid",
       scope: "invalid",
       settings: {
-        background: "#ff2c83",
+        background: colorDanger.hex(),
         foreground: colorWhite.hex()
       }
     },
@@ -575,14 +607,14 @@ let theme = {
       scope: "invalid.deprecated",
       settings: {
         foreground: colorWhite.hex(),
-        background: "#d3423e"
+        background: colorDangerDark.hex()
       }
     },
     {
       name: "Keyword Operator",
       scope: "keyword.operator",
       settings: {
-        foreground: "#7fdbca",
+        foreground: colorContrastText.hex(),
         fontStyle: ""
       }
     },
@@ -590,7 +622,7 @@ let theme = {
       name: "Keyword Operator Relational",
       scope: "keyword.operator.relational",
       settings: {
-        foreground: "#c792ea",
+        foreground: colorEspecialWord.hex(),
         fontStyle: "italic"
       }
     },
@@ -598,35 +630,35 @@ let theme = {
       name: "Keyword Operator Assignment",
       scope: "keyword.operator.assignment",
       settings: {
-        foreground: "#c792ea"
+        foreground: colorEspecialWord.hex()
       }
     },
     {
       name: "Keyword Operator Arithmetic",
       scope: "keyword.operator.arithmetic",
       settings: {
-        foreground: "#c792ea"
+        foreground: colorEspecialWord.hex(),
       }
     },
     {
       name: "Keyword Operator Bitwise",
       scope: "keyword.operator.bitwise",
       settings: {
-        foreground: "#c792ea"
+        foreground: colorEspecialWord.hex(),
       }
     },
     {
       name: "Keyword Operator Increment",
       scope: "keyword.operator.increment",
       settings: {
-        foreground: "#c792ea"
+        foreground: colorEspecialWord.hex(),
       }
     },
     {
       name: "Keyword Operator Ternary",
       scope: "keyword.operator.ternary",
       settings: {
-        foreground: "#c792ea"
+        foreground: colorEspecialWord.hex(),
       }
     },
     {
@@ -647,7 +679,7 @@ let theme = {
       name: "Null",
       scope: "constant.language.null",
       settings: {
-        foreground: "#ff5874"
+        foreground: colorNullUnd.hex()
       }
     },
     {
@@ -661,7 +693,7 @@ let theme = {
       name: "Meta Delimiter Period",
       scope: "meta.delimiter.period",
       settings: {
-        foreground: "#c792ea",
+        foreground: colorEspecialWord.hex(),
         fontStyle: "italic"
       }
     },
@@ -676,7 +708,7 @@ let theme = {
       name: "Boolean",
       scope: "constant.language.boolean",
       settings: {
-        foreground: "#ff5874"
+        foreground: colorBoolean.hex()
       }
     },
     {
@@ -695,6 +727,7 @@ let theme = {
       }
     },
     {
+      // property sass
       name: "Support Type Property Name & entity name tags",
       scope: [
         "support.type.vendor.property-name",
@@ -703,7 +736,7 @@ let theme = {
         "meta.property-list entity.name.tag"
       ],
       settings: {
-        foreground: "#80CBC4",
+        foreground: colorParameter.hex(),
         fontStyle: ""
       }
     },
@@ -711,7 +744,8 @@ let theme = {
       name: "Entity Name tag reference in stylesheets",
       scope: "meta.property-list entity.name.tag.reference",
       settings: {
-        foreground: "#57eaf1"
+        // foreground: "#57eaf1",
+        foreground: colorTestA.hex()
       }
     },
     {
@@ -725,29 +759,24 @@ let theme = {
       name: "Constant Other Color",
       scope: "constant.other.color",
       settings: {
-        foreground: "#FFEB95"
-      }
-    },
-    {
-      name: "Keyword Other Unit",
-      scope: "keyword.other.unit",
-      settings: {
-        foreground: "#FFEB95"
+        // foreground: "#FFEB95",
+        foreground: colorTestC.hex()
       }
     },
     {
       name: "Meta Selector",
       scope: "meta.selector",
       settings: {
-        foreground: "#c792ea",
+        foreground: colorEspecialWord.hex(),
         fontStyle: "italic"
       }
     },
     {
+      // id pug
       name: "Entity Other Attribute Name Id",
       scope: "entity.other.attribute-name.id",
       settings: {
-        foreground: "#FAD430"
+        foreground: colorFunction.hex()
       }
     },
     {
@@ -755,13 +784,15 @@ let theme = {
       scope: "meta.property-name",
       settings: {
         foreground: "#80CBC4"
+
+        // foreground: colorTestA.hex()
       }
     },
     {
       name: "Doctypes",
       scope: ["entity.name.tag.doctype", "meta.tag.sgml.doctype"],
       settings: {
-        foreground: "#c792ea",
+        foreground: colorEspecialWord.hex(),
         fontStyle: "italic"
       }
     },
@@ -770,20 +801,22 @@ let theme = {
       scope: "punctuation.definition.parameters",
       settings: {
         foreground: "#d9f5dd"
+        // foreground: colorTestA.hex()
       }
     },
     {
       name: "Keyword Control Operator",
       scope: "keyword.control.operator",
       settings: {
-        foreground: "#7fdbca"
+        foreground: "#7fdbca",
+        // foreground: colorTestA.hex()
       }
     },
     {
       name: "Keyword Operator Logical",
       scope: "keyword.operator.logical",
       settings: {
-        foreground: "#c792ea",
+        foreground: colorEspecialWord.hex(),
         fontStyle: ""
       }
     },
@@ -797,14 +830,14 @@ let theme = {
         "variable.other.property"
       ],
       settings: {
-        foreground: "#7fdbca"
+        foreground: colorVariableInstance.hex(),
       }
     },
     {
       name: "Variable Property Other object property",
       scope: ["variable.other.object.property"],
       settings: {
-        foreground: "#d7dbe0",
+        foreground: colorVariableInstance.hex(),
         fontStyle: "italic"
       }
     },
@@ -812,6 +845,7 @@ let theme = {
       name: "Variable Property Other object",
       scope: ["variable.other.object.js"],
       settings: {
+        
         fontStyle: ""
       }
     },
@@ -819,7 +853,7 @@ let theme = {
       name: "Entity Name Function",
       scope: ["entity.name.function"],
       settings: {
-        foreground: "#DCDCAA",
+        foreground: colorFunction.lighten(.15).hex(),
         fontStyle: "italic"
       }
     },
@@ -845,8 +879,15 @@ let theme = {
         "keyword.control.from.tsx"
       ],
       settings: {
-        foreground: "#c792ea",
+        foreground: colorEspecialWord.hex(),
         fontStyle: "italic"
+      }
+    },
+    {
+      name: "this word in javascript",
+      scope: ["variable.language.this.js"],
+      settings: {
+        foreground: colorContrastText.hex()
       }
     },
     {
@@ -858,7 +899,7 @@ let theme = {
         "keyword.control.switch.ts"
       ],
       settings: {
-        foreground: "#c792ea",
+        foreground: colorEspecialWord.hex(),
         fontStyle: ""
       }
     },
@@ -874,6 +915,7 @@ let theme = {
       ],
       settings: {
         foreground: "#7fdbca"
+        // foreground: colorTestA.hex()
       }
     },
     {
@@ -912,6 +954,7 @@ let theme = {
       scope: "variable.language",
       settings: {
         foreground: "#7fdbca"
+        // foreground: colorTestA.hex()
       }
     },
     {
@@ -919,6 +962,7 @@ let theme = {
       scope: "support.variable.property",
       settings: {
         foreground: "#7fdbca"
+        // foreground: colorTestA.hex()
       }
     },
     {
@@ -978,7 +1022,7 @@ let theme = {
       name: "Template Strings",
       scope: "string.template meta.template.expression",
       settings: {
-        foreground: "#d3423e"
+        foreground: colorParameter.hex()
       }
     },
     {
@@ -992,7 +1036,7 @@ let theme = {
       name: "Italics",
       scope: "italic",
       settings: {
-        foreground: "#c792ea",
+        foreground: colorEspecialWord.hex(),
         fontStyle: "italic"
       }
     },
@@ -1016,7 +1060,8 @@ let theme = {
       name: "Raw Code",
       scope: "raw",
       settings: {
-        foreground: "#80CBC4"
+        foreground: "#80CBC4",
+        foreground: colorTestA.hex()
       }
     },
     {
@@ -1066,12 +1111,20 @@ let theme = {
       scope: [
         "entity.name.tag.css",
         "entity.name.tag.less",
-        "entity.name.tag.custom.css",
+        "entity.name.tag.custom.css"
+      ],
+      settings: {
+        foreground: colorCssTag.hex(),
+        fontStyle: ""
+      }
+    },
+    {
+      name: "Values in css",
+      scope:[
         "support.constant.property-value.css"
       ],
       settings: {
-        foreground: "#ff6363",
-        fontStyle: ""
+        foreground: colorCssValue.hex()
       }
     },
     {
@@ -1087,10 +1140,23 @@ let theme = {
       }
     },
     {
-      name: "CSS Keyword Other Unit",
-      scope: "keyword.other.unit.css",
+      name: "Stylesheet Units",
+      scope: [
+        "keyword.other.unit", 
+        "keyword.other.unit.css", 
+        "keyword.other.unit.scss", 
+        "keyword.other.unit.sass"
+      ],
       settings: {
-        foreground: "#FFEB95"
+        foreground: colorCssUnits.hex()
+      }
+    },
+    
+    {
+      name: "stylesheet numbers",
+      scope: ["constant.numeric.css","punctuation.definition.constant.css"],
+      settings: {
+        foreground: colorRegularText.hex()
       }
     },
     {
@@ -1151,7 +1217,7 @@ let theme = {
       name: "Elixir Binary Punctuations",
       scope: "source.elixir .punctuation.binary.elixir",
       settings: {
-        foreground: "#c792ea",
+        foreground: colorEspecialWord.hex(),
         fontStyle: "italic"
       }
     },
@@ -1178,7 +1244,7 @@ let theme = {
         "source.go keyword.control.go"
       ],
       settings: {
-        foreground: "#c792ea",
+        foreground: colorEspecialWord.hex(),
         fontStyle: "italic"
       }
     },
@@ -1210,7 +1276,7 @@ let theme = {
       name: "HTML Doctype",
       scope: "meta.tag.sgml.doctype.html",
       settings: {
-        foreground: "#c792ea",
+        foreground: colorEspecialWord.hex(),
         fontStyle: "italic"
       }
     },
@@ -1268,7 +1334,7 @@ let theme = {
         "meta.export.js variable.other"
       ],
       settings: {
-        foreground: colorText.hex()
+        foreground: colorVariable.hex()
       }
     },
     {
@@ -1287,7 +1353,7 @@ let theme = {
         "variable.object.property.jsx"
       ],
       settings: {
-        foreground: colorText.hex()
+        foreground: colorVariable.hex(),
       }
     },
     {
@@ -1301,7 +1367,7 @@ let theme = {
       name: "JavaScript Entity Name Type",
       scope: ["entity.name.type.js", "entity.name.type.module.js"],
       settings: {
-        foreground: "#ffcb8b",
+        foreground: colorContrastText.lighten(.15).hex(),
         fontStyle: ""
       }
     },
@@ -1384,13 +1450,6 @@ let theme = {
       }
     },
     {
-      name: "LESS Keyword Other Unit",
-      scope: "keyword.other.unit.css",
-      settings: {
-        foreground: "#FFEB95"
-      }
-    },
-    {
       name: "Attribute Name for LESS",
       scope:
         "meta.attribute-selector.less entity.other.attribute-name.attribute",
@@ -1409,7 +1468,7 @@ let theme = {
       name: "Markdown Italics",
       scope: "markup.italic.markdown",
       settings: {
-        foreground: "#c792ea",
+        foreground: colorEspecialWord.hex(),
         fontStyle: "italic"
       }
     },
@@ -1573,7 +1632,7 @@ let theme = {
       name: "Python import control keyword",
       scope: "keyword.control",
       settings: {
-        foreground: "#c792ea"
+        foreground: colorEspecialWord.hex()
       }
     },
     {
@@ -1623,13 +1682,6 @@ let theme = {
       scope: ["entity.name.tag.scss", "entity.name.tag.sass"],
       settings: {
         foreground: "#7fdbca"
-      }
-    },
-    {
-      name: "SASS Keyword Other Unit",
-      scope: ["keyword.other.unit.scss", "keyword.other.unit.sass"],
-      settings: {
-        foreground: "#FFEB95"
       }
     },
     {
@@ -1716,14 +1768,15 @@ let theme = {
       name: "JavaScript Variable Other ReadWrite",
       scope: ["variable.other.readwrite.js", "variable.parameter"],
       settings: {
-        foreground: "#d7dbe0"
+        foreground: colorVariable.hex(),
+
       }
     },
     {
       name: "Support Class Component",
       scope: ["support.class.component.js", "support.class.component.tsx"],
       settings: {
-        foreground: "#f78c6c",
+        foreground: colorContrastText.hex(),
         fontStyle: ""
       }
     },
