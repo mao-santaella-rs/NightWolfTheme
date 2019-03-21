@@ -12,18 +12,41 @@ let colorP_lightest = colorPrincipal.lighten(4.5);
 
 let colorText = colorPrincipal.lighten(6);
 
-let colorEspecialWord = Color.rgb(188, 97, 219)
-let colorContrastText = Color.rgb(255, 120, 120)
-let colorRegularText = colorText
-let colorVariable = Color.rgb(255, 210, 130)
-let colorVariableInstance = Color.rgb(150,150,255)
-let colorFunction = Color.rgb(0,177,255)
-let colorParameter = Color.rgb(0,220,220)
-let colorString = Color.rgb(170,230,130)
-let colorNumber = colorRegularText
-let colorcomment = colorP_lighter
-let colorBoolean = colorContrastText
-let colorNullUnd = colorContrastText
+
+// console.log(
+//   colorPrincipal.hex(),
+//   colorP_darken.hex(),
+//   colorP_light.hex(),
+//   colorP_lighten.hex(),
+//   colorP_lighter.hex(),
+//   colorP_lightest.hex(),
+//   colorText.hex()
+// );
+
+let colorEspecialWord =         Color.rgb(188, 97, 219)
+let colorContrastText =         Color.rgb(255, 120, 120)
+let colorRegularText =          colorText
+let colorVariable =             Color.rgb(255, 210, 130)
+let colorVariableInstance =     Color.rgb(150,150,255)
+let colorFunction =             Color.rgb(0,177,255)
+let colorParameter =            Color.rgb(0,220,220)
+let colorString =               Color.rgb(170,230,130)
+let colorNumber =               colorRegularText
+let colorBoolean =              colorContrastText
+let colorNullUnd =              colorContrastText
+
+let colorSelection =            colorP_lighter
+let colorSelectionHighlight =   colorP_lighten
+let colorSelectionInactive =    colorSelection
+let colorHoverHiglight =        colorSelection
+let colorWordHighlightStrong =  colorSelection
+let colorFindMatch =            colorP_lighter
+let colorFindHighlight =        colorSelectionHighlight
+let colorRangeHiglight =        colorP_light
+let colorLineHiglight =         colorP_darken
+
+let colorComment =              colorP_lightest
+
 
 let colorHtmlTag = colorContrastText
 let colorMetaTag = Color.rgb(200,200,200)
@@ -44,7 +67,6 @@ let colorWarningLight = Color.rgb(255, 235, 150);
 let colorDanger = Color.rgb(240, 80, 80)
 let colorDangerDark = colorDanger.darken(0.4);
 
-let selectionColor = colorP_lighten;
 let contrastColor = Color.rgb(255, 0, 255)
 let contrastColorLight = contrastColor.lighten(0.5);
 let contrastColorDark = contrastColor.darken(0.5);
@@ -77,25 +99,41 @@ let theme = {
     "editorLineNumber.activeForeground": colorP_lightest.hex(),
     "editorCursor.foreground": contrastColorLight.hex(),
 
-    "editor.selectionBackground": selectionColor.lighten(0.5).hex(),
+    // cuando selecciono con el mouse
+    "editor.selectionBackground": colorSelection.hex(),
     "editor.selectionForeground": colorText.hex(),
-    "editor.selectionHighlightBackground": selectionColor.hex(),
-    "editor.inactiveSelectionBackground": selectionColor.hex(),
 
-    "editor.wordHighlightBackground": selectionColor.hex(),
-    "editor.wordHighlightStrongBackground": selectionColor.hex(),
+    // las palabras iguales a la seleccion
+    "editor.selectionHighlightBackground": colorSelectionHighlight.hex(),
 
-    "editor.findMatchBackground": colorP_lightest.hex(),
-    "editor.findMatchHighlightBackground": colorP_lighten.hex(),
+    // la seleccion cuando salgo de la ventana donde estoy
+    "editor.inactiveSelectionBackground": colorSelectionInactive.hex(),
+
+    "editor.wordHighlightBackground": colorTestC.hex(),
+
+    // cuando ubico el puntero encima de una palabra
+    "editor.hoverHighlightBackground": colorHoverHiglight.hex(),
+
+    // cuando selecciono parcialmente una palabra y vscode selecciona todo
+    "editor.wordHighlightStrongBackground": colorWordHighlightStrong.hex(),
+
+    // palabra seleccionada por el finder
+    "editor.findMatchBackground": colorFindMatch.hex(),
+
+    // todas las palabras encontradas por el finder
+    "editor.findMatchHighlightBackground": colorFindHighlight.hex(),
     "editor.findRangeHighlightBackground": null,
-    "editor.hoverHighlightBackground": colorP_lighter.hex(),
-    "editor.lineHighlightBackground": colorP_light.hex(),
-    "editor.lineHighlightBorder": null,
-    "editorLink.activeForeground": null,
-    
-    "editor.rangeHighlightBackground": colorP_lighter.hex(),
 
-    
+    // color de la linea en la que el cursor esta ubicado
+    "editor.lineHighlightBackground": colorLineHiglight.hex(),
+    "editor.lineHighlightBorder": null,
+
+    "editorLink.activeForeground": null,
+
+    // fondo de la linea completa cuando se busca
+    "editor.rangeHighlightBackground": colorRangeHiglight.hex(),
+    "editor.rangeHighlightForeground": colorText.hex(),
+
     "editorWhitespace.foreground": null,
     "editorIndentGuide.background": colorP_lighten.hex(),
     "editorIndentGuide.activeBackground": colorP_lightest.hex(),
@@ -295,7 +333,7 @@ let theme = {
 
     "notifications.background": colorPrincipal.hex(),
     "notifications.foreground": colorWhite.hex(),
-    "notificationLink.foreground": "#80CBC4",
+    "notificationLink.foreground": contrastColor.hex(),
 
     "pickerGroup.foreground": contrastColorLight.hex(),
     "pickerGroup.border": colorPrincipal.hex(),
@@ -329,7 +367,7 @@ let theme = {
 
     "source.elm": colorP_lightest.hex(),
     // Background color for the progress bar shown for long running operations.
-    "progress.background": contrastColor.hex(),
+    "progress.background": contrastColor.hex()
   },
   tokenColors: [
     {
@@ -441,10 +479,8 @@ let theme = {
     },
     {
       name: "Template Literals expressions",
-      scope: [
-        "punctuation.definition.template-expression",
-      ],
-      settings:{
+      scope: ["punctuation.definition.template-expression"],
+      settings: {
         foreground: colorContrastText.hex()
       }
     },
@@ -456,29 +492,29 @@ let theme = {
         "punctuation.definition.block.tag"
       ],
       settings: {
-        foreground: colorFunction.hex(),
+        foreground: colorFunction.hex()
       }
     },
     {
       name: "Class name",
       scope: ["entity.name.class", "meta.class entity.name.type.class"],
       settings: {
-        foreground: colorVariable.hex(),
+        foreground: colorVariable.hex()
       }
     },
     {
       name: "Inherited class",
       scope: "entity.other.inherited-class",
       settings: {
-        foreground: "#addb67",
-        foreground: colorTestA.hex(),
+        foreground: colorVariable.hex(),
+        foreground: colorTestA.hex()
       }
     },
     {
       name: "Function name",
       scope: "entity.name.function",
       settings: {
-        foreground: "#DCDCAA",
+        foreground: colorParameter.hex(),
         fontStyle: "italic"
       }
     },
@@ -486,7 +522,7 @@ let theme = {
       name: "Meta Tag",
       scope: ["punctuation.definition.tag", "meta.tag"],
       settings: {
-        foreground: colorMetaTag.hex(),
+        foreground: colorMetaTag.hex()
       }
     },
     {
@@ -502,7 +538,7 @@ let theme = {
       name: "Entity Name Tag Custom",
       scope: "entity.name.tag.custom",
       settings: {
-        foreground: colorEspecialWord.hex(),
+        foreground: colorEspecialWord.hex()
       }
     },
     {
@@ -525,15 +561,15 @@ let theme = {
       name: "Library class/type",
       scope: ["support.type", "support.class"],
       settings: {
-        foreground: colorContrastText.hex(),
+        foreground: colorContrastText.hex()
       }
     },
     {
       name: "Support Variable DOM",
       scope: "support.variable.dom",
       settings: {
-        foreground: "#addb67",
-        foreground: colorTestA.hex(),
+        // foreground: "#addb67",
+        foreground: colorTestA.hex()
       }
     },
     {
@@ -579,28 +615,28 @@ let theme = {
       name: "Keyword Operator Arithmetic",
       scope: "keyword.operator.arithmetic",
       settings: {
-        foreground: colorEspecialWord.hex(),
+        foreground: colorEspecialWord.hex()
       }
     },
     {
       name: "Keyword Operator Bitwise",
       scope: "keyword.operator.bitwise",
       settings: {
-        foreground: colorEspecialWord.hex(),
+        foreground: colorEspecialWord.hex()
       }
     },
     {
       name: "Keyword Operator Increment",
       scope: "keyword.operator.increment",
       settings: {
-        foreground: colorEspecialWord.hex(),
+        foreground: colorEspecialWord.hex()
       }
     },
     {
       name: "Keyword Operator Ternary",
       scope: "keyword.operator.ternary",
       settings: {
-        foreground: colorEspecialWord.hex(),
+        foreground: colorEspecialWord.hex()
       }
     },
     {
@@ -644,7 +680,7 @@ let theme = {
       name: "Variable Parameter Function",
       scope: "variable.parameter.function",
       settings: {
-        foreground: "#7fdbca",
+        foreground: colorParameter.hex(),
         fontStyle: ""
       }
     },
@@ -710,18 +746,10 @@ let theme = {
       }
     },
     {
-      name: "Punctuation Definition Parameters",
-      scope: "punctuation.definition.parameters",
-      settings: {
-        foreground: "#d9f5dd"
-        // foreground: colorTestA.hex()
-      }
-    },
-    {
       name: "Keyword Control Operator",
       scope: "keyword.control.operator",
       settings: {
-        foreground: "#7fdbca",
+        foreground: colorParameter.hex()
         // foreground: colorTestA.hex()
       }
     },
@@ -743,7 +771,7 @@ let theme = {
         "variable.other.property"
       ],
       settings: {
-        foreground: colorVariableInstance.hex(),
+        foreground: colorVariableInstance.hex()
       }
     },
     {
@@ -758,7 +786,6 @@ let theme = {
       name: "Variable Property Other object",
       scope: ["variable.other.object.js"],
       settings: {
-        
         fontStyle: ""
       }
     },
@@ -819,8 +846,7 @@ let theme = {
         "keyword.control"
       ],
       settings: {
-        foreground: "#7fdbca"
-        // foreground: colorTestA.hex()
+        foreground: colorParameter.hex()
       }
     },
     {
@@ -828,7 +854,7 @@ let theme = {
       scope: "support.function",
       settings: {
         foreground: "#addb67",
-        foreground: colorParameter.hex(),
+        foreground: colorParameter.hex()
       }
     },
     {
@@ -860,7 +886,6 @@ let theme = {
       scope: "variable.language",
       settings: {
         foreground: "#7fdbca"
-        // foreground: colorTestA.hex()
       }
     },
     {
@@ -868,7 +893,6 @@ let theme = {
       scope: "support.variable.property",
       settings: {
         foreground: "#7fdbca"
-        // foreground: colorTestA.hex()
       }
     },
     {
@@ -919,7 +943,7 @@ let theme = {
       name: "Bold",
       scope: "bold",
       settings: {
-        foreground: "#addb67",
+        foreground: colorString.hex(),
         fontStyle: "bold"
       }
     },
@@ -927,7 +951,7 @@ let theme = {
       name: "Quote",
       scope: "quote",
       settings: {
-        foreground: "#697098",
+        foreground: colorString.hex(),
         fontStyle: "italic"
       }
     },
@@ -1084,34 +1108,13 @@ let theme = {
       name: "Other Variables in Code Documentations",
       scope: ["variable.other.jsdoc", "variable.other.phpdoc"],
       settings: {
-        foreground: "#78ccf0"
+        foreground: colorVariable.hex()
       }
     },
 
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// String START
+    // String START
     {
       name: "String",
       scope: "string",
@@ -1144,31 +1147,22 @@ let theme = {
         foreground: colorString.hex()
       }
     },
-// string END
+    // string END
 
-
-
-
-
-
-
-
-
-
-// Stylesheets START
+    // Stylesheets START
     {
       // &
       name: "Entity Name tag reference in stylesheets",
       scope: "meta.property-list entity.name.tag.reference",
       settings: {
-        foreground: colorEspecialWord.hex(),
+        foreground: colorEspecialWord.hex()
       }
     },
     {
       // css !importatnt
       name: "Keyword",
       scope: [
-        "punctuation.accessor", 
+        "punctuation.accessor",
         "keyword",
         "punctuation.definition.keyword"
       ],
@@ -1191,9 +1185,7 @@ let theme = {
     },
     {
       name: "Values in css",
-      scope: [
-        "support.constant.property-value.css"
-      ],
+      scope: ["support.constant.property-value.css"],
       settings: {
         foreground: colorCssValue.hex()
       }
@@ -1236,7 +1228,7 @@ let theme = {
         "variable.other.readwrite.js"
       ],
       settings: {
-        foreground: "#F78C6C",
+        foreground: "#F78C6C"
       }
     },
     {
@@ -1280,7 +1272,7 @@ let theme = {
         "meta.attribute-selector.sass entity.other.attribute-name.attribute"
       ],
       settings: {
-        foreground: colorVariable.hex(),
+        foreground: colorVariable.hex()
       }
     },
     {
@@ -1306,18 +1298,9 @@ let theme = {
         foreground: "#7fdbca"
       }
     },
-// Stylesheets END
+    // Stylesheets END
 
-
-
-
-
-
-
-
-
-
-// Punctuation Start
+    // Punctuation Start
     {
       name: "Punctuation",
       scope: [
@@ -1348,19 +1331,20 @@ let theme = {
         // "punctuation.definition.template-expression",
         // "punctuation.definition.block",
 
-        
-
-        // "punctuation.definition.namespace.begin.bracket",
-        // "punctuation.separator",
-
-
-
-
-        "punctuation.accessor",
+        "punctuation.definition.namespace.begin.bracket",
+        "punctuation.separator",
+        "punctuation.accessor"
       ],
       settings: {
-        foreground: colorRegularText.hex(),
-        foreground: colorTestA.hex()
+        foreground: colorRegularText.hex()
+        // foreground: colorTestA.hex()
+      }
+    },
+    {
+      name: "Punctuation Definition Parameters",
+      scope: "punctuation.definition.parameters",
+      settings: {
+        foreground: colorRegularText.hex()
       }
     },
     {
@@ -1385,7 +1369,7 @@ let theme = {
         "punctuation.definition.list"
       ],
       settings: {
-        foreground: "#d9f5dd",
+        foreground: colorRegularText.hex()
       }
     },
     {
@@ -1397,7 +1381,7 @@ let theme = {
         "meta.link.inline.markdown punctuation.definition.string"
       ],
       settings: {
-        foreground: "#82b1ff"
+        foreground: colorRegularText.hex()
       }
     },
     {
@@ -1428,26 +1412,9 @@ let theme = {
         background: colorTestA.hex()
       }
     },
-// punctuation END
+    // punctuation END
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Javascript & Typescript START
+    // Javascript & Typescript START
 
     {
       name: "javascript portotype",
@@ -1507,10 +1474,8 @@ let theme = {
 
     {
       name: "@ in decorator in javascript",
-      scope: [
-        "punctuation.decorator.js"
-      ],
-      settings:{
+      scope: ["punctuation.decorator.js"],
+      settings: {
         foreground: colorParameter.hex()
       }
     },
@@ -1580,8 +1545,7 @@ let theme = {
       name: "JavaScript Variable Other ReadWrite",
       scope: ["variable.other.readwrite.js", "variable.parameter"],
       settings: {
-        foreground: colorVariable.hex(),
-
+        foreground: colorVariable.hex()
       }
     },
     {
@@ -1636,7 +1600,7 @@ let theme = {
         "variable.object.property.jsx"
       ],
       settings: {
-        foreground: colorVariable.hex(),
+        foreground: colorVariable.hex()
       }
     },
     {
@@ -1663,25 +1627,9 @@ let theme = {
       }
     },
 
+    // Javascript & Typescript END
 
-// Javascript & Typescript END
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// PHP START
+    // PHP START
     {
       name: "PHP Variables",
       scope: ["variable.other.php", "variable.other.property.php"],
@@ -1717,24 +1665,9 @@ let theme = {
         foreground: "#addb67"
       }
     },
-// PHP END
+    // PHP END
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// JSON START
+    // JSON START
     {
       name: "JSON Property Names",
       scope: "support.type.property-name.json",
@@ -1771,15 +1704,9 @@ let theme = {
         foreground: colorContrastText.hex()
       }
     },
-// JSON END
+    // JSON END
 
-
-
-
-
-
-
-// Normalize START
+    // Normalize START
     {
       name: "normalize font style of certain components",
       scope: [
@@ -1807,29 +1734,14 @@ let theme = {
         fontStyle: ""
       }
     },
-// Normalize END
+    // Normalize END
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Comments START
+    // Comments START
     {
       name: "Comment",
       scope: "comment",
       settings: {
-        foreground: colorcomment.hex(),
+        foreground: colorComment.hex(),
         fontStyle: "italic"
       }
     },
@@ -1841,26 +1753,12 @@ let theme = {
         "punctuation.whitespace.comment"
       ],
       settings: {
-        foreground: colorcomment.hex()
+        foreground: colorComment.hex()
       }
     },
-// Comments END
+    // Comments END
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//PYTHON START
+    //PYTHON START
     {
       name: "Language Constants in Python",
       scope: "constant.language.python",
@@ -1913,23 +1811,9 @@ let theme = {
         foreground: colorEspecialWord.hex()
       }
     },
-// PYTHON END
+    // PYTHON END
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Markdown START
+    // Markdown START
     {
       name: "Markdown Headings",
       scope: "markup.heading.markdown",
@@ -2009,18 +1893,9 @@ let theme = {
         foreground: "#addb67"
       }
     },
-// Markdown END
+    // Markdown END
 
-
-
-
-
-
-
-
-
-
-// RUBY START
+    // RUBY START
     {
       name: "Ruby Variables",
       scope: ["variable.other.ruby"],
@@ -2049,16 +1924,9 @@ let theme = {
         foreground: "#7fdbca"
       }
     },
-// RUBY END
+    // RUBY END
 
-
-
-
-
-
-
-
-// HTML START
+    // HTML START
 
     {
       name: "HTML Tag names",
@@ -2081,11 +1949,11 @@ let theme = {
     },
     {
       name: "@ : = for html",
-      scope:[
+      scope: [
         "punctuation.separator.key-value.html",
         "punctuation.definition.tag.html"
       ],
-      settings:{
+      settings: {
         foreground: colorRegularText.hex()
       }
     },
@@ -2113,19 +1981,9 @@ let theme = {
       }
     },
 
-// HTML END
+    // HTML END
 
-
-
-
-
-
-
-
-
-
-// OTHERS START
-
+    // OTHERS START
 
     {
       name: "YAML Entity Name Tags",
@@ -2140,16 +1998,9 @@ let theme = {
       settings: {
         foreground: colorString.hex()
       }
-    },
+    }
 
-
-
-
-// OTHERS END
-
-
-
-
+    // OTHERS END
   ]
 };
 
