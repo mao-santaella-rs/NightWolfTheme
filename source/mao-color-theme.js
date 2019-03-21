@@ -1,32 +1,25 @@
 let Color = require("color");
 
-let colorWhite = Color.rgb(255, 255, 255)
-let colorBlack = Color.rgb(0,0,0)
+let colorWhite =                Color.rgb(255, 255, 255)
+let colorBlack =                Color.rgb(0,0,0)
 
-let colorPrincipal = Color.rgb(16, 30, 44)
-let colorP_darken = colorPrincipal.darken(0.3)
-let colorP_light = colorPrincipal.lighten(0.3)
-let colorP_lighten = colorPrincipal.lighten(1)
-let colorP_lighter = colorPrincipal.lighten(2);
-let colorP_lightest = colorPrincipal.lighten(4.5);
+let colorPrincipal =            Color.rgb(16, 30, 44)
+let colorP_darken =             colorPrincipal.darken(0.3)
+let colorP_light =              colorPrincipal.lighten(0.3)
+let colorP_lighten =            colorPrincipal.lighten(1)
+let colorP_lighter =            colorPrincipal.lighten(2);
+let colorP_lightest =           colorPrincipal.lighten(4.5);
 
-let colorText = colorPrincipal.lighten(6);
+let colorText =                 colorPrincipal.lighten(6);
 
+let contrastColor =             Color.rgb(255, 0, 255)
+let contrastColorLight =        contrastColor.lighten(0.5);
+let contrastColorDark =         contrastColor.darken(0.5);
 
-// console.log(
-//   colorPrincipal.hex(),
-//   colorP_darken.hex(),
-//   colorP_light.hex(),
-//   colorP_lighten.hex(),
-//   colorP_lighter.hex(),
-//   colorP_lightest.hex(),
-//   colorText.hex()
-// );
-
-let colorEspecialWord =         Color.rgb(188, 97, 219)
+let colorEspecialWord =         Color.rgb(200, 120, 230)
 let colorContrastText =         Color.rgb(255, 120, 120)
 let colorRegularText =          colorText
-let colorVariable =             Color.rgb(255, 210, 130)
+let colorVariable =             Color.rgb(255, 210, 140)
 let colorVariableInstance =     Color.rgb(150,150,255)
 let colorFunction =             Color.rgb(0,177,255)
 let colorParameter =            Color.rgb(0,220,220)
@@ -48,37 +41,32 @@ let colorLineHiglight =         colorP_darken
 let colorComment =              colorP_lightest
 
 
-let colorHtmlTag = colorContrastText
-let colorMetaTag = Color.rgb(200,200,200)
-let colorTagAttribute = colorVariable
+let colorHtmlTag =              colorContrastText
+let colorMetaTag =              Color.rgb(200,200,200)
+let colorTagAttribute =         colorVariable
 
-let colorCssSelector = colorParameter
-let colorCssValue = colorText
-let colorCssTag = colorContrastText
-let colorCssUnits = colorVariableInstance
+let colorCssAttribute =         colorParameter
+let colorCssValue =             colorText
+let colorCssTag =               colorContrastText
+let colorCssUnits =             colorVariableInstance
 
-let colorInfo = Color.rgb(100, 180, 250)
-let colorInfoDark = colorInfo.darken(0.6);
-let colorInfoLight = colorInfo.lighten(0.2);
-let colorSuccesLight = Color.rgb(175, 220, 100);
-let colorWarning = Color.rgb(255, 200, 40)
-let colorWarningDark = colorWarning.darken(0.6);
-let colorWarningLight = Color.rgb(255, 235, 150);
-let colorDanger = Color.rgb(240, 80, 80)
-let colorDangerDark = colorDanger.darken(0.4);
-
-let contrastColor = Color.rgb(255, 0, 255)
-let contrastColorLight = contrastColor.lighten(0.5);
-let contrastColorDark = contrastColor.darken(0.5);
-
+let colorInfo =                 Color.rgb(100, 180, 250)
+let colorInfoDark =             colorInfo.darken(0.6);
+let colorInfoLight =            colorInfo.lighten(0.2);
+let colorSuccesLight =          Color.rgb(175, 220, 100);
+let colorWarning =              Color.rgb(255, 200, 40)
+let colorWarningDark =          colorWarning.darken(0.6);
+let colorWarningLight =         Color.rgb(255, 235, 150);
+let colorDanger =               Color.rgb(240, 80, 80)
+let colorDangerDark =           colorDanger.darken(0.4);
 
 //colors for test
-let colorTestA = Color.rgb(255,255,0)
-let colorTestB = Color.rgb(0,255,0)
-let colorTestC = Color.rgb(255,100,0)
+let colorTestA =                Color.rgb(255,255,0)
+let colorTestB =                Color.rgb(0,255,0)
+let colorTestC =                Color.rgb(255,100,0)
 
 
-console.log(contrastColorLight.hex());
+console.log(colorEspecialWord.hex());
 
 let theme = {
   name: "Mao",
@@ -98,6 +86,7 @@ let theme = {
     "editorLineNumber.foreground": colorP_lighten.hex(),
     "editorLineNumber.activeForeground": colorP_lightest.hex(),
     "editorCursor.foreground": contrastColorLight.hex(),
+    "editorLink.activeForeground": null,
 
     // cuando selecciono con el mouse
     "editor.selectionBackground": colorSelection.hex(),
@@ -109,7 +98,8 @@ let theme = {
     // la seleccion cuando salgo de la ventana donde estoy
     "editor.inactiveSelectionBackground": colorSelectionInactive.hex(),
 
-    "editor.wordHighlightBackground": colorTestC.hex(),
+    // cuando ubico el cursor en el medio de una palabra y vscode la selecciona
+    "editor.wordHighlightBackground": colorHoverHiglight.hex(),
 
     // cuando ubico el puntero encima de una palabra
     "editor.hoverHighlightBackground": colorHoverHiglight.hex(),
@@ -128,18 +118,21 @@ let theme = {
     "editor.lineHighlightBackground": colorLineHiglight.hex(),
     "editor.lineHighlightBorder": null,
 
-    "editorLink.activeForeground": null,
-
     // fondo de la linea completa cuando se busca
     "editor.rangeHighlightBackground": colorRangeHiglight.hex(),
     "editor.rangeHighlightForeground": colorText.hex(),
 
-    "editorWhitespace.foreground": null,
+    // cuando se activa la viusualizacion de los whitespaces
+    "editorWhitespace.foreground": colorP_lighten.hex(),
+
+    // linea vertical que indica la indentacion
     "editorIndentGuide.background": colorP_lighten.hex(),
     "editorIndentGuide.activeBackground": colorP_lightest.hex(),
+
     "editorRuler.foreground": colorP_lighten.hex(),
 
     "editorCodeLens.foreground": colorInfoLight.hex(),
+
     "editorBracketMatch.background": colorP_lighten.hex(),
     "editorBracketMatch.border": null,
 
@@ -149,24 +142,29 @@ let theme = {
 
     "editorError.foreground": colorDanger.hex(),
     "editorError.border": null,
+
     "editorWarning.foreground": colorWarningDark.hex(),
     "editorWarning.border": null,
 
+    // el editor gutter es la parte donde esta el numero de linea y las indicaciones de git
     "editorGutter.background": colorPrincipal.hex(),
     "editorGutter.modifiedBackground": colorWarning.hex(),
     "editorGutter.addedBackground": colorSuccesLight.hex(),
     "editorGutter.deletedBackground": colorDanger.hex(),
 
-    "editorWidget.border": colorP_lighten.hex(),
+    // el widget como el find and replace
+    "editorWidget.border": colorP_lightest.hex(),
+    "editorWidget.background": colorP_lighten.hex(),
 
-    "editorSuggestWidget.background": colorP_lighten.hex(),
+    // el cuadro que sale cuando estamos escribiendo proponiendo opciones
+    "editorSuggestWidget.background": colorP_light.hex(),
     "editorSuggestWidget.border": colorP_lighten.hex(),
-    "editorSuggestWidget.foreground": colorText.hex(),
-    "editorSuggestWidget.highlightForeground": colorWhite.hex(),
-    "editorSuggestWidget.selectedBackground": colorP_lightest.hex(),
-
+    "editorSuggestWidget.foreground": colorP_lightest.hex(),
+    "editorSuggestWidget.highlightForeground": colorText.hex(),
+    "editorSuggestWidget.selectedBackground": colorP_lighter.hex(),
     "editorHoverWidget.background": colorPrincipal.hex(),
     "editorHoverWidget.border": colorP_lightest.hex(),
+
     "editorMarkerNavigation.background": colorP_lighten.hex(),
     "editorMarkerNavigationError.background": colorDanger.hex(),
     "editorMarkerNavigationWarning.background": colorWarning.hex(),
@@ -280,7 +278,6 @@ let theme = {
     "diffEditor.insertedTextBorder": colorSuccesLight.hex(),
     "diffEditor.removedTextBackground": colorDanger.hex(),
     "diffEditor.removedTextBorder": colorDanger.hex(),
-    "editorWidget.background": colorP_lighten.hex(),
 
     "debugExceptionWidget.background": colorPrincipal.hex(),
     "debugExceptionWidget.border": colorP_lightest.hex(),
@@ -798,7 +795,8 @@ let theme = {
       }
     },
     {
-      name: "Keyword Operator Comparison, imports, returns and Keyword Operator Ruby",
+      name:
+        "Keyword Operator Comparison, imports, returns and Keyword Operator Ruby",
       scope: [
         "keyword.operator.comparison",
         "keyword.control.flow.js",
@@ -1272,7 +1270,7 @@ let theme = {
         "meta.attribute-selector.sass entity.other.attribute-name.attribute"
       ],
       settings: {
-        foreground: colorVariable.hex()
+        foreground: colorCssAttribute.hex()
       }
     },
     {
