@@ -17,11 +17,11 @@ let colorContrastText = Color.rgb(255, 120, 120)
 let colorRegularText = colorText
 let colorVariable = Color.rgb(255, 210, 130)
 let colorVariableInstance = Color.rgb(150,150,255)
-let colorFunction = Color.rgb(80,200,255)
-let colorParameter = Color.rgb(0,255,255)
+let colorFunction = Color.rgb(0,177,255)
+let colorParameter = Color.rgb(0,220,220)
 let colorString = Color.rgb(170,230,130)
 let colorNumber = colorRegularText
-let colorComent = Color.rgb(102,102,102)
+let colorcomment = colorP_lighter
 let colorBoolean = colorContrastText
 let colorNullUnd = colorContrastText
 
@@ -88,11 +88,14 @@ let theme = {
     "editor.findMatchBackground": colorP_lightest.hex(),
     "editor.findMatchHighlightBackground": colorP_lighten.hex(),
     "editor.findRangeHighlightBackground": null,
-    "editor.hoverHighlightBackground": contrastColor.hex(),
+    "editor.hoverHighlightBackground": colorP_lighter.hex(),
     "editor.lineHighlightBackground": colorP_light.hex(),
     "editor.lineHighlightBorder": null,
     "editorLink.activeForeground": null,
-    "editor.rangeHighlightBackground": contrastColor.hex(),
+    
+    "editor.rangeHighlightBackground": colorP_lighter.hex(),
+
+    
     "editorWhitespace.foreground": null,
     "editorIndentGuide.background": colorP_lighten.hex(),
     "editorIndentGuide.activeBackground": colorP_lightest.hex(),
@@ -325,14 +328,8 @@ let theme = {
     "gitDecoration.conflictingResourceForeground": colorWarningLight.hex(),
 
     "source.elm": colorP_lightest.hex(),
-    // Background color of the progress bar shown for long running operations.
+    // Background color for the progress bar shown for long running operations.
     "progress.background": contrastColor.hex(),
-
-    // languages
-    "string.quoted.single.js": colorWhite.hex(),
-    "meta.objectliteral.js": "#82AAFF",
-
-    "punctuation.definition.generic.begin.html": colorTestA.hex()
   },
   tokenColors: [
     {
@@ -371,28 +368,7 @@ let theme = {
         foreground: colorText.hex()
       }
     },
-    {
-      name: "Comment",
-      scope: "comment",
-      settings: {
-        foreground: colorComent.hex(),
-        fontStyle: "italic"
-      }
-    },
-    {
-      name: "String",
-      scope: "string",
-      settings: {
-        foreground: colorString.hex()
-      }
-    },
-    {
-      name: "String Quoted",
-      scope: ["string.quoted", "variable.other.readwrite.js"],
-      settings: {
-        foreground: colorString.hex()
-      }
-    },
+
     {
       name: "Support Constant Math",
       scope: "support.constant.math",
@@ -435,15 +411,8 @@ let theme = {
       }
     },
     {
-      name: "RegExp String",
-      scope: ["string.regexp", "string.regexp keyword.other"],
-      settings: {
-        foreground: colorRegularText.hex()
-      }
-    },
-    {
       name: "Comma in functions",
-      scope: "meta.function punctuation.separator.comma",
+      scope: "meta.function",
       settings: {
         foreground: colorP_lightest.hex()
       }
@@ -453,15 +422,6 @@ let theme = {
       scope: "variable",
       settings: {
         foreground: colorVariable.hex()
-      }
-    },
-    {
-      // css !importatnt
-      name: "Keyword",
-      scope: ["punctuation.accessor", "keyword"],
-      settings: {
-        foreground: colorEspecialWord.hex(),
-        fontStyle: "italic"
       }
     },
     {
@@ -475,44 +435,43 @@ let theme = {
         "storage.type.property.tsx"
       ],
       settings: {
-        foreground: colorEspecialWord.lighten(0.25).hex(),
+        foreground: colorVariable.hex(),
         fontStyle: "italic"
       }
     },
     {
-      name: "javascript portotype",
-      scope: ["support.variable.property.js"],
-      settings: {
-        foreground: colorParameter.hex()
+      name: "Template Literals expressions",
+      scope: [
+        "punctuation.definition.template-expression",
+      ],
+      settings:{
+        foreground: colorContrastText.hex()
       }
     },
     {
       name: "Storage type",
-      scope: "storage.type",
+      scope: [
+        "storage.type",
+        // @param
+        "punctuation.definition.block.tag"
+      ],
       settings: {
         foreground: colorFunction.hex(),
-      }
-    },
-    {
-      // nn
-      name: "Storage type",
-      scope: "storage.type.function.arrow.js",
-      settings: {
-        fontStyle: ""
       }
     },
     {
       name: "Class name",
       scope: ["entity.name.class", "meta.class entity.name.type.class"],
       settings: {
-        foreground: "#ffcb8b",
+        foreground: colorVariable.hex(),
       }
     },
     {
       name: "Inherited class",
       scope: "entity.other.inherited-class",
       settings: {
-        foreground: "#addb67"
+        foreground: "#addb67",
+        foreground: colorTestA.hex(),
       }
     },
     {
@@ -531,25 +490,7 @@ let theme = {
       }
     },
     {
-      name: "HTML Tag names",
-      scope: [
-        "entity.name.tag",
-        "meta.tag.other.html",
-        "meta.tag.other.js",
-        "meta.tag.other.tsx",
-        "entity.name.tag.tsx",
-        "entity.name.tag.js",
-        "entity.name.tag",
-        "meta.tag.js",
-        "meta.tag.tsx",
-        "meta.tag.html"
-      ],
-      settings: {
-        foreground: colorHtmlTag.hex(),
-        fontStyle: ""
-      }
-    },
-    {
+      // HTML TAG
       name: "Tag attribute",
       scope: "entity.other.attribute-name",
       settings: {
@@ -561,8 +502,7 @@ let theme = {
       name: "Entity Name Tag Custom",
       scope: "entity.name.tag.custom",
       settings: {
-        // foreground: "#addb67",
-        foreground: colorTestA.hex(),
+        foreground: colorEspecialWord.hex(),
       }
     },
     {
@@ -581,17 +521,19 @@ let theme = {
       }
     },
     {
+      // console string-word color
       name: "Library class/type",
       scope: ["support.type", "support.class"],
       settings: {
-        foreground: "#addb67"
+        foreground: colorContrastText.hex(),
       }
     },
     {
       name: "Support Variable DOM",
       scope: "support.variable.dom",
       settings: {
-        foreground: "#addb67"
+        foreground: "#addb67",
+        foreground: colorTestA.hex(),
       }
     },
     {
@@ -662,17 +604,11 @@ let theme = {
       }
     },
     {
-      name: "Double-Slashed Comment",
-      scope: "comment.line.double-slash",
-      settings: {
-        foreground: "#637777"
-      }
-    },
-    {
       name: "Object",
       scope: "object",
       settings: {
-        foreground: "#cdebf7"
+        // foreground: "#cdebf7",
+        foreground: colorTestA.hex()
       }
     },
     {
@@ -683,25 +619,11 @@ let theme = {
       }
     },
     {
-      name: "Meta Brace",
-      scope: "meta.brace",
-      settings: {
-        foreground: colorText.hex()
-      }
-    },
-    {
       name: "Meta Delimiter Period",
       scope: "meta.delimiter.period",
       settings: {
         foreground: colorEspecialWord.hex(),
         fontStyle: "italic"
-      }
-    },
-    {
-      name: "Punctuation Definition String",
-      scope: "punctuation.definition.string",
-      settings: {
-        foreground: "#d9f5dd"
       }
     },
     {
@@ -741,18 +663,11 @@ let theme = {
       }
     },
     {
-      name: "Entity Name tag reference in stylesheets",
-      scope: "meta.property-list entity.name.tag.reference",
-      settings: {
-        // foreground: "#57eaf1",
-        foreground: colorTestA.hex()
-      }
-    },
-    {
       name: "Constant Other Color RGB Value Punctuation Definition Constant",
       scope: "constant.other.color.rgb-value punctuation.definition.constant",
       settings: {
-        foreground: "#F78C6C"
+        // foreground: "#F78C6C",
+        foreground: colorTestA.hex()
       }
     },
     {
@@ -783,9 +698,7 @@ let theme = {
       name: "Meta Property Name",
       scope: "meta.property-name",
       settings: {
-        foreground: "#80CBC4"
-
-        // foreground: colorTestA.hex()
+        foreground: colorParameter.hex()
       }
     },
     {
@@ -853,13 +766,12 @@ let theme = {
       name: "Entity Name Function",
       scope: ["entity.name.function"],
       settings: {
-        foreground: colorFunction.lighten(.15).hex(),
+        foreground: colorParameter.hex(),
         fontStyle: "italic"
       }
     },
     {
-      name:
-        "Keyword Operator Comparison, imports, returns and Keyword Operator Ruby",
+      name: "Keyword Operator Comparison, imports, returns and Keyword Operator Ruby",
       scope: [
         "keyword.operator.comparison",
         "keyword.control.flow.js",
@@ -881,13 +793,6 @@ let theme = {
       settings: {
         foreground: colorEspecialWord.hex(),
         fontStyle: "italic"
-      }
-    },
-    {
-      name: "this word in javascript",
-      scope: ["variable.language.this.js"],
-      settings: {
-        foreground: colorContrastText.hex()
       }
     },
     {
@@ -922,7 +827,8 @@ let theme = {
       name: "Support Function",
       scope: "support.function",
       settings: {
-        foreground: "#addb67"
+        foreground: "#addb67",
+        foreground: colorParameter.hex(),
       }
     },
     {
@@ -994,42 +900,11 @@ let theme = {
       }
     },
     {
-      name: "Punctuation Tweaks",
-      scope: [
-        "punctuation.terminator.expression",
-        "punctuation.definition.arguments",
-        "punctuation.definition.array",
-        "punctuation.section.array",
-        "meta.array"
-      ],
-      settings: {
-        foreground: colorText.hex()
-      }
-    },
-    {
-      name: "More Punctuation Tweaks",
-      scope: [
-        "punctuation.definition.list.begin",
-        "punctuation.definition.list.end",
-        "punctuation.separator.arguments",
-        "punctuation.definition.list"
-      ],
-      settings: {
-        foreground: "#d9f5dd"
-      }
-    },
-    {
       name: "Template Strings",
       scope: "string.template meta.template.expression",
       settings: {
-        foreground: colorParameter.hex()
-      }
-    },
-    {
-      name: "Backtics(``) in Template Strings",
-      scope: "string.template punctuation.definition.string",
-      settings: {
-        foreground: colorText.hex()
+        foreground: colorTestC.hex(),
+        background: colorTestA.hex()
       }
     },
     {
@@ -1075,7 +950,7 @@ let theme = {
       name: "CoffeScript Parameter Function",
       scope: "variable.parameter.function.coffee",
       settings: {
-        foreground: colorText.hex()
+        foreground: colorParameter.hex()
       }
     },
     {
@@ -1089,7 +964,7 @@ let theme = {
       name: "C# Readwrite Variables",
       scope: "variable.other.readwrite.cs",
       settings: {
-        foreground: colorText.hex()
+        foreground: colorVariable.hex()
       }
     },
     {
@@ -1104,69 +979,6 @@ let theme = {
       scope: "entity.name.type.namespace.cs",
       settings: {
         foreground: "#B2CCD6"
-      }
-    },
-    {
-      name: "Tag names in Stylesheets",
-      scope: [
-        "entity.name.tag.css",
-        "entity.name.tag.less",
-        "entity.name.tag.custom.css"
-      ],
-      settings: {
-        foreground: colorCssTag.hex(),
-        fontStyle: ""
-      }
-    },
-    {
-      name: "Values in css",
-      scope:[
-        "support.constant.property-value.css"
-      ],
-      settings: {
-        foreground: colorCssValue.hex()
-      }
-    },
-    {
-      name: "Wildcard(*) selector in Stylesheets",
-      scope: [
-        "entity.name.tag.wildcard.css",
-        "entity.name.tag.wildcard.less",
-        "entity.name.tag.wildcard.scss",
-        "entity.name.tag.wildcard.sass"
-      ],
-      settings: {
-        foreground: "#7fdbca"
-      }
-    },
-    {
-      name: "Stylesheet Units",
-      scope: [
-        "keyword.other.unit", 
-        "keyword.other.unit.css", 
-        "keyword.other.unit.scss", 
-        "keyword.other.unit.sass"
-      ],
-      settings: {
-        foreground: colorCssUnits.hex()
-      }
-    },
-    
-    {
-      name: "stylesheet numbers",
-      scope: ["constant.numeric.css","punctuation.definition.constant.css"],
-      settings: {
-        foreground: colorRegularText.hex()
-      }
-    },
-    {
-      name: "Attribute Name for CSS",
-      scope: [
-        "meta.attribute-selector.css entity.other.attribute-name.attribute",
-        "variable.other.readwrite.js"
-      ],
-      settings: {
-        foreground: "#F78C6C"
       }
     },
     {
@@ -1200,7 +1012,7 @@ let theme = {
       name: "Elixir String Punctuations",
       scope: "source.elixir punctuation.definition.string",
       settings: {
-        foreground: "#addb67"
+        foreground: colorString.hex()
       }
     },
     {
@@ -1259,56 +1071,6 @@ let theme = {
       }
     },
     {
-      name: "ID Attribute Name in HTML",
-      scope: "entity.other.attribute-name.id.html",
-      settings: {
-        foreground: "#addb67"
-      }
-    },
-    {
-      name: "HTML Punctuation Definition Tag",
-      scope: "punctuation.definition.tag.html",
-      settings: {
-        foreground: "#6ae9f0"
-      }
-    },
-    {
-      name: "HTML Doctype",
-      scope: "meta.tag.sgml.doctype.html",
-      settings: {
-        foreground: colorEspecialWord.hex(),
-        fontStyle: "italic"
-      }
-    },
-    {
-      name: "JavaScript Classes",
-      scope: "meta.class entity.name.type.class.js",
-      settings: {
-        foreground: "#ffcb8b"
-      }
-    },
-    {
-      name: "JavaScript Method Declaration e.g. `constructor`",
-      scope: "meta.method.declaration storage.type.js",
-      settings: {
-        foreground: "#82AAFF"
-      }
-    },
-    {
-      name: "JavaScript Terminator",
-      scope: "terminator.js",
-      settings: {
-        foreground: colorText.hex()
-      }
-    },
-    {
-      name: "JavaScript Meta Punctuation Definition",
-      scope: "meta.js punctuation.definition.js",
-      settings: {
-        foreground: colorText.hex()
-      }
-    },
-    {
       name: "Entity Names in Code Documentations",
       scope: [
         "entity.name.type.instance.jsdoc",
@@ -1323,6 +1085,404 @@ let theme = {
       scope: ["variable.other.jsdoc", "variable.other.phpdoc"],
       settings: {
         foreground: "#78ccf0"
+      }
+    },
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// String START
+    {
+      name: "String",
+      scope: "string",
+      settings: {
+        foreground: colorString.hex()
+      }
+    },
+    {
+      name: "String Quoted",
+      scope: [
+        "string.quoted",
+        "variable.other.readwrite.js",
+        "string.quoted.single.js"
+      ],
+      settings: {
+        foreground: colorString.hex()
+      }
+    },
+    {
+      name: "Backtics(``) in Template Strings",
+      scope: "string.template punctuation.definition.string",
+      settings: {
+        foreground: colorString.hex()
+      }
+    },
+    {
+      name: "Punctuation Definition String",
+      scope: "punctuation.definition.string",
+      settings: {
+        foreground: colorString.hex()
+      }
+    },
+// string END
+
+
+
+
+
+
+
+
+
+
+// Stylesheets START
+    {
+      // &
+      name: "Entity Name tag reference in stylesheets",
+      scope: "meta.property-list entity.name.tag.reference",
+      settings: {
+        foreground: colorEspecialWord.hex(),
+      }
+    },
+    {
+      // css !importatnt
+      name: "Keyword",
+      scope: [
+        "punctuation.accessor", 
+        "keyword",
+        "punctuation.definition.keyword"
+      ],
+      settings: {
+        foreground: colorEspecialWord.hex(),
+        fontStyle: "italic"
+      }
+    },
+    {
+      name: "Tag names in Stylesheets",
+      scope: [
+        "entity.name.tag.css",
+        "entity.name.tag.less",
+        "entity.name.tag.custom.css"
+      ],
+      settings: {
+        foreground: colorCssTag.hex(),
+        fontStyle: ""
+      }
+    },
+    {
+      name: "Values in css",
+      scope: [
+        "support.constant.property-value.css"
+      ],
+      settings: {
+        foreground: colorCssValue.hex()
+      }
+    },
+    {
+      name: "Wildcard(*) selector in Stylesheets",
+      scope: [
+        "entity.name.tag.wildcard.css",
+        "entity.name.tag.wildcard.less",
+        "entity.name.tag.wildcard.scss",
+        "entity.name.tag.wildcard.sass"
+      ],
+      settings: {
+        foreground: colorParameter.hex()
+      }
+    },
+    {
+      name: "Stylesheet Units",
+      scope: [
+        "keyword.other.unit",
+        "keyword.other.unit.css",
+        "keyword.other.unit.scss",
+        "keyword.other.unit.sass"
+      ],
+      settings: {
+        foreground: colorCssUnits.hex()
+      }
+    },
+    {
+      name: "stylesheet numbers",
+      scope: ["constant.numeric.css", "punctuation.definition.constant.css"],
+      settings: {
+        foreground: colorRegularText.hex()
+      }
+    },
+    {
+      name: "Attribute Name for CSS",
+      scope: [
+        "meta.attribute-selector.css entity.other.attribute-name.attribute",
+        "variable.other.readwrite.js"
+      ],
+      settings: {
+        foreground: "#F78C6C",
+      }
+    },
+    {
+      name: "SCSS Variable",
+      scope: [
+        "variable.scss",
+        "variable.sass",
+        "variable.parameter.url.scss",
+        "variable.parameter.url.sass"
+      ],
+      settings: {
+        foreground: colorVariable.hex()
+      }
+    },
+    {
+      name: "Variables in SASS At-Rules",
+      scope: [
+        "source.css.scss meta.at-rule variable",
+        "source.css.sass meta.at-rule variable"
+      ],
+      settings: {
+        foreground: "#82AAFF",
+        foreground: colorTestA.hex()
+      }
+    },
+    {
+      name: "Variables in SASS At-Rules",
+      scope: [
+        "source.css.scss meta.at-rule variable",
+        "source.css.sass meta.at-rule variable"
+      ],
+      settings: {
+        foreground: "#bec5d4",
+        foreground: colorTestA.hex()
+      }
+    },
+    {
+      name: "Attribute Name for SASS",
+      scope: [
+        "meta.attribute-selector.scss entity.other.attribute-name.attribute",
+        "meta.attribute-selector.sass entity.other.attribute-name.attribute"
+      ],
+      settings: {
+        foreground: colorVariable.hex(),
+      }
+    },
+    {
+      name: "Tag names in SASS",
+      scope: ["entity.name.tag.scss", "entity.name.tag.sass"],
+      settings: {
+        foreground: "#7fdbca",
+        foreground: colorTestA.hex()
+      }
+    },
+    {
+      name: "Attribute Name for LESS",
+      scope:
+        "meta.attribute-selector.less entity.other.attribute-name.attribute",
+      settings: {
+        foreground: "#F78C6C"
+      }
+    },
+    {
+      name: "LESS Tag names",
+      scope: "entity.name.tag.less",
+      settings: {
+        foreground: "#7fdbca"
+      }
+    },
+// Stylesheets END
+
+
+
+
+
+
+
+
+
+
+// Punctuation Start
+    {
+      name: "Punctuation",
+      scope: [
+        // "punctuation",
+        // "punctuation.definition",
+
+        // "punctuation.definition.arguments",
+        // "punctuation.definition.array",
+        // "punctuation.definition.list",
+        // "punctuation.definition.tag",
+        // "punctuation.definition.string",
+        // "punctuation.definition.quote",
+        // "punctuation.definition.separator",
+        // "punctuation.definition.range",
+        // "punctuation.definition.namespace",
+        // "punctuation.definition.heading",
+        // "punctuation.definition.entity",
+        // "punctuation.definition.constant",
+        // "punctuation.definition.directive",
+        // "punctuation.definition.parameters",
+        // "punctuation.definition.attribute",
+        // "punctuation.definition.arguments",
+        // "punctuation.definition.annotation",
+        // "punctuation.definition.comment",
+        // "punctuation.definition.annotation-arguments",
+        // "punctuation.definition.binding-pattern",
+        // "punctuation.definition.case-pattern",
+        // "punctuation.definition.template-expression",
+        // "punctuation.definition.block",
+
+        
+
+        // "punctuation.definition.namespace.begin.bracket",
+        // "punctuation.separator",
+
+
+
+
+        "punctuation.accessor",
+      ],
+      settings: {
+        foreground: colorRegularText.hex(),
+        foreground: colorTestA.hex()
+      }
+    },
+    {
+      name: "Punctuation Tweaks",
+      scope: [
+        "punctuation.terminator.expression",
+        "punctuation.definition.arguments",
+        "punctuation.definition.array",
+        "punctuation.section.array",
+        "meta.array"
+      ],
+      settings: {
+        foreground: colorRegularText.hex()
+      }
+    },
+    {
+      name: "More Punctuation Tweaks",
+      scope: [
+        "punctuation.definition.list.begin",
+        "punctuation.definition.list.end",
+        "punctuation.separator.arguments",
+        "punctuation.definition.list"
+      ],
+      settings: {
+        foreground: "#d9f5dd",
+      }
+    },
+    {
+      name: "Markdown Punctuation",
+      scope: [
+        "punctuation.definition.string.markdown",
+        "punctuation.definition.string.begin.markdown",
+        "punctuation.definition.string.end.markdown",
+        "meta.link.inline.markdown punctuation.definition.string"
+      ],
+      settings: {
+        foreground: "#82b1ff"
+      }
+    },
+    {
+      name: "TypeScript[React] Import/Export Punctuations",
+      scope: [
+        "meta.import.ts punctuation.definition.block",
+        "meta.import.tsx punctuation.definition.block",
+        "meta.export.ts punctuation.definition.block",
+        "meta.export.tsx punctuation.definition.block"
+      ],
+      settings: {
+        foreground: colorRegularText.hex()
+      }
+    },
+    {
+      // ()
+      name: "Meta Brace",
+      scope: "meta.brace",
+      settings: {
+        foreground: colorRegularText.hex()
+      }
+    },
+    {
+      name: "JavaScript Meta Punctuation Definition",
+      scope: "meta.js punctuation.definition.js",
+      settings: {
+        foreground: colorRegularText.hex(),
+        background: colorTestA.hex()
+      }
+    },
+// punctuation END
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Javascript & Typescript START
+
+    {
+      name: "javascript portotype",
+      scope: ["support.variable.property.js"],
+      settings: {
+        foreground: colorParameter.hex()
+      }
+    },
+    {
+      // nn
+      name: "Storage type",
+      scope: "storage.type.function.arrow.js",
+      settings: {
+        fontStyle: ""
+      }
+    },
+    {
+      name: "this word in javascript",
+      scope: ["variable.language.this.js"],
+      settings: {
+        foreground: colorContrastText.hex()
+      }
+    },
+    {
+      name: "JavaScript Classes",
+      scope: "meta.class entity.name.type.class.js",
+      settings: {
+        foreground: colorVariable.hex()
+      }
+    },
+    {
+      name: "JavaScript Method Declaration e.g. `constructor`",
+      scope: "meta.method.declaration storage.type.js",
+      settings: {
+        foreground: "#82AAFF"
       }
     },
     {
@@ -1342,6 +1502,129 @@ let theme = {
       scope: "variable.parameter.function.js",
       settings: {
         foreground: "#7986E7"
+      }
+    },
+
+    {
+      name: "@ in decorator in javascript",
+      scope: [
+        "punctuation.decorator.js"
+      ],
+      settings:{
+        foreground: colorParameter.hex()
+      }
+    },
+
+    {
+      name: "TypeScript[React] Punctuation Decorators",
+      scope: [
+        "meta.decorator punctuation.decorator.ts",
+        "meta.decorator punctuation.decorator.tsx"
+      ],
+      settings: {
+        foreground: "#82AAFF"
+      }
+    },
+    {
+      name: "TypeScript[React] Variables and Object Properties",
+      scope: [
+        "variable.other.readwrite.alias.ts",
+        "variable.other.readwrite.alias.tsx",
+        "variable.other.readwrite.ts",
+        "variable.other.readwrite.tsx",
+        "variable.other.object.ts",
+        "variable.other.object.tsx",
+        "variable.object.property.ts",
+        "variable.object.property.tsx",
+        "variable.other.ts",
+        "variable.other.tsx",
+        "variable.tsx",
+        "variable.ts"
+      ],
+      settings: {
+        foreground: colorVariable.hex()
+      }
+    },
+    {
+      name: "TypeScript[React] Entity Name Types",
+      scope: ["entity.name.type.ts", "entity.name.type.tsx"],
+      settings: {
+        foreground: "#ffcb8b"
+      }
+    },
+    {
+      name: "TypeScript[React] Node Classes",
+      scope: ["support.class.node.ts", "support.class.node.tsx"],
+      settings: {
+        foreground: "#82AAFF"
+      }
+    },
+    {
+      name: "TypeScript[React] Entity Name Types as Parameters",
+      scope: [
+        "meta.type.parameters.ts entity.name.type",
+        "meta.type.parameters.tsx entity.name.type"
+      ],
+      settings: {
+        foreground: colorP_lightest.hex()
+      }
+    },
+    {
+      name: "TypeScript[React] Punctuation Decorators",
+      scope: "meta.tag.js meta.jsx.children.tsx",
+      settings: {
+        foreground: "#82AAFF"
+      }
+    },
+    {
+      name: "JavaScript Variable Other ReadWrite",
+      scope: ["variable.other.readwrite.js", "variable.parameter"],
+      settings: {
+        foreground: colorVariable.hex(),
+
+      }
+    },
+    {
+      name: "Support Class Component",
+      scope: ["support.class.component.js", "support.class.component.tsx"],
+      settings: {
+        foreground: colorContrastText.hex(),
+        fontStyle: ""
+      }
+    },
+    {
+      name: "Text nested in React tags",
+      scope: [
+        "meta.jsx.children",
+        "meta.jsx.children.js",
+        "meta.jsx.children.tsx"
+      ],
+      settings: {
+        foreground: colorRegularText.hex()
+      }
+    },
+    {
+      name: "TypeScript Classes",
+      scope: "meta.class entity.name.type.class.tsx",
+      settings: {
+        foreground: colorVariable.hex()
+      }
+    },
+    {
+      name: "TypeScript Entity Name Type",
+      scope: ["entity.name.type.tsx", "entity.name.type.module.tsx"],
+      settings: {
+        foreground: "#ffcb8b"
+      }
+    },
+    {
+      name: "TypeScript Method Declaration e.g. `constructor`",
+      scope: [
+        "meta.method.declaration storage.type.ts",
+        "meta.method.declaration storage.type.tsx"
+      ],
+      settings: {
+        foreground: "#82AAFF"
       }
     },
     {
@@ -1367,7 +1650,7 @@ let theme = {
       name: "JavaScript Entity Name Type",
       scope: ["entity.name.type.js", "entity.name.type.module.js"],
       settings: {
-        foreground: colorContrastText.lighten(.15).hex(),
+        foreground: colorContrastText.hex(),
         fontStyle: ""
       }
     },
@@ -1375,35 +1658,109 @@ let theme = {
       name: "JavaScript Support Classes",
       scope: "support.class.js",
       settings: {
-        foreground: colorText.hex()
+        foreground: colorTestB.hex(),
+        background: colorTestA.hex()
       }
     },
+
+
+// Javascript & Typescript END
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// PHP START
+    {
+      name: "PHP Variables",
+      scope: ["variable.other.php", "variable.other.property.php"],
+      settings: {
+        foreground: "#bec5d4"
+      }
+    },
+    {
+      name: "Support Classes in PHP",
+      scope: "support.class.php",
+      settings: {
+        foreground: "#ffcb8b"
+      }
+    },
+    {
+      name: "Punctuations in PHP function calls",
+      scope: "meta.function-call.php punctuation",
+      settings: {
+        foreground: colorRegularText.hex()
+      }
+    },
+    {
+      name: "PHP Global Variables",
+      scope: "variable.other.global.php",
+      settings: {
+        foreground: "#addb67"
+      }
+    },
+    {
+      name: "Declaration Punctuation in PHP Global Variables",
+      scope: "variable.other.global.php punctuation.definition.variable",
+      settings: {
+        foreground: "#addb67"
+      }
+    },
+// PHP END
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// JSON START
     {
       name: "JSON Property Names",
       scope: "support.type.property-name.json",
       settings: {
-        foreground: "#addb67"
+        foreground: colorVariable.hex()
       }
     },
     {
       name: "JSON Support Constants",
       scope: "support.constant.json",
       settings: {
-        foreground: "#addb67"
+        foreground: colorTestA.hex()
       }
     },
     {
       name: "JSON Property values (string)",
       scope: "meta.structure.dictionary.value.json string.quoted.double",
       settings: {
-        foreground: "#c789d6"
+        foreground: colorString.hex()
       }
     },
     {
       name: "Strings in JSON values",
       scope: "string.quoted.double.json punctuation.definition.string.json",
       settings: {
-        foreground: "#80CBC4"
+        foreground: colorString.hex()
       }
     },
     {
@@ -1411,52 +1768,168 @@ let theme = {
       scope:
         "meta.structure.dictionary.json meta.structure.dictionary.value constant.language",
       settings: {
+        foreground: colorContrastText.hex()
+      }
+    },
+// JSON END
+
+
+
+
+
+
+
+// Normalize START
+    {
+      name: "normalize font style of certain components",
+      scope: [
+        "meta.property-list.css meta.property-value.css variable.other.less",
+        "meta.property-list.scss variable.scss",
+        "meta.property-list.sass variable.sass",
+        "meta.brace",
+        "keyword.operator.operator",
+        "keyword.operator.or.regexp",
+        "keyword.operator.expression.in",
+        "keyword.operator.relational",
+        "keyword.operator.assignment",
+        "keyword.operator.comparison",
+        "keyword.operator.type",
+        "keyword.operator",
+        "keyword",
+        "punctuation.definintion.string",
+        "punctuation",
+        "variable.other.readwrite.js",
+        "storage.type",
+        "source.css",
+        "string.quoted"
+      ],
+      settings: {
+        fontStyle: ""
+      }
+    },
+// Normalize END
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Comments START
+    {
+      name: "Comment",
+      scope: "comment",
+      settings: {
+        foreground: colorcomment.hex(),
+        fontStyle: "italic"
+      }
+    },
+    {
+      name: "Double-Slashed Comment",
+      scope: [
+        "comment.line.double-slash",
+        "punctuation.definition.comment",
+        "punctuation.whitespace.comment"
+      ],
+      settings: {
+        foreground: colorcomment.hex()
+      }
+    },
+// Comments END
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//PYTHON START
+    {
+      name: "Language Constants in Python",
+      scope: "constant.language.python",
+      settings: {
         foreground: "#ff5874"
       }
     },
     {
-      name: "Ruby Variables",
-      scope: ["variable.other.ruby"],
+      name: "Python Function Parameter and Arguments",
+      scope: [
+        "variable.parameter.function.python",
+        "meta.function-call.arguments.python"
+      ],
       settings: {
-        foreground: colorText.hex()
+        foreground: "#82AAFF"
       }
     },
     {
-      name: "Ruby Class",
-      scope: ["entity.name.type.class.ruby"],
+      name: "Python Function Call",
+      scope: ["meta.function-call.python", "meta.function-call.generic.python"],
       settings: {
-        foreground: "#ecc48d"
+        foreground: "#B2CCD6"
       }
     },
     {
-      name: "Ruby Hashkeys",
-      scope: "constant.language.symbol.hashkey.ruby",
+      name: "Punctuations in Python",
+      scope: "punctuation.python",
       settings: {
-        foreground: "#7fdbca"
+        foreground: colorRegularText.hex()
       }
     },
     {
-      name: "Ruby Symbols",
-      scope: "constant.language.symbol.ruby",
+      name: "Decorator Functions in Python",
+      scope: "entity.name.function.decorator.python",
       settings: {
-        foreground: "#7fdbca"
+        foreground: "#addb67"
       }
     },
     {
-      name: "LESS Tag names",
-      scope: "entity.name.tag.less",
+      name: "Python Language Variable",
+      scope: "source.python variable.language.special",
       settings: {
-        foreground: "#7fdbca"
+        foreground: "#8EACE3"
       }
     },
     {
-      name: "Attribute Name for LESS",
-      scope:
-        "meta.attribute-selector.less entity.other.attribute-name.attribute",
+      name: "Python import control keyword",
+      scope: "keyword.control",
       settings: {
-        foreground: "#F78C6C"
+        foreground: colorEspecialWord.hex()
       }
     },
+// PYTHON END
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Markdown START
     {
       name: "Markdown Headings",
       scope: "markup.heading.markdown",
@@ -1512,19 +1985,7 @@ let theme = {
         "string.other.link.description.markdown"
       ],
       settings: {
-        foreground: colorText.hex()
-      }
-    },
-    {
-      name: "Markdown Punctuation",
-      scope: [
-        "punctuation.definition.string.markdown",
-        "punctuation.definition.string.begin.markdown",
-        "punctuation.definition.string.end.markdown",
-        "meta.link.inline.markdown punctuation.definition.string"
-      ],
-      settings: {
-        foreground: "#82b1ff"
+        foreground: colorRegularText.hex()
       }
     },
     {
@@ -1548,215 +2009,124 @@ let theme = {
         foreground: "#addb67"
       }
     },
+// Markdown END
+
+
+
+
+
+
+
+
+
+
+// RUBY START
     {
-      name: "PHP Variables",
-      scope: ["variable.other.php", "variable.other.property.php"],
+      name: "Ruby Variables",
+      scope: ["variable.other.ruby"],
       settings: {
-        foreground: "#bec5d4"
+        foreground: colorVariable.hex()
       }
     },
     {
-      name: "Support Classes in PHP",
-      scope: "support.class.php",
+      name: "Ruby Class",
+      scope: ["entity.name.type.class.ruby"],
       settings: {
-        foreground: "#ffcb8b"
+        foreground: "#ecc48d"
       }
     },
     {
-      name: "Punctuations in PHP function calls",
-      scope: "meta.function-call.php punctuation",
-      settings: {
-        foreground: colorText.hex()
-      }
-    },
-    {
-      name: "PHP Global Variables",
-      scope: "variable.other.global.php",
-      settings: {
-        foreground: "#addb67"
-      }
-    },
-    {
-      name: "Declaration Punctuation in PHP Global Variables",
-      scope: "variable.other.global.php punctuation.definition.variable",
-      settings: {
-        foreground: "#addb67"
-      }
-    },
-    {
-      name: "Language Constants in Python",
-      scope: "constant.language.python",
-      settings: {
-        foreground: "#ff5874"
-      }
-    },
-    {
-      name: "Python Function Parameter and Arguments",
-      scope: [
-        "variable.parameter.function.python",
-        "meta.function-call.arguments.python"
-      ],
-      settings: {
-        foreground: "#82AAFF"
-      }
-    },
-    {
-      name: "Python Function Call",
-      scope: ["meta.function-call.python", "meta.function-call.generic.python"],
-      settings: {
-        foreground: "#B2CCD6"
-      }
-    },
-    {
-      name: "Punctuations in Python",
-      scope: "punctuation.python",
-      settings: {
-        foreground: colorText.hex()
-      }
-    },
-    {
-      name: "Decorator Functions in Python",
-      scope: "entity.name.function.decorator.python",
-      settings: {
-        foreground: "#addb67"
-      }
-    },
-    {
-      name: "Python Language Variable",
-      scope: "source.python variable.language.special",
-      settings: {
-        foreground: "#8EACE3"
-      }
-    },
-    {
-      name: "Python import control keyword",
-      scope: "keyword.control",
-      settings: {
-        foreground: colorEspecialWord.hex()
-      }
-    },
-    {
-      name: "SCSS Variable",
-      scope: [
-        "variable.scss",
-        "variable.sass",
-        "variable.parameter.url.scss",
-        "variable.parameter.url.sass"
-      ],
-      settings: {
-        foreground: "#addb67"
-      }
-    },
-    {
-      name: "Variables in SASS At-Rules",
-      scope: [
-        "source.css.scss meta.at-rule variable",
-        "source.css.sass meta.at-rule variable"
-      ],
-      settings: {
-        foreground: "#82AAFF"
-      }
-    },
-    {
-      name: "Variables in SASS At-Rules",
-      scope: [
-        "source.css.scss meta.at-rule variable",
-        "source.css.sass meta.at-rule variable"
-      ],
-      settings: {
-        foreground: "#bec5d4"
-      }
-    },
-    {
-      name: "Attribute Name for SASS",
-      scope: [
-        "meta.attribute-selector.scss entity.other.attribute-name.attribute",
-        "meta.attribute-selector.sass entity.other.attribute-name.attribute"
-      ],
-      settings: {
-        foreground: "#F78C6C"
-      }
-    },
-    {
-      name: "Tag names in SASS",
-      scope: ["entity.name.tag.scss", "entity.name.tag.sass"],
+      name: "Ruby Hashkeys",
+      scope: "constant.language.symbol.hashkey.ruby",
       settings: {
         foreground: "#7fdbca"
       }
     },
     {
-      name: "TypeScript[React] Variables and Object Properties",
+      name: "Ruby Symbols",
+      scope: "constant.language.symbol.ruby",
+      settings: {
+        foreground: "#7fdbca"
+      }
+    },
+// RUBY END
+
+
+
+
+
+
+
+
+// HTML START
+
+    {
+      name: "HTML Tag names",
       scope: [
-        "variable.other.readwrite.alias.ts",
-        "variable.other.readwrite.alias.tsx",
-        "variable.other.readwrite.ts",
-        "variable.other.readwrite.tsx",
-        "variable.other.object.ts",
-        "variable.other.object.tsx",
-        "variable.object.property.ts",
-        "variable.object.property.tsx",
-        "variable.other.ts",
-        "variable.other.tsx",
-        "variable.tsx",
-        "variable.ts"
+        "entity.name.tag",
+        "meta.tag.other.html",
+        "meta.tag.other.js",
+        "meta.tag.other.tsx",
+        "entity.name.tag.tsx",
+        "entity.name.tag.js",
+        "entity.name.tag",
+        "meta.tag.js",
+        "meta.tag.tsx",
+        "meta.tag.html"
       ],
       settings: {
-        foreground: colorText.hex()
+        foreground: colorHtmlTag.hex(),
+        fontStyle: ""
       }
     },
     {
-      name: "TypeScript[React] Entity Name Types",
-      scope: ["entity.name.type.ts", "entity.name.type.tsx"],
-      settings: {
-        foreground: "#ffcb8b"
-      }
-    },
-    {
-      name: "TypeScript[React] Node Classes",
-      scope: ["support.class.node.ts", "support.class.node.tsx"],
-      settings: {
-        foreground: "#82AAFF"
-      }
-    },
-    {
-      name: "TypeScript[React] Entity Name Types as Parameters",
-      scope: [
-        "meta.type.parameters.ts entity.name.type",
-        "meta.type.parameters.tsx entity.name.type"
+      name: "@ : = for html",
+      scope:[
+        "punctuation.separator.key-value.html",
+        "punctuation.definition.tag.html"
       ],
+      settings:{
+        foreground: colorRegularText.hex()
+      }
+    },
+
+    {
+      name: "ID Attribute Name in HTML",
+      scope: "entity.other.attribute-name.id.html",
       settings: {
-        foreground: colorP_lightest.hex()
+        foreground: "#addb67"
       }
     },
     {
-      name: "TypeScript[React] Import/Export Punctuations",
-      scope: [
-        "meta.import.ts punctuation.definition.block",
-        "meta.import.tsx punctuation.definition.block",
-        "meta.export.ts punctuation.definition.block",
-        "meta.export.tsx punctuation.definition.block"
-      ],
+      name: "HTML Punctuation Definition Tag",
+      scope: "punctuation.definition.tag.html",
       settings: {
-        foreground: colorText.hex()
+        foreground: "#6ae9f0"
       }
     },
     {
-      name: "TypeScript[React] Punctuation Decorators",
-      scope: [
-        "meta.decorator punctuation.decorator.ts",
-        "meta.decorator punctuation.decorator.tsx"
-      ],
+      name: "HTML Doctype",
+      scope: "meta.tag.sgml.doctype.html",
       settings: {
-        foreground: "#82AAFF"
+        foreground: colorEspecialWord.hex(),
+        fontStyle: "italic"
       }
     },
-    {
-      name: "TypeScript[React] Punctuation Decorators",
-      scope: "meta.tag.js meta.jsx.children.tsx",
-      settings: {
-        foreground: "#82AAFF"
-      }
-    },
+
+// HTML END
+
+
+
+
+
+
+
+
+
+
+// OTHERS START
+
+
     {
       name: "YAML Entity Name Tags",
       scope: "entity.name.tag.yaml",
@@ -1765,83 +2135,21 @@ let theme = {
       }
     },
     {
-      name: "JavaScript Variable Other ReadWrite",
-      scope: ["variable.other.readwrite.js", "variable.parameter"],
+      name: "RegExp String",
+      scope: ["string.regexp", "string.regexp keyword.other"],
       settings: {
-        foreground: colorVariable.hex(),
+        foreground: colorString.hex()
+      }
+    },
 
-      }
-    },
-    {
-      name: "Support Class Component",
-      scope: ["support.class.component.js", "support.class.component.tsx"],
-      settings: {
-        foreground: colorContrastText.hex(),
-        fontStyle: ""
-      }
-    },
-    {
-      name: "Text nested in React tags",
-      scope: [
-        "meta.jsx.children",
-        "meta.jsx.children.js",
-        "meta.jsx.children.tsx"
-      ],
-      settings: {
-        foreground: colorText.hex()
-      }
-    },
-    {
-      name: "TypeScript Classes",
-      scope: "meta.class entity.name.type.class.tsx",
-      settings: {
-        foreground: "#ffcb8b"
-      }
-    },
-    {
-      name: "TypeScript Entity Name Type",
-      scope: ["entity.name.type.tsx", "entity.name.type.module.tsx"],
-      settings: {
-        foreground: "#ffcb8b"
-      }
-    },
-    {
-      name: "TypeScript Method Declaration e.g. `constructor`",
-      scope: [
-        "meta.method.declaration storage.type.ts",
-        "meta.method.declaration storage.type.tsx"
-      ],
-      settings: {
-        foreground: "#82AAFF"
-      }
-    },
-    {
-      name: "normalize font style of certain components",
-      scope: [
-        "meta.property-list.css meta.property-value.css variable.other.less",
-        "meta.property-list.scss variable.scss",
-        "meta.property-list.sass variable.sass",
-        "meta.brace",
-        "keyword.operator.operator",
-        "keyword.operator.or.regexp",
-        "keyword.operator.expression.in",
-        "keyword.operator.relational",
-        "keyword.operator.assignment",
-        "keyword.operator.comparison",
-        "keyword.operator.type",
-        "keyword.operator",
-        "keyword",
-        "punctuation.definintion.string",
-        "punctuation",
-        "variable.other.readwrite.js",
-        "storage.type",
-        "source.css",
-        "string.quoted"
-      ],
-      settings: {
-        fontStyle: ""
-      }
-    }
+
+
+
+// OTHERS END
+
+
+
+
   ]
 };
 

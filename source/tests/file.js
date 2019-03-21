@@ -3,12 +3,32 @@ let maoma = 324;
 const maoma2 = {
     manoA: [2, 'maoma'],
     nanoB: "elmaoma askdjas dlkajsd laks,jda",
-    nanoC: 123123,
-    nmanoD: maoma
+    nanoC: 2019,
+    nmanoD: {
+        maoma1: "maskdm",
+        maoma2: false,
+        maoma3: null,
+        maoma4: undefined
+    }
 }
 console.log(maoma2.moms.manoB)
 
+let mao = `fsdlksdf;lksdfl ${5 + (4.1 - 2.2)};`
 
+class User {
+
+    constructor(name) {
+        this.name = name;
+    }
+
+    sayHi() {
+        alert(this.name);
+    }
+
+}
+
+let user = new User("John");
+user.sayHi();
 /**
  * Constructor for <code>AjaxRequest</code> class
  * @param url the url for the request<p/>
@@ -42,7 +62,7 @@ for (let index = 0; index < array.length; index++) {
     const element = array[index];
 }
 
-if (condition) {
+if (maoma >= 3) {
 
 }
 
