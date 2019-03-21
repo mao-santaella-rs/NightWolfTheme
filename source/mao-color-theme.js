@@ -1,5 +1,11 @@
 let Color = require("color");
 
+
+//colors for test
+let colorTestA = Color.rgb(255, 255, 0)
+let colorTestB = Color.rgb(0, 255, 0)
+let colorTestC = Color.rgb(255, 100, 0)
+
 let colorWhite =                Color.rgb(255, 255, 255)
 let colorBlack =                Color.rgb(0,0,0)
 
@@ -27,6 +33,8 @@ let colorString =               Color.rgb(170,230,130)
 let colorNumber =               colorRegularText
 let colorBoolean =              colorContrastText
 let colorNullUnd =              colorContrastText
+let colorSmallOperators =       colorEspecialWord
+let colorPunctuation =          colorRegularText
 
 let colorSelection =            colorP_lighter
 let colorSelectionHighlight =   colorP_lighten
@@ -38,8 +46,7 @@ let colorFindHighlight =        colorSelectionHighlight
 let colorRangeHiglight =        colorP_light
 let colorLineHiglight =         colorP_darken
 
-let colorComment =              colorP_lightest
-
+let colorComment =              Color.rgb(100,120,130)
 
 let colorHtmlTag =              colorContrastText
 let colorMetaTag =              Color.rgb(200,200,200)
@@ -60,10 +67,6 @@ let colorWarningLight =         Color.rgb(255, 235, 150);
 let colorDanger =               Color.rgb(240, 80, 80)
 let colorDangerDark =           colorDanger.darken(0.4);
 
-//colors for test
-let colorTestA =                Color.rgb(255,255,0)
-let colorTestB =                Color.rgb(0,255,0)
-let colorTestC =                Color.rgb(255,100,0)
 
 
 console.log(colorEspecialWord.hex());
@@ -128,6 +131,8 @@ let theme = {
     // linea vertical que indica la indentacion
     "editorIndentGuide.background": colorP_lighten.hex(),
     "editorIndentGuide.activeBackground": colorP_lightest.hex(),
+
+    "descriptionForeground": colorTestB.hex(),
 
     "editorRuler.foreground": colorP_lighten.hex(),
 
@@ -478,7 +483,7 @@ let theme = {
       name: "Template Literals expressions",
       scope: ["punctuation.definition.template-expression"],
       settings: {
-        foreground: colorContrastText.hex()
+        foreground: colorContrastText.hex(),
       }
     },
     {
@@ -558,7 +563,7 @@ let theme = {
       name: "Library class/type",
       scope: ["support.type", "support.class"],
       settings: {
-        foreground: colorContrastText.hex()
+        foreground: colorContrastText.hex(),
       }
     },
     {
@@ -597,7 +602,7 @@ let theme = {
       name: "Keyword Operator Relational",
       scope: "keyword.operator.relational",
       settings: {
-        foreground: colorEspecialWord.hex(),
+        foreground: colorSmallOperators.hex(),
         fontStyle: "italic"
       }
     },
@@ -605,42 +610,42 @@ let theme = {
       name: "Keyword Operator Assignment",
       scope: "keyword.operator.assignment",
       settings: {
-        foreground: colorEspecialWord.hex()
+        foreground: colorSmallOperators.hex()
       }
     },
     {
       name: "Keyword Operator Arithmetic",
       scope: "keyword.operator.arithmetic",
       settings: {
-        foreground: colorEspecialWord.hex()
+        foreground: colorSmallOperators.hex()
       }
     },
     {
       name: "Keyword Operator Bitwise",
       scope: "keyword.operator.bitwise",
       settings: {
-        foreground: colorEspecialWord.hex()
+        foreground: colorSmallOperators.hex()
       }
     },
     {
       name: "Keyword Operator Increment",
       scope: "keyword.operator.increment",
       settings: {
-        foreground: colorEspecialWord.hex()
+        foreground: colorSmallOperators.hex()
       }
     },
     {
       name: "Keyword Operator Ternary",
       scope: "keyword.operator.ternary",
       settings: {
-        foreground: colorEspecialWord.hex()
+        foreground: colorSmallOperators.hex()
       }
     },
     {
       name: "Object",
       scope: "object",
       settings: {
-        // foreground: "#cdebf7",
+        foreground: "#cdebf7",
         foreground: colorTestA.hex()
       }
     },
@@ -699,7 +704,7 @@ let theme = {
       name: "Constant Other Color RGB Value Punctuation Definition Constant",
       scope: "constant.other.color.rgb-value punctuation.definition.constant",
       settings: {
-        // foreground: "#F78C6C",
+        foreground: "#F78C6C",
         foreground: colorTestA.hex()
       }
     },
@@ -707,7 +712,7 @@ let theme = {
       name: "Constant Other Color",
       scope: "constant.other.color",
       settings: {
-        // foreground: "#FFEB95",
+        foreground: "#FFEB95",
         foreground: colorTestC.hex()
       }
     },
@@ -747,7 +752,6 @@ let theme = {
       scope: "keyword.control.operator",
       settings: {
         foreground: colorParameter.hex()
-        // foreground: colorTestA.hex()
       }
     },
     {
@@ -925,7 +929,7 @@ let theme = {
       name: "Template Strings",
       scope: "string.template meta.template.expression",
       settings: {
-        foreground: colorTestC.hex(),
+        foreground: colorTestB.hex(),
         background: colorTestA.hex()
       }
     },
@@ -993,7 +997,7 @@ let theme = {
       name: "C# Classes & Storage types",
       scope: ["entity.name.type.class.cs", "storage.type.cs"],
       settings: {
-        foreground: "#82AAFF"
+        foreground: "#82AAFF",
       }
     },
     {
@@ -1226,7 +1230,8 @@ let theme = {
         "variable.other.readwrite.js"
       ],
       settings: {
-        foreground: "#F78C6C"
+        foreground: "#F78C6C",
+        foreground: colorTestA.hex()
       }
     },
     {
@@ -1302,8 +1307,8 @@ let theme = {
     {
       name: "Punctuation",
       scope: [
-        // "punctuation",
-        // "punctuation.definition",
+        "punctuation",
+        "punctuation.definition",
 
         // "punctuation.definition.arguments",
         // "punctuation.definition.array",
@@ -1334,15 +1339,14 @@ let theme = {
         "punctuation.accessor"
       ],
       settings: {
-        foreground: colorRegularText.hex()
-        // foreground: colorTestA.hex()
+        foreground: colorPunctuation.hex()
       }
     },
     {
       name: "Punctuation Definition Parameters",
       scope: "punctuation.definition.parameters",
       settings: {
-        foreground: colorRegularText.hex()
+        foreground: colorPunctuation.hex()
       }
     },
     {
@@ -1355,7 +1359,7 @@ let theme = {
         "meta.array"
       ],
       settings: {
-        foreground: colorRegularText.hex()
+        foreground: colorPunctuation.hex()
       }
     },
     {
@@ -1367,7 +1371,7 @@ let theme = {
         "punctuation.definition.list"
       ],
       settings: {
-        foreground: colorRegularText.hex()
+        foreground: colorPunctuation.hex()
       }
     },
     {
@@ -1379,7 +1383,7 @@ let theme = {
         "meta.link.inline.markdown punctuation.definition.string"
       ],
       settings: {
-        foreground: colorRegularText.hex()
+        foreground: colorPunctuation.hex()
       }
     },
     {
@@ -1391,7 +1395,7 @@ let theme = {
         "meta.export.tsx punctuation.definition.block"
       ],
       settings: {
-        foreground: colorRegularText.hex()
+        foreground: colorPunctuation.hex()
       }
     },
     {
@@ -1399,14 +1403,14 @@ let theme = {
       name: "Meta Brace",
       scope: "meta.brace",
       settings: {
-        foreground: colorRegularText.hex()
+        foreground: colorPunctuation.hex()
       }
     },
     {
       name: "JavaScript Meta Punctuation Definition",
       scope: "meta.js punctuation.definition.js",
       settings: {
-        foreground: colorRegularText.hex(),
+        foreground: colorPunctuation.hex(),
         background: colorTestA.hex()
       }
     },
@@ -1447,7 +1451,7 @@ let theme = {
       name: "JavaScript Method Declaration e.g. `constructor`",
       scope: "meta.method.declaration storage.type.js",
       settings: {
-        foreground: "#82AAFF"
+        foreground: colorEspecialWord.hex()
       }
     },
     {
@@ -1466,7 +1470,8 @@ let theme = {
       name: "JavaScript Variable Parameter Function",
       scope: "variable.parameter.function.js",
       settings: {
-        foreground: "#7986E7"
+        foreground: "#7986E7",
+        foreground: colorTestA.hex()
       }
     },
 
@@ -1485,7 +1490,7 @@ let theme = {
         "meta.decorator punctuation.decorator.tsx"
       ],
       settings: {
-        foreground: "#82AAFF"
+        foreground: colorPunctuation.hex()
       }
     },
     {
@@ -1519,7 +1524,8 @@ let theme = {
       name: "TypeScript[React] Node Classes",
       scope: ["support.class.node.ts", "support.class.node.tsx"],
       settings: {
-        foreground: "#82AAFF"
+        foreground: "#82AAFF",
+        foreground: colorTestA.hex()
       }
     },
     {
@@ -1536,7 +1542,8 @@ let theme = {
       name: "TypeScript[React] Punctuation Decorators",
       scope: "meta.tag.js meta.jsx.children.tsx",
       settings: {
-        foreground: "#82AAFF"
+        foreground: "#82AAFF",
+        foreground: colorTestA.hex()
       }
     },
     {
