@@ -2,9 +2,9 @@ let Color = require("color");
 
 
 //colors for test
-let colorTestA = Color.rgb(255, 255, 0)
-let colorTestB = Color.rgb(0, 255, 0)
-let colorTestC = Color.rgb(255, 100, 0)
+let colorTestA =                Color.rgb(255, 255, 0)
+let colorTestB =                Color.rgb(0, 255, 0)
+let colorTestC =                Color.rgb(255, 100, 0)
 
 let colorWhite =                Color.rgb(255, 255, 255)
 let colorBlack =                Color.rgb(0,0,0)
@@ -139,10 +139,8 @@ let theme = {
     // descripcciones en el welcome page
     "descriptionForeground": colorText.hex(),
 
-    "editorRuler.foreground": colorP_lighten.hex(),
-
+    // vscode codelens
     "editorCodeLens.foreground": colorInfoLight.hex(),
-
 
     "editorOverviewRuler.currentContentForeground": contrastColor.hex(),
     "editorOverviewRuler.incomingContentForeground": contrastColor.hex(),
@@ -151,7 +149,6 @@ let theme = {
     // editor states
     "editorError.foreground": colorDanger.hex(),
     "editorError.border": null,
-
     "editorWarning.foreground": colorWarning.hex(),
     "editorWarning.border": null,
 
@@ -381,6 +378,8 @@ let theme = {
 
     "source.elm": colorP_lightest.hex(),
 
+    "editorRuler.foreground": colorP_lighten.hex(),
+
     // Background color for the progress bar shown for long running operations.
     "progress.background": contrastColor.hex()
   },
@@ -451,7 +450,10 @@ let theme = {
     },
     {
       name: "User-defined constant",
-      scope: ["constant.character", "constant.other"],
+      scope: [
+        "constant.character",
+        "constant.other"
+      ],
       settings: {
         foreground: colorVariable.hex()
       }
@@ -481,7 +483,6 @@ let theme = {
       name: "Storage",
       scope: [
         "storage",
-        "meta.var.expr",
         "meta.class meta.method.declaration meta.var.expr storage.type.js",
         "storage.type.property.js",
         "storage.type.property.ts",
@@ -493,8 +494,39 @@ let theme = {
       }
     },
     {
+      name: "object key",
+      scope: [
+        "meta.var.expr",
+        "meta.object-literal.key"
+      ],
+      settings:{
+        foreground: colorRegularText.hex()
+      }
+    },
+    {
+      name: "interface",
+      scope: [
+        "storage.type.interface"
+      ],
+      settings:{
+        foreground: colorFunction.hex()
+      }
+    },
+    {
+      name: "entity names",
+      scope: [
+        "entity.name.type"
+      ],
+      settings:{
+        foreground: colorVariable.hex()
+      }
+    },
+
+    {
       name: "Template Literals expressions",
-      scope: ["punctuation.definition.template-expression"],
+      scope: [
+        "punctuation.definition.template-expression"
+      ],
       settings: {
         foreground: colorContrastText.hex(),
       }
@@ -663,8 +695,11 @@ let theme = {
       }
     },
     {
-      name: "Null",
-      scope: "constant.language.null",
+      name: "Null and undefined",
+      scope: [
+        "constant.language.null",
+        "constant.language.undefined"
+      ],
       settings: {
         foreground: colorNullUnd.hex()
       }
@@ -785,7 +820,7 @@ let theme = {
         "variable.other.property"
       ],
       settings: {
-        foreground: colorVariableInstance.hex()
+        foreground: colorVariableInstance.hex(),
       }
     },
     {
@@ -1123,7 +1158,7 @@ let theme = {
       name: "Other Variables in Code Documentations",
       scope: ["variable.other.jsdoc", "variable.other.phpdoc"],
       settings: {
-        foreground: colorVariable.hex()
+        foreground: colorVariable.hex(),
       }
     },
 
@@ -1476,7 +1511,7 @@ let theme = {
         "meta.export.js variable.other"
       ],
       settings: {
-        foreground: colorVariable.hex()
+        foreground: colorVariable.hex(),
       }
     },
     {
@@ -1625,7 +1660,7 @@ let theme = {
       name: "JavaScript Variables",
       scope: ["variable.js", "variable.other.js"],
       settings: {
-        foreground: colorVariable.hex()
+        foreground: colorVariable.hex(),
       }
     },
     {
@@ -1640,8 +1675,7 @@ let theme = {
       name: "JavaScript Support Classes",
       scope: "support.class.js",
       settings: {
-        foreground: colorTestB.hex(),
-        background: colorTestA.hex()
+        foreground: colorVariable.hex()
       }
     },
 

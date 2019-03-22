@@ -2,7 +2,7 @@ var globalVar;
 let maoma = 324;
 const maoma2 = {
     manoA: [2, 'maoma'],
-    nanoB: "elmaoma askdjas dlkajsd laks,jda",
+    nanoB: "elmaoma askd",
     nanoC: 2019,
     nmanoD: {
         maoma1: "maskdm",
@@ -113,3 +113,15 @@ let y = 8;
 let my_string = `This is a multiline
 string that also contains
 a template ${y + (4.1 - 2.2)}`;
+
+export default {
+  manoA: [2, 'maoma'],
+  nanoB: "elmaoma askd",
+  nanoC: 2019,
+  nmanoD: {
+      maoma1: "maskdm",
+      maoma2: false,
+      maoma3: null,
+      maoma4: undefined
+  }
+}
