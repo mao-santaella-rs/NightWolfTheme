@@ -125,6 +125,10 @@ let theme = {
     "editor.rangeHighlightBackground": colorRangeHiglight.hex(),
     "editor.rangeHighlightForeground": colorText.hex(),
 
+    // cuando me paro en un bracket me muestar los dos con este color
+    "editorBracketMatch.background": colorP_lighten.hex(),
+    "editorBracketMatch.border": null,
+
     // cuando se activa la viusualizacion de los whitespaces
     "editorWhitespace.foreground": colorP_lighten.hex(),
 
@@ -132,26 +136,26 @@ let theme = {
     "editorIndentGuide.background": colorP_lighten.hex(),
     "editorIndentGuide.activeBackground": colorP_lightest.hex(),
 
-    "descriptionForeground": colorTestB.hex(),
+    // descripcciones en el welcome page
+    "descriptionForeground": colorText.hex(),
 
     "editorRuler.foreground": colorP_lighten.hex(),
 
     "editorCodeLens.foreground": colorInfoLight.hex(),
 
-    "editorBracketMatch.background": colorP_lighten.hex(),
-    "editorBracketMatch.border": null,
 
     "editorOverviewRuler.currentContentForeground": contrastColor.hex(),
     "editorOverviewRuler.incomingContentForeground": contrastColor.hex(),
     "editorOverviewRuler.commonContentForeground": contrastColor.hex(),
 
+    // editor states
     "editorError.foreground": colorDanger.hex(),
     "editorError.border": null,
 
-    "editorWarning.foreground": colorWarningDark.hex(),
+    "editorWarning.foreground": colorWarning.hex(),
     "editorWarning.border": null,
 
-    // el editor gutter es la parte donde esta el numero de linea y las indicaciones de git
+    // el editor gutter es la parte donde esta el numero de linea y las indicaciones de git dentro del archivo
     "editorGutter.background": colorPrincipal.hex(),
     "editorGutter.modifiedBackground": colorWarning.hex(),
     "editorGutter.addedBackground": colorSuccesLight.hex(),
@@ -170,7 +174,9 @@ let theme = {
     "editorHoverWidget.background": colorPrincipal.hex(),
     "editorHoverWidget.border": colorP_lightest.hex(),
 
+
     "editorMarkerNavigation.background": colorP_lighten.hex(),
+    "editorMarkerNavigationInfo.background": colorInfo.hex(),
     "editorMarkerNavigationError.background": colorDanger.hex(),
     "editorMarkerNavigationWarning.background": colorWarning.hex(),
 
@@ -205,7 +211,7 @@ let theme = {
     "inputValidation.warningBorder": colorWarning.hex(),
 
     // Scrollbar
-    "scrollbar.shadow": colorBlack.hex(),
+    "scrollbar.shadow": null,
     "scrollbarSlider.activeBackground": colorP_lighten.hex(),
     "scrollbarSlider.background": colorP_lighten.hex(),
     "scrollbarSlider.hoverBackground": colorP_lighten.hex(),
@@ -317,8 +323,8 @@ let theme = {
     "statusBar.border": colorP_lighten.hex(),
 
     "statusBar.debuggingBackground": colorWarning.hex(),
-    "statusBar.debuggingForeground": colorBlack.hex(),
-    "statusBar.debuggingBorder": colorWarningDark.hex(),
+    "statusBar.debuggingForeground": colorP_darken.hex(),
+    "statusBar.debuggingBorder": colorWarning.hex(),
 
     "statusBar.noFolderForeground": null,
     "statusBar.noFolderBackground": colorPrincipal.hex(),
@@ -357,10 +363,16 @@ let theme = {
     "terminal.ansiBrightRed": colorDanger.hex(),
     "terminal.ansiBrightYellow": colorWarningLight.hex(),
 
-    "debugToolBar.background": colorPrincipal.hex(),
+    "debugToolBar.background": colorP_darken.hex(),
+    "debugToolBar.border": null,
+
     "welcomePage.buttonBackground": colorPrincipal.hex(),
     "welcomePage.buttonHoverBackground": colorPrincipal.hex(),
     "walkThrough.embeddedEditorBackground": colorPrincipal.hex(),
+
+
+    // Git colors
+    "gitDecoration.addedResourceForeground": colorSuccesLight.hex(),
     "gitDecoration.modifiedResourceForeground": colorWarningLight.hex(),
     "gitDecoration.deletedResourceForeground": colorDanger.hex(),
     "gitDecoration.untrackedResourceForeground": colorSuccesLight.hex(),
@@ -368,6 +380,7 @@ let theme = {
     "gitDecoration.conflictingResourceForeground": colorWarningLight.hex(),
 
     "source.elm": colorP_lightest.hex(),
+
     // Background color for the progress bar shown for long running operations.
     "progress.background": contrastColor.hex()
   },
