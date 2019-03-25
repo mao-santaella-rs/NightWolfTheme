@@ -202,9 +202,9 @@ d#{'i'}v,
 
 // media type, feature test
 @import "foo" #{'screen'} and (#{'orientation'}: #{'landscape'});
-@media #{'screen'} and (#{'orientation: landscape'}) {
-    width: 700px;
-}
+// @media #{'screen'} and (#{'orientation: landscape'}) {
+//     width: 700px;
+// }
 
 // font name, font feature custom name, font feature value
 @font-feature-values #{'Font One'} {
