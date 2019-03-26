@@ -85,7 +85,7 @@ let theme = {
 
     // Editor in general
     "editor.background": colorPrincipal.hex(),
-    "editor.foreground": colorText.hex(),
+    "editor.foreground": colorTestA.hex(),
     "editorLineNumber.foreground": colorP_lighten.hex(),
     "editorLineNumber.activeForeground": colorP_lightest.hex(),
     "editorCursor.foreground": contrastColorLight.hex(),
@@ -426,7 +426,7 @@ let theme = {
       scope: "support.constant.math",
       settings: {
         // test
-        foreground: colorTestA.hex()
+        foreground: colorTestB.hex()
       }
     },
     {
@@ -554,7 +554,7 @@ let theme = {
       scope: "entity.other.inherited-class",
       settings: {
         foreground: colorVariable.hex(),
-        foreground: colorTestA.hex()
+        foreground: colorTestB.hex()
       }
     },
     {
@@ -600,7 +600,7 @@ let theme = {
       scope: "support.constant.meta.property-value",
       settings: {
         // foreground: "#7fdbca"
-        foreground: colorTestA.hex()
+        foreground: colorTestB.hex()
       }
     },
     {
@@ -616,7 +616,7 @@ let theme = {
       scope: "support.variable.dom",
       settings: {
         // foreground: "#addb67",
-        foreground: colorTestA.hex()
+        foreground: colorTestB.hex()
       }
     },
     {
@@ -691,7 +691,7 @@ let theme = {
       scope: "object",
       settings: {
         foreground: "#cdebf7",
-        foreground: colorTestA.hex()
+        foreground: colorTestB.hex()
       }
     },
     {
@@ -753,7 +753,7 @@ let theme = {
       scope: "constant.other.color.rgb-value punctuation.definition.constant",
       settings: {
         foreground: "#F78C6C",
-        foreground: colorTestA.hex()
+        foreground: colorTestB.hex()
       }
     },
     {
@@ -1010,7 +1010,7 @@ let theme = {
       scope: "raw",
       settings: {
         foreground: "#80CBC4",
-        foreground: colorTestA.hex()
+        foreground: colorTestB.hex()
       }
     },
     {
@@ -1279,7 +1279,7 @@ let theme = {
       ],
       settings: {
         foreground: "#F78C6C",
-        foreground: colorTestA.hex()
+        foreground: colorTestB.hex()
       }
     },
     {
@@ -1302,7 +1302,7 @@ let theme = {
       ],
       settings: {
         foreground: "#82AAFF",
-        foreground: colorTestA.hex()
+        foreground: colorTestB.hex()
       }
     },
     {
@@ -1313,7 +1313,7 @@ let theme = {
       ],
       settings: {
         foreground: "#bec5d4",
-        foreground: colorTestA.hex()
+        foreground: colorTestB.hex()
       }
     },
     {
@@ -1331,7 +1331,7 @@ let theme = {
       scope: ["entity.name.tag.scss", "entity.name.tag.sass"],
       settings: {
         foreground: "#7fdbca",
-        foreground: colorTestA.hex()
+        foreground: colorTestB.hex()
       }
     },
     {
@@ -1382,8 +1382,8 @@ let theme = {
         // "punctuation.definition.template-expression",
         // "punctuation.definition.block",
 
-        "punctuation.definition.namespace.begin.bracket",
         "punctuation.separator",
+        "meta.property-list.css.sass",
         "punctuation.accessor"
       ],
       settings: {
