@@ -55,6 +55,9 @@ let colorTagAttribute =         colorVariable
 let colorCssAttribute =         colorParameter
 let colorCssValue =             colorText
 let colorCssTag =               colorContrastText
+let colorCssClass =             colorVariable
+let colorCssId =                colorFunction
+let colorCssProperty =          colorParameter
 let colorCssUnits =             colorVariableInstance
 
 let colorInfo =                 Color.rgb(100, 180, 250)
@@ -773,7 +776,7 @@ let theme = {
       }
     },
     {
-      // id pug
+      // id in css and pug
       name: "Entity Other Attribute Name Id",
       scope: "entity.other.attribute-name.id",
       settings: {
@@ -1199,34 +1202,65 @@ let theme = {
     },
     // string END
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     // Stylesheets START
     {
-      // &
-      name: "Entity Name tag reference in stylesheets",
-      scope: "meta.property-list entity.name.tag.reference",
-      settings: {
-        foreground: colorEspecialWord.hex()
-      }
-    },
-    {
-      // css !importatnt
-      name: "Keyword",
-      scope: [
-        "punctuation.accessor",
-        "keyword",
-        "punctuation.definition.keyword"
+      name: "sass test",
+      scope:[
+        "keyword.other.parent-selector",
+        "entity.name.function.sass",
+        "keyword.control.interpolation.sass",
+        "keyword.other.important.css.sass",
+        "keyword.other.reserved.sass",
+        "entity.other.pseudo-classs",
+        "support.function.sass"
       ],
-      settings: {
-        foreground: colorEspecialWord.hex(),
-        fontStyle: "italic"
+      settings:{
+        foreground: colorTestC.hex()
+      }
+    },
+
+    {
+      name: "css id selector",
+      scope:[
+        "entity.other.attribute-name.id.css",
+        "entity.other.attribute-name.id.scss"
+      ],
+      settings:{
+        foreground: colorCssId.hex()
+      }
+    },
+
+    {
+      name: "css class selector",
+      scope:[
+        "entity.other.attribute-name.class.css"
+      ],
+      settings:{
+        foreground: colorCssClass.hex()
       }
     },
     {
-      name: "Tag names in Stylesheets",
+      name: "Tag selectors and &",
       scope: [
         "entity.name.tag.css",
         "entity.name.tag.less",
-        "entity.name.tag.custom.css"
+        "entity.name.tag.custom.css",
+        "entity.name.tag.scss",
+        "entity.name.tag.sass"
       ],
       settings: {
         foreground: colorCssTag.hex(),
@@ -1234,10 +1268,89 @@ let theme = {
       }
     },
     {
+      name: "Property name stylesheets",
+      scope:[
+        "support.type.property-name.css"
+      ],
+      settings:{
+        foreground: colorCssProperty.hex()
+      }
+    },
+    {
       name: "Values in css",
       scope: ["support.constant.property-value.css"],
       settings: {
         foreground: colorCssValue.hex()
+      }
+    },
+    {
+      name: "stylesheet numbers",
+      scope: ["constant.numeric.css", "punctuation.definition.constant.css"],
+      settings: {
+        foreground: colorRegularText.hex()
+      }
+    },
+    {
+      name: "Stylesheet Units",
+      scope: [
+        "keyword.other.unit",
+        "keyword.other.unit.css",
+        "keyword.other.unit.scss",
+        "keyword.other.unit.sass"
+      ],
+      settings: {
+        foreground: colorCssUnits.hex()
+      }
+    },
+
+    {
+      name: "SCSS & SASS Variable",
+      scope: [
+        "variable.scss",
+        "variable.sass",
+        "variable.parameter.scss",
+        "variable.parameter.sass"
+      ],
+      settings: {
+        foreground: colorVariable.hex()
+      }
+    },
+
+
+
+
+    
+
+
+
+
+
+
+
+    
+    {
+      // css !importatnt, @
+      // keywords for sass
+      name: "Keyword",
+      scope: [
+        "punctuation.accessor",
+        "keyword",
+        "punctuation.definition.keyword",
+        "keyword.operator.css",
+        "keyword.operator.scss",
+        //@mixin
+        "keyword.control.at-rule.scss",
+        "keyword.control.at-rule.css.sass",
+        "keyword.control.at-rule.less",
+        //!important
+        "keyword.other.important.css",
+        //&
+        "meta.property-list entity.name.tag.reference",
+      ],
+      settings: {
+        foreground: colorEspecialWord.hex(),
+        // foreground: colorTestB.hex(),
+        fontStyle: "italic"
       }
     },
     {
@@ -1253,45 +1366,24 @@ let theme = {
       }
     },
     {
-      name: "Stylesheet Units",
-      scope: [
-        "keyword.other.unit",
-        "keyword.other.unit.css",
-        "keyword.other.unit.scss",
-        "keyword.other.unit.sass"
-      ],
-      settings: {
-        foreground: colorCssUnits.hex()
-      }
-    },
-    {
-      name: "stylesheet numbers",
-      scope: ["constant.numeric.css", "punctuation.definition.constant.css"],
-      settings: {
-        foreground: colorRegularText.hex()
-      }
-    },
-    {
-      name: "Attribute Name for CSS",
+      name: "Attribute Name for CSS and SCSS",
       scope: [
         "meta.attribute-selector.css entity.other.attribute-name.attribute",
-        "variable.other.readwrite.js"
+        "meta.attribute-selector.scss entity.other.attribute-name.attribute",
+        "meta.attribute-selector.sass entity.other.attribute-name.attribute",
+        "meta.attribute-selector.less entity.other.attribute-name.attribute",
+        "variable.other.readwrite.js",
+
+
+        // "entity.other.attribute-name.css.sass",
+        // "keyword.operator.attribute-selector.css.sass",
+        // "meta.attribute-selector"
+        "meta.attribute-selector"
       ],
       settings: {
-        foreground: "#F78C6C",
-        foreground: colorTestB.hex()
-      }
-    },
-    {
-      name: "SCSS Variable",
-      scope: [
-        "variable.scss",
-        "variable.sass",
-        "variable.parameter.url.scss",
-        "variable.parameter.url.sass"
-      ],
-      settings: {
-        foreground: colorVariable.hex()
+        foreground: colorCssAttribute.hex(),
+
+        // foreground: colorTestC.hex()
       }
     },
     {
@@ -1305,52 +1397,38 @@ let theme = {
         foreground: colorTestB.hex()
       }
     },
-    {
-      name: "Variables in SASS At-Rules",
-      scope: [
-        "source.css.scss meta.at-rule variable",
-        "source.css.sass meta.at-rule variable"
-      ],
-      settings: {
-        foreground: "#bec5d4",
-        foreground: colorTestB.hex()
-      }
-    },
-    {
-      name: "Attribute Name for SASS",
-      scope: [
-        "meta.attribute-selector.scss entity.other.attribute-name.attribute",
-        "meta.attribute-selector.sass entity.other.attribute-name.attribute"
-      ],
-      settings: {
-        foreground: colorCssAttribute.hex()
-      }
-    },
-    {
-      name: "Tag names in SASS",
-      scope: ["entity.name.tag.scss", "entity.name.tag.sass"],
-      settings: {
-        foreground: "#7fdbca",
-        foreground: colorTestB.hex()
-      }
-    },
-    {
-      name: "Attribute Name for LESS",
-      scope:
-        "meta.attribute-selector.less entity.other.attribute-name.attribute",
-      settings: {
-        foreground: "#F78C6C"
-      }
-    },
-    {
-      name: "LESS Tag names",
-      scope: "entity.name.tag.less",
-      settings: {
-        foreground: "#7fdbca"
-      }
-    },
     // Stylesheets END
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
     // Punctuation Start
     {
       name: "Punctuation",
@@ -1791,7 +1869,12 @@ let theme = {
     // Comments START
     {
       name: "Comment",
-      scope: "comment",
+      scope: [
+        "comment",
+
+        "comment.block.css.sass",
+        "comment.line.sass"
+      ],
       settings: {
         foreground: colorComment.hex(),
         fontStyle: "italic"
