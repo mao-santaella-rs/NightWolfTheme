@@ -6,6 +6,17 @@ let colorTestA =                Color.rgb(255, 255, 0)
 let colorTestB =                Color.rgb(0, 255, 0)
 let colorTestC =                Color.rgb(255, 100, 0)
 
+// Syntax Colors
+let colorSyntaxYellow =         Color.rgb(255, 210, 140)
+let colorSyntaxBlue =           Color.rgb(0,177,255)
+let colorSyntaxPurple =         Color.rgb(200, 120, 230)
+let colorSyntaxRed =            Color.rgb(255, 120, 120)
+let colorSyntaxCyan =           Color.rgb(0,220,220)
+let colorSyntaxGreen =          Color.rgb(170,230,130)
+let colorSyntaxViolet =         Color.rgb(150,150,255)
+
+
+// THEME COLORS
 let colorWhite =                Color.rgb(255, 255, 255)
 let colorBlack =                Color.rgb(0,0,0)
 
@@ -13,28 +24,10 @@ let colorPrincipal =            Color.rgb(16, 30, 44)
 let colorP_darken =             colorPrincipal.darken(0.3)
 let colorP_light =              colorPrincipal.lighten(0.3)
 let colorP_lighten =            colorPrincipal.lighten(1)
-let colorP_lighter =            colorPrincipal.lighten(2);
-let colorP_lightest =           colorPrincipal.lighten(4.5);
+let colorP_lighter =            colorPrincipal.lighten(2)
+let colorP_lightest =           colorPrincipal.lighten(4.5)
 
-let colorText =                 colorPrincipal.lighten(6);
-
-let contrastColor =             Color.rgb(255, 0, 255)
-let contrastColorLight =        contrastColor.lighten(0.5);
-let contrastColorDark =         contrastColor.darken(0.5);
-
-let colorEspecialWord =         Color.rgb(200, 120, 230)
-let colorContrastText =         Color.rgb(255, 120, 120)
-let colorRegularText =          colorText
-let colorVariable =             Color.rgb(255, 210, 140)
-let colorVariableInstance =     Color.rgb(150,150,255)
-let colorFunction =             Color.rgb(0,177,255)
-let colorParameter =            Color.rgb(0,220,220)
-let colorString =               Color.rgb(170,230,130)
-let colorNumber =               colorRegularText
-let colorBoolean =              colorContrastText
-let colorNullUnd =              colorContrastText
-let colorSmallOperators =       colorEspecialWord
-let colorPunctuation =          colorRegularText
+let colorText =                 colorPrincipal.lighten(6)
 
 let colorSelection =            colorP_lighter
 let colorSelectionHighlight =   colorP_lighten
@@ -46,20 +39,14 @@ let colorFindHighlight =        colorSelectionHighlight
 let colorRangeHiglight =        colorP_light
 let colorLineHiglight =         colorP_darken
 
+let contrastColor =             Color.rgb(255, 0, 255)
+let contrastColorLight =        contrastColor.lighten(0.5)
+let contrastColorDark =         contrastColor.darken(0.5)
+
 let colorComment =              Color.rgb(100,120,130)
 
-let colorHtmlTag =              colorContrastText
-let colorMetaTag =              Color.rgb(200,200,200)
-let colorTagAttribute =         colorVariable
 
-let colorCssAttribute =         colorParameter
-let colorCssValue =             colorText
-let colorCssTag =               colorContrastText
-let colorCssClass =             colorVariable
-let colorCssId =                colorFunction
-let colorCssProperty =          colorParameter
-let colorCssUnits =             colorVariableInstance
-
+// STATES COLORS
 let colorInfo =                 Color.rgb(100, 180, 250)
 let colorInfoDark =             colorInfo.darken(0.6);
 let colorInfoLight =            colorInfo.lighten(0.2);
@@ -71,364 +58,1621 @@ let colorDanger =               Color.rgb(240, 80, 80)
 let colorDangerDark =           colorDanger.darken(0.4);
 
 
+// SYNTAX COLORS
+// General colors
+let colorVariable =             Color.rgb(255, 210, 140)
+let colorVariableProperty =     Color.rgb(150,150,255)
+let colorContrastText =         Color.rgb(255, 120, 120)
+let colorSpecialWord =          Color.rgb(200, 120, 230)
+let colorFunction =             Color.rgb(0,177,255)
+let colorFunctionName =         Color.rgb(0,220,220)
+let colorString =               Color.rgb(170,230,130)
+let colorRegularText =          colorText
+let colorNumber =               colorRegularText
+let colorBoolean =              colorContrastText
+let colorNullUnd =              colorContrastText
+let colorSmallOperators =       colorSpecialWord
+let colorPunctuation =          colorRegularText
 
-console.log(colorEspecialWord.hex());
+// Markup
+let colorHtmlTag =              colorContrastText
+let colorMetaTag =              Color.rgb(200,200,200)
+let colorTagAttribute =         colorVariable
 
-let theme = {
+// Stylesheets
+let colorCssAttribute =         colorFunctionName
+let colorCssValue =             colorText
+let colorCssTag =               colorContrastText
+let colorCssClass =             colorVariable
+let colorCssId =                colorFunction
+let colorCssProperty =          colorFunctionName
+let colorCssUnits =             colorVariableProperty
+let colorCssSpecialWord =       colorFunctionName
+
+
+
+console.log(colorSpecialWord.hex());
+
+
+const themeColors = {
+  contrastActiveBorder: null,
+  contrastBorder: null,
+  focusBorder: colorP_lighten.hex(),
+  foreground: colorText.hex(),
+  "widget.shadow": colorPrincipal.hex(),
+  "selection.background": colorInfo.hex(),
+  errorForeground: colorDanger.hex(),
+
+
+
+  "terminal.ansiWhite": colorWhite.hex(),
+  "terminal.ansiBlack": colorBlack.hex(),
+  "terminal.ansiBlue": "#82AAFF",
+  "terminal.ansiCyan": "#21c7a8",
+  "terminal.ansiGreen": "#22da6e",
+  "terminal.ansiMagenta": colorSpecialWord.hex(),
+  "terminal.ansiRed": colorDanger.hex(),
+  "terminal.ansiYellow": "#addb67",
+  "terminal.ansiBrightWhite": colorWhite.hex(),
+  "terminal.ansiBrightBlack": "#575656",
+  "terminal.ansiBrightBlue": "#82AAFF",
+  "terminal.ansiBrightCyan": "#7fdbca",
+  "terminal.ansiBrightGreen": "#22da6e",
+  "terminal.ansiBrightMagenta": colorSpecialWord.hex(),
+  "terminal.ansiBrightRed": colorDanger.hex(),
+  "terminal.ansiBrightYellow": colorWarningLight.hex(),
+
+  // Editor in general
+  "editor.background": colorPrincipal.hex(),
+  "editor.foreground": colorTestA.hex(),
+  "editorLineNumber.foreground": colorP_lighten.hex(),
+  "editorLineNumber.activeForeground": colorP_lightest.hex(),
+  "editorCursor.foreground": contrastColorLight.hex(),
+  "editorLink.activeForeground": null,
+
+  // cuando selecciono con el mouse
+  "editor.selectionBackground": colorSelection.hex(),
+  "editor.selectionForeground": colorText.hex(),
+
+  // las palabras iguales a la seleccion
+  "editor.selectionHighlightBackground": colorSelectionHighlight.hex(),
+
+  // la seleccion cuando salgo de la ventana donde estoy
+  "editor.inactiveSelectionBackground": colorSelectionInactive.hex(),
+
+  // cuando ubico el cursor en el medio de una palabra y vscode la selecciona
+  "editor.wordHighlightBackground": colorHoverHiglight.hex(),
+
+  // cuando ubico el puntero encima de una palabra
+  "editor.hoverHighlightBackground": colorHoverHiglight.hex(),
+
+  // cuando selecciono parcialmente una palabra y vscode selecciona todo
+  "editor.wordHighlightStrongBackground": colorWordHighlightStrong.hex(),
+
+  // palabra seleccionada por el finder
+  "editor.findMatchBackground": colorFindMatch.hex(),
+
+  // todas las palabras encontradas por el finder
+  "editor.findMatchHighlightBackground": colorFindHighlight.hex(),
+  "editor.findRangeHighlightBackground": null,
+
+  // color de la linea en la que el cursor esta ubicado
+  "editor.lineHighlightBackground": colorLineHiglight.hex(),
+  "editor.lineHighlightBorder": null,
+
+  // fondo de la linea completa cuando se busca
+  "editor.rangeHighlightBackground": colorRangeHiglight.hex(),
+  "editor.rangeHighlightForeground": colorText.hex(),
+
+  // cuando me paro en un bracket me muestar los dos con este color
+  "editorBracketMatch.background": colorP_lighten.hex(),
+  "editorBracketMatch.border": null,
+
+  // cuando se activa la viusualizacion de los whitespaces
+  "editorWhitespace.foreground": colorP_lighten.hex(),
+
+  // linea vertical que indica la indentacion
+  "editorIndentGuide.background": colorP_lighten.hex(),
+  "editorIndentGuide.activeBackground": colorP_lightest.hex(),
+
+  // descripcciones en el welcome page
+  "descriptionForeground": colorText.hex(),
+
+  // vscode codelens
+  "editorCodeLens.foreground": colorInfoLight.hex(),
+
+  "editorOverviewRuler.currentContentForeground": contrastColor.hex(),
+  "editorOverviewRuler.incomingContentForeground": contrastColor.hex(),
+  "editorOverviewRuler.commonContentForeground": contrastColor.hex(),
+
+  // editor states
+  "editorError.foreground": colorDanger.hex(),
+  "editorError.border": null,
+  "editorWarning.foreground": colorWarning.hex(),
+  "editorWarning.border": null,
+
+  // el editor gutter es la parte donde esta el numero de linea y las indicaciones de git dentro del archivo
+  "editorGutter.background": colorPrincipal.hex(),
+  "editorGutter.modifiedBackground": colorWarning.hex(),
+  "editorGutter.addedBackground": colorSuccesLight.hex(),
+  "editorGutter.deletedBackground": colorDanger.hex(),
+
+  // el widget como el find and replace
+  "editorWidget.border": colorP_lightest.hex(),
+  "editorWidget.background": colorP_lighten.hex(),
+
+  // el cuadro que sale cuando estamos escribiendo proponiendo opciones
+  "editorSuggestWidget.background": colorP_light.hex(),
+  "editorSuggestWidget.border": colorP_lighten.hex(),
+  "editorSuggestWidget.foreground": colorP_lightest.hex(),
+  "editorSuggestWidget.highlightForeground": colorText.hex(),
+  "editorSuggestWidget.selectedBackground": colorP_lighter.hex(),
+  "editorHoverWidget.background": colorPrincipal.hex(),
+  "editorHoverWidget.border": colorP_lightest.hex(),
+
+
+  "editorMarkerNavigation.background": colorP_lighten.hex(),
+  "editorMarkerNavigationInfo.background": colorInfo.hex(),
+  "editorMarkerNavigationError.background": colorDanger.hex(),
+  "editorMarkerNavigationWarning.background": colorWarning.hex(),
+
+  // Botones
+  "button.foreground": colorWhite.hex(),
+  "button.background": contrastColor.hex(),
+  "button.hoverBackground": contrastColorDark.hex(),
+
+  // Botones de las extenciones
+  "extensionButton.prominentForeground": colorWhite.hex(),
+  "extensionButton.prominentBackground": contrastColor.hex(),
+  "extensionButton.prominentHoverBackground": contrastColorDark.hex(),
+
+  // inputs
+  // Dropdowns
+  "dropdown.background": colorPrincipal.hex(),
+  "dropdown.border": colorP_lighten.hex(),
+  "dropdown.foreground": colorText.hex(),
+  // Inputs text
+  "input.background": colorP_light.hex(),
+  "input.border": colorP_lighten.hex(),
+  "input.foreground": colorText.hex(),
+  "input.placeholderForeground": colorP_lightest.hex(),
+  // Input Select
+  "inputOption.activeBorder": colorP_lightest.hex(),
+  // Input Validation
+  "inputValidation.errorBackground": colorDangerDark.hex(),
+  "inputValidation.errorBorder": colorDanger.hex(),
+  "inputValidation.infoBackground": colorInfoDark.hex(),
+  "inputValidation.infoBorder": colorInfo.hex(),
+  "inputValidation.warningBackground": colorWarningDark.hex(),
+  "inputValidation.warningBorder": colorWarning.hex(),
+
+  // Scrollbar
+  "scrollbar.shadow": null,
+  "scrollbarSlider.activeBackground": colorP_lighten.hex(),
+  "scrollbarSlider.background": colorP_lighten.hex(),
+  "scrollbarSlider.hoverBackground": colorP_lighten.hex(),
+
+  // Badges are small information labels, for example, search results count.
+  "badge.background": colorP_lightest.hex(),
+  "badge.foreground": colorWhite.hex(),
+
+  // Breadcrumbs
+  "breadcrumb.foreground": colorInfo.hex(),
+  "breadcrumb.focusForeground": colorInfoLight.hex(),
+  "breadcrumb.activeSelectionForeground": colorWhite.hex(),
+  "breadcrumbPicker.background": colorP_darken.hex(),
+
+  // Barra de la izquierda
+  // Colors for list and trees like the File Explorer.
+  "list.activeSelectionBackground": colorP_lighter.hex(),
+  "list.activeSelectionForeground": colorWhite.hex(),
+  "list.invalidItemForeground": contrastColorDark.hex(),
+  "list.dropBackground": colorPrincipal.hex(),
+  "list.focusBackground": colorPrincipal.hex(),
+  "list.focusForeground": colorWhite.hex(),
+  "list.highlightForeground": colorWhite.hex(),
+  "list.hoverBackground": colorPrincipal.hex(),
+  "list.hoverForeground": colorWhite.hex(),
+  "list.inactiveSelectionBackground": colorP_light.hex(),
+  "list.inactiveSelectionForeground": colorP_lightest.hex(),
+
+  // Activity bar es la barra de iconos de la derecha
+  "activityBar.background": colorPrincipal.hex(),
+  "activityBar.dropBackground": colorP_lightest.hex(),
+  "activityBar.foreground": colorP_lightest.hex(),
+  "activityBar.border": colorPrincipal.hex(),
+  "activityBarBadge.background": colorP_lighter.hex(),
+  "activityBarBadge.foreground": colorWhite.hex(),
+
+  // Es la barra de la izquierda que contiene el tree view y el explorer
+  "sideBar.background": colorPrincipal.hex(),
+  "sideBar.foreground": colorText.hex(),
+  "sideBar.border": colorP_lighten.hex(),
+  "sideBarTitle.foreground": colorP_lightest.hex(),
+  "sideBarSectionHeader.background": colorPrincipal.hex(),
+  "sideBarSectionHeader.foreground": colorP_lightest.hex(),
+
+  // EditorGroup es la agrupacion de archivos abiertos
+  "editorGroup.background": colorP_lighter.hex(),
+  "editorGroup.border": colorP_lighten.hex(),
+  "editorGroup.dropBackground": contrastColor.hex(),
+  "editorGroupHeader.noTabsBackground": colorPrincipal.hex(),
+  "editorGroupHeader.tabsBackground": colorPrincipal.hex(),
+  "editorGroupHeader.tabsBorder": colorP_lighten.hex(),
+
+  // Las pestanas de los archivos abiertos
+  "tab.activeBackground": colorP_light.hex(),
+  "tab.activeForeground": colorText.hex(),
+  "tab.activeBorder": colorP_lightest.hex(),
+  "tab.border": colorP_light.hex(),
+  "tab.inactiveBackground": colorP_darken.hex(),
+  "tab.inactiveForeground": colorText.hex(),
+  "tab.unfocusedActiveForeground": colorText.hex(),
+  "tab.unfocusedActiveBorder": colorP_lighter.hex(),
+  "tab.unfocusedInactiveForeground": colorText.hex(),
+
+  "menubar.selectionForeground": colorWhite.hex(),
+  "menubar.selectionBackground": colorP_darken.hex(),
+  "menubar.selectionBorder": null,
+  "menu.foreground": colorP_lightest.hex(),
+  "menu.background": colorP_darken.hex(),
+  "menu.selectionForeground": colorWhite.hex(),
+  "menu.selectionBackground": colorP_lighter.hex(),
+  "menu.selectionBorder": null,
+  "menu.separatorBackground": colorP_lighter.hex(),
+
+  "diffEditor.insertedTextBackground": colorSuccesLight.hex(),
+  "diffEditor.insertedTextBorder": colorSuccesLight.hex(),
+  "diffEditor.removedTextBackground": colorDanger.hex(),
+  "diffEditor.removedTextBorder": colorDanger.hex(),
+
+  "debugExceptionWidget.background": colorPrincipal.hex(),
+  "debugExceptionWidget.border": colorP_lightest.hex(),
+
+  "peekView.border": colorP_lightest.hex(),
+  "peekViewEditor.background": colorPrincipal.hex(),
+  "peekViewEditor.matchHighlightBackground": contrastColor.hex(),
+  "peekViewResult.background": colorPrincipal.hex(),
+  "peekViewResult.fileForeground": colorP_lightest.hex(),
+  "peekViewResult.lineForeground": colorP_lightest.hex(),
+  "peekViewResult.matchHighlightBackground": colorWhite.hex(),
+  "peekViewResult.selectionBackground": colorP_lighten.hex(),
+  "peekViewResult.selectionForeground": colorP_lightest.hex(),
+  "peekViewTitle.background": colorPrincipal.hex(),
+  "peekViewTitleDescription.foreground": colorP_lightest.hex(),
+  "peekViewTitleLabel.foreground": colorP_lightest.hex(),
+
+  "merge.currentHeaderBackground": colorP_lightest.hex(),
+  "merge.currentContentBackground": null,
+  "merge.incomingHeaderBackground": contrastColor.hex(),
+  "merge.incomingContentBackground": null,
+  "merge.border": null,
+
+  "panel.background": colorPrincipal.hex(),
+  "panel.border": colorP_lighten.hex(),
+  "panelTitle.activeBorder": colorP_lightest.hex(),
+  "panelTitle.activeForeground": colorWhite.hex(),
+  "panelTitle.inactiveForeground": colorText.hex(),
+
+  "statusBar.background": colorPrincipal.hex(),
+  "statusBar.foreground": colorP_lightest.hex(),
+  "statusBar.border": colorP_lighten.hex(),
+
+  "statusBar.debuggingBackground": colorWarning.hex(),
+  "statusBar.debuggingForeground": colorP_darken.hex(),
+  "statusBar.debuggingBorder": colorWarning.hex(),
+
+  "statusBar.noFolderForeground": null,
+  "statusBar.noFolderBackground": colorPrincipal.hex(),
+  "statusBar.noFolderBorder": contrastColor.hex(),
+  "statusBarItem.activeBackground": colorP_lighten.hex(),
+  "statusBarItem.hoverBackground": colorP_lighten.hex(),
+  "statusBarItem.prominentBackground": colorP_lighten.hex(),
+  "statusBarItem.prominentHoverBackground": colorP_lighten.hex(),
+
+  "titleBar.activeBackground": colorPrincipal.hex(),
+  "titleBar.activeForeground": colorText.hex(),
+  "titleBar.inactiveBackground": colorP_darken.hex(),
+  "titleBar.inactiveForeground": null,
+
+  "notifications.background": colorPrincipal.hex(),
+  "notifications.foreground": colorWhite.hex(),
+  "notificationLink.foreground": contrastColor.hex(),
+
+  "pickerGroup.foreground": contrastColorLight.hex(),
+  "pickerGroup.border": colorPrincipal.hex(),
+
+  "terminal.ansiWhite": colorWhite.hex(),
+  "terminal.ansiBlack": colorPrincipal.hex(),
+  "terminal.ansiBlue": "#82AAFF",
+  "terminal.ansiCyan": "#21c7a8",
+  "terminal.ansiGreen": "#22da6e",
+  "terminal.ansiMagenta": colorSpecialWord.hex(),
+  "terminal.ansiRed": colorDanger.hex(),
+  "terminal.ansiYellow": "#addb67",
+  "terminal.ansiBrightWhite": colorWhite.hex(),
+  "terminal.ansiBrightBlack": "#575656",
+  "terminal.ansiBrightBlue": "#82AAFF",
+  "terminal.ansiBrightCyan": "#7fdbca",
+  "terminal.ansiBrightGreen": "#22da6e",
+  "terminal.ansiBrightMagenta": colorSpecialWord.hex(),
+  "terminal.ansiBrightRed": colorDanger.hex(),
+  "terminal.ansiBrightYellow": colorWarningLight.hex(),
+
+  "debugToolBar.background": colorP_darken.hex(),
+  "debugToolBar.border": null,
+
+  "welcomePage.buttonBackground": colorPrincipal.hex(),
+  "welcomePage.buttonHoverBackground": colorPrincipal.hex(),
+  "walkThrough.embeddedEditorBackground": colorPrincipal.hex(),
+
+
+  // Git colors
+  "gitDecoration.addedResourceForeground": colorSuccesLight.hex(),
+  "gitDecoration.modifiedResourceForeground": colorWarningLight.hex(),
+  "gitDecoration.deletedResourceForeground": colorDanger.hex(),
+  "gitDecoration.untrackedResourceForeground": colorSuccesLight.hex(),
+  "gitDecoration.ignoredResourceForeground": colorP_lighter.hex(),
+  "gitDecoration.conflictingResourceForeground": colorWarningLight.hex(),
+
+  "source.elm": colorP_lightest.hex(),
+
+  "editorRuler.foreground": colorP_lighten.hex(),
+
+  // Background color for the progress bar shown for long running operations.
+  "progress.background": contrastColor.hex()
+}
+
+const tcGlobalSettings = [
+// gloabal settings
+  {
+    name: "Global settings",
+    settings: {
+      background: colorPrincipal.hex(),
+      foreground: colorText.hex()
+    }
+  },
+]
+
+const tcGit = [
+  // GIT  colors 
+  {
+    name: "Changed",
+    scope: [
+      "markup.changed",
+      "meta.diff.header.git",
+      "meta.diff.header.from-file",
+      "meta.diff.header.to-file"
+    ],
+    settings: {
+      foreground: colorInfoLight.hex(),
+      fontStyle: "italic"
+    }
+  },
+  {
+    name: "Deleted",
+    scope: "markup.deleted.diff",
+    settings: {
+      foreground: colorDanger.hex(),
+      fontStyle: "italic"
+    }
+  },
+  {
+    name: "Inserted",
+    scope: "markup.inserted.diff",
+    settings: {
+      foreground: colorSuccesLight.hex(),
+      fontStyle: "italic"
+    }
+  },
+]
+
+const tcStorageNames = [
+  // Storage names
+  {
+    name: "object key",
+    scope: [
+      "meta.var.expr",
+      "meta.object-literal.key"
+    ],
+    settings:{
+      foreground: colorRegularText.hex()
+    }
+  },
+  {
+    name: "Variable",
+    scope: "variable",
+    settings: {
+      foreground: colorVariable.hex()
+    }
+  },
+  {
+    name: "Storage",
+    scope: [
+      "storage",
+      "meta.class meta.method.declaration meta.var.expr storage.type.js",
+      "storage.type.property.js",
+      "storage.type.property.ts",
+      "storage.type.property.tsx"
+    ],
+    settings: {
+      foreground: colorVariable.hex(),
+      fontStyle: "italic"
+    }
+  },
+  {
+    name: "Built-in constant",
+    scope: [
+      "constant.language",
+      "punctuation.definition.constant",
+      "variable.other.constant"
+    ],
+    settings: {
+      foreground: colorVariable.hex()
+    }
+  },
+  {
+    name: "User-defined constant",
+    scope: [
+      "constant.character",
+      "constant.other"
+    ],
+    settings: {
+      foreground: colorVariable.hex()
+    }
+  },
+  {
+    name: "Class name",
+    scope: ["entity.name.class", "meta.class entity.name.type.class"],
+    settings: {
+      foreground: colorVariable.hex()
+    }
+  },
+  {
+    name: "Inherited class",
+    scope: "entity.other.inherited-class",
+    settings: {
+      foreground: colorVariable.hex(),
+      foreground: colorTestB.hex()
+    }
+  },
+  {
+    //??
+    name: "Variable Property Other object",
+    scope: ["variable.other.object.js"],
+    settings: {
+      fontStyle: ""
+    }
+  },
+  {
+    name: "Variable Instances",
+    scope: [
+      "variable.instance",
+      "variable.other.instance",
+      "variable.readwrite.instance",
+      "variable.other.readwrite.instance",
+      "variable.other.property"
+    ],
+    settings: {
+      foreground: colorVariableProperty.hex(),
+    }
+  },
+
+]
+
+const tcStrings = [
+  {
+    name: "String",
+    scope: "string",
+    settings: {
+      foreground: colorString.hex()
+    }
+  },
+  {
+    name: "String Quoted",
+    scope: [
+      "string.quoted",
+      "variable.other.readwrite.js",
+      "string.quoted.single.js"
+    ],
+    settings: {
+      foreground: colorString.hex()
+    }
+  },
+  {
+    name: "Backtics(``) in Template Strings",
+    scope: "string.template punctuation.definition.string",
+    settings: {
+      foreground: colorString.hex()
+    }
+  },
+  {
+    name: "Punctuation Definition String",
+    scope: "punctuation.definition.string",
+    settings: {
+      foreground: colorString.hex()
+    }
+  },
+]
+
+const tcPunctuation = [
+  {
+    name: "Punctuation",
+    scope: [
+      "punctuation",
+      "punctuation.definition",
+
+      // "punctuation.definition.arguments",
+      // "punctuation.definition.array",
+      // "punctuation.definition.list",
+      // "punctuation.definition.tag",
+      // "punctuation.definition.string",
+      // "punctuation.definition.quote",
+      // "punctuation.definition.separator",
+      // "punctuation.definition.range",
+      // "punctuation.definition.namespace",
+      // "punctuation.definition.heading",
+      // "punctuation.definition.entity",
+      // "punctuation.definition.constant",
+      // "punctuation.definition.directive",
+      // "punctuation.definition.parameters",
+      // "punctuation.definition.attribute",
+      // "punctuation.definition.arguments",
+      // "punctuation.definition.annotation",
+      // "punctuation.definition.comment",
+      // "punctuation.definition.annotation-arguments",
+      // "punctuation.definition.binding-pattern",
+      // "punctuation.definition.case-pattern",
+      // "punctuation.definition.template-expression",
+      // "punctuation.definition.block",
+
+      "punctuation.separator",
+      "meta.property-list.css.sass",
+      "punctuation.accessor",
+      // Comma in functions
+      "meta.function"
+    ],
+    settings: {
+      foreground: colorPunctuation.hex()
+    }
+  },
+  {
+    name: "Punctuation Definition Parameters",
+    scope: "punctuation.definition.parameters",
+    settings: {
+      foreground: colorPunctuation.hex()
+    }
+  },
+  {
+    name: "Punctuation Tweaks",
+    scope: [
+      "punctuation.terminator.expression",
+      "punctuation.definition.arguments",
+      "punctuation.definition.array",
+      "punctuation.section.array",
+      "meta.array"
+    ],
+    settings: {
+      foreground: colorPunctuation.hex()
+    }
+  },
+  {
+    name: "More Punctuation Tweaks",
+    scope: [
+      "punctuation.definition.list.begin",
+      "punctuation.definition.list.end",
+      "punctuation.separator.arguments",
+      "punctuation.definition.list"
+    ],
+    settings: {
+      foreground: colorPunctuation.hex()
+    }
+  },
+  {
+    name: "Markdown Punctuation",
+    scope: [
+      "punctuation.definition.string.markdown",
+      "punctuation.definition.string.begin.markdown",
+      "punctuation.definition.string.end.markdown",
+      "meta.link.inline.markdown punctuation.definition.string"
+    ],
+    settings: {
+      foreground: colorPunctuation.hex()
+    }
+  },
+  {
+    name: "TypeScript[React] Import/Export Punctuations",
+    scope: [
+      "meta.import.ts punctuation.definition.block",
+      "meta.import.tsx punctuation.definition.block",
+      "meta.export.ts punctuation.definition.block",
+      "meta.export.tsx punctuation.definition.block"
+    ],
+    settings: {
+      foreground: colorPunctuation.hex()
+    }
+  },
+  {
+    // ()
+    name: "Meta Brace",
+    scope: "meta.brace",
+    settings: {
+      foreground: colorPunctuation.hex()
+    }
+  },
+  {
+    name: "JavaScript Meta Punctuation Definition",
+    scope: "meta.js punctuation.definition.js",
+    settings: {
+      foreground: colorPunctuation.hex(),
+      background: colorTestA.hex()
+    }
+  },
+]
+
+const tcCoffescript = [
+
+  {
+    name: "CoffeScript Variable Assignment",
+    scope: "variable.assignment.coffee",
+    settings: {
+      foreground: "#31e1eb"
+    }
+  },
+  {
+    name: "CoffeScript Parameter Function",
+    scope: "variable.parameter.function.coffee",
+    settings: {
+      foreground: colorFunctionName.hex()
+    }
+  },
+  {
+    name: "CoffeeScript Assignments",
+    scope: "variable.assignment.coffee",
+    settings: {
+      foreground: "#7fdbca"
+    }
+  },
+]
+
+const tcCsharp = [
+
+  {
+    name: "C# Readwrite Variables",
+    scope: "variable.other.readwrite.cs",
+    settings: {
+      foreground: colorVariable.hex()
+    }
+  },
+  {
+    name: "C# Classes & Storage types",
+    scope: ["entity.name.type.class.cs", "storage.type.cs"],
+    settings: {
+      foreground: "#82AAFF",
+    }
+  },
+  {
+    name: "C# Namespaces",
+    scope: "entity.name.type.namespace.cs",
+    settings: {
+      foreground: "#B2CCD6"
+    }
+  },
+]
+
+const tcElixir = [
+
+  {
+    name: "Elixir Classes",
+    scope: [
+      "source.elixir support.type.elixir",
+      "source.elixir meta.module.elixir entity.name.class.elixir"
+    ],
+    settings: {
+      foreground: "#82AAFF"
+    }
+  },
+  {
+    name: "Elixir Functions",
+    scope: "source.elixir entity.name.function",
+    settings: {
+      foreground: "#addb67"
+    }
+  },
+  {
+    name: "Elixir Constants",
+    scope: [
+      "source.elixir constant.other.symbol.elixir",
+      "source.elixir constant.other.keywords.elixir"
+    ],
+    settings: {
+      foreground: "#82AAFF"
+    }
+  },
+  {
+    name: "Elixir String Punctuations",
+    scope: "source.elixir punctuation.definition.string",
+    settings: {
+      foreground: colorString.hex()
+    }
+  },
+  {
+    name: "Elixir",
+    scope: [
+      "source.elixir variable.other.readwrite.module.elixir",
+      "source.elixir variable.other.readwrite.module.elixir punctuation.definition.variable.elixir"
+    ],
+    settings: {
+      foreground: "#addb67"
+    }
+  },
+  {
+    name: "Elixir Binary Punctuations",
+    scope: "source.elixir .punctuation.binary.elixir",
+    settings: {
+      foreground: colorSpecialWord.hex(),
+      fontStyle: "italic"
+    }
+  },
+]
+
+const tcMarckdown = [
+  {
+    name: "Markdown Headings",
+    scope: "markup.heading.markdown",
+    settings: {
+      foreground: "#82b1ff"
+    }
+  },
+  {
+    name: "Markdown Italics",
+    scope: "markup.italic.markdown",
+    settings: {
+      foreground: colorSpecialWord.hex(),
+      fontStyle: "italic"
+    }
+  },
+  {
+    name: "Markdown Bold",
+    scope: "markup.bold.markdown",
+    settings: {
+      foreground: "#addb67",
+      fontStyle: "bold"
+    }
+  },
+  {
+    name: "Markdown Quote + others",
+    scope: "markup.quote.markdown",
+    settings: {
+      foreground: "#697098",
+      fontStyle: "italic"
+    }
+  },
+  {
+    name: "Markdown Raw Code + others",
+    scope: "markup.inline.raw.markdown",
+    settings: {
+      foreground: "#80CBC4"
+    }
+  },
+  {
+    name: "Markdown Links",
+    scope: [
+      "markup.underline.link.markdown",
+      "markup.underline.link.image.markdown"
+    ],
+    settings: {
+      foreground: "#ff869a"
+    }
+  },
+  {
+    name: "Markdown Link Title and Description",
+    scope: [
+      "string.other.link.title.markdown",
+      "string.other.link.description.markdown"
+    ],
+    settings: {
+      foreground: colorRegularText.hex()
+    }
+  },
+  {
+    name: "Markdown MetaData Punctuation",
+    scope: ["punctuation.definition.metadata.markdown"],
+    settings: {
+      foreground: "#7fdbca"
+    }
+  },
+  {
+    name: "Markdown List Punctuation",
+    scope: ["beginning.punctuation.definition.list.markdown"],
+    settings: {
+      foreground: "#82b1ff"
+    }
+  },
+  {
+    name: "Markdown Inline Raw String",
+    scope: "markup.inline.raw.string.markdown",
+    settings: {
+      foreground: "#addb67"
+    }
+  },
+]
+
+const tcGo = [
+
+  {
+    name: "Go Function Calls",
+    scope: "source.go meta.function-call.go",
+    settings: {
+      foreground: "#DDDDDD"
+    }
+  },
+  {
+    name: "Go Keywords",
+    scope: [
+      "source.go keyword.package.go",
+      "source.go keyword.import.go",
+      "source.go keyword.function.go",
+      "source.go keyword.type.go",
+      "source.go keyword.struct.go",
+      "source.go keyword.interface.go",
+      "source.go keyword.const.go",
+      "source.go keyword.var.go",
+      "source.go keyword.map.go",
+      "source.go keyword.channel.go",
+      "source.go keyword.control.go"
+    ],
+    settings: {
+      foreground: colorSpecialWord.hex(),
+      fontStyle: "italic"
+    }
+  },
+  {
+    name: "Go Constants e.g. nil, string format (%s, %d, etc.)",
+    scope: [
+      "source.go constant.language.go",
+      "source.go constant.other.placeholder.go"
+    ],
+    settings: {
+      foreground: "#ff5874"
+    }
+  },
+]
+
+const tcPython = [
+  {
+    name: "Language Constants in Python",
+    scope: "constant.language.python",
+    settings: {
+      foreground: "#ff5874"
+    }
+  },
+  {
+    name: "Python Function Parameter and Arguments",
+    scope: [
+      "variable.parameter.function.python",
+      "meta.function-call.arguments.python"
+    ],
+    settings: {
+      foreground: "#82AAFF"
+    }
+  },
+  {
+    name: "Python Function Call",
+    scope: ["meta.function-call.python", "meta.function-call.generic.python"],
+    settings: {
+      foreground: "#B2CCD6"
+    }
+  },
+  {
+    name: "Punctuations in Python",
+    scope: "punctuation.python",
+    settings: {
+      foreground: colorRegularText.hex()
+    }
+  },
+  {
+    name: "Decorator Functions in Python",
+    scope: "entity.name.function.decorator.python",
+    settings: {
+      foreground: "#addb67"
+    }
+  },
+  {
+    name: "Python Language Variable",
+    scope: "source.python variable.language.special",
+    settings: {
+      foreground: "#8EACE3"
+    }
+  },
+  {
+    name: "Python import control keyword",
+    scope: "keyword.control",
+    settings: {
+      foreground: colorSpecialWord.hex()
+    }
+  },
+]
+
+const tcComments = [
+  {
+    name: "Comment",
+    scope: [
+      "comment",
+
+      "comment.block.css.sass",
+      "comment.line.sass"
+    ],
+    settings: {
+      foreground: colorComment.hex(),
+      fontStyle: "italic"
+    }
+  },
+  {
+    name: "Double-Slashed Comment",
+    scope: [
+      "comment.line.double-slash",
+      "punctuation.definition.comment",
+      "punctuation.whitespace.comment"
+    ],
+    settings: {
+      foreground: colorComment.hex()
+    }
+  },
+]
+
+const tcRuby = [
+  {
+    name: "Ruby Variables",
+    scope: ["variable.other.ruby"],
+    settings: {
+      foreground: colorVariable.hex()
+    }
+  },
+  {
+    name: "Ruby Class",
+    scope: ["entity.name.type.class.ruby"],
+    settings: {
+      foreground: "#ecc48d"
+    }
+  },
+  {
+    name: "Ruby Hashkeys",
+    scope: "constant.language.symbol.hashkey.ruby",
+    settings: {
+      foreground: "#7fdbca"
+    }
+  },
+  {
+    name: "Ruby Symbols",
+    scope: "constant.language.symbol.ruby",
+    settings: {
+      foreground: "#7fdbca"
+    }
+  },
+]
+
+const tcHtml = [
+  {
+    name: "HTML Tag names",
+    scope: [
+      "entity.name.tag",
+      "meta.tag.other.html",
+      "meta.tag.other.js",
+      "meta.tag.other.tsx",
+      "entity.name.tag.tsx",
+      "entity.name.tag.js",
+      "entity.name.tag",
+      "meta.tag.js",
+      "meta.tag.tsx",
+      "meta.tag.html"
+    ],
+    settings: {
+      foreground: colorHtmlTag.hex(),
+      fontStyle: ""
+    }
+  },
+  {
+    name: "@ : = for html",
+    scope: [
+      "punctuation.separator.key-value.html",
+      "punctuation.definition.tag.html"
+    ],
+    settings: {
+      foreground: colorRegularText.hex()
+    }
+  },
+
+  {
+    name: "ID Attribute Name in HTML",
+    scope: "entity.other.attribute-name.id.html",
+    settings: {
+      foreground: "#addb67"
+    }
+  },
+  {
+    name: "HTML Punctuation Definition Tag",
+    scope: "punctuation.definition.tag.html",
+    settings: {
+      foreground: "#6ae9f0"
+    }
+  },
+  {
+    name: "HTML Doctype",
+    scope: "meta.tag.sgml.doctype.html",
+    settings: {
+      foreground: colorSpecialWord.hex(),
+      fontStyle: "italic"
+    }
+  },
+]
+
+const tcNormalize = [
+  {
+    name: "normalize font style of certain components",
+    scope: [
+      "meta.property-list.css meta.property-value.css variable.other.less",
+      "meta.property-list.scss variable.scss",
+      "meta.property-list.sass variable.sass",
+      "meta.brace",
+      "keyword.operator.operator",
+      "keyword.operator.or.regexp",
+      "keyword.operator.expression.in",
+      "keyword.operator.relational",
+      "keyword.operator.assignment",
+      "keyword.operator.comparison",
+      "keyword.operator.type",
+      "keyword.operator",
+      "keyword",
+      "punctuation.definintion.string",
+      "punctuation",
+      "variable.other.readwrite.js",
+      "storage.type",
+      "source.css",
+      "string.quoted"
+    ],
+    settings: {
+      fontStyle: ""
+    }
+  },
+]
+
+const tcOthers = [
+   {
+    name: "YAML Entity Name Tags",
+    scope: "entity.name.tag.yaml",
+    settings: {
+      foreground: "#7fdbca"
+    }
+  },
+  {
+    name: "RegExp String",
+    scope: ["string.regexp", "string.regexp keyword.other"],
+    settings: {
+      foreground: colorString.hex()
+    }
+  }
+]
+
+const tcStylesheets = [
+  {
+    name: "sass test",
+    scope:[
+      "keyword.other.parent-selector",
+      "entity.name.function.sass",
+      "keyword.control.interpolation.sass",
+      "keyword.other.important.css.sass",
+      "keyword.other.reserved.sass",
+      "entity.other.pseudo-classs",
+      "support.function.sass"
+    ],
+    settings:{
+      foreground: colorTestC.hex()
+    }
+  },
+
+  {
+    name: "css and pug ID selector",
+    scope:[
+      "entity.other.attribute-name.id",
+      "entity.other.attribute-name.id.css",
+      "entity.other.attribute-name.id.scss"
+    ],
+    settings:{
+      foreground: colorCssId.hex()
+    }
+  },
+  {
+    name: "css class selector",
+    scope:[
+      "entity.other.attribute-name.class.css"
+    ],
+    settings:{
+      foreground: colorCssClass.hex()
+    }
+  },
+  {
+    name: "Tag selectors and &",
+    scope: [
+      "entity.name.tag.css",
+      "entity.name.tag.less",
+      "entity.name.tag.custom.css",
+      "entity.name.tag.scss",
+      "entity.name.tag.sass"
+    ],
+    settings: {
+      foreground: colorCssTag.hex(),
+      fontStyle: ""
+    }
+  },
+  {
+    name: "Property name stylesheets",
+    scope:[
+      "support.type.property-name.css"
+    ],
+    settings:{
+      foreground: colorCssProperty.hex()
+    }
+  },
+  {
+    name: "Values in css",
+    scope: ["support.constant.property-value.css"],
+    settings: {
+      foreground: colorCssValue.hex()
+    }
+  },
+  {
+    name: "stylesheet numbers",
+    scope: ["constant.numeric.css", "punctuation.definition.constant.css"],
+    settings: {
+      foreground: colorRegularText.hex()
+    }
+  },
+  {
+    name: "Stylesheet Units",
+    scope: [
+      "keyword.other.unit",
+      "keyword.other.unit.css",
+      "keyword.other.unit.scss",
+      "keyword.other.unit.sass"
+    ],
+    settings: {
+      foreground: colorCssUnits.hex()
+    }
+  },
+  {
+    // Stylesheets special words: (orientation),(min-monochrome),(color),
+    // (min-aspect-ratio), (min-resolution)
+    name: "Support Type Property Name & entity name tags",
+    scope: [
+      "support.type.vendor.property-name",
+      "support.constant.vendor.property-value",
+      "support.type.property-name",
+      "meta.property-list entity.name.tag"
+    ],
+    settings: {
+      foreground: colorCssSpecialWord.hex(),
+      fontStyle: ""
+    }
+  },
+  {
+    name: "SCSS & SASS Variable",
+    scope: [
+      "variable.scss",
+      "variable.sass",
+      "variable.parameter.scss",
+      "variable.parameter.sass"
+    ],
+    settings: {
+      foreground: colorVariable.hex()
+    }
+  },
+
+
+  {
+    // css !importatnt, @
+    // keywords for sass
+    name: "Keyword",
+    scope: [
+      "punctuation.accessor",
+      "keyword",
+      "punctuation.definition.keyword",
+      "keyword.operator.css",
+      "keyword.operator.scss",
+      //@mixin
+      "keyword.control.at-rule.scss",
+      "keyword.control.at-rule.css.sass",
+      "keyword.control.at-rule.less",
+      //!important
+      "keyword.other.important.css",
+      //&
+      "meta.property-list entity.name.tag.reference",
+    ],
+    settings: {
+      foreground: colorSpecialWord.hex(),
+      // foreground: colorTestB.hex(),
+      fontStyle: "italic"
+    }
+  },
+  {
+    name: "Wildcard(*) selector in Stylesheets",
+    scope: [
+      "entity.name.tag.wildcard.css",
+      "entity.name.tag.wildcard.less",
+      "entity.name.tag.wildcard.scss",
+      "entity.name.tag.wildcard.sass"
+    ],
+    settings: {
+      foreground: colorFunctionName.hex()
+    }
+  },
+  {
+    name: "Attribute Name for CSS and SCSS",
+    scope: [
+      "meta.attribute-selector.css entity.other.attribute-name.attribute",
+      "meta.attribute-selector.scss entity.other.attribute-name.attribute",
+      "meta.attribute-selector.sass entity.other.attribute-name.attribute",
+      "meta.attribute-selector.less entity.other.attribute-name.attribute",
+      "variable.other.readwrite.js",
+
+
+      // "entity.other.attribute-name.css.sass",
+      // "keyword.operator.attribute-selector.css.sass",
+      // "meta.attribute-selector"
+      "meta.attribute-selector"
+    ],
+    settings: {
+      foreground: colorCssAttribute.hex(),
+
+      // foreground: colorTestC.hex()
+    }
+  },
+  {
+    name: "Variables in SASS At-Rules",
+    scope: [
+      "source.css.scss meta.at-rule variable",
+      "source.css.sass meta.at-rule variable"
+    ],
+    settings: {
+      foreground: "#82AAFF",
+      foreground: colorTestB.hex()
+    }
+  },
+]
+
+const tcJson = [
+  {
+    name: "JSON Property Names",
+    scope: "support.type.property-name.json",
+    settings: {
+      foreground: colorVariable.hex()
+    }
+  },
+  {
+    name: "JSON Support Constants",
+    scope: "support.constant.json",
+    settings: {
+      foreground: colorTestA.hex()
+    }
+  },
+  {
+    name: "JSON Property values (string)",
+    scope: "meta.structure.dictionary.value.json string.quoted.double",
+    settings: {
+      foreground: colorString.hex()
+    }
+  },
+  {
+    name: "Strings in JSON values",
+    scope: "string.quoted.double.json punctuation.definition.string.json",
+    settings: {
+      foreground: colorString.hex()
+    }
+  },
+  {
+    name: "Specific JSON Property values like null",
+    scope:
+      "meta.structure.dictionary.json meta.structure.dictionary.value constant.language",
+    settings: {
+      foreground: colorContrastText.hex()
+    }
+  },
+
+]
+
+const tcPhp = [
+  {
+    name: "PHP Variables",
+    scope: ["variable.other.php", "variable.other.property.php"],
+    settings: {
+      foreground: "#bec5d4"
+    }
+  },
+  {
+    name: "Support Classes in PHP",
+    scope: "support.class.php",
+    settings: {
+      foreground: "#ffcb8b"
+    }
+  },
+  {
+    name: "Punctuations in PHP function calls",
+    scope: "meta.function-call.php punctuation",
+    settings: {
+      foreground: colorRegularText.hex()
+    }
+  },
+  {
+    name: "PHP Global Variables",
+    scope: "variable.other.global.php",
+    settings: {
+      foreground: "#addb67"
+    }
+  },
+  {
+    name: "Declaration Punctuation in PHP Global Variables",
+    scope: "variable.other.global.php punctuation.definition.variable",
+    settings: {
+      foreground: "#addb67"
+    }
+  },
+]
+
+const tcJavascript = [
+  {
+    name: "javascript portotype",
+    scope: ["support.variable.property.js"],
+    settings: {
+      foreground: colorFunctionName.hex()
+    }
+  },
+  {
+    // nn
+    name: "Storage type",
+    scope: "storage.type.function.arrow.js",
+    settings: {
+      fontStyle: ""
+    }
+  },
+  {
+    name: "this word in javascript",
+    scope: ["variable.language.this.js"],
+    settings: {
+      foreground: colorContrastText.hex()
+    }
+  },
+  {
+    name: "JavaScript Classes",
+    scope: "meta.class entity.name.type.class.js",
+    settings: {
+      foreground: colorVariable.hex()
+    }
+  },
+  {
+    name: "JavaScript Method Declaration e.g. `constructor`",
+    scope: "meta.method.declaration storage.type.js",
+    settings: {
+      foreground: colorSpecialWord.hex()
+    }
+  },
+  {
+    name: "JavaScript module imports and exports",
+    scope: [
+      "variable.other.meta.import.js",
+      "meta.import.js variable.other",
+      "variable.other.meta.export.js",
+      "meta.export.js variable.other"
+    ],
+    settings: {
+      foreground: colorVariable.hex(),
+    }
+  },
+  {
+    name: "JavaScript Variable Parameter Function",
+    scope: "variable.parameter.function.js",
+    settings: {
+      foreground: "#7986E7",
+      foreground: colorTestA.hex()
+    }
+  },
+
+  {
+    name: "TypeScript[React] Punctuation Decorators",
+    scope: [
+      "meta.decorator punctuation.decorator.ts",
+      "meta.decorator punctuation.decorator.tsx"
+    ],
+    settings: {
+      foreground: colorPunctuation.hex()
+    }
+  },
+  {
+    name: "TypeScript[React] Variables and Object Properties",
+    scope: [
+      "variable.other.readwrite.alias.ts",
+      "variable.other.readwrite.alias.tsx",
+      "variable.other.readwrite.ts",
+      "variable.other.readwrite.tsx",
+      "variable.other.object.ts",
+      "variable.other.object.tsx",
+      "variable.object.property.ts",
+      "variable.object.property.tsx",
+      "variable.other.ts",
+      "variable.other.tsx",
+      "variable.tsx",
+      "variable.ts"
+    ],
+    settings: {
+      foreground: colorVariable.hex()
+    }
+  },
+  {
+    name: "TypeScript[React] Entity Name Types",
+    scope: ["entity.name.type.ts", "entity.name.type.tsx"],
+    settings: {
+      foreground: "#ffcb8b"
+    }
+  },
+  {
+    name: "TypeScript[React] Node Classes",
+    scope: ["support.class.node.ts", "support.class.node.tsx"],
+    settings: {
+      foreground: "#82AAFF",
+      foreground: colorTestA.hex()
+    }
+  },
+  {
+    name: "TypeScript[React] Entity Name Types as Parameters",
+    scope: [
+      "meta.type.parameters.ts entity.name.type",
+      "meta.type.parameters.tsx entity.name.type"
+    ],
+    settings: {
+      foreground: colorP_lightest.hex()
+    }
+  },
+  {
+    name: "TypeScript[React] Punctuation Decorators",
+    scope: "meta.tag.js meta.jsx.children.tsx",
+    settings: {
+      foreground: "#82AAFF",
+      foreground: colorTestA.hex()
+    }
+  },
+  {
+    name: "JavaScript Variable Other ReadWrite",
+    scope: ["variable.other.readwrite.js", "variable.parameter"],
+    settings: {
+      foreground: colorVariable.hex()
+    }
+  },
+  {
+    name: "Support Class Component",
+    scope: ["support.class.component.js", "support.class.component.tsx"],
+    settings: {
+      foreground: colorContrastText.hex(),
+      fontStyle: ""
+    }
+  },
+  {
+    name: "@ in decorator in javascript",
+    scope: ["punctuation.decorator.js"],
+    settings: {
+      foreground: colorFunctionName.hex()
+    }
+  },
+  {
+    name: "Text nested in React tags",
+    scope: [
+      "meta.jsx.children",
+      "meta.jsx.children.js",
+      "meta.jsx.children.tsx"
+    ],
+    settings: {
+      foreground: colorRegularText.hex()
+    }
+  },
+  {
+    name: "TypeScript Classes",
+    scope: "meta.class entity.name.type.class.tsx",
+    settings: {
+      foreground: colorVariable.hex()
+    }
+  },
+  {
+    name: "TypeScript Entity Name Type",
+    scope: ["entity.name.type.tsx", "entity.name.type.module.tsx"],
+    settings: {
+      foreground: "#ffcb8b"
+    }
+  },
+  {
+    name: "TypeScript Method Declaration e.g. `constructor`",
+    scope: [
+      "meta.method.declaration storage.type.ts",
+      "meta.method.declaration storage.type.tsx"
+    ],
+    settings: {
+      foreground: "#82AAFF"
+    }
+  },
+  {
+    name: "JavaScript[React] Variable Other Object",
+    scope: [
+      "variable.other.object.js",
+      "variable.other.object.jsx",
+      "variable.object.property.js",
+      "variable.object.property.jsx"
+    ],
+    settings: {
+      foreground: colorVariable.hex()
+    }
+  },
+  {
+    name: "JavaScript Variables",
+    scope: ["variable.js", "variable.other.js"],
+    settings: {
+      foreground: colorVariable.hex(),
+    }
+  },
+  {
+    name: "JavaScript Entity Name Type",
+    scope: ["entity.name.type.js", "entity.name.type.module.js"],
+    settings: {
+      foreground: colorContrastText.hex(),
+      fontStyle: ""
+    }
+  },
+  {
+    name: "JavaScript Support Classes",
+    scope: "support.class.js",
+    settings: {
+      foreground: colorVariable.hex()
+    }
+  },
+]
+
+
+
+
+
+const theme = {
   name: "Mao",
   type: "dark",
   colors: {
-    contrastActiveBorder: null,
-    contrastBorder: null,
-    focusBorder: colorP_lighten.hex(),
-    foreground: colorText.hex(),
-    "widget.shadow": colorPrincipal.hex(),
-    "selection.background": colorInfo.hex(),
-    errorForeground: colorDanger.hex(),
-
-    // Editor in general
-    "editor.background": colorPrincipal.hex(),
-    "editor.foreground": colorTestA.hex(),
-    "editorLineNumber.foreground": colorP_lighten.hex(),
-    "editorLineNumber.activeForeground": colorP_lightest.hex(),
-    "editorCursor.foreground": contrastColorLight.hex(),
-    "editorLink.activeForeground": null,
-
-    // cuando selecciono con el mouse
-    "editor.selectionBackground": colorSelection.hex(),
-    "editor.selectionForeground": colorText.hex(),
-
-    // las palabras iguales a la seleccion
-    "editor.selectionHighlightBackground": colorSelectionHighlight.hex(),
-
-    // la seleccion cuando salgo de la ventana donde estoy
-    "editor.inactiveSelectionBackground": colorSelectionInactive.hex(),
-
-    // cuando ubico el cursor en el medio de una palabra y vscode la selecciona
-    "editor.wordHighlightBackground": colorHoverHiglight.hex(),
-
-    // cuando ubico el puntero encima de una palabra
-    "editor.hoverHighlightBackground": colorHoverHiglight.hex(),
-
-    // cuando selecciono parcialmente una palabra y vscode selecciona todo
-    "editor.wordHighlightStrongBackground": colorWordHighlightStrong.hex(),
-
-    // palabra seleccionada por el finder
-    "editor.findMatchBackground": colorFindMatch.hex(),
-
-    // todas las palabras encontradas por el finder
-    "editor.findMatchHighlightBackground": colorFindHighlight.hex(),
-    "editor.findRangeHighlightBackground": null,
-
-    // color de la linea en la que el cursor esta ubicado
-    "editor.lineHighlightBackground": colorLineHiglight.hex(),
-    "editor.lineHighlightBorder": null,
-
-    // fondo de la linea completa cuando se busca
-    "editor.rangeHighlightBackground": colorRangeHiglight.hex(),
-    "editor.rangeHighlightForeground": colorText.hex(),
-
-    // cuando me paro en un bracket me muestar los dos con este color
-    "editorBracketMatch.background": colorP_lighten.hex(),
-    "editorBracketMatch.border": null,
-
-    // cuando se activa la viusualizacion de los whitespaces
-    "editorWhitespace.foreground": colorP_lighten.hex(),
-
-    // linea vertical que indica la indentacion
-    "editorIndentGuide.background": colorP_lighten.hex(),
-    "editorIndentGuide.activeBackground": colorP_lightest.hex(),
-
-    // descripcciones en el welcome page
-    "descriptionForeground": colorText.hex(),
-
-    // vscode codelens
-    "editorCodeLens.foreground": colorInfoLight.hex(),
-
-    "editorOverviewRuler.currentContentForeground": contrastColor.hex(),
-    "editorOverviewRuler.incomingContentForeground": contrastColor.hex(),
-    "editorOverviewRuler.commonContentForeground": contrastColor.hex(),
-
-    // editor states
-    "editorError.foreground": colorDanger.hex(),
-    "editorError.border": null,
-    "editorWarning.foreground": colorWarning.hex(),
-    "editorWarning.border": null,
-
-    // el editor gutter es la parte donde esta el numero de linea y las indicaciones de git dentro del archivo
-    "editorGutter.background": colorPrincipal.hex(),
-    "editorGutter.modifiedBackground": colorWarning.hex(),
-    "editorGutter.addedBackground": colorSuccesLight.hex(),
-    "editorGutter.deletedBackground": colorDanger.hex(),
-
-    // el widget como el find and replace
-    "editorWidget.border": colorP_lightest.hex(),
-    "editorWidget.background": colorP_lighten.hex(),
-
-    // el cuadro que sale cuando estamos escribiendo proponiendo opciones
-    "editorSuggestWidget.background": colorP_light.hex(),
-    "editorSuggestWidget.border": colorP_lighten.hex(),
-    "editorSuggestWidget.foreground": colorP_lightest.hex(),
-    "editorSuggestWidget.highlightForeground": colorText.hex(),
-    "editorSuggestWidget.selectedBackground": colorP_lighter.hex(),
-    "editorHoverWidget.background": colorPrincipal.hex(),
-    "editorHoverWidget.border": colorP_lightest.hex(),
-
-
-    "editorMarkerNavigation.background": colorP_lighten.hex(),
-    "editorMarkerNavigationInfo.background": colorInfo.hex(),
-    "editorMarkerNavigationError.background": colorDanger.hex(),
-    "editorMarkerNavigationWarning.background": colorWarning.hex(),
-
-    // Botones
-    "button.foreground": colorWhite.hex(),
-    "button.background": contrastColor.hex(),
-    "button.hoverBackground": contrastColorDark.hex(),
-
-    // Botones de las extenciones
-    "extensionButton.prominentForeground": colorWhite.hex(),
-    "extensionButton.prominentBackground": contrastColor.hex(),
-    "extensionButton.prominentHoverBackground": contrastColorDark.hex(),
-
-    // inputs
-    // Dropdowns
-    "dropdown.background": colorPrincipal.hex(),
-    "dropdown.border": colorP_lighten.hex(),
-    "dropdown.foreground": colorText.hex(),
-    // Inputs text
-    "input.background": colorP_light.hex(),
-    "input.border": colorP_lighten.hex(),
-    "input.foreground": colorText.hex(),
-    "input.placeholderForeground": colorP_lightest.hex(),
-    // Input Select
-    "inputOption.activeBorder": colorP_lightest.hex(),
-    // Input Validation
-    "inputValidation.errorBackground": colorDangerDark.hex(),
-    "inputValidation.errorBorder": colorDanger.hex(),
-    "inputValidation.infoBackground": colorInfoDark.hex(),
-    "inputValidation.infoBorder": colorInfo.hex(),
-    "inputValidation.warningBackground": colorWarningDark.hex(),
-    "inputValidation.warningBorder": colorWarning.hex(),
-
-    // Scrollbar
-    "scrollbar.shadow": null,
-    "scrollbarSlider.activeBackground": colorP_lighten.hex(),
-    "scrollbarSlider.background": colorP_lighten.hex(),
-    "scrollbarSlider.hoverBackground": colorP_lighten.hex(),
-
-    // Badges are small information labels, for example, search results count.
-    "badge.background": colorP_lightest.hex(),
-    "badge.foreground": colorWhite.hex(),
-
-    // Breadcrumbs
-    "breadcrumb.foreground": colorInfo.hex(),
-    "breadcrumb.focusForeground": colorInfoLight.hex(),
-    "breadcrumb.activeSelectionForeground": colorWhite.hex(),
-    "breadcrumbPicker.background": colorP_darken.hex(),
-
-    // Barra de la izquierda
-    // Colors for list and trees like the File Explorer.
-    "list.activeSelectionBackground": colorP_lighter.hex(),
-    "list.activeSelectionForeground": colorWhite.hex(),
-    "list.invalidItemForeground": contrastColorDark.hex(),
-    "list.dropBackground": colorPrincipal.hex(),
-    "list.focusBackground": colorPrincipal.hex(),
-    "list.focusForeground": colorWhite.hex(),
-    "list.highlightForeground": colorWhite.hex(),
-    "list.hoverBackground": colorPrincipal.hex(),
-    "list.hoverForeground": colorWhite.hex(),
-    "list.inactiveSelectionBackground": colorP_light.hex(),
-    "list.inactiveSelectionForeground": colorP_lightest.hex(),
-
-    // Activity bar es la barra de iconos de la derecha
-    "activityBar.background": colorPrincipal.hex(),
-    "activityBar.dropBackground": colorP_lightest.hex(),
-    "activityBar.foreground": colorP_lightest.hex(),
-    "activityBar.border": colorPrincipal.hex(),
-    "activityBarBadge.background": colorP_lighter.hex(),
-    "activityBarBadge.foreground": colorWhite.hex(),
-
-    // Es la barra de la izquierda que contiene el tree view y el explorer
-    "sideBar.background": colorPrincipal.hex(),
-    "sideBar.foreground": colorText.hex(),
-    "sideBar.border": colorP_lighten.hex(),
-    "sideBarTitle.foreground": colorP_lightest.hex(),
-    "sideBarSectionHeader.background": colorPrincipal.hex(),
-    "sideBarSectionHeader.foreground": colorP_lightest.hex(),
-
-    // EditorGroup es la agrupacion de archivos abiertos
-    "editorGroup.background": colorP_lighter.hex(),
-    "editorGroup.border": colorP_lighten.hex(),
-    "editorGroup.dropBackground": contrastColor.hex(),
-    "editorGroupHeader.noTabsBackground": colorPrincipal.hex(),
-    "editorGroupHeader.tabsBackground": colorPrincipal.hex(),
-    "editorGroupHeader.tabsBorder": colorP_lighten.hex(),
-
-    // Las pestanas de los archivos abiertos
-    "tab.activeBackground": colorP_light.hex(),
-    "tab.activeForeground": colorText.hex(),
-    "tab.activeBorder": colorP_lightest.hex(),
-    "tab.border": colorP_light.hex(),
-    "tab.inactiveBackground": colorP_darken.hex(),
-    "tab.inactiveForeground": colorText.hex(),
-    "tab.unfocusedActiveForeground": colorText.hex(),
-    "tab.unfocusedActiveBorder": colorP_lighter.hex(),
-    "tab.unfocusedInactiveForeground": colorText.hex(),
-
-    "menubar.selectionForeground": colorWhite.hex(),
-    "menubar.selectionBackground": colorP_darken.hex(),
-    "menubar.selectionBorder": null,
-    "menu.foreground": colorP_lightest.hex(),
-    "menu.background": colorP_darken.hex(),
-    "menu.selectionForeground": colorWhite.hex(),
-    "menu.selectionBackground": colorP_lighter.hex(),
-    "menu.selectionBorder": null,
-    "menu.separatorBackground": colorP_lighter.hex(),
-
-    "diffEditor.insertedTextBackground": colorSuccesLight.hex(),
-    "diffEditor.insertedTextBorder": colorSuccesLight.hex(),
-    "diffEditor.removedTextBackground": colorDanger.hex(),
-    "diffEditor.removedTextBorder": colorDanger.hex(),
-
-    "debugExceptionWidget.background": colorPrincipal.hex(),
-    "debugExceptionWidget.border": colorP_lightest.hex(),
-
-    "peekView.border": colorP_lightest.hex(),
-    "peekViewEditor.background": colorPrincipal.hex(),
-    "peekViewEditor.matchHighlightBackground": contrastColor.hex(),
-    "peekViewResult.background": colorPrincipal.hex(),
-    "peekViewResult.fileForeground": colorP_lightest.hex(),
-    "peekViewResult.lineForeground": colorP_lightest.hex(),
-    "peekViewResult.matchHighlightBackground": colorWhite.hex(),
-    "peekViewResult.selectionBackground": colorP_lighten.hex(),
-    "peekViewResult.selectionForeground": colorP_lightest.hex(),
-    "peekViewTitle.background": colorPrincipal.hex(),
-    "peekViewTitleDescription.foreground": colorP_lightest.hex(),
-    "peekViewTitleLabel.foreground": colorP_lightest.hex(),
-
-    "merge.currentHeaderBackground": colorP_lightest.hex(),
-    "merge.currentContentBackground": null,
-    "merge.incomingHeaderBackground": contrastColor.hex(),
-    "merge.incomingContentBackground": null,
-    "merge.border": null,
-
-    "panel.background": colorPrincipal.hex(),
-    "panel.border": colorP_lighten.hex(),
-    "panelTitle.activeBorder": colorP_lightest.hex(),
-    "panelTitle.activeForeground": colorWhite.hex(),
-    "panelTitle.inactiveForeground": colorText.hex(),
-
-    "statusBar.background": colorPrincipal.hex(),
-    "statusBar.foreground": colorP_lightest.hex(),
-    "statusBar.border": colorP_lighten.hex(),
-
-    "statusBar.debuggingBackground": colorWarning.hex(),
-    "statusBar.debuggingForeground": colorP_darken.hex(),
-    "statusBar.debuggingBorder": colorWarning.hex(),
-
-    "statusBar.noFolderForeground": null,
-    "statusBar.noFolderBackground": colorPrincipal.hex(),
-    "statusBar.noFolderBorder": contrastColor.hex(),
-    "statusBarItem.activeBackground": colorP_lighten.hex(),
-    "statusBarItem.hoverBackground": colorP_lighten.hex(),
-    "statusBarItem.prominentBackground": colorP_lighten.hex(),
-    "statusBarItem.prominentHoverBackground": colorP_lighten.hex(),
-
-    "titleBar.activeBackground": colorPrincipal.hex(),
-    "titleBar.activeForeground": colorText.hex(),
-    "titleBar.inactiveBackground": colorP_darken.hex(),
-    "titleBar.inactiveForeground": null,
-
-    "notifications.background": colorPrincipal.hex(),
-    "notifications.foreground": colorWhite.hex(),
-    "notificationLink.foreground": contrastColor.hex(),
-
-    "pickerGroup.foreground": contrastColorLight.hex(),
-    "pickerGroup.border": colorPrincipal.hex(),
-
-    "terminal.ansiWhite": colorWhite.hex(),
-    "terminal.ansiBlack": colorPrincipal.hex(),
-    "terminal.ansiBlue": "#82AAFF",
-    "terminal.ansiCyan": "#21c7a8",
-    "terminal.ansiGreen": "#22da6e",
-    "terminal.ansiMagenta": colorEspecialWord.hex(),
-    "terminal.ansiRed": colorDanger.hex(),
-    "terminal.ansiYellow": "#addb67",
-    "terminal.ansiBrightWhite": colorWhite.hex(),
-    "terminal.ansiBrightBlack": "#575656",
-    "terminal.ansiBrightBlue": "#82AAFF",
-    "terminal.ansiBrightCyan": "#7fdbca",
-    "terminal.ansiBrightGreen": "#22da6e",
-    "terminal.ansiBrightMagenta": colorEspecialWord.hex(),
-    "terminal.ansiBrightRed": colorDanger.hex(),
-    "terminal.ansiBrightYellow": colorWarningLight.hex(),
-
-    "debugToolBar.background": colorP_darken.hex(),
-    "debugToolBar.border": null,
-
-    "welcomePage.buttonBackground": colorPrincipal.hex(),
-    "welcomePage.buttonHoverBackground": colorPrincipal.hex(),
-    "walkThrough.embeddedEditorBackground": colorPrincipal.hex(),
-
-
-    // Git colors
-    "gitDecoration.addedResourceForeground": colorSuccesLight.hex(),
-    "gitDecoration.modifiedResourceForeground": colorWarningLight.hex(),
-    "gitDecoration.deletedResourceForeground": colorDanger.hex(),
-    "gitDecoration.untrackedResourceForeground": colorSuccesLight.hex(),
-    "gitDecoration.ignoredResourceForeground": colorP_lighter.hex(),
-    "gitDecoration.conflictingResourceForeground": colorWarningLight.hex(),
-
-    "source.elm": colorP_lightest.hex(),
-
-    "editorRuler.foreground": colorP_lighten.hex(),
-
-    // Background color for the progress bar shown for long running operations.
-    "progress.background": contrastColor.hex()
+    ...themeColors
   },
   tokenColors: [
-    {
-      name: "Changed",
-      scope: [
-        "markup.changed",
-        "meta.diff.header.git",
-        "meta.diff.header.from-file",
-        "meta.diff.header.to-file"
-      ],
-      settings: {
-        foreground: colorInfoLight.hex(),
-        fontStyle: "italic"
-      }
-    },
-    {
-      name: "Deleted",
-      scope: "markup.deleted.diff",
-      settings: {
-        foreground: colorDanger.hex(),
-        fontStyle: "italic"
-      }
-    },
-    {
-      name: "Inserted",
-      scope: "markup.inserted.diff",
-      settings: {
-        foreground: colorSuccesLight.hex(),
-        fontStyle: "italic"
-      }
-    },
-    {
-      name: "Global settings",
-      settings: {
-        background: colorPrincipal.hex(),
-        foreground: colorText.hex()
-      }
-    },
+    ...tcGlobalSettings,
+    ...tcGit,
+    ...tcStorageNames,
+    ...tcStrings,
+
+    ...tcPunctuation,
+    ...tcComments,
+
+    ...tcStylesheets,
+
+    ...tcJavascript,
+    ...tcHtml,
+    ...tcJson,
+    ...tcPython,
+    ...tcCoffescript,
+    ...tcCsharp,
+    ...tcElixir,
+    ...tcMarckdown,
+    ...tcGo,
+    ...tcRuby,
+    ...tcPhp,
+    ...tcOthers,
+
+    ...tcNormalize,
+    
 
     {
       name: "Support Constant Math",
       scope: "support.constant.math",
       settings: {
-        // test
         foreground: colorTestB.hex()
       }
     },
@@ -438,27 +1682,6 @@ let theme = {
       settings: {
         foreground: colorNumber.hex(),
         fontStyle: ""
-      }
-    },
-    {
-      name: "Built-in constant",
-      scope: [
-        "constant.language",
-        "punctuation.definition.constant",
-        "variable.other.constant"
-      ],
-      settings: {
-        foreground: colorVariable.hex()
-      }
-    },
-    {
-      name: "User-defined constant",
-      scope: [
-        "constant.character",
-        "constant.other"
-      ],
-      settings: {
-        foreground: colorVariable.hex()
       }
     },
     {
@@ -475,35 +1698,33 @@ let theme = {
         foreground: colorP_lightest.hex()
       }
     },
+
+
+
+
+
+    
+
+
+
+
+
+
+
+    // SPECIAL WORDS
+
+    // BLUE COLOR
+
     {
-      name: "Variable",
-      scope: "variable",
-      settings: {
-        foreground: colorVariable.hex()
-      }
-    },
-    {
-      name: "Storage",
+      name: "Storage type",
       scope: [
-        "storage",
-        "meta.class meta.method.declaration meta.var.expr storage.type.js",
-        "storage.type.property.js",
-        "storage.type.property.ts",
-        "storage.type.property.tsx"
+        // var let const class function type 
+        "storage.type",
+        // @param
+        "punctuation.definition.block.tag"
       ],
       settings: {
-        foreground: colorVariable.hex(),
-        fontStyle: "italic"
-      }
-    },
-    {
-      name: "object key",
-      scope: [
-        "meta.var.expr",
-        "meta.object-literal.key"
-      ],
-      settings:{
-        foreground: colorRegularText.hex()
+        foreground: colorFunction.hex()
       }
     },
     {
@@ -515,7 +1736,158 @@ let theme = {
         foreground: colorFunction.hex()
       }
     },
+    
+
+
+    //----------------------------------
+
+
+    // PURPLE COLOR
+
+
     {
+      name: "Entity Name Tag Custom",
+      scope: "entity.name.tag.custom",
+      settings: {
+        foreground: colorSpecialWord.hex()
+      }
+    },
+    {
+      name: "Meta Delimiter Period",
+      scope: "meta.delimiter.period",
+      settings: {
+        foreground: colorSpecialWord.hex(),
+        fontStyle: "italic"
+      }
+    },
+    {
+      name: "Meta Selector",
+      scope: "meta.selector",
+      settings: {
+        foreground: colorSpecialWord.hex(),
+        fontStyle: "italic"
+      }
+    },
+    {
+      name: "Doctypes",
+      scope: ["entity.name.tag.doctype", "meta.tag.sgml.doctype"],
+      settings: {
+        foreground: colorSpecialWord.hex(),
+        fontStyle: "italic"
+      }
+    },
+    {
+      name: "Keyword Operator Logical",
+      scope: "keyword.operator.logical",
+      settings: {
+        foreground: colorSpecialWord.hex(),
+        fontStyle: ""
+      }
+    },
+    {
+      name:
+        "Keyword Operator Comparison, imports, returns and Keyword Operator Ruby",
+      scope: [
+        "keyword.operator.comparison",
+        "keyword.control.flow.js",
+        "keyword.control.flow.ts",
+        "keyword.control.flow.tsx",
+        "keyword.control.ruby",
+        "keyword.control.module.ruby",
+        "keyword.control.class.ruby",
+        "keyword.control.def.ruby",
+        "keyword.control.loop.js",
+        "keyword.control.loop.ts",
+        "keyword.control.import.js",
+        "keyword.control.import.ts",
+        "keyword.control.import.tsx",
+        "keyword.control.from.js",
+        "keyword.control.from.ts",
+        "keyword.control.from.tsx"
+      ],
+      settings: {
+        foreground: colorSpecialWord.hex(),
+        fontStyle: "italic"
+      }
+    },
+    {
+      name: "Keyword Control Conditional",
+      scope: [
+        "keyword.control.conditional.js",
+        "keyword.control.conditional.ts",
+        "keyword.control.switch.js",
+        "keyword.control.switch.ts"
+      ],
+      settings: {
+        foreground: colorSpecialWord.hex(),
+        fontStyle: ""
+      }
+    },
+
+    //----------------------------------
+
+
+    // CYAN COLOR
+    {
+      name: "Variable Parameter Function",
+      scope: "variable.parameter.function",
+      settings: {
+        foreground: colorFunctionName.hex(),
+        fontStyle: ""
+      }
+    },
+    {
+      name: "Meta Property Name",
+      scope: "meta.property-name",
+      settings: {
+        foreground: colorFunctionName.hex()
+      }
+    },
+    {
+      name: "Keyword Control Operator",
+      scope: "keyword.control.operator",
+      settings: {
+        foreground: colorFunctionName.hex()
+      }
+    },
+    {
+      name: "Entity Name Function",
+      scope: ["entity.name.function"],
+      settings: {
+        foreground: colorFunctionName.hex(),
+        fontStyle: "italic"
+      }
+    },
+    {
+      name:
+        "Support Constant, `new` keyword, Special Method Keyword, `debugger`, other keywords",
+      scope: [
+        "support.constant",
+        "keyword.other.special-method",
+        "keyword.other.new",
+        "keyword.other.debugger",
+        "keyword.control"
+      ],
+      settings: {
+        foreground: colorFunctionName.hex()
+      }
+    },
+    {
+      name: "Support Function",
+      scope: "support.function",
+      settings: {
+        foreground: colorFunctionName.hex()
+      }
+    },
+
+
+
+
+
+
+
+    {
+      // code like tilde
       name: "entity names",
       scope: [
         "entity.name.type"
@@ -535,40 +1907,6 @@ let theme = {
       }
     },
     {
-      name: "Storage type",
-      scope: [
-        "storage.type",
-        // @param
-        "punctuation.definition.block.tag"
-      ],
-      settings: {
-        foreground: colorFunction.hex()
-      }
-    },
-    {
-      name: "Class name",
-      scope: ["entity.name.class", "meta.class entity.name.type.class"],
-      settings: {
-        foreground: colorVariable.hex()
-      }
-    },
-    {
-      name: "Inherited class",
-      scope: "entity.other.inherited-class",
-      settings: {
-        foreground: colorVariable.hex(),
-        foreground: colorTestB.hex()
-      }
-    },
-    {
-      name: "Function name",
-      scope: "entity.name.function",
-      settings: {
-        foreground: colorParameter.hex(),
-        fontStyle: "italic"
-      }
-    },
-    {
       name: "Meta Tag",
       scope: ["punctuation.definition.tag", "meta.tag"],
       settings: {
@@ -582,13 +1920,6 @@ let theme = {
       settings: {
         fontStyle: "italic",
         foreground: colorTagAttribute.hex()
-      }
-    },
-    {
-      name: "Entity Name Tag Custom",
-      scope: "entity.name.tag.custom",
-      settings: {
-        foreground: colorEspecialWord.hex()
       }
     },
     {
@@ -697,6 +2028,13 @@ let theme = {
         foreground: colorTestB.hex()
       }
     },
+
+
+
+
+
+
+
     {
       name: "Null and undefined",
       scope: [
@@ -708,47 +2046,29 @@ let theme = {
       }
     },
     {
-      name: "Meta Delimiter Period",
-      scope: "meta.delimiter.period",
-      settings: {
-        foreground: colorEspecialWord.hex(),
-        fontStyle: "italic"
-      }
-    },
-    {
       name: "Boolean",
       scope: "constant.language.boolean",
       settings: {
         foreground: colorBoolean.hex()
       }
     },
+
+
+
+
+
+
+
+
+
+
+
+
     {
       name: "Object Comma",
       scope: "object.comma",
       settings: {
         foreground: colorWhite.hex()
-      }
-    },
-    {
-      name: "Variable Parameter Function",
-      scope: "variable.parameter.function",
-      settings: {
-        foreground: colorParameter.hex(),
-        fontStyle: ""
-      }
-    },
-    {
-      // property sass
-      name: "Support Type Property Name & entity name tags",
-      scope: [
-        "support.type.vendor.property-name",
-        "support.constant.vendor.property-value",
-        "support.type.property-name",
-        "meta.property-list entity.name.tag"
-      ],
-      settings: {
-        foreground: colorParameter.hex(),
-        fontStyle: ""
       }
     },
     {
@@ -768,146 +2088,11 @@ let theme = {
       }
     },
     {
-      name: "Meta Selector",
-      scope: "meta.selector",
-      settings: {
-        foreground: colorEspecialWord.hex(),
-        fontStyle: "italic"
-      }
-    },
-    {
-      // id in css and pug
-      name: "Entity Other Attribute Name Id",
-      scope: "entity.other.attribute-name.id",
-      settings: {
-        foreground: colorFunction.hex()
-      }
-    },
-    {
-      name: "Meta Property Name",
-      scope: "meta.property-name",
-      settings: {
-        foreground: colorParameter.hex()
-      }
-    },
-    {
-      name: "Doctypes",
-      scope: ["entity.name.tag.doctype", "meta.tag.sgml.doctype"],
-      settings: {
-        foreground: colorEspecialWord.hex(),
-        fontStyle: "italic"
-      }
-    },
-    {
-      name: "Keyword Control Operator",
-      scope: "keyword.control.operator",
-      settings: {
-        foreground: colorParameter.hex()
-      }
-    },
-    {
-      name: "Keyword Operator Logical",
-      scope: "keyword.operator.logical",
-      settings: {
-        foreground: colorEspecialWord.hex(),
-        fontStyle: ""
-      }
-    },
-    {
-      name: "Variable Instances",
-      scope: [
-        "variable.instance",
-        "variable.other.instance",
-        "variable.readwrite.instance",
-        "variable.other.readwrite.instance",
-        "variable.other.property"
-      ],
-      settings: {
-        foreground: colorVariableInstance.hex(),
-      }
-    },
-    {
       name: "Variable Property Other object property",
       scope: ["variable.other.object.property"],
       settings: {
-        foreground: colorVariableInstance.hex(),
+        foreground: colorVariableProperty.hex(),
         fontStyle: "italic"
-      }
-    },
-    {
-      name: "Variable Property Other object",
-      scope: ["variable.other.object.js"],
-      settings: {
-        fontStyle: ""
-      }
-    },
-    {
-      name: "Entity Name Function",
-      scope: ["entity.name.function"],
-      settings: {
-        foreground: colorParameter.hex(),
-        fontStyle: "italic"
-      }
-    },
-    {
-      name:
-        "Keyword Operator Comparison, imports, returns and Keyword Operator Ruby",
-      scope: [
-        "keyword.operator.comparison",
-        "keyword.control.flow.js",
-        "keyword.control.flow.ts",
-        "keyword.control.flow.tsx",
-        "keyword.control.ruby",
-        "keyword.control.module.ruby",
-        "keyword.control.class.ruby",
-        "keyword.control.def.ruby",
-        "keyword.control.loop.js",
-        "keyword.control.loop.ts",
-        "keyword.control.import.js",
-        "keyword.control.import.ts",
-        "keyword.control.import.tsx",
-        "keyword.control.from.js",
-        "keyword.control.from.ts",
-        "keyword.control.from.tsx"
-      ],
-      settings: {
-        foreground: colorEspecialWord.hex(),
-        fontStyle: "italic"
-      }
-    },
-    {
-      name: "Keyword Control Conditional",
-      scope: [
-        "keyword.control.conditional.js",
-        "keyword.control.conditional.ts",
-        "keyword.control.switch.js",
-        "keyword.control.switch.ts"
-      ],
-      settings: {
-        foreground: colorEspecialWord.hex(),
-        fontStyle: ""
-      }
-    },
-    {
-      name:
-        "Support Constant, `new` keyword, Special Method Keyword, `debugger`, other keywords",
-      scope: [
-        "support.constant",
-        "keyword.other.special-method",
-        "keyword.other.new",
-        "keyword.other.debugger",
-        "keyword.control"
-      ],
-      settings: {
-        foreground: colorParameter.hex()
-      }
-    },
-    {
-      name: "Support Function",
-      scope: "support.function",
-      settings: {
-        foreground: "#addb67",
-        foreground: colorParameter.hex()
       }
     },
     {
@@ -988,7 +2173,7 @@ let theme = {
       name: "Italics",
       scope: "italic",
       settings: {
-        foreground: colorEspecialWord.hex(),
+        foreground: colorSpecialWord.hex(),
         fontStyle: "italic"
       }
     },
@@ -1017,137 +2202,6 @@ let theme = {
       }
     },
     {
-      name: "CoffeScript Variable Assignment",
-      scope: "variable.assignment.coffee",
-      settings: {
-        foreground: "#31e1eb"
-      }
-    },
-    {
-      name: "CoffeScript Parameter Function",
-      scope: "variable.parameter.function.coffee",
-      settings: {
-        foreground: colorParameter.hex()
-      }
-    },
-    {
-      name: "CoffeeScript Assignments",
-      scope: "variable.assignment.coffee",
-      settings: {
-        foreground: "#7fdbca"
-      }
-    },
-    {
-      name: "C# Readwrite Variables",
-      scope: "variable.other.readwrite.cs",
-      settings: {
-        foreground: colorVariable.hex()
-      }
-    },
-    {
-      name: "C# Classes & Storage types",
-      scope: ["entity.name.type.class.cs", "storage.type.cs"],
-      settings: {
-        foreground: "#82AAFF",
-      }
-    },
-    {
-      name: "C# Namespaces",
-      scope: "entity.name.type.namespace.cs",
-      settings: {
-        foreground: "#B2CCD6"
-      }
-    },
-    {
-      name: "Elixir Classes",
-      scope: [
-        "source.elixir support.type.elixir",
-        "source.elixir meta.module.elixir entity.name.class.elixir"
-      ],
-      settings: {
-        foreground: "#82AAFF"
-      }
-    },
-    {
-      name: "Elixir Functions",
-      scope: "source.elixir entity.name.function",
-      settings: {
-        foreground: "#addb67"
-      }
-    },
-    {
-      name: "Elixir Constants",
-      scope: [
-        "source.elixir constant.other.symbol.elixir",
-        "source.elixir constant.other.keywords.elixir"
-      ],
-      settings: {
-        foreground: "#82AAFF"
-      }
-    },
-    {
-      name: "Elixir String Punctuations",
-      scope: "source.elixir punctuation.definition.string",
-      settings: {
-        foreground: colorString.hex()
-      }
-    },
-    {
-      name: "Elixir",
-      scope: [
-        "source.elixir variable.other.readwrite.module.elixir",
-        "source.elixir variable.other.readwrite.module.elixir punctuation.definition.variable.elixir"
-      ],
-      settings: {
-        foreground: "#addb67"
-      }
-    },
-    {
-      name: "Elixir Binary Punctuations",
-      scope: "source.elixir .punctuation.binary.elixir",
-      settings: {
-        foreground: colorEspecialWord.hex(),
-        fontStyle: "italic"
-      }
-    },
-    {
-      name: "Go Function Calls",
-      scope: "source.go meta.function-call.go",
-      settings: {
-        foreground: "#DDDDDD"
-      }
-    },
-    {
-      name: "Go Keywords",
-      scope: [
-        "source.go keyword.package.go",
-        "source.go keyword.import.go",
-        "source.go keyword.function.go",
-        "source.go keyword.type.go",
-        "source.go keyword.struct.go",
-        "source.go keyword.interface.go",
-        "source.go keyword.const.go",
-        "source.go keyword.var.go",
-        "source.go keyword.map.go",
-        "source.go keyword.channel.go",
-        "source.go keyword.control.go"
-      ],
-      settings: {
-        foreground: colorEspecialWord.hex(),
-        fontStyle: "italic"
-      }
-    },
-    {
-      name: "Go Constants e.g. nil, string format (%s, %d, etc.)",
-      scope: [
-        "source.go constant.language.go",
-        "source.go constant.other.placeholder.go"
-      ],
-      settings: {
-        foreground: "#ff5874"
-      }
-    },
-    {
       name: "Entity Names in Code Documentations",
       scope: [
         "entity.name.type.instance.jsdoc",
@@ -1167,40 +2221,6 @@ let theme = {
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    // String START
-    {
-      name: "String",
-      scope: "string",
-      settings: {
-        foreground: colorString.hex()
-      }
-    },
-    {
-      name: "String Quoted",
-      scope: [
-        "string.quoted",
-        "variable.other.readwrite.js",
-        "string.quoted.single.js"
-      ],
-      settings: {
-        foreground: colorString.hex()
-      }
-    },
-    {
-      name: "Backtics(``) in Template Strings",
-      scope: "string.template punctuation.definition.string",
-      settings: {
-        foreground: colorString.hex()
-      }
-    },
-    {
-      name: "Punctuation Definition String",
-      scope: "punctuation.definition.string",
-      settings: {
-        foreground: colorString.hex()
-      }
-    },
-    // string END
 
 
 
@@ -1208,196 +2228,6 @@ let theme = {
 
 
 
-
-
-
-
-
-
-
-
-    // Stylesheets START
-    {
-      name: "sass test",
-      scope:[
-        "keyword.other.parent-selector",
-        "entity.name.function.sass",
-        "keyword.control.interpolation.sass",
-        "keyword.other.important.css.sass",
-        "keyword.other.reserved.sass",
-        "entity.other.pseudo-classs",
-        "support.function.sass"
-      ],
-      settings:{
-        foreground: colorTestC.hex()
-      }
-    },
-
-    {
-      name: "css id selector",
-      scope:[
-        "entity.other.attribute-name.id.css",
-        "entity.other.attribute-name.id.scss"
-      ],
-      settings:{
-        foreground: colorCssId.hex()
-      }
-    },
-
-    {
-      name: "css class selector",
-      scope:[
-        "entity.other.attribute-name.class.css"
-      ],
-      settings:{
-        foreground: colorCssClass.hex()
-      }
-    },
-    {
-      name: "Tag selectors and &",
-      scope: [
-        "entity.name.tag.css",
-        "entity.name.tag.less",
-        "entity.name.tag.custom.css",
-        "entity.name.tag.scss",
-        "entity.name.tag.sass"
-      ],
-      settings: {
-        foreground: colorCssTag.hex(),
-        fontStyle: ""
-      }
-    },
-    {
-      name: "Property name stylesheets",
-      scope:[
-        "support.type.property-name.css"
-      ],
-      settings:{
-        foreground: colorCssProperty.hex()
-      }
-    },
-    {
-      name: "Values in css",
-      scope: ["support.constant.property-value.css"],
-      settings: {
-        foreground: colorCssValue.hex()
-      }
-    },
-    {
-      name: "stylesheet numbers",
-      scope: ["constant.numeric.css", "punctuation.definition.constant.css"],
-      settings: {
-        foreground: colorRegularText.hex()
-      }
-    },
-    {
-      name: "Stylesheet Units",
-      scope: [
-        "keyword.other.unit",
-        "keyword.other.unit.css",
-        "keyword.other.unit.scss",
-        "keyword.other.unit.sass"
-      ],
-      settings: {
-        foreground: colorCssUnits.hex()
-      }
-    },
-
-    {
-      name: "SCSS & SASS Variable",
-      scope: [
-        "variable.scss",
-        "variable.sass",
-        "variable.parameter.scss",
-        "variable.parameter.sass"
-      ],
-      settings: {
-        foreground: colorVariable.hex()
-      }
-    },
-
-
-
-
-    
-
-
-
-
-
-
-
-    
-    {
-      // css !importatnt, @
-      // keywords for sass
-      name: "Keyword",
-      scope: [
-        "punctuation.accessor",
-        "keyword",
-        "punctuation.definition.keyword",
-        "keyword.operator.css",
-        "keyword.operator.scss",
-        //@mixin
-        "keyword.control.at-rule.scss",
-        "keyword.control.at-rule.css.sass",
-        "keyword.control.at-rule.less",
-        //!important
-        "keyword.other.important.css",
-        //&
-        "meta.property-list entity.name.tag.reference",
-      ],
-      settings: {
-        foreground: colorEspecialWord.hex(),
-        // foreground: colorTestB.hex(),
-        fontStyle: "italic"
-      }
-    },
-    {
-      name: "Wildcard(*) selector in Stylesheets",
-      scope: [
-        "entity.name.tag.wildcard.css",
-        "entity.name.tag.wildcard.less",
-        "entity.name.tag.wildcard.scss",
-        "entity.name.tag.wildcard.sass"
-      ],
-      settings: {
-        foreground: colorParameter.hex()
-      }
-    },
-    {
-      name: "Attribute Name for CSS and SCSS",
-      scope: [
-        "meta.attribute-selector.css entity.other.attribute-name.attribute",
-        "meta.attribute-selector.scss entity.other.attribute-name.attribute",
-        "meta.attribute-selector.sass entity.other.attribute-name.attribute",
-        "meta.attribute-selector.less entity.other.attribute-name.attribute",
-        "variable.other.readwrite.js",
-
-
-        // "entity.other.attribute-name.css.sass",
-        // "keyword.operator.attribute-selector.css.sass",
-        // "meta.attribute-selector"
-        "meta.attribute-selector"
-      ],
-      settings: {
-        foreground: colorCssAttribute.hex(),
-
-        // foreground: colorTestC.hex()
-      }
-    },
-    {
-      name: "Variables in SASS At-Rules",
-      scope: [
-        "source.css.scss meta.at-rule variable",
-        "source.css.sass meta.at-rule variable"
-      ],
-      settings: {
-        foreground: "#82AAFF",
-        foreground: colorTestB.hex()
-      }
-    },
-    // Stylesheets END
 
 
 
@@ -1429,713 +2259,22 @@ let theme = {
 
 
     
-    // Punctuation Start
-    {
-      name: "Punctuation",
-      scope: [
-        "punctuation",
-        "punctuation.definition",
+    
 
-        // "punctuation.definition.arguments",
-        // "punctuation.definition.array",
-        // "punctuation.definition.list",
-        // "punctuation.definition.tag",
-        // "punctuation.definition.string",
-        // "punctuation.definition.quote",
-        // "punctuation.definition.separator",
-        // "punctuation.definition.range",
-        // "punctuation.definition.namespace",
-        // "punctuation.definition.heading",
-        // "punctuation.definition.entity",
-        // "punctuation.definition.constant",
-        // "punctuation.definition.directive",
-        // "punctuation.definition.parameters",
-        // "punctuation.definition.attribute",
-        // "punctuation.definition.arguments",
-        // "punctuation.definition.annotation",
-        // "punctuation.definition.comment",
-        // "punctuation.definition.annotation-arguments",
-        // "punctuation.definition.binding-pattern",
-        // "punctuation.definition.case-pattern",
-        // "punctuation.definition.template-expression",
-        // "punctuation.definition.block",
+    
 
-        "punctuation.separator",
-        "meta.property-list.css.sass",
-        "punctuation.accessor"
-      ],
-      settings: {
-        foreground: colorPunctuation.hex()
-      }
-    },
-    {
-      name: "Punctuation Definition Parameters",
-      scope: "punctuation.definition.parameters",
-      settings: {
-        foreground: colorPunctuation.hex()
-      }
-    },
-    {
-      name: "Punctuation Tweaks",
-      scope: [
-        "punctuation.terminator.expression",
-        "punctuation.definition.arguments",
-        "punctuation.definition.array",
-        "punctuation.section.array",
-        "meta.array"
-      ],
-      settings: {
-        foreground: colorPunctuation.hex()
-      }
-    },
-    {
-      name: "More Punctuation Tweaks",
-      scope: [
-        "punctuation.definition.list.begin",
-        "punctuation.definition.list.end",
-        "punctuation.separator.arguments",
-        "punctuation.definition.list"
-      ],
-      settings: {
-        foreground: colorPunctuation.hex()
-      }
-    },
-    {
-      name: "Markdown Punctuation",
-      scope: [
-        "punctuation.definition.string.markdown",
-        "punctuation.definition.string.begin.markdown",
-        "punctuation.definition.string.end.markdown",
-        "meta.link.inline.markdown punctuation.definition.string"
-      ],
-      settings: {
-        foreground: colorPunctuation.hex()
-      }
-    },
-    {
-      name: "TypeScript[React] Import/Export Punctuations",
-      scope: [
-        "meta.import.ts punctuation.definition.block",
-        "meta.import.tsx punctuation.definition.block",
-        "meta.export.ts punctuation.definition.block",
-        "meta.export.tsx punctuation.definition.block"
-      ],
-      settings: {
-        foreground: colorPunctuation.hex()
-      }
-    },
-    {
-      // ()
-      name: "Meta Brace",
-      scope: "meta.brace",
-      settings: {
-        foreground: colorPunctuation.hex()
-      }
-    },
-    {
-      name: "JavaScript Meta Punctuation Definition",
-      scope: "meta.js punctuation.definition.js",
-      settings: {
-        foreground: colorPunctuation.hex(),
-        background: colorTestA.hex()
-      }
-    },
-    // punctuation END
 
-    // Javascript & Typescript START
+    
 
-    {
-      name: "javascript portotype",
-      scope: ["support.variable.property.js"],
-      settings: {
-        foreground: colorParameter.hex()
-      }
-    },
-    {
-      // nn
-      name: "Storage type",
-      scope: "storage.type.function.arrow.js",
-      settings: {
-        fontStyle: ""
-      }
-    },
-    {
-      name: "this word in javascript",
-      scope: ["variable.language.this.js"],
-      settings: {
-        foreground: colorContrastText.hex()
-      }
-    },
-    {
-      name: "JavaScript Classes",
-      scope: "meta.class entity.name.type.class.js",
-      settings: {
-        foreground: colorVariable.hex()
-      }
-    },
-    {
-      name: "JavaScript Method Declaration e.g. `constructor`",
-      scope: "meta.method.declaration storage.type.js",
-      settings: {
-        foreground: colorEspecialWord.hex()
-      }
-    },
-    {
-      name: "JavaScript module imports and exports",
-      scope: [
-        "variable.other.meta.import.js",
-        "meta.import.js variable.other",
-        "variable.other.meta.export.js",
-        "meta.export.js variable.other"
-      ],
-      settings: {
-        foreground: colorVariable.hex(),
-      }
-    },
-    {
-      name: "JavaScript Variable Parameter Function",
-      scope: "variable.parameter.function.js",
-      settings: {
-        foreground: "#7986E7",
-        foreground: colorTestA.hex()
-      }
-    },
 
-    {
-      name: "@ in decorator in javascript",
-      scope: ["punctuation.decorator.js"],
-      settings: {
-        foreground: colorParameter.hex()
-      }
-    },
 
-    {
-      name: "TypeScript[React] Punctuation Decorators",
-      scope: [
-        "meta.decorator punctuation.decorator.ts",
-        "meta.decorator punctuation.decorator.tsx"
-      ],
-      settings: {
-        foreground: colorPunctuation.hex()
-      }
-    },
-    {
-      name: "TypeScript[React] Variables and Object Properties",
-      scope: [
-        "variable.other.readwrite.alias.ts",
-        "variable.other.readwrite.alias.tsx",
-        "variable.other.readwrite.ts",
-        "variable.other.readwrite.tsx",
-        "variable.other.object.ts",
-        "variable.other.object.tsx",
-        "variable.object.property.ts",
-        "variable.object.property.tsx",
-        "variable.other.ts",
-        "variable.other.tsx",
-        "variable.tsx",
-        "variable.ts"
-      ],
-      settings: {
-        foreground: colorVariable.hex()
-      }
-    },
-    {
-      name: "TypeScript[React] Entity Name Types",
-      scope: ["entity.name.type.ts", "entity.name.type.tsx"],
-      settings: {
-        foreground: "#ffcb8b"
-      }
-    },
-    {
-      name: "TypeScript[React] Node Classes",
-      scope: ["support.class.node.ts", "support.class.node.tsx"],
-      settings: {
-        foreground: "#82AAFF",
-        foreground: colorTestA.hex()
-      }
-    },
-    {
-      name: "TypeScript[React] Entity Name Types as Parameters",
-      scope: [
-        "meta.type.parameters.ts entity.name.type",
-        "meta.type.parameters.tsx entity.name.type"
-      ],
-      settings: {
-        foreground: colorP_lightest.hex()
-      }
-    },
-    {
-      name: "TypeScript[React] Punctuation Decorators",
-      scope: "meta.tag.js meta.jsx.children.tsx",
-      settings: {
-        foreground: "#82AAFF",
-        foreground: colorTestA.hex()
-      }
-    },
-    {
-      name: "JavaScript Variable Other ReadWrite",
-      scope: ["variable.other.readwrite.js", "variable.parameter"],
-      settings: {
-        foreground: colorVariable.hex()
-      }
-    },
-    {
-      name: "Support Class Component",
-      scope: ["support.class.component.js", "support.class.component.tsx"],
-      settings: {
-        foreground: colorContrastText.hex(),
-        fontStyle: ""
-      }
-    },
-    {
-      name: "Text nested in React tags",
-      scope: [
-        "meta.jsx.children",
-        "meta.jsx.children.js",
-        "meta.jsx.children.tsx"
-      ],
-      settings: {
-        foreground: colorRegularText.hex()
-      }
-    },
-    {
-      name: "TypeScript Classes",
-      scope: "meta.class entity.name.type.class.tsx",
-      settings: {
-        foreground: colorVariable.hex()
-      }
-    },
-    {
-      name: "TypeScript Entity Name Type",
-      scope: ["entity.name.type.tsx", "entity.name.type.module.tsx"],
-      settings: {
-        foreground: "#ffcb8b"
-      }
-    },
-    {
-      name: "TypeScript Method Declaration e.g. `constructor`",
-      scope: [
-        "meta.method.declaration storage.type.ts",
-        "meta.method.declaration storage.type.tsx"
-      ],
-      settings: {
-        foreground: "#82AAFF"
-      }
-    },
-    {
-      name: "JavaScript[React] Variable Other Object",
-      scope: [
-        "variable.other.object.js",
-        "variable.other.object.jsx",
-        "variable.object.property.js",
-        "variable.object.property.jsx"
-      ],
-      settings: {
-        foreground: colorVariable.hex()
-      }
-    },
-    {
-      name: "JavaScript Variables",
-      scope: ["variable.js", "variable.other.js"],
-      settings: {
-        foreground: colorVariable.hex(),
-      }
-    },
-    {
-      name: "JavaScript Entity Name Type",
-      scope: ["entity.name.type.js", "entity.name.type.module.js"],
-      settings: {
-        foreground: colorContrastText.hex(),
-        fontStyle: ""
-      }
-    },
-    {
-      name: "JavaScript Support Classes",
-      scope: "support.class.js",
-      settings: {
-        foreground: colorVariable.hex()
-      }
-    },
+    
 
-    // Javascript & Typescript END
+    
 
-    // PHP START
-    {
-      name: "PHP Variables",
-      scope: ["variable.other.php", "variable.other.property.php"],
-      settings: {
-        foreground: "#bec5d4"
-      }
-    },
-    {
-      name: "Support Classes in PHP",
-      scope: "support.class.php",
-      settings: {
-        foreground: "#ffcb8b"
-      }
-    },
-    {
-      name: "Punctuations in PHP function calls",
-      scope: "meta.function-call.php punctuation",
-      settings: {
-        foreground: colorRegularText.hex()
-      }
-    },
-    {
-      name: "PHP Global Variables",
-      scope: "variable.other.global.php",
-      settings: {
-        foreground: "#addb67"
-      }
-    },
-    {
-      name: "Declaration Punctuation in PHP Global Variables",
-      scope: "variable.other.global.php punctuation.definition.variable",
-      settings: {
-        foreground: "#addb67"
-      }
-    },
-    // PHP END
+    
 
-    // JSON START
-    {
-      name: "JSON Property Names",
-      scope: "support.type.property-name.json",
-      settings: {
-        foreground: colorVariable.hex()
-      }
-    },
-    {
-      name: "JSON Support Constants",
-      scope: "support.constant.json",
-      settings: {
-        foreground: colorTestA.hex()
-      }
-    },
-    {
-      name: "JSON Property values (string)",
-      scope: "meta.structure.dictionary.value.json string.quoted.double",
-      settings: {
-        foreground: colorString.hex()
-      }
-    },
-    {
-      name: "Strings in JSON values",
-      scope: "string.quoted.double.json punctuation.definition.string.json",
-      settings: {
-        foreground: colorString.hex()
-      }
-    },
-    {
-      name: "Specific JSON Property values like null",
-      scope:
-        "meta.structure.dictionary.json meta.structure.dictionary.value constant.language",
-      settings: {
-        foreground: colorContrastText.hex()
-      }
-    },
-    // JSON END
-
-    // Normalize START
-    {
-      name: "normalize font style of certain components",
-      scope: [
-        "meta.property-list.css meta.property-value.css variable.other.less",
-        "meta.property-list.scss variable.scss",
-        "meta.property-list.sass variable.sass",
-        "meta.brace",
-        "keyword.operator.operator",
-        "keyword.operator.or.regexp",
-        "keyword.operator.expression.in",
-        "keyword.operator.relational",
-        "keyword.operator.assignment",
-        "keyword.operator.comparison",
-        "keyword.operator.type",
-        "keyword.operator",
-        "keyword",
-        "punctuation.definintion.string",
-        "punctuation",
-        "variable.other.readwrite.js",
-        "storage.type",
-        "source.css",
-        "string.quoted"
-      ],
-      settings: {
-        fontStyle: ""
-      }
-    },
-    // Normalize END
-
-    // Comments START
-    {
-      name: "Comment",
-      scope: [
-        "comment",
-
-        "comment.block.css.sass",
-        "comment.line.sass"
-      ],
-      settings: {
-        foreground: colorComment.hex(),
-        fontStyle: "italic"
-      }
-    },
-    {
-      name: "Double-Slashed Comment",
-      scope: [
-        "comment.line.double-slash",
-        "punctuation.definition.comment",
-        "punctuation.whitespace.comment"
-      ],
-      settings: {
-        foreground: colorComment.hex()
-      }
-    },
-    // Comments END
-
-    //PYTHON START
-    {
-      name: "Language Constants in Python",
-      scope: "constant.language.python",
-      settings: {
-        foreground: "#ff5874"
-      }
-    },
-    {
-      name: "Python Function Parameter and Arguments",
-      scope: [
-        "variable.parameter.function.python",
-        "meta.function-call.arguments.python"
-      ],
-      settings: {
-        foreground: "#82AAFF"
-      }
-    },
-    {
-      name: "Python Function Call",
-      scope: ["meta.function-call.python", "meta.function-call.generic.python"],
-      settings: {
-        foreground: "#B2CCD6"
-      }
-    },
-    {
-      name: "Punctuations in Python",
-      scope: "punctuation.python",
-      settings: {
-        foreground: colorRegularText.hex()
-      }
-    },
-    {
-      name: "Decorator Functions in Python",
-      scope: "entity.name.function.decorator.python",
-      settings: {
-        foreground: "#addb67"
-      }
-    },
-    {
-      name: "Python Language Variable",
-      scope: "source.python variable.language.special",
-      settings: {
-        foreground: "#8EACE3"
-      }
-    },
-    {
-      name: "Python import control keyword",
-      scope: "keyword.control",
-      settings: {
-        foreground: colorEspecialWord.hex()
-      }
-    },
-    // PYTHON END
-
-    // Markdown START
-    {
-      name: "Markdown Headings",
-      scope: "markup.heading.markdown",
-      settings: {
-        foreground: "#82b1ff"
-      }
-    },
-    {
-      name: "Markdown Italics",
-      scope: "markup.italic.markdown",
-      settings: {
-        foreground: colorEspecialWord.hex(),
-        fontStyle: "italic"
-      }
-    },
-    {
-      name: "Markdown Bold",
-      scope: "markup.bold.markdown",
-      settings: {
-        foreground: "#addb67",
-        fontStyle: "bold"
-      }
-    },
-    {
-      name: "Markdown Quote + others",
-      scope: "markup.quote.markdown",
-      settings: {
-        foreground: "#697098",
-        fontStyle: "italic"
-      }
-    },
-    {
-      name: "Markdown Raw Code + others",
-      scope: "markup.inline.raw.markdown",
-      settings: {
-        foreground: "#80CBC4"
-      }
-    },
-    {
-      name: "Markdown Links",
-      scope: [
-        "markup.underline.link.markdown",
-        "markup.underline.link.image.markdown"
-      ],
-      settings: {
-        foreground: "#ff869a"
-      }
-    },
-    {
-      name: "Markdown Link Title and Description",
-      scope: [
-        "string.other.link.title.markdown",
-        "string.other.link.description.markdown"
-      ],
-      settings: {
-        foreground: colorRegularText.hex()
-      }
-    },
-    {
-      name: "Markdown MetaData Punctuation",
-      scope: ["punctuation.definition.metadata.markdown"],
-      settings: {
-        foreground: "#7fdbca"
-      }
-    },
-    {
-      name: "Markdown List Punctuation",
-      scope: ["beginning.punctuation.definition.list.markdown"],
-      settings: {
-        foreground: "#82b1ff"
-      }
-    },
-    {
-      name: "Markdown Inline Raw String",
-      scope: "markup.inline.raw.string.markdown",
-      settings: {
-        foreground: "#addb67"
-      }
-    },
-    // Markdown END
-
-    // RUBY START
-    {
-      name: "Ruby Variables",
-      scope: ["variable.other.ruby"],
-      settings: {
-        foreground: colorVariable.hex()
-      }
-    },
-    {
-      name: "Ruby Class",
-      scope: ["entity.name.type.class.ruby"],
-      settings: {
-        foreground: "#ecc48d"
-      }
-    },
-    {
-      name: "Ruby Hashkeys",
-      scope: "constant.language.symbol.hashkey.ruby",
-      settings: {
-        foreground: "#7fdbca"
-      }
-    },
-    {
-      name: "Ruby Symbols",
-      scope: "constant.language.symbol.ruby",
-      settings: {
-        foreground: "#7fdbca"
-      }
-    },
-    // RUBY END
-
-    // HTML START
-
-    {
-      name: "HTML Tag names",
-      scope: [
-        "entity.name.tag",
-        "meta.tag.other.html",
-        "meta.tag.other.js",
-        "meta.tag.other.tsx",
-        "entity.name.tag.tsx",
-        "entity.name.tag.js",
-        "entity.name.tag",
-        "meta.tag.js",
-        "meta.tag.tsx",
-        "meta.tag.html"
-      ],
-      settings: {
-        foreground: colorHtmlTag.hex(),
-        fontStyle: ""
-      }
-    },
-    {
-      name: "@ : = for html",
-      scope: [
-        "punctuation.separator.key-value.html",
-        "punctuation.definition.tag.html"
-      ],
-      settings: {
-        foreground: colorRegularText.hex()
-      }
-    },
-
-    {
-      name: "ID Attribute Name in HTML",
-      scope: "entity.other.attribute-name.id.html",
-      settings: {
-        foreground: "#addb67"
-      }
-    },
-    {
-      name: "HTML Punctuation Definition Tag",
-      scope: "punctuation.definition.tag.html",
-      settings: {
-        foreground: "#6ae9f0"
-      }
-    },
-    {
-      name: "HTML Doctype",
-      scope: "meta.tag.sgml.doctype.html",
-      settings: {
-        foreground: colorEspecialWord.hex(),
-        fontStyle: "italic"
-      }
-    },
-
-    // HTML END
-
-    // OTHERS START
-
-    {
-      name: "YAML Entity Name Tags",
-      scope: "entity.name.tag.yaml",
-      settings: {
-        foreground: "#7fdbca"
-      }
-    },
-    {
-      name: "RegExp String",
-      scope: ["string.regexp", "string.regexp keyword.other"],
-      settings: {
-        foreground: colorString.hex()
-      }
-    }
-
-    // OTHERS END
+   
   ]
 };
 
