@@ -1,4 +1,4 @@
-let Color = require("color");
+let Color = require("color")
 
 
 //colors for test
@@ -45,17 +45,21 @@ let contrastColorDark =         contrastColor.darken(0.5)
 
 let colorComment =              Color.rgb(100,120,130)
 
+let colorGitInsertedBg =        Color.rgb(16,50,44)
+let colorGitRemovedBg =         Color.rgb(55,31,44)
+
 
 // STATES COLORS
 let colorInfo =                 Color.rgb(100, 180, 250)
-let colorInfoDark =             colorInfo.darken(0.6);
-let colorInfoLight =            colorInfo.lighten(0.2);
-let colorSuccesLight =          Color.rgb(175, 220, 100);
+let colorInfoDark =             colorInfo.darken(0.6)
+let colorInfoLight =            colorInfo.lighten(0.2)
+let colorSucces =               Color.rgb(110,180,80)
+let colorSuccesLight =          Color.rgb(175, 220, 100)
 let colorWarning =              Color.rgb(255, 200, 40)
-let colorWarningDark =          colorWarning.darken(0.6);
-let colorWarningLight =         Color.rgb(255, 235, 150);
+let colorWarningDark =          colorWarning.darken(0.6)
+let colorWarningLight =         Color.rgb(255, 235, 150)
 let colorDanger =               Color.rgb(240, 80, 80)
-let colorDangerDark =           colorDanger.darken(0.4);
+let colorDangerDark =           colorDanger.darken(0.4)
 
 
 // SYNTAX COLORS
@@ -91,7 +95,7 @@ let colorCssSpecialWord =       colorFunctionName
 
 
 
-console.log(colorSpecialWord.hex());
+console.log(colorSpecialWord.hex())
 
 
 const themeColors = {
@@ -124,7 +128,7 @@ const themeColors = {
 
   // Editor in general
   "editor.background": colorPrincipal.hex(),
-  "editor.foreground": colorTestA.hex(),
+  "editor.foreground": colorText.hex(),
   "editorLineNumber.foreground": colorP_lighten.hex(),
   "editorLineNumber.activeForeground": colorP_lightest.hex(),
   "editorCursor.foreground": contrastColorLight.hex(),
@@ -321,10 +325,11 @@ const themeColors = {
   "menu.selectionBorder": null,
   "menu.separatorBackground": colorP_lighter.hex(),
 
-  "diffEditor.insertedTextBackground": colorSuccesLight.hex(),
-  "diffEditor.insertedTextBorder": colorSuccesLight.hex(),
-  "diffEditor.removedTextBackground": colorDanger.hex(),
-  "diffEditor.removedTextBorder": colorDanger.hex(),
+  // git in editor interfece
+  "diffEditor.insertedTextBackground": colorGitInsertedBg.hex(),
+  "diffEditor.insertedTextBorder": null,
+  "diffEditor.removedTextBackground": colorGitRemovedBg.hex(),
+  "diffEditor.removedTextBorder": null,
 
   "debugExceptionWidget.background": colorPrincipal.hex(),
   "debugExceptionWidget.border": colorP_lightest.hex(),
@@ -1161,13 +1166,12 @@ const tcStylesheets = [
       "keyword.other.parent-selector",
       "entity.name.function.sass",
       "keyword.control.interpolation.sass",
-      "keyword.other.important.css.sass",
       "keyword.other.reserved.sass",
       "entity.other.pseudo-classs",
       "support.function.sass"
     ],
     settings:{
-      foreground: colorTestC.hex()
+      foreground: colorTestB.hex()
     }
   },
 
@@ -1349,10 +1353,11 @@ const tcJson = [
     }
   },
   {
+    // also in javascript
     name: "JSON Support Constants",
     scope: "support.constant.json",
     settings: {
-      foreground: colorTestA.hex()
+      foreground: colorContrastText.hex()
     }
   },
   {
@@ -1670,13 +1675,6 @@ const theme = {
     
 
     {
-      name: "Support Constant Math",
-      scope: "support.constant.math",
-      settings: {
-        foreground: colorTestB.hex()
-      }
-    },
-    {
       name: "Number",
       scope: ["constant.numeric", "constant.character.numeric"],
       settings: {
@@ -1712,6 +1710,18 @@ const theme = {
 
 
     // SPECIAL WORDS
+
+    // RED COLOR
+    {
+      // Math in Math.random() in javascript
+      name: "Support Constant Math",
+      scope: "support.constant.math",
+      settings: {
+        foreground: colorContrastText.hex()
+      }
+    },
+
+
 
     // BLUE COLOR
 
@@ -1887,7 +1897,7 @@ const theme = {
 
 
     {
-      // code like tilde
+      // code like ~ = &#x7e
       name: "entity names",
       scope: [
         "entity.name.type"
@@ -1923,10 +1933,12 @@ const theme = {
       }
     },
     {
+      // like log in console.log()
       name: "Library (function & constant)",
       scope: ["support.function", "support.constant"],
       settings: {
-        foreground: "#82AAFF"
+        foreground: "#82AAFF",
+        foreground: colorSpecialWord.hex()
       }
     },
     {
@@ -2024,7 +2036,7 @@ const theme = {
       name: "Object",
       scope: "object",
       settings: {
-        foreground: "#cdebf7",
+        // foreground: "#cdebf7",
         foreground: colorTestB.hex()
       }
     },
@@ -2075,7 +2087,7 @@ const theme = {
       name: "Constant Other Color RGB Value Punctuation Definition Constant",
       scope: "constant.other.color.rgb-value punctuation.definition.constant",
       settings: {
-        foreground: "#F78C6C",
+        // foreground: "#F78C6C",
         foreground: colorTestB.hex()
       }
     },
@@ -2083,7 +2095,7 @@ const theme = {
       name: "Constant Other Color",
       scope: "constant.other.color",
       settings: {
-        foreground: "#FFEB95",
+        // foreground: "#FFEB95",
         foreground: colorTestC.hex()
       }
     },
@@ -2219,63 +2231,7 @@ const theme = {
       }
     },
 
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-    
-
-    
-
-
-    
-
-
-
-    
-
-    
-
-    
-
-   
   ]
-};
+}
 
 module.exports = theme
