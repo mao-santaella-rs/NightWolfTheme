@@ -549,19 +549,6 @@ const tcStorageNames = [
       fontStyle: ""
     }
   },
-  {
-    name: "Variable Instances",
-    scope: [
-      "variable.instance",
-      "variable.other.instance",
-      "variable.readwrite.instance",
-      "variable.other.readwrite.instance",
-      "variable.other.property"
-    ],
-    settings: {
-      foreground: colorVariableProperty.hex(),
-    }
-  },
 
 ]
 
@@ -711,6 +698,44 @@ const tcPunctuation = [
     settings: {
       foreground: colorPunctuation.hex(),
       background: colorTestA.hex()
+    }
+  },
+]
+
+const tcSpecialValues = [
+  {
+    name: "Number",
+    scope: ["constant.numeric", "constant.character.numeric"],
+    settings: {
+      foreground: colorNumber.hex(),
+      fontStyle: ""
+    }
+  },
+  {
+    name: "Null and undefined",
+    scope: [
+      "constant.language.null",
+      "constant.language.undefined"
+    ],
+    settings: {
+      foreground: colorNullUnd.hex()
+    }
+  },
+  {
+    name: "Boolean",
+    scope: "constant.language.boolean",
+    settings: {
+      foreground: colorBoolean.hex()
+    }
+  },
+  {
+    // code like ~ = &#x7e
+    name: "entity names",
+    scope: [
+      "entity.name.type"
+    ],
+    settings:{
+      foreground: colorVariable.hex()
     }
   },
 ]
@@ -1637,6 +1662,151 @@ const tcJavascript = [
   },
 ]
 
+const tcTesting = [
+  {
+    name: "Object",
+    scope: "object",
+    settings: {
+      // foreground: "#cdebf7",
+      foreground: colorTestB.hex()
+    }
+  },
+  {
+    name: "Object Comma",
+    scope: "object.comma",
+    settings: {
+      foreground: colorWhite.hex(),
+      foreground: colorTestB.hex()
+    }
+  },
+  {
+    name: "Constant Other Color RGB Value Punctuation Definition Constant",
+    scope: "constant.other.color.rgb-value punctuation.definition.constant",
+    settings: {
+      // foreground: "#F78C6C",
+      foreground: colorTestB.hex()
+    }
+  },
+  {
+    name: "Constant Other Color",
+    scope: "constant.other.color",
+    settings: {
+      // foreground: "#FFEB95",
+      foreground: colorTestC.hex()
+    }
+  },
+  {
+    name: "Invalid Broken",
+    scope: "invalid.broken",
+    settings: {
+      foreground: "#020e14",
+      background: "#F78C6C",
+      foreground: colorTestC.hex()
+    }
+  },
+  {
+    name: "Template Strings",
+    scope: "string.template meta.template.expression",
+    settings: {
+      foreground: colorTestB.hex(),
+      background: colorTestA.hex()
+    }
+  },
+  {
+    name: "Raw Code",
+    scope: "raw",
+    settings: {
+      foreground: "#80CBC4",
+      foreground: colorTestB.hex()
+    }
+  },
+  {
+    name: "Support Constant Property Value meta",
+    scope: "support.constant.meta.property-value",
+    settings: {
+      // foreground: "#7fdbca"
+      foreground: colorTestB.hex()
+    }
+  },
+  {
+    name: "Support Variable DOM",
+    scope: "support.variable.dom",
+    settings: {
+      // foreground: "#addb67",
+      foreground: colorTestB.hex()
+    }
+  },
+
+
+
+
+
+
+
+  {
+    name: "Invalid Unimplemented",
+    scope: "invalid.unimplemented",
+    settings: {
+      background: "#8BD649",
+      foreground: colorWhite.hex()
+    }
+  },
+  {
+    name: "Invalid Illegal",
+    scope: "invalid.illegal",
+    settings: {
+      // foreground: colorWhite.hex(),
+      foreground: colorTestB.hex(),
+      background: colorWarningLight.hex()
+    }
+  },
+  {
+    name: "Language Variable",
+    scope: "variable.language",
+    settings: {
+      foreground: "#7fdbca"
+    }
+  },
+  {
+    name: "Support Variable Property",
+    scope: "support.variable.property",
+    settings: {
+      foreground: "#7fdbca"
+    }
+  },
+  {
+    name: "Variable Function",
+    scope: "variable.function",
+    settings: {
+      foreground: "#82AAFF",
+      foreground: colorTestB.hex()
+    }
+  },
+  {
+    name: "Variable Interpolation",
+    scope: "variable.interpolation",
+    settings: {
+      foreground: "#ec5f67",
+      foreground: colorTestB.hex()
+    }
+  },
+  {
+    name: "Meta Function Call",
+    scope: "meta.function-call",
+    settings: {
+      foreground: "#82AAFF",
+      foreground: colorTestB.hex()
+    }
+  },
+  {
+    name: "Punctuation Section Embedded",
+    scope: "punctuation.section.embedded",
+    settings: {
+      foreground: "#d3423e",
+      foreground: colorTestB.hex()
+    }
+  },
+]
 
 
 
@@ -1655,6 +1825,7 @@ const theme = {
 
     ...tcPunctuation,
     ...tcComments,
+    ...tcSpecialValues,
 
     ...tcStylesheets,
 
@@ -1671,17 +1842,11 @@ const theme = {
     ...tcPhp,
     ...tcOthers,
 
+    ...tcTesting,
+
     ...tcNormalize,
     
 
-    {
-      name: "Number",
-      scope: ["constant.numeric", "constant.character.numeric"],
-      settings: {
-        foreground: colorNumber.hex(),
-        fontStyle: ""
-      }
-    },
     {
       name: "Constant Character Escape",
       scope: "constant.character.escape",
@@ -1690,10 +1855,12 @@ const theme = {
       }
     },
     {
+      // # alone in a function in javascript
       name: "Comma in functions",
       scope: "meta.function",
       settings: {
-        foreground: colorP_lightest.hex()
+        foreground: colorP_lightest.hex(),
+        // foreground: colorTestB.hex()
       }
     },
 
@@ -1701,15 +1868,35 @@ const theme = {
 
 
 
-    
-
-
-
-
-
-
-
     // SPECIAL WORDS
+
+    // VIOLET COLOR
+    // object properties before a method
+    // object.[propertyA.propertyAA.propertyAAA].method()
+    {
+      name: "Variable Property Other object property",
+      scope: ["variable.other.object.property"],
+      settings: {
+        foreground: colorVariableProperty.hex(),
+        fontStyle: "italic"
+      }
+    },
+
+    // object properties
+    // object.[propertyA.propertyAA.propertyAAA]
+    {
+      name: "Variable Instances",
+      scope: [
+        "variable.instance",
+        "variable.other.instance",
+        "variable.readwrite.instance",
+        "variable.other.readwrite.instance",
+        "variable.other.property"
+      ],
+      settings: {
+        foreground: colorVariableProperty.hex()
+      }
+    },
 
     // RED COLOR
     {
@@ -1896,16 +2083,44 @@ const theme = {
 
 
 
-    {
-      // code like ~ = &#x7e
-      name: "entity names",
-      scope: [
-        "entity.name.type"
-      ],
-      settings:{
-        foreground: colorVariable.hex()
-      }
-    },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
 
     {
       name: "Template Literals expressions",
@@ -1942,27 +2157,11 @@ const theme = {
       }
     },
     {
-      name: "Support Constant Property Value meta",
-      scope: "support.constant.meta.property-value",
-      settings: {
-        // foreground: "#7fdbca"
-        foreground: colorTestB.hex()
-      }
-    },
-    {
       // console string-word color
       name: "Library class/type",
       scope: ["support.type", "support.class"],
       settings: {
         foreground: colorContrastText.hex(),
-      }
-    },
-    {
-      name: "Support Variable DOM",
-      scope: "support.variable.dom",
-      settings: {
-        // foreground: "#addb67",
-        foreground: colorTestB.hex()
       }
     },
     {
@@ -2032,38 +2231,6 @@ const theme = {
         foreground: colorSmallOperators.hex()
       }
     },
-    {
-      name: "Object",
-      scope: "object",
-      settings: {
-        // foreground: "#cdebf7",
-        foreground: colorTestB.hex()
-      }
-    },
-
-
-
-
-
-
-
-    {
-      name: "Null and undefined",
-      scope: [
-        "constant.language.null",
-        "constant.language.undefined"
-      ],
-      settings: {
-        foreground: colorNullUnd.hex()
-      }
-    },
-    {
-      name: "Boolean",
-      scope: "constant.language.boolean",
-      settings: {
-        foreground: colorBoolean.hex()
-      }
-    },
 
 
 
@@ -2076,111 +2243,35 @@ const theme = {
 
 
 
-    {
-      name: "Object Comma",
-      scope: "object.comma",
-      settings: {
-        foreground: colorWhite.hex()
-      }
-    },
-    {
-      name: "Constant Other Color RGB Value Punctuation Definition Constant",
-      scope: "constant.other.color.rgb-value punctuation.definition.constant",
-      settings: {
-        // foreground: "#F78C6C",
-        foreground: colorTestB.hex()
-      }
-    },
-    {
-      name: "Constant Other Color",
-      scope: "constant.other.color",
-      settings: {
-        // foreground: "#FFEB95",
-        foreground: colorTestC.hex()
-      }
-    },
-    {
-      name: "Variable Property Other object property",
-      scope: ["variable.other.object.property"],
-      settings: {
-        foreground: colorVariableProperty.hex(),
-        fontStyle: "italic"
-      }
-    },
-    {
-      name: "Invalid Broken",
-      scope: "invalid.broken",
-      settings: {
-        foreground: "#020e14",
-        background: "#F78C6C"
-      }
-    },
-    {
-      name: "Invalid Unimplemented",
-      scope: "invalid.unimplemented",
-      settings: {
-        background: "#8BD649",
-        foreground: colorWhite.hex()
-      }
-    },
-    {
-      name: "Invalid Illegal",
-      scope: "invalid.illegal",
-      settings: {
-        foreground: colorWhite.hex(),
-        background: "#ec5f67"
-      }
-    },
-    {
-      name: "Language Variable",
-      scope: "variable.language",
-      settings: {
-        foreground: "#7fdbca"
-      }
-    },
-    {
-      name: "Support Variable Property",
-      scope: "support.variable.property",
-      settings: {
-        foreground: "#7fdbca"
-      }
-    },
-    {
-      name: "Variable Function",
-      scope: "variable.function",
-      settings: {
-        foreground: "#82AAFF"
-      }
-    },
-    {
-      name: "Variable Interpolation",
-      scope: "variable.interpolation",
-      settings: {
-        foreground: "#ec5f67"
-      }
-    },
-    {
-      name: "Meta Function Call",
-      scope: "meta.function-call",
-      settings: {
-        foreground: "#82AAFF"
-      }
-    },
-    {
-      name: "Punctuation Section Embedded",
-      scope: "punctuation.section.embedded",
-      settings: {
-        foreground: "#d3423e"
-      }
-    },
-    {
-      name: "Template Strings",
-      scope: "string.template meta.template.expression",
-      settings: {
-        foreground: colorTestB.hex(),
-        background: colorTestA.hex()
-      }
-    },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     {
       name: "Italics",
       scope: "italic",
@@ -2203,14 +2294,6 @@ const theme = {
       settings: {
         foreground: colorString.hex(),
         fontStyle: "italic"
-      }
-    },
-    {
-      name: "Raw Code",
-      scope: "raw",
-      settings: {
-        foreground: "#80CBC4",
-        foreground: colorTestB.hex()
       }
     },
     {
