@@ -7,13 +7,15 @@ const colorTestB =                Color.rgb(0, 255, 0)
 const colorTestC =                Color.rgb(255, 100, 0)
 
 // Syntax Colors
-const colorSyntaxYellow =         Color.rgb(255, 210, 140)
+const colorSyntaxYellow =         Color.rgb(255,230,150)
 const colorSyntaxBlue =           Color.rgb(0,177,255)
-const colorSyntaxPurple =         Color.rgb(200, 120, 230)
-const colorSyntaxRed =            Color.rgb(255, 120, 120)
+const colorSyntaxPurple =         Color.rgb(200,120,230)
+const colorSyntaxRed =            Color.rgb(255,120,120)
 const colorSyntaxCyan =           Color.rgb(0,220,220)
 const colorSyntaxGreen =          Color.rgb(170,230,130)
-const colorSyntaxVioconst =         Color.rgb(150,150,255)
+const colorSyntaxViolet =         Color.rgb(150,150,255)
+const colorSyntaxMagenta =        Color.rgb(255,80,255)
+const colorSyntaxOrange =         Color.rgb(255,180,110)
 
 
 // THEME COLORS
@@ -64,7 +66,7 @@ const colorDangerDark =           colorDanger.darken(0.4)
 
 // SYNTAX COLORS
 // General colors
-const colorVariable =             Color.rgb(255, 210, 140)
+const colorVariable =             Color.rgb(255,230,150)
 const colorVariableProperty =     Color.rgb(150,150,255)
 const colorContrastText =         Color.rgb(255, 120, 120)
 const colorSpecialWord =          Color.rgb(200, 120, 230)
@@ -581,6 +583,8 @@ const tcGeneral = [
 ]
 
 const tcSpecialWords = [
+
+// KEYWORD OPERATORS
   {
     // perators can either be textual (e.g. or) or be characters.
     // like typeof, instanceof, new, in, --, delete in javascript
@@ -588,19 +592,9 @@ const tcSpecialWords = [
     name: "Keyword Operator",
     scope: "keyword.operator",
     settings: {
-      // foreground: colorContrastText.hex(),
-      foreground: colorTestB.hex(),
-      fontStyle: ""
-    }
-  },
-  {
-    // =	≠	>	<	≥	≤
-    name: "Keyword Operator Relational",
-    scope: "keyword.operator.relational",
-    settings: {
-      foreground: colorOperator.hex(),
+      foreground: colorContrastText.hex(),
       // foreground: colorTestB.hex(),
-      fontStyle: "italic"
+      fontStyle: ""
     }
   },
   {
@@ -667,6 +661,16 @@ const tcSpecialWords = [
       foreground: colorSpecialWord.hex()
     }
   },
+  {
+    // =	≠	>	<	≥	≤
+    name: "Keyword Operator Relational",
+    scope: "keyword.operator.relational",
+    settings: {
+      foreground: colorSpecialWord.hex(),
+      // foreground: colorTestB.hex(),
+      fontStyle: "italic"
+    }
+  },
 
 
 
@@ -709,20 +713,25 @@ const tcSpecialWords = [
       name: "Support Constant Math",
       scope: "support.constant.math",
       settings: {
-        foreground: colorContrastText.hex()
+        foreground: colorContrastText.hex(),
+        // foreground: colorTestB.hex()
       }
     },
     {
       // types provided by the framework/library, 
-      // this is probably only used for languages derived from C, 
-      // which has typedef (and struct). 
-      // Most other languages would introduce new types as classes.
-      // like Boolean, Null, Undefined, Number, String, Symbol or 
       name: "Library class/type",
-      scope: ["support.type", "support.class"],
+      scope: [
+        // variables provided by the framework/library. For example global in javascript
+        "support.variable",
+        // types provided by the framework/library, this is probably only used for 
+        // languages derived from C, which has typedef (and struct). 
+        // Most other languages would introduce new types as classes.
+        "support.type", 
+        // when the framework/library provides classes.
+        "support.class"
+      ],
       settings: {
-        foreground: colorContrastText.hex(),
-        // foreground: colorTestB.hex()
+        foreground: colorSyntaxOrange.hex(),
       }
     },
 

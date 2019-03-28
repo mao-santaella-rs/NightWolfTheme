@@ -149,6 +149,7 @@ export default {
 // Pass this if window is not defined yet
 } )
 
+let maoma = window.length
 
 /** Class representing a point. */
 class Point {
