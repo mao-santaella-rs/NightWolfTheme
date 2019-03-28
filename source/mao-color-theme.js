@@ -1,101 +1,103 @@
-let Color = require("color")
+const Color = require("color")
 
 
 //colors for test
-let colorTestA =                Color.rgb(255, 255, 0)
-let colorTestB =                Color.rgb(0, 255, 0)
-let colorTestC =                Color.rgb(255, 100, 0)
+const colorTestA =                Color.rgb(255, 255, 0)
+const colorTestB =                Color.rgb(0, 255, 0)
+const colorTestC =                Color.rgb(255, 100, 0)
 
 // Syntax Colors
-let colorSyntaxYellow =         Color.rgb(255, 210, 140)
-let colorSyntaxBlue =           Color.rgb(0,177,255)
-let colorSyntaxPurple =         Color.rgb(200, 120, 230)
-let colorSyntaxRed =            Color.rgb(255, 120, 120)
-let colorSyntaxCyan =           Color.rgb(0,220,220)
-let colorSyntaxGreen =          Color.rgb(170,230,130)
-let colorSyntaxViolet =         Color.rgb(150,150,255)
+const colorSyntaxYellow =         Color.rgb(255, 210, 140)
+const colorSyntaxBlue =           Color.rgb(0,177,255)
+const colorSyntaxPurple =         Color.rgb(200, 120, 230)
+const colorSyntaxRed =            Color.rgb(255, 120, 120)
+const colorSyntaxCyan =           Color.rgb(0,220,220)
+const colorSyntaxGreen =          Color.rgb(170,230,130)
+const colorSyntaxVioconst =         Color.rgb(150,150,255)
 
 
 // THEME COLORS
-let colorWhite =                Color.rgb(255, 255, 255)
-let colorBlack =                Color.rgb(0,0,0)
+const colorWhite =                Color.rgb(255, 255, 255)
+const colorBlack =                Color.rgb(0,0,0)
 
-let colorPrincipal =            Color.rgb(16, 30, 44)
-let colorP_darken =             colorPrincipal.darken(0.3)
-let colorP_light =              colorPrincipal.lighten(0.3)
-let colorP_lighten =            colorPrincipal.lighten(1)
-let colorP_lighter =            colorPrincipal.lighten(2)
-let colorP_lightest =           colorPrincipal.lighten(4.5)
+const colorPrincipal =            Color.rgb(16, 30, 44)
+const colorP_darken =             colorPrincipal.darken(0.3)
+const colorP_light =              colorPrincipal.lighten(0.3)
+const colorP_lighten =            colorPrincipal.lighten(1)
+const colorP_lighter =            colorPrincipal.lighten(2)
+const colorP_lightest =           colorPrincipal.lighten(4.5)
 
-let colorText =                 colorPrincipal.lighten(6)
+const colorText =                 colorPrincipal.lighten(6)
 
-let colorSelection =            colorP_lighter
-let colorSelectionHighlight =   colorP_lighten
-let colorSelectionInactive =    colorSelection
-let colorHoverHiglight =        colorSelection
-let colorWordHighlightStrong =  colorSelection
-let colorFindMatch =            colorP_lighter
-let colorFindHighlight =        colorSelectionHighlight
-let colorRangeHiglight =        colorP_light
-let colorLineHiglight =         colorP_darken
+const colorSelection =            colorP_lighter
+const colorSelectionHighlight =   colorP_lighten
+const colorSelectionInactive =    colorSelection
+const colorHoverHiglight =        colorSelection
+const colorWordHighlightStrong =  colorSelection
+const colorFindMatch =            colorP_lighter
+const colorFindHighlight =        colorSelectionHighlight
+const colorRangeHiglight =        colorP_light
+const colorLineHiglight =         colorP_darken
 
-let contrastColor =             Color.rgb(255, 0, 255)
-let contrastColorLight =        contrastColor.lighten(0.5)
-let contrastColorDark =         contrastColor.darken(0.5)
+const contrastColor =             Color.rgb(255, 0, 255)
+const contrastColorLight =        contrastColor.lighten(0.5)
+const contrastColorDark =         contrastColor.darken(0.5)
 
-let colorComment =              Color.rgb(100,120,130)
+const colorComment =              Color.rgb(100,120,130)
 
-let colorGitInsertedBg =        Color.rgb(16,50,44)
-let colorGitRemovedBg =         Color.rgb(55,31,44)
+const colorGitInsertedBg =        Color.rgb(16,50,44)
+const colorGitRemovedBg =         Color.rgb(55,31,44)
 
 
 // STATES COLORS
-let colorInfo =                 Color.rgb(100, 180, 250)
-let colorInfoDark =             colorInfo.darken(0.6)
-let colorInfoLight =            colorInfo.lighten(0.2)
-let colorSucces =               Color.rgb(110,180,80)
-let colorSuccesLight =          Color.rgb(175, 220, 100)
-let colorWarning =              Color.rgb(255, 200, 40)
-let colorWarningDark =          colorWarning.darken(0.6)
-let colorWarningLight =         Color.rgb(255, 235, 150)
-let colorDanger =               Color.rgb(240, 80, 80)
-let colorDangerDark =           colorDanger.darken(0.4)
+const colorInfo =                 Color.rgb(100, 180, 250)
+const colorInfoDark =             colorInfo.darken(0.6)
+const colorInfoLight =            colorInfo.lighten(0.2)
+const colorSucces =               Color.rgb(110,180,80)
+const colorSuccesLight =          Color.rgb(175, 220, 100)
+const colorWarning =              Color.rgb(255, 200, 40)
+const colorWarningDark =          colorWarning.darken(0.6)
+const colorWarningLight =         Color.rgb(255, 235, 150)
+const colorDanger =               Color.rgb(240, 80, 80)
+const colorDangerDark =           colorDanger.darken(0.4)
 
 
 // SYNTAX COLORS
 // General colors
-let colorVariable =             Color.rgb(255, 210, 140)
-let colorVariableProperty =     Color.rgb(150,150,255)
-let colorContrastText =         Color.rgb(255, 120, 120)
-let colorSpecialWord =          Color.rgb(200, 120, 230)
-let colorFunction =             Color.rgb(0,177,255)
-let colorFunctionName =         Color.rgb(0,220,220)
-let colorString =               Color.rgb(170,230,130)
-let colorRegularText =          colorText
-let colorNumber =               colorRegularText
-let colorBoolean =              colorContrastText
-let colorNullUnd =              colorContrastText
-let colorSmallOperators =       colorSpecialWord
-let colorPunctuation =          colorRegularText
+const colorVariable =             Color.rgb(255, 210, 140)
+const colorVariableProperty =     Color.rgb(150,150,255)
+const colorContrastText =         Color.rgb(255, 120, 120)
+const colorSpecialWord =          Color.rgb(200, 120, 230)
+const colorFunction =             Color.rgb(0,177,255)
+const colorFunctionName =         Color.rgb(0,220,220)
+const colorString =               Color.rgb(170,230,130)
+const colorOperator =             colorContrastText
+const colorRegularText =          colorText
+const colorNumber =               colorRegularText
+const colorBoolean =              colorContrastText
+const colorNullUnd =              colorContrastText
+const colorSmallOperators =       colorSpecialWord
+const colorPunctuation =          colorRegularText
+const colorDeprecated =           Color.rgb(255,0,0)
 
 // Markup
-let colorHtmlTag =              colorContrastText
-let colorMetaTag =              Color.rgb(200,200,200)
-let colorTagAttribute =         colorVariable
+const colorHtmlTag =              colorContrastText
+const colorMetaTag =              Color.rgb(200,200,200)
+const colorTagAttribute =         colorVariable
 
 // Stylesheets
-let colorCssAttribute =         colorFunctionName
-let colorCssValue =             colorText
-let colorCssTag =               colorContrastText
-let colorCssClass =             colorVariable
-let colorCssId =                colorFunction
-let colorCssProperty =          colorFunctionName
-let colorCssUnits =             colorVariableProperty
-let colorCssSpecialWord =       colorFunctionName
+const colorCssAttribute =         colorFunctionName
+const colorCssValue =             colorText
+const colorCssTag =               colorContrastText
+const colorCssClass =             colorVariable
+const colorCssId =                colorFunction
+const colorCssProperty =          colorFunctionName
+const colorCssUnits =             colorVariableProperty
+const colorCssSpecialWord =       colorFunctionName
 
 
 
-console.log(colorSpecialWord.hex())
+console.log(Date.now())
 
 
 const themeColors = {
@@ -428,6 +430,36 @@ const themeColors = {
   "progress.background": contrastColor.hex()
 }
 
+const tcNormalize = [
+  {
+    name: "normalize font style of certain components",
+    scope: [
+      "meta.property-list.css meta.property-value.css variable.other.less",
+      "meta.property-list.scss variable.scss",
+      "meta.property-list.sass variable.sass",
+      "meta.brace",
+      "keyword.operator.operator",
+      "keyword.operator.or.regexp",
+      "keyword.operator.expression.in",
+      "keyword.operator.relational",
+      "keyword.operator.assignment",
+      "keyword.operator.comparison",
+      "keyword.operator.type",
+      "keyword.operator",
+      "keyword",
+      "punctuation.definintion.string",
+      "punctuation",
+      "variable.other.readwrite.js",
+      "storage.type",
+      "source.css",
+      "string.quoted"
+    ],
+    settings: {
+      fontStyle: ""
+    }
+  },
+]
+
 const tcGlobalSettings = [
 // gloabal settings
   {
@@ -470,6 +502,366 @@ const tcGit = [
       fontStyle: "italic"
     }
   },
+]
+
+const tcGeneral = [
+  {
+    // reserved language variables like this, super, self, etc.
+    name: "Language Variable",
+    scope: "variable.language",
+    settings: {
+      foreground: colorFunction.hex()
+    }
+  },
+  {
+    // escape sequences like \e
+    name: "Constant Character Escape",
+    scope: "constant.character.escape",
+    settings: {
+      foreground: colorString.hex()
+    }
+  },
+  {
+    // the </> of the tag & (,) in pug
+    name: "Meta Tag",
+    scope: [
+      "punctuation.definition.tag", 
+      "meta.tag"
+    ],
+    settings: {
+      foreground: colorMetaTag.hex()
+    }
+  },
+  {
+    // HTML atributes & classes and attributes in pug
+    name: "Tag attribute",
+    scope: "entity.other.attribute-name",
+    settings: {
+      fontStyle: "italic",
+      foreground: colorTagAttribute.hex()
+    }
+  },
+  {
+    name: "Library (function & constant)",
+    scope: [
+      // functions provided by the framework/library
+      // like log in console.log()
+      "support.function", 
+      // constants (magic values) provided by the framework/library.
+      "support.constant"
+    ],
+    settings: {
+      foreground: colorSpecialWord.hex()
+    }
+  },
+  {
+    name: "Invalid deprecated",
+    scope: "invalid.deprecated",
+    settings: {
+      foreground: colorDeprecated.hex(),
+      background: colorDangerDark.hex()
+    }
+  },
+
+
+
+
+
+
+  {
+    // in theory the entire line which declares a function
+    // but does not work that way
+    // # alone in a function in javascript
+    name: "Comma in functions",
+    scope: "meta.function",
+    settings: {
+      foreground: colorVariable.hex()
+    }
+  },
+]
+
+const tcSpecialWords = [
+  {
+    // perators can either be textual (e.g. or) or be characters.
+    // like typeof, instanceof, new, in, --, delete in javascript
+    // and some s#$%t in regex
+    name: "Keyword Operator",
+    scope: "keyword.operator",
+    settings: {
+      // foreground: colorContrastText.hex(),
+      foreground: colorTestB.hex(),
+      fontStyle: ""
+    }
+  },
+  {
+    // =	≠	>	<	≥	≤
+    name: "Keyword Operator Relational",
+    scope: "keyword.operator.relational",
+    settings: {
+      foreground: colorOperator.hex(),
+      // foreground: colorTestB.hex(),
+      fontStyle: "italic"
+    }
+  },
+  {
+    // += -= *= /= %= &= |= ^= <<= and >>=
+    name: "Keyword Operator Assignment",
+    scope: "keyword.operator.assignment",
+    settings: {
+      foreground: colorOperator.hex(),
+      // foreground: colorTestA.hex(),
+    }
+  },
+  {
+    // + - * / % ** ++ --
+    name: "Keyword Operator Arithmetic",
+    scope: "keyword.operator.arithmetic",
+    settings: {
+      foreground: colorOperator.hex(),
+      // foreground: colorTestC.hex(),
+    }
+  },
+  {
+    // & | ^ ~ << >> >>>
+    name: "Keyword Operator Bitwise",
+    scope: "keyword.operator.bitwise",
+    settings: {
+      foreground: colorOperator.hex(),
+    }
+  },
+  {
+    // ++
+    name: "Keyword Operator Increment",
+    scope: [
+      "keyword.operator.increment",
+      "keyword.operator.decrement"
+    ],
+    settings: {
+      foreground: colorOperator.hex(),
+      // foreground: colorTestB.hex(),
+    }
+  },
+  {
+    // ? :
+    name: "Keyword Operator Ternary",
+    scope: "keyword.operator.ternary",
+    settings: {
+      foreground: colorOperator.hex()
+    }
+  },
+  {
+    name: "Keyword Operator Logical",
+    scope: "keyword.operator.logical",
+    settings: {
+      foreground: colorSpecialWord.hex(),
+      fontStyle: ""
+    }
+  },
+  {
+    // <= >= 
+    name: "keyword Operator Comparison",
+    scope: [
+      "keyword.operator.comparison"
+    ],
+    settings:{
+      foreground: colorSpecialWord.hex()
+    }
+  },
+
+
+
+
+
+
+  // SPECIAL WORDS
+
+    // VIOLET COLOR
+    // object properties before a method
+    // object.[propertyA.propertyAA.propertyAAA].method()
+    {
+      name: "Variable Property Other object property",
+      scope: ["variable.other.object.property"],
+      settings: {
+        foreground: colorVariableProperty.hex(),
+        fontStyle: "italic"
+      }
+    },
+
+    // object properties
+    // object.[propertyA.propertyAA.propertyAAA]
+    {
+      name: "Variable Instances",
+      scope: [
+        "variable.instance",
+        "variable.other.instance",
+        "variable.readwrite.instance",
+        "variable.other.readwrite.instance",
+        "variable.other.property"
+      ],
+      settings: {
+        foreground: colorVariableProperty.hex()
+      }
+    },
+
+    // RED COLOR
+    {
+      // Math in Math.random() in javascript
+      name: "Support Constant Math",
+      scope: "support.constant.math",
+      settings: {
+        foreground: colorContrastText.hex()
+      }
+    },
+    {
+      // types provided by the framework/library, 
+      // this is probably only used for languages derived from C, 
+      // which has typedef (and struct). 
+      // Most other languages would introduce new types as classes.
+      // like Boolean, Null, Undefined, Number, String, Symbol or 
+      name: "Library class/type",
+      scope: ["support.type", "support.class"],
+      settings: {
+        foreground: colorContrastText.hex(),
+        // foreground: colorTestB.hex()
+      }
+    },
+
+
+
+    // BLUE COLOR
+
+    {
+      name: "Storage type",
+      scope: [
+        // var let const class function type 
+        "storage.type",
+        // @param
+        "punctuation.definition.block.tag"
+      ],
+      settings: {
+        foreground: colorFunction.hex()
+      }
+    },
+    {
+      name: "interface",
+      scope: [
+        "storage.type.interface"
+      ],
+      settings:{
+        foreground: colorFunction.hex()
+      }
+    },
+    
+
+
+    //----------------------------------
+
+
+    // PURPLE COLOR
+
+
+    {
+      name: "Entity Name Tag Custom",
+      scope: "entity.name.tag.custom",
+      settings: {
+        foreground: colorSpecialWord.hex()
+      }
+    },
+    {
+      name: "Meta Delimiter Period",
+      scope: "meta.delimiter.period",
+      settings: {
+        foreground: colorSpecialWord.hex(),
+        fontStyle: "italic"
+      }
+    },
+    {
+      name: "Meta Selector",
+      scope: "meta.selector",
+      settings: {
+        foreground: colorSpecialWord.hex(),
+        fontStyle: "italic"
+      }
+    },
+    {
+      name: "Doctypes",
+      scope: ["entity.name.tag.doctype", "meta.tag.sgml.doctype"],
+      settings: {
+        foreground: colorSpecialWord.hex(),
+        fontStyle: "italic"
+      }
+    },
+    {
+      name: "Keyword Control Conditional",
+      scope: [
+        "keyword.control.conditional.js",
+        "keyword.control.conditional.ts",
+        "keyword.control.switch.js",
+        "keyword.control.switch.ts"
+      ],
+      settings: {
+        foreground: colorSpecialWord.hex(),
+        fontStyle: ""
+      }
+    },
+
+    //----------------------------------
+
+
+    // CYAN COLOR
+    {
+      name: "Variable Parameter Function",
+      scope: "variable.parameter.function",
+      settings: {
+        foreground: colorFunctionName.hex(),
+        fontStyle: ""
+      }
+    },
+    {
+      name: "Meta Property Name",
+      scope: "meta.property-name",
+      settings: {
+        foreground: colorFunctionName.hex()
+      }
+    },
+    {
+      name: "Keyword Control Operator",
+      scope: "keyword.control.operator",
+      settings: {
+        foreground: colorFunctionName.hex()
+      }
+    },
+    {
+      // function name in javascript and mixins and function names in sass & scss
+      name: "Entity Name Function",
+      scope: ["entity.name.function"],
+      settings: {
+        foreground: colorFunctionName.hex(),
+        fontStyle: "italic"
+      }
+    },
+    {
+      name:
+        "Support Constant, `new` keyword, Special Method Keyword, `debugger`, other keywords",
+      scope: [
+        "support.constant",
+        "keyword.other.special-method",
+        "keyword.other.new",
+        "keyword.other.debugger",
+        "keyword.control"
+      ],
+      settings: {
+        foreground: colorFunctionName.hex()
+      }
+    },
+    {
+      name: "Support Function",
+      scope: "support.function",
+      settings: {
+        foreground: colorFunctionName.hex()
+      }
+    },
+
 ]
 
 const tcStorageNames = [
@@ -538,7 +930,6 @@ const tcStorageNames = [
     scope: "entity.other.inherited-class",
     settings: {
       foreground: colorVariable.hex(),
-      foreground: colorTestB.hex()
     }
   },
   {
@@ -736,6 +1127,476 @@ const tcSpecialValues = [
     ],
     settings:{
       foreground: colorVariable.hex()
+    }
+  },
+]
+
+const tcStylesheets = [
+  // {
+  //   name: "sass test",
+  //   scope:[
+  //     "keyword.other.parent-selector",
+  //     "keyword.control.interpolation.sass",
+  //     "keyword.other.reserved.sass",
+  //     "entity.other.pseudo-classs",
+  //     "support.function.sass"
+  //   ],
+  //   settings:{
+  //     foreground: colorTestB.hex()
+  //   }
+  // },
+
+  {
+    name: "css and pug ID selector",
+    scope:[
+      "entity.other.attribute-name.id",
+      "entity.other.attribute-name.id.css",
+      "entity.other.attribute-name.id.scss"
+    ],
+    settings:{
+      foreground: colorCssId.hex()
+    }
+  },
+  {
+    name: "css class selector",
+    scope:[
+      "entity.other.attribute-name.class.css"
+    ],
+    settings:{
+      foreground: colorCssClass.hex()
+    }
+  },
+  {
+    name: "Tag selectors and &",
+    scope: [
+      "entity.name.tag.css",
+      "entity.name.tag.less",
+      "entity.name.tag.custom.css",
+      "entity.name.tag.scss",
+      "entity.name.tag.sass"
+    ],
+    settings: {
+      foreground: colorCssTag.hex(),
+      fontStyle: ""
+    }
+  },
+  {
+    name: "Property name stylesheets",
+    scope:[
+      "support.type.property-name.css"
+    ],
+    settings:{
+      foreground: colorCssProperty.hex()
+    }
+  },
+  {
+    name: "Values in css",
+    scope: ["support.constant.property-value.css"],
+    settings: {
+      foreground: colorCssValue.hex()
+    }
+  },
+  {
+    name: "stylesheet numbers",
+    scope: ["constant.numeric.css", "punctuation.definition.constant.css"],
+    settings: {
+      foreground: colorRegularText.hex()
+    }
+  },
+  {
+    name: "Stylesheet Units",
+    scope: [
+      "keyword.other.unit",
+      "keyword.other.unit.css",
+      "keyword.other.unit.scss",
+      "keyword.other.unit.sass"
+    ],
+    settings: {
+      foreground: colorCssUnits.hex()
+    }
+  },
+  {
+    // Stylesheets special words: (orientation),(min-monochrome),(color),
+    // (min-aspect-ratio), (min-resolution)
+    name: "Support Type Property Name & entity name tags",
+    scope: [
+      "support.type.vendor.property-name",
+      "support.constant.vendor.property-value",
+      "support.type.property-name",
+      "meta.property-list entity.name.tag"
+    ],
+    settings: {
+      foreground: colorCssSpecialWord.hex(),
+      fontStyle: ""
+    }
+  },
+  {
+    name: "SCSS & SASS Variable",
+    scope: [
+      "variable.scss",
+      "variable.sass",
+      "variable.parameter.scss",
+      "variable.parameter.sass"
+    ],
+    settings: {
+      foreground: colorVariable.hex()
+    }
+  },
+
+
+  {
+    // css !importatnt, @
+    // keywords for sass
+    name: "Keyword",
+    scope: [
+      "punctuation.accessor",
+      "keyword",
+      "punctuation.definition.keyword",
+      "keyword.operator.css",
+      "keyword.operator.scss",
+      //@mixin
+      "keyword.control.at-rule.scss",
+      "keyword.control.at-rule.css.sass",
+      "keyword.control.at-rule.less",
+      //!important
+      "keyword.other.important.css",
+      //&
+      "meta.property-list entity.name.tag.reference",
+    ],
+    settings: {
+      foreground: colorSpecialWord.hex(),
+      // foreground: colorTestB.hex(),
+      fontStyle: "italic"
+    }
+  },
+  {
+    name: "Wildcard(*) selector in Stylesheets",
+    scope: [
+      "entity.name.tag.wildcard.css",
+      "entity.name.tag.wildcard.less",
+      "entity.name.tag.wildcard.scss",
+      "entity.name.tag.wildcard.sass"
+    ],
+    settings: {
+      foreground: colorFunctionName.hex()
+    }
+  },
+  {
+    name: "Attribute Name for CSS and SCSS",
+    scope: [
+      "meta.attribute-selector.css entity.other.attribute-name.attribute",
+      "meta.attribute-selector.scss entity.other.attribute-name.attribute",
+      "meta.attribute-selector.sass entity.other.attribute-name.attribute",
+      "meta.attribute-selector.less entity.other.attribute-name.attribute",
+      "variable.other.readwrite.js",
+
+
+      // "entity.other.attribute-name.css.sass",
+      // "keyword.operator.attribute-selector.css.sass",
+      // "meta.attribute-selector"
+      "meta.attribute-selector"
+    ],
+    settings: {
+      foreground: colorCssAttribute.hex(),
+
+      // foreground: colorTestC.hex()
+    }
+  },
+  {
+    name: "Variables in SASS At-Rules",
+    scope: [
+      "source.css.scss meta.at-rule variable",
+      "source.css.sass meta.at-rule variable"
+    ],
+    settings: {
+      foreground: "#82AAFF",
+      foreground: colorTestB.hex()
+    }
+  },
+]
+
+const tcComments = [
+  {
+    name: "Comment",
+    scope: [
+      "comment",
+
+      "comment.block.css.sass",
+      "comment.line.sass"
+    ],
+    settings: {
+      foreground: colorComment.hex(),
+      fontStyle: "italic"
+    }
+  },
+  {
+    name: "Double-Slashed Comment",
+    scope: [
+      "comment.line.double-slash",
+      "punctuation.definition.comment",
+      "punctuation.whitespace.comment"
+    ],
+    settings: {
+      foreground: colorComment.hex()
+    }
+  },
+
+
+  //documentation inside comments
+  {
+    name: "Entity Names in Code Documentations",
+    scope: [
+      "entity.name.type.instance.jsdoc",
+      "entity.name.type.instance.phpdoc"
+    ],
+    settings: {
+      foreground: colorContrastText.lighten(0.15).hex(),
+      // foreground: colorTestB.hex()
+    }
+  },
+  {
+    name: "Other Variables in Code Documentations",
+    scope: ["variable.other.jsdoc", "variable.other.phpdoc"],
+    settings: {
+      foreground: colorVariable.darken(0.5).hex(),
+      // foreground: colorTestC.hex()
+    }
+  },
+
+]
+
+// languages
+const tcJavascript = [
+  {
+    name: "javascript portotype",
+    scope: ["support.variable.property.js"],
+    settings: {
+      foreground: colorFunctionName.hex()
+    }
+  },
+  {
+    // nn
+    name: "Storage type",
+    scope: "storage.type.function.arrow.js",
+    settings: {
+      fontStyle: ""
+    }
+  },
+  {
+    name: "this word in javascript",
+    scope: ["variable.language.this.js"],
+    settings: {
+      foreground: colorContrastText.hex()
+    }
+  },
+  {
+    name: "JavaScript Classes",
+    scope: "meta.class entity.name.type.class.js",
+    settings: {
+      foreground: colorVariable.hex()
+    }
+  },
+  {
+    name: "JavaScript Method Declaration e.g. `constructor`",
+    scope: "meta.method.declaration storage.type.js",
+    settings: {
+      foreground: colorSpecialWord.hex()
+    }
+  },
+  {
+    name: "JavaScript module imports and exports",
+    scope: [
+      "variable.other.meta.import.js",
+      "meta.import.js variable.other",
+      "variable.other.meta.export.js",
+      "meta.export.js variable.other"
+    ],
+    settings: {
+      foreground: colorVariable.hex(),
+    }
+  },
+  {
+    name: "JavaScript Variable Parameter Function",
+    scope: "variable.parameter.function.js",
+    settings: {
+      foreground: "#7986E7",
+      foreground: colorTestA.hex()
+    }
+  },
+
+  {
+    name: "TypeScript[React] Punctuation Decorators",
+    scope: [
+      "meta.decorator punctuation.decorator.ts",
+      "meta.decorator punctuation.decorator.tsx"
+    ],
+    settings: {
+      foreground: colorPunctuation.hex()
+    }
+  },
+  {
+    name: "TypeScript[React] Variables and Object Properties",
+    scope: [
+      "variable.other.readwrite.alias.ts",
+      "variable.other.readwrite.alias.tsx",
+      "variable.other.readwrite.ts",
+      "variable.other.readwrite.tsx",
+      "variable.other.object.ts",
+      "variable.other.object.tsx",
+      "variable.object.property.ts",
+      "variable.object.property.tsx",
+      "variable.other.ts",
+      "variable.other.tsx",
+      "variable.tsx",
+      "variable.ts"
+    ],
+    settings: {
+      foreground: colorVariable.hex()
+    }
+  },
+  {
+    name: "TypeScript[React] Entity Name Types",
+    scope: ["entity.name.type.ts", "entity.name.type.tsx"],
+    settings: {
+      foreground: "#ffcb8b"
+    }
+  },
+  {
+    name: "TypeScript[React] Node Classes",
+    scope: ["support.class.node.ts", "support.class.node.tsx"],
+    settings: {
+      foreground: "#82AAFF",
+      foreground: colorTestA.hex()
+    }
+  },
+  {
+    name: "TypeScript[React] Entity Name Types as Parameters",
+    scope: [
+      "meta.type.parameters.ts entity.name.type",
+      "meta.type.parameters.tsx entity.name.type"
+    ],
+    settings: {
+      foreground: colorP_lightest.hex()
+    }
+  },
+  {
+    name: "TypeScript[React] Punctuation Decorators",
+    scope: "meta.tag.js meta.jsx.children.tsx",
+    settings: {
+      foreground: "#82AAFF",
+      foreground: colorTestA.hex()
+    }
+  },
+  {
+    name: "JavaScript Variable Other ReadWrite",
+    scope: ["variable.other.readwrite.js", "variable.parameter"],
+    settings: {
+      foreground: colorVariable.hex()
+    }
+  },
+  {
+    name: "Support Class Component",
+    scope: ["support.class.component.js", "support.class.component.tsx"],
+    settings: {
+      foreground: colorContrastText.hex(),
+      fontStyle: ""
+    }
+  },
+  {
+    name: "@ in decorator in javascript",
+    scope: ["punctuation.decorator.js"],
+    settings: {
+      foreground: colorFunctionName.hex()
+    }
+  },
+  {
+    name: "Text nested in React tags",
+    scope: [
+      "meta.jsx.children",
+      "meta.jsx.children.js",
+      "meta.jsx.children.tsx"
+    ],
+    settings: {
+      foreground: colorRegularText.hex()
+    }
+  },
+  {
+    name: "TypeScript Classes",
+    scope: "meta.class entity.name.type.class.tsx",
+    settings: {
+      foreground: colorVariable.hex()
+    }
+  },
+  {
+    name: "TypeScript Entity Name Type",
+    scope: ["entity.name.type.tsx", "entity.name.type.module.tsx"],
+    settings: {
+      foreground: "#ffcb8b"
+    }
+  },
+  {
+    name: "TypeScript Method Declaration e.g. `constructor`",
+    scope: [
+      "meta.method.declaration storage.type.ts",
+      "meta.method.declaration storage.type.tsx"
+    ],
+    settings: {
+      foreground: "#82AAFF"
+    }
+  },
+  {
+    name: "JavaScript[React] Variable Other Object",
+    scope: [
+      "variable.other.object.js",
+      "variable.other.object.jsx",
+      "variable.object.property.js",
+      "variable.object.property.jsx"
+    ],
+    settings: {
+      foreground: colorVariable.hex()
+    }
+  },
+  {
+    name: "JavaScript Variables",
+    scope: ["variable.js", "variable.other.js"],
+    settings: {
+      foreground: colorVariable.hex(),
+    }
+  },
+  {
+    name: "JavaScript Entity Name Type",
+    scope: ["entity.name.type.js", "entity.name.type.module.js"],
+    settings: {
+      foreground: colorContrastText.hex(),
+      fontStyle: ""
+    }
+  },
+  {
+    name: "JavaScript Support Classes",
+    scope: "support.class.js",
+    settings: {
+      foreground: colorVariable.hex()
+    }
+  },
+  {
+    name:
+      "Keyword, imports, returns javascript and typescript",
+    scope: [
+      "keyword.control.flow.js",
+      "keyword.control.flow.ts",
+      "keyword.control.flow.tsx",
+      "keyword.control.loop.js",
+      "keyword.control.loop.ts",
+      "keyword.control.import.js",
+      "keyword.control.import.ts",
+      "keyword.control.import.tsx",
+      "keyword.control.from.js",
+      "keyword.control.from.ts",
+      "keyword.control.from.tsx"
+    ],
+    settings: {
+      foreground: colorSpecialWord.hex(),
+      fontStyle: "italic"
     }
   },
 ]
@@ -1012,7 +1873,7 @@ const tcPython = [
     name: "Python Language Variable",
     scope: "source.python variable.language.special",
     settings: {
-      foreground: "#8EACE3"
+      foreground: colorVariable.hex()
     }
   },
   {
@@ -1020,33 +1881,6 @@ const tcPython = [
     scope: "keyword.control",
     settings: {
       foreground: colorSpecialWord.hex()
-    }
-  },
-]
-
-const tcComments = [
-  {
-    name: "Comment",
-    scope: [
-      "comment",
-
-      "comment.block.css.sass",
-      "comment.line.sass"
-    ],
-    settings: {
-      foreground: colorComment.hex(),
-      fontStyle: "italic"
-    }
-  },
-  {
-    name: "Double-Slashed Comment",
-    scope: [
-      "comment.line.double-slash",
-      "punctuation.definition.comment",
-      "punctuation.whitespace.comment"
-    ],
-    settings: {
-      foreground: colorComment.hex()
     }
   },
 ]
@@ -1078,6 +1912,20 @@ const tcRuby = [
     scope: "constant.language.symbol.ruby",
     settings: {
       foreground: "#7fdbca"
+    }
+  },
+  {
+    name:
+      "Keywords Controls Ruby",
+    scope: [
+      "keyword.control.ruby",
+      "keyword.control.module.ruby",
+      "keyword.control.class.ruby",
+      "keyword.control.def.ruby"
+    ],
+    settings: {
+      foreground: colorSpecialWord.hex(),
+      fontStyle: "italic"
     }
   },
 ]
@@ -1133,238 +1981,6 @@ const tcHtml = [
     settings: {
       foreground: colorSpecialWord.hex(),
       fontStyle: "italic"
-    }
-  },
-]
-
-const tcNormalize = [
-  {
-    name: "normalize font style of certain components",
-    scope: [
-      "meta.property-list.css meta.property-value.css variable.other.less",
-      "meta.property-list.scss variable.scss",
-      "meta.property-list.sass variable.sass",
-      "meta.brace",
-      "keyword.operator.operator",
-      "keyword.operator.or.regexp",
-      "keyword.operator.expression.in",
-      "keyword.operator.relational",
-      "keyword.operator.assignment",
-      "keyword.operator.comparison",
-      "keyword.operator.type",
-      "keyword.operator",
-      "keyword",
-      "punctuation.definintion.string",
-      "punctuation",
-      "variable.other.readwrite.js",
-      "storage.type",
-      "source.css",
-      "string.quoted"
-    ],
-    settings: {
-      fontStyle: ""
-    }
-  },
-]
-
-const tcOthers = [
-   {
-    name: "YAML Entity Name Tags",
-    scope: "entity.name.tag.yaml",
-    settings: {
-      foreground: "#7fdbca"
-    }
-  },
-  {
-    name: "RegExp String",
-    scope: ["string.regexp", "string.regexp keyword.other"],
-    settings: {
-      foreground: colorString.hex()
-    }
-  }
-]
-
-const tcStylesheets = [
-  {
-    name: "sass test",
-    scope:[
-      "keyword.other.parent-selector",
-      "entity.name.function.sass",
-      "keyword.control.interpolation.sass",
-      "keyword.other.reserved.sass",
-      "entity.other.pseudo-classs",
-      "support.function.sass"
-    ],
-    settings:{
-      foreground: colorTestB.hex()
-    }
-  },
-
-  {
-    name: "css and pug ID selector",
-    scope:[
-      "entity.other.attribute-name.id",
-      "entity.other.attribute-name.id.css",
-      "entity.other.attribute-name.id.scss"
-    ],
-    settings:{
-      foreground: colorCssId.hex()
-    }
-  },
-  {
-    name: "css class selector",
-    scope:[
-      "entity.other.attribute-name.class.css"
-    ],
-    settings:{
-      foreground: colorCssClass.hex()
-    }
-  },
-  {
-    name: "Tag selectors and &",
-    scope: [
-      "entity.name.tag.css",
-      "entity.name.tag.less",
-      "entity.name.tag.custom.css",
-      "entity.name.tag.scss",
-      "entity.name.tag.sass"
-    ],
-    settings: {
-      foreground: colorCssTag.hex(),
-      fontStyle: ""
-    }
-  },
-  {
-    name: "Property name stylesheets",
-    scope:[
-      "support.type.property-name.css"
-    ],
-    settings:{
-      foreground: colorCssProperty.hex()
-    }
-  },
-  {
-    name: "Values in css",
-    scope: ["support.constant.property-value.css"],
-    settings: {
-      foreground: colorCssValue.hex()
-    }
-  },
-  {
-    name: "stylesheet numbers",
-    scope: ["constant.numeric.css", "punctuation.definition.constant.css"],
-    settings: {
-      foreground: colorRegularText.hex()
-    }
-  },
-  {
-    name: "Stylesheet Units",
-    scope: [
-      "keyword.other.unit",
-      "keyword.other.unit.css",
-      "keyword.other.unit.scss",
-      "keyword.other.unit.sass"
-    ],
-    settings: {
-      foreground: colorCssUnits.hex()
-    }
-  },
-  {
-    // Stylesheets special words: (orientation),(min-monochrome),(color),
-    // (min-aspect-ratio), (min-resolution)
-    name: "Support Type Property Name & entity name tags",
-    scope: [
-      "support.type.vendor.property-name",
-      "support.constant.vendor.property-value",
-      "support.type.property-name",
-      "meta.property-list entity.name.tag"
-    ],
-    settings: {
-      foreground: colorCssSpecialWord.hex(),
-      fontStyle: ""
-    }
-  },
-  {
-    name: "SCSS & SASS Variable",
-    scope: [
-      "variable.scss",
-      "variable.sass",
-      "variable.parameter.scss",
-      "variable.parameter.sass"
-    ],
-    settings: {
-      foreground: colorVariable.hex()
-    }
-  },
-
-
-  {
-    // css !importatnt, @
-    // keywords for sass
-    name: "Keyword",
-    scope: [
-      "punctuation.accessor",
-      "keyword",
-      "punctuation.definition.keyword",
-      "keyword.operator.css",
-      "keyword.operator.scss",
-      //@mixin
-      "keyword.control.at-rule.scss",
-      "keyword.control.at-rule.css.sass",
-      "keyword.control.at-rule.less",
-      //!important
-      "keyword.other.important.css",
-      //&
-      "meta.property-list entity.name.tag.reference",
-    ],
-    settings: {
-      foreground: colorSpecialWord.hex(),
-      // foreground: colorTestB.hex(),
-      fontStyle: "italic"
-    }
-  },
-  {
-    name: "Wildcard(*) selector in Stylesheets",
-    scope: [
-      "entity.name.tag.wildcard.css",
-      "entity.name.tag.wildcard.less",
-      "entity.name.tag.wildcard.scss",
-      "entity.name.tag.wildcard.sass"
-    ],
-    settings: {
-      foreground: colorFunctionName.hex()
-    }
-  },
-  {
-    name: "Attribute Name for CSS and SCSS",
-    scope: [
-      "meta.attribute-selector.css entity.other.attribute-name.attribute",
-      "meta.attribute-selector.scss entity.other.attribute-name.attribute",
-      "meta.attribute-selector.sass entity.other.attribute-name.attribute",
-      "meta.attribute-selector.less entity.other.attribute-name.attribute",
-      "variable.other.readwrite.js",
-
-
-      // "entity.other.attribute-name.css.sass",
-      // "keyword.operator.attribute-selector.css.sass",
-      // "meta.attribute-selector"
-      "meta.attribute-selector"
-    ],
-    settings: {
-      foreground: colorCssAttribute.hex(),
-
-      // foreground: colorTestC.hex()
-    }
-  },
-  {
-    name: "Variables in SASS At-Rules",
-    scope: [
-      "source.css.scss meta.at-rule variable",
-      "source.css.sass meta.at-rule variable"
-    ],
-    settings: {
-      foreground: "#82AAFF",
-      foreground: colorTestB.hex()
     }
   },
 ]
@@ -1448,220 +2064,24 @@ const tcPhp = [
   },
 ]
 
-const tcJavascript = [
+const tcOtherLang = [
   {
-    name: "javascript portotype",
-    scope: ["support.variable.property.js"],
-    settings: {
-      foreground: colorFunctionName.hex()
-    }
-  },
-  {
-    // nn
-    name: "Storage type",
-    scope: "storage.type.function.arrow.js",
-    settings: {
-      fontStyle: ""
-    }
-  },
-  {
-    name: "this word in javascript",
-    scope: ["variable.language.this.js"],
-    settings: {
-      foreground: colorContrastText.hex()
-    }
-  },
-  {
-    name: "JavaScript Classes",
-    scope: "meta.class entity.name.type.class.js",
-    settings: {
-      foreground: colorVariable.hex()
-    }
-  },
-  {
-    name: "JavaScript Method Declaration e.g. `constructor`",
-    scope: "meta.method.declaration storage.type.js",
-    settings: {
-      foreground: colorSpecialWord.hex()
-    }
-  },
-  {
-    name: "JavaScript module imports and exports",
-    scope: [
-      "variable.other.meta.import.js",
-      "meta.import.js variable.other",
-      "variable.other.meta.export.js",
-      "meta.export.js variable.other"
-    ],
-    settings: {
-      foreground: colorVariable.hex(),
-    }
-  },
-  {
-    name: "JavaScript Variable Parameter Function",
-    scope: "variable.parameter.function.js",
-    settings: {
-      foreground: "#7986E7",
-      foreground: colorTestA.hex()
-    }
-  },
-
-  {
-    name: "TypeScript[React] Punctuation Decorators",
-    scope: [
-      "meta.decorator punctuation.decorator.ts",
-      "meta.decorator punctuation.decorator.tsx"
-    ],
-    settings: {
-      foreground: colorPunctuation.hex()
-    }
-  },
-  {
-    name: "TypeScript[React] Variables and Object Properties",
-    scope: [
-      "variable.other.readwrite.alias.ts",
-      "variable.other.readwrite.alias.tsx",
-      "variable.other.readwrite.ts",
-      "variable.other.readwrite.tsx",
-      "variable.other.object.ts",
-      "variable.other.object.tsx",
-      "variable.object.property.ts",
-      "variable.object.property.tsx",
-      "variable.other.ts",
-      "variable.other.tsx",
-      "variable.tsx",
-      "variable.ts"
-    ],
-    settings: {
-      foreground: colorVariable.hex()
-    }
-  },
-  {
-    name: "TypeScript[React] Entity Name Types",
-    scope: ["entity.name.type.ts", "entity.name.type.tsx"],
-    settings: {
-      foreground: "#ffcb8b"
-    }
-  },
-  {
-    name: "TypeScript[React] Node Classes",
-    scope: ["support.class.node.ts", "support.class.node.tsx"],
-    settings: {
-      foreground: "#82AAFF",
-      foreground: colorTestA.hex()
-    }
-  },
-  {
-    name: "TypeScript[React] Entity Name Types as Parameters",
-    scope: [
-      "meta.type.parameters.ts entity.name.type",
-      "meta.type.parameters.tsx entity.name.type"
-    ],
-    settings: {
-      foreground: colorP_lightest.hex()
-    }
-  },
-  {
-    name: "TypeScript[React] Punctuation Decorators",
-    scope: "meta.tag.js meta.jsx.children.tsx",
-    settings: {
-      foreground: "#82AAFF",
-      foreground: colorTestA.hex()
-    }
-  },
-  {
-    name: "JavaScript Variable Other ReadWrite",
-    scope: ["variable.other.readwrite.js", "variable.parameter"],
-    settings: {
-      foreground: colorVariable.hex()
-    }
-  },
-  {
-    name: "Support Class Component",
-    scope: ["support.class.component.js", "support.class.component.tsx"],
-    settings: {
-      foreground: colorContrastText.hex(),
-      fontStyle: ""
-    }
-  },
-  {
-    name: "@ in decorator in javascript",
-    scope: ["punctuation.decorator.js"],
-    settings: {
-      foreground: colorFunctionName.hex()
-    }
-  },
-  {
-    name: "Text nested in React tags",
-    scope: [
-      "meta.jsx.children",
-      "meta.jsx.children.js",
-      "meta.jsx.children.tsx"
-    ],
-    settings: {
-      foreground: colorRegularText.hex()
-    }
-  },
-  {
-    name: "TypeScript Classes",
-    scope: "meta.class entity.name.type.class.tsx",
-    settings: {
-      foreground: colorVariable.hex()
-    }
-  },
-  {
-    name: "TypeScript Entity Name Type",
-    scope: ["entity.name.type.tsx", "entity.name.type.module.tsx"],
-    settings: {
-      foreground: "#ffcb8b"
-    }
-  },
-  {
-    name: "TypeScript Method Declaration e.g. `constructor`",
-    scope: [
-      "meta.method.declaration storage.type.ts",
-      "meta.method.declaration storage.type.tsx"
-    ],
-    settings: {
-      foreground: "#82AAFF"
-    }
-  },
-  {
-    name: "JavaScript[React] Variable Other Object",
-    scope: [
-      "variable.other.object.js",
-      "variable.other.object.jsx",
-      "variable.object.property.js",
-      "variable.object.property.jsx"
-    ],
-    settings: {
-      foreground: colorVariable.hex()
-    }
-  },
-  {
-    name: "JavaScript Variables",
-    scope: ["variable.js", "variable.other.js"],
-    settings: {
-      foreground: colorVariable.hex(),
-    }
-  },
-  {
-    name: "JavaScript Entity Name Type",
-    scope: ["entity.name.type.js", "entity.name.type.module.js"],
-    settings: {
-      foreground: colorContrastText.hex(),
-      fontStyle: ""
-    }
-  },
-  {
-    name: "JavaScript Support Classes",
-    scope: "support.class.js",
-    settings: {
-      foreground: colorVariable.hex()
-    }
-  },
+   name: "YAML Entity Name Tags",
+   scope: "entity.name.tag.yaml",
+   settings: {
+     foreground: colorTagAttribute.hex()
+   }
+ },
+ {
+   name: "RegExp String",
+   scope: ["string.regexp", "string.regexp keyword.other"],
+   settings: {
+     foreground: colorString.hex()
+   }
+ }
 ]
 
+// testing
 const tcTesting = [
   {
     name: "Object",
@@ -1761,13 +2181,6 @@ const tcTesting = [
     }
   },
   {
-    name: "Language Variable",
-    scope: "variable.language",
-    settings: {
-      foreground: "#7fdbca"
-    }
-  },
-  {
     name: "Support Variable Property",
     scope: "support.variable.property",
     settings: {
@@ -1806,10 +2219,56 @@ const tcTesting = [
       foreground: colorTestB.hex()
     }
   },
+
+
+
+
+  
+  {
+    name: "Italics",
+    scope: "italic",
+    settings: {
+      foreground: colorSpecialWord.hex(),
+      fontStyle: "italic"
+    }
+  },
+  {
+    name: "Bold",
+    scope: "bold",
+    settings: {
+      foreground: colorString.hex(),
+      fontStyle: "bold"
+    }
+  },
+  {
+    name: "Quote",
+    scope: "quote",
+    settings: {
+      foreground: colorString.hex(),
+      fontStyle: "italic"
+    }
+  },
+  {
+    name: "Invalid",
+    scope: "invalid",
+    settings: {
+      background: colorDanger.hex(),
+      foreground: colorWhite.hex()
+    }
+  },
+
+  {
+    name: "Template Literals expressions",
+    scope: [
+      "punctuation.definition.template-expression"
+    ],
+    settings: {
+      foreground: colorContrastText.hex(),
+    }
+  },
+
+  
 ]
-
-
-
 
 const theme = {
   name: "Mao",
@@ -1819,7 +2278,11 @@ const theme = {
   },
   tokenColors: [
     ...tcGlobalSettings,
+    ...tcNormalize,
     ...tcGit,
+
+    ...tcGeneral,
+    ...tcSpecialWords,
     ...tcStorageNames,
     ...tcStrings,
 
@@ -1840,480 +2303,9 @@ const theme = {
     ...tcGo,
     ...tcRuby,
     ...tcPhp,
-    ...tcOthers,
+    ...tcOtherLang,
 
     ...tcTesting,
-
-    ...tcNormalize,
-    
-
-    {
-      name: "Constant Character Escape",
-      scope: "constant.character.escape",
-      settings: {
-        foreground: colorString.hex()
-      }
-    },
-    {
-      // # alone in a function in javascript
-      name: "Comma in functions",
-      scope: "meta.function",
-      settings: {
-        foreground: colorP_lightest.hex(),
-        // foreground: colorTestB.hex()
-      }
-    },
-
-
-
-
-
-    // SPECIAL WORDS
-
-    // VIOLET COLOR
-    // object properties before a method
-    // object.[propertyA.propertyAA.propertyAAA].method()
-    {
-      name: "Variable Property Other object property",
-      scope: ["variable.other.object.property"],
-      settings: {
-        foreground: colorVariableProperty.hex(),
-        fontStyle: "italic"
-      }
-    },
-
-    // object properties
-    // object.[propertyA.propertyAA.propertyAAA]
-    {
-      name: "Variable Instances",
-      scope: [
-        "variable.instance",
-        "variable.other.instance",
-        "variable.readwrite.instance",
-        "variable.other.readwrite.instance",
-        "variable.other.property"
-      ],
-      settings: {
-        foreground: colorVariableProperty.hex()
-      }
-    },
-
-    // RED COLOR
-    {
-      // Math in Math.random() in javascript
-      name: "Support Constant Math",
-      scope: "support.constant.math",
-      settings: {
-        foreground: colorContrastText.hex()
-      }
-    },
-
-
-
-    // BLUE COLOR
-
-    {
-      name: "Storage type",
-      scope: [
-        // var let const class function type 
-        "storage.type",
-        // @param
-        "punctuation.definition.block.tag"
-      ],
-      settings: {
-        foreground: colorFunction.hex()
-      }
-    },
-    {
-      name: "interface",
-      scope: [
-        "storage.type.interface"
-      ],
-      settings:{
-        foreground: colorFunction.hex()
-      }
-    },
-    
-
-
-    //----------------------------------
-
-
-    // PURPLE COLOR
-
-
-    {
-      name: "Entity Name Tag Custom",
-      scope: "entity.name.tag.custom",
-      settings: {
-        foreground: colorSpecialWord.hex()
-      }
-    },
-    {
-      name: "Meta Delimiter Period",
-      scope: "meta.delimiter.period",
-      settings: {
-        foreground: colorSpecialWord.hex(),
-        fontStyle: "italic"
-      }
-    },
-    {
-      name: "Meta Selector",
-      scope: "meta.selector",
-      settings: {
-        foreground: colorSpecialWord.hex(),
-        fontStyle: "italic"
-      }
-    },
-    {
-      name: "Doctypes",
-      scope: ["entity.name.tag.doctype", "meta.tag.sgml.doctype"],
-      settings: {
-        foreground: colorSpecialWord.hex(),
-        fontStyle: "italic"
-      }
-    },
-    {
-      name: "Keyword Operator Logical",
-      scope: "keyword.operator.logical",
-      settings: {
-        foreground: colorSpecialWord.hex(),
-        fontStyle: ""
-      }
-    },
-    {
-      name:
-        "Keyword Operator Comparison, imports, returns and Keyword Operator Ruby",
-      scope: [
-        "keyword.operator.comparison",
-        "keyword.control.flow.js",
-        "keyword.control.flow.ts",
-        "keyword.control.flow.tsx",
-        "keyword.control.ruby",
-        "keyword.control.module.ruby",
-        "keyword.control.class.ruby",
-        "keyword.control.def.ruby",
-        "keyword.control.loop.js",
-        "keyword.control.loop.ts",
-        "keyword.control.import.js",
-        "keyword.control.import.ts",
-        "keyword.control.import.tsx",
-        "keyword.control.from.js",
-        "keyword.control.from.ts",
-        "keyword.control.from.tsx"
-      ],
-      settings: {
-        foreground: colorSpecialWord.hex(),
-        fontStyle: "italic"
-      }
-    },
-    {
-      name: "Keyword Control Conditional",
-      scope: [
-        "keyword.control.conditional.js",
-        "keyword.control.conditional.ts",
-        "keyword.control.switch.js",
-        "keyword.control.switch.ts"
-      ],
-      settings: {
-        foreground: colorSpecialWord.hex(),
-        fontStyle: ""
-      }
-    },
-
-    //----------------------------------
-
-
-    // CYAN COLOR
-    {
-      name: "Variable Parameter Function",
-      scope: "variable.parameter.function",
-      settings: {
-        foreground: colorFunctionName.hex(),
-        fontStyle: ""
-      }
-    },
-    {
-      name: "Meta Property Name",
-      scope: "meta.property-name",
-      settings: {
-        foreground: colorFunctionName.hex()
-      }
-    },
-    {
-      name: "Keyword Control Operator",
-      scope: "keyword.control.operator",
-      settings: {
-        foreground: colorFunctionName.hex()
-      }
-    },
-    {
-      name: "Entity Name Function",
-      scope: ["entity.name.function"],
-      settings: {
-        foreground: colorFunctionName.hex(),
-        fontStyle: "italic"
-      }
-    },
-    {
-      name:
-        "Support Constant, `new` keyword, Special Method Keyword, `debugger`, other keywords",
-      scope: [
-        "support.constant",
-        "keyword.other.special-method",
-        "keyword.other.new",
-        "keyword.other.debugger",
-        "keyword.control"
-      ],
-      settings: {
-        foreground: colorFunctionName.hex()
-      }
-    },
-    {
-      name: "Support Function",
-      scope: "support.function",
-      settings: {
-        foreground: colorFunctionName.hex()
-      }
-    },
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
-    {
-      name: "Template Literals expressions",
-      scope: [
-        "punctuation.definition.template-expression"
-      ],
-      settings: {
-        foreground: colorContrastText.hex(),
-      }
-    },
-    {
-      name: "Meta Tag",
-      scope: ["punctuation.definition.tag", "meta.tag"],
-      settings: {
-        foreground: colorMetaTag.hex()
-      }
-    },
-    {
-      // HTML TAG
-      name: "Tag attribute",
-      scope: "entity.other.attribute-name",
-      settings: {
-        fontStyle: "italic",
-        foreground: colorTagAttribute.hex()
-      }
-    },
-    {
-      // like log in console.log()
-      name: "Library (function & constant)",
-      scope: ["support.function", "support.constant"],
-      settings: {
-        foreground: "#82AAFF",
-        foreground: colorSpecialWord.hex()
-      }
-    },
-    {
-      // console string-word color
-      name: "Library class/type",
-      scope: ["support.type", "support.class"],
-      settings: {
-        foreground: colorContrastText.hex(),
-      }
-    },
-    {
-      name: "Invalid",
-      scope: "invalid",
-      settings: {
-        background: colorDanger.hex(),
-        foreground: colorWhite.hex()
-      }
-    },
-    {
-      name: "Invalid deprecated",
-      scope: "invalid.deprecated",
-      settings: {
-        foreground: colorWhite.hex(),
-        background: colorDangerDark.hex()
-      }
-    },
-    {
-      name: "Keyword Operator",
-      scope: "keyword.operator",
-      settings: {
-        foreground: colorContrastText.hex(),
-        fontStyle: ""
-      }
-    },
-    {
-      name: "Keyword Operator Relational",
-      scope: "keyword.operator.relational",
-      settings: {
-        foreground: colorSmallOperators.hex(),
-        fontStyle: "italic"
-      }
-    },
-    {
-      name: "Keyword Operator Assignment",
-      scope: "keyword.operator.assignment",
-      settings: {
-        foreground: colorSmallOperators.hex()
-      }
-    },
-    {
-      name: "Keyword Operator Arithmetic",
-      scope: "keyword.operator.arithmetic",
-      settings: {
-        foreground: colorSmallOperators.hex()
-      }
-    },
-    {
-      name: "Keyword Operator Bitwise",
-      scope: "keyword.operator.bitwise",
-      settings: {
-        foreground: colorSmallOperators.hex()
-      }
-    },
-    {
-      name: "Keyword Operator Increment",
-      scope: "keyword.operator.increment",
-      settings: {
-        foreground: colorSmallOperators.hex()
-      }
-    },
-    {
-      name: "Keyword Operator Ternary",
-      scope: "keyword.operator.ternary",
-      settings: {
-        foreground: colorSmallOperators.hex()
-      }
-    },
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    {
-      name: "Italics",
-      scope: "italic",
-      settings: {
-        foreground: colorSpecialWord.hex(),
-        fontStyle: "italic"
-      }
-    },
-    {
-      name: "Bold",
-      scope: "bold",
-      settings: {
-        foreground: colorString.hex(),
-        fontStyle: "bold"
-      }
-    },
-    {
-      name: "Quote",
-      scope: "quote",
-      settings: {
-        foreground: colorString.hex(),
-        fontStyle: "italic"
-      }
-    },
-    {
-      name: "Entity Names in Code Documentations",
-      scope: [
-        "entity.name.type.instance.jsdoc",
-        "entity.name.type.instance.phpdoc"
-      ],
-      settings: {
-        foreground: colorP_lightest.hex()
-      }
-    },
-    {
-      name: "Other Variables in Code Documentations",
-      scope: ["variable.other.jsdoc", "variable.other.phpdoc"],
-      settings: {
-        foreground: colorVariable.hex(),
-      }
-    },
-
   ]
 }
 

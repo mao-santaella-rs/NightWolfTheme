@@ -1,0 +1,45 @@
+@function my-calculation-function($some-number, $another-number)
+  @return $some-number + $another-number
+
+
+@mixin my-padding-mixin($some-number)
+  padding: $some-number
+
+
+a
+	font-family: $link-font-family
+	font-size: $link-font-size
+	font-weight: $link-font-weight
+	text-decoration: none
+	background-color: transparent
+	-webkit-text-decoration-skip: objects
+
+    @include my-padding-mixin(10px)
+    +size(300px)
+
+	&:hover
+
+	&:active, &:hover
+		outline-width: 0
+
+	&:active, &:focus, &:hover
+		color: $link-hover-color
+
+#{$all-buttons}
+	appearance: none
+	cursor: pointer
+	display: inline-block
+	border-radius: $base-border-radius
+	color: $white
+	background-color: $link-color
+	font-family: $link-font-family
+	transition: background-color $base-duration $base-timing
+
+
+button::-moz-focus-inner, [type="button"]::-moz-focus-inner, [type="reset"]::-moz-focus-inner, [type="submit"]::-moz-focus-inner
+	border-style: none
+	padding: 0
+
+button:-moz-focusring, [type="button"]:-moz-focusring, [type="reset"]:-moz-focusring, [type="submit"]:-moz-focusring
+	outline: 1px dotted ButtonText
+
