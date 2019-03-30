@@ -78,7 +78,6 @@ const colorRegularText =          colorText
 const colorNumber =               colorRegularText
 const colorBoolean =              colorContrastText
 const colorNullUnd =              colorContrastText
-const colorSmallOperators =       colorSpecialWord
 const colorPunctuation =          colorRegularText
 const colorDeprecated =           Color.rgb(255,0,0)
 
@@ -97,21 +96,23 @@ const colorCssProperty =          colorFunctionName
 const colorCssUnits =             colorVariableProperty
 const colorCssSpecialWord =       colorFunctionName
 
+// Documentation in comments
+const colorDocEntityNames =       Color.rgb(180,120,130)
+const colorDocVariables =         Color.rgb(180,150,120)
+
 
 
 console.log(Date.now())
 
 
 const themeColors = {
-  contrastActiveBorder: null,
-  contrastBorder: null,
-  focusBorder: colorP_lighten.hex(),
-  foreground: colorText.hex(),
+  "contrastActiveBorder": null,
+  "contrastBorder": null,
+  "focusBorder": colorP_lighten.hex(),
+  "foreground": colorText.hex(),
   "widget.shadow": colorPrincipal.hex(),
   "selection.background": colorInfo.hex(),
-  errorForeground: colorDanger.hex(),
-
-
+  "errorForeground": colorDanger.hex(),
 
   "terminal.ansiWhite": colorText.hex(),
   "terminal.ansiBlack": colorBlack.hex(),
@@ -540,6 +541,14 @@ const tcGeneral = [
     }
   },
   {
+    // function name
+    name: "Support Variable Property",
+    scope: "support.variable.property",
+    settings: {
+      foreground: colorFunctionName.hex(),
+    }
+  },
+  {
     name: "Invalid deprecated",
     scope: "invalid.deprecated",
     settings: {
@@ -553,112 +562,10 @@ const tcGeneral = [
 
 
 
-  {
-    // in theory the entire line which declares a function
-    // but does not work that way
-    // # alone in a function in javascript
-    name: "Comma in functions",
-    scope: "meta.function",
-    settings: {
-      foreground: colorVariable.hex()
-    }
-  },
+  
 ]
 
 const tcSpecialWords = [
-
-// KEYWORD OPERATORS
-  {
-    // perators can either be textual (e.g. or) or be characters.
-    // like typeof, instanceof, new, in, --, delete in javascript
-    // and some s#$%t in regex
-    name: "Keyword Operator",
-    scope: "keyword.operator",
-    settings: {
-      foreground: colorContrastText.hex(),
-      // foreground: colorTestB.hex(),
-      fontStyle: ""
-    }
-  },
-  {
-    // += -= *= /= %= &= |= ^= <<= and >>=
-    name: "Keyword Operator Assignment",
-    scope: "keyword.operator.assignment",
-    settings: {
-      foreground: colorOperator.hex(),
-      // foreground: colorTestA.hex(),
-    }
-  },
-  {
-    // + - * / % ** ++ --
-    name: "Keyword Operator Arithmetic",
-    scope: "keyword.operator.arithmetic",
-    settings: {
-      foreground: colorOperator.hex(),
-      // foreground: colorTestC.hex(),
-    }
-  },
-  {
-    // & | ^ ~ << >> >>>
-    name: "Keyword Operator Bitwise",
-    scope: "keyword.operator.bitwise",
-    settings: {
-      foreground: colorOperator.hex(),
-    }
-  },
-  {
-    // ++
-    name: "Keyword Operator Increment",
-    scope: [
-      "keyword.operator.increment",
-      "keyword.operator.decrement"
-    ],
-    settings: {
-      foreground: colorOperator.hex(),
-      // foreground: colorTestB.hex(),
-    }
-  },
-  {
-    // ? :
-    name: "Keyword Operator Ternary",
-    scope: "keyword.operator.ternary",
-    settings: {
-      foreground: colorOperator.hex()
-    }
-  },
-  {
-    name: "Keyword Operator Logical",
-    scope: "keyword.operator.logical",
-    settings: {
-      foreground: colorSpecialWord.hex(),
-      fontStyle: ""
-    }
-  },
-  {
-    // <= >= 
-    name: "keyword Operator Comparison",
-    scope: [
-      "keyword.operator.comparison"
-    ],
-    settings:{
-      foreground: colorSpecialWord.hex()
-    }
-  },
-  {
-    // =	≠	>	<	≥	≤
-    name: "Keyword Operator Relational",
-    scope: "keyword.operator.relational",
-    settings: {
-      foreground: colorSpecialWord.hex(),
-      // foreground: colorTestB.hex(),
-      fontStyle: "italic"
-    }
-  },
-
-
-
-
-
 
   // SPECIAL WORDS
 
@@ -727,11 +634,12 @@ const tcSpecialWords = [
       scope: [
         // var let const class function type 
         "storage.type",
-        // @param
+        // @param, @returns
         "punctuation.definition.block.tag"
       ],
       settings: {
-        foreground: colorFunction.hex()
+        foreground: colorFunction.hex(),
+        // foreground: colorTestB.hex(),
       }
     },
     {
@@ -925,10 +833,11 @@ const tcStorageNames = [
     }
   },
   {
-    //??
+    // NO IDEA
     name: "Variable Property Other object",
     scope: ["variable.other.object.js"],
     settings: {
+      foreground: colorTestB.hex(),
       fontStyle: ""
     }
   },
@@ -975,8 +884,7 @@ const tcPunctuation = [
     name: "Punctuation",
     scope: [
       "punctuation",
-      "punctuation.definition",
-
+      
       // "punctuation.definition.arguments",
       // "punctuation.definition.array",
       // "punctuation.definition.list",
@@ -1004,18 +912,12 @@ const tcPunctuation = [
       "punctuation.separator",
       "meta.property-list.css.sass",
       "punctuation.accessor",
-      // Comma in functions
-      "meta.function"
+      // dot (.) for object property e.g. object.property
+      "punctuation.accessor",
     ],
     settings: {
-      foreground: colorPunctuation.hex()
-    }
-  },
-  {
-    name: "Punctuation Definition Parameters",
-    scope: "punctuation.definition.parameters",
-    settings: {
-      foreground: colorPunctuation.hex()
+      foreground: colorPunctuation.hex(),
+      // foreground: colorTestB.hex(),
     }
   },
   {
@@ -1028,7 +930,8 @@ const tcPunctuation = [
       "meta.array"
     ],
     settings: {
-      foreground: colorPunctuation.hex()
+      foreground: colorPunctuation.hex(),
+      // foreground: colorTestB.hex(),
     }
   },
   {
@@ -1040,7 +943,8 @@ const tcPunctuation = [
       "punctuation.definition.list"
     ],
     settings: {
-      foreground: colorPunctuation.hex()
+      foreground: colorPunctuation.hex(),
+      // foreground: colorTestB.hex(),
     }
   },
   {
@@ -1052,7 +956,8 @@ const tcPunctuation = [
       "meta.link.inline.markdown punctuation.definition.string"
     ],
     settings: {
-      foreground: colorPunctuation.hex()
+      foreground: colorPunctuation.hex(),
+      // foreground: colorTestB.hex(),
     }
   },
   {
@@ -1064,15 +969,48 @@ const tcPunctuation = [
       "meta.export.tsx punctuation.definition.block"
     ],
     settings: {
+      foreground: colorPunctuation.hex(),
+      // foreground: colorTestB.hex(),
+    }
+  },
+  {
+    // () [] {}
+    name: "Meta Braces and curly brackets",
+    scope: [
+      // () []
+      "meta.brace",
+      // {}
+      "punctuation.definition",
+      // () in function definitions e.g. function fnName()...
+      "punctuation.definition.parameters"
+    ],
+    settings: {
       foreground: colorPunctuation.hex()
     }
   },
   {
-    // ()
-    name: "Meta Brace",
-    scope: "meta.brace",
+    // ${}
+    name: "Template Literals expressions",
+    scope: [
+      "punctuation.definition.template-expression"
+    ],
     settings: {
-      foreground: colorPunctuation.hex()
+      foreground: colorContrastText.hex()
+    }
+  },
+
+  // TESTING
+
+  {
+    // in theory the entire line which declares a function
+    // but does not work that way
+    // # alone in a function in javascript
+    // Comma in functions
+    name: "Comma in functions",
+    scope: "meta.function",
+    settings: {
+      // foreground: colorVariable.hex(),
+      background: colorTestA.hex()
     }
   },
   {
@@ -1081,6 +1019,103 @@ const tcPunctuation = [
     settings: {
       foreground: colorPunctuation.hex(),
       background: colorTestA.hex()
+    }
+  },
+
+
+
+
+
+
+
+  // KEYWORD OPERATORS
+  {
+    // perators can either be textual (e.g. or) or be characters.
+    // like typeof, instanceof, new, in, --, delete in javascript
+    // and some s#$%t in regex
+    name: "Keyword Operator",
+    scope: "keyword.operator",
+    settings: {
+      foreground: colorOperator.hex(),
+      // foreground: colorTestB.hex(),
+      fontStyle: ""
+    }
+  },
+  {
+    // += -= *= /= %= &= |= ^= <<= and >>=
+    name: "Keyword Operator Assignment",
+    scope: "keyword.operator.assignment",
+    settings: {
+      foreground: colorOperator.hex(),
+      // foreground: colorTestA.hex(),
+    }
+  },
+  {
+    // + - * / % ** ++ --
+    name: "Keyword Operator Arithmetic",
+    scope: "keyword.operator.arithmetic",
+    settings: {
+      foreground: colorOperator.hex(),
+      // foreground: colorTestB.hex(),
+    }
+  },
+  {
+    // & | ^ ~ << >> >>>
+    name: "Keyword Operator Bitwise",
+    scope: "keyword.operator.bitwise",
+    settings: {
+      foreground: colorOperator.hex(),
+      // foreground: colorTestB.hex(),
+    }
+  },
+  {
+    // ++
+    name: "Keyword Operator Increment",
+    scope: [
+      "keyword.operator.increment",
+      "keyword.operator.decrement"
+    ],
+    settings: {
+      foreground: colorOperator.hex(),
+      // foreground: colorTestB.hex(),
+    }
+  },
+  {
+    // ? :
+    name: "Keyword Operator Ternary",
+    scope: "keyword.operator.ternary",
+    settings: {
+      foreground: colorOperator.hex(),
+      // foreground: colorTestB.hex(),
+    }
+  },
+  {
+    name: "Keyword Operator Logical",
+    scope: "keyword.operator.logical",
+    settings: {
+      foreground: colorSpecialWord.hex(),
+      fontStyle: ""
+    }
+  },
+  {
+    // <= >= 
+    name: "keyword Operator Comparison",
+    scope: [
+      "keyword.operator.comparison"
+    ],
+    settings:{
+      foreground: colorSpecialWord.hex(),
+      // foreground: colorTestB.hex(),
+    }
+  },
+  {
+    // =	≠	>	<	≥	≤
+    name: "Keyword Operator Relational",
+    scope: "keyword.operator.relational",
+    settings: {
+      foreground: colorSpecialWord.hex(),
+      // foreground: colorTestB.hex(),
+      fontStyle: "italic"
     }
   },
 ]
@@ -1241,7 +1276,6 @@ const tcStylesheets = [
     // keywords for sass
     name: "Keyword",
     scope: [
-      "punctuation.accessor",
       "keyword",
       "punctuation.definition.keyword",
       "keyword.operator.css",
@@ -1257,7 +1291,7 @@ const tcStylesheets = [
     ],
     settings: {
       foreground: colorSpecialWord.hex(),
-      // foreground: colorTestB.hex(),
+      foreground: colorTestB.hex(),
       fontStyle: "italic"
     }
   },
@@ -1342,16 +1376,18 @@ const tcComments = [
       "entity.name.type.instance.phpdoc"
     ],
     settings: {
-      foreground: colorContrastText.lighten(0.15).hex(),
+      foreground: colorDocEntityNames.hex(),
       // foreground: colorTestB.hex()
     }
   },
   {
     name: "Other Variables in Code Documentations",
-    scope: ["variable.other.jsdoc", "variable.other.phpdoc"],
+    scope: [
+      "variable.other.jsdoc", 
+      "variable.other.phpdoc"
+    ],
     settings: {
-      foreground: colorVariable.darken(0.5).hex(),
-      // foreground: colorTestC.hex()
+      foreground: colorDocVariables.hex()
     }
   },
 
@@ -1408,15 +1444,6 @@ const tcJavascript = [
     }
   },
   {
-    name: "JavaScript Variable Parameter Function",
-    scope: "variable.parameter.function.js",
-    settings: {
-      foreground: "#7986E7",
-      foreground: colorTestA.hex()
-    }
-  },
-
-  {
     name: "TypeScript[React] Punctuation Decorators",
     scope: [
       "meta.decorator punctuation.decorator.ts",
@@ -1448,9 +1475,13 @@ const tcJavascript = [
   },
   {
     name: "TypeScript[React] Entity Name Types",
-    scope: ["entity.name.type.ts", "entity.name.type.tsx"],
+    scope: [
+      "entity.name.type.ts", 
+      "entity.name.type.tsx"
+    ],
     settings: {
-      foreground: "#ffcb8b"
+      foreground: "#ffcb8b",
+      foreground: colorVariable.hex()
     }
   },
   {
@@ -1458,7 +1489,7 @@ const tcJavascript = [
     scope: ["support.class.node.ts", "support.class.node.tsx"],
     settings: {
       foreground: "#82AAFF",
-      foreground: colorTestA.hex()
+      foreground: colorTestC.hex()
     }
   },
   {
@@ -1523,7 +1554,8 @@ const tcJavascript = [
     name: "TypeScript Entity Name Type",
     scope: ["entity.name.type.tsx", "entity.name.type.module.tsx"],
     settings: {
-      foreground: "#ffcb8b"
+      foreground: "#ffcb8b",
+      foreground: colorTestB.hex()
     }
   },
   {
@@ -1533,7 +1565,7 @@ const tcJavascript = [
       "meta.method.declaration storage.type.tsx"
     ],
     settings: {
-      foreground: "#82AAFF"
+      foreground: colorFunction.hex()
     }
   },
   {
@@ -2173,13 +2205,6 @@ const tcTesting = [
     }
   },
   {
-    name: "Support Variable Property",
-    scope: "support.variable.property",
-    settings: {
-      foreground: "#7fdbca"
-    }
-  },
-  {
     name: "Variable Function",
     scope: "variable.function",
     settings: {
@@ -2246,16 +2271,6 @@ const tcTesting = [
     settings: {
       background: colorDanger.hex(),
       foreground: colorWhite.hex()
-    }
-  },
-
-  {
-    name: "Template Literals expressions",
-    scope: [
-      "punctuation.definition.template-expression"
-    ],
-    settings: {
-      foreground: colorContrastText.hex(),
     }
   },
 
