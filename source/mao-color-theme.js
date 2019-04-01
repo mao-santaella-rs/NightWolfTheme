@@ -7,7 +7,7 @@ const colorTestB =                Color.rgb(0, 255, 0)
 const colorTestC =                Color.rgb(255, 100, 0)
 
 // Syntax Colors
-const colorSyntaxYellow =         Color.rgb(255,230,150)
+const colorSyntaxYellow =         Color.rgb(255,220,150)
 const colorSyntaxBlue =           Color.rgb(0,177,255)
 const colorSyntaxPurple =         Color.rgb(200,120,230)
 const colorSyntaxRed =            Color.rgb(255,120,120)
@@ -15,11 +15,11 @@ const colorSyntaxCyan =           Color.rgb(0,220,220)
 const colorSyntaxGreen =          Color.rgb(170,230,130)
 const colorSyntaxViolet =         Color.rgb(150,150,255)
 const colorSyntaxMagenta =        Color.rgb(255,80,255)
-const colorSyntaxOrange =         Color.rgb(255,180,110)
+const colorSyntaxOrange =         Color.rgb(255,193,150)
 
 
 // THEME COLORS
-const colorWhite =                Color.rgb(255, 255, 255)
+const colorWhite =                Color.rgb(255,255,255)
 const colorBlack =                Color.rgb(0,0,0)
 
 const colorPrincipal =            Color.rgb(16, 30, 44)
@@ -41,7 +41,7 @@ const colorFindHighlight =        colorSelectionHighlight
 const colorRangeHiglight =        colorP_light
 const colorLineHiglight =         colorP_darken
 
-const contrastColor =             Color.rgb(255, 0, 255)
+const contrastColor =             Color.rgb(255,0,255)
 const contrastColorLight =        contrastColor.lighten(0.5)
 const contrastColorDark =         contrastColor.darken(0.5)
 
@@ -52,25 +52,26 @@ const colorGitRemovedBg =         Color.rgb(55,31,44)
 
 
 // STATES COLORS
-const colorInfo =                 Color.rgb(100, 180, 250)
+const colorInfo =                 Color.rgb(100,180,250)
 const colorInfoDark =             colorInfo.darken(0.6)
 const colorInfoLight =            colorInfo.lighten(0.2)
 const colorSucces =               Color.rgb(110,180,80)
-const colorSuccesLight =          Color.rgb(175, 220, 100)
-const colorWarning =              Color.rgb(255, 200, 40)
+const colorSuccesLight =          Color.rgb(175,220,100)
+const colorWarning =              Color.rgb(255,200,40)
 const colorWarningDark =          colorWarning.darken(0.6)
-const colorWarningLight =         Color.rgb(255, 235, 150)
-const colorDanger =               Color.rgb(240, 80, 80)
+const colorWarningLight =         Color.rgb(255,235,150)
+const colorDanger =               Color.rgb(240,80,80)
 const colorDangerDark =           colorDanger.darken(0.4)
 
 
 // SYNTAX COLORS
 // General colors
-const colorVariable =             Color.rgb(255,230,150)
-const colorVariableProperty =     Color.rgb(150,150,255)
-const colorContrastText =         Color.rgb(255, 120, 120)
-const colorSpecialWord =          Color.rgb(200, 120, 230)
-const colorFunction =             Color.rgb(0,177,255)
+const colorVariable =             Color.rgb(255,220,150)
+const colorVariableProperty =     Color.rgb(255,193,150)
+const colorContrastText =         Color.rgb(255,120,120)
+const colorSpecialWordA =         Color.rgb(0,177,255)
+const colorSpecialWordB =         Color.rgb(150,150,255)
+const colorSpecialWordC =         Color.rgb(220,140,255)
 const colorFunctionName =         Color.rgb(0,220,220)
 const colorString =               Color.rgb(170,230,130)
 const colorOperator =             colorContrastText
@@ -84,14 +85,15 @@ const colorDeprecated =           Color.rgb(255,0,0)
 // Markup
 const colorHtmlTag =              colorContrastText
 const colorMetaTag =              Color.rgb(200,200,200)
-const colorTagAttribute =         colorVariable
+const colorTagAttribute =         colorSpecialWordB
+const colorPugClass =             colorVariable
 
 // Stylesheets
 const colorCssAttribute =         colorFunctionName
 const colorCssValue =             colorText
 const colorCssTag =               colorContrastText
 const colorCssClass =             colorVariable
-const colorCssId =                colorFunction
+const colorCssId =                colorSpecialWordA
 const colorCssProperty =          colorFunctionName
 const colorCssUnits =             colorVariableProperty
 const colorCssSpecialWord =       colorFunctionName
@@ -106,30 +108,36 @@ console.log(Date.now())
 
 
 const themeColors = {
+  // An extra border around active elements to separate them from others for greater contrast.
   "contrastActiveBorder": null,
+  // An extra border around elements to separate them from others for greater contrast.
   "contrastBorder": null,
+  // Overall border color for focused elements. This color is only used if not overridden by a component.
   "focusBorder": colorP_lighten.hex(),
+  // Overall foreground color. This color is only used if not overridden by a component.
   "foreground": colorText.hex(),
-  "widget.shadow": colorPrincipal.hex(),
+  // Shadow color of widgets such as Find/Replace inside the editor.
+  "widget.shadow": colorP_darken.hex(),
+  // Background color of text selections in the workbench (for input fields or text areas, does not apply to selections within the editor and the terminal).
   "selection.background": colorInfo.hex(),
+  // labels in the welcome page
+  "descriptionForeground": colorText.hex(),
+  // Overall foreground color for error messages
   "errorForeground": colorDanger.hex(),
 
-  "terminal.ansiWhite": colorText.hex(),
-  "terminal.ansiBlack": colorBlack.hex(),
-  "terminal.ansiBlue": colorSyntaxViolet.hex(),
-  "terminal.ansiCyan": colorSyntaxCyan.hex(),
-  "terminal.ansiGreen": colorSyntaxGreen.hex(),
-  "terminal.ansiMagenta": colorSyntaxMagenta.hex(),
-  "terminal.ansiRed": colorSyntaxRed.hex(),
-  "terminal.ansiYellow": colorSyntaxYellow.hex(),
-  "terminal.ansiBrightWhite": colorWhite.hex(),
-  "terminal.ansiBrightBlack": colorP_lighter.hex(),
-  "terminal.ansiBrightBlue": colorSyntaxViolet.hex(),
-  "terminal.ansiBrightCyan": colorSyntaxCyan.hex(),
-  "terminal.ansiBrightGreen": colorSyntaxGreen.hex(),
-  "terminal.ansiBrightMagenta": colorSyntaxMagenta.hex(),
-  "terminal.ansiBrightRed": colorSyntaxRed.hex(),
-  "terminal.ansiBrightYellow": colorSyntaxYellow.hex(),
+
+  // Links
+  "textLink.foreground": colorSyntaxBlue.hex(),
+  // Links hover
+  "textLink.activeForeground": colorSyntaxBlue.lighten(0.5).hex(),
+
+  "textBlockQuote.background": colorP_lighter.hex(),
+  "textBlockQuote.border": colorP_lighter.hex(),
+  "textCodeBlock.background": colorP_lighter.hex(),
+  "textPreformat.foreground": colorText.hex(),
+  "textSeparator.foreground": colorText.hex(),
+
+
 
   // Editor in general
   "editor.background": colorPrincipal.hex(),
@@ -184,15 +192,11 @@ const themeColors = {
   "editorIndentGuide.background": colorP_lighten.hex(),
   "editorIndentGuide.activeBackground": colorP_lightest.hex(),
 
-  // descripcciones en el welcome page
-  "descriptionForeground": colorText.hex(),
+  
 
   // vscode codelens
   "editorCodeLens.foreground": colorInfoLight.hex(),
 
-  "editorOverviewRuler.currentContentForeground": contrastColor.hex(),
-  "editorOverviewRuler.incomingContentForeground": contrastColor.hex(),
-  "editorOverviewRuler.commonContentForeground": contrastColor.hex(),
 
   // editor states
   "editorError.foreground": colorDanger.hex(),
@@ -240,6 +244,7 @@ const themeColors = {
   "dropdown.background": colorPrincipal.hex(),
   "dropdown.border": colorP_lighten.hex(),
   "dropdown.foreground": colorText.hex(),
+  "dropdown.listBackground": null,
   // Inputs text
   "input.background": colorP_light.hex(),
   "input.border": colorP_lighten.hex(),
@@ -273,40 +278,91 @@ const themeColors = {
 
   // Barra de la izquierda
   // Colors for list and trees like the File Explorer.
+  // List/Tree background color for the selected item when the list/tree is active.
   "list.activeSelectionBackground": colorP_lighter.hex(),
+  // List/Tree foreground color for the selected item when the list/tree is active.
   "list.activeSelectionForeground": colorWhite.hex(),
+  // List/Tree foreground color for invalid items, for example an unresolved root in explorer.
   "list.invalidItemForeground": contrastColorDark.hex(),
+  // List/Tree drag and drop background when moving items around using the mouse.
   "list.dropBackground": colorPrincipal.hex(),
+  // List/Tree background color for the focused item when the list/tree is active.
   "list.focusBackground": colorPrincipal.hex(),
+  // List/Tree foreground color for the focused item when the list/tree is active. An active list/tree has keyboard focus, an inactive does not.
   "list.focusForeground": colorWhite.hex(),
+  // List/Tree foreground color of the match highlights when searching inside the list/tree.
   "list.highlightForeground": colorWhite.hex(),
+  // List/Tree background when hovering over items using the mouse.
   "list.hoverBackground": colorPrincipal.hex(),
+  // List/Tree foreground when hovering over items using the mouse.
   "list.hoverForeground": colorWhite.hex(),
+  // List/Tree background color for the selected item when the list/tree is inactive.
   "list.inactiveSelectionBackground": colorP_light.hex(),
+  // List/Tree foreground color for the selected item when the list/tree is inactive. An active list/tree has keyboard focus, an inactive does not.
   "list.inactiveSelectionForeground": colorP_lightest.hex(),
+  
 
-  // Activity bar es la barra de iconos de la derecha
+  // List background color for the focused item when the list is inactive. An active list has keyboard focus, an inactive does not. Currently only supported in lists.
+  "list.inactiveFocusBackground": null,
+  // Foreground color of list items containing errors.
+  "list.errorForeground": null,
+  // Foreground color of list items containing warnings.
+  "list.warningForeground": null,
+  // List/Tree Filter background color of typed text when searching inside the list/tree.
+  "listFilterWidget.background": null,
+  // List/Tree Filter Widget's outline color of typed text when searching inside the list/tree.
+  "listFilterWidget.outline": null,
+  // List/Tree Filter Widget's outline color when no match is found of typed text when searching inside the list/tree.
+  "listFilterWidget.noMatchesOutline": null,
+
+
+
+
+
+  // Activity bar es la barra de iconos de la izquierda
+  // Activity Bar background color.
   "activityBar.background": colorPrincipal.hex(),
+  // Drag and drop feedback color for the Activity Bar items.
   "activityBar.dropBackground": colorP_lightest.hex(),
+  // Activity bar foreground color (for example used for the icons).
   "activityBar.foreground": colorP_lightest.hex(),
+  // Activity Bar border color with the Side Bar.
   "activityBar.border": colorPrincipal.hex(),
+  // Activity notification badge background color.
   "activityBarBadge.background": colorP_lighter.hex(),
+  // Activity notification badge foreground color.
   "activityBarBadge.foreground": colorWhite.hex(),
+  // Activity bar item foreground color when it is inactive.
+  // "activityBar.inactiveForeground": null,
 
-  // Es la barra de la izquierda que contiene el tree view y el explorer
+// Es la barra de la izquierda que contiene el tree view y el explorer
+  // Side Bar background color.
   "sideBar.background": colorPrincipal.hex(),
+  // Side Bar foreground color. The Side Bar is the container for views like Explorer and Search.
   "sideBar.foreground": colorText.hex(),
+  // Side Bar border color on the side separating the editor.
   "sideBar.border": colorP_lighten.hex(),
+  // Side Bar title foreground color.
   "sideBarTitle.foreground": colorP_lightest.hex(),
+  // Side Bar section header background color.
   "sideBarSectionHeader.background": colorPrincipal.hex(),
+  // Side Bar section header foreground color.
   "sideBarSectionHeader.foreground": colorP_lightest.hex(),
+  // Drag and drop feedback color for the side bar sections. The color should have transparency so that the side bar sections can still shine through. The side bar is the container for views like explorer and search.
+  // "sideBar.dropBackground": null
 
-  // EditorGroup es la agrupacion de archivos abiertos
+// Editor Groups are the containers of editors. There can be many editor groups. A Tab is the container of an editor. Multiple Tabs can be opened in one editor group.
+  // Background color when dragging editors around.
   "editorGroup.background": colorP_lighter.hex(),
+  // Color to separate multiple editor groups from each other.
   "editorGroup.border": colorP_lighten.hex(),
+  // Background color when dragging editors around.
   "editorGroup.dropBackground": contrastColor.hex(),
+  // Background color of the editor group title header when Tabs are disabled (set "workbench.editor.showTabs": false).
   "editorGroupHeader.noTabsBackground": colorPrincipal.hex(),
+  // Background color of the Tabs container.
   "editorGroupHeader.tabsBackground": colorPrincipal.hex(),
+  // Border color of the editor group title header when tabs are enabled.
   "editorGroupHeader.tabsBorder": colorP_lighten.hex(),
 
   // Las pestanas de los archivos abiertos
@@ -352,11 +408,18 @@ const themeColors = {
   "peekViewTitleDescription.foreground": colorP_lightest.hex(),
   "peekViewTitleLabel.foreground": colorP_lightest.hex(),
 
+  // GIT MERGE CONFLICTS
   "merge.currentHeaderBackground": colorP_lightest.hex(),
   "merge.currentContentBackground": null,
   "merge.incomingHeaderBackground": contrastColor.hex(),
   "merge.incomingContentBackground": null,
   "merge.border": null,
+  "merge.commonContentBackground": null,
+  "merge.commonHeaderBackground": null,
+  "editorOverviewRuler.currentContentForeground": contrastColor.hex(),
+  "editorOverviewRuler.incomingContentForeground": contrastColor.hex(),
+  "editorOverviewRuler.commonContentForeground": contrastColor.hex(),
+
 
   "panel.background": colorPrincipal.hex(),
   "panel.border": colorP_lighten.hex(),
@@ -413,7 +476,28 @@ const themeColors = {
   "editorRuler.foreground": colorP_lighten.hex(),
 
   // Background color for the progress bar shown for long running operations.
-  "progress.background": contrastColor.hex()
+  "progress.background": contrastColor.hex(),
+
+
+  // Terminal colors
+  "terminal.ansiWhite": colorText.hex(),
+  "terminal.ansiBlack": colorBlack.hex(),
+  "terminal.ansiBlue": colorSyntaxViolet.hex(),
+  "terminal.ansiCyan": colorSyntaxCyan.hex(),
+  "terminal.ansiGreen": colorSyntaxGreen.hex(),
+  "terminal.ansiMagenta": colorSyntaxMagenta.hex(),
+  "terminal.ansiRed": colorSyntaxRed.hex(),
+  "terminal.ansiYellow": colorSyntaxYellow.hex(),
+  "terminal.ansiBrightWhite": colorWhite.hex(),
+  "terminal.ansiBrightBlack": colorP_lighter.hex(),
+  "terminal.ansiBrightBlue": colorSyntaxViolet.hex(),
+  "terminal.ansiBrightCyan": colorSyntaxCyan.hex(),
+  "terminal.ansiBrightGreen": colorSyntaxGreen.hex(),
+  "terminal.ansiBrightMagenta": colorSyntaxMagenta.hex(),
+  "terminal.ansiBrightRed": colorSyntaxRed.hex(),
+  "terminal.ansiBrightYellow": colorSyntaxYellow.hex(),
+
+
 }
 
 const tcNormalize = [
@@ -496,7 +580,7 @@ const tcGeneral = [
     name: "Language Variable",
     scope: "variable.language",
     settings: {
-      foreground: colorFunction.hex()
+      foreground: colorSpecialWordA.hex()
     }
   },
   {
@@ -519,25 +603,21 @@ const tcGeneral = [
     }
   },
   {
-    // HTML atributes & classes and attributes in pug
+    // HTML & PUG atributes
     name: "Tag attribute",
     scope: "entity.other.attribute-name",
     settings: {
       fontStyle: "italic",
-      foreground: colorTagAttribute.hex()
+      foreground: colorTagAttribute.hex(),
     }
   },
   {
-    name: "Library (function & constant)",
-    scope: [
-      // functions provided by the framework/library
-      // like log in console.log()
-      "support.function", 
-      // constants (magic values) provided by the framework/library.
-      "support.constant"
-    ],
+    // pug classes
+    name: "Pug Classes",
+    scope: "entity.other.attribute-name.class.pug",
     settings: {
-      foreground: colorSpecialWord.hex()
+      fontStyle: "italic",
+      foreground: colorPugClass.hex(),
     }
   },
   {
@@ -545,7 +625,7 @@ const tcGeneral = [
     name: "Support Variable Property",
     scope: "support.variable.property",
     settings: {
-      foreground: colorFunctionName.hex(),
+      foreground: colorFunctionName.hex()
     }
   },
   {
@@ -562,7 +642,43 @@ const tcGeneral = [
 
 
 
+
+
+
   
+  
+  {
+    name: "Italics",
+    scope: "italic",
+    settings: {
+      foreground: colorSpecialWordC.hex(),
+      fontStyle: "italic"
+    }
+  },
+  {
+    name: "Bold",
+    scope: "bold",
+    settings: {
+      foreground: colorString.hex(),
+      fontStyle: "bold"
+    }
+  },
+  {
+    name: "Quote",
+    scope: "quote",
+    settings: {
+      foreground: colorString.hex(),
+      fontStyle: "italic"
+    }
+  },
+  {
+    name: "Invalid",
+    scope: "invalid",
+    settings: {
+      background: colorDanger.hex(),
+      foreground: colorWhite.hex()
+    }
+  },
 ]
 
 const tcSpecialWords = [
@@ -570,8 +686,42 @@ const tcSpecialWords = [
   // SPECIAL WORDS
 
     // VIOLET COLOR
-    // object properties before a method
-    // object.[propertyA.propertyAA.propertyAAA].method()
+    
+    {
+      // types provided by the framework/library, 
+      name: "Library class/type",
+      scope: [
+        // variables provided by the framework/library. For example global in javascript
+        "support.variable",
+        // types provided by the framework/library, this is probably only used for 
+        // languages derived from C, which has typedef (and struct). 
+        // Most other languages would introduce new types as classes.
+        "support.type", 
+        // when the framework/library provides classes.
+        "support.class"
+      ],
+      settings: {
+        foreground: colorSpecialWordB.hex(),
+      }
+    },
+    {
+      name: "Library (function & constant)",
+      scope: [
+        // functions provided by the framework/library
+        // like log in console.log()
+        "support.function", 
+        // constants (magic values) provided by the framework/library.
+        "support.constant"
+      ],
+      settings: {
+        foreground: colorSpecialWordB.hex(),
+        fontStyle: "italic"
+      }
+    },
+
+    // ORANGE COLOR
+    // object properties before the last property
+    // object.[propertyA.propertyAA].propertyAAA
     {
       name: "Variable Property Other object property",
       scope: ["variable.other.object.property"],
@@ -581,8 +731,8 @@ const tcSpecialWords = [
       }
     },
 
-    // object properties
-    // object.[propertyA.propertyAA.propertyAAA]
+    // Last object property
+    // object.propertyA.propertyAA.[propertyAAA]
     {
       name: "Variable Instances",
       scope: [
@@ -607,23 +757,6 @@ const tcSpecialWords = [
         // foreground: colorTestB.hex()
       }
     },
-    {
-      // types provided by the framework/library, 
-      name: "Library class/type",
-      scope: [
-        // variables provided by the framework/library. For example global in javascript
-        "support.variable",
-        // types provided by the framework/library, this is probably only used for 
-        // languages derived from C, which has typedef (and struct). 
-        // Most other languages would introduce new types as classes.
-        "support.type", 
-        // when the framework/library provides classes.
-        "support.class"
-      ],
-      settings: {
-        foreground: colorSyntaxOrange.hex(),
-      }
-    },
 
 
 
@@ -638,8 +771,7 @@ const tcSpecialWords = [
         "punctuation.definition.block.tag"
       ],
       settings: {
-        foreground: colorFunction.hex(),
-        // foreground: colorTestB.hex(),
+        foreground: colorSpecialWordA.hex(),
       }
     },
     {
@@ -648,7 +780,21 @@ const tcSpecialWords = [
         "storage.type.interface"
       ],
       settings:{
-        foreground: colorFunction.hex()
+        foreground: colorSpecialWordA.hex()
+      }
+    },
+    {
+      name: "Storage",
+      scope: [
+        "storage",
+        "meta.class meta.method.declaration meta.var.expr storage.type.js",
+        "storage.type.property.js",
+        "storage.type.property.ts",
+        "storage.type.property.tsx"
+      ],
+      settings: {
+        foreground: colorSpecialWordA.hex(),
+        fontStyle: "italic"
       }
     },
     
@@ -664,14 +810,14 @@ const tcSpecialWords = [
       name: "Entity Name Tag Custom",
       scope: "entity.name.tag.custom",
       settings: {
-        foreground: colorSpecialWord.hex()
+        foreground: colorSpecialWordC.hex(),
       }
     },
     {
       name: "Meta Delimiter Period",
       scope: "meta.delimiter.period",
       settings: {
-        foreground: colorSpecialWord.hex(),
+        foreground: colorSpecialWordC.hex(),
         fontStyle: "italic"
       }
     },
@@ -679,15 +825,18 @@ const tcSpecialWords = [
       name: "Meta Selector",
       scope: "meta.selector",
       settings: {
-        foreground: colorSpecialWord.hex(),
+        foreground: colorSpecialWordC.hex(),
         fontStyle: "italic"
       }
     },
     {
       name: "Doctypes",
-      scope: ["entity.name.tag.doctype", "meta.tag.sgml.doctype"],
+      scope: [
+        "entity.name.tag.doctype", 
+        "meta.tag.sgml.doctype"
+      ],
       settings: {
-        foreground: colorSpecialWord.hex(),
+        foreground: colorSpecialWordC.hex(),
         fontStyle: "italic"
       }
     },
@@ -700,8 +849,26 @@ const tcSpecialWords = [
         "keyword.control.switch.ts"
       ],
       settings: {
-        foreground: colorSpecialWord.hex(),
+        foreground: colorSpecialWordC.hex(),
         fontStyle: ""
+      }
+    },
+    {
+      name: "loops",
+      scope:[
+        "keyword.control.loop"
+      ],
+      settings:{
+        foreground: colorSpecialWordC.hex(),
+      }
+    },
+    {
+      // mainly related to flow control like continue, while, return, etc.
+      name: "import control keyword",
+      scope: "keyword.control",
+      settings: {
+        foreground: colorSpecialWordB.hex(),
+        // foreground: colorTestB.hex()
       }
     },
 
@@ -747,16 +914,8 @@ const tcSpecialWords = [
         "support.constant",
         "keyword.other.special-method",
         "keyword.other.new",
-        "keyword.other.debugger",
-        "keyword.control"
+        "keyword.other.debugger"
       ],
-      settings: {
-        foreground: colorFunctionName.hex()
-      }
-    },
-    {
-      name: "Support Function",
-      scope: "support.function",
       settings: {
         foreground: colorFunctionName.hex()
       }
@@ -773,7 +932,7 @@ const tcStorageNames = [
       "meta.object-literal.key"
     ],
     settings:{
-      foreground: colorRegularText.hex()
+      foreground: colorVariableProperty.hex()
     }
   },
   {
@@ -781,20 +940,6 @@ const tcStorageNames = [
     scope: "variable",
     settings: {
       foreground: colorVariable.hex()
-    }
-  },
-  {
-    name: "Storage",
-    scope: [
-      "storage",
-      "meta.class meta.method.declaration meta.var.expr storage.type.js",
-      "storage.type.property.js",
-      "storage.type.property.ts",
-      "storage.type.property.tsx"
-    ],
-    settings: {
-      foreground: colorVariable.hex(),
-      fontStyle: "italic"
     }
   },
   {
@@ -837,6 +982,7 @@ const tcStorageNames = [
     name: "Variable Property Other object",
     scope: ["variable.other.object.js"],
     settings: {
+      // foreground: colorVariable.hex(),
       foreground: colorTestB.hex(),
       fontStyle: ""
     }
@@ -1093,7 +1239,8 @@ const tcPunctuation = [
     name: "Keyword Operator Logical",
     scope: "keyword.operator.logical",
     settings: {
-      foreground: colorSpecialWord.hex(),
+      foreground: colorSpecialWordC.hex(),
+      // foreground: colorTestB.hex(),
       fontStyle: ""
     }
   },
@@ -1104,7 +1251,7 @@ const tcPunctuation = [
       "keyword.operator.comparison"
     ],
     settings:{
-      foreground: colorSpecialWord.hex(),
+      foreground: colorSpecialWordC.hex(),
       // foreground: colorTestB.hex(),
     }
   },
@@ -1113,7 +1260,7 @@ const tcPunctuation = [
     name: "Keyword Operator Relational",
     scope: "keyword.operator.relational",
     settings: {
-      foreground: colorSpecialWord.hex(),
+      foreground: colorSpecialWordC.hex(),
       // foreground: colorTestB.hex(),
       fontStyle: "italic"
     }
@@ -1276,7 +1423,6 @@ const tcStylesheets = [
     // keywords for sass
     name: "Keyword",
     scope: [
-      "keyword",
       "punctuation.definition.keyword",
       "keyword.operator.css",
       "keyword.operator.scss",
@@ -1290,8 +1436,8 @@ const tcStylesheets = [
       "meta.property-list entity.name.tag.reference",
     ],
     settings: {
-      foreground: colorSpecialWord.hex(),
-      foreground: colorTestB.hex(),
+      foreground: colorSpecialWordC.hex(),
+      // foreground: colorTestB.hex(),
       fontStyle: "italic"
     }
   },
@@ -1324,7 +1470,6 @@ const tcStylesheets = [
     ],
     settings: {
       foreground: colorCssAttribute.hex(),
-
       // foreground: colorTestC.hex()
     }
   },
@@ -1336,7 +1481,7 @@ const tcStylesheets = [
     ],
     settings: {
       foreground: "#82AAFF",
-      foreground: colorTestB.hex()
+      // foreground: colorTestB.hex()
     }
   },
 ]
@@ -1396,10 +1541,11 @@ const tcComments = [
 // languages
 const tcJavascript = [
   {
-    name: "javascript portotype",
+    name: "javascript portotype methods",
     scope: ["support.variable.property.js"],
     settings: {
-      foreground: colorFunctionName.hex()
+      foreground: colorSpecialWordB.hex(),
+      fontStyle: "italic"
     }
   },
   {
@@ -1428,7 +1574,8 @@ const tcJavascript = [
     name: "JavaScript Method Declaration e.g. `constructor`",
     scope: "meta.method.declaration storage.type.js",
     settings: {
-      foreground: colorSpecialWord.hex()
+      foreground: colorSpecialWordB.hex(),
+      // foreground: colorTestB.hex()
     }
   },
   {
@@ -1565,7 +1712,7 @@ const tcJavascript = [
       "meta.method.declaration storage.type.tsx"
     ],
     settings: {
-      foreground: colorFunction.hex()
+      foreground: colorSpecialWordA.hex()
     }
   },
   {
@@ -1609,8 +1756,6 @@ const tcJavascript = [
       "keyword.control.flow.js",
       "keyword.control.flow.ts",
       "keyword.control.flow.tsx",
-      "keyword.control.loop.js",
-      "keyword.control.loop.ts",
       "keyword.control.import.js",
       "keyword.control.import.ts",
       "keyword.control.import.tsx",
@@ -1619,7 +1764,7 @@ const tcJavascript = [
       "keyword.control.from.tsx"
     ],
     settings: {
-      foreground: colorSpecialWord.hex(),
+      foreground: colorSpecialWordB.hex(),
       fontStyle: "italic"
     }
   },
@@ -1725,7 +1870,7 @@ const tcElixir = [
     name: "Elixir Binary Punctuations",
     scope: "source.elixir .punctuation.binary.elixir",
     settings: {
-      foreground: colorSpecialWord.hex(),
+      foreground: colorSpecialWordC.hex(),
       fontStyle: "italic"
     }
   },
@@ -1743,7 +1888,7 @@ const tcMarckdown = [
     name: "Markdown Italics",
     scope: "markup.italic.markdown",
     settings: {
-      foreground: colorSpecialWord.hex(),
+      foreground: colorSpecialWordC.hex(),
       fontStyle: "italic"
     }
   },
@@ -1838,7 +1983,7 @@ const tcGo = [
       "source.go keyword.control.go"
     ],
     settings: {
-      foreground: colorSpecialWord.hex(),
+      foreground: colorSpecialWordC.hex(),
       fontStyle: "italic"
     }
   },
@@ -1900,13 +2045,6 @@ const tcPython = [
       foreground: colorVariable.hex()
     }
   },
-  {
-    name: "Python import control keyword",
-    scope: "keyword.control",
-    settings: {
-      foreground: colorSpecialWord.hex()
-    }
-  },
 ]
 
 const tcRuby = [
@@ -1948,7 +2086,7 @@ const tcRuby = [
       "keyword.control.def.ruby"
     ],
     settings: {
-      foreground: colorSpecialWord.hex(),
+      foreground: colorSpecialWordC.hex(),
       fontStyle: "italic"
     }
   },
@@ -2003,7 +2141,7 @@ const tcHtml = [
     name: "HTML Doctype",
     scope: "meta.tag.sgml.doctype.html",
     settings: {
-      foreground: colorSpecialWord.hex(),
+      foreground: colorSpecialWordC.hex(),
       fontStyle: "italic"
     }
   },
@@ -2111,7 +2249,7 @@ const tcTesting = [
     name: "Object",
     scope: "object",
     settings: {
-      // foreground: "#cdebf7",
+      foreground: "#cdebf7",
       foreground: colorTestB.hex()
     }
   },
@@ -2127,7 +2265,7 @@ const tcTesting = [
     name: "Constant Other Color RGB Value Punctuation Definition Constant",
     scope: "constant.other.color.rgb-value punctuation.definition.constant",
     settings: {
-      // foreground: "#F78C6C",
+      foreground: "#F78C6C",
       foreground: colorTestB.hex()
     }
   },
@@ -2135,7 +2273,7 @@ const tcTesting = [
     name: "Constant Other Color",
     scope: "constant.other.color",
     settings: {
-      // foreground: "#FFEB95",
+      foreground: "#FFEB95",
       foreground: colorTestC.hex()
     }
   },
@@ -2152,6 +2290,7 @@ const tcTesting = [
     name: "Template Strings",
     scope: "string.template meta.template.expression",
     settings: {
+      foreground: "#F78C6C",
       foreground: colorTestB.hex(),
       background: colorTestA.hex()
     }
@@ -2168,7 +2307,7 @@ const tcTesting = [
     name: "Support Constant Property Value meta",
     scope: "support.constant.meta.property-value",
     settings: {
-      // foreground: "#7fdbca"
+      foreground: "#7fdbca",
       foreground: colorTestB.hex()
     }
   },
@@ -2176,7 +2315,7 @@ const tcTesting = [
     name: "Support Variable DOM",
     scope: "support.variable.dom",
     settings: {
-      // foreground: "#addb67",
+      foreground: "#addb67",
       foreground: colorTestB.hex()
     }
   },
@@ -2199,17 +2338,8 @@ const tcTesting = [
     name: "Invalid Illegal",
     scope: "invalid.illegal",
     settings: {
-      // foreground: colorWhite.hex(),
-      foreground: colorTestB.hex(),
+      foreground: colorDanger.hex(),
       background: colorWarningLight.hex()
-    }
-  },
-  {
-    name: "Variable Function",
-    scope: "variable.function",
-    settings: {
-      foreground: "#82AAFF",
-      foreground: colorTestB.hex()
     }
   },
   {
@@ -2240,39 +2370,15 @@ const tcTesting = [
 
 
 
-  
-  {
-    name: "Italics",
-    scope: "italic",
-    settings: {
-      foreground: colorSpecialWord.hex(),
-      fontStyle: "italic"
-    }
-  },
-  {
-    name: "Bold",
-    scope: "bold",
-    settings: {
-      foreground: colorString.hex(),
-      fontStyle: "bold"
-    }
-  },
-  {
-    name: "Quote",
-    scope: "quote",
-    settings: {
-      foreground: colorString.hex(),
-      fontStyle: "italic"
-    }
-  },
-  {
-    name: "Invalid",
-    scope: "invalid",
-    settings: {
-      background: colorDanger.hex(),
-      foreground: colorWhite.hex()
-    }
-  },
+  // NOT WORKING
+  // {
+  //   name: "Variable Function",
+  //   scope: "variable.function",
+  //   settings: {
+  //     foreground: "#82AAFF",
+  //     foreground: colorTestB.hex()
+  //   }
+  // },
 
   
 ]
