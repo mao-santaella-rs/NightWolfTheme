@@ -1,17 +1,25 @@
-var globalVar;
-let maoma = 324;
-const maoma2 = {
-    manoA: [2, 'maoma'],
-    nanoB: "elmaoma askd",
-    nanoC: 2019,
-    nmanoD: {
-        maoma1: "maskdm",
-        maoma2: false,
-        maoma3: null,
-        maoma4: undefined
+var globalVar = Number;
+let variable = 324;
+const constant = {
+    propertyA: [2, 'variable'],
+    propertyB: "some string",
+    propertyC: 2019,
+    propertyD: {
+        subPropertyA: true,
+        subPropertyB: false,
+        subPropertyC: null,
+        subPropertyD: undefined,
+        subPropertyE: {
+            subSubPropertyA: "string"
+        }
+    },
+    methodA: (parameterA,parameterB) => {
+        console.log(parameterA,parameterB)
     }
 }
-console.log(maoma2.moms.manoB)
+console.log(constant.propertyD.subPropertyE.subSubPropertyA)
+
+constant.methodA(25,35)
 
 let mao = `fsdlksdf;lksdfl ${5 + (4.1 - 2.2)};`
 
@@ -25,6 +33,10 @@ class User {
         alert(this.name);
     }
 
+}
+
+class AdminUser extends User {
+    
 }
 
 let user = new User("John");
