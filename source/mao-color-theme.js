@@ -9,7 +9,7 @@ const colorTestC =                Color.rgb(255, 100, 0)
 // Syntax Colors
 const colorSyntaxYellow =         Color.rgb(255,220,150)
 const colorSyntaxBlue =           Color.rgb(0,177,255)
-const colorSyntaxPurple =         Color.rgb(200,120,230)
+const colorSyntaxPurple =         Color.rgb(220,140,255)
 const colorSyntaxRed =            Color.rgb(255,120,120)
 const colorSyntaxCyan =           Color.rgb(0,220,220)
 const colorSyntaxGreen =          Color.rgb(170,230,130)
@@ -67,7 +67,7 @@ const colorDangerDark =           colorDanger.darken(0.4)
 // SYNTAX COLORS
 // General colors
 const colorVariable =             Color.rgb(255,220,150)
-const colorVariableProperty =     Color.rgb(255,193,150)
+const colorVariableProperty =     Color.rgb(255,180,130)
 const colorContrastText =         Color.rgb(255,120,120)
 const colorSpecialWordA =         Color.rgb(0,177,255)
 const colorSpecialWordB =         Color.rgb(150,150,255)
@@ -702,6 +702,7 @@ const tcSpecialWords = [
       ],
       settings: {
         foreground: colorSpecialWordB.hex(),
+        // foreground: colorTestB.hex()
       }
     },
     {
@@ -715,6 +716,7 @@ const tcSpecialWords = [
       ],
       settings: {
         foreground: colorSpecialWordB.hex(),
+        // foreground: colorTestB.hex(),
         fontStyle: "italic"
       }
     },
@@ -768,10 +770,15 @@ const tcSpecialWords = [
         // var let const class function type 
         "storage.type",
         // @param, @returns
-        "punctuation.definition.block.tag"
+        "punctuation.definition.block.tag",
+        // JavaScript Method Declaration e.g. `constructor`
+        "meta.method.declaration",
+        "meta.method.declaration storage.type.js"
+        
       ],
       settings: {
         foreground: colorSpecialWordA.hex(),
+        // fontStyle: "italic"
       }
     },
     {
@@ -1545,6 +1552,7 @@ const tcJavascript = [
     scope: ["support.variable.property.js"],
     settings: {
       foreground: colorSpecialWordB.hex(),
+      // foreground: colorTestB.hex(),
       fontStyle: "italic"
     }
   },
@@ -1568,14 +1576,6 @@ const tcJavascript = [
     scope: "meta.class entity.name.type.class.js",
     settings: {
       foreground: colorVariable.hex()
-    }
-  },
-  {
-    name: "JavaScript Method Declaration e.g. `constructor`",
-    scope: "meta.method.declaration storage.type.js",
-    settings: {
-      foreground: colorSpecialWordB.hex(),
-      // foreground: colorTestB.hex()
     }
   },
   {
@@ -1765,6 +1765,7 @@ const tcJavascript = [
     ],
     settings: {
       foreground: colorSpecialWordB.hex(),
+      // foreground: colorTestB.hex(),
       fontStyle: "italic"
     }
   },
