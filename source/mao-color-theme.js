@@ -638,6 +638,16 @@ const tcGeneral = [
   },
 
 
+  {
+    // hex color
+    name: "Constant Other Color",
+    scope: "constant.other.color",
+    settings: {
+      foreground: colorRegularText.hex()
+    }
+  },
+
+
 
 
 
@@ -1454,13 +1464,25 @@ const tcStylesheets = [
       "punctuation.scss",
       // "punctuation.definition.keyword.scss",
       "punctuation.definition.entity.scss",
-      "punctuation.separator.key-value.scss",
+      
       "meta.selector.scss"
     ],
     settings: {
       foreground: colorSpecialWordB.hex(),
       // foreground: colorTestC.hex(),
       fontStyle: "italic"
+    }
+  },
+  {
+    name: "colon (:) in stylesheets",
+    scope: [
+      "punctuation.separator.key-value.css",
+      "punctuation.separator.key-value.scss",
+      "punctuation.separator.key-value.less",
+      "punctuation.separator.key-value.css.sass"
+    ],
+    settings:{
+      foreground: colorPunctuation.hex()
     }
   },
   {
@@ -2283,14 +2305,6 @@ const tcTesting = [
     settings: {
       foreground: "#F78C6C",
       foreground: colorTestB.hex()
-    }
-  },
-  {
-    name: "Constant Other Color",
-    scope: "constant.other.color",
-    settings: {
-      foreground: "#FFEB95",
-      foreground: colorTestC.hex()
     }
   },
   {
