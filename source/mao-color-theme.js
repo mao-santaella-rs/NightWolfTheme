@@ -651,7 +651,6 @@ const tcGeneral = [
     name: "Italics",
     scope: "italic",
     settings: {
-      foreground: colorSpecialWordC.hex(),
       fontStyle: "italic"
     }
   },
@@ -778,7 +777,7 @@ const tcSpecialWords = [
       ],
       settings: {
         foreground: colorSpecialWordA.hex(),
-        // fontStyle: "italic"
+        fontStyle: "italic"
       }
     },
     {
@@ -818,6 +817,7 @@ const tcSpecialWords = [
       scope: "entity.name.tag.custom",
       settings: {
         foreground: colorSpecialWordC.hex(),
+        // foreground: colorTestB.hex()
       }
     },
     {
@@ -871,6 +871,7 @@ const tcSpecialWords = [
     },
     {
       // mainly related to flow control like continue, while, return, etc.
+      // at rule name in css & scss & sass
       name: "import control keyword",
       scope: "keyword.control",
       settings: {
@@ -939,14 +940,16 @@ const tcStorageNames = [
       "meta.object-literal.key"
     ],
     settings:{
-      foreground: colorVariableProperty.hex()
+      foreground: colorVariableProperty.hex(),
+      fontStyle: "normal"
     }
   },
   {
     name: "Variable",
     scope: "variable",
     settings: {
-      foreground: colorVariable.hex()
+      foreground: colorVariable.hex(),
+      fontStyle: "normal"
     }
   },
   {
@@ -1433,18 +1436,30 @@ const tcStylesheets = [
       "punctuation.definition.keyword",
       "keyword.operator.css",
       "keyword.operator.scss",
-      //@mixin
-      "keyword.control.at-rule.scss",
-      "keyword.control.at-rule.css.sass",
-      "keyword.control.at-rule.less",
+      //@ in at rules
+      "keyword.control.css",
+      "keyword.control.scss",
+      "keyword.control.less",
+      "keyword.control.css.sass",
       //!important
       "keyword.other.important.css",
       //&
       "meta.property-list entity.name.tag.reference",
+
+      // font-feature-values
+      "entity.name.tag.custom.css",
+      "entity.name.tag.custom.scss",
+      "entity.name.tag.custom.scss",
+
+      "punctuation.scss",
+      // "punctuation.definition.keyword.scss",
+      "punctuation.definition.entity.scss",
+      "punctuation.separator.key-value.scss",
+      "meta.selector.scss"
     ],
     settings: {
-      foreground: colorSpecialWordC.hex(),
-      // foreground: colorTestB.hex(),
+      foreground: colorSpecialWordB.hex(),
+      // foreground: colorTestC.hex(),
       fontStyle: "italic"
     }
   },
@@ -1738,7 +1753,7 @@ const tcJavascript = [
     name: "JavaScript Entity Name Type",
     scope: ["entity.name.type.js", "entity.name.type.module.js"],
     settings: {
-      foreground: colorContrastText.hex(),
+      foreground: colorSpecialWordB.hex(),
       fontStyle: ""
     }
   },
