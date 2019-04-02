@@ -7,7 +7,7 @@
 					.person-item
 						.person-item__img(:style="{'background-image': 'url('+personas[person].img+')'}")
 							router-link.person-item__edit(:to="{name: 'edit' , params: { id: person }}")
-						.person-item__info+
+						.person-item__info
 							.person-item__info__name
 								span {{personas[person].name}}
 							.person-item__info__others
