@@ -1,7 +1,13 @@
 node_modules/
 public/
 design/
-themes/mao-color-theme.json
+.vscode/**
+.vscode-test/**
+.gitignore
+vsc-extension-quickstart.md
+package-lock.json
+.vscodeignore
+
 
 .sass-cache/
 *.css.map
