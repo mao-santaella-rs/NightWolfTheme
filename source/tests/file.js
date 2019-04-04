@@ -1,3 +1,9 @@
+import Vue from 'vue'
+import router from './router'
+import { store } from './store/store'
+import App from './App.vue'
+
+
 var globalVar = Number;
 let variable = 324;
 const constant = {
@@ -21,7 +27,7 @@ console.log(constant.propertyD.subPropertyE.subSubPropertyA)
 
 constant.methodA(25,35)
 
-let mao = `fsdlksdf;lksdfl ${5 + (4.1 - 2.2)};`
+let templateLiteral = `some text ${5 + (4.1 - variable)} more text`
 
 class User {
 
@@ -36,11 +42,17 @@ class User {
 }
 
 class AdminUser extends User {
-    
+    constructor() {
+        super()
+    }
+    storeName(){
+        console.log(this.name)
+    }
 }
 
 let user = new User("John");
 user.sayHi();
+
 /**
  * Constructor for <code>AjaxRequest</code> class
  * @param url the url for the request<p/>
@@ -74,8 +86,24 @@ for (let index = 0; index < array.length; index++) {
     const element = array[index];
 }
 
-if (maoma >= 3) {
+if (constant.parameterA[0] === 3 && variable <= 550) {
 
+} else {
+    
+}
+
+switch(labelKey){
+    case 'commissions':
+        labelData = Vue.currencyConversion(tooltipItem.yLabel, currency)
+        break
+
+    case 'order_conversion_rate':
+    case 'items_sold_conversion_rate':
+        labelData = Vue.percentConversion(tooltipItem.yLabel)
+        break
+
+    default:
+        labelData = Vue.decimalConversion(tooltipItem.yLabel)
 }
 
 // Regular expressions:

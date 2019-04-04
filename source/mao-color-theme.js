@@ -15,7 +15,7 @@ const colorSyntaxCyan =           Color.rgb(0,220,220)
 const colorSyntaxGreen =          Color.rgb(170,230,130)
 const colorSyntaxViolet =         Color.rgb(150,150,255)
 const colorSyntaxMagenta =        Color.rgb(255,80,255)
-const colorSyntaxOrange =         Color.rgb(255,193,150)
+const colorSyntaxOrange =         Color.rgb(255,180,130)
 
 
 // THEME COLORS
@@ -67,8 +67,9 @@ const colorDangerDark =           colorDanger.darken(0.4)
 // SYNTAX COLORS
 // General colors
 const colorVariable =             Color.rgb(255,220,150)
-const colorVariableProperty =     Color.rgb(255,180,130)
+const colorVariableProperty =     colorText
 const colorContrastText =         Color.rgb(255,120,120)
+const colorVariableInstance =     colorSyntaxOrange //Color.rgb(219,212,186)
 const colorSpecialWordA =         Color.rgb(0,177,255)
 const colorSpecialWordB =         Color.rgb(150,150,255)
 const colorSpecialWordC =         Color.rgb(220,140,255)
@@ -76,7 +77,7 @@ const colorFunctionName =         Color.rgb(0,220,220)
 const colorString =               Color.rgb(170,230,130)
 const colorOperator =             colorContrastText
 const colorRegularText =          colorText
-const colorNumber =               colorRegularText
+const colorNumber =               Color.rgb(255,180,130)
 const colorBoolean =              colorContrastText
 const colorNullUnd =              colorContrastText
 const colorPunctuation =          colorRegularText
@@ -95,7 +96,7 @@ const colorCssTag =               colorContrastText
 const colorCssClass =             colorVariable
 const colorCssId =                colorSpecialWordA
 const colorCssProperty =          colorFunctionName
-const colorCssUnits =             colorVariableProperty
+const colorCssUnits =             colorNumber
 const colorCssSpecialWord =       colorFunctionName
 
 // Documentation in comments
@@ -105,6 +106,7 @@ const colorDocVariables =         Color.rgb(180,150,120)
 
 
 console.log(Date.now())
+console.log(colorText.hex())
 
 
 const themeColors = {
@@ -754,7 +756,7 @@ const tcSpecialWords = [
         "variable.other.property"
       ],
       settings: {
-        foreground: colorVariableProperty.hex()
+        foreground: colorVariableInstance.hex()
       }
     },
 
@@ -1308,7 +1310,9 @@ const tcSpecialValues = [
   },
   {
     name: "Boolean",
-    scope: "constant.language.boolean",
+    scope: [
+      "constant.language.boolean"
+    ],
     settings: {
       foreground: colorBoolean.hex()
     }
@@ -1394,7 +1398,7 @@ const tcStylesheets = [
     name: "stylesheet numbers",
     scope: ["constant.numeric.css", "punctuation.definition.constant.css"],
     settings: {
-      foreground: colorRegularText.hex()
+      foreground: colorNumber.hex()
     }
   },
   {
@@ -1524,62 +1528,10 @@ const tcStylesheets = [
       "source.css.sass meta.at-rule variable"
     ],
     settings: {
-      foreground: "#82AAFF",
-      // foreground: colorTestB.hex()
+      foreground: colorSpecialWordB.hex(),
+      foreground: colorTestB.hex()
     }
   },
-]
-
-const tcComments = [
-  {
-    name: "Comment",
-    scope: [
-      "comment",
-
-      "comment.block.css.sass",
-      "comment.line.sass"
-    ],
-    settings: {
-      foreground: colorComment.hex(),
-      fontStyle: "italic"
-    }
-  },
-  {
-    name: "Double-Slashed Comment",
-    scope: [
-      "comment.line.double-slash",
-      "punctuation.definition.comment",
-      "punctuation.whitespace.comment"
-    ],
-    settings: {
-      foreground: colorComment.hex()
-    }
-  },
-
-
-  //documentation inside comments
-  {
-    name: "Entity Names in Code Documentations",
-    scope: [
-      "entity.name.type.instance.jsdoc",
-      "entity.name.type.instance.phpdoc"
-    ],
-    settings: {
-      foreground: colorDocEntityNames.hex(),
-      // foreground: colorTestB.hex()
-    }
-  },
-  {
-    name: "Other Variables in Code Documentations",
-    scope: [
-      "variable.other.jsdoc", 
-      "variable.other.phpdoc"
-    ],
-    settings: {
-      foreground: colorDocVariables.hex()
-    }
-  },
-
 ]
 
 // languages
@@ -1672,7 +1624,7 @@ const tcJavascript = [
     name: "TypeScript[React] Node Classes",
     scope: ["support.class.node.ts", "support.class.node.tsx"],
     settings: {
-      foreground: "#82AAFF",
+      foreground: colorSpecialWordB.hex(),
       foreground: colorTestC.hex()
     }
   },
@@ -1690,7 +1642,7 @@ const tcJavascript = [
     name: "TypeScript[React] Punctuation Decorators",
     scope: "meta.tag.js meta.jsx.children.tsx",
     settings: {
-      foreground: "#82AAFF",
+      foreground: colorSpecialWordB.hex(),
       foreground: colorTestA.hex()
     }
   },
@@ -1846,7 +1798,7 @@ const tcCsharp = [
     name: "C# Classes & Storage types",
     scope: ["entity.name.type.class.cs", "storage.type.cs"],
     settings: {
-      foreground: "#82AAFF",
+      foreground: colorSpecialWordB.hex(),
     }
   },
   {
@@ -1867,7 +1819,7 @@ const tcElixir = [
       "source.elixir meta.module.elixir entity.name.class.elixir"
     ],
     settings: {
-      foreground: "#82AAFF"
+      foreground: colorSpecialWordB.hex()
     }
   },
   {
@@ -1884,7 +1836,7 @@ const tcElixir = [
       "source.elixir constant.other.keywords.elixir"
     ],
     settings: {
-      foreground: "#82AAFF"
+      foreground: colorSpecialWordB.hex()
     }
   },
   {
@@ -2002,7 +1954,8 @@ const tcGo = [
     name: "Go Function Calls",
     scope: "source.go meta.function-call.go",
     settings: {
-      foreground: "#DDDDDD"
+      foreground: "#DDDDDD",
+      foreground: colorTestB.hex()
     }
   },
   {
@@ -2032,7 +1985,7 @@ const tcGo = [
       "source.go constant.other.placeholder.go"
     ],
     settings: {
-      foreground: "#ff5874"
+      foreground: colorContrastText.hex()
     }
   },
 ]
@@ -2042,7 +1995,7 @@ const tcPython = [
     name: "Language Constants in Python",
     scope: "constant.language.python",
     settings: {
-      foreground: "#ff5874"
+      foreground: colorContrastText.hex()
     }
   },
   {
@@ -2052,14 +2005,14 @@ const tcPython = [
       "meta.function-call.arguments.python"
     ],
     settings: {
-      foreground: "#82AAFF"
+      foreground: colorSpecialWordB.hex()
     }
   },
   {
     name: "Python Function Call",
     scope: ["meta.function-call.python", "meta.function-call.generic.python"],
     settings: {
-      foreground: "#B2CCD6"
+      foreground: colorFunctionName.hex()
     }
   },
   {
@@ -2073,7 +2026,7 @@ const tcPython = [
     name: "Decorator Functions in Python",
     scope: "entity.name.function.decorator.python",
     settings: {
-      foreground: "#addb67"
+      foreground: colorContrastText.hex()
     }
   },
   {
@@ -2281,6 +2234,55 @@ const tcOtherLang = [
  }
 ]
 
+const tcComments = [
+  {
+    name: "Comment",
+    scope: [
+      "comment"
+    ],
+    settings: {
+      foreground: colorComment.hex(),
+      fontStyle: "italic"
+    }
+  },
+  {
+    name: "Double-Slashed Comment",
+    scope: [
+      "comment.line.double-slash",
+      "punctuation.definition.comment",
+      "punctuation.whitespace.comment"
+    ],
+    settings: {
+      foreground: colorComment.hex()
+    }
+  },
+
+
+  //documentation inside comments
+  {
+    name: "Entity Names in Code Documentations",
+    scope: [
+      "entity.name.type.instance.jsdoc",
+      "entity.name.type.instance.phpdoc"
+    ],
+    settings: {
+      foreground: colorDocEntityNames.hex(),
+      // foreground: colorTestB.hex()
+    }
+  },
+  {
+    name: "Other Variables in Code Documentations",
+    scope: [
+      "variable.other.jsdoc", 
+      "variable.other.phpdoc"
+    ],
+    settings: {
+      foreground: colorDocVariables.hex()
+    }
+  },
+
+]
+
 // testing
 const tcTesting = [
   {
@@ -2384,7 +2386,7 @@ const tcTesting = [
     name: "Meta Function Call",
     scope: "meta.function-call",
     settings: {
-      foreground: "#82AAFF",
+      foreground: colorSpecialWordB.hex(),
       foreground: colorTestB.hex()
     }
   },
@@ -2405,7 +2407,7 @@ const tcTesting = [
   //   name: "Variable Function",
   //   scope: "variable.function",
   //   settings: {
-  //     foreground: "#82AAFF",
+  //     foreground: colorSpecialWordB.hex(),
   //     foreground: colorTestB.hex()
   //   }
   // },
