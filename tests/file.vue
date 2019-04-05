@@ -14,8 +14,10 @@
 								span.person-item__info__nickname {{personas[person].nickname}}
 								span.person-item__info__year(v-if="personas[person].dates.birth") {{dateTransform(personas[person].dates.birth.seconds)}}
 						.person-item__action
-							router-link(:to="{name:'add'}").person-item__add
-			vfamilynode(v-if='family.relatives', :datos='family.relatives', :personas="personas")
+						
+			<!--[if gt IE 8]><!-->
+			//- 				router-link(:to="{name:'add'}").person-item__add
+			// vfamilynode(v-if='family.relatives', :datos='family.relatives', :personas="personas")
 </template>
 
 <script>

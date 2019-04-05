@@ -2250,13 +2250,13 @@ const tcComments = [
     scope: [
       "comment.line.double-slash",
       "punctuation.definition.comment",
-      "punctuation.whitespace.comment"
+      "punctuation.whitespace.comment",
+      "string.comment.buffered.block.pug"
     ],
     settings: {
       foreground: colorComment.hex()
     }
   },
-
 
   //documentation inside comments
   {
