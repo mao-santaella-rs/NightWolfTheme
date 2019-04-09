@@ -611,6 +611,7 @@ const tcGeneral = [
     settings: {
       fontStyle: "italic",
       foreground: colorTagAttribute.hex(),
+      // foreground: colorTestB.hex()
     }
   },
   {
@@ -727,7 +728,7 @@ const tcSpecialWords = [
       ],
       settings: {
         foreground: colorSpecialWordB.hex(),
-        // foreground: colorTestB.hex(),
+        // foreground: colorTestC.hex(),
         fontStyle: "italic"
       }
     },
@@ -1345,11 +1346,24 @@ const tcStylesheets = [
   // },
 
   {
+    name: "SCSS & SASS Variable",
+    scope: [
+      "variable.scss",
+      "variable.sass",
+      "variable.parameter.scss",
+      "variable.parameter.sass",
+    ],
+    settings: {
+      foreground: colorVariable.hex()
+    }
+  },
+  {
     name: "css and pug ID selector",
     scope:[
       "entity.other.attribute-name.id",
       "entity.other.attribute-name.id.css",
-      "entity.other.attribute-name.id.scss"
+      "entity.other.attribute-name.id.scss",
+      "entity.other.attribute-name.id.css.sass"
     ],
     settings:{
       foreground: colorCssId.hex()
@@ -1358,7 +1372,9 @@ const tcStylesheets = [
   {
     name: "css class selector",
     scope:[
-      "entity.other.attribute-name.class.css"
+      "entity.other.attribute-name.class.css",
+      "entity.other.attribute-name.class.css.sass",
+      "entity.other.attribute-name.class.scss"
     ],
     settings:{
       foreground: colorCssClass.hex()
@@ -1371,7 +1387,7 @@ const tcStylesheets = [
       "entity.name.tag.less",
       "entity.name.tag.custom.css",
       "entity.name.tag.scss",
-      "entity.name.tag.sass"
+      "entity.name.tag.css.sass"
     ],
     settings: {
       foreground: colorCssTag.hex(),
@@ -1381,7 +1397,8 @@ const tcStylesheets = [
   {
     name: "Property name stylesheets",
     scope:[
-      "support.type.property-name.css"
+      "support.type.property-name.css",
+      "support.type.property-name.css.sass"
     ],
     settings:{
       foreground: colorCssProperty.hex()
@@ -1396,7 +1413,11 @@ const tcStylesheets = [
   },
   {
     name: "stylesheet numbers",
-    scope: ["constant.numeric.css", "punctuation.definition.constant.css"],
+    scope: [
+      "constant.numeric.css", 
+      "punctuation.definition.constant.css",
+      "constant.numeric.css.sass"
+    ],
     settings: {
       foreground: colorNumber.hex()
     }
@@ -1407,7 +1428,7 @@ const tcStylesheets = [
       "keyword.other.unit",
       "keyword.other.unit.css",
       "keyword.other.unit.scss",
-      "keyword.other.unit.sass"
+      "keyword.other.unit.css.sass"
     ],
     settings: {
       foreground: colorCssUnits.hex()
@@ -1428,18 +1449,6 @@ const tcStylesheets = [
       fontStyle: ""
     }
   },
-  {
-    name: "SCSS & SASS Variable",
-    scope: [
-      "variable.scss",
-      "variable.sass",
-      "variable.parameter.scss",
-      "variable.parameter.sass"
-    ],
-    settings: {
-      foreground: colorVariable.hex()
-    }
-  },
 
 
   {
@@ -1447,35 +1456,94 @@ const tcStylesheets = [
     // keywords for sass
     name: "Keyword",
     scope: [
-      "punctuation.definition.keyword",
-      "keyword.operator.css",
-      "keyword.operator.scss",
+      
       //@ in at rules
-      "keyword.control.css",
-      "keyword.control.scss",
-      "keyword.control.less",
-      "keyword.control.css.sass",
-      //!important
-      "keyword.other.important.css",
+      "punctuation.definition.keyword",
+
+      // "keyword.operator.css",
+      // "keyword.operator.scss",
+
+
+      // "keyword.control.css",
+      // "keyword.control.scss",
+      // "keyword.control.less",
+
+      // !important
+      // "keyword.other.important.css",
+      
       //&
-      "meta.property-list entity.name.tag.reference",
+      // "meta.property-list entity.name.tag.reference",
+      "entity.name.tag.reference",
 
       // font-feature-values
       "entity.name.tag.custom.css",
       "entity.name.tag.custom.scss",
-      "entity.name.tag.custom.scss",
+      "entity.name.tag.custom.sass",
 
-      "punctuation.scss",
-      // "punctuation.definition.keyword.scss",
-      "punctuation.definition.entity.scss",
+      "entity.other.attribute-name.css.scss",
+
+      // html attribute
+      // "entity.other.attribute-name.attribute.scss",
+      // "entity.other.attribute-name.attribute.css.sass",
+
+      //pseudo-class like :hover, :active, :focus, etc.
+      "entity.other.attribute-name.pseudo-class.css",
+      "entity.other.pseudo-class.css.sass",
+      // "entity.other.attribute-name.pseudo-class.css.scss",
+      // "entity.other.attribute-name",
+
+      //pseudo-elements like ::-webkit...
+      "entity.other.attribute-name.pseudo-element.css",
+      // "entity.other.attribute-name.parent-selector.css",
       
-      "meta.selector.scss"
+      // "support.function.css",
+
+      // "punctuation.scss",
+      // "punctuation.definition.keyword.scss",
+      // "punctuation.definition.entity.scss",
+
+      // "punctuation.css.sass",
+      // "punctuation.definition.keyword.css.sass",
+      // "punctuation.definition.entity.css.sass",
+
+      // "meta.selector.scss",
+
+      // function call
+      "support.function.sass",
+      "keyword.control.interpolation.sass",
+
+      // operators
+      "keyword.operator.css.sass",
+
+      // Sass Reserved Word
+      "keyword.other.reserved.sass",
+
+      // @ rules
+      "keyword.control.at-rule",
+      "keyword.control.at-rule.css.sass"
     ],
     settings: {
       foreground: colorSpecialWordB.hex(),
-      // foreground: colorTestC.hex(),
+      // foreground: colorTestB.hex(),
       fontStyle: "italic"
     }
+  },
+  {
+    name: "keyframes properties",
+    scope:[
+      // "entity.other.attribute-name.css",
+      // "entity.other.attribute-name.scss",
+      "entity.other.attribute-name.sass",
+
+      // "entity.other.attribute-name.class.mixin.css",
+      // "entity.other.attribute-name.handlebars",
+      // "entity.other.attribute-name.placeholder.css",
+      // "entity.other.attribute-name.class.css"
+    ],
+    settings: {
+      foreground: colorTestC.hex()
+    }
+
   },
   {
     name: "colon (:) in stylesheets",
@@ -1490,6 +1558,7 @@ const tcStylesheets = [
     }
   },
   {
+    // (*, ^ and $)
     name: "Wildcard(*) selector in Stylesheets",
     scope: [
       "entity.name.tag.wildcard.css",
@@ -1508,7 +1577,9 @@ const tcStylesheets = [
       "meta.attribute-selector.scss entity.other.attribute-name.attribute",
       "meta.attribute-selector.sass entity.other.attribute-name.attribute",
       "meta.attribute-selector.less entity.other.attribute-name.attribute",
-      "variable.other.readwrite.js",
+      "entity.other.attribute-name.css.sass",
+      "keyword.operator.attribute-selector.css.sass",
+      // "variable.other.readwrite.js",
 
 
       // "entity.other.attribute-name.css.sass",
@@ -1528,10 +1599,10 @@ const tcStylesheets = [
       "source.css.sass meta.at-rule variable"
     ],
     settings: {
-      foreground: colorSpecialWordB.hex(),
+      // foreground: colorSpecialWordB.hex(),
       foreground: colorTestB.hex()
     }
-  },
+  }
 ]
 
 // languages
@@ -2238,7 +2309,7 @@ const tcComments = [
   {
     name: "Comment",
     scope: [
-      "comment"
+      "comment",
     ],
     settings: {
       foreground: colorComment.hex(),
