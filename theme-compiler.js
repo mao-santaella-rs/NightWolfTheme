@@ -1,17 +1,32 @@
-let fs = require("fs")
+const fs = require("fs")
 
-let sourcePath = "./source/mao-color-theme.js"
-let distPath = "./themes/mao-color-theme.json"
+const sourcePath = "./source/night-wolf.js"
+const distPath = "./themes/night-wolf.json"
 
-fs.watchFile(sourcePath, (curr, prev) => {
+if (process.argv.length === 2) {
+  console.error("Expected environment argument! 'dev' or 'prod'")
+  process.exit(1)
+}
 
-  let source = requireUncached(sourcePath);
-  var dictstring = JSON.stringify(source);
-  fs.writeFile(distPath, dictstring, (err, result) => {
-    if (err) console.log("error", err);
-  });
+if(process.argv[2] === 'dev'){
+  fs.watchFile(sourcePath, compile)
+  console.info("Watching file: " +sourcePath)
+} else if (process.argv[2] === 'prod'){
+  compile()
+  process.exit()
+}
 
-})
+function compile(){
+  const source = requireUncached(sourcePath)
+  const dictstring = JSON.stringify(source)
+  try{
+    fs.writeFileSync(distPath, dictstring)
+  }catch(e){
+    console.error("error",e)
+    process.exit()
+  }
+  console.info("file compiled!")
+}
 
 function requireUncached(module) {
   delete require.cache[require.resolve(module)]
