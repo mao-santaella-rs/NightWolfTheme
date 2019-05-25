@@ -1,24 +1,29 @@
 {
-    "name": "mao",
-    "displayName": "Mao",
-    "description": "",
-    "version": "0.0.1",
-    "engines": {
-        "vscode": "^1.32.0"
-    },
-    "categories": [
-        "Themes"
-    ],
-    "contributes": {
-        "themes": [
-            {
-                "label": "Mao",
-                "uiTheme": "vs-dark",
-                "path": "./themes/mao-color-theme.json"
-            }
-        ]
-    },
-    "devDependencies": {
-        "color": "^3.1.0"
-    }
+  "name": "night-wolf",
+  "displayName": "Night Wolf",
+  "description": "A dark theme based in Night Owl",
+  "version": "1.0.0",
+  "publisher": "MaoSantaella",
+  "engines": {
+    "vscode": "^1.34.0"
+  },
+  "categories": [
+    "Themes"
+  ],
+  "contributes": {
+    "themes": [
+      {
+        "label": "Night Wolf",
+        "uiTheme": "vs-dark",
+        "path": "./themes/night-wolf.json"
+      }
+    ]
+  },
+  "scripts": {
+    "dev": "node theme-compiler dev",
+    "prod": "node theme-compiler prod"
+  },
+  "devDependencies": {
+    "color": "^3.1.0"
+  }
 }

@@ -1,7 +1,7 @@
 const Color = require("color")
 
 
-//colors for test
+//colors for test sda
 const colorTestA =                Color.rgb(255, 255, 0)
 const colorTestB =                Color.rgb(0, 255, 0)
 const colorTestC =                Color.rgb(255, 100, 0)
@@ -104,10 +104,7 @@ const colorDocEntityNames =       Color.rgb(180,120,130)
 const colorDocVariables =         Color.rgb(180,150,120)
 
 
-
-console.log(Date.now())
-console.log(colorText.hex())
-
+// theme object variables
 
 const themeColors = {
   // An extra border around active elements to separate them from others for greater contrast.
@@ -2487,7 +2484,7 @@ const tcTesting = [
 ]
 
 const theme = {
-  name: "Mao",
+  name: "Night Wolf",
   type: "dark",
   colors: {
     ...themeColors
