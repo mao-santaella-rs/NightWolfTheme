@@ -1,3 +1,6 @@
 **/*.js
 source/**
 tests/**
+tests/** 	tests/**
+design/**
+.github
