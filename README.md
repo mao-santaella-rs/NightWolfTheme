@@ -5,13 +5,13 @@ A Visual Studio Code theme based on the Sarah Drasner's [Night owl theme](https:
 *This was based in my own personal taste.
 
 ## Javascript
-![js](images\js.jpg)
+![js](images/js.jpg)
 
 ## Vue
-![js](images\vue.jpg)
+![js](images/vue.jpg)
 
 ## Pug
-![js](images\pug.jpg)
+![js](images/pug.jpg)
 
 # Installation
 
