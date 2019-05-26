@@ -4,6 +4,8 @@ A Visual Studio Code theme based on the Sarah Drasner's [Night owl theme](https:
 
 *This was based in my own personal taste.
 
+![inter](images/inter.jpg)
+
 ## Javascript
 ![js](images/js.jpg)
 
