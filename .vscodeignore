@@ -1,3 +1,5 @@
 **/*.js
 source/**
 tests/**
+design/**
+.github
