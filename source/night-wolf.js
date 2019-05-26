@@ -261,9 +261,9 @@ const themeColors = {
 
   // Scrollbar
   "scrollbar.shadow": null,
-  "scrollbarSlider.activeBackground": colorP_lighten.hex(),
-  "scrollbarSlider.background": colorP_lighten.hex(),
-  "scrollbarSlider.hoverBackground": colorP_lighten.hex(),
+  "scrollbarSlider.activeBackground": colorP_lightest.hex() + "50",
+  "scrollbarSlider.background": colorP_lightest.hex() + "50",
+  "scrollbarSlider.hoverBackground": colorP_lightest.hex() + "80",
 
   // Badges are small information labels, for example, search results count.
   "badge.background": colorP_lightest.hex(),
@@ -304,9 +304,9 @@ const themeColors = {
   // List background color for the focused item when the list is inactive. An active list has keyboard focus, an inactive does not. Currently only supported in lists.
   "list.inactiveFocusBackground": null,
   // Foreground color of list items containing errors.
-  "list.errorForeground": null,
+  "list.errorForeground": colorDanger.hex(),
   // Foreground color of list items containing warnings.
-  "list.warningForeground": null,
+  "list.warningForeground": colorWarningLight.hex(),
   // List/Tree Filter background color of typed text when searching inside the list/tree.
   "listFilterWidget.background": null,
   // List/Tree Filter Widget's outline color of typed text when searching inside the list/tree.
@@ -418,6 +418,37 @@ const themeColors = {
   "editorOverviewRuler.currentContentForeground": contrastColor.hex(),
   "editorOverviewRuler.incomingContentForeground": contrastColor.hex(),
   "editorOverviewRuler.commonContentForeground": contrastColor.hex(),
+
+
+
+  // Overview ruler: This ruler is located beneath the scroll bar on the right edge of the editor and gives an overview of the decorations in the editor.
+  //  Color of the overview ruler border.
+  "editorOverviewRuler.border": colorTestC.hex(),
+  // Overview ruler marker color for find matches. The color must not be opaque so as not to hide underlying decorations.
+  "editorOverviewRuler.findMatchForeground": colorP_lightest.hex(),
+  // Overview ruler marker color for highlighted ranges, like by the Quick Open, Symbol in File and Find features. The color must not be opaque so as not to hide underlying decorations.
+  "editorOverviewRuler.rangeHighlightForeground": colorWhite.hex(),
+  // Overview ruler marker color for selection highlights. The color must not be opaque so as not to hide underlying decorations.
+  "editorOverviewRuler.selectionHighlightForeground": colorP_lighter.hex(),
+  // Overview ruler marker color for symbol highlights. The color must not be opaque so as not to hide underlying decorations.
+  "editorOverviewRuler.wordHighlightForeground": colorWhite.hex(),
+  // Overview ruler marker color for write-access symbol highlights. The color must not be opaque so as not to hide underlying decorations.
+  "editorOverviewRuler.wordHighlightStrongForeground": colorWhite.hex(),
+  // Overview ruler marker color for modified content.
+  "editorOverviewRuler.modifiedForeground": colorWarningLight.hex(),
+  // Overview ruler marker color for added content.
+  "editorOverviewRuler.addedForeground": colorSuccesLight.hex(),
+  // Overview ruler marker color for deleted content.
+  "editorOverviewRuler.deletedForeground": colorDanger.hex(),
+  // Overview ruler marker color for errors.
+  "editorOverviewRuler.errorForeground": colorDanger.hex(),
+  // Overview ruler marker color for warnings.
+  "editorOverviewRuler.warningForeground": colorWarning.hex(),
+  // Overview ruler marker color for infos.
+  "editorOverviewRuler.infoForeground": colorInfo.hex(),
+  // Overview ruler marker color for matching brackets.
+  "editorOverviewRuler.bracketMatchForeground": colorText.hex(),
+
 
 
   "panel.background": colorPrincipal.hex(),
