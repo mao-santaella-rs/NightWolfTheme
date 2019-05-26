@@ -1748,6 +1748,14 @@ const tcJavascript = [
     }
   },
   {
+    // {} jsx react
+    name: "Punctuation Section Embedded",
+    scope: "punctuation.section.embedded",
+    settings: {
+      foreground: colorText.hex(),
+    }
+  },
+  {
     name: "TypeScript Classes",
     scope: "meta.class entity.name.type.class.tsx",
     settings: {
@@ -2455,14 +2463,6 @@ const tcTesting = [
     scope: "meta.function-call",
     settings: {
       foreground: colorSpecialWordB.hex(),
-      foreground: colorTestB.hex()
-    }
-  },
-  {
-    name: "Punctuation Section Embedded",
-    scope: "punctuation.section.embedded",
-    settings: {
-      foreground: "#d3423e",
       foreground: colorTestB.hex()
     }
   },
