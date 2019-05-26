@@ -1,15 +1,6 @@
 node_modules/
-public/
 design/
-.vscode-test/**
-.gitignore
-vsc-extension-quickstart.md
 package-lock.json
-.vscodeignore
-
-
-.sass-cache/
-*.css.map
 
 # =========================
 # Operating System Files
@@ -60,5 +51,3 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
-
-\.idea/workspace\.xml

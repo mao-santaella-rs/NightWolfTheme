@@ -1,8 +1,4 @@
-import Vue from 'vue'
-import router from './router'
-import { store } from './store/store'
-import App from './App.vue'
-
+import File from 'File'
 
 var globalVar = Number;
 let variable = 324;
@@ -27,12 +23,16 @@ console.log(constant.propertyD.subPropertyE.subSubPropertyA)
 
 constant.methodA(25,35)
 
+// Comment
+
 let templateLiteral = `some text ${5 + (4.1 - variable)} more text`
 
 class User {
 
     constructor(name) {
         this.name = name;
+        this.text = templateLiteral;
+        this.file = File
     }
 
     sayHi() {
@@ -40,6 +40,7 @@ class User {
     }
 
 }
+const user = new User("John");
 
 class AdminUser extends User {
     constructor() {
@@ -50,7 +51,8 @@ class AdminUser extends User {
     }
 }
 
-let user = new User("John");
+let user = new AdminUser("Mao");
+
 user.sayHi();
 
 /**

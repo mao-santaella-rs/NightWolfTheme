@@ -1,15 +1,21 @@
 {
   "name": "night-wolf",
   "displayName": "Night Wolf",
-  "description": "A dark theme based in Night Owl",
+  "description": "A dark theme based on Night Owl",
   "version": "1.0.0",
   "publisher": "MaoSantaella",
+  "license": "SEE LICENSE IN THE LICENSE FILE",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maoma87/NightWolfTheme"
+  },
+  "bugs": {
+    "url": "https://github.com/maoma87/NightWolfTheme/issues",
+    "email": "mauriciosantaella@outlook.com"
+  },
   "engines": {
     "vscode": "^1.34.0"
   },
-  "categories": [
-    "Themes"
-  ],
   "contributes": {
     "themes": [
       {
@@ -21,9 +27,25 @@
   },
   "scripts": {
     "dev": "node theme-compiler dev",
-    "prod": "node theme-compiler prod"
+    "prod": "node theme-compiler prod",
+    "publish": "vsce publish",
+    "vscode:prepublish": "node theme-compiler prod"
   },
   "devDependencies": {
     "color": "^3.1.0"
-  }
+  },
+  "keywords": [
+    "Theme",
+    "Dark Theme",
+    "Night wolf",
+    "Night Theme"
+  ],
+  "categories": [
+    "Themes"
+  ],
+  "galleryBanner": {
+    "color": "#101E2C",
+    "theme": "dark"
+  },
+  "icon": "images\nigth-wolf-icon.png"
 }
