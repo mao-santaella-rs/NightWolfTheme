@@ -2,6 +2,12 @@
 
 All notable changes to the "night-owl" extension are be documented in this file.
 
+## "1.1.1" - 05-28-2019
+
+### Fixed
+- Scrollbar non intentional border color
+
+---
 
 ## "1.1.0" - 05-26-2019
 

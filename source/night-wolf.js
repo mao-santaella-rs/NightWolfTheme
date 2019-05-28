@@ -423,7 +423,7 @@ const themeColors = {
 
   // Overview ruler: This ruler is located beneath the scroll bar on the right edge of the editor and gives an overview of the decorations in the editor.
   //  Color of the overview ruler border.
-  "editorOverviewRuler.border": colorTestC.hex(),
+  "editorOverviewRuler.border": null,
   // Overview ruler marker color for find matches. The color must not be opaque so as not to hide underlying decorations.
   "editorOverviewRuler.findMatchForeground": colorP_lightest.hex(),
   // Overview ruler marker color for highlighted ranges, like by the Quick Open, Symbol in File and Find features. The color must not be opaque so as not to hide underlying decorations.
