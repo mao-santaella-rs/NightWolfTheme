@@ -1,312 +1,209 @@
 const Color = require("color")
 
-
-//colors for test sda
-const colorTestA =                Color.rgb(255, 255, 0)
-const colorTestB =                Color.rgb(0, 255, 0)
-const colorTestC =                Color.rgb(255, 100, 0)
-
-// Syntax Colors
-const colorSyntaxYellow =         Color.rgb(255,220,150)
-const colorSyntaxBlue =           Color.rgb(0,177,255)
-const colorSyntaxPurple =         Color.rgb(220,140,255)
-const colorSyntaxRed =            Color.rgb(255,120,120)
-const colorSyntaxCyan =           Color.rgb(0,220,220)
-const colorSyntaxGreen =          Color.rgb(170,230,130)
-const colorSyntaxViolet =         Color.rgb(150,150,255)
-const colorSyntaxMagenta =        Color.rgb(255,80,255)
-const colorSyntaxOrange =         Color.rgb(255,180,130)
-
-
-// THEME COLORS
-const colorWhite =                Color.rgb(255,255,255)
-const colorBlack =                Color.rgb(0,0,0)
-
-const colorPrincipal =            Color.rgb(16, 30, 44)
-const colorP_darken =             colorPrincipal.darken(0.3)
-const colorP_light =              colorPrincipal.lighten(0.3)
-const colorP_lighten =            colorPrincipal.lighten(1)
-const colorP_lighter =            colorPrincipal.lighten(2)
-const colorP_lightest =           colorPrincipal.lighten(4.5)
-
-const colorText =                 colorPrincipal.lighten(6)
-
-const colorSelection =            colorP_lighter
-const colorSelectionHighlight =   colorP_lighten
-const colorSelectionInactive =    colorSelection
-const colorHoverHiglight =        colorSelection
-const colorWordHighlightStrong =  colorSelection
-const colorFindMatch =            colorP_lighter
-const colorFindHighlight =        colorSelectionHighlight
-const colorRangeHiglight =        colorP_light
-const colorLineHiglight =         colorP_darken
-
-const contrastColor =             Color.rgb(255,0,255)
-const contrastColorLight =        contrastColor.lighten(0.5)
-const contrastColorDark =         contrastColor.darken(0.5)
-
-const colorComment =              Color.rgb(100,120,130)
-
-const colorGitInsertedBg =        Color.rgb(16,50,44)
-const colorGitRemovedBg =         Color.rgb(55,31,44)
-
-
-// STATES COLORS
-const colorInfo =                 Color.rgb(100,180,250)
-const colorInfoDark =             colorInfo.darken(0.6)
-const colorInfoLight =            colorInfo.lighten(0.2)
-const colorSucces =               Color.rgb(110,180,80)
-const colorSuccesLight =          Color.rgb(175,220,100)
-const colorWarning =              Color.rgb(255,200,40)
-const colorWarningDark =          colorWarning.darken(0.6)
-const colorWarningLight =         Color.rgb(255,235,150)
-const colorDanger =               Color.rgb(240,80,80)
-const colorDangerDark =           colorDanger.darken(0.4)
-
-
-// SYNTAX COLORS
-// General colors
-const colorVariable =             Color.rgb(255,220,150)
-const colorVariableProperty =     colorText
-const colorContrastText =         Color.rgb(255,120,120)
-const colorVariableInstance =     colorSyntaxOrange //Color.rgb(219,212,186)
-const colorSpecialWordA =         Color.rgb(0,177,255)
-const colorSpecialWordB =         Color.rgb(150,150,255)
-const colorSpecialWordC =         Color.rgb(220,140,255)
-const colorFunctionName =         Color.rgb(0,220,220)
-const colorString =               Color.rgb(170,230,130)
-const colorOperator =             colorContrastText
-const colorRegularText =          colorText
-const colorNumber =               Color.rgb(255,180,130)
-const colorBoolean =              colorContrastText
-const colorNullUnd =              colorContrastText
-const colorPunctuation =          colorRegularText
-const colorDeprecated =           Color.rgb(255,0,0)
-
-// Markup
-const colorHtmlTag =              colorContrastText
-const colorMetaTag =              Color.rgb(200,200,200)
-const colorTagAttribute =         colorSpecialWordB
-const colorPugClass =             colorVariable
-
-// Stylesheets
-const colorCssAttribute =         colorFunctionName
-const colorCssValue =             colorText
-const colorCssTag =               colorContrastText
-const colorCssClass =             colorVariable
-const colorCssId =                colorSpecialWordA
-const colorCssProperty =          colorFunctionName
-const colorCssUnits =             colorNumber
-const colorCssSpecialWord =       colorFunctionName
-
-// Documentation in comments
-const colorDocEntityNames =       Color.rgb(180,120,130)
-const colorDocVariables =         Color.rgb(180,150,120)
-
+const colors = require("./colors")
 
 // theme object variables
-
 const themeColors = {
   // An extra border around active elements to separate them from others for greater contrast.
   "contrastActiveBorder": null,
   // An extra border around elements to separate them from others for greater contrast.
   "contrastBorder": null,
   // Overall border color for focused elements. This color is only used if not overridden by a component.
-  "focusBorder": colorP_lighten.hex(),
+  "focusBorder": colors.p_lighten.hex(),
   // Overall foreground color. This color is only used if not overridden by a component.
-  "foreground": colorText.hex(),
+  "foreground": colors.text.hex(),
   // Shadow color of widgets such as Find/Replace inside the editor.
-  "widget.shadow": colorP_darken.hex(),
+  "widget.shadow": colors.p_darken.hex(),
   // Background color of text selections in the workbench (for input fields or text areas, does not apply to selections within the editor and the terminal).
-  "selection.background": colorInfo.hex(),
+  "selection.background": colors.info.hex(),
   // labels in the welcome page
-  "descriptionForeground": colorText.hex(),
+  "descriptionForeground": colors.text.hex(),
   // Overall foreground color for error messages
-  "errorForeground": colorDanger.hex(),
+  "errorForeground": colors.danger.hex(),
 
 
   // Links
-  "textLink.foreground": colorSyntaxBlue.hex(),
+  "textLink.foreground": colors.syntaxBlue.hex(),
   // Links hover
-  "textLink.activeForeground": colorSyntaxBlue.lighten(0.5).hex(),
+  "textLink.activeForeground": colors.syntaxBlue.lighten(0.5).hex(),
 
-  "textBlockQuote.background": colorP_lighter.hex(),
-  "textBlockQuote.border": colorP_lighter.hex(),
-  "textCodeBlock.background": colorP_lighter.hex(),
-  "textPreformat.foreground": colorText.hex(),
-  "textSeparator.foreground": colorText.hex(),
+  "textBlockQuote.background": colors.p_lighter.hex(),
+  "textBlockQuote.border": colors.p_lighter.hex(),
+  "textCodeBlock.background": colors.p_lighter.hex(),
+  "textPreformat.foreground": colors.text.hex(),
+  "textSeparator.foreground": colors.text.hex(),
 
 
 
   // Editor in general
-  "editor.background": colorPrincipal.hex(),
-  "editor.foreground": colorText.hex(),
-  "editorLineNumber.foreground": colorP_lighten.hex(),
-  "editorLineNumber.activeForeground": colorP_lightest.hex(),
-  "editorCursor.foreground": contrastColorLight.hex(),
+  "editor.background": colors.principal.hex(),
+  "editor.foreground": colors.text.hex(),
+  "editorLineNumber.foreground": colors.p_lighten.hex(),
+  "editorLineNumber.activeForeground": colors.p_lightest.hex(),
+  "editorCursor.foreground": colors.contrastLight.hex(),
   "editorLink.activeForeground": null,
 
   // cuando selecciono con el mouse
-  "editor.selectionBackground": colorSelection.hex(),
-  "editor.selectionForeground": colorText.hex(),
+  "editor.selectionBackground": colors.selection.hex(),
+  "editor.selectionForeground": colors.text.hex(),
 
   // las palabras iguales a la seleccion
-  "editor.selectionHighlightBackground": colorSelectionHighlight.hex(),
+  "editor.selectionHighlightBackground": colors.selectionHighlight.hex(),
 
   // la seleccion cuando salgo de la ventana donde estoy
-  "editor.inactiveSelectionBackground": colorSelectionInactive.hex(),
+  "editor.inactiveSelectionBackground": colors.selectionInactive.hex(),
 
   // cuando ubico el cursor en el medio de una palabra y vscode la selecciona
-  "editor.wordHighlightBackground": colorHoverHiglight.hex(),
+  "editor.wordHighlightBackground": colors.hoverHiglight.hex(),
 
   // cuando ubico el puntero encima de una palabra
-  "editor.hoverHighlightBackground": colorHoverHiglight.hex(),
+  "editor.hoverHighlightBackground": colors.hoverHiglight.hex(),
 
   // cuando selecciono parcialmente una palabra y vscode selecciona todo
-  "editor.wordHighlightStrongBackground": colorWordHighlightStrong.hex(),
+  "editor.wordHighlightStrongBackground": colors.wordHighlightStrong.hex(),
 
   // palabra seleccionada por el finder
-  "editor.findMatchBackground": colorFindMatch.hex(),
+  "editor.findMatchBackground": colors.findMatch.hex(),
 
   // todas las palabras encontradas por el finder
-  "editor.findMatchHighlightBackground": colorFindHighlight.hex(),
+  "editor.findMatchHighlightBackground": colors.findHighlight.hex(),
   "editor.findRangeHighlightBackground": null,
 
   // color de la linea en la que el cursor esta ubicado
-  "editor.lineHighlightBackground": colorLineHiglight.hex(),
+  "editor.lineHighlightBackground": colors.lineHiglight.hex(),
   "editor.lineHighlightBorder": null,
 
   // fondo de la linea completa cuando se busca
-  "editor.rangeHighlightBackground": colorRangeHiglight.hex(),
-  "editor.rangeHighlightForeground": colorText.hex(),
+  "editor.rangeHighlightBackground": colors.rangeHiglight.hex(),
+  "editor.rangeHighlightForeground": colors.text.hex(),
 
   // cuando me paro en un bracket me muestar los dos con este color
-  "editorBracketMatch.background": colorP_lighten.hex(),
+  "editorBracketMatch.background": colors.p_lighten.hex(),
   "editorBracketMatch.border": null,
 
   // cuando se activa la viusualizacion de los whitespaces
-  "editorWhitespace.foreground": colorP_lighten.hex(),
+  "editorWhitespace.foreground": colors.p_lighten.hex(),
 
   // linea vertical que indica la indentacion
-  "editorIndentGuide.background": colorP_lighten.hex(),
-  "editorIndentGuide.activeBackground": colorP_lightest.hex(),
+  "editorIndentGuide.background": colors.p_lighten.hex(),
+  "editorIndentGuide.activeBackground": colors.p_lightest.hex(),
 
   
 
   // vscode codelens
-  "editorCodeLens.foreground": colorInfoLight.hex(),
+  "editorCodeLens.foreground": colors.infoLight.hex(),
 
 
   // editor states
-  "editorError.foreground": colorDanger.hex(),
+  "editorError.foreground": colors.danger.hex(),
   "editorError.border": null,
-  "editorWarning.foreground": colorWarning.hex(),
+  "editorWarning.foreground": colors.warning.hex(),
   "editorWarning.border": null,
 
   // el editor gutter es la parte donde esta el numero de linea y las indicaciones de git dentro del archivo
-  "editorGutter.background": colorPrincipal.hex(),
-  "editorGutter.modifiedBackground": colorWarning.hex(),
-  "editorGutter.addedBackground": colorSuccesLight.hex(),
-  "editorGutter.deletedBackground": colorDanger.hex(),
+  "editorGutter.background": colors.principal.hex(),
+  "editorGutter.modifiedBackground": colors.warning.hex(),
+  "editorGutter.addedBackground": colors.succesLight.hex(),
+  "editorGutter.deletedBackground": colors.danger.hex(),
 
   // el widget como el find and replace
-  "editorWidget.border": colorP_lightest.hex(),
-  "editorWidget.background": colorP_lighten.hex(),
+  "editorWidget.border": colors.p_lightest.hex(),
+  "editorWidget.background": colors.p_lighten.hex(),
 
   // el cuadro que sale cuando estamos escribiendo proponiendo opciones
-  "editorSuggestWidget.background": colorP_light.hex(),
-  "editorSuggestWidget.border": colorP_lighten.hex(),
-  "editorSuggestWidget.foreground": colorP_lightest.hex(),
-  "editorSuggestWidget.highlightForeground": colorText.hex(),
-  "editorSuggestWidget.selectedBackground": colorP_lighter.hex(),
-  "editorHoverWidget.background": colorPrincipal.hex(),
-  "editorHoverWidget.border": colorP_lightest.hex(),
+  "editorSuggestWidget.background": colors.p_light.hex(),
+  "editorSuggestWidget.border": colors.p_lighten.hex(),
+  "editorSuggestWidget.foreground": colors.p_lightest.hex(),
+  "editorSuggestWidget.highlightForeground": colors.text.hex(),
+  "editorSuggestWidget.selectedBackground": colors.p_lighter.hex(),
+  "editorHoverWidget.background": colors.principal.hex(),
+  "editorHoverWidget.border": colors.p_lightest.hex(),
 
 
-  "editorMarkerNavigation.background": colorP_lighten.hex(),
-  "editorMarkerNavigationInfo.background": colorInfo.hex(),
-  "editorMarkerNavigationError.background": colorDanger.hex(),
-  "editorMarkerNavigationWarning.background": colorWarning.hex(),
+  "editorMarkerNavigation.background": colors.p_lighten.hex(),
+  "editorMarkerNavigationInfo.background": colors.info.hex(),
+  "editorMarkerNavigationError.background": colors.danger.hex(),
+  "editorMarkerNavigationWarning.background": colors.warning.hex(),
 
   // Botones
-  "button.foreground": colorWhite.hex(),
-  "button.background": contrastColor.hex(),
-  "button.hoverBackground": contrastColorDark.hex(),
+  "button.foreground": colors.white.hex(),
+  "button.background": colors.contrast.hex(),
+  "button.hoverBackground": colors.contrastDark.hex(),
 
   // Botones de las extenciones
-  "extensionButton.prominentForeground": colorWhite.hex(),
-  "extensionButton.prominentBackground": contrastColor.hex(),
-  "extensionButton.prominentHoverBackground": contrastColorDark.hex(),
+  "extensionButton.prominentForeground": colors.white.hex(),
+  "extensionButton.prominentBackground": colors.contrast.hex(),
+  "extensionButton.prominentHoverBackground": colors.contrastDark.hex(),
 
   // inputs
   // Dropdowns
-  "dropdown.background": colorPrincipal.hex(),
-  "dropdown.border": colorP_lighten.hex(),
-  "dropdown.foreground": colorText.hex(),
+  "dropdown.background": colors.principal.hex(),
+  "dropdown.border": colors.p_lighten.hex(),
+  "dropdown.foreground": colors.text.hex(),
   "dropdown.listBackground": null,
   // Inputs text
-  "input.background": colorP_light.hex(),
-  "input.border": colorP_lighten.hex(),
-  "input.foreground": colorText.hex(),
-  "input.placeholderForeground": colorP_lightest.hex(),
+  "input.background": colors.p_light.hex(),
+  "input.border": colors.p_lighten.hex(),
+  "input.foreground": colors.text.hex(),
+  "input.placeholderForeground": colors.p_lightest.hex(),
   // Input Select
-  "inputOption.activeBorder": colorP_lightest.hex(),
+  "inputOption.activeBorder": colors.p_lightest.hex(),
   // Input Validation
-  "inputValidation.errorBackground": colorDangerDark.hex(),
-  "inputValidation.errorBorder": colorDanger.hex(),
-  "inputValidation.infoBackground": colorInfoDark.hex(),
-  "inputValidation.infoBorder": colorInfo.hex(),
-  "inputValidation.warningBackground": colorWarningDark.hex(),
-  "inputValidation.warningBorder": colorWarning.hex(),
+  "inputValidation.errorBackground": colors.dangerDark.hex(),
+  "inputValidation.errorBorder": colors.danger.hex(),
+  "inputValidation.infoBackground": colors.infoDark.hex(),
+  "inputValidation.infoBorder": colors.info.hex(),
+  "inputValidation.warningBackground": colors.warningDark.hex(),
+  "inputValidation.warningBorder": colors.warning.hex(),
 
   // Scrollbar
   "scrollbar.shadow": null,
-  "scrollbarSlider.activeBackground": colorP_lightest.hex() + "50",
-  "scrollbarSlider.background": colorP_lightest.hex() + "50",
-  "scrollbarSlider.hoverBackground": colorP_lightest.hex() + "80",
+  "scrollbarSlider.activeBackground": colors.p_lightest.hex() + "50",
+  "scrollbarSlider.background": colors.p_lightest.hex() + "50",
+  "scrollbarSlider.hoverBackground": colors.p_lightest.hex() + "80",
 
   // Badges are small information labels, for example, search results count.
-  "badge.background": colorP_lightest.hex(),
-  "badge.foreground": colorWhite.hex(),
+  "badge.background": colors.p_lightest.hex(),
+  "badge.foreground": colors.white.hex(),
 
   // Breadcrumbs
-  "breadcrumb.foreground": colorInfo.hex(),
-  "breadcrumb.focusForeground": colorInfoLight.hex(),
-  "breadcrumb.activeSelectionForeground": colorWhite.hex(),
-  "breadcrumbPicker.background": colorP_darken.hex(),
+  "breadcrumb.foreground": colors.info.hex(),
+  "breadcrumb.focusForeground": colors.infoLight.hex(),
+  "breadcrumb.activeSelectionForeground": colors.white.hex(),
+  "breadcrumbPicker.background": colors.p_darken.hex(),
 
   // Barra de la izquierda
   // Colors for list and trees like the File Explorer.
   // List/Tree background color for the selected item when the list/tree is active.
-  "list.activeSelectionBackground": colorP_lighter.hex(),
+  "list.activeSelectionBackground": colors.p_lighter.hex(),
   // List/Tree foreground color for the selected item when the list/tree is active.
-  "list.activeSelectionForeground": colorWhite.hex(),
+  "list.activeSelectionForeground": colors.white.hex(),
   // List/Tree foreground color for invalid items, for example an unresolved root in explorer.
-  "list.invalidItemForeground": contrastColorDark.hex(),
+  "list.invalidItemForeground": colors.contrastDark.hex(),
   // List/Tree drag and drop background when moving items around using the mouse.
-  "list.dropBackground": colorPrincipal.hex(),
+  "list.dropBackground": colors.principal.hex(),
   // List/Tree background color for the focused item when the list/tree is active.
-  "list.focusBackground": colorPrincipal.hex(),
+  "list.focusBackground": colors.principal.hex(),
   // List/Tree foreground color for the focused item when the list/tree is active. An active list/tree has keyboard focus, an inactive does not.
-  "list.focusForeground": colorWhite.hex(),
+  "list.focusForeground": colors.white.hex(),
   // List/Tree foreground color of the match highlights when searching inside the list/tree.
-  "list.highlightForeground": colorWhite.hex(),
+  "list.highlightForeground": colors.white.hex(),
   // List/Tree background when hovering over items using the mouse.
-  "list.hoverBackground": colorPrincipal.hex(),
+  "list.hoverBackground": colors.principal.hex(),
   // List/Tree foreground when hovering over items using the mouse.
-  "list.hoverForeground": colorWhite.hex(),
+  "list.hoverForeground": colors.white.hex(),
   // List/Tree background color for the selected item when the list/tree is inactive.
-  "list.inactiveSelectionBackground": colorP_light.hex(),
+  "list.inactiveSelectionBackground": colors.p_light.hex(),
   // List/Tree foreground color for the selected item when the list/tree is inactive. An active list/tree has keyboard focus, an inactive does not.
-  "list.inactiveSelectionForeground": colorP_lightest.hex(),
+  "list.inactiveSelectionForeground": colors.p_lightest.hex(),
   
 
   // List background color for the focused item when the list is inactive. An active list has keyboard focus, an inactive does not. Currently only supported in lists.
   "list.inactiveFocusBackground": null,
   // Foreground color of list items containing errors.
-  "list.errorForeground": colorDanger.hex(),
+  "list.errorForeground": colors.danger.hex(),
   // Foreground color of list items containing warnings.
-  "list.warningForeground": colorWarningLight.hex(),
+  "list.warningForeground": colors.warningLight.hex(),
   // List/Tree Filter background color of typed text when searching inside the list/tree.
   "listFilterWidget.background": null,
   // List/Tree Filter Widget's outline color of typed text when searching inside the list/tree.
@@ -320,104 +217,104 @@ const themeColors = {
 
   // Activity bar es la barra de iconos de la izquierda
   // Activity Bar background color.
-  "activityBar.background": colorPrincipal.hex(),
+  "activityBar.background": colors.principal.hex(),
   // Drag and drop feedback color for the Activity Bar items.
-  "activityBar.dropBackground": colorP_lightest.hex(),
+  "activityBar.dropBackground": colors.p_lightest.hex(),
   // Activity bar foreground color (for example used for the icons).
-  "activityBar.foreground": colorP_lightest.hex(),
+  "activityBar.foreground": colors.p_lightest.hex(),
   // Activity Bar border color with the Side Bar.
-  "activityBar.border": colorPrincipal.hex(),
+  "activityBar.border": colors.principal.hex(),
   // Activity notification badge background color.
-  "activityBarBadge.background": colorP_lighter.hex(),
+  "activityBarBadge.background": colors.p_lighter.hex(),
   // Activity notification badge foreground color.
-  "activityBarBadge.foreground": colorWhite.hex(),
+  "activityBarBadge.foreground": colors.white.hex(),
   // Activity bar item foreground color when it is inactive.
   // "activityBar.inactiveForeground": null,
 
 // Es la barra de la izquierda que contiene el tree view y el explorer
   // Side Bar background color.
-  "sideBar.background": colorPrincipal.hex(),
+  "sideBar.background": colors.principal.hex(),
   // Side Bar foreground color. The Side Bar is the container for views like Explorer and Search.
-  "sideBar.foreground": colorText.hex(),
+  "sideBar.foreground": colors.text.hex(),
   // Side Bar border color on the side separating the editor.
-  "sideBar.border": colorP_lighten.hex(),
+  "sideBar.border": colors.p_lighten.hex(),
   // Side Bar title foreground color.
-  "sideBarTitle.foreground": colorP_lightest.hex(),
+  "sideBarTitle.foreground": colors.p_lightest.hex(),
   // Side Bar section header background color.
-  "sideBarSectionHeader.background": colorPrincipal.hex(),
+  "sideBarSectionHeader.background": colors.principal.hex(),
   // Side Bar section header foreground color.
-  "sideBarSectionHeader.foreground": colorP_lightest.hex(),
+  "sideBarSectionHeader.foreground": colors.p_lightest.hex(),
   // Drag and drop feedback color for the side bar sections. The color should have transparency so that the side bar sections can still shine through. The side bar is the container for views like explorer and search.
   // "sideBar.dropBackground": null
 
 // Editor Groups are the containers of editors. There can be many editor groups. A Tab is the container of an editor. Multiple Tabs can be opened in one editor group.
   // Background color when dragging editors around.
-  "editorGroup.background": colorP_lighter.hex(),
+  "editorGroup.background": colors.p_lighter.hex(),
   // Color to separate multiple editor groups from each other.
-  "editorGroup.border": colorP_lighten.hex(),
+  "editorGroup.border": colors.p_lighten.hex(),
   // Background color when dragging editors around.
-  "editorGroup.dropBackground": contrastColor.hex(),
+  "editorGroup.dropBackground": colors.contrast.hex(),
   // Background color of the editor group title header when Tabs are disabled (set "workbench.editor.showTabs": false).
-  "editorGroupHeader.noTabsBackground": colorPrincipal.hex(),
+  "editorGroupHeader.noTabsBackground": colors.principal.hex(),
   // Background color of the Tabs container.
-  "editorGroupHeader.tabsBackground": colorPrincipal.hex(),
+  "editorGroupHeader.tabsBackground": colors.principal.hex(),
   // Border color of the editor group title header when tabs are enabled.
-  "editorGroupHeader.tabsBorder": colorP_lighten.hex(),
+  "editorGroupHeader.tabsBorder": colors.p_lighten.hex(),
 
   // Las pestanas de los archivos abiertos
-  "tab.activeBackground": colorP_light.hex(),
-  "tab.activeForeground": colorText.hex(),
-  "tab.activeBorder": colorP_lightest.hex(),
-  "tab.border": colorP_light.hex(),
-  "tab.inactiveBackground": colorP_darken.hex(),
-  "tab.inactiveForeground": colorText.hex(),
-  "tab.unfocusedActiveForeground": colorText.hex(),
-  "tab.unfocusedActiveBorder": colorP_lighter.hex(),
-  "tab.unfocusedInactiveForeground": colorText.hex(),
+  "tab.activeBackground": colors.p_light.hex(),
+  "tab.activeForeground": colors.text.hex(),
+  "tab.activeBorder": colors.p_lightest.hex(),
+  "tab.border": colors.p_light.hex(),
+  "tab.inactiveBackground": colors.p_darken.hex(),
+  "tab.inactiveForeground": colors.text.hex(),
+  "tab.unfocusedActiveForeground": colors.text.hex(),
+  "tab.unfocusedActiveBorder": colors.p_lighter.hex(),
+  "tab.unfocusedInactiveForeground": colors.text.hex(),
 
-  "menubar.selectionForeground": colorWhite.hex(),
-  "menubar.selectionBackground": colorP_darken.hex(),
+  "menubar.selectionForeground": colors.white.hex(),
+  "menubar.selectionBackground": colors.p_darken.hex(),
   "menubar.selectionBorder": null,
-  "menu.foreground": colorP_lightest.hex(),
-  "menu.background": colorP_darken.hex(),
-  "menu.selectionForeground": colorWhite.hex(),
-  "menu.selectionBackground": colorP_lighter.hex(),
+  "menu.foreground": colors.p_lightest.hex(),
+  "menu.background": colors.p_darken.hex(),
+  "menu.selectionForeground": colors.white.hex(),
+  "menu.selectionBackground": colors.p_lighter.hex(),
   "menu.selectionBorder": null,
-  "menu.separatorBackground": colorP_lighter.hex(),
+  "menu.separatorBackground": colors.p_lighter.hex(),
 
   // git in editor interfece
-  "diffEditor.insertedTextBackground": colorGitInsertedBg.hex(),
+  "diffEditor.insertedTextBackground": colors.gitInsertedBg.hex(),
   "diffEditor.insertedTextBorder": null,
-  "diffEditor.removedTextBackground": colorGitRemovedBg.hex(),
+  "diffEditor.removedTextBackground": colors.gitRemovedBg.hex(),
   "diffEditor.removedTextBorder": null,
 
-  "debugExceptionWidget.background": colorPrincipal.hex(),
-  "debugExceptionWidget.border": colorP_lightest.hex(),
+  "debugExceptionWidget.background": colors.principal.hex(),
+  "debugExceptionWidget.border": colors.p_lightest.hex(),
 
-  "peekView.border": colorP_lightest.hex(),
-  "peekViewEditor.background": colorPrincipal.hex(),
-  "peekViewEditor.matchHighlightBackground": contrastColor.hex(),
-  "peekViewResult.background": colorPrincipal.hex(),
-  "peekViewResult.fileForeground": colorP_lightest.hex(),
-  "peekViewResult.lineForeground": colorP_lightest.hex(),
-  "peekViewResult.matchHighlightBackground": colorWhite.hex(),
-  "peekViewResult.selectionBackground": colorP_lighten.hex(),
-  "peekViewResult.selectionForeground": colorP_lightest.hex(),
-  "peekViewTitle.background": colorPrincipal.hex(),
-  "peekViewTitleDescription.foreground": colorP_lightest.hex(),
-  "peekViewTitleLabel.foreground": colorP_lightest.hex(),
+  "peekView.border": colors.p_lightest.hex(),
+  "peekViewEditor.background": colors.principal.hex(),
+  "peekViewEditor.matchHighlightBackground": colors.contrast.hex(),
+  "peekViewResult.background": colors.principal.hex(),
+  "peekViewResult.fileForeground": colors.p_lightest.hex(),
+  "peekViewResult.lineForeground": colors.p_lightest.hex(),
+  "peekViewResult.matchHighlightBackground": colors.white.hex(),
+  "peekViewResult.selectionBackground": colors.p_lighten.hex(),
+  "peekViewResult.selectionForeground": colors.p_lightest.hex(),
+  "peekViewTitle.background": colors.principal.hex(),
+  "peekViewTitleDescription.foreground": colors.p_lightest.hex(),
+  "peekViewTitleLabel.foreground": colors.p_lightest.hex(),
 
   // GIT MERGE CONFLICTS
-  "merge.currentHeaderBackground": colorP_lightest.hex(),
+  "merge.currentHeaderBackground": colors.p_lightest.hex(),
   "merge.currentContentBackground": null,
-  "merge.incomingHeaderBackground": contrastColor.hex(),
+  "merge.incomingHeaderBackground": colors.contrast.hex(),
   "merge.incomingContentBackground": null,
   "merge.border": null,
   "merge.commonContentBackground": null,
   "merge.commonHeaderBackground": null,
-  "editorOverviewRuler.currentContentForeground": contrastColor.hex(),
-  "editorOverviewRuler.incomingContentForeground": contrastColor.hex(),
-  "editorOverviewRuler.commonContentForeground": contrastColor.hex(),
+  "editorOverviewRuler.currentContentForeground": colors.contrast.hex(),
+  "editorOverviewRuler.incomingContentForeground": colors.contrast.hex(),
+  "editorOverviewRuler.commonContentForeground": colors.contrast.hex(),
 
 
 
@@ -425,107 +322,107 @@ const themeColors = {
   //  Color of the overview ruler border.
   "editorOverviewRuler.border": null,
   // Overview ruler marker color for find matches. The color must not be opaque so as not to hide underlying decorations.
-  "editorOverviewRuler.findMatchForeground": colorP_lightest.hex(),
+  "editorOverviewRuler.findMatchForeground": colors.p_lightest.hex(),
   // Overview ruler marker color for highlighted ranges, like by the Quick Open, Symbol in File and Find features. The color must not be opaque so as not to hide underlying decorations.
-  "editorOverviewRuler.rangeHighlightForeground": colorWhite.hex(),
+  "editorOverviewRuler.rangeHighlightForeground": colors.white.hex(),
   // Overview ruler marker color for selection highlights. The color must not be opaque so as not to hide underlying decorations.
-  "editorOverviewRuler.selectionHighlightForeground": colorP_lighter.hex(),
+  "editorOverviewRuler.selectionHighlightForeground": colors.p_lighter.hex(),
   // Overview ruler marker color for symbol highlights. The color must not be opaque so as not to hide underlying decorations.
-  "editorOverviewRuler.wordHighlightForeground": colorWhite.hex(),
+  "editorOverviewRuler.wordHighlightForeground": colors.white.hex(),
   // Overview ruler marker color for write-access symbol highlights. The color must not be opaque so as not to hide underlying decorations.
-  "editorOverviewRuler.wordHighlightStrongForeground": colorWhite.hex(),
+  "editorOverviewRuler.wordHighlightStrongForeground": colors.white.hex(),
   // Overview ruler marker color for modified content.
-  "editorOverviewRuler.modifiedForeground": colorWarningLight.hex(),
+  "editorOverviewRuler.modifiedForeground": colors.warningLight.hex(),
   // Overview ruler marker color for added content.
-  "editorOverviewRuler.addedForeground": colorSuccesLight.hex(),
+  "editorOverviewRuler.addedForeground": colors.succesLight.hex(),
   // Overview ruler marker color for deleted content.
-  "editorOverviewRuler.deletedForeground": colorDanger.hex(),
+  "editorOverviewRuler.deletedForeground": colors.danger.hex(),
   // Overview ruler marker color for errors.
-  "editorOverviewRuler.errorForeground": colorDanger.hex(),
+  "editorOverviewRuler.errorForeground": colors.danger.hex(),
   // Overview ruler marker color for warnings.
-  "editorOverviewRuler.warningForeground": colorWarning.hex(),
+  "editorOverviewRuler.warningForeground": colors.warning.hex(),
   // Overview ruler marker color for infos.
-  "editorOverviewRuler.infoForeground": colorInfo.hex(),
+  "editorOverviewRuler.infoForeground": colors.info.hex(),
   // Overview ruler marker color for matching brackets.
-  "editorOverviewRuler.bracketMatchForeground": colorText.hex(),
+  "editorOverviewRuler.bracketMatchForeground": colors.text.hex(),
 
 
 
-  "panel.background": colorPrincipal.hex(),
-  "panel.border": colorP_lighten.hex(),
-  "panelTitle.activeBorder": colorP_lightest.hex(),
-  "panelTitle.activeForeground": colorWhite.hex(),
-  "panelTitle.inactiveForeground": colorText.hex(),
+  "panel.background": colors.principal.hex(),
+  "panel.border": colors.p_lighten.hex(),
+  "panelTitle.activeBorder": colors.p_lightest.hex(),
+  "panelTitle.activeForeground": colors.white.hex(),
+  "panelTitle.inactiveForeground": colors.text.hex(),
 
-  "statusBar.background": colorPrincipal.hex(),
-  "statusBar.foreground": colorP_lightest.hex(),
-  "statusBar.border": colorP_lighten.hex(),
+  "statusBar.background": colors.principal.hex(),
+  "statusBar.foreground": colors.p_lightest.hex(),
+  "statusBar.border": colors.p_lighten.hex(),
 
-  "statusBar.debuggingBackground": colorWarning.hex(),
-  "statusBar.debuggingForeground": colorP_darken.hex(),
-  "statusBar.debuggingBorder": colorWarning.hex(),
+  "statusBar.debuggingBackground": colors.warning.hex(),
+  "statusBar.debuggingForeground": colors.p_darken.hex(),
+  "statusBar.debuggingBorder": colors.warning.hex(),
 
   "statusBar.noFolderForeground": null,
-  "statusBar.noFolderBackground": colorPrincipal.hex(),
-  "statusBar.noFolderBorder": contrastColor.hex(),
-  "statusBarItem.activeBackground": colorP_lighten.hex(),
-  "statusBarItem.hoverBackground": colorP_lighten.hex(),
-  "statusBarItem.prominentBackground": colorP_lighten.hex(),
-  "statusBarItem.prominentHoverBackground": colorP_lighten.hex(),
+  "statusBar.noFolderBackground": colors.principal.hex(),
+  "statusBar.noFolderBorder": colors.contrast.hex(),
+  "statusBarItem.activeBackground": colors.p_lighten.hex(),
+  "statusBarItem.hoverBackground": colors.p_lighten.hex(),
+  "statusBarItem.prominentBackground": colors.p_lighten.hex(),
+  "statusBarItem.prominentHoverBackground": colors.p_lighten.hex(),
 
-  "titleBar.activeBackground": colorPrincipal.hex(),
-  "titleBar.activeForeground": colorText.hex(),
-  "titleBar.inactiveBackground": colorP_darken.hex(),
+  "titleBar.activeBackground": colors.principal.hex(),
+  "titleBar.activeForeground": colors.text.hex(),
+  "titleBar.inactiveBackground": colors.p_darken.hex(),
   "titleBar.inactiveForeground": null,
 
-  "notifications.background": colorPrincipal.hex(),
-  "notifications.foreground": colorWhite.hex(),
-  "notificationLink.foreground": contrastColor.hex(),
+  "notifications.background": colors.principal.hex(),
+  "notifications.foreground": colors.white.hex(),
+  "notificationLink.foreground": colors.contrast.hex(),
 
-  "pickerGroup.foreground": contrastColorLight.hex(),
-  "pickerGroup.border": colorPrincipal.hex(),
+  "pickerGroup.foreground": colors.contrastLight.hex(),
+  "pickerGroup.border": colors.principal.hex(),
 
-  "debugToolBar.background": colorP_darken.hex(),
+  "debugToolBar.background": colors.p_darken.hex(),
   "debugToolBar.border": null,
 
-  "welcomePage.buttonBackground": colorPrincipal.hex(),
-  "welcomePage.buttonHoverBackground": colorPrincipal.hex(),
-  "walkThrough.embeddedEditorBackground": colorPrincipal.hex(),
+  "welcomePage.buttonBackground": colors.principal.hex(),
+  "welcomePage.buttonHoverBackground": colors.principal.hex(),
+  "walkThrough.embeddedEditorBackground": colors.principal.hex(),
 
 
   // Git colors
-  "gitDecoration.addedResourceForeground": colorSuccesLight.hex(),
-  "gitDecoration.modifiedResourceForeground": colorWarningLight.hex(),
-  "gitDecoration.deletedResourceForeground": colorDanger.hex(),
-  "gitDecoration.untrackedResourceForeground": colorSuccesLight.hex(),
-  "gitDecoration.ignoredResourceForeground": colorP_lighter.hex(),
-  "gitDecoration.conflictingResourceForeground": colorWarningLight.hex(),
+  "gitDecoration.addedResourceForeground": colors.succesLight.hex(),
+  "gitDecoration.modifiedResourceForeground": colors.warningLight.hex(),
+  "gitDecoration.deletedResourceForeground": colors.danger.hex(),
+  "gitDecoration.untrackedResourceForeground": colors.succesLight.hex(),
+  "gitDecoration.ignoredResourceForeground": colors.p_lighter.hex(),
+  "gitDecoration.conflictingResourceForeground": colors.warningLight.hex(),
 
-  "source.elm": colorP_lightest.hex(),
+  "source.elm": colors.p_lightest.hex(),
 
-  "editorRuler.foreground": colorP_lighten.hex(),
+  "editorRuler.foreground": colors.p_lighten.hex(),
 
   // Background color for the progress bar shown for long running operations.
-  "progress.background": contrastColor.hex(),
+  "progress.background": colors.contrast.hex(),
 
 
   // Terminal colors
-  "terminal.ansiWhite": colorText.hex(),
-  "terminal.ansiBlack": colorBlack.hex(),
-  "terminal.ansiBlue": colorSyntaxViolet.hex(),
-  "terminal.ansiCyan": colorSyntaxCyan.hex(),
-  "terminal.ansiGreen": colorSyntaxGreen.hex(),
-  "terminal.ansiMagenta": colorSyntaxMagenta.hex(),
-  "terminal.ansiRed": colorSyntaxRed.hex(),
-  "terminal.ansiYellow": colorSyntaxYellow.hex(),
-  "terminal.ansiBrightWhite": colorWhite.hex(),
-  "terminal.ansiBrightBlack": colorP_lighter.hex(),
-  "terminal.ansiBrightBlue": colorSyntaxViolet.hex(),
-  "terminal.ansiBrightCyan": colorSyntaxCyan.hex(),
-  "terminal.ansiBrightGreen": colorSyntaxGreen.hex(),
-  "terminal.ansiBrightMagenta": colorSyntaxMagenta.hex(),
-  "terminal.ansiBrightRed": colorSyntaxRed.hex(),
-  "terminal.ansiBrightYellow": colorSyntaxYellow.hex(),
+  "terminal.ansiWhite": colors.text.hex(),
+  "terminal.ansiBlack": colors.black.hex(),
+  "terminal.ansiBlue": colors.syntaxViolet.hex(),
+  "terminal.ansiCyan": colors.syntaxCyan.hex(),
+  "terminal.ansiGreen": colors.syntaxGreen.hex(),
+  "terminal.ansiMagenta": colors.syntaxMagenta.hex(),
+  "terminal.ansiRed": colors.syntaxRed.hex(),
+  "terminal.ansiYellow": colors.syntaxYellow.hex(),
+  "terminal.ansiBrightWhite": colors.white.hex(),
+  "terminal.ansiBrightBlack": colors.p_lighter.hex(),
+  "terminal.ansiBrightBlue": colors.syntaxViolet.hex(),
+  "terminal.ansiBrightCyan": colors.syntaxCyan.hex(),
+  "terminal.ansiBrightGreen": colors.syntaxGreen.hex(),
+  "terminal.ansiBrightMagenta": colors.syntaxMagenta.hex(),
+  "terminal.ansiBrightRed": colors.syntaxRed.hex(),
+  "terminal.ansiBrightYellow": colors.syntaxYellow.hex(),
 
 
 }
@@ -565,8 +462,8 @@ const tcGlobalSettings = [
   {
     name: "Global settings",
     settings: {
-      background: colorPrincipal.hex(),
-      foreground: colorText.hex()
+      background: colors.principal.hex(),
+      foreground: colors.text.hex()
     }
   },
 ]
@@ -582,7 +479,7 @@ const tcGit = [
       "meta.diff.header.to-file"
     ],
     settings: {
-      foreground: colorInfoLight.hex(),
+      foreground: colors.infoLight.hex(),
       fontStyle: "italic"
     }
   },
@@ -590,7 +487,7 @@ const tcGit = [
     name: "Deleted",
     scope: "markup.deleted.diff",
     settings: {
-      foreground: colorDanger.hex(),
+      foreground: colors.danger.hex(),
       fontStyle: "italic"
     }
   },
@@ -598,7 +495,7 @@ const tcGit = [
     name: "Inserted",
     scope: "markup.inserted.diff",
     settings: {
-      foreground: colorSuccesLight.hex(),
+      foreground: colors.succesLight.hex(),
       fontStyle: "italic"
     }
   },
@@ -610,7 +507,7 @@ const tcGeneral = [
     name: "Language Variable",
     scope: "variable.language",
     settings: {
-      foreground: colorSpecialWordA.hex()
+      foreground: colors.specialWordA.hex()
     }
   },
   {
@@ -618,7 +515,7 @@ const tcGeneral = [
     name: "Constant Character Escape",
     scope: "constant.character.escape",
     settings: {
-      foreground: colorString.hex()
+      foreground: colors.string.hex()
     }
   },
   {
@@ -629,7 +526,7 @@ const tcGeneral = [
       "meta.tag"
     ],
     settings: {
-      foreground: colorMetaTag.hex()
+      foreground: colors.metaTag.hex()
     }
   },
   {
@@ -638,8 +535,8 @@ const tcGeneral = [
     scope: "entity.other.attribute-name",
     settings: {
       fontStyle: "italic",
-      foreground: colorTagAttribute.hex(),
-      // foreground: colorTestB.hex()
+      foreground: colors.tagAttribute.hex(),
+      // foreground: colors.testB.hex()
     }
   },
   {
@@ -648,7 +545,7 @@ const tcGeneral = [
     scope: "entity.other.attribute-name.class.pug",
     settings: {
       fontStyle: "italic",
-      foreground: colorPugClass.hex(),
+      foreground: colors.pugClass.hex(),
     }
   },
   {
@@ -656,15 +553,15 @@ const tcGeneral = [
     name: "Support Variable Property",
     scope: "support.variable.property",
     settings: {
-      foreground: colorFunctionName.hex()
+      foreground: colors.functionName.hex()
     }
   },
   {
     name: "Invalid deprecated",
     scope: "invalid.deprecated",
     settings: {
-      foreground: colorDeprecated.hex(),
-      background: colorDangerDark.hex()
+      foreground: colors.deprecated.hex(),
+      background: colors.dangerDark.hex()
     }
   },
 
@@ -674,7 +571,7 @@ const tcGeneral = [
     name: "Constant Other Color",
     scope: "constant.other.color",
     settings: {
-      foreground: colorRegularText.hex()
+      foreground: colors.regularText.hex()
     }
   },
 
@@ -699,7 +596,7 @@ const tcGeneral = [
     name: "Bold",
     scope: "bold",
     settings: {
-      foreground: colorString.hex(),
+      foreground: colors.string.hex(),
       fontStyle: "bold"
     }
   },
@@ -707,7 +604,7 @@ const tcGeneral = [
     name: "Quote",
     scope: "quote",
     settings: {
-      foreground: colorString.hex(),
+      foreground: colors.string.hex(),
       fontStyle: "italic"
     }
   },
@@ -715,8 +612,8 @@ const tcGeneral = [
     name: "Invalid",
     scope: "invalid",
     settings: {
-      background: colorDanger.hex(),
-      foreground: colorWhite.hex()
+      background: colors.danger.hex(),
+      foreground: colors.white.hex()
     }
   },
 ]
@@ -741,8 +638,8 @@ const tcSpecialWords = [
         "support.class"
       ],
       settings: {
-        foreground: colorSpecialWordB.hex(),
-        // foreground: colorTestB.hex()
+        foreground: colors.specialWordB.hex(),
+        // foreground: colors.testB.hex()
       }
     },
     {
@@ -755,8 +652,8 @@ const tcSpecialWords = [
         "support.constant"
       ],
       settings: {
-        foreground: colorSpecialWordB.hex(),
-        // foreground: colorTestC.hex(),
+        foreground: colors.specialWordB.hex(),
+        // foreground: colors.testC.hex(),
         fontStyle: "italic"
       }
     },
@@ -768,7 +665,7 @@ const tcSpecialWords = [
       name: "Variable Property Other object property",
       scope: ["variable.other.object.property"],
       settings: {
-        foreground: colorVariableProperty.hex(),
+        foreground: colors.variableProperty.hex(),
         fontStyle: "italic"
       }
     },
@@ -785,7 +682,7 @@ const tcSpecialWords = [
         "variable.other.property"
       ],
       settings: {
-        foreground: colorVariableInstance.hex()
+        foreground: colors.variableInstance.hex()
       }
     },
 
@@ -795,8 +692,8 @@ const tcSpecialWords = [
       name: "Support Constant Math",
       scope: "support.constant.math",
       settings: {
-        foreground: colorContrastText.hex(),
-        // foreground: colorTestB.hex()
+        foreground: colors.contrastText.hex(),
+        // foreground: colors.testB.hex()
       }
     },
 
@@ -817,7 +714,7 @@ const tcSpecialWords = [
         
       ],
       settings: {
-        foreground: colorSpecialWordA.hex(),
+        foreground: colors.specialWordA.hex(),
         fontStyle: "italic"
       }
     },
@@ -827,7 +724,7 @@ const tcSpecialWords = [
         "storage.type.interface"
       ],
       settings:{
-        foreground: colorSpecialWordA.hex()
+        foreground: colors.specialWordA.hex()
       }
     },
     {
@@ -840,7 +737,7 @@ const tcSpecialWords = [
         "storage.type.property.tsx"
       ],
       settings: {
-        foreground: colorSpecialWordA.hex(),
+        foreground: colors.specialWordA.hex(),
         fontStyle: "italic"
       }
     },
@@ -857,15 +754,15 @@ const tcSpecialWords = [
       name: "Entity Name Tag Custom",
       scope: "entity.name.tag.custom",
       settings: {
-        foreground: colorSpecialWordC.hex(),
-        // foreground: colorTestB.hex()
+        foreground: colors.specialWordC.hex(),
+        // foreground: colors.testB.hex()
       }
     },
     {
       name: "Meta Delimiter Period",
       scope: "meta.delimiter.period",
       settings: {
-        foreground: colorSpecialWordC.hex(),
+        foreground: colors.specialWordC.hex(),
         fontStyle: "italic"
       }
     },
@@ -873,7 +770,7 @@ const tcSpecialWords = [
       name: "Meta Selector",
       scope: "meta.selector",
       settings: {
-        foreground: colorSpecialWordC.hex(),
+        foreground: colors.specialWordC.hex(),
         fontStyle: "italic"
       }
     },
@@ -884,7 +781,7 @@ const tcSpecialWords = [
         "meta.tag.sgml.doctype"
       ],
       settings: {
-        foreground: colorSpecialWordC.hex(),
+        foreground: colors.specialWordC.hex(),
         fontStyle: "italic"
       }
     },
@@ -897,7 +794,7 @@ const tcSpecialWords = [
         "keyword.control.switch.ts"
       ],
       settings: {
-        foreground: colorSpecialWordC.hex(),
+        foreground: colors.specialWordC.hex(),
         fontStyle: ""
       }
     },
@@ -907,7 +804,7 @@ const tcSpecialWords = [
         "keyword.control.loop"
       ],
       settings:{
-        foreground: colorSpecialWordC.hex(),
+        foreground: colors.specialWordC.hex(),
       }
     },
     {
@@ -916,8 +813,8 @@ const tcSpecialWords = [
       name: "import control keyword",
       scope: "keyword.control",
       settings: {
-        foreground: colorSpecialWordB.hex(),
-        // foreground: colorTestB.hex()
+        foreground: colors.specialWordB.hex(),
+        // foreground: colors.testB.hex()
       }
     },
 
@@ -929,7 +826,7 @@ const tcSpecialWords = [
       name: "Variable Parameter Function",
       scope: "variable.parameter.function",
       settings: {
-        foreground: colorFunctionName.hex(),
+        foreground: colors.functionName.hex(),
         fontStyle: ""
       }
     },
@@ -937,14 +834,14 @@ const tcSpecialWords = [
       name: "Meta Property Name",
       scope: "meta.property-name",
       settings: {
-        foreground: colorFunctionName.hex()
+        foreground: colors.functionName.hex()
       }
     },
     {
       name: "Keyword Control Operator",
       scope: "keyword.control.operator",
       settings: {
-        foreground: colorFunctionName.hex()
+        foreground: colors.functionName.hex()
       }
     },
     {
@@ -952,7 +849,7 @@ const tcSpecialWords = [
       name: "Entity Name Function",
       scope: ["entity.name.function"],
       settings: {
-        foreground: colorFunctionName.hex(),
+        foreground: colors.functionName.hex(),
         fontStyle: "italic"
       }
     },
@@ -966,7 +863,7 @@ const tcSpecialWords = [
         "keyword.other.debugger"
       ],
       settings: {
-        foreground: colorFunctionName.hex()
+        foreground: colors.functionName.hex()
       }
     },
 
@@ -981,7 +878,7 @@ const tcStorageNames = [
       "meta.object-literal.key"
     ],
     settings:{
-      foreground: colorVariableProperty.hex(),
+      foreground: colors.variableProperty.hex(),
       fontStyle: "normal"
     }
   },
@@ -989,7 +886,7 @@ const tcStorageNames = [
     name: "Variable",
     scope: "variable",
     settings: {
-      foreground: colorVariable.hex(),
+      foreground: colors.variable.hex(),
       fontStyle: "normal"
     }
   },
@@ -1001,7 +898,7 @@ const tcStorageNames = [
       "variable.other.constant"
     ],
     settings: {
-      foreground: colorVariable.hex()
+      foreground: colors.variable.hex()
     }
   },
   {
@@ -1011,21 +908,21 @@ const tcStorageNames = [
       "constant.other"
     ],
     settings: {
-      foreground: colorVariable.hex()
+      foreground: colors.variable.hex()
     }
   },
   {
     name: "Class name",
     scope: ["entity.name.class", "meta.class entity.name.type.class"],
     settings: {
-      foreground: colorVariable.hex()
+      foreground: colors.variable.hex()
     }
   },
   {
     name: "Inherited class",
     scope: "entity.other.inherited-class",
     settings: {
-      foreground: colorVariable.hex(),
+      foreground: colors.variable.hex(),
     }
   },
   {
@@ -1033,8 +930,8 @@ const tcStorageNames = [
     name: "Variable Property Other object",
     scope: ["variable.other.object.js"],
     settings: {
-      // foreground: colorVariable.hex(),
-      foreground: colorTestB.hex(),
+      // foreground: colors.variable.hex(),
+      foreground: colors.testB.hex(),
       fontStyle: ""
     }
   },
@@ -1046,7 +943,7 @@ const tcStrings = [
     name: "String",
     scope: "string",
     settings: {
-      foreground: colorString.hex()
+      foreground: colors.string.hex()
     }
   },
   {
@@ -1057,21 +954,21 @@ const tcStrings = [
       "string.quoted.single.js"
     ],
     settings: {
-      foreground: colorString.hex()
+      foreground: colors.string.hex()
     }
   },
   {
     name: "Backtics(``) in Template Strings",
     scope: "string.template punctuation.definition.string",
     settings: {
-      foreground: colorString.hex()
+      foreground: colors.string.hex()
     }
   },
   {
     name: "Punctuation Definition String",
     scope: "punctuation.definition.string",
     settings: {
-      foreground: colorString.hex()
+      foreground: colors.string.hex()
     }
   },
 ]
@@ -1113,8 +1010,8 @@ const tcPunctuation = [
       "punctuation.accessor",
     ],
     settings: {
-      foreground: colorPunctuation.hex(),
-      // foreground: colorTestB.hex(),
+      foreground: colors.punctuation.hex(),
+      // foreground: colors.testB.hex(),
     }
   },
   {
@@ -1127,8 +1024,8 @@ const tcPunctuation = [
       "meta.array"
     ],
     settings: {
-      foreground: colorPunctuation.hex(),
-      // foreground: colorTestB.hex(),
+      foreground: colors.punctuation.hex(),
+      // foreground: colors.testB.hex(),
     }
   },
   {
@@ -1140,8 +1037,8 @@ const tcPunctuation = [
       "punctuation.definition.list"
     ],
     settings: {
-      foreground: colorPunctuation.hex(),
-      // foreground: colorTestB.hex(),
+      foreground: colors.punctuation.hex(),
+      // foreground: colors.testB.hex(),
     }
   },
   {
@@ -1153,8 +1050,8 @@ const tcPunctuation = [
       "meta.link.inline.markdown punctuation.definition.string"
     ],
     settings: {
-      foreground: colorPunctuation.hex(),
-      // foreground: colorTestB.hex(),
+      foreground: colors.punctuation.hex(),
+      // foreground: colors.testB.hex(),
     }
   },
   {
@@ -1166,8 +1063,8 @@ const tcPunctuation = [
       "meta.export.tsx punctuation.definition.block"
     ],
     settings: {
-      foreground: colorPunctuation.hex(),
-      // foreground: colorTestB.hex(),
+      foreground: colors.punctuation.hex(),
+      // foreground: colors.testB.hex(),
     }
   },
   {
@@ -1182,7 +1079,7 @@ const tcPunctuation = [
       "punctuation.definition.parameters"
     ],
     settings: {
-      foreground: colorPunctuation.hex()
+      foreground: colors.punctuation.hex()
     }
   },
   {
@@ -1192,7 +1089,7 @@ const tcPunctuation = [
       "punctuation.definition.template-expression"
     ],
     settings: {
-      foreground: colorContrastText.hex()
+      foreground: colors.contrastText.hex()
     }
   },
 
@@ -1206,16 +1103,16 @@ const tcPunctuation = [
     name: "Comma in functions",
     scope: "meta.function",
     settings: {
-      // foreground: colorVariable.hex(),
-      background: colorTestA.hex()
+      // foreground: colors.variable.hex(),
+      background: colors.testA.hex()
     }
   },
   {
     name: "JavaScript Meta Punctuation Definition",
     scope: "meta.js punctuation.definition.js",
     settings: {
-      foreground: colorPunctuation.hex(),
-      background: colorTestA.hex()
+      foreground: colors.punctuation.hex(),
+      background: colors.testA.hex()
     }
   },
 
@@ -1233,8 +1130,8 @@ const tcPunctuation = [
     name: "Keyword Operator",
     scope: "keyword.operator",
     settings: {
-      foreground: colorOperator.hex(),
-      // foreground: colorTestB.hex(),
+      foreground: colors.operator.hex(),
+      // foreground: colors.testB.hex(),
       fontStyle: ""
     }
   },
@@ -1243,8 +1140,8 @@ const tcPunctuation = [
     name: "Keyword Operator Assignment",
     scope: "keyword.operator.assignment",
     settings: {
-      foreground: colorOperator.hex(),
-      // foreground: colorTestA.hex(),
+      foreground: colors.operator.hex(),
+      // foreground: colors.testA.hex(),
     }
   },
   {
@@ -1252,8 +1149,8 @@ const tcPunctuation = [
     name: "Keyword Operator Arithmetic",
     scope: "keyword.operator.arithmetic",
     settings: {
-      foreground: colorOperator.hex(),
-      // foreground: colorTestB.hex(),
+      foreground: colors.operator.hex(),
+      // foreground: colors.testB.hex(),
     }
   },
   {
@@ -1261,8 +1158,8 @@ const tcPunctuation = [
     name: "Keyword Operator Bitwise",
     scope: "keyword.operator.bitwise",
     settings: {
-      foreground: colorOperator.hex(),
-      // foreground: colorTestB.hex(),
+      foreground: colors.operator.hex(),
+      // foreground: colors.testB.hex(),
     }
   },
   {
@@ -1273,8 +1170,8 @@ const tcPunctuation = [
       "keyword.operator.decrement"
     ],
     settings: {
-      foreground: colorOperator.hex(),
-      // foreground: colorTestB.hex(),
+      foreground: colors.operator.hex(),
+      // foreground: colors.testB.hex(),
     }
   },
   {
@@ -1282,16 +1179,16 @@ const tcPunctuation = [
     name: "Keyword Operator Ternary",
     scope: "keyword.operator.ternary",
     settings: {
-      foreground: colorOperator.hex(),
-      // foreground: colorTestB.hex(),
+      foreground: colors.operator.hex(),
+      // foreground: colors.testB.hex(),
     }
   },
   {
     name: "Keyword Operator Logical",
     scope: "keyword.operator.logical",
     settings: {
-      foreground: colorSpecialWordC.hex(),
-      // foreground: colorTestB.hex(),
+      foreground: colors.specialWordC.hex(),
+      // foreground: colors.testB.hex(),
       fontStyle: ""
     }
   },
@@ -1302,8 +1199,8 @@ const tcPunctuation = [
       "keyword.operator.comparison"
     ],
     settings:{
-      foreground: colorSpecialWordC.hex(),
-      // foreground: colorTestB.hex(),
+      foreground: colors.specialWordC.hex(),
+      // foreground: colors.testB.hex(),
     }
   },
   {
@@ -1311,8 +1208,8 @@ const tcPunctuation = [
     name: "Keyword Operator Relational",
     scope: "keyword.operator.relational",
     settings: {
-      foreground: colorSpecialWordC.hex(),
-      // foreground: colorTestB.hex(),
+      foreground: colors.specialWordC.hex(),
+      // foreground: colors.testB.hex(),
       fontStyle: "italic"
     }
   },
@@ -1323,7 +1220,7 @@ const tcSpecialValues = [
     name: "Number",
     scope: ["constant.numeric", "constant.character.numeric"],
     settings: {
-      foreground: colorNumber.hex(),
+      foreground: colors.number.hex(),
       fontStyle: ""
     }
   },
@@ -1334,7 +1231,7 @@ const tcSpecialValues = [
       "constant.language.undefined"
     ],
     settings: {
-      foreground: colorNullUnd.hex()
+      foreground: colors.nullUnd.hex()
     }
   },
   {
@@ -1343,7 +1240,7 @@ const tcSpecialValues = [
       "constant.language.boolean"
     ],
     settings: {
-      foreground: colorBoolean.hex()
+      foreground: colors.boolean.hex()
     }
   },
   {
@@ -1353,7 +1250,7 @@ const tcSpecialValues = [
       "entity.name.type"
     ],
     settings:{
-      foreground: colorVariable.hex()
+      foreground: colors.variable.hex()
     }
   },
 ]
@@ -1369,7 +1266,7 @@ const tcStylesheets = [
   //     "support.function.sass"
   //   ],
   //   settings:{
-  //     foreground: colorTestB.hex()
+  //     foreground: colors.testB.hex()
   //   }
   // },
 
@@ -1382,7 +1279,7 @@ const tcStylesheets = [
       "variable.parameter.sass",
     ],
     settings: {
-      foreground: colorVariable.hex()
+      foreground: colors.variable.hex()
     }
   },
   {
@@ -1394,7 +1291,7 @@ const tcStylesheets = [
       "entity.other.attribute-name.id.css.sass"
     ],
     settings:{
-      foreground: colorCssId.hex()
+      foreground: colors.cssId.hex()
     }
   },
   {
@@ -1405,7 +1302,7 @@ const tcStylesheets = [
       "entity.other.attribute-name.class.scss"
     ],
     settings:{
-      foreground: colorCssClass.hex()
+      foreground: colors.cssClass.hex()
     }
   },
   {
@@ -1418,7 +1315,7 @@ const tcStylesheets = [
       "entity.name.tag.css.sass"
     ],
     settings: {
-      foreground: colorCssTag.hex(),
+      foreground: colors.cssTag.hex(),
       fontStyle: ""
     }
   },
@@ -1429,14 +1326,14 @@ const tcStylesheets = [
       "support.type.property-name.css.sass"
     ],
     settings:{
-      foreground: colorCssProperty.hex()
+      foreground: colors.cssProperty.hex()
     }
   },
   {
     name: "Values in css",
     scope: ["support.constant.property-value.css"],
     settings: {
-      foreground: colorCssValue.hex()
+      foreground: colors.cssValue.hex()
     }
   },
   {
@@ -1447,7 +1344,7 @@ const tcStylesheets = [
       "constant.numeric.css.sass"
     ],
     settings: {
-      foreground: colorNumber.hex()
+      foreground: colors.number.hex()
     }
   },
   {
@@ -1459,7 +1356,7 @@ const tcStylesheets = [
       "keyword.other.unit.css.sass"
     ],
     settings: {
-      foreground: colorCssUnits.hex()
+      foreground: colors.cssUnits.hex()
     }
   },
   {
@@ -1473,7 +1370,7 @@ const tcStylesheets = [
       "meta.property-list entity.name.tag"
     ],
     settings: {
-      foreground: colorCssSpecialWord.hex(),
+      foreground: colors.cssSpecialWord.hex(),
       fontStyle: ""
     }
   },
@@ -1551,8 +1448,8 @@ const tcStylesheets = [
       "keyword.control.at-rule.css.sass"
     ],
     settings: {
-      foreground: colorSpecialWordB.hex(),
-      // foreground: colorTestB.hex(),
+      foreground: colors.specialWordB.hex(),
+      // foreground: colors.testB.hex(),
       fontStyle: "italic"
     }
   },
@@ -1569,7 +1466,7 @@ const tcStylesheets = [
       // "entity.other.attribute-name.class.css"
     ],
     settings: {
-      foreground: colorTestC.hex()
+      foreground: colors.testC.hex()
     }
 
   },
@@ -1582,7 +1479,7 @@ const tcStylesheets = [
       "punctuation.separator.key-value.css.sass"
     ],
     settings:{
-      foreground: colorPunctuation.hex()
+      foreground: colors.punctuation.hex()
     }
   },
   {
@@ -1595,7 +1492,7 @@ const tcStylesheets = [
       "entity.name.tag.wildcard.sass"
     ],
     settings: {
-      foreground: colorFunctionName.hex()
+      foreground: colors.functionName.hex()
     }
   },
   {
@@ -1616,8 +1513,8 @@ const tcStylesheets = [
       "meta.attribute-selector"
     ],
     settings: {
-      foreground: colorCssAttribute.hex(),
-      // foreground: colorTestC.hex()
+      foreground: colors.cssAttribute.hex(),
+      // foreground: colors.testC.hex()
     }
   },
   {
@@ -1627,8 +1524,8 @@ const tcStylesheets = [
       "source.css.sass meta.at-rule variable"
     ],
     settings: {
-      // foreground: colorSpecialWordB.hex(),
-      foreground: colorTestB.hex()
+      // foreground: colors.specialWordB.hex(),
+      foreground: colors.testB.hex()
     }
   }
 ]
@@ -1639,8 +1536,8 @@ const tcJavascript = [
     name: "javascript portotype methods",
     scope: ["support.variable.property.js"],
     settings: {
-      foreground: colorSpecialWordB.hex(),
-      // foreground: colorTestB.hex(),
+      foreground: colors.specialWordB.hex(),
+      // foreground: colors.testB.hex(),
       fontStyle: "italic"
     }
   },
@@ -1656,14 +1553,14 @@ const tcJavascript = [
     name: "this word in javascript",
     scope: ["variable.language.this.js"],
     settings: {
-      foreground: colorContrastText.hex()
+      foreground: colors.contrastText.hex()
     }
   },
   {
     name: "JavaScript Classes",
     scope: "meta.class entity.name.type.class.js",
     settings: {
-      foreground: colorVariable.hex()
+      foreground: colors.variable.hex()
     }
   },
   {
@@ -1675,7 +1572,7 @@ const tcJavascript = [
       "meta.export.js variable.other"
     ],
     settings: {
-      foreground: colorVariable.hex(),
+      foreground: colors.variable.hex(),
     }
   },
   {
@@ -1685,7 +1582,7 @@ const tcJavascript = [
       "meta.decorator punctuation.decorator.tsx"
     ],
     settings: {
-      foreground: colorPunctuation.hex()
+      foreground: colors.punctuation.hex()
     }
   },
   {
@@ -1705,7 +1602,7 @@ const tcJavascript = [
       "variable.ts"
     ],
     settings: {
-      foreground: colorVariable.hex()
+      foreground: colors.variable.hex()
     }
   },
   {
@@ -1716,15 +1613,15 @@ const tcJavascript = [
     ],
     settings: {
       foreground: "#ffcb8b",
-      foreground: colorVariable.hex()
+      foreground: colors.variable.hex()
     }
   },
   {
     name: "TypeScript[React] Node Classes",
     scope: ["support.class.node.ts", "support.class.node.tsx"],
     settings: {
-      foreground: colorSpecialWordB.hex(),
-      foreground: colorTestC.hex()
+      foreground: colors.specialWordB.hex(),
+      foreground: colors.testC.hex()
     }
   },
   {
@@ -1734,29 +1631,29 @@ const tcJavascript = [
       "meta.type.parameters.tsx entity.name.type"
     ],
     settings: {
-      foreground: colorP_lightest.hex()
+      foreground: colors.p_lightest.hex()
     }
   },
   {
     name: "TypeScript[React] Punctuation Decorators",
     scope: "meta.tag.js meta.jsx.children.tsx",
     settings: {
-      foreground: colorSpecialWordB.hex(),
-      foreground: colorTestA.hex()
+      foreground: colors.specialWordB.hex(),
+      foreground: colors.testA.hex()
     }
   },
   {
     name: "JavaScript Variable Other ReadWrite",
     scope: ["variable.other.readwrite.js", "variable.parameter"],
     settings: {
-      foreground: colorVariable.hex()
+      foreground: colors.variable.hex()
     }
   },
   {
     name: "Support Class Component",
     scope: ["support.class.component.js", "support.class.component.tsx"],
     settings: {
-      foreground: colorContrastText.hex(),
+      foreground: colors.contrastText.hex(),
       fontStyle: ""
     }
   },
@@ -1764,7 +1661,7 @@ const tcJavascript = [
     name: "@ in decorator in javascript",
     scope: ["punctuation.decorator.js"],
     settings: {
-      foreground: colorFunctionName.hex()
+      foreground: colors.functionName.hex()
     }
   },
   {
@@ -1775,7 +1672,7 @@ const tcJavascript = [
       "meta.jsx.children.tsx"
     ],
     settings: {
-      foreground: colorRegularText.hex()
+      foreground: colors.regularText.hex()
     }
   },
   {
@@ -1783,14 +1680,14 @@ const tcJavascript = [
     name: "Punctuation Section Embedded",
     scope: "punctuation.section.embedded",
     settings: {
-      foreground: colorText.hex(),
+      foreground: colors.text.hex(),
     }
   },
   {
     name: "TypeScript Classes",
     scope: "meta.class entity.name.type.class.tsx",
     settings: {
-      foreground: colorVariable.hex()
+      foreground: colors.variable.hex()
     }
   },
   {
@@ -1798,7 +1695,7 @@ const tcJavascript = [
     scope: ["entity.name.type.tsx", "entity.name.type.module.tsx"],
     settings: {
       foreground: "#ffcb8b",
-      foreground: colorTestB.hex()
+      foreground: colors.testB.hex()
     }
   },
   {
@@ -1808,7 +1705,7 @@ const tcJavascript = [
       "meta.method.declaration storage.type.tsx"
     ],
     settings: {
-      foreground: colorSpecialWordA.hex()
+      foreground: colors.specialWordA.hex()
     }
   },
   {
@@ -1820,21 +1717,21 @@ const tcJavascript = [
       "variable.object.property.jsx"
     ],
     settings: {
-      foreground: colorVariable.hex()
+      foreground: colors.variable.hex()
     }
   },
   {
     name: "JavaScript Variables",
     scope: ["variable.js", "variable.other.js"],
     settings: {
-      foreground: colorVariable.hex(),
+      foreground: colors.variable.hex(),
     }
   },
   {
     name: "JavaScript Entity Name Type",
     scope: ["entity.name.type.js", "entity.name.type.module.js"],
     settings: {
-      foreground: colorSpecialWordB.hex(),
+      foreground: colors.specialWordB.hex(),
       fontStyle: ""
     }
   },
@@ -1842,7 +1739,7 @@ const tcJavascript = [
     name: "JavaScript Support Classes",
     scope: "support.class.js",
     settings: {
-      foreground: colorVariable.hex()
+      foreground: colors.variable.hex()
     }
   },
   {
@@ -1860,8 +1757,8 @@ const tcJavascript = [
       "keyword.control.from.tsx"
     ],
     settings: {
-      foreground: colorSpecialWordB.hex(),
-      // foreground: colorTestB.hex(),
+      foreground: colors.specialWordB.hex(),
+      // foreground: colors.testB.hex(),
       fontStyle: "italic"
     }
   },
@@ -1880,7 +1777,7 @@ const tcCoffescript = [
     name: "CoffeScript Parameter Function",
     scope: "variable.parameter.function.coffee",
     settings: {
-      foreground: colorFunctionName.hex()
+      foreground: colors.functionName.hex()
     }
   },
   {
@@ -1898,14 +1795,14 @@ const tcCsharp = [
     name: "C# Readwrite Variables",
     scope: "variable.other.readwrite.cs",
     settings: {
-      foreground: colorVariable.hex()
+      foreground: colors.variable.hex()
     }
   },
   {
     name: "C# Classes & Storage types",
     scope: ["entity.name.type.class.cs", "storage.type.cs"],
     settings: {
-      foreground: colorSpecialWordB.hex(),
+      foreground: colors.specialWordB.hex(),
     }
   },
   {
@@ -1926,7 +1823,7 @@ const tcElixir = [
       "source.elixir meta.module.elixir entity.name.class.elixir"
     ],
     settings: {
-      foreground: colorSpecialWordB.hex()
+      foreground: colors.specialWordB.hex()
     }
   },
   {
@@ -1943,14 +1840,14 @@ const tcElixir = [
       "source.elixir constant.other.keywords.elixir"
     ],
     settings: {
-      foreground: colorSpecialWordB.hex()
+      foreground: colors.specialWordB.hex()
     }
   },
   {
     name: "Elixir String Punctuations",
     scope: "source.elixir punctuation.definition.string",
     settings: {
-      foreground: colorString.hex()
+      foreground: colors.string.hex()
     }
   },
   {
@@ -1967,7 +1864,7 @@ const tcElixir = [
     name: "Elixir Binary Punctuations",
     scope: "source.elixir .punctuation.binary.elixir",
     settings: {
-      foreground: colorSpecialWordC.hex(),
+      foreground: colors.specialWordC.hex(),
       fontStyle: "italic"
     }
   },
@@ -1985,7 +1882,7 @@ const tcMarckdown = [
     name: "Markdown Italics",
     scope: "markup.italic.markdown",
     settings: {
-      foreground: colorSpecialWordC.hex(),
+      foreground: colors.specialWordC.hex(),
       fontStyle: "italic"
     }
   },
@@ -2029,7 +1926,7 @@ const tcMarckdown = [
       "string.other.link.description.markdown"
     ],
     settings: {
-      foreground: colorRegularText.hex()
+      foreground: colors.regularText.hex()
     }
   },
   {
@@ -2062,7 +1959,7 @@ const tcGo = [
     scope: "source.go meta.function-call.go",
     settings: {
       foreground: "#DDDDDD",
-      foreground: colorTestB.hex()
+      foreground: colors.testB.hex()
     }
   },
   {
@@ -2081,7 +1978,7 @@ const tcGo = [
       "source.go keyword.control.go"
     ],
     settings: {
-      foreground: colorSpecialWordC.hex(),
+      foreground: colors.specialWordC.hex(),
       fontStyle: "italic"
     }
   },
@@ -2092,7 +1989,7 @@ const tcGo = [
       "source.go constant.other.placeholder.go"
     ],
     settings: {
-      foreground: colorContrastText.hex()
+      foreground: colors.contrastText.hex()
     }
   },
 ]
@@ -2102,7 +1999,7 @@ const tcPython = [
     name: "Language Constants in Python",
     scope: "constant.language.python",
     settings: {
-      foreground: colorContrastText.hex()
+      foreground: colors.contrastText.hex()
     }
   },
   {
@@ -2112,35 +2009,35 @@ const tcPython = [
       "meta.function-call.arguments.python"
     ],
     settings: {
-      foreground: colorSpecialWordB.hex()
+      foreground: colors.specialWordB.hex()
     }
   },
   {
     name: "Python Function Call",
     scope: ["meta.function-call.python", "meta.function-call.generic.python"],
     settings: {
-      foreground: colorFunctionName.hex()
+      foreground: colors.functionName.hex()
     }
   },
   {
     name: "Punctuations in Python",
     scope: "punctuation.python",
     settings: {
-      foreground: colorRegularText.hex()
+      foreground: colors.regularText.hex()
     }
   },
   {
     name: "Decorator Functions in Python",
     scope: "entity.name.function.decorator.python",
     settings: {
-      foreground: colorContrastText.hex()
+      foreground: colors.contrastText.hex()
     }
   },
   {
     name: "Python Language Variable",
     scope: "source.python variable.language.special",
     settings: {
-      foreground: colorVariable.hex()
+      foreground: colors.variable.hex()
     }
   },
 ]
@@ -2150,7 +2047,7 @@ const tcRuby = [
     name: "Ruby Variables",
     scope: ["variable.other.ruby"],
     settings: {
-      foreground: colorVariable.hex()
+      foreground: colors.variable.hex()
     }
   },
   {
@@ -2184,7 +2081,7 @@ const tcRuby = [
       "keyword.control.def.ruby"
     ],
     settings: {
-      foreground: colorSpecialWordC.hex(),
+      foreground: colors.specialWordC.hex(),
       fontStyle: "italic"
     }
   },
@@ -2206,7 +2103,7 @@ const tcHtml = [
       "meta.tag.html"
     ],
     settings: {
-      foreground: colorHtmlTag.hex(),
+      foreground: colors.htmlTag.hex(),
       fontStyle: ""
     }
   },
@@ -2217,7 +2114,7 @@ const tcHtml = [
       "punctuation.definition.tag.html"
     ],
     settings: {
-      foreground: colorRegularText.hex()
+      foreground: colors.regularText.hex()
     }
   },
 
@@ -2239,7 +2136,7 @@ const tcHtml = [
     name: "HTML Doctype",
     scope: "meta.tag.sgml.doctype.html",
     settings: {
-      foreground: colorSpecialWordC.hex(),
+      foreground: colors.specialWordC.hex(),
       fontStyle: "italic"
     }
   },
@@ -2250,7 +2147,7 @@ const tcJson = [
     name: "JSON Property Names",
     scope: "support.type.property-name.json",
     settings: {
-      foreground: colorVariable.hex()
+      foreground: colors.variable.hex()
     }
   },
   {
@@ -2258,21 +2155,21 @@ const tcJson = [
     name: "JSON Support Constants",
     scope: "support.constant.json",
     settings: {
-      foreground: colorContrastText.hex()
+      foreground: colors.contrastText.hex()
     }
   },
   {
     name: "JSON Property values (string)",
     scope: "meta.structure.dictionary.value.json string.quoted.double",
     settings: {
-      foreground: colorString.hex()
+      foreground: colors.string.hex()
     }
   },
   {
     name: "Strings in JSON values",
     scope: "string.quoted.double.json punctuation.definition.string.json",
     settings: {
-      foreground: colorString.hex()
+      foreground: colors.string.hex()
     }
   },
   {
@@ -2280,7 +2177,7 @@ const tcJson = [
     scope:
       "meta.structure.dictionary.json meta.structure.dictionary.value constant.language",
     settings: {
-      foreground: colorContrastText.hex()
+      foreground: colors.contrastText.hex()
     }
   },
 
@@ -2305,7 +2202,7 @@ const tcPhp = [
     name: "Punctuations in PHP function calls",
     scope: "meta.function-call.php punctuation",
     settings: {
-      foreground: colorRegularText.hex()
+      foreground: colors.regularText.hex()
     }
   },
   {
@@ -2329,14 +2226,14 @@ const tcOtherLang = [
    name: "YAML Entity Name Tags",
    scope: "entity.name.tag.yaml",
    settings: {
-     foreground: colorTagAttribute.hex()
+     foreground: colors.tagAttribute.hex()
    }
  },
  {
    name: "RegExp String",
    scope: ["string.regexp", "string.regexp keyword.other"],
    settings: {
-     foreground: colorString.hex()
+     foreground: colors.string.hex()
    }
  }
 ]
@@ -2348,7 +2245,7 @@ const tcComments = [
       "comment",
     ],
     settings: {
-      foreground: colorComment.hex(),
+      foreground: colors.comment.hex(),
       fontStyle: "italic"
     }
   },
@@ -2361,7 +2258,7 @@ const tcComments = [
       "string.comment.buffered.block.pug"
     ],
     settings: {
-      foreground: colorComment.hex()
+      foreground: colors.comment.hex()
     }
   },
 
@@ -2373,8 +2270,8 @@ const tcComments = [
       "entity.name.type.instance.phpdoc"
     ],
     settings: {
-      foreground: colorDocEntityNames.hex(),
-      // foreground: colorTestB.hex()
+      foreground: colors.docEntityNames.hex(),
+      // foreground: colors.testB.hex()
     }
   },
   {
@@ -2384,7 +2281,7 @@ const tcComments = [
       "variable.other.phpdoc"
     ],
     settings: {
-      foreground: colorDocVariables.hex()
+      foreground: colors.docVariables.hex()
     }
   },
 
@@ -2397,15 +2294,15 @@ const tcTesting = [
     scope: "object",
     settings: {
       foreground: "#cdebf7",
-      foreground: colorTestB.hex()
+      foreground: colors.testB.hex()
     }
   },
   {
     name: "Object Comma",
     scope: "object.comma",
     settings: {
-      foreground: colorWhite.hex(),
-      foreground: colorTestB.hex()
+      foreground: colors.white.hex(),
+      foreground: colors.testB.hex()
     }
   },
   {
@@ -2413,7 +2310,7 @@ const tcTesting = [
     scope: "constant.other.color.rgb-value punctuation.definition.constant",
     settings: {
       foreground: "#F78C6C",
-      foreground: colorTestB.hex()
+      foreground: colors.testB.hex()
     }
   },
   {
@@ -2422,7 +2319,7 @@ const tcTesting = [
     settings: {
       foreground: "#020e14",
       background: "#F78C6C",
-      foreground: colorTestC.hex()
+      foreground: colors.testC.hex()
     }
   },
   {
@@ -2430,8 +2327,8 @@ const tcTesting = [
     scope: "string.template meta.template.expression",
     settings: {
       foreground: "#F78C6C",
-      foreground: colorTestB.hex(),
-      background: colorTestA.hex()
+      foreground: colors.testB.hex(),
+      background: colors.testA.hex()
     }
   },
   {
@@ -2439,7 +2336,7 @@ const tcTesting = [
     scope: "raw",
     settings: {
       foreground: "#80CBC4",
-      foreground: colorTestB.hex()
+      foreground: colors.testB.hex()
     }
   },
   {
@@ -2447,7 +2344,7 @@ const tcTesting = [
     scope: "support.constant.meta.property-value",
     settings: {
       foreground: "#7fdbca",
-      foreground: colorTestB.hex()
+      foreground: colors.testB.hex()
     }
   },
   {
@@ -2455,7 +2352,7 @@ const tcTesting = [
     scope: "support.variable.dom",
     settings: {
       foreground: "#addb67",
-      foreground: colorTestB.hex()
+      foreground: colors.testB.hex()
     }
   },
 
@@ -2470,15 +2367,15 @@ const tcTesting = [
     scope: "invalid.unimplemented",
     settings: {
       background: "#8BD649",
-      foreground: colorWhite.hex()
+      foreground: colors.white.hex()
     }
   },
   {
     name: "Invalid Illegal",
     scope: "invalid.illegal",
     settings: {
-      foreground: colorDanger.hex(),
-      background: colorWarningLight.hex()
+      foreground: colors.danger.hex(),
+      background: colors.warningLight.hex()
     }
   },
   {
@@ -2486,15 +2383,15 @@ const tcTesting = [
     scope: "variable.interpolation",
     settings: {
       foreground: "#ec5f67",
-      foreground: colorTestB.hex()
+      foreground: colors.testB.hex()
     }
   },
   {
     name: "Meta Function Call",
     scope: "meta.function-call",
     settings: {
-      foreground: colorSpecialWordB.hex(),
-      foreground: colorTestB.hex()
+      foreground: colors.specialWordB.hex(),
+      foreground: colors.testB.hex()
     }
   },
 
@@ -2506,8 +2403,8 @@ const tcTesting = [
   //   name: "Variable Function",
   //   scope: "variable.function",
   //   settings: {
-  //     foreground: colorSpecialWordB.hex(),
-  //     foreground: colorTestB.hex()
+  //     foreground: colors.specialWordB.hex(),
+  //     foreground: colors.testB.hex()
   //   }
   // },
 
