@@ -5,7 +5,7 @@ const distPath = "./themes/night-wolf.json"
 
 if (process.argv.length === 2) {
   console.error("Expected environment argument! 'dev' or 'prod'")
-  process.exit(1)
+  process.exit()
 }
 
 if(process.argv[2] === 'dev'){
@@ -17,18 +17,17 @@ if(process.argv[2] === 'dev'){
 }
 
 function compile(){
-  const source = requireUncached(sourcePath)
+  // delete cache
+  for (const path in require.cache) {
+    if (path.endsWith('.js')) delete require.cache[path]
+  }
+  const source = require(sourcePath)
   const dictstring = JSON.stringify(source)
   try{
     fs.writeFileSync(distPath, dictstring)
   }catch(e){
     console.error("error",e)
-    process.exit()
+    // process.exit()
   }
   console.info("file compiled!")
-}
-
-function requireUncached(module) {
-  delete require.cache[require.resolve(module)]
-  return require(module)
 }
