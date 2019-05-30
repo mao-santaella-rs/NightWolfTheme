@@ -1,6 +1,74 @@
 const Color = require("color")
 
-const colors = require("./colors")
+const colors = require("./colors/colors")
+
+// THEME COLORS
+colors.principal =            Color.rgb(16, 30, 44)
+colors.pDarken =              colors.principal.darken(0.3)
+colors.pLight =               colors.principal.lighten(0.3)
+colors.pLighten =             colors.principal.lighten(1)
+colors.pLighter =             colors.principal.lighten(2)
+colors.pLightest =            colors.principal.lighten(4.5)
+
+colors.text =                 colors.principal.lighten(6)
+
+colors.selection =            colors.pLighter
+colors.selectionHighlight =   colors.pLighten
+colors.selectionInactive =    colors.selection
+colors.hoverHiglight =        colors.selection
+colors.wordHighlightStrong =  colors.selection
+colors.findMatch =            colors.pLighter
+colors.findHighlight =        colors.selectionHighlight
+colors.rangeHiglight =        colors.pLight
+colors.lineHiglight =         colors.pDarken
+
+colors.contrast =             colors.syntaxMagenta
+colors.contrastLight =        colors.contrast.lighten(0.5)
+colors.contrastDark =         colors.contrast.darken(0.5)
+
+colors.comment =              Color.rgb(100,120,130)
+
+colors.gitInsertedBg =        Color.rgb(16,50,44)
+colors.gitRemovedBg =         Color.rgb(55,31,44)
+
+// SYNTAX COLORS
+// General colors
+colors.variable =             colors.syntaxYellow
+colors.variableProperty =     colors.text
+colors.contrastText =         colors.syntaxRed
+colors.variableInstance =     colors.syntaxOrange
+colors.specialWordA =         colors.syntaxBlue
+colors.specialWordB =         colors.syntaxViolet
+colors.specialWordC =         colors.syntaxPurple
+colors.functionName =         colors.syntaxCyan
+colors.string =               colors.syntaxGreen
+colors.operator =             colors.contrastText
+colors.regularText =          colors.text
+colors.number =               colors.syntaxOrange
+colors.boolean =              colors.contrastText
+colors.nullUnd =              colors.contrastText
+colors.punctuation =          colors.regularText
+colors.deprecated =           colors.danger
+
+// Markup
+colors.htmlTag =              colors.contrastText
+colors.metaTag =              colors.text
+colors.tagAttribute =         colors.specialWordB
+colors.pugClass =             colors.variable
+
+// Stylesheets
+colors.cssAttribute =         colors.functionName
+colors.cssValue =             colors.text
+colors.cssTag =               colors.contrastText
+colors.cssClass =             colors.variable
+colors.cssId =                colors.specialWordA
+colors.cssProperty =          colors.functionName
+colors.cssUnits =             colors.number
+colors.cssSpecialWord =       colors.functionName
+
+// Documentation in comments
+colors.docEntityNames =       Color.rgb(180,120,130)
+colors.docVariables =         Color.rgb(180,150,120)
 
 // theme object variables
 const themeColors = {
@@ -9,11 +77,11 @@ const themeColors = {
   // An extra border around elements to separate them from others for greater contrast.
   "contrastBorder": null,
   // Overall border color for focused elements. This color is only used if not overridden by a component.
-  "focusBorder": colors.p_lighten.hex(),
+  "focusBorder": colors.pLighten.hex(),
   // Overall foreground color. This color is only used if not overridden by a component.
   "foreground": colors.text.hex(),
   // Shadow color of widgets such as Find/Replace inside the editor.
-  "widget.shadow": colors.p_darken.hex(),
+  "widget.shadow": colors.pDarken.hex(),
   // Background color of text selections in the workbench (for input fields or text areas, does not apply to selections within the editor and the terminal).
   "selection.background": colors.info.hex(),
   // labels in the welcome page
@@ -21,25 +89,22 @@ const themeColors = {
   // Overall foreground color for error messages
   "errorForeground": colors.danger.hex(),
 
-
   // Links
   "textLink.foreground": colors.syntaxBlue.hex(),
   // Links hover
   "textLink.activeForeground": colors.syntaxBlue.lighten(0.5).hex(),
 
-  "textBlockQuote.background": colors.p_lighter.hex(),
-  "textBlockQuote.border": colors.p_lighter.hex(),
-  "textCodeBlock.background": colors.p_lighter.hex(),
+  "textBlockQuote.background": colors.pLighter.hex(),
+  "textBlockQuote.border": colors.pLighter.hex(),
+  "textCodeBlock.background": colors.pLighter.hex(),
   "textPreformat.foreground": colors.text.hex(),
   "textSeparator.foreground": colors.text.hex(),
-
-
 
   // Editor in general
   "editor.background": colors.principal.hex(),
   "editor.foreground": colors.text.hex(),
-  "editorLineNumber.foreground": colors.p_lighten.hex(),
-  "editorLineNumber.activeForeground": colors.p_lightest.hex(),
+  "editorLineNumber.foreground": colors.pLighten.hex(),
+  "editorLineNumber.activeForeground": colors.pLightest.hex(),
   "editorCursor.foreground": colors.contrastLight.hex(),
   "editorLink.activeForeground": null,
 
@@ -78,15 +143,15 @@ const themeColors = {
   "editor.rangeHighlightForeground": colors.text.hex(),
 
   // cuando me paro en un bracket me muestar los dos con este color
-  "editorBracketMatch.background": colors.p_lighten.hex(),
+  "editorBracketMatch.background": colors.pLighten.hex(),
   "editorBracketMatch.border": null,
 
   // cuando se activa la viusualizacion de los whitespaces
-  "editorWhitespace.foreground": colors.p_lighten.hex(),
+  "editorWhitespace.foreground": colors.pLighten.hex(),
 
   // linea vertical que indica la indentacion
-  "editorIndentGuide.background": colors.p_lighten.hex(),
-  "editorIndentGuide.activeBackground": colors.p_lightest.hex(),
+  "editorIndentGuide.background": colors.pLighten.hex(),
+  "editorIndentGuide.activeBackground": colors.pLightest.hex(),
 
   
 
@@ -107,20 +172,20 @@ const themeColors = {
   "editorGutter.deletedBackground": colors.danger.hex(),
 
   // el widget como el find and replace
-  "editorWidget.border": colors.p_lightest.hex(),
-  "editorWidget.background": colors.p_lighten.hex(),
+  "editorWidget.border": colors.pLightest.hex(),
+  "editorWidget.background": colors.pLighten.hex(),
 
   // el cuadro que sale cuando estamos escribiendo proponiendo opciones
-  "editorSuggestWidget.background": colors.p_light.hex(),
-  "editorSuggestWidget.border": colors.p_lighten.hex(),
-  "editorSuggestWidget.foreground": colors.p_lightest.hex(),
+  "editorSuggestWidget.background": colors.pLight.hex(),
+  "editorSuggestWidget.border": colors.pLighten.hex(),
+  "editorSuggestWidget.foreground": colors.pLightest.hex(),
   "editorSuggestWidget.highlightForeground": colors.text.hex(),
-  "editorSuggestWidget.selectedBackground": colors.p_lighter.hex(),
+  "editorSuggestWidget.selectedBackground": colors.pLighter.hex(),
   "editorHoverWidget.background": colors.principal.hex(),
-  "editorHoverWidget.border": colors.p_lightest.hex(),
+  "editorHoverWidget.border": colors.pLightest.hex(),
 
 
-  "editorMarkerNavigation.background": colors.p_lighten.hex(),
+  "editorMarkerNavigation.background": colors.pLighten.hex(),
   "editorMarkerNavigationInfo.background": colors.info.hex(),
   "editorMarkerNavigationError.background": colors.danger.hex(),
   "editorMarkerNavigationWarning.background": colors.warning.hex(),
@@ -138,16 +203,16 @@ const themeColors = {
   // inputs
   // Dropdowns
   "dropdown.background": colors.principal.hex(),
-  "dropdown.border": colors.p_lighten.hex(),
+  "dropdown.border": colors.pLighten.hex(),
   "dropdown.foreground": colors.text.hex(),
   "dropdown.listBackground": null,
   // Inputs text
-  "input.background": colors.p_light.hex(),
-  "input.border": colors.p_lighten.hex(),
+  "input.background": colors.pLight.hex(),
+  "input.border": colors.pLighten.hex(),
   "input.foreground": colors.text.hex(),
-  "input.placeholderForeground": colors.p_lightest.hex(),
+  "input.placeholderForeground": colors.pLightest.hex(),
   // Input Select
-  "inputOption.activeBorder": colors.p_lightest.hex(),
+  "inputOption.activeBorder": colors.pLightest.hex(),
   // Input Validation
   "inputValidation.errorBackground": colors.dangerDark.hex(),
   "inputValidation.errorBorder": colors.danger.hex(),
@@ -158,24 +223,24 @@ const themeColors = {
 
   // Scrollbar
   "scrollbar.shadow": null,
-  "scrollbarSlider.activeBackground": colors.p_lightest.hex() + "50",
-  "scrollbarSlider.background": colors.p_lightest.hex() + "50",
-  "scrollbarSlider.hoverBackground": colors.p_lightest.hex() + "80",
+  "scrollbarSlider.activeBackground": colors.pLightest.hex() + "50",
+  "scrollbarSlider.background": colors.pLightest.hex() + "50",
+  "scrollbarSlider.hoverBackground": colors.pLightest.hex() + "80",
 
   // Badges are small information labels, for example, search results count.
-  "badge.background": colors.p_lightest.hex(),
+  "badge.background": colors.pLightest.hex(),
   "badge.foreground": colors.white.hex(),
 
   // Breadcrumbs
   "breadcrumb.foreground": colors.info.hex(),
   "breadcrumb.focusForeground": colors.infoLight.hex(),
   "breadcrumb.activeSelectionForeground": colors.white.hex(),
-  "breadcrumbPicker.background": colors.p_darken.hex(),
+  "breadcrumbPicker.background": colors.pDarken.hex(),
 
   // Barra de la izquierda
   // Colors for list and trees like the File Explorer.
   // List/Tree background color for the selected item when the list/tree is active.
-  "list.activeSelectionBackground": colors.p_lighter.hex(),
+  "list.activeSelectionBackground": colors.pLighter.hex(),
   // List/Tree foreground color for the selected item when the list/tree is active.
   "list.activeSelectionForeground": colors.white.hex(),
   // List/Tree foreground color for invalid items, for example an unresolved root in explorer.
@@ -193,9 +258,9 @@ const themeColors = {
   // List/Tree foreground when hovering over items using the mouse.
   "list.hoverForeground": colors.white.hex(),
   // List/Tree background color for the selected item when the list/tree is inactive.
-  "list.inactiveSelectionBackground": colors.p_light.hex(),
+  "list.inactiveSelectionBackground": colors.pLight.hex(),
   // List/Tree foreground color for the selected item when the list/tree is inactive. An active list/tree has keyboard focus, an inactive does not.
-  "list.inactiveSelectionForeground": colors.p_lightest.hex(),
+  "list.inactiveSelectionForeground": colors.pLightest.hex(),
   
 
   // List background color for the focused item when the list is inactive. An active list has keyboard focus, an inactive does not. Currently only supported in lists.
@@ -219,13 +284,13 @@ const themeColors = {
   // Activity Bar background color.
   "activityBar.background": colors.principal.hex(),
   // Drag and drop feedback color for the Activity Bar items.
-  "activityBar.dropBackground": colors.p_lightest.hex(),
+  "activityBar.dropBackground": colors.pLightest.hex(),
   // Activity bar foreground color (for example used for the icons).
-  "activityBar.foreground": colors.p_lightest.hex(),
+  "activityBar.foreground": colors.pLightest.hex(),
   // Activity Bar border color with the Side Bar.
   "activityBar.border": colors.principal.hex(),
   // Activity notification badge background color.
-  "activityBarBadge.background": colors.p_lighter.hex(),
+  "activityBarBadge.background": colors.pLighter.hex(),
   // Activity notification badge foreground color.
   "activityBarBadge.foreground": colors.white.hex(),
   // Activity bar item foreground color when it is inactive.
@@ -237,21 +302,21 @@ const themeColors = {
   // Side Bar foreground color. The Side Bar is the container for views like Explorer and Search.
   "sideBar.foreground": colors.text.hex(),
   // Side Bar border color on the side separating the editor.
-  "sideBar.border": colors.p_lighten.hex(),
+  "sideBar.border": colors.pLighten.hex(),
   // Side Bar title foreground color.
-  "sideBarTitle.foreground": colors.p_lightest.hex(),
+  "sideBarTitle.foreground": colors.pLightest.hex(),
   // Side Bar section header background color.
   "sideBarSectionHeader.background": colors.principal.hex(),
   // Side Bar section header foreground color.
-  "sideBarSectionHeader.foreground": colors.p_lightest.hex(),
+  "sideBarSectionHeader.foreground": colors.pLightest.hex(),
   // Drag and drop feedback color for the side bar sections. The color should have transparency so that the side bar sections can still shine through. The side bar is the container for views like explorer and search.
   // "sideBar.dropBackground": null
 
 // Editor Groups are the containers of editors. There can be many editor groups. A Tab is the container of an editor. Multiple Tabs can be opened in one editor group.
   // Background color when dragging editors around.
-  "editorGroup.background": colors.p_lighter.hex(),
+  "editorGroup.background": colors.pLighter.hex(),
   // Color to separate multiple editor groups from each other.
-  "editorGroup.border": colors.p_lighten.hex(),
+  "editorGroup.border": colors.pLighten.hex(),
   // Background color when dragging editors around.
   "editorGroup.dropBackground": colors.contrast.hex(),
   // Background color of the editor group title header when Tabs are disabled (set "workbench.editor.showTabs": false).
@@ -259,28 +324,28 @@ const themeColors = {
   // Background color of the Tabs container.
   "editorGroupHeader.tabsBackground": colors.principal.hex(),
   // Border color of the editor group title header when tabs are enabled.
-  "editorGroupHeader.tabsBorder": colors.p_lighten.hex(),
+  "editorGroupHeader.tabsBorder": colors.pLighten.hex(),
 
   // Las pestanas de los archivos abiertos
-  "tab.activeBackground": colors.p_light.hex(),
+  "tab.activeBackground": colors.pLight.hex(),
   "tab.activeForeground": colors.text.hex(),
-  "tab.activeBorder": colors.p_lightest.hex(),
-  "tab.border": colors.p_light.hex(),
-  "tab.inactiveBackground": colors.p_darken.hex(),
+  "tab.activeBorder": colors.pLightest.hex(),
+  "tab.border": colors.pLight.hex(),
+  "tab.inactiveBackground": colors.pDarken.hex(),
   "tab.inactiveForeground": colors.text.hex(),
   "tab.unfocusedActiveForeground": colors.text.hex(),
-  "tab.unfocusedActiveBorder": colors.p_lighter.hex(),
+  "tab.unfocusedActiveBorder": colors.pLighter.hex(),
   "tab.unfocusedInactiveForeground": colors.text.hex(),
 
   "menubar.selectionForeground": colors.white.hex(),
-  "menubar.selectionBackground": colors.p_darken.hex(),
+  "menubar.selectionBackground": colors.pDarken.hex(),
   "menubar.selectionBorder": null,
-  "menu.foreground": colors.p_lightest.hex(),
-  "menu.background": colors.p_darken.hex(),
+  "menu.foreground": colors.pLightest.hex(),
+  "menu.background": colors.pDarken.hex(),
   "menu.selectionForeground": colors.white.hex(),
-  "menu.selectionBackground": colors.p_lighter.hex(),
+  "menu.selectionBackground": colors.pLighter.hex(),
   "menu.selectionBorder": null,
-  "menu.separatorBackground": colors.p_lighter.hex(),
+  "menu.separatorBackground": colors.pLighter.hex(),
 
   // git in editor interfece
   "diffEditor.insertedTextBackground": colors.gitInsertedBg.hex(),
@@ -289,23 +354,23 @@ const themeColors = {
   "diffEditor.removedTextBorder": null,
 
   "debugExceptionWidget.background": colors.principal.hex(),
-  "debugExceptionWidget.border": colors.p_lightest.hex(),
+  "debugExceptionWidget.border": colors.pLightest.hex(),
 
-  "peekView.border": colors.p_lightest.hex(),
+  "peekView.border": colors.pLightest.hex(),
   "peekViewEditor.background": colors.principal.hex(),
   "peekViewEditor.matchHighlightBackground": colors.contrast.hex(),
   "peekViewResult.background": colors.principal.hex(),
-  "peekViewResult.fileForeground": colors.p_lightest.hex(),
-  "peekViewResult.lineForeground": colors.p_lightest.hex(),
+  "peekViewResult.fileForeground": colors.pLightest.hex(),
+  "peekViewResult.lineForeground": colors.pLightest.hex(),
   "peekViewResult.matchHighlightBackground": colors.white.hex(),
-  "peekViewResult.selectionBackground": colors.p_lighten.hex(),
-  "peekViewResult.selectionForeground": colors.p_lightest.hex(),
+  "peekViewResult.selectionBackground": colors.pLighten.hex(),
+  "peekViewResult.selectionForeground": colors.pLightest.hex(),
   "peekViewTitle.background": colors.principal.hex(),
-  "peekViewTitleDescription.foreground": colors.p_lightest.hex(),
-  "peekViewTitleLabel.foreground": colors.p_lightest.hex(),
+  "peekViewTitleDescription.foreground": colors.pLightest.hex(),
+  "peekViewTitleLabel.foreground": colors.pLightest.hex(),
 
   // GIT MERGE CONFLICTS
-  "merge.currentHeaderBackground": colors.p_lightest.hex(),
+  "merge.currentHeaderBackground": colors.pLightest.hex(),
   "merge.currentContentBackground": null,
   "merge.incomingHeaderBackground": colors.contrast.hex(),
   "merge.incomingContentBackground": null,
@@ -322,11 +387,11 @@ const themeColors = {
   //  Color of the overview ruler border.
   "editorOverviewRuler.border": null,
   // Overview ruler marker color for find matches. The color must not be opaque so as not to hide underlying decorations.
-  "editorOverviewRuler.findMatchForeground": colors.p_lightest.hex(),
+  "editorOverviewRuler.findMatchForeground": colors.pLightest.hex(),
   // Overview ruler marker color for highlighted ranges, like by the Quick Open, Symbol in File and Find features. The color must not be opaque so as not to hide underlying decorations.
   "editorOverviewRuler.rangeHighlightForeground": colors.white.hex(),
   // Overview ruler marker color for selection highlights. The color must not be opaque so as not to hide underlying decorations.
-  "editorOverviewRuler.selectionHighlightForeground": colors.p_lighter.hex(),
+  "editorOverviewRuler.selectionHighlightForeground": colors.pLighter.hex(),
   // Overview ruler marker color for symbol highlights. The color must not be opaque so as not to hide underlying decorations.
   "editorOverviewRuler.wordHighlightForeground": colors.white.hex(),
   // Overview ruler marker color for write-access symbol highlights. The color must not be opaque so as not to hide underlying decorations.
@@ -349,30 +414,30 @@ const themeColors = {
 
 
   "panel.background": colors.principal.hex(),
-  "panel.border": colors.p_lighten.hex(),
-  "panelTitle.activeBorder": colors.p_lightest.hex(),
+  "panel.border": colors.pLighten.hex(),
+  "panelTitle.activeBorder": colors.pLightest.hex(),
   "panelTitle.activeForeground": colors.white.hex(),
   "panelTitle.inactiveForeground": colors.text.hex(),
 
   "statusBar.background": colors.principal.hex(),
-  "statusBar.foreground": colors.p_lightest.hex(),
-  "statusBar.border": colors.p_lighten.hex(),
+  "statusBar.foreground": colors.pLightest.hex(),
+  "statusBar.border": colors.pLighten.hex(),
 
   "statusBar.debuggingBackground": colors.warning.hex(),
-  "statusBar.debuggingForeground": colors.p_darken.hex(),
+  "statusBar.debuggingForeground": colors.pDarken.hex(),
   "statusBar.debuggingBorder": colors.warning.hex(),
 
   "statusBar.noFolderForeground": null,
   "statusBar.noFolderBackground": colors.principal.hex(),
   "statusBar.noFolderBorder": colors.contrast.hex(),
-  "statusBarItem.activeBackground": colors.p_lighten.hex(),
-  "statusBarItem.hoverBackground": colors.p_lighten.hex(),
-  "statusBarItem.prominentBackground": colors.p_lighten.hex(),
-  "statusBarItem.prominentHoverBackground": colors.p_lighten.hex(),
+  "statusBarItem.activeBackground": colors.pLighten.hex(),
+  "statusBarItem.hoverBackground": colors.pLighten.hex(),
+  "statusBarItem.prominentBackground": colors.pLighten.hex(),
+  "statusBarItem.prominentHoverBackground": colors.pLighten.hex(),
 
   "titleBar.activeBackground": colors.principal.hex(),
   "titleBar.activeForeground": colors.text.hex(),
-  "titleBar.inactiveBackground": colors.p_darken.hex(),
+  "titleBar.inactiveBackground": colors.pDarken.hex(),
   "titleBar.inactiveForeground": null,
 
   "notifications.background": colors.principal.hex(),
@@ -382,7 +447,7 @@ const themeColors = {
   "pickerGroup.foreground": colors.contrastLight.hex(),
   "pickerGroup.border": colors.principal.hex(),
 
-  "debugToolBar.background": colors.p_darken.hex(),
+  "debugToolBar.background": colors.pDarken.hex(),
   "debugToolBar.border": null,
 
   "welcomePage.buttonBackground": colors.principal.hex(),
@@ -395,12 +460,12 @@ const themeColors = {
   "gitDecoration.modifiedResourceForeground": colors.warningLight.hex(),
   "gitDecoration.deletedResourceForeground": colors.danger.hex(),
   "gitDecoration.untrackedResourceForeground": colors.succesLight.hex(),
-  "gitDecoration.ignoredResourceForeground": colors.p_lighter.hex(),
+  "gitDecoration.ignoredResourceForeground": colors.pLighter.hex(),
   "gitDecoration.conflictingResourceForeground": colors.warningLight.hex(),
 
-  "source.elm": colors.p_lightest.hex(),
+  "source.elm": colors.pLightest.hex(),
 
-  "editorRuler.foreground": colors.p_lighten.hex(),
+  "editorRuler.foreground": colors.pLighten.hex(),
 
   // Background color for the progress bar shown for long running operations.
   "progress.background": colors.contrast.hex(),
@@ -409,22 +474,20 @@ const themeColors = {
   // Terminal colors
   "terminal.ansiWhite": colors.text.hex(),
   "terminal.ansiBlack": colors.black.hex(),
-  "terminal.ansiBlue": colors.syntaxViolet.hex(),
+  "terminal.ansiBlue": colors.syntaxBlue.hex(),
   "terminal.ansiCyan": colors.syntaxCyan.hex(),
   "terminal.ansiGreen": colors.syntaxGreen.hex(),
   "terminal.ansiMagenta": colors.syntaxMagenta.hex(),
   "terminal.ansiRed": colors.syntaxRed.hex(),
   "terminal.ansiYellow": colors.syntaxYellow.hex(),
   "terminal.ansiBrightWhite": colors.white.hex(),
-  "terminal.ansiBrightBlack": colors.p_lighter.hex(),
-  "terminal.ansiBrightBlue": colors.syntaxViolet.hex(),
+  "terminal.ansiBrightBlack": colors.pLighter.hex(),
+  "terminal.ansiBrightBlue": colors.syntaxBlue.hex(),
   "terminal.ansiBrightCyan": colors.syntaxCyan.hex(),
   "terminal.ansiBrightGreen": colors.syntaxGreen.hex(),
   "terminal.ansiBrightMagenta": colors.syntaxMagenta.hex(),
   "terminal.ansiBrightRed": colors.syntaxRed.hex(),
   "terminal.ansiBrightYellow": colors.syntaxYellow.hex(),
-
-
 }
 
 const tcNormalize = [
@@ -1631,7 +1694,7 @@ const tcJavascript = [
       "meta.type.parameters.tsx entity.name.type"
     ],
     settings: {
-      foreground: colors.p_lightest.hex()
+      foreground: colors.pLightest.hex()
     }
   },
   {

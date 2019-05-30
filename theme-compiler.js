@@ -30,4 +30,8 @@ function compile(){
     // process.exit()
   }
   console.info("file compiled!")
+  
+  fs.readdir("./source", function(err, items) {
+    console.log(items)
+  })
 }
