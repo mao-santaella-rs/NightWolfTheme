@@ -4,21 +4,21 @@ const Color = require("color")
 let colors = {}
 
 //Test colors
-colors.testA =                Color.rgb(255, 255, 0)
-colors.testB =                Color.rgb(0, 255, 0)
-colors.testC =                Color.rgb(255, 100, 0)
+colors.testA =                Color.rgb(255,255,000)
+colors.testB =                Color.rgb(000,255,000)
+colors.testC =                Color.rgb(255,100,000)
 
 // Syntax Colors
-colors.syntaxYellow =         Color.rgb(255,220,150)
-colors.syntaxBlue =           Color.rgb(0,177,255)
-colors.syntaxPurple =         Color.rgb(220,140,255)
 colors.syntaxRed =            Color.rgb(255,120,120)
-colors.syntaxCyan =           Color.rgb(0,220,220)
-colors.syntaxGreen =          Color.rgb(170,230,130)
-colors.syntaxViolet =         Color.rgb(150,150,255)
-colors.syntaxMagenta =        Color.rgb(255,80,255)
 colors.syntaxOrange =         Color.rgb(255,180,130)
+colors.syntaxYellow =         Color.rgb(255,220,150)
 colors.syntaxBeige =          Color.rgb(219,212,186)
+colors.syntaxGreen =          Color.rgb(170,230,130)
+colors.syntaxCyan =           Color.rgb(000,220,220)
+colors.syntaxBlue =           Color.rgb(000,177,255)
+colors.syntaxViolet =         Color.rgb(150,150,255)
+colors.syntaxPurple =         Color.rgb(220,140,255)
+colors.syntaxMagenta =        Color.rgb(255,080,255)
 
 
 // THEME COLORS
