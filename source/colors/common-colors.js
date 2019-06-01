@@ -35,7 +35,5 @@ colors.testA =                Color.rgb(255,255,000)
 colors.testB =                Color.rgb(000,255,000)
 colors.testC =                Color.rgb(255,100,000)
 
-
-
 module.exports = colors
 
