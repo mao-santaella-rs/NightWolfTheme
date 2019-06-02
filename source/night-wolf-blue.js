@@ -1605,7 +1605,7 @@ const tcJavascript = [
       "entity.name.type.tsx"
     ],
     settings: {
-      foreground: "#ffcb8b",
+      foreground: "#c",
       foreground: colors.variable.hex()
     }
   },
@@ -1687,8 +1687,8 @@ const tcJavascript = [
     name: "TypeScript Entity Name Type",
     scope: ["entity.name.type.tsx", "entity.name.type.module.tsx"],
     settings: {
-      foreground: "#ffcb8b",
-      foreground: colors.testB.hex()
+      foreground: colors.specialWordB.hex(),
+      fontStyle: ""
     }
   },
   {
@@ -1763,7 +1763,7 @@ const tcCoffescript = [
     name: "CoffeScript Variable Assignment",
     scope: "variable.assignment.coffee",
     settings: {
-      foreground: "#31e1eb"
+      foreground: colors.variable.hex()
     }
   },
   {
@@ -1774,12 +1774,15 @@ const tcCoffescript = [
     }
   },
   {
-    name: "CoffeeScript Assignments",
-    scope: "variable.assignment.coffee",
-    settings: {
-      foreground: "#7fdbca"
+    name: "meta arguments",
+    scope: [
+      "meta.arguments.coffee",
+      "variable.parameter.function.coffee"
+    ],
+    settings:{
+      foreground: colors.variable.hex()
     }
-  },
+  }
 ]
 
 const tcCsharp = [
@@ -1802,7 +1805,7 @@ const tcCsharp = [
     name: "C# Namespaces",
     scope: "entity.name.type.namespace.cs",
     settings: {
-      foreground: "#B2CCD6"
+      foreground: colors.syntaxYellow.hex()
     }
   },
 ]
@@ -1823,7 +1826,7 @@ const tcElixir = [
     name: "Elixir Functions",
     scope: "source.elixir entity.name.function",
     settings: {
-      foreground: "#addb67"
+      foreground: colors.functionName.hex(),
     }
   },
   {
@@ -1850,7 +1853,7 @@ const tcElixir = [
       "source.elixir variable.other.readwrite.module.elixir punctuation.definition.variable.elixir"
     ],
     settings: {
-      foreground: "#addb67"
+      foreground: colors.syntaxGreen.hex()
     }
   },
   {
@@ -1868,14 +1871,15 @@ const tcMarckdown = [
     name: "Markdown Headings",
     scope: "markup.heading.markdown",
     settings: {
-      foreground: "#82b1ff"
+      foreground: colors.syntaxViolet.hex(),
+      fontStyle: "bold"
     }
   },
   {
     name: "Markdown Italics",
     scope: "markup.italic.markdown",
     settings: {
-      foreground: colors.specialWordC.hex(),
+      foreground: colors.syntaxOrange.hex(),
       fontStyle: "italic"
     }
   },
@@ -1883,7 +1887,7 @@ const tcMarckdown = [
     name: "Markdown Bold",
     scope: "markup.bold.markdown",
     settings: {
-      foreground: "#addb67",
+      foreground: colors.syntaxOrange.hex(),
       fontStyle: "bold"
     }
   },
@@ -1891,15 +1895,8 @@ const tcMarckdown = [
     name: "Markdown Quote + others",
     scope: "markup.quote.markdown",
     settings: {
-      foreground: "#697098",
+      foreground: colors.syntaxGreen.hex(),
       fontStyle: "italic"
-    }
-  },
-  {
-    name: "Markdown Raw Code + others",
-    scope: "markup.inline.raw.markdown",
-    settings: {
-      foreground: "#80CBC4"
     }
   },
   {
@@ -1909,7 +1906,7 @@ const tcMarckdown = [
       "markup.underline.link.image.markdown"
     ],
     settings: {
-      foreground: "#ff869a"
+      foreground: colors.syntaxYellow.hex()
     }
   },
   {
@@ -1919,28 +1916,28 @@ const tcMarckdown = [
       "string.other.link.description.markdown"
     ],
     settings: {
-      foreground: colors.regularText.hex()
+      foreground: colors.syntaxYellow.hex()
     }
   },
   {
     name: "Markdown MetaData Punctuation",
     scope: ["punctuation.definition.metadata.markdown"],
     settings: {
-      foreground: "#7fdbca"
+      foreground: colors.text.hex()
     }
   },
   {
     name: "Markdown List Punctuation",
     scope: ["beginning.punctuation.definition.list.markdown"],
     settings: {
-      foreground: "#82b1ff"
+      foreground: colors.syntaxGreen.hex()
     }
   },
   {
     name: "Markdown Inline Raw String",
     scope: "markup.inline.raw.string.markdown",
     settings: {
-      foreground: "#addb67"
+      foreground: colors.string.hex()
     }
   },
 ]
@@ -1951,7 +1948,7 @@ const tcGo = [
     name: "Go Function Calls",
     scope: "source.go meta.function-call.go",
     settings: {
-      foreground: "#DDDDDD",
+      // foreground: "#DDDDDD",
       foreground: colors.testB.hex()
     }
   },
