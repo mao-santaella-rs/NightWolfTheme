@@ -6,11 +6,6 @@ let compileJsFiles = []
 let watchJsFiles = []
 let folders = [sourcePath]
 
-if (process.argv.length === 2) {
-  console.error("Expected environment argument! 'dev' or 'prod'")
-  process.exit()
-}
-
 // gather the folders paths
 for(let path of paths){
   if(!path.endsWith('.js')){
