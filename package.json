@@ -33,7 +33,9 @@
   "scripts": {
     "dev": "node theme-compiler dev",
     "prod": "node theme-compiler prod",
-    "publish": "vsce publish",
+    "pub-major": "vsce publish major",
+    "pub-minor": "vsce publish minor",
+    "pub-patch": "vsce publish patch",
     "vscode:prepublish": "node theme-compiler prod"
   },
   "devDependencies": {
