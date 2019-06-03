@@ -16,6 +16,8 @@ A Visual Studio Code theme based on the Sarah Drasner's [Night owl theme](https:
 ## Html
 ![js](images/html.jpg)
 
+*big images to preserve details
+
 # Installation
 
 1.  Install [Visual Studio Code](https://code.visualstudio.com/)
