@@ -1,34 +1,58 @@
 const fs = require("fs")
 
-const sourcePath = "./source/night-wolf.js"
-const distPath = "./themes/night-wolf.json"
+const sourcePath = "./source"
+const paths = fs.readdirSync(sourcePath)
+let compileJsFiles = []
+let watchJsFiles = []
+let folders = [sourcePath]
 
-if (process.argv.length === 2) {
-  console.error("Expected environment argument! 'dev' or 'prod'")
-  process.exit(1)
+// gather the folders paths
+for(let path of paths){
+  if(!path.endsWith('.js')){
+    folders.push(sourcePath +"/"+ path)
+  }
+}
+// gather the .js files
+for(let folder of folders){
+  let subContent = fs.readdirSync(folder)
+  let subJsFiles = subContent.filter(path => path.endsWith('.js'))
+  for(let file of subJsFiles){
+    if(folder === sourcePath) compileJsFiles.push(folder +"/"+ file)
+    watchJsFiles.push(folder +"/"+ file)
+  }
 }
 
 if(process.argv[2] === 'dev'){
-  fs.watchFile(sourcePath, compile)
-  console.info("Watching file: " +sourcePath)
+  console.info("Watching files:")
+  for(let file of watchJsFiles){
+    fs.watchFile(file, compile)
+    console.info(file)
+  }
 } else if (process.argv[2] === 'prod'){
   compile()
   process.exit()
 }
 
 function compile(){
-  const source = requireUncached(sourcePath)
-  const dictstring = JSON.stringify(source)
-  try{
-    fs.writeFileSync(distPath, dictstring)
-  }catch(e){
-    console.error("error",e)
-    process.exit()
+  // delete cache
+  for (let path in require.cache) {
+    if (path.endsWith('.js')) delete require.cache[path]
   }
-  console.info("file compiled!")
-}
 
-function requireUncached(module) {
-  delete require.cache[require.resolve(module)]
-  return require(module)
+  // loop in every theme file
+  for (let compFile of compileJsFiles){
+    const source = require(compFile)
+    const dictstring = JSON.stringify(source)
+
+    // create json name
+    let jsonName = compFile.replace('.js','').split("/")
+    jsonName = jsonName[jsonName.length -1]
+
+    try{
+      fs.writeFileSync(`./themes/${jsonName}.json`, dictstring)
+    }catch(e){
+      console.error("error",e)
+    }
+    console.info(`file compiled! ${jsonName}.json`)
+  }
 }

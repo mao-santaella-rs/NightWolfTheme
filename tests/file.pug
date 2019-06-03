@@ -1,0 +1,47 @@
+doctype html
+html(lang='es')
+
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    title WEBSITE
+    link(rel='stylesheet', href='css/main.css')
+
+  body
+
+  .card.text-center
+    .card-header Bootstrap 4 card example
+    .card-body
+      .card-title Hello World, this is PugHtml
+      i.fa.fa-home.fa-2x.text-primary
+        a(href="http://", target="_blank")
+          span Link
+    .card-footer.text-muted powered by Bibooki
+
+    - var friends = 10
+        case friends
+          when 0
+            p you have no friends
+          when 1
+            p you have a friend
+          default
+            p you have #{friends} friends
+
+    - for (var x = 0; x < 3; x++)
+      li item
+
+    - var list = ["Uno", "Dos", "Tres", "Cuatro", "Cinco", "Seis"]
+      
+      each item in list
+        li= item
+
+    ul
+      each val, index in ['zero', 'one', 'two']
+        li= index + ': ' + val
+
+    include _includes/pug/module.pug
+
+    script(src='js/scripts.js')
+    script(src='js/app.js')
+    script(src='js/functions.js')

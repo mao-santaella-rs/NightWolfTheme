@@ -217,3 +217,16 @@ export class SourceLineParser {
         return nextEndOfWordIndex;
     }
 }
+
+
+
+interface Entity {
+    name: string;
+}
+let x: Entity | null;
+let s = x && x.name;  // s is of type string | null
+let y = x || { name: "test" };  // y is of type Entity
+
+function validateEntity(e?: Entity) {
+    // Throw exception if e is null or invalid entity
+}
