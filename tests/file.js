@@ -28,19 +28,26 @@ constant.methodA(25,35)
 let templateLiteral = `some text ${5 + (4.1 - variable)} more text`
 
 class User {
-
     constructor(name) {
         this.name = name;
         this.text = templateLiteral;
         this.file = File
     }
-
     sayHi() {
         alert(this.name);
     }
-
 }
 const user = new User("John");
+
+for (let index = 0; index < array.length; index++) {
+    const element = array[index];
+}
+
+if (constant.parameterA[0] === 3 && variable <= 550) {
+
+} else {
+    
+}
 
 class AdminUser extends User {
     constructor() {
