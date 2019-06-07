@@ -178,7 +178,7 @@ const themeColors = {
   // List/Tree drag and drop background when moving items around using the mouse.
   "list.dropBackground": colors.principal.hex(),
   // List/Tree background color for the focused item when the list/tree is active.
-  "list.focusBackground": colors.principal.hex(),
+  "list.focusBackground": colors.pLighten.hex(),
   // List/Tree foreground color for the focused item when the list/tree is active. An active list/tree has keyboard focus, an inactive does not.
   "list.focusForeground": colors.white.hex(),
   // List/Tree foreground color of the match highlights when searching inside the list/tree.
