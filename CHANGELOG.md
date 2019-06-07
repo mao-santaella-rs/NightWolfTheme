@@ -2,6 +2,13 @@
 
 All notable changes to the "night-owl" extension are be documented in this file.
 
+## [1.2.2] - 06-07-2019
+
+### Fixed
+- better contrast for list focus item.
+
+---
+
 ## [1.2.1] - 06-07-2019
 
 ### Fixed
@@ -9,7 +16,6 @@ All notable changes to the "night-owl" extension are be documented in this file.
 - better contrast for dropdown hover item.
 
 ---
-
 
 ## [1.2.0] - 06-03-2019
 
