@@ -135,7 +135,7 @@ const themeColors = {
   "dropdown.background": colors.principal.hex(),
   "dropdown.border": colors.pLighten.hex(),
   "dropdown.foreground": colors.text.hex(),
-  "dropdown.listBackground": null,
+  "dropdown.listBackground": colors.pLight.hex(),
   // Inputs text
   "input.background": colors.pLight.hex(),
   "input.border": colors.pLighten.hex(),
@@ -184,7 +184,7 @@ const themeColors = {
   // List/Tree foreground color of the match highlights when searching inside the list/tree.
   "list.highlightForeground": colors.white.hex(),
   // List/Tree background when hovering over items using the mouse.
-  "list.hoverBackground": colors.principal.hex(),
+  "list.hoverBackground": colors.pLight.hex(),
   // List/Tree foreground when hovering over items using the mouse.
   "list.hoverForeground": colors.white.hex(),
   // List/Tree background color for the selected item when the list/tree is inactive.
