@@ -2,6 +2,14 @@ const colors = require("./colors/dark-blue")
 
 // theme object variables
 const themeColors = {
+  // Editor general
+  "editor.background": colors.principal.hex(),
+  "editor.foreground": colors.text.hex(),
+  "editorLineNumber.foreground": colors.pLighten.hex(),
+  "editorLineNumber.activeForeground": colors.pLightest.hex(),
+  "editorCursor.foreground": colors.contrastLight.hex(),
+  "editorLink.activeForeground": null,
+
   // An extra border around active elements to separate them from others for greater contrast.
   "contrastActiveBorder": null,
   // An extra border around elements to separate them from others for greater contrast.
@@ -24,28 +32,25 @@ const themeColors = {
   // Links hover
   "textLink.activeForeground": colors.syntaxBlue.lighten(0.5).hex(),
 
-  "textBlockQuote.background": colors.pLighter.hex(),
-  "textBlockQuote.border": colors.pLighter.hex(),
+  // Background color for block quotes in text.
+  "textBlockQuote.background": colors.pLighten.hex(),
+  // Border color for block quotes in text.
+  "textBlockQuote.border": colors.text.hex(),
+  // Background color for code blocks in text.
   "textCodeBlock.background": colors.pLighter.hex(),
+  // Foreground color for preformatted text segments.
   "textPreformat.foreground": colors.text.hex(),
+  // Color for text separators.
   "textSeparator.foreground": colors.text.hex(),
 
-  // Editor in general
-  "editor.background": colors.principal.hex(),
-  "editor.foreground": colors.text.hex(),
-  "editorLineNumber.foreground": colors.pLighten.hex(),
-  "editorLineNumber.activeForeground": colors.pLightest.hex(),
-  "editorCursor.foreground": colors.contrastLight.hex(),
-  "editorLink.activeForeground": null,
-
-  // cuando selecciono con el mouse
+  // Color of the editor selection.
   "editor.selectionBackground": colors.selection.hex(),
   "editor.selectionForeground": colors.text.hex(),
 
-  // las palabras iguales a la seleccion
+  // the words equal to the selection
   "editor.selectionHighlightBackground": colors.selectionHighlight.hex(),
 
-  // la seleccion cuando salgo de la ventana donde estoy
+  // Color of the selection in an inactive editor.
   "editor.inactiveSelectionBackground": colors.selectionInactive.hex(),
 
   // cuando ubico el cursor en el medio de una palabra y vscode la selecciona
@@ -226,7 +231,7 @@ const themeColors = {
   // Activity bar item foreground color when it is inactive.
   // "activityBar.inactiveForeground": null,
 
-// Es la barra de la izquierda que contiene el tree view y el explorer
+// It is the bar on the left that contains the tree view and the explorer
   // Side Bar background color.
   "sideBar.background": colors.principal.hex(),
   // Side Bar foreground color. The Side Bar is the container for views like Explorer and Search.
