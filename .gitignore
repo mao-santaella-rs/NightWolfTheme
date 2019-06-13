@@ -1,6 +1,8 @@
 node_modules/
 design/
 package-lock.json
+themes/*
+!themes/.gitkeep
 
 # =========================
 # Operating System Files
