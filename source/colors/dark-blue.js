@@ -62,8 +62,4 @@ colors.cssProperty =          colors.functionName
 colors.cssUnits =             colors.number
 colors.cssSpecialWord =       colors.functionName
 
-// Documentation in comments
-colors.docEntityNames =       Color.rgb(180,120,130)
-colors.docVariables =         Color.rgb(180,150,120)
-
 module.exports = colors

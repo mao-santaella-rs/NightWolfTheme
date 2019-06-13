@@ -2236,6 +2236,7 @@ module.exports = function (colors){
       name: "Comment",
       scope: [
         "comment",
+        "comment.block.documentation punctuation.definition.bracket.curly"
       ],
       settings: {
         foreground: colors.comment.hex(),
@@ -2257,24 +2258,33 @@ module.exports = function (colors){
   
     //documentation inside comments
     {
-      name: "Entity Names in Code Documentations",
+      name: "Data Type in commented documentation",
       scope: [
-        "entity.name.type.instance.jsdoc",
-        "entity.name.type.instance.phpdoc"
+        "comment.block.documentation entity.name.type.instance.jsdoc",
+        "comment.block.documentation entity.name.type.instance.phpdoc",
       ],
       settings: {
-        foreground: colors.docEntityNames.hex(),
-        // foreground: colors.testB.hex()
+        foreground: colors.specialWordB.hex() +"80",
       }
     },
     {
-      name: "Other Variables in Code Documentations",
+      name: "Variables in commented documentation",
       scope: [
-        "variable.other.jsdoc", 
-        "variable.other.phpdoc"
+        "comment.block.documentation variable.other.jsdoc", 
+        "comment.block.documentation variable.other.phpdoc"
       ],
       settings: {
-        foreground: colors.docVariables.hex()
+        foreground: colors.variable.hex() +"80"
+      }
+    },
+    {
+      name: "@tags in commented documentation",
+      scope:[
+        "comment.block.documentation storage.type.class.jsdoc",
+        "comment.block.documentation punctuation.definition.block.tag.jsdoc"
+      ],
+      settings: {
+        foreground: colors.specialWordA.hex() +"80"
       }
     },
   
