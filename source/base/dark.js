@@ -281,9 +281,9 @@ module.exports = function (colors){
     "menu.separatorBackground": colors.pLighter.hex(),
   
     // git in editor interfece
-    "diffEditor.insertedTextBackground": colors.gitInsertedBg.hex(),
+    "diffEditor.insertedTextBackground": colors.succesDark.darken(0.5).hex(),
     "diffEditor.insertedTextBorder": null,
-    "diffEditor.removedTextBackground": colors.gitRemovedBg.hex(),
+    "diffEditor.removedTextBackground": colors.dangerDark.darken(0.5).hex(),
     "diffEditor.removedTextBorder": null,
   
     "debugExceptionWidget.background": colors.principal.hex(),
@@ -303,9 +303,9 @@ module.exports = function (colors){
     "peekViewTitleLabel.foreground": colors.pLightest.hex(),
   
     // GIT MERGE CONFLICTS
-    "merge.currentHeaderBackground": colors.pLightest.hex(),
+    "merge.currentHeaderBackground": colors.succes.darken(0.55).hex(),
     "merge.currentContentBackground": null,
-    "merge.incomingHeaderBackground": colors.contrast.hex(),
+    "merge.incomingHeaderBackground": colors.info.darken(0.7).hex(),
     "merge.incomingContentBackground": null,
     "merge.border": null,
     "merge.commonContentBackground": null,

@@ -19,16 +19,21 @@ colors.syntaxPurple =         Color.rgb(220,140,255)
 colors.syntaxMagenta =        Color.rgb(255,080,255)
 
 // STATES COLORS
+colors.infoDark =             Color.rgb(040,072,100)
 colors.info =                 Color.rgb(100,180,250)
-colors.infoDark =             colors.info.darken(0.5)
-colors.infoLight =            colors.info.lighten(0.2)
-colors.succes =               Color.rgb(110,180,80)
-colors.succesLight =          Color.rgb(175,220,100)
-colors.warning =              Color.rgb(255,200,40)
-colors.warningDark =          colors.warning.darken(0.6)
-colors.warningLight =         Color.rgb(255,235,150)
-colors.danger =               Color.rgb(240,80,80)
-colors.dangerDark =           colors.danger.darken(0.4)
+colors.infoLight =            Color.rgb(156,217,255)
+
+colors.succesDark =           Color.rgb(044,072,032)
+colors.succes =               Color.rgb(110,180,080)
+colors.succesLight =          Color.rgb(161,216,132)
+
+colors.warningDark =          Color.rgb(102,080,016)
+colors.warning =              Color.rgb(255,200,040)
+colors.warningLight =         Color.rgb(255,227,156)
+
+colors.dangerDark =           Color.rgb(071,032,032)
+colors.danger =               Color.rgb(240,080,080)
+colors.dangerLight =          Color.rgb(216,130,130)
 
 //Test colors
 colors.testA =                Color.rgb(255,255,000)
