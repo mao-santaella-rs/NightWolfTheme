@@ -193,7 +193,7 @@ module.exports = function (colors){
     // List/Tree background color for the selected item when the list/tree is inactive.
     "list.inactiveSelectionBackground": colors.pLight.hex(),
     // List/Tree foreground color for the selected item when the list/tree is inactive. An active list/tree has keyboard focus, an inactive does not.
-    "list.inactiveSelectionForeground": colors.pLightest.hex(),
+    "list.inactiveSelectionForeground": colors.white.hex(),
     
   
     // List background color for the focused item when the list is inactive. An active list has keyboard focus, an inactive does not. Currently only supported in lists.
