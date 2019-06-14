@@ -1090,19 +1090,7 @@ module.exports = function (colors){
     },
   
     // TESTING
-  
-    {
-      // in theory the entire line which declares a function
-      // but does not work that way
-      // # alone in a function in javascript
-      // Comma in functions
-      name: "Comma in functions",
-      scope: "meta.function",
-      settings: {
-        // foreground: colors.variable.hex(),
-        background: colors.testA.hex()
-      }
-    },
+
     {
       name: "JavaScript Meta Punctuation Definition",
       scope: "meta.js punctuation.definition.js",
@@ -1528,6 +1516,18 @@ module.exports = function (colors){
   
   // languages
   const tcJavascript = [
+    {
+       name: "javascript operrators expressions",
+       scope: [
+         "keyword.operator.expression.typeof.js",
+         "keyword.operator.expression.delete.js",
+         "keyword.operator.expression.in.js",
+         "keyword.operator.expression.instanceof.js"
+       ],
+       settings: {
+         foreground: colors.contrastText.hex()
+       }
+    },
     {
       name: "javascript portotype methods",
       scope: ["support.variable.property.js"],

@@ -175,7 +175,17 @@ export default {
   }
 }
 
+var person = {firstName:"John", lastName:"Doe", age:50, eyeColor:"blue"};
+delete person.age
 
+var cars = ["Saab", "Volvo", "BMW"];
+"Saab" in cars
+
+var cars = ["Saab", "Volvo", "BMW"];
+cars instanceof Array;          // Returns true
+cars instanceof Object;         // Returns true
+cars instanceof String;         // Returns false
+cars instanceof Number;         // Returns false
 
 ( function( global, factory ) {
 
