@@ -1529,7 +1529,7 @@ module.exports = function (colors){
   // languages
   const tcJavascript = [
     {
-       name: "javascript operrators expressions",
+       name: "javascript operator expressions",
        scope: [
          "keyword.operator.expression.typeof.js",
          "keyword.operator.expression.delete.js",
