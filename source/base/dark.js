@@ -560,8 +560,20 @@ module.exports = function (colors){
         background: colors.dangerDark.hex()
       }
     },
-  
-  
+    {
+      name: "RegExp String",
+      scope: [
+        "string.regexp", 
+        "string.regexp keyword.other",
+        "string.regexp punctuation.definition.string",
+        "constant.character.escape.backslash.regexp",
+        "constant.other.character-class.set.regexp",
+        "constant.character.control.regexp"
+      ],
+      settings: {
+        foreground: colors.syntaxBeige.hex()
+      }
+    },
     {
       // hex color
       name: "Constant Other Color",
@@ -2156,13 +2168,6 @@ module.exports = function (colors){
      scope: "entity.name.tag.yaml",
      settings: {
        foreground: colors.tagAttribute.hex()
-     }
-   },
-   {
-     name: "RegExp String",
-     scope: ["string.regexp", "string.regexp keyword.other"],
-     settings: {
-       foreground: colors.string.hex()
      }
    }
   ]
