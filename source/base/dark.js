@@ -531,9 +531,7 @@ module.exports = function (colors){
       scope: "entity.other.attribute-name",
       settings: {
         fontStyle: "italic",
-        foreground: colors.tagAttribute.hex(),
-        // foreground: colors.testB.hex()
-      }
+        foreground: colors.tagAttribute.hex(),      }
     },
     {
       // pug classes
@@ -646,8 +644,7 @@ module.exports = function (colors){
           "support.class"
         ],
         settings: {
-          foreground: colors.specialWordB.hex(),
-          // foreground: colors.testB.hex()
+          foreground: colors.specialWordB.hex()
         }
       },
       {
@@ -661,7 +658,6 @@ module.exports = function (colors){
         ],
         settings: {
           foreground: colors.specialWordB.hex(),
-          // foreground: colors.testC.hex(),
           fontStyle: "italic"
         }
       },
@@ -700,8 +696,7 @@ module.exports = function (colors){
         name: "Support Constant Math",
         scope: "support.constant.math",
         settings: {
-          foreground: colors.contrastText.hex(),
-          // foreground: colors.testB.hex()
+          foreground: colors.contrastText.hex()
         }
       },
   
@@ -762,8 +757,7 @@ module.exports = function (colors){
         name: "Entity Name Tag Custom",
         scope: "entity.name.tag.custom",
         settings: {
-          foreground: colors.specialWordC.hex(),
-          // foreground: colors.testB.hex()
+          foreground: colors.specialWordC.hex()
         }
       },
       {
@@ -821,8 +815,7 @@ module.exports = function (colors){
         name: "import control keyword",
         scope: "keyword.control",
         settings: {
-          foreground: colors.specialWordB.hex(),
-          // foreground: colors.testB.hex()
+          foreground: colors.specialWordB.hex()
         }
       },
   
@@ -986,31 +979,6 @@ module.exports = function (colors){
       name: "Punctuation",
       scope: [
         "punctuation",
-        
-        // "punctuation.definition.arguments",
-        // "punctuation.definition.array",
-        // "punctuation.definition.list",
-        // "punctuation.definition.tag",
-        // "punctuation.definition.string",
-        // "punctuation.definition.quote",
-        // "punctuation.definition.separator",
-        // "punctuation.definition.range",
-        // "punctuation.definition.namespace",
-        // "punctuation.definition.heading",
-        // "punctuation.definition.entity",
-        // "punctuation.definition.constant",
-        // "punctuation.definition.directive",
-        // "punctuation.definition.parameters",
-        // "punctuation.definition.attribute",
-        // "punctuation.definition.arguments",
-        // "punctuation.definition.annotation",
-        // "punctuation.definition.comment",
-        // "punctuation.definition.annotation-arguments",
-        // "punctuation.definition.binding-pattern",
-        // "punctuation.definition.case-pattern",
-        // "punctuation.definition.template-expression",
-        // "punctuation.definition.block",
-  
         "punctuation.separator",
         "meta.property-list.css.sass",
         "punctuation.accessor",
@@ -1019,7 +987,6 @@ module.exports = function (colors){
       ],
       settings: {
         foreground: colors.punctuation.hex(),
-        // foreground: colors.testB.hex(),
       }
     },
     {
@@ -1033,7 +1000,6 @@ module.exports = function (colors){
       ],
       settings: {
         foreground: colors.punctuation.hex(),
-        // foreground: colors.testB.hex(),
       }
     },
     {
@@ -1046,7 +1012,6 @@ module.exports = function (colors){
       ],
       settings: {
         foreground: colors.punctuation.hex(),
-        // foreground: colors.testB.hex(),
       }
     },
     {
@@ -1059,7 +1024,6 @@ module.exports = function (colors){
       ],
       settings: {
         foreground: colors.punctuation.hex(),
-        // foreground: colors.testB.hex(),
       }
     },
     {
@@ -1072,7 +1036,6 @@ module.exports = function (colors){
       ],
       settings: {
         foreground: colors.punctuation.hex(),
-        // foreground: colors.testB.hex(),
       }
     },
     {
@@ -1101,34 +1064,23 @@ module.exports = function (colors){
       }
     },
   
-    // TESTING
-
-    {
-      name: "JavaScript Meta Punctuation Definition",
-      scope: "meta.js punctuation.definition.js",
-      settings: {
-        foreground: colors.punctuation.hex(),
-        background: colors.testA.hex()
-      }
-    },
-  
-  
-  
-  
-  
-  
   
     // KEYWORD OPERATORS
     {
-      // perators can either be textual (e.g. or) or be characters.
-      // like typeof, instanceof, new, in, --, delete in javascript
-      // and some s#$%t in regex
       name: "Keyword Operator",
       scope: "keyword.operator",
       settings: {
         foreground: colors.operator.hex(),
-        // foreground: colors.testB.hex(),
         fontStyle: ""
+      }
+    },
+    {
+      name: "Keyword operator expressions",
+      scope: [
+        "keyword.operator.expression"
+      ],
+      settings: {
+        foreground: colors.operator.hex()
       }
     },
     {
@@ -1137,7 +1089,6 @@ module.exports = function (colors){
       scope: "keyword.operator.assignment",
       settings: {
         foreground: colors.operator.hex(),
-        // foreground: colors.testA.hex(),
       }
     },
     {
@@ -1146,7 +1097,6 @@ module.exports = function (colors){
       scope: "keyword.operator.arithmetic",
       settings: {
         foreground: colors.operator.hex(),
-        // foreground: colors.testB.hex(),
       }
     },
     {
@@ -1155,7 +1105,6 @@ module.exports = function (colors){
       scope: "keyword.operator.bitwise",
       settings: {
         foreground: colors.operator.hex(),
-        // foreground: colors.testB.hex(),
       }
     },
     {
@@ -1167,7 +1116,6 @@ module.exports = function (colors){
       ],
       settings: {
         foreground: colors.operator.hex(),
-        // foreground: colors.testB.hex(),
       }
     },
     {
@@ -1176,7 +1124,6 @@ module.exports = function (colors){
       scope: "keyword.operator.ternary",
       settings: {
         foreground: colors.operator.hex(),
-        // foreground: colors.testB.hex(),
       }
     },
     {
@@ -1184,7 +1131,6 @@ module.exports = function (colors){
       scope: "keyword.operator.logical",
       settings: {
         foreground: colors.specialWordC.hex(),
-        // foreground: colors.testB.hex(),
         fontStyle: ""
       }
     },
@@ -1196,7 +1142,6 @@ module.exports = function (colors){
       ],
       settings:{
         foreground: colors.specialWordC.hex(),
-        // foreground: colors.testB.hex(),
       }
     },
     {
@@ -1205,7 +1150,6 @@ module.exports = function (colors){
       scope: "keyword.operator.relational",
       settings: {
         foreground: colors.specialWordC.hex(),
-        // foreground: colors.testB.hex(),
         fontStyle: "italic"
       }
     },
@@ -1252,20 +1196,6 @@ module.exports = function (colors){
   ]
   
   const tcStylesheets = [
-    // {
-    //   name: "sass test",
-    //   scope:[
-    //     "keyword.other.parent-selector",
-    //     "keyword.control.interpolation.sass",
-    //     "keyword.other.reserved.sass",
-    //     "entity.other.pseudo-classs",
-    //     "support.function.sass"
-    //   ],
-    //   settings:{
-    //     foreground: colors.testB.hex()
-    //   }
-    // },
-  
     {
       name: "SCSS & SASS Variable",
       scope: [
@@ -1380,20 +1310,6 @@ module.exports = function (colors){
         
         //@ in at rules
         "punctuation.definition.keyword",
-  
-        // "keyword.operator.css",
-        // "keyword.operator.scss",
-  
-  
-        // "keyword.control.css",
-        // "keyword.control.scss",
-        // "keyword.control.less",
-  
-        // !important
-        // "keyword.other.important.css",
-        
-        //&
-        // "meta.property-list entity.name.tag.reference",
         "entity.name.tag.reference",
   
         // font-feature-values
@@ -1403,31 +1319,12 @@ module.exports = function (colors){
   
         "entity.other.attribute-name.css.scss",
   
-        // html attribute
-        // "entity.other.attribute-name.attribute.scss",
-        // "entity.other.attribute-name.attribute.css.sass",
-  
         //pseudo-class like :hover, :active, :focus, etc.
         "entity.other.attribute-name.pseudo-class.css",
         "entity.other.pseudo-class.css.sass",
-        // "entity.other.attribute-name.pseudo-class.css.scss",
-        // "entity.other.attribute-name",
   
         //pseudo-elements like ::-webkit...
         "entity.other.attribute-name.pseudo-element.css",
-        // "entity.other.attribute-name.parent-selector.css",
-        
-        // "support.function.css",
-  
-        // "punctuation.scss",
-        // "punctuation.definition.keyword.scss",
-        // "punctuation.definition.entity.scss",
-  
-        // "punctuation.css.sass",
-        // "punctuation.definition.keyword.css.sass",
-        // "punctuation.definition.entity.css.sass",
-  
-        // "meta.selector.scss",
   
         // function call
         "support.function.sass",
@@ -1445,26 +1342,8 @@ module.exports = function (colors){
       ],
       settings: {
         foreground: colors.specialWordB.hex(),
-        // foreground: colors.testB.hex(),
         fontStyle: "italic"
       }
-    },
-    {
-      name: "keyframes properties",
-      scope:[
-        // "entity.other.attribute-name.css",
-        // "entity.other.attribute-name.scss",
-        "entity.other.attribute-name.sass",
-  
-        // "entity.other.attribute-name.class.mixin.css",
-        // "entity.other.attribute-name.handlebars",
-        // "entity.other.attribute-name.placeholder.css",
-        // "entity.other.attribute-name.class.css"
-      ],
-      settings: {
-        foreground: colors.testC.hex()
-      }
-  
     },
     {
       name: "colon (:) in stylesheets",
@@ -1500,52 +1379,21 @@ module.exports = function (colors){
         "meta.attribute-selector.less entity.other.attribute-name.attribute",
         "entity.other.attribute-name.css.sass",
         "keyword.operator.attribute-selector.css.sass",
-        // "variable.other.readwrite.js",
-  
-  
-        // "entity.other.attribute-name.css.sass",
-        // "keyword.operator.attribute-selector.css.sass",
-        // "meta.attribute-selector"
         "meta.attribute-selector"
       ],
       settings: {
-        foreground: colors.cssAttribute.hex(),
-        // foreground: colors.testC.hex()
+        foreground: colors.cssAttribute.hex(),     
       }
     },
-    {
-      name: "Variables in SASS At-Rules",
-      scope: [
-        "source.css.scss meta.at-rule variable",
-        "source.css.sass meta.at-rule variable"
-      ],
-      settings: {
-        // foreground: colors.specialWordB.hex(),
-        foreground: colors.testB.hex()
-      }
-    }
   ]
   
   // languages
   const tcJavascript = [
     {
-       name: "javascript operator expressions",
-       scope: [
-         "keyword.operator.expression.typeof.js",
-         "keyword.operator.expression.delete.js",
-         "keyword.operator.expression.in.js",
-         "keyword.operator.expression.instanceof.js"
-       ],
-       settings: {
-         foreground: colors.contrastText.hex()
-       }
-    },
-    {
       name: "javascript portotype methods",
       scope: ["support.variable.property.js"],
       settings: {
         foreground: colors.specialWordB.hex(),
-        // foreground: colors.testB.hex(),
         fontStyle: "italic"
       }
     },
@@ -1625,14 +1473,6 @@ module.exports = function (colors){
       }
     },
     {
-      name: "TypeScript[React] Node Classes",
-      scope: ["support.class.node.ts", "support.class.node.tsx"],
-      settings: {
-        foreground: colors.specialWordB.hex(),
-        foreground: colors.testC.hex()
-      }
-    },
-    {
       name: "TypeScript[React] Entity Name Types as Parameters",
       scope: [
         "meta.type.parameters.ts entity.name.type",
@@ -1640,14 +1480,6 @@ module.exports = function (colors){
       ],
       settings: {
         foreground: colors.pLightest.hex()
-      }
-    },
-    {
-      name: "TypeScript[React] Punctuation Decorators",
-      scope: "meta.tag.js meta.jsx.children.tsx",
-      settings: {
-        foreground: colors.specialWordB.hex(),
-        foreground: colors.testA.hex()
       }
     },
     {
@@ -1766,7 +1598,6 @@ module.exports = function (colors){
       ],
       settings: {
         foreground: colors.specialWordB.hex(),
-        // foreground: colors.testB.hex(),
         fontStyle: "italic"
       }
     },
@@ -1958,15 +1789,6 @@ module.exports = function (colors){
   ]
   
   const tcGo = [
-  
-    {
-      name: "Go Function Calls",
-      scope: "source.go meta.function-call.go",
-      settings: {
-        // foreground: "#DDDDDD",
-        foreground: colors.testB.hex()
-      }
-    },
     {
       name: "Go Keywords",
       scope: [
@@ -2133,43 +1955,12 @@ module.exports = function (colors){
       }
     },
     {
-      name: "Support Classes in PHP",
-      scope: "support.class.php",
-      settings: {
-        foreground: colors.testA.hex()
-      }
-    },
-    {
       name: "Punctuations in PHP function calls",
       scope: "meta.function-call.php punctuation",
       settings: {
         foreground: colors.regularText.hex()
       }
-    },
-    {
-      name: "PHP Global Variables",
-      scope: "variable.other.global.php",
-      settings: {
-        foreground: colors.testB.hex()
-      }
-    },
-    {
-      name: "Declaration Punctuation in PHP Global Variables",
-      scope: "variable.other.global.php punctuation.definition.variable",
-      settings: {
-        foreground: colors.testC.hex()
-      }
-    },
-  ]
-  
-  const tcOtherLang = [
-    {
-     name: "YAML Entity Name Tags",
-     scope: "entity.name.tag.yaml",
-     settings: {
-       foreground: colors.tagAttribute.hex()
-     }
-   }
+    }
   ]
   
   const tcComments = [
@@ -2231,115 +2022,6 @@ module.exports = function (colors){
   
   ]
   
-  // testing
-  const tcTesting = [
-    {
-      name: "Object",
-      scope: "object",
-      settings: {
-        // foreground: "#cdebf7",
-        foreground: colors.testB.hex()
-      }
-    },
-    {
-      name: "Object Comma",
-      scope: "object.comma",
-      settings: {
-        // foreground: colors.white.hex(),
-        foreground: colors.testB.hex()
-      }
-    },
-    {
-      name: "Constant Other Color RGB Value Punctuation Definition Constant",
-      scope: "constant.other.color.rgb-value punctuation.definition.constant",
-      settings: {
-        // foreground: "#F78C6C",
-        foreground: colors.testB.hex()
-      }
-    },
-    {
-      name: "Invalid Broken",
-      scope: "invalid.broken",
-      settings: {
-        // foreground: "#020e14",
-        // background: "#F78C6C",
-        foreground: colors.testC.hex()
-      }
-    },
-    {
-      name: "Template Strings",
-      scope: "string.template meta.template.expression",
-      settings: {
-        // foreground: "#F78C6C",
-        foreground: colors.testB.hex(),
-      }
-    },
-    {
-      name: "Raw Code",
-      scope: "raw",
-      settings: {
-        // foreground: "#80CBC4",
-        foreground: colors.testB.hex()
-      }
-    },
-    {
-      name: "Support Constant Property Value meta",
-      scope: "support.constant.meta.property-value",
-      settings: {
-        // foreground: "#7fdbca",
-        foreground: colors.testB.hex()
-      }
-    },
-    {
-      name: "Support Variable DOM",
-      scope: "support.variable.dom",
-      settings: {
-        // foreground: "#addb67",
-        foreground: colors.testB.hex()
-      }
-    },
-  
-  
-  
-  
-  
-  
-  
-    {
-      name: "Invalid Unimplemented",
-      scope: "invalid.unimplemented",
-      settings: {
-        // background: "#8BD649",
-        foreground: colors.white.hex()
-      }
-    },
-    {
-      name: "Invalid Illegal",
-      scope: "invalid.illegal",
-      settings: {
-        foreground: colors.danger.hex(),
-        background: colors.warningLight.hex()
-      }
-    },
-    {
-      name: "Variable Interpolation",
-      scope: "variable.interpolation",
-      settings: {
-        // foreground: "#ec5f67",
-        foreground: colors.testB.hex()
-      }
-    },
-    {
-      name: "Meta Function Call",
-      scope: "meta.function-call",
-      settings: {
-        foreground: colors.specialWordB.hex(),
-        foreground: colors.testB.hex()
-      }
-    }, 
-    
-  ]
-  
   return {
     name: "Night Wolf",
     type: "dark",
@@ -2372,9 +2054,6 @@ module.exports = function (colors){
       ...tcMarckdown,
       ...tcGo,
       ...tcPhp,
-      ...tcOtherLang,
-  
-      ...tcTesting,
     ]
   }
 }
