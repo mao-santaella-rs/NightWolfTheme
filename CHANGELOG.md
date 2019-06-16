@@ -12,6 +12,7 @@ All notable changes to the "night-owl" extension are be documented in this file.
 - Git merge conflicts colors
 - List/Tree foreground color for selected item when list/tree is inactive
 - RegExp color
+- Colors for documentation in comments
 
 ### Fixed
 - Deleted some redundant scopes
