@@ -19,11 +19,6 @@
   "contributes": {
     "themes": [
       {
-        "label": "Night Wolf [black]",
-        "uiTheme": "vs-dark",
-        "path": "./themes/night-wolf-black.json"
-      },
-      {
         "label": "Night Wolf [dark blue]",
         "uiTheme": "vs-dark",
         "path": "./themes/night-wolf-blue.json"
@@ -32,6 +27,11 @@
         "label": "Night Wolf [dark gray]",
         "uiTheme": "vs-dark",
         "path": "./themes/night-wolf-gray.json"
+      },
+      {
+        "label": "Night Wolf [black]",
+        "uiTheme": "vs-dark",
+        "path": "./themes/night-wolf-black.json"
       }
     ]
   },
