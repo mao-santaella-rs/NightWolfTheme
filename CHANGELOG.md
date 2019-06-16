@@ -2,6 +2,24 @@
 
 All notable changes to the "night-owl" extension are be documented in this file.
 
+## [1.3.0] - 06-16-2019
+
+### Added
+- Theme black version.
+
+### Changed
+- Git Diff editor colors
+- Git merge conflicts colors
+- List/Tree foreground color for selected item when list/tree is inactive
+- RegExp color
+- Colors for documentation in comments
+
+### Fixed
+- Deleted some redundant scopes
+- better RegExp detection
+
+---
+
 ## [1.2.2] - 06-07-2019
 
 ### Fixed

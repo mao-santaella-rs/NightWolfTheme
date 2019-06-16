@@ -27,9 +27,6 @@ colors.contrastDark =         colors.contrast.darken(0.5)
 
 colors.comment =              Color.rgb(100,120,130)
 
-colors.gitInsertedBg =        Color.rgb(16,50,44)
-colors.gitRemovedBg =         Color.rgb(55,31,44)
-
 // SYNTAX COLORS
 // General colors
 colors.variable =             colors.syntaxYellow
@@ -64,9 +61,5 @@ colors.cssId =                colors.specialWordA
 colors.cssProperty =          colors.functionName
 colors.cssUnits =             colors.number
 colors.cssSpecialWord =       colors.functionName
-
-// Documentation in comments
-colors.docEntityNames =       Color.rgb(180,120,130)
-colors.docVariables =         Color.rgb(180,150,120)
 
 module.exports = colors

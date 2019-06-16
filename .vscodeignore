@@ -1,6 +1,11 @@
 **/*.js
 source/**
 tests/**
-tests/** 	tests/**
 design/**
 .github
+themes/.gitkeep
+.gitignore
+.vscode
+images/**
+!images/night-wolf-icon.png
+LICENSE
