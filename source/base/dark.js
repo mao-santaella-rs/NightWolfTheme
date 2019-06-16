@@ -3,8 +3,8 @@ module.exports = function (colors) {
     // Editor general
     "editor.background": colors.principal.hex(),
     "editor.foreground": colors.text.hex(),
-    "editorLineNumber.foreground": colors.pLighten.hex(),
-    "editorLineNumber.activeForeground": colors.pLightest.hex(),
+    "editorLineNumber.foreground": colors.principal_2.hex(),
+    "editorLineNumber.activeForeground": colors.principal_4.hex(),
     "editorCursor.foreground": colors.contrastLight.hex(),
     "editorLink.activeForeground": null,
 
@@ -13,11 +13,11 @@ module.exports = function (colors) {
     // An extra border around elements to separate them from others for greater contrast.
     "contrastBorder": null,
     // Overall border color for focused elements. This color is only used if not overridden by a component.
-    "focusBorder": colors.pLighten.hex(),
+    "focusBorder": colors.principal_2.hex(),
     // Overall foreground color. This color is only used if not overridden by a component.
     "foreground": colors.text.hex(),
     // Shadow color of widgets such as Find/Replace inside the editor.
-    "widget.shadow": colors.pDarken.hex(),
+    "widget.shadow": colors.principal_0.hex(),
     // Background color of text selections in the workbench (for input fields or text areas, does not apply to selections within the editor and the terminal).
     "selection.background": colors.info.hex(),
     // labels in the welcome page
@@ -31,11 +31,11 @@ module.exports = function (colors) {
     "textLink.activeForeground": colors.syntaxBlue.lighten(0.5).hex(),
 
     // Background color for block quotes in text.
-    "textBlockQuote.background": colors.pLighten.hex(),
+    "textBlockQuote.background": colors.principal_2.hex(),
     // Border color for block quotes in text.
     "textBlockQuote.border": colors.text.hex(),
     // Background color for code blocks in text.
-    "textCodeBlock.background": colors.pLighter.hex(),
+    "textCodeBlock.background": colors.principal_3.hex(),
     // Foreground color for preformatted text segments.
     "textPreformat.foreground": colors.text.hex(),
     // Color for text separators.
@@ -76,15 +76,15 @@ module.exports = function (colors) {
     "editor.rangeHighlightForeground": colors.text.hex(),
 
     // cuando me paro en un bracket me muestar los dos con este color
-    "editorBracketMatch.background": colors.pLighten.hex(),
+    "editorBracketMatch.background": colors.principal_2.hex(),
     "editorBracketMatch.border": null,
 
     // cuando se activa la viusualizacion de los whitespaces
-    "editorWhitespace.foreground": colors.pLighten.hex(),
+    "editorWhitespace.foreground": colors.principal_2.hex(),
 
     // linea vertical que indica la indentacion
-    "editorIndentGuide.background": colors.pLighten.hex(),
-    "editorIndentGuide.activeBackground": colors.pLightest.hex(),
+    "editorIndentGuide.background": colors.principal_2.hex(),
+    "editorIndentGuide.activeBackground": colors.principal_4.hex(),
 
 
 
@@ -105,20 +105,20 @@ module.exports = function (colors) {
     "editorGutter.deletedBackground": colors.danger.hex(),
 
     // el widget como el find and replace
-    "editorWidget.border": colors.pLightest.hex(),
-    "editorWidget.background": colors.pLighten.hex(),
+    "editorWidget.border": colors.principal_4.hex(),
+    "editorWidget.background": colors.principal_2.hex(),
 
     // el cuadro que sale cuando estamos escribiendo proponiendo opciones
-    "editorSuggestWidget.background": colors.pLight.hex(),
-    "editorSuggestWidget.border": colors.pLighten.hex(),
-    "editorSuggestWidget.foreground": colors.pLightest.hex(),
+    "editorSuggestWidget.background": colors.principal_1.hex(),
+    "editorSuggestWidget.border": colors.principal_2.hex(),
+    "editorSuggestWidget.foreground": colors.principal_4.hex(),
     "editorSuggestWidget.highlightForeground": colors.text.hex(),
-    "editorSuggestWidget.selectedBackground": colors.pLighter.hex(),
+    "editorSuggestWidget.selectedBackground": colors.principal_3.hex(),
     "editorHoverWidget.background": colors.principal.hex(),
-    "editorHoverWidget.border": colors.pLightest.hex(),
+    "editorHoverWidget.border": colors.principal_4.hex(),
 
 
-    "editorMarkerNavigation.background": colors.pLighten.hex(),
+    "editorMarkerNavigation.background": colors.principal_2.hex(),
     "editorMarkerNavigationInfo.background": colors.info.hex(),
     "editorMarkerNavigationError.background": colors.danger.hex(),
     "editorMarkerNavigationWarning.background": colors.warning.hex(),
@@ -136,16 +136,16 @@ module.exports = function (colors) {
     // inputs
     // Dropdowns
     "dropdown.background": colors.principal.hex(),
-    "dropdown.border": colors.pLighten.hex(),
+    "dropdown.border": colors.principal_2.hex(),
     "dropdown.foreground": colors.text.hex(),
-    "dropdown.listBackground": colors.pLight.hex(),
+    "dropdown.listBackground": colors.principal_1.hex(),
     // Inputs text
-    "input.background": colors.pLight.hex(),
-    "input.border": colors.pLighten.hex(),
+    "input.background": colors.principal_1.hex(),
+    "input.border": colors.principal_2.hex(),
     "input.foreground": colors.text.hex(),
-    "input.placeholderForeground": colors.pLightest.hex(),
+    "input.placeholderForeground": colors.principal_4.hex(),
     // Input Select
-    "inputOption.activeBorder": colors.pLightest.hex(),
+    "inputOption.activeBorder": colors.principal_4.hex(),
     // Input Validation
     "inputValidation.errorBackground": colors.dangerDark.hex(),
     "inputValidation.errorBorder": colors.danger.hex(),
@@ -156,24 +156,24 @@ module.exports = function (colors) {
 
     // Scrollbar
     "scrollbar.shadow": null,
-    "scrollbarSlider.activeBackground": colors.pLightest.hex() + "50",
-    "scrollbarSlider.background": colors.pLightest.hex() + "50",
-    "scrollbarSlider.hoverBackground": colors.pLightest.hex() + "80",
+    "scrollbarSlider.activeBackground": colors.principal_4.hex() + "50",
+    "scrollbarSlider.background": colors.principal_4.hex() + "50",
+    "scrollbarSlider.hoverBackground": colors.principal_4.hex() + "80",
 
     // Badges are small information labels, for example, search results count.
-    "badge.background": colors.pLightest.hex(),
+    "badge.background": colors.principal_4.hex(),
     "badge.foreground": colors.white.hex(),
 
     // Breadcrumbs
     "breadcrumb.foreground": colors.info.hex(),
     "breadcrumb.focusForeground": colors.infoLight.hex(),
     "breadcrumb.activeSelectionForeground": colors.white.hex(),
-    "breadcrumbPicker.background": colors.pDarken.hex(),
+    "breadcrumbPicker.background": colors.principal_0.hex(),
 
     // Barra de la izquierda
     // Colors for list and trees like the File Explorer.
     // List/Tree background color for the selected item when the list/tree is active.
-    "list.activeSelectionBackground": colors.pLighter.hex(),
+    "list.activeSelectionBackground": colors.principal_3.hex(),
     // List/Tree foreground color for the selected item when the list/tree is active.
     "list.activeSelectionForeground": colors.white.hex(),
     // List/Tree foreground color for invalid items, for example an unresolved root in explorer.
@@ -181,17 +181,17 @@ module.exports = function (colors) {
     // List/Tree drag and drop background when moving items around using the mouse.
     "list.dropBackground": colors.principal.hex(),
     // List/Tree background color for the focused item when the list/tree is active.
-    "list.focusBackground": colors.pLighten.hex(),
+    "list.focusBackground": colors.principal_2.hex(),
     // List/Tree foreground color for the focused item when the list/tree is active. An active list/tree has keyboard focus, an inactive does not.
     "list.focusForeground": colors.white.hex(),
     // List/Tree foreground color of the match highlights when searching inside the list/tree.
     "list.highlightForeground": colors.white.hex(),
     // List/Tree background when hovering over items using the mouse.
-    "list.hoverBackground": colors.pLight.hex(),
+    "list.hoverBackground": colors.principal_1.hex(),
     // List/Tree foreground when hovering over items using the mouse.
     "list.hoverForeground": colors.white.hex(),
     // List/Tree background color for the selected item when the list/tree is inactive.
-    "list.inactiveSelectionBackground": colors.pLight.hex(),
+    "list.inactiveSelectionBackground": colors.principal_1.hex(),
     // List/Tree foreground color for the selected item when the list/tree is inactive. An active list/tree has keyboard focus, an inactive does not.
     "list.inactiveSelectionForeground": colors.white.hex(),
 
@@ -217,13 +217,13 @@ module.exports = function (colors) {
     // Activity Bar background color.
     "activityBar.background": colors.principal.hex(),
     // Drag and drop feedback color for the Activity Bar items.
-    "activityBar.dropBackground": colors.pLightest.hex(),
+    "activityBar.dropBackground": colors.principal_4.hex(),
     // Activity bar foreground color (for example used for the icons).
-    "activityBar.foreground": colors.pLightest.hex(),
+    "activityBar.foreground": colors.principal_4.hex(),
     // Activity Bar border color with the Side Bar.
     "activityBar.border": colors.principal.hex(),
     // Activity notification badge background color.
-    "activityBarBadge.background": colors.pLighter.hex(),
+    "activityBarBadge.background": colors.principal_3.hex(),
     // Activity notification badge foreground color.
     "activityBarBadge.foreground": colors.white.hex(),
     // Activity bar item foreground color when it is inactive.
@@ -235,21 +235,21 @@ module.exports = function (colors) {
     // Side Bar foreground color. The Side Bar is the container for views like Explorer and Search.
     "sideBar.foreground": colors.text.hex(),
     // Side Bar border color on the side separating the editor.
-    "sideBar.border": colors.pLighten.hex(),
+    "sideBar.border": colors.principal_2.hex(),
     // Side Bar title foreground color.
-    "sideBarTitle.foreground": colors.pLightest.hex(),
+    "sideBarTitle.foreground": colors.principal_4.hex(),
     // Side Bar section header background color.
     "sideBarSectionHeader.background": colors.principal.hex(),
     // Side Bar section header foreground color.
-    "sideBarSectionHeader.foreground": colors.pLightest.hex(),
+    "sideBarSectionHeader.foreground": colors.principal_4.hex(),
     // Drag and drop feedback color for the side bar sections. The color should have transparency so that the side bar sections can still shine through. The side bar is the container for views like explorer and search.
     // "sideBar.dropBackground": null
 
     // Editor Groups are the containers of editors. There can be many editor groups. A Tab is the container of an editor. Multiple Tabs can be opened in one editor group.
     // Background color when dragging editors around.
-    "editorGroup.background": colors.pLighter.hex(),
+    "editorGroup.background": colors.principal_3.hex(),
     // Color to separate multiple editor groups from each other.
-    "editorGroup.border": colors.pLighten.hex(),
+    "editorGroup.border": colors.principal_2.hex(),
     // Background color when dragging editors around.
     "editorGroup.dropBackground": colors.contrast.hex(),
     // Background color of the editor group title header when Tabs are disabled (set "workbench.editor.showTabs": false).
@@ -257,28 +257,28 @@ module.exports = function (colors) {
     // Background color of the Tabs container.
     "editorGroupHeader.tabsBackground": colors.principal.hex(),
     // Border color of the editor group title header when tabs are enabled.
-    "editorGroupHeader.tabsBorder": colors.pLighten.hex(),
+    "editorGroupHeader.tabsBorder": colors.principal_2.hex(),
 
     // Las pestanas de los archivos abiertos
-    "tab.activeBackground": colors.pLight.hex(),
+    "tab.activeBackground": colors.principal_1.hex(),
     "tab.activeForeground": colors.text.hex(),
-    "tab.activeBorder": colors.pLightest.hex(),
-    "tab.border": colors.pLight.hex(),
-    "tab.inactiveBackground": colors.pDarken.hex(),
+    "tab.activeBorder": colors.principal_4.hex(),
+    "tab.border": colors.principal_1.hex(),
+    "tab.inactiveBackground": colors.principal_0.hex(),
     "tab.inactiveForeground": colors.text.hex(),
     "tab.unfocusedActiveForeground": colors.text.hex(),
-    "tab.unfocusedActiveBorder": colors.pLighter.hex(),
+    "tab.unfocusedActiveBorder": colors.principal_3.hex(),
     "tab.unfocusedInactiveForeground": colors.text.hex(),
 
     "menubar.selectionForeground": colors.white.hex(),
-    "menubar.selectionBackground": colors.pDarken.hex(),
+    "menubar.selectionBackground": colors.principal_0.hex(),
     "menubar.selectionBorder": null,
-    "menu.foreground": colors.pLightest.hex(),
-    "menu.background": colors.pDarken.hex(),
+    "menu.foreground": colors.principal_4.hex(),
+    "menu.background": colors.principal_0.hex(),
     "menu.selectionForeground": colors.white.hex(),
-    "menu.selectionBackground": colors.pLighter.hex(),
+    "menu.selectionBackground": colors.principal_3.hex(),
     "menu.selectionBorder": null,
-    "menu.separatorBackground": colors.pLighter.hex(),
+    "menu.separatorBackground": colors.principal_3.hex(),
 
     // git in editor interfece
     "diffEditor.insertedTextBackground": colors.succesDark.darken(0.5).hex(),
@@ -287,20 +287,20 @@ module.exports = function (colors) {
     "diffEditor.removedTextBorder": null,
 
     "debugExceptionWidget.background": colors.principal.hex(),
-    "debugExceptionWidget.border": colors.pLightest.hex(),
+    "debugExceptionWidget.border": colors.principal_4.hex(),
 
-    "peekView.border": colors.pLightest.hex(),
+    "peekView.border": colors.principal_4.hex(),
     "peekViewEditor.background": colors.principal.hex(),
     "peekViewEditor.matchHighlightBackground": colors.contrast.hex(),
     "peekViewResult.background": colors.principal.hex(),
-    "peekViewResult.fileForeground": colors.pLightest.hex(),
-    "peekViewResult.lineForeground": colors.pLightest.hex(),
+    "peekViewResult.fileForeground": colors.principal_4.hex(),
+    "peekViewResult.lineForeground": colors.principal_4.hex(),
     "peekViewResult.matchHighlightBackground": colors.white.hex(),
-    "peekViewResult.selectionBackground": colors.pLighten.hex(),
-    "peekViewResult.selectionForeground": colors.pLightest.hex(),
+    "peekViewResult.selectionBackground": colors.principal_2.hex(),
+    "peekViewResult.selectionForeground": colors.principal_4.hex(),
     "peekViewTitle.background": colors.principal.hex(),
-    "peekViewTitleDescription.foreground": colors.pLightest.hex(),
-    "peekViewTitleLabel.foreground": colors.pLightest.hex(),
+    "peekViewTitleDescription.foreground": colors.principal_4.hex(),
+    "peekViewTitleLabel.foreground": colors.principal_4.hex(),
 
     // GIT MERGE CONFLICTS
     "merge.currentHeaderBackground": colors.succes.darken(0.55).hex(),
@@ -320,11 +320,11 @@ module.exports = function (colors) {
     //  Color of the overview ruler border.
     "editorOverviewRuler.border": null,
     // Overview ruler marker color for find matches. The color must not be opaque so as not to hide underlying decorations.
-    "editorOverviewRuler.findMatchForeground": colors.pLightest.hex(),
+    "editorOverviewRuler.findMatchForeground": colors.principal_4.hex(),
     // Overview ruler marker color for highlighted ranges, like by the Quick Open, Symbol in File and Find features. The color must not be opaque so as not to hide underlying decorations.
     "editorOverviewRuler.rangeHighlightForeground": colors.white.hex(),
     // Overview ruler marker color for selection highlights. The color must not be opaque so as not to hide underlying decorations.
-    "editorOverviewRuler.selectionHighlightForeground": colors.pLighter.hex(),
+    "editorOverviewRuler.selectionHighlightForeground": colors.principal_3.hex(),
     // Overview ruler marker color for symbol highlights. The color must not be opaque so as not to hide underlying decorations.
     "editorOverviewRuler.wordHighlightForeground": colors.white.hex(),
     // Overview ruler marker color for write-access symbol highlights. The color must not be opaque so as not to hide underlying decorations.
@@ -347,30 +347,30 @@ module.exports = function (colors) {
 
 
     "panel.background": colors.principal.hex(),
-    "panel.border": colors.pLighten.hex(),
-    "panelTitle.activeBorder": colors.pLightest.hex(),
+    "panel.border": colors.principal_2.hex(),
+    "panelTitle.activeBorder": colors.principal_4.hex(),
     "panelTitle.activeForeground": colors.white.hex(),
     "panelTitle.inactiveForeground": colors.text.hex(),
 
     "statusBar.background": colors.principal.hex(),
-    "statusBar.foreground": colors.pLightest.hex(),
-    "statusBar.border": colors.pLighten.hex(),
+    "statusBar.foreground": colors.principal_4.hex(),
+    "statusBar.border": colors.principal_2.hex(),
 
     "statusBar.debuggingBackground": colors.warning.hex(),
-    "statusBar.debuggingForeground": colors.pDarken.hex(),
+    "statusBar.debuggingForeground": colors.principal_0.hex(),
     "statusBar.debuggingBorder": colors.warning.hex(),
 
     "statusBar.noFolderForeground": null,
     "statusBar.noFolderBackground": colors.principal.hex(),
     "statusBar.noFolderBorder": colors.contrast.hex(),
-    "statusBarItem.activeBackground": colors.pLighten.hex(),
-    "statusBarItem.hoverBackground": colors.pLighten.hex(),
-    "statusBarItem.prominentBackground": colors.pLighten.hex(),
-    "statusBarItem.prominentHoverBackground": colors.pLighten.hex(),
+    "statusBarItem.activeBackground": colors.principal_2.hex(),
+    "statusBarItem.hoverBackground": colors.principal_2.hex(),
+    "statusBarItem.prominentBackground": colors.principal_2.hex(),
+    "statusBarItem.prominentHoverBackground": colors.principal_2.hex(),
 
     "titleBar.activeBackground": colors.principal.hex(),
     "titleBar.activeForeground": colors.text.hex(),
-    "titleBar.inactiveBackground": colors.pDarken.hex(),
+    "titleBar.inactiveBackground": colors.principal_0.hex(),
     "titleBar.inactiveForeground": null,
 
     "notifications.background": colors.principal.hex(),
@@ -380,7 +380,7 @@ module.exports = function (colors) {
     "pickerGroup.foreground": colors.contrastLight.hex(),
     "pickerGroup.border": colors.principal.hex(),
 
-    "debugToolBar.background": colors.pDarken.hex(),
+    "debugToolBar.background": colors.principal_0.hex(),
     "debugToolBar.border": null,
 
     "welcomePage.buttonBackground": colors.principal.hex(),
@@ -393,12 +393,12 @@ module.exports = function (colors) {
     "gitDecoration.modifiedResourceForeground": colors.warningLight.hex(),
     "gitDecoration.deletedResourceForeground": colors.danger.hex(),
     "gitDecoration.untrackedResourceForeground": colors.succesLight.hex(),
-    "gitDecoration.ignoredResourceForeground": colors.pLighter.hex(),
+    "gitDecoration.ignoredResourceForeground": colors.principal_3.hex(),
     "gitDecoration.conflictingResourceForeground": colors.warningLight.hex(),
 
-    "source.elm": colors.pLightest.hex(),
+    "source.elm": colors.principal_4.hex(),
 
-    "editorRuler.foreground": colors.pLighten.hex(),
+    "editorRuler.foreground": colors.principal_2.hex(),
 
     // Background color for the progress bar shown for long running operations.
     "progress.background": colors.contrast.hex(),
@@ -414,7 +414,7 @@ module.exports = function (colors) {
     "terminal.ansiRed": colors.syntaxRed.hex(),
     "terminal.ansiYellow": colors.syntaxYellow.hex(),
     "terminal.ansiBrightWhite": colors.white.hex(),
-    "terminal.ansiBrightBlack": colors.pLighter.hex(),
+    "terminal.ansiBrightBlack": colors.principal_3.hex(),
     "terminal.ansiBrightBlue": colors.syntaxBlue.hex(),
     "terminal.ansiBrightCyan": colors.syntaxCyan.hex(),
     "terminal.ansiBrightGreen": colors.syntaxGreen.hex(),
@@ -1468,7 +1468,7 @@ module.exports = function (colors) {
         "meta.type.parameters.tsx entity.name.type"
       ],
       settings: {
-        foreground: colors.pLightest.hex()
+        foreground: colors.principal_4.hex()
       }
     },
     {

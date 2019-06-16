@@ -4,7 +4,7 @@ let colors = {}
 
 //basic colors
 colors.white =                Color.rgb(255,255,255)
-colors.black =                Color.rgb(0,0,0)
+colors.black =                Color.rgb(000,000,000)
 
 // Syntax Colors
 colors.syntaxRed =            Color.rgb(255,120,120)

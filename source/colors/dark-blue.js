@@ -2,24 +2,24 @@ const Color = require("color")
 const colors = require("./common-colors")
 
 // THEME COLORS
-colors.principal =            Color.rgb(16, 30, 44)
-colors.pDarken =              colors.principal.darken(0.3)
-colors.pLight =               colors.principal.lighten(0.3)
-colors.pLighten =             colors.principal.lighten(1)
-colors.pLighter =             colors.principal.lighten(2)
-colors.pLightest =            colors.principal.lighten(4.5)
+colors.principal =            Color.rgb(16,30,44)
+colors.principal_0 =          Color.rgb(11,21,31)
+colors.principal_1 =          Color.rgb(21,39,57)
+colors.principal_2 =          Color.rgb(32,60,88)
+colors.principal_3 =          Color.rgb(48,90,132)
+colors.principal_4 =          Color.rgb(123,165,207)
 
-colors.text =                 colors.principal.lighten(6)
+colors.text =                 Color.rgb(189,210,231)
 
-colors.selection =            colors.pLighter
-colors.selectionHighlight =   colors.pLighten
+colors.selection =            colors.principal_3
+colors.selectionHighlight =   colors.principal_2
 colors.selectionInactive =    colors.selection
 colors.hoverHiglight =        colors.selection
 colors.wordHighlightStrong =  colors.selection
-colors.findMatch =            colors.pLighter
+colors.findMatch =            colors.principal_3
 colors.findHighlight =        colors.selectionHighlight
-colors.rangeHiglight =        colors.pLight
-colors.lineHiglight =         colors.pDarken
+colors.rangeHiglight =        colors.principal_1
+colors.lineHiglight =         colors.principal_0
 
 colors.contrast =             colors.syntaxMagenta
 colors.contrastLight =        colors.contrast.lighten(0.5)

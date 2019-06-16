@@ -3,29 +3,29 @@ const colors = require("./common-colors")
 
 // THEME COLORS
 colors.principal =            colors.black
-colors.pDarken =              Color.rgb(015,015,015)
-colors.pLight =               Color.rgb(025,025,025)
-colors.pLighten =             Color.rgb(050,050,050)
-colors.pLighter =             Color.rgb(075,075,075)
-colors.pLightest =            Color.rgb(100,100,100)
+colors.principal_0 =          Color.rgb(015,015,015)
+colors.principal_1 =          Color.rgb(025,025,025)
+colors.principal_2 =          Color.rgb(050,050,050)
+colors.principal_3 =          Color.rgb(075,075,075)
+colors.principal_4 =          Color.rgb(100,100,100)
 
 colors.text =                 Color.rgb(200,200,200)
 
-colors.selection =            colors.pLighter
-colors.selectionHighlight =   colors.pLighten
+colors.selection =            colors.principal_3
+colors.selectionHighlight =   colors.principal_2
 colors.selectionInactive =    colors.selection
 colors.hoverHiglight =        colors.selection
 colors.wordHighlightStrong =  colors.selection
-colors.findMatch =            colors.pLighter
+colors.findMatch =            colors.principal_3
 colors.findHighlight =        colors.selectionHighlight
-colors.rangeHiglight =        colors.pLight
-colors.lineHiglight =         colors.pDarken
+colors.rangeHiglight =        colors.principal_1
+colors.lineHiglight =         colors.principal_0
 
 colors.contrast =             colors.syntaxMagenta
 colors.contrastLight =        colors.contrast.lighten(0.5)
 colors.contrastDark =         colors.contrast.darken(0.5)
 
-colors.comment =              colors.pLightest
+colors.comment =              colors.principal_4
 
 // SYNTAX COLORS
 // General colors
