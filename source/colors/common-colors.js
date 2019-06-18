@@ -18,6 +18,10 @@ colors.syntaxViolet =         Color.rgb(150,150,255)
 colors.syntaxPurple =         Color.rgb(220,140,255)
 colors.syntaxMagenta =        Color.rgb(255,080,255)
 
+colors.contrast =             colors.syntaxMagenta
+colors.contrastLight =        Color.rgb(255,190,255)
+colors.contrastDark =         Color.rgb(150,000,150)
+
 // STATES COLORS
 colors.infoDark =             Color.rgb(040,072,100)
 colors.info =                 Color.rgb(100,180,250)

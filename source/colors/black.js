@@ -20,11 +20,6 @@ colors.findMatch =            colors.principal_3
 colors.findHighlight =        colors.selectionHighlight
 colors.rangeHiglight =        colors.principal_1
 colors.lineHiglight =         colors.principal_0
-
-colors.contrast =             colors.syntaxMagenta
-colors.contrastLight =        colors.contrast.lighten(0.5)
-colors.contrastDark =         colors.contrast.darken(0.5)
-
 colors.comment =              colors.principal_4
 
 // SYNTAX COLORS
