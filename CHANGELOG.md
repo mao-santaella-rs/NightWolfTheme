@@ -2,7 +2,14 @@
 
 All notable changes to the "night-owl" extension are be documented in this file.
 
-## [1.3.1] - 06-07-2019
+## [1.4.0] - 06-17-2019
+
+### Added
+- No italic versions added
+
+---
+
+## [1.3.1] - 06-16-2019
 
 ### Fixed
 - Set Dark blue version as default.
