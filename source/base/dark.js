@@ -1,151 +1,151 @@
-module.exports = function (colors){
+module.exports = function (colors) {
   const themeColors = {
     // Editor general
     "editor.background": colors.principal.hex(),
     "editor.foreground": colors.text.hex(),
-    "editorLineNumber.foreground": colors.pLighten.hex(),
-    "editorLineNumber.activeForeground": colors.pLightest.hex(),
+    "editorLineNumber.foreground": colors.principal_2.hex(),
+    "editorLineNumber.activeForeground": colors.principal_4.hex(),
     "editorCursor.foreground": colors.contrastLight.hex(),
     "editorLink.activeForeground": null,
-  
+
     // An extra border around active elements to separate them from others for greater contrast.
     "contrastActiveBorder": null,
     // An extra border around elements to separate them from others for greater contrast.
     "contrastBorder": null,
     // Overall border color for focused elements. This color is only used if not overridden by a component.
-    "focusBorder": colors.pLighten.hex(),
+    "focusBorder": colors.principal_2.hex(),
     // Overall foreground color. This color is only used if not overridden by a component.
     "foreground": colors.text.hex(),
     // Shadow color of widgets such as Find/Replace inside the editor.
-    "widget.shadow": colors.pDarken.hex(),
+    "widget.shadow": colors.principal_0.hex(),
     // Background color of text selections in the workbench (for input fields or text areas, does not apply to selections within the editor and the terminal).
     "selection.background": colors.info.hex(),
     // labels in the welcome page
     "descriptionForeground": colors.text.hex(),
     // Overall foreground color for error messages
     "errorForeground": colors.danger.hex(),
-  
+
     // Links
     "textLink.foreground": colors.syntaxBlue.hex(),
     // Links hover
     "textLink.activeForeground": colors.syntaxBlue.lighten(0.5).hex(),
-  
+
     // Background color for block quotes in text.
-    "textBlockQuote.background": colors.pLighten.hex(),
+    "textBlockQuote.background": colors.principal_2.hex(),
     // Border color for block quotes in text.
     "textBlockQuote.border": colors.text.hex(),
     // Background color for code blocks in text.
-    "textCodeBlock.background": colors.pLighter.hex(),
+    "textCodeBlock.background": colors.principal_3.hex(),
     // Foreground color for preformatted text segments.
     "textPreformat.foreground": colors.text.hex(),
     // Color for text separators.
     "textSeparator.foreground": colors.text.hex(),
-  
+
     // Color of the editor selection.
     "editor.selectionBackground": colors.selection.hex(),
     "editor.selectionForeground": colors.text.hex(),
-  
+
     // the words equal to the selection
     "editor.selectionHighlightBackground": colors.selectionHighlight.hex(),
-  
+
     // Color of the selection in an inactive editor.
     "editor.inactiveSelectionBackground": colors.selectionInactive.hex(),
-  
+
     // cuando ubico el cursor en el medio de una palabra y vscode la selecciona
     "editor.wordHighlightBackground": colors.hoverHiglight.hex(),
-  
+
     // cuando ubico el puntero encima de una palabra
     "editor.hoverHighlightBackground": colors.hoverHiglight.hex(),
-  
+
     // cuando selecciono parcialmente una palabra y vscode selecciona todo
     "editor.wordHighlightStrongBackground": colors.wordHighlightStrong.hex(),
-  
+
     // palabra seleccionada por el finder
     "editor.findMatchBackground": colors.findMatch.hex(),
-  
+
     // todas las palabras encontradas por el finder
     "editor.findMatchHighlightBackground": colors.findHighlight.hex(),
     "editor.findRangeHighlightBackground": null,
-  
+
     // color de la linea en la que el cursor esta ubicado
     "editor.lineHighlightBackground": colors.lineHiglight.hex(),
     "editor.lineHighlightBorder": null,
-  
+
     // fondo de la linea completa cuando se busca
     "editor.rangeHighlightBackground": colors.rangeHiglight.hex(),
     "editor.rangeHighlightForeground": colors.text.hex(),
-  
+
     // cuando me paro en un bracket me muestar los dos con este color
-    "editorBracketMatch.background": colors.pLighten.hex(),
+    "editorBracketMatch.background": colors.principal_2.hex(),
     "editorBracketMatch.border": null,
-  
+
     // cuando se activa la viusualizacion de los whitespaces
-    "editorWhitespace.foreground": colors.pLighten.hex(),
-  
+    "editorWhitespace.foreground": colors.principal_2.hex(),
+
     // linea vertical que indica la indentacion
-    "editorIndentGuide.background": colors.pLighten.hex(),
-    "editorIndentGuide.activeBackground": colors.pLightest.hex(),
-  
-    
-  
+    "editorIndentGuide.background": colors.principal_2.hex(),
+    "editorIndentGuide.activeBackground": colors.principal_4.hex(),
+
+
+
     // vscode codelens
     "editorCodeLens.foreground": colors.infoLight.hex(),
-  
-  
+
+
     // editor states
     "editorError.foreground": colors.danger.hex(),
     "editorError.border": null,
     "editorWarning.foreground": colors.warning.hex(),
     "editorWarning.border": null,
-  
+
     // el editor gutter es la parte donde esta el numero de linea y las indicaciones de git dentro del archivo
     "editorGutter.background": colors.principal.hex(),
     "editorGutter.modifiedBackground": colors.warning.hex(),
     "editorGutter.addedBackground": colors.succesLight.hex(),
     "editorGutter.deletedBackground": colors.danger.hex(),
-  
+
     // el widget como el find and replace
-    "editorWidget.border": colors.pLightest.hex(),
-    "editorWidget.background": colors.pLighten.hex(),
-  
+    "editorWidget.border": colors.principal_4.hex(),
+    "editorWidget.background": colors.principal_2.hex(),
+
     // el cuadro que sale cuando estamos escribiendo proponiendo opciones
-    "editorSuggestWidget.background": colors.pLight.hex(),
-    "editorSuggestWidget.border": colors.pLighten.hex(),
-    "editorSuggestWidget.foreground": colors.pLightest.hex(),
+    "editorSuggestWidget.background": colors.principal_1.hex(),
+    "editorSuggestWidget.border": colors.principal_2.hex(),
+    "editorSuggestWidget.foreground": colors.principal_4.hex(),
     "editorSuggestWidget.highlightForeground": colors.text.hex(),
-    "editorSuggestWidget.selectedBackground": colors.pLighter.hex(),
+    "editorSuggestWidget.selectedBackground": colors.principal_3.hex(),
     "editorHoverWidget.background": colors.principal.hex(),
-    "editorHoverWidget.border": colors.pLightest.hex(),
-  
-  
-    "editorMarkerNavigation.background": colors.pLighten.hex(),
+    "editorHoverWidget.border": colors.principal_4.hex(),
+
+
+    "editorMarkerNavigation.background": colors.principal_2.hex(),
     "editorMarkerNavigationInfo.background": colors.info.hex(),
     "editorMarkerNavigationError.background": colors.danger.hex(),
     "editorMarkerNavigationWarning.background": colors.warning.hex(),
-  
+
     // Botones
     "button.foreground": colors.white.hex(),
     "button.background": colors.contrast.hex(),
     "button.hoverBackground": colors.contrastDark.hex(),
-  
+
     // Botones de las extenciones
     "extensionButton.prominentForeground": colors.white.hex(),
     "extensionButton.prominentBackground": colors.contrast.hex(),
     "extensionButton.prominentHoverBackground": colors.contrastDark.hex(),
-  
+
     // inputs
     // Dropdowns
     "dropdown.background": colors.principal.hex(),
-    "dropdown.border": colors.pLighten.hex(),
+    "dropdown.border": colors.principal_2.hex(),
     "dropdown.foreground": colors.text.hex(),
-    "dropdown.listBackground": colors.pLight.hex(),
+    "dropdown.listBackground": colors.principal_1.hex(),
     // Inputs text
-    "input.background": colors.pLight.hex(),
-    "input.border": colors.pLighten.hex(),
+    "input.background": colors.principal_1.hex(),
+    "input.border": colors.principal_2.hex(),
     "input.foreground": colors.text.hex(),
-    "input.placeholderForeground": colors.pLightest.hex(),
+    "input.placeholderForeground": colors.principal_4.hex(),
     // Input Select
-    "inputOption.activeBorder": colors.pLightest.hex(),
+    "inputOption.activeBorder": colors.principal_4.hex(),
     // Input Validation
     "inputValidation.errorBackground": colors.dangerDark.hex(),
     "inputValidation.errorBorder": colors.danger.hex(),
@@ -153,27 +153,27 @@ module.exports = function (colors){
     "inputValidation.infoBorder": colors.info.hex(),
     "inputValidation.warningBackground": colors.warningDark.hex(),
     "inputValidation.warningBorder": colors.warning.hex(),
-  
+
     // Scrollbar
     "scrollbar.shadow": null,
-    "scrollbarSlider.activeBackground": colors.pLightest.hex() + "50",
-    "scrollbarSlider.background": colors.pLightest.hex() + "50",
-    "scrollbarSlider.hoverBackground": colors.pLightest.hex() + "80",
-  
+    "scrollbarSlider.activeBackground": colors.principal_4.hex() + "50",
+    "scrollbarSlider.background": colors.principal_4.hex() + "50",
+    "scrollbarSlider.hoverBackground": colors.principal_4.hex() + "80",
+
     // Badges are small information labels, for example, search results count.
-    "badge.background": colors.pLightest.hex(),
+    "badge.background": colors.principal_4.hex(),
     "badge.foreground": colors.white.hex(),
-  
+
     // Breadcrumbs
     "breadcrumb.foreground": colors.info.hex(),
     "breadcrumb.focusForeground": colors.infoLight.hex(),
     "breadcrumb.activeSelectionForeground": colors.white.hex(),
-    "breadcrumbPicker.background": colors.pDarken.hex(),
-  
+    "breadcrumbPicker.background": colors.principal_0.hex(),
+
     // Barra de la izquierda
     // Colors for list and trees like the File Explorer.
     // List/Tree background color for the selected item when the list/tree is active.
-    "list.activeSelectionBackground": colors.pLighter.hex(),
+    "list.activeSelectionBackground": colors.principal_3.hex(),
     // List/Tree foreground color for the selected item when the list/tree is active.
     "list.activeSelectionForeground": colors.white.hex(),
     // List/Tree foreground color for invalid items, for example an unresolved root in explorer.
@@ -181,21 +181,21 @@ module.exports = function (colors){
     // List/Tree drag and drop background when moving items around using the mouse.
     "list.dropBackground": colors.principal.hex(),
     // List/Tree background color for the focused item when the list/tree is active.
-    "list.focusBackground": colors.pLighten.hex(),
+    "list.focusBackground": colors.principal_2.hex(),
     // List/Tree foreground color for the focused item when the list/tree is active. An active list/tree has keyboard focus, an inactive does not.
     "list.focusForeground": colors.white.hex(),
     // List/Tree foreground color of the match highlights when searching inside the list/tree.
     "list.highlightForeground": colors.white.hex(),
     // List/Tree background when hovering over items using the mouse.
-    "list.hoverBackground": colors.pLight.hex(),
+    "list.hoverBackground": colors.principal_1.hex(),
     // List/Tree foreground when hovering over items using the mouse.
     "list.hoverForeground": colors.white.hex(),
     // List/Tree background color for the selected item when the list/tree is inactive.
-    "list.inactiveSelectionBackground": colors.pLight.hex(),
+    "list.inactiveSelectionBackground": colors.principal_1.hex(),
     // List/Tree foreground color for the selected item when the list/tree is inactive. An active list/tree has keyboard focus, an inactive does not.
     "list.inactiveSelectionForeground": colors.white.hex(),
-    
-  
+
+
     // List background color for the focused item when the list is inactive. An active list has keyboard focus, an inactive does not. Currently only supported in lists.
     "list.inactiveFocusBackground": null,
     // Foreground color of list items containing errors.
@@ -208,48 +208,48 @@ module.exports = function (colors){
     "listFilterWidget.outline": null,
     // List/Tree Filter Widget's outline color when no match is found of typed text when searching inside the list/tree.
     "listFilterWidget.noMatchesOutline": null,
-  
-  
-  
-  
-  
+
+
+
+
+
     // Activity bar es la barra de iconos de la izquierda
     // Activity Bar background color.
     "activityBar.background": colors.principal.hex(),
     // Drag and drop feedback color for the Activity Bar items.
-    "activityBar.dropBackground": colors.pLightest.hex(),
+    "activityBar.dropBackground": colors.principal_4.hex(),
     // Activity bar foreground color (for example used for the icons).
-    "activityBar.foreground": colors.pLightest.hex(),
+    "activityBar.foreground": colors.principal_4.hex(),
     // Activity Bar border color with the Side Bar.
     "activityBar.border": colors.principal.hex(),
     // Activity notification badge background color.
-    "activityBarBadge.background": colors.pLighter.hex(),
+    "activityBarBadge.background": colors.principal_3.hex(),
     // Activity notification badge foreground color.
     "activityBarBadge.foreground": colors.white.hex(),
     // Activity bar item foreground color when it is inactive.
     // "activityBar.inactiveForeground": null,
-  
-  // It is the bar on the left that contains the tree view and the explorer
+
+    // It is the bar on the left that contains the tree view and the explorer
     // Side Bar background color.
     "sideBar.background": colors.principal.hex(),
     // Side Bar foreground color. The Side Bar is the container for views like Explorer and Search.
     "sideBar.foreground": colors.text.hex(),
     // Side Bar border color on the side separating the editor.
-    "sideBar.border": colors.pLighten.hex(),
+    "sideBar.border": colors.principal_2.hex(),
     // Side Bar title foreground color.
-    "sideBarTitle.foreground": colors.pLightest.hex(),
+    "sideBarTitle.foreground": colors.principal_4.hex(),
     // Side Bar section header background color.
     "sideBarSectionHeader.background": colors.principal.hex(),
     // Side Bar section header foreground color.
-    "sideBarSectionHeader.foreground": colors.pLightest.hex(),
+    "sideBarSectionHeader.foreground": colors.principal_4.hex(),
     // Drag and drop feedback color for the side bar sections. The color should have transparency so that the side bar sections can still shine through. The side bar is the container for views like explorer and search.
     // "sideBar.dropBackground": null
-  
-  // Editor Groups are the containers of editors. There can be many editor groups. A Tab is the container of an editor. Multiple Tabs can be opened in one editor group.
+
+    // Editor Groups are the containers of editors. There can be many editor groups. A Tab is the container of an editor. Multiple Tabs can be opened in one editor group.
     // Background color when dragging editors around.
-    "editorGroup.background": colors.pLighter.hex(),
+    "editorGroup.background": colors.principal_3.hex(),
     // Color to separate multiple editor groups from each other.
-    "editorGroup.border": colors.pLighten.hex(),
+    "editorGroup.border": colors.principal_2.hex(),
     // Background color when dragging editors around.
     "editorGroup.dropBackground": colors.contrast.hex(),
     // Background color of the editor group title header when Tabs are disabled (set "workbench.editor.showTabs": false).
@@ -257,51 +257,51 @@ module.exports = function (colors){
     // Background color of the Tabs container.
     "editorGroupHeader.tabsBackground": colors.principal.hex(),
     // Border color of the editor group title header when tabs are enabled.
-    "editorGroupHeader.tabsBorder": colors.pLighten.hex(),
-  
+    "editorGroupHeader.tabsBorder": colors.principal_2.hex(),
+
     // Las pestanas de los archivos abiertos
-    "tab.activeBackground": colors.pLight.hex(),
+    "tab.activeBackground": colors.principal_1.hex(),
     "tab.activeForeground": colors.text.hex(),
-    "tab.activeBorder": colors.pLightest.hex(),
-    "tab.border": colors.pLight.hex(),
-    "tab.inactiveBackground": colors.pDarken.hex(),
+    "tab.activeBorder": colors.principal_4.hex(),
+    "tab.border": colors.principal_1.hex(),
+    "tab.inactiveBackground": colors.principal_0.hex(),
     "tab.inactiveForeground": colors.text.hex(),
     "tab.unfocusedActiveForeground": colors.text.hex(),
-    "tab.unfocusedActiveBorder": colors.pLighter.hex(),
+    "tab.unfocusedActiveBorder": colors.principal_3.hex(),
     "tab.unfocusedInactiveForeground": colors.text.hex(),
-  
+
     "menubar.selectionForeground": colors.white.hex(),
-    "menubar.selectionBackground": colors.pDarken.hex(),
+    "menubar.selectionBackground": colors.principal_0.hex(),
     "menubar.selectionBorder": null,
-    "menu.foreground": colors.pLightest.hex(),
-    "menu.background": colors.pDarken.hex(),
+    "menu.foreground": colors.principal_4.hex(),
+    "menu.background": colors.principal_0.hex(),
     "menu.selectionForeground": colors.white.hex(),
-    "menu.selectionBackground": colors.pLighter.hex(),
+    "menu.selectionBackground": colors.principal_3.hex(),
     "menu.selectionBorder": null,
-    "menu.separatorBackground": colors.pLighter.hex(),
-  
+    "menu.separatorBackground": colors.principal_3.hex(),
+
     // git in editor interfece
     "diffEditor.insertedTextBackground": colors.succesDark.darken(0.5).hex(),
     "diffEditor.insertedTextBorder": null,
     "diffEditor.removedTextBackground": colors.dangerDark.darken(0.5).hex(),
     "diffEditor.removedTextBorder": null,
-  
+
     "debugExceptionWidget.background": colors.principal.hex(),
-    "debugExceptionWidget.border": colors.pLightest.hex(),
-  
-    "peekView.border": colors.pLightest.hex(),
+    "debugExceptionWidget.border": colors.principal_4.hex(),
+
+    "peekView.border": colors.principal_4.hex(),
     "peekViewEditor.background": colors.principal.hex(),
     "peekViewEditor.matchHighlightBackground": colors.contrast.hex(),
     "peekViewResult.background": colors.principal.hex(),
-    "peekViewResult.fileForeground": colors.pLightest.hex(),
-    "peekViewResult.lineForeground": colors.pLightest.hex(),
+    "peekViewResult.fileForeground": colors.principal_4.hex(),
+    "peekViewResult.lineForeground": colors.principal_4.hex(),
     "peekViewResult.matchHighlightBackground": colors.white.hex(),
-    "peekViewResult.selectionBackground": colors.pLighten.hex(),
-    "peekViewResult.selectionForeground": colors.pLightest.hex(),
+    "peekViewResult.selectionBackground": colors.principal_2.hex(),
+    "peekViewResult.selectionForeground": colors.principal_4.hex(),
     "peekViewTitle.background": colors.principal.hex(),
-    "peekViewTitleDescription.foreground": colors.pLightest.hex(),
-    "peekViewTitleLabel.foreground": colors.pLightest.hex(),
-  
+    "peekViewTitleDescription.foreground": colors.principal_4.hex(),
+    "peekViewTitleLabel.foreground": colors.principal_4.hex(),
+
     // GIT MERGE CONFLICTS
     "merge.currentHeaderBackground": colors.succes.darken(0.55).hex(),
     "merge.currentContentBackground": null,
@@ -313,18 +313,18 @@ module.exports = function (colors){
     "editorOverviewRuler.currentContentForeground": colors.contrast.hex(),
     "editorOverviewRuler.incomingContentForeground": colors.contrast.hex(),
     "editorOverviewRuler.commonContentForeground": colors.contrast.hex(),
-  
-  
-  
+
+
+
     // Overview ruler: This ruler is located beneath the scroll bar on the right edge of the editor and gives an overview of the decorations in the editor.
     //  Color of the overview ruler border.
     "editorOverviewRuler.border": null,
     // Overview ruler marker color for find matches. The color must not be opaque so as not to hide underlying decorations.
-    "editorOverviewRuler.findMatchForeground": colors.pLightest.hex(),
+    "editorOverviewRuler.findMatchForeground": colors.principal_4.hex(),
     // Overview ruler marker color for highlighted ranges, like by the Quick Open, Symbol in File and Find features. The color must not be opaque so as not to hide underlying decorations.
     "editorOverviewRuler.rangeHighlightForeground": colors.white.hex(),
     // Overview ruler marker color for selection highlights. The color must not be opaque so as not to hide underlying decorations.
-    "editorOverviewRuler.selectionHighlightForeground": colors.pLighter.hex(),
+    "editorOverviewRuler.selectionHighlightForeground": colors.principal_3.hex(),
     // Overview ruler marker color for symbol highlights. The color must not be opaque so as not to hide underlying decorations.
     "editorOverviewRuler.wordHighlightForeground": colors.white.hex(),
     // Overview ruler marker color for write-access symbol highlights. The color must not be opaque so as not to hide underlying decorations.
@@ -343,67 +343,67 @@ module.exports = function (colors){
     "editorOverviewRuler.infoForeground": colors.info.hex(),
     // Overview ruler marker color for matching brackets.
     "editorOverviewRuler.bracketMatchForeground": colors.text.hex(),
-  
-  
-  
+
+
+
     "panel.background": colors.principal.hex(),
-    "panel.border": colors.pLighten.hex(),
-    "panelTitle.activeBorder": colors.pLightest.hex(),
+    "panel.border": colors.principal_2.hex(),
+    "panelTitle.activeBorder": colors.principal_4.hex(),
     "panelTitle.activeForeground": colors.white.hex(),
     "panelTitle.inactiveForeground": colors.text.hex(),
-  
+
     "statusBar.background": colors.principal.hex(),
-    "statusBar.foreground": colors.pLightest.hex(),
-    "statusBar.border": colors.pLighten.hex(),
-  
+    "statusBar.foreground": colors.principal_4.hex(),
+    "statusBar.border": colors.principal_2.hex(),
+
     "statusBar.debuggingBackground": colors.warning.hex(),
-    "statusBar.debuggingForeground": colors.pDarken.hex(),
+    "statusBar.debuggingForeground": colors.principal_0.hex(),
     "statusBar.debuggingBorder": colors.warning.hex(),
-  
+
     "statusBar.noFolderForeground": null,
     "statusBar.noFolderBackground": colors.principal.hex(),
     "statusBar.noFolderBorder": colors.contrast.hex(),
-    "statusBarItem.activeBackground": colors.pLighten.hex(),
-    "statusBarItem.hoverBackground": colors.pLighten.hex(),
-    "statusBarItem.prominentBackground": colors.pLighten.hex(),
-    "statusBarItem.prominentHoverBackground": colors.pLighten.hex(),
-  
+    "statusBarItem.activeBackground": colors.principal_2.hex(),
+    "statusBarItem.hoverBackground": colors.principal_2.hex(),
+    "statusBarItem.prominentBackground": colors.principal_2.hex(),
+    "statusBarItem.prominentHoverBackground": colors.principal_2.hex(),
+
     "titleBar.activeBackground": colors.principal.hex(),
     "titleBar.activeForeground": colors.text.hex(),
-    "titleBar.inactiveBackground": colors.pDarken.hex(),
+    "titleBar.inactiveBackground": colors.principal_0.hex(),
     "titleBar.inactiveForeground": null,
-  
+
     "notifications.background": colors.principal.hex(),
     "notifications.foreground": colors.white.hex(),
     "notificationLink.foreground": colors.contrast.hex(),
-  
+
     "pickerGroup.foreground": colors.contrastLight.hex(),
     "pickerGroup.border": colors.principal.hex(),
-  
-    "debugToolBar.background": colors.pDarken.hex(),
+
+    "debugToolBar.background": colors.principal_0.hex(),
     "debugToolBar.border": null,
-  
+
     "welcomePage.buttonBackground": colors.principal.hex(),
     "welcomePage.buttonHoverBackground": colors.principal.hex(),
     "walkThrough.embeddedEditorBackground": colors.principal.hex(),
-  
-  
+
+
     // Git colors
     "gitDecoration.addedResourceForeground": colors.succesLight.hex(),
     "gitDecoration.modifiedResourceForeground": colors.warningLight.hex(),
     "gitDecoration.deletedResourceForeground": colors.danger.hex(),
     "gitDecoration.untrackedResourceForeground": colors.succesLight.hex(),
-    "gitDecoration.ignoredResourceForeground": colors.pLighter.hex(),
+    "gitDecoration.ignoredResourceForeground": colors.principal_3.hex(),
     "gitDecoration.conflictingResourceForeground": colors.warningLight.hex(),
-  
-    "source.elm": colors.pLightest.hex(),
-  
-    "editorRuler.foreground": colors.pLighten.hex(),
-  
+
+    "source.elm": colors.principal_4.hex(),
+
+    "editorRuler.foreground": colors.principal_2.hex(),
+
     // Background color for the progress bar shown for long running operations.
     "progress.background": colors.contrast.hex(),
-  
-  
+
+
     // Terminal colors
     "terminal.ansiWhite": colors.text.hex(),
     "terminal.ansiBlack": colors.black.hex(),
@@ -414,7 +414,7 @@ module.exports = function (colors){
     "terminal.ansiRed": colors.syntaxRed.hex(),
     "terminal.ansiYellow": colors.syntaxYellow.hex(),
     "terminal.ansiBrightWhite": colors.white.hex(),
-    "terminal.ansiBrightBlack": colors.pLighter.hex(),
+    "terminal.ansiBrightBlack": colors.principal_3.hex(),
     "terminal.ansiBrightBlue": colors.syntaxBlue.hex(),
     "terminal.ansiBrightCyan": colors.syntaxCyan.hex(),
     "terminal.ansiBrightGreen": colors.syntaxGreen.hex(),
@@ -422,7 +422,7 @@ module.exports = function (colors){
     "terminal.ansiBrightRed": colors.syntaxRed.hex(),
     "terminal.ansiBrightYellow": colors.syntaxYellow.hex(),
   }
-  
+
   const tcNormalize = [
     {
       name: "normalize font style of certain components",
@@ -452,9 +452,9 @@ module.exports = function (colors){
       }
     },
   ]
-  
+
   const tcGlobalSettings = [
-  // gloabal settings
+    // gloabal settings
     {
       name: "Global settings",
       settings: {
@@ -463,7 +463,7 @@ module.exports = function (colors){
       }
     },
   ]
-  
+
   const tcGit = [
     // GIT  colors 
     {
@@ -496,7 +496,7 @@ module.exports = function (colors){
       }
     },
   ]
-  
+
   const tcGeneral = [
     {
       // reserved language variables like this, super, self, etc.
@@ -518,7 +518,7 @@ module.exports = function (colors){
       // the </> of the tag & (,) in pug
       name: "Meta Tag",
       scope: [
-        "punctuation.definition.tag", 
+        "punctuation.definition.tag",
         "meta.tag"
       ],
       settings: {
@@ -530,16 +530,17 @@ module.exports = function (colors){
       name: "Tag attribute",
       scope: "entity.other.attribute-name",
       settings: {
-        fontStyle: "italic",
-        foreground: colors.tagAttribute.hex(),      }
+        foreground: colors.tagAttribute.hex(),
+        fontStyle: "italic"
+      }
     },
     {
       // pug classes
       name: "Pug Classes",
       scope: "entity.other.attribute-name.class.pug",
       settings: {
-        fontStyle: "italic",
         foreground: colors.pugClass.hex(),
+        fontStyle: "italic"
       }
     },
     {
@@ -561,7 +562,7 @@ module.exports = function (colors){
     {
       name: "RegExp String",
       scope: [
-        "string.regexp", 
+        "string.regexp",
         "string.regexp keyword.other",
         "string.regexp punctuation.definition.string",
         "constant.character.escape.backslash.regexp",
@@ -580,21 +581,22 @@ module.exports = function (colors){
         foreground: colors.regularText.hex()
       }
     },
-  
-  
-  
-  
-  
-  
-  
-  
-  
-    
-    
+
+
+
+
+
+
+
+
+
+
+
     {
       name: "Italics",
       scope: "italic",
       settings: {
+        foreground: "",
         fontStyle: "italic"
       }
     },
@@ -623,253 +625,240 @@ module.exports = function (colors){
       }
     },
   ]
-  
+
   const tcSpecialWords = [
-  
+
     // SPECIAL WORDS
-  
-      // VIOLET COLOR
-      
-      {
-        // types provided by the framework/library, 
-        name: "Library class/type",
-        scope: [
-          // variables provided by the framework/library. For example global in javascript
-          "support.variable",
-          // types provided by the framework/library, this is probably only used for 
-          // languages derived from C, which has typedef (and struct). 
-          // Most other languages would introduce new types as classes.
-          "support.type", 
-          // when the framework/library provides classes.
-          "support.class"
-        ],
-        settings: {
-          foreground: colors.specialWordB.hex()
-        }
-      },
-      {
-        name: "Library (function & constant)",
-        scope: [
-          // functions provided by the framework/library
-          // like log in console.log()
-          "support.function", 
-          // constants (magic values) provided by the framework/library.
-          "support.constant"
-        ],
-        settings: {
-          foreground: colors.specialWordB.hex(),
-          fontStyle: "italic"
-        }
-      },
-  
-      // ORANGE COLOR
-      // object properties before the last property
-      // object.[propertyA.propertyAA].propertyAAA
-      {
-        name: "Variable Property Other object property",
-        scope: ["variable.other.object.property"],
-        settings: {
-          foreground: colors.variableProperty.hex(),
-          fontStyle: "italic"
-        }
-      },
-  
-      // Last object property
-      // object.propertyA.propertyAA.[propertyAAA]
-      {
-        name: "Variable Instances",
-        scope: [
-          "variable.instance",
-          "variable.other.instance",
-          "variable.readwrite.instance",
-          "variable.other.readwrite.instance",
-          "variable.other.property"
-        ],
-        settings: {
-          foreground: colors.variableInstance.hex()
-        }
-      },
-  
-      // RED COLOR
-      {
-        // Math in Math.random() in javascript
-        name: "Support Constant Math",
-        scope: "support.constant.math",
-        settings: {
-          foreground: colors.contrastText.hex()
-        }
-      },
-  
-  
-  
-      // BLUE COLOR
-  
-      {
-        name: "Storage type",
-        scope: [
-          // var let const class function type 
-          "storage.type",
-          // @param, @returns
-          "punctuation.definition.block.tag",
-          // JavaScript Method Declaration e.g. `constructor`
-          "meta.method.declaration",
-          "meta.method.declaration storage.type.js"
-          
-        ],
-        settings: {
-          foreground: colors.specialWordA.hex(),
-          fontStyle: "italic"
-        }
-      },
-      {
-        name: "interface",
-        scope: [
-          "storage.type.interface"
-        ],
-        settings:{
-          foreground: colors.specialWordA.hex()
-        }
-      },
-      {
-        name: "Storage",
-        scope: [
-          "storage",
-          "meta.class meta.method.declaration meta.var.expr storage.type.js",
-          "storage.type.property.js",
-          "storage.type.property.ts",
-          "storage.type.property.tsx"
-        ],
-        settings: {
-          foreground: colors.specialWordA.hex(),
-          fontStyle: "italic"
-        }
-      },
-      
-  
-  
-      //----------------------------------
-  
-  
-      // PURPLE COLOR
-  
-  
-      {
-        name: "Entity Name Tag Custom",
-        scope: "entity.name.tag.custom",
-        settings: {
-          foreground: colors.specialWordC.hex()
-        }
-      },
-      {
-        name: "Meta Delimiter Period",
-        scope: "meta.delimiter.period",
-        settings: {
-          foreground: colors.specialWordC.hex(),
-          fontStyle: "italic"
-        }
-      },
-      {
-        name: "Meta Selector",
-        scope: "meta.selector",
-        settings: {
-          foreground: colors.specialWordC.hex(),
-          fontStyle: "italic"
-        }
-      },
-      {
-        name: "Doctypes",
-        scope: [
-          "entity.name.tag.doctype", 
-          "meta.tag.sgml.doctype"
-        ],
-        settings: {
-          foreground: colors.specialWordC.hex(),
-          fontStyle: "italic"
-        }
-      },
-      {
-        name: "Keyword Control Conditional",
-        scope: [
-          "keyword.control.conditional.js",
-          "keyword.control.conditional.ts",
-          "keyword.control.switch.js",
-          "keyword.control.switch.ts"
-        ],
-        settings: {
-          foreground: colors.specialWordC.hex(),
-          fontStyle: ""
-        }
-      },
-      {
-        name: "loops",
-        scope:[
-          "keyword.control.loop"
-        ],
-        settings:{
-          foreground: colors.specialWordC.hex(),
-        }
-      },
-      {
-        // mainly related to flow control like continue, while, return, etc.
-        // at rule name in css & scss & sass
-        name: "import control keyword",
-        scope: "keyword.control",
-        settings: {
-          foreground: colors.specialWordB.hex()
-        }
-      },
-  
-      //----------------------------------
-  
-  
-      // CYAN COLOR
-      {
-        name: "Variable Parameter Function",
-        scope: "variable.parameter.function",
-        settings: {
-          foreground: colors.functionName.hex(),
-          fontStyle: ""
-        }
-      },
-      {
-        name: "Meta Property Name",
-        scope: "meta.property-name",
-        settings: {
-          foreground: colors.functionName.hex()
-        }
-      },
-      {
-        name: "Keyword Control Operator",
-        scope: "keyword.control.operator",
-        settings: {
-          foreground: colors.functionName.hex()
-        }
-      },
-      {
-        // function name in javascript and mixins and function names in sass & scss
-        name: "Entity Name Function",
-        scope: ["entity.name.function"],
-        settings: {
-          foreground: colors.functionName.hex(),
-          fontStyle: "italic"
-        }
-      },
-      {
-        name:
-          "Support Constant, `new` keyword, Special Method Keyword, `debugger`, other keywords",
-        scope: [
-          "support.constant",
-          "keyword.other.special-method",
-          "keyword.other.new",
-          "keyword.other.debugger"
-        ],
-        settings: {
-          foreground: colors.functionName.hex()
-        }
-      },
-  
+
+    // VIOLET COLOR
+
+    {
+      // types provided by the framework/library, 
+      name: "Library class/type",
+      scope: [
+        // variables provided by the framework/library. For example global in javascript
+        "support.variable",
+        // types provided by the framework/library, this is probably only used for 
+        // languages derived from C, which has typedef (and struct). 
+        // Most other languages would introduce new types as classes.
+        "support.type",
+        // when the framework/library provides classes.
+        "support.class"
+      ],
+      settings: {
+        foreground: colors.specialWordB.hex()
+      }
+    },
+    {
+      name: "Library (function & constant)",
+      scope: [
+        // functions provided by the framework/library
+        // like log in console.log()
+        "support.function",
+        // constants (magic values) provided by the framework/library.
+        "support.constant"
+      ],
+      settings: {
+        foreground: colors.specialWordB.hex(),
+        fontStyle: "italic"
+      }
+    },
+
+    // ORANGE COLOR
+    // object properties before the last property
+    // object.[propertyA.propertyAA].propertyAAA
+    {
+      name: "Variable Property Other object property",
+      scope: ["variable.other.object.property"],
+      settings: {
+        foreground: colors.variableProperty.hex(),
+        fontStyle: "italic"
+      }
+    },
+
+    // Last object property
+    // object.propertyA.propertyAA.[propertyAAA]
+    {
+      name: "Variable Instances",
+      scope: [
+        "variable.instance",
+        "variable.other.instance",
+        "variable.readwrite.instance",
+        "variable.other.readwrite.instance",
+        "variable.other.property"
+      ],
+      settings: {
+        foreground: colors.variableInstance.hex()
+      }
+    },
+
+    // RED COLOR
+    {
+      // Math in Math.random() in javascript
+      name: "Support Constant Math",
+      scope: "support.constant.math",
+      settings: {
+        foreground: colors.contrastText.hex()
+      }
+    },
+
+    // BLUE COLOR
+    {
+      name: "Storage type",
+      scope: [
+        // var let const class function type 
+        "storage.type",
+        // @param, @returns
+        "punctuation.definition.block.tag",
+        // JavaScript Method Declaration e.g. `constructor`
+        "meta.method.declaration",
+        "meta.method.declaration storage.type.js"
+
+      ],
+      settings: {
+        foreground: colors.specialWordA.hex(),
+        fontStyle: "italic"
+      }
+    },
+    {
+      name: "interface",
+      scope: [
+        "storage.type.interface"
+      ],
+      settings: {
+        foreground: colors.specialWordA.hex()
+      }
+    },
+    {
+      name: "Storage",
+      scope: [
+        "storage",
+        "meta.class meta.method.declaration meta.var.expr storage.type.js",
+        "storage.type.property.js",
+        "storage.type.property.ts",
+        "storage.type.property.tsx"
+      ],
+      settings: {
+        foreground: colors.specialWordA.hex(),
+        fontStyle: "italic"
+      }
+    },
+
+    // PURPLE COLOR
+    {
+      name: "Entity Name Tag Custom",
+      scope: "entity.name.tag.custom",
+      settings: {
+        foreground: colors.specialWordC.hex()
+      }
+    },
+    {
+      name: "Meta Delimiter Period",
+      scope: "meta.delimiter.period",
+      settings: {
+        foreground: colors.specialWordC.hex(),
+        fontStyle: "italic"
+      }
+    },
+    {
+      name: "Meta Selector",
+      scope: "meta.selector",
+      settings: {
+        foreground: colors.specialWordC.hex(),
+        fontStyle: "italic"
+      }
+    },
+    {
+      name: "Doctypes",
+      scope: [
+        "entity.name.tag.doctype",
+        "meta.tag.sgml.doctype"
+      ],
+      settings: {
+        foreground: colors.specialWordC.hex(),
+        fontStyle: "italic"
+      }
+    },
+    {
+      name: "Keyword Control Conditional",
+      scope: [
+        "keyword.control.conditional.js",
+        "keyword.control.conditional.ts",
+        "keyword.control.switch.js",
+        "keyword.control.switch.ts"
+      ],
+      settings: {
+        foreground: colors.specialWordC.hex(),
+        fontStyle: ""
+      }
+    },
+    {
+      name: "loops",
+      scope: [
+        "keyword.control.loop"
+      ],
+      settings: {
+        foreground: colors.specialWordC.hex()
+      }
+    },
+    {
+      // mainly related to flow control like continue, while, return, etc.
+      // at rule name in css & scss & sass
+      name: "import control keyword",
+      scope: "keyword.control",
+      settings: {
+        foreground: colors.specialWordB.hex()
+      }
+    },
+
+    // CYAN COLOR
+    {
+      name: "Variable Parameter Function",
+      scope: "variable.parameter.function",
+      settings: {
+        foreground: colors.functionName.hex(),
+        fontStyle: ""
+      }
+    },
+    {
+      name: "Meta Property Name",
+      scope: "meta.property-name",
+      settings: {
+        foreground: colors.functionName.hex()
+      }
+    },
+    {
+      name: "Keyword Control Operator",
+      scope: "keyword.control.operator",
+      settings: {
+        foreground: colors.functionName.hex()
+      }
+    },
+    {
+      // function name in javascript and mixins and function names in sass & scss
+      name: "Entity Name Function",
+      scope: ["entity.name.function"],
+      settings: {
+        foreground: colors.functionName.hex(),
+        fontStyle: "italic"
+      }
+    },
+    {
+      name:
+        "Support Constant, `new` keyword, Special Method Keyword, `debugger`, other keywords",
+      scope: [
+        "support.constant",
+        "keyword.other.special-method",
+        "keyword.other.new",
+        "keyword.other.debugger"
+      ],
+      settings: {
+        foreground: colors.functionName.hex()
+      }
+    },
+
   ]
-  
+
   const tcStorageNames = [
     // Storage names
     {
@@ -878,7 +867,7 @@ module.exports = function (colors){
         "meta.var.expr",
         "meta.object-literal.key"
       ],
-      settings:{
+      settings: {
         foreground: colors.variableProperty.hex(),
         fontStyle: "normal"
       }
@@ -923,7 +912,7 @@ module.exports = function (colors){
       name: "Inherited class",
       scope: "entity.other.inherited-class",
       settings: {
-        foreground: colors.variable.hex(),
+        foreground: colors.variable.hex()
       }
     },
     {
@@ -936,9 +925,9 @@ module.exports = function (colors){
         fontStyle: ""
       }
     },
-  
+
   ]
-  
+
   const tcStrings = [
     {
       name: "String",
@@ -973,7 +962,7 @@ module.exports = function (colors){
       }
     },
   ]
-  
+
   const tcPunctuation = [
     {
       name: "Punctuation",
@@ -986,7 +975,7 @@ module.exports = function (colors){
         "punctuation.accessor",
       ],
       settings: {
-        foreground: colors.punctuation.hex(),
+        foreground: colors.punctuation.hex()
       }
     },
     {
@@ -999,7 +988,7 @@ module.exports = function (colors){
         "meta.array"
       ],
       settings: {
-        foreground: colors.punctuation.hex(),
+        foreground: colors.punctuation.hex()
       }
     },
     {
@@ -1011,7 +1000,7 @@ module.exports = function (colors){
         "punctuation.definition.list"
       ],
       settings: {
-        foreground: colors.punctuation.hex(),
+        foreground: colors.punctuation.hex()
       }
     },
     {
@@ -1023,7 +1012,7 @@ module.exports = function (colors){
         "meta.link.inline.markdown punctuation.definition.string"
       ],
       settings: {
-        foreground: colors.punctuation.hex(),
+        foreground: colors.punctuation.hex()
       }
     },
     {
@@ -1035,7 +1024,7 @@ module.exports = function (colors){
         "meta.export.tsx punctuation.definition.block"
       ],
       settings: {
-        foreground: colors.punctuation.hex(),
+        foreground: colors.punctuation.hex()
       }
     },
     {
@@ -1063,8 +1052,8 @@ module.exports = function (colors){
         foreground: colors.contrastText.hex()
       }
     },
-  
-  
+
+
     // KEYWORD OPERATORS
     {
       name: "Keyword Operator",
@@ -1088,7 +1077,7 @@ module.exports = function (colors){
       name: "Keyword Operator Assignment",
       scope: "keyword.operator.assignment",
       settings: {
-        foreground: colors.operator.hex(),
+        foreground: colors.operator.hex()
       }
     },
     {
@@ -1096,7 +1085,7 @@ module.exports = function (colors){
       name: "Keyword Operator Arithmetic",
       scope: "keyword.operator.arithmetic",
       settings: {
-        foreground: colors.operator.hex(),
+        foreground: colors.operator.hex()
       }
     },
     {
@@ -1104,7 +1093,7 @@ module.exports = function (colors){
       name: "Keyword Operator Bitwise",
       scope: "keyword.operator.bitwise",
       settings: {
-        foreground: colors.operator.hex(),
+        foreground: colors.operator.hex()
       }
     },
     {
@@ -1115,7 +1104,7 @@ module.exports = function (colors){
         "keyword.operator.decrement"
       ],
       settings: {
-        foreground: colors.operator.hex(),
+        foreground: colors.operator.hex()
       }
     },
     {
@@ -1123,7 +1112,7 @@ module.exports = function (colors){
       name: "Keyword Operator Ternary",
       scope: "keyword.operator.ternary",
       settings: {
-        foreground: colors.operator.hex(),
+        foreground: colors.operator.hex()
       }
     },
     {
@@ -1140,8 +1129,8 @@ module.exports = function (colors){
       scope: [
         "keyword.operator.comparison"
       ],
-      settings:{
-        foreground: colors.specialWordC.hex(),
+      settings: {
+        foreground: colors.specialWordC.hex()
       }
     },
     {
@@ -1154,7 +1143,7 @@ module.exports = function (colors){
       }
     },
   ]
-  
+
   const tcSpecialValues = [
     {
       name: "Number",
@@ -1189,12 +1178,12 @@ module.exports = function (colors){
       scope: [
         "entity.name.type"
       ],
-      settings:{
+      settings: {
         foreground: colors.variable.hex()
       }
     },
   ]
-  
+
   const tcStylesheets = [
     {
       name: "SCSS & SASS Variable",
@@ -1210,24 +1199,24 @@ module.exports = function (colors){
     },
     {
       name: "css and pug ID selector",
-      scope:[
+      scope: [
         "entity.other.attribute-name.id",
         "entity.other.attribute-name.id.css",
         "entity.other.attribute-name.id.scss",
         "entity.other.attribute-name.id.css.sass"
       ],
-      settings:{
+      settings: {
         foreground: colors.cssId.hex()
       }
     },
     {
       name: "css class selector",
-      scope:[
+      scope: [
         "entity.other.attribute-name.class.css",
         "entity.other.attribute-name.class.css.sass",
         "entity.other.attribute-name.class.scss"
       ],
-      settings:{
+      settings: {
         foreground: colors.cssClass.hex()
       }
     },
@@ -1247,11 +1236,11 @@ module.exports = function (colors){
     },
     {
       name: "Property name stylesheets",
-      scope:[
+      scope: [
         "support.type.property-name.css",
         "support.type.property-name.css.sass"
       ],
-      settings:{
+      settings: {
         foreground: colors.cssProperty.hex()
       }
     },
@@ -1265,7 +1254,7 @@ module.exports = function (colors){
     {
       name: "stylesheet numbers",
       scope: [
-        "constant.numeric.css", 
+        "constant.numeric.css",
         "punctuation.definition.constant.css",
         "constant.numeric.css.sass"
       ],
@@ -1300,42 +1289,42 @@ module.exports = function (colors){
         fontStyle: ""
       }
     },
-  
-  
+
+
     {
       // css !importatnt, @
       // keywords for sass
       name: "Keyword",
       scope: [
-        
+
         //@ in at rules
         "punctuation.definition.keyword",
         "entity.name.tag.reference",
-  
+
         // font-feature-values
         "entity.name.tag.custom.css",
         "entity.name.tag.custom.scss",
         "entity.name.tag.custom.sass",
-  
+
         "entity.other.attribute-name.css.scss",
-  
+
         //pseudo-class like :hover, :active, :focus, etc.
         "entity.other.attribute-name.pseudo-class.css",
         "entity.other.pseudo-class.css.sass",
-  
+
         //pseudo-elements like ::-webkit...
         "entity.other.attribute-name.pseudo-element.css",
-  
+
         // function call
         "support.function.sass",
         "keyword.control.interpolation.sass",
-  
+
         // operators
         "keyword.operator.css.sass",
-  
+
         // Sass Reserved Word
         "keyword.other.reserved.sass",
-  
+
         // @ rules
         "keyword.control.at-rule",
         "keyword.control.at-rule.css.sass"
@@ -1353,7 +1342,7 @@ module.exports = function (colors){
         "punctuation.separator.key-value.less",
         "punctuation.separator.key-value.css.sass"
       ],
-      settings:{
+      settings: {
         foreground: colors.punctuation.hex()
       }
     },
@@ -1382,11 +1371,11 @@ module.exports = function (colors){
         "meta.attribute-selector"
       ],
       settings: {
-        foreground: colors.cssAttribute.hex(),     
+        foreground: colors.cssAttribute.hex()
       }
     },
   ]
-  
+
   // languages
   const tcJavascript = [
     {
@@ -1428,7 +1417,7 @@ module.exports = function (colors){
         "meta.export.js variable.other"
       ],
       settings: {
-        foreground: colors.variable.hex(),
+        foreground: colors.variable.hex()
       }
     },
     {
@@ -1464,7 +1453,7 @@ module.exports = function (colors){
     {
       name: "TypeScript[React] Entity Name Types",
       scope: [
-        "entity.name.type.ts", 
+        "entity.name.type.ts",
         "entity.name.type.tsx"
       ],
       settings: {
@@ -1479,7 +1468,7 @@ module.exports = function (colors){
         "meta.type.parameters.tsx entity.name.type"
       ],
       settings: {
-        foreground: colors.pLightest.hex()
+        foreground: colors.principal_4.hex()
       }
     },
     {
@@ -1520,7 +1509,7 @@ module.exports = function (colors){
       name: "Punctuation Section Embedded",
       scope: "punctuation.section.embedded",
       settings: {
-        foreground: colors.text.hex(),
+        foreground: colors.text.hex()
       }
     },
     {
@@ -1564,7 +1553,7 @@ module.exports = function (colors){
       name: "JavaScript Variables",
       scope: ["variable.js", "variable.other.js"],
       settings: {
-        foreground: colors.variable.hex(),
+        foreground: colors.variable.hex()
       }
     },
     {
@@ -1602,9 +1591,9 @@ module.exports = function (colors){
       }
     },
   ]
-  
+
   const tcCoffescript = [
-  
+
     {
       name: "CoffeScript Variable Assignment",
       scope: "variable.assignment.coffee",
@@ -1625,14 +1614,14 @@ module.exports = function (colors){
         "meta.arguments.coffee",
         "variable.parameter.function.coffee"
       ],
-      settings:{
+      settings: {
         foreground: colors.variable.hex()
       }
     }
   ]
-  
+
   const tcCsharp = [
-  
+
     {
       name: "C# Readwrite Variables",
       scope: "variable.other.readwrite.cs",
@@ -1644,7 +1633,7 @@ module.exports = function (colors){
       name: "C# Classes & Storage types",
       scope: ["entity.name.type.class.cs", "storage.type.cs"],
       settings: {
-        foreground: colors.specialWordB.hex(),
+        foreground: colors.specialWordB.hex()
       }
     },
     {
@@ -1655,9 +1644,9 @@ module.exports = function (colors){
       }
     },
   ]
-  
+
   const tcElixir = [
-  
+
     {
       name: "Elixir Classes",
       scope: [
@@ -1672,7 +1661,7 @@ module.exports = function (colors){
       name: "Elixir Functions",
       scope: "source.elixir entity.name.function",
       settings: {
-        foreground: colors.functionName.hex(),
+        foreground: colors.functionName.hex()
       }
     },
     {
@@ -1711,7 +1700,7 @@ module.exports = function (colors){
       }
     },
   ]
-  
+
   const tcMarckdown = [
     {
       name: "Markdown Headings",
@@ -1787,7 +1776,7 @@ module.exports = function (colors){
       }
     },
   ]
-  
+
   const tcGo = [
     {
       name: "Go Keywords",
@@ -1820,7 +1809,7 @@ module.exports = function (colors){
       }
     },
   ]
-  
+
   const tcPython = [
     {
       name: "Language Constants in Python",
@@ -1868,7 +1857,7 @@ module.exports = function (colors){
       }
     },
   ]
-    
+
   const tcHtml = [
     {
       name: "HTML Tag names",
@@ -1900,7 +1889,7 @@ module.exports = function (colors){
       }
     }
   ]
-  
+
   const tcJson = [
     {
       name: "JSON Property Names",
@@ -1939,14 +1928,14 @@ module.exports = function (colors){
         foreground: colors.contrastText.hex()
       }
     },
-  
+
   ]
-  
+
   const tcPhp = [
     {
       name: "PHP Variables",
       scope: [
-        "variable.other.php", 
+        "variable.other.php",
         "variable.other.property.php",
         "punctuation.definition.variable.php"
       ],
@@ -1962,7 +1951,7 @@ module.exports = function (colors){
       }
     }
   ]
-  
+
   const tcComments = [
     {
       name: "Comment",
@@ -1987,7 +1976,7 @@ module.exports = function (colors){
         foreground: colors.comment.hex()
       }
     },
-  
+
     //documentation inside comments
     {
       name: "Data Type in commented documentation",
@@ -1996,32 +1985,32 @@ module.exports = function (colors){
         "comment.block.documentation entity.name.type.instance.phpdoc",
       ],
       settings: {
-        foreground: colors.specialWordB.hex() +"80",
+        foreground: colors.specialWordB.hex() + "80"
       }
     },
     {
       name: "Variables in commented documentation",
       scope: [
-        "comment.block.documentation variable.other.jsdoc", 
+        "comment.block.documentation variable.other.jsdoc",
         "comment.block.documentation variable.other.phpdoc"
       ],
       settings: {
-        foreground: colors.variable.hex() +"80"
+        foreground: colors.variable.hex() + "80"
       }
     },
     {
       name: "@tags in commented documentation",
-      scope:[
+      scope: [
         "comment.block.documentation storage.type.class.jsdoc",
         "comment.block.documentation punctuation.definition.block.tag.jsdoc"
       ],
       settings: {
-        foreground: colors.specialWordA.hex() +"80"
+        foreground: colors.specialWordA.hex() + "80"
       }
     },
-  
+
   ]
-  
+
   return {
     name: "Night Wolf",
     type: "dark",
@@ -2032,18 +2021,18 @@ module.exports = function (colors){
       ...tcGlobalSettings,
       ...tcNormalize,
       ...tcGit,
-  
+
       ...tcGeneral,
       ...tcSpecialWords,
       ...tcStorageNames,
       ...tcStrings,
-  
+
       ...tcPunctuation,
       ...tcComments,
       ...tcSpecialValues,
-  
+
       ...tcStylesheets,
-  
+
       ...tcJavascript,
       ...tcHtml,
       ...tcJson,

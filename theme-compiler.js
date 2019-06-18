@@ -43,13 +43,16 @@ function compile(){
   for (let compFile of compileJsFiles){
     const source = require(compFile)
     const dictstring = JSON.stringify(source)
+    const dictstringNi = dictstring.replace(/,"fontStyle":"italic"/g,'')
 
     // create json name
     let jsonName = compFile.replace('.js','').split("/")
     jsonName = jsonName[jsonName.length -1]
+    let jsonNameNi = jsonName + '-noitalics'
 
     try{
       fs.writeFileSync(`./themes/${jsonName}.json`, dictstring)
+      fs.writeFileSync(`./themes/${jsonNameNi}.json`, dictstringNi)
     }catch(e){
       console.error("error",e)
     }
