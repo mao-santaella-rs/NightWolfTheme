@@ -19,6 +19,16 @@
   "contributes": {
     "themes": [
       {
+        "label": "Night Wolf [light]",
+        "uiTheme": "vs-dark",
+        "path": "./themes/night-wolf-light.json"
+      },
+      {
+        "label": "Night Wolf [light] (No Italics)",
+        "uiTheme": "vs-dark",
+        "path": "./themes/night-wolf-light-noitalics.json"
+      },
+      {
         "label": "Night Wolf [dark blue]",
         "uiTheme": "vs-dark",
         "path": "./themes/night-wolf-blue.json"
