@@ -1,5 +1,5 @@
-const colors = require("./colors/light")
+const colors = require("./colors/colors-light")
 
-const theme = require("./base/dark")
+const theme = require("./base/base-json-light")
 
 module.exports = theme(colors)

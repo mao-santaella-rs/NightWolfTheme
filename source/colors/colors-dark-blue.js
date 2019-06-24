@@ -2,14 +2,25 @@ const Color = require("color")
 const colors = require("./common-colors")
 
 // THEME COLORS
-colors.principal =            Color.rgb(240,240,240)
-colors.principal_0 =          Color.rgb(214,213,217)
-colors.principal_1 =          Color.rgb(176,176,184)
-colors.principal_2 =          Color.rgb(139,138,150)
-colors.principal_3 =          Color.rgb(101,101,117)
-colors.principal_4 =          Color.rgb(64,63,83)
 
-colors.text =                 colors.principal_4
+// colors.principal =            Color.rgb(016,030,044)
+// colors.principal_0 =          Color.rgb(020,040,060)
+// colors.principal_1 =          Color.rgb(027,050,074)
+// colors.principal_2 =          Color.rgb(038,070,103)
+// colors.principal_3 =          Color.rgb(048,090,132)
+// colors.principal_4 =          Color.rgb(095,130,165)
+// colors.principal_5 =          Color.rgb(143,171,198)
+
+// colors.text =                 Color.rgb(189,210,231)
+
+colors.principal =            Color.rgb(16,30,44)
+colors.principal_0 =          Color.rgb(11,21,31)
+colors.principal_1 =          Color.rgb(21,39,57)
+colors.principal_2 =          Color.rgb(32,60,88)
+colors.principal_3 =          Color.rgb(48,90,132)
+colors.principal_4 =          Color.rgb(123,165,207)
+
+colors.text =                 Color.rgb(189,210,231)
 
 colors.selection =            colors.principal_3
 colors.selectionHighlight =   colors.principal_2
