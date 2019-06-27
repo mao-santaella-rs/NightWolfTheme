@@ -407,7 +407,7 @@ module.exports = function (colors) {
     "gitDecoration.modifiedResourceForeground": colors.warning.hex(),
     "gitDecoration.deletedResourceForeground": colors.danger.hex(),
     "gitDecoration.untrackedResourceForeground": colors.succes.hex(),
-    "gitDecoration.ignoredResourceForeground": colors.principal_3.hex(),
+    "gitDecoration.ignoredResourceForeground": colors.principal_2.hex(),
     "gitDecoration.conflictingResourceForeground": colors.danger.hex(),
 
 
@@ -2012,7 +2012,7 @@ module.exports = function (colors) {
   ]
 
   return {
-    name: "Night Wolf",
+    name: "themename",
     type: "dark",
     colors: {
       ...themeColors

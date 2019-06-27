@@ -2023,8 +2023,8 @@ module.exports = function (colors) {
   ]
 
   return {
-    name: "Night Wolf",
-    type: "dark",
+    name: "themename",
+    type: "light",
     colors: {
       ...themeColors
     },
