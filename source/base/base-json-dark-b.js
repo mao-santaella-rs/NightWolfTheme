@@ -1,7 +1,7 @@
 module.exports = function (colors) {
   const themeColors = {
     // Editor general
-    "editor.background": colors.principal.hex(),
+    "editor.background": colors.interBackground.hex(),
     "editor.foreground": colors.text.hex(),
     "editorLineNumber.foreground": colors.principal_2.hex(),
     "editorLineNumber.activeForeground": colors.principal_5.hex(),
@@ -17,7 +17,7 @@ module.exports = function (colors) {
     // Overall foreground color. This color is only used if not overridden by a component.
     "foreground": colors.text.hex(),
     // Shadow color of widgets such as Find/Replace inside the editor.
-    "widget.shadow": colors.black.hex() + "30", //colors.principal.hex() + "99",
+    "widget.shadow": colors.black.hex() + "30",
     // Background color of text selections in the workbench (for input fields or text areas, does not apply to selections within the editor and the terminal).
     "selection.background": colors.info.hex(),
     // labels in the welcome page
@@ -103,7 +103,7 @@ module.exports = function (colors) {
     "editorWarning.border": null,
 
     // el editor gutter es la parte donde esta el numero de linea y las indicaciones de git dentro del archivo
-    "editorGutter.background": colors.principal.hex(),
+    "editorGutter.background": colors.interBackground.hex(),
     "editorGutter.modifiedBackground": colors.warning.hex(),
     "editorGutter.addedBackground": colors.succes.hex(),
     "editorGutter.deletedBackground": colors.danger.hex(),
@@ -143,8 +143,8 @@ module.exports = function (colors) {
     // inputs
     // Dropdowns
     // el background del cuadro del input no del menu como tal
-    "dropdown.background": colors.principal.hex(),
-    "dropdown.border": colors.principal_1.hex(),
+    "dropdown.background": colors.principal_0.hex(),
+    "dropdown.border": colors.principal_0.hex(),
     "dropdown.foreground": colors.text.hex(),
     "dropdown.listBackground": colors.principal_0.hex(),
     // Inputs text
@@ -180,9 +180,9 @@ module.exports = function (colors) {
 
     // It is the bar on the left that contains the tree view and the explorer
     // Side Bar background color.
-    "sideBar.background": colors.principal.hex(),
+    "sideBar.background": colors.interBackground.hex(),
     // Side Bar foreground color. The Side Bar is the container for views like Explorer and Search.
-    "sideBar.foreground": colors.principal_5.hex(),
+    "sideBar.foreground": colors.principal_4.hex(),
     // Side Bar border color on the side separating the editor.
     "sideBar.border": colors.interBorder.hex(),
     // Side Bar title foreground color.
@@ -230,7 +230,7 @@ module.exports = function (colors) {
 
     // Activity bar es la primera barra de iconos de la izquierda
     // Activity Bar background color.
-    "activityBar.background": colors.principal.hex(),
+    "activityBar.background": colors.interBackground.hex(),
     // Drag and drop feedback color for the Activity Bar items.
     "activityBar.dropBackground": colors.principal_2.hex(),
     // Activity bar foreground color (for example used for the icons).
@@ -252,7 +252,7 @@ module.exports = function (colors) {
     // Background color of the editor group title header when Tabs are disabled (set "workbench.editor.showTabs": false).
     "editorGroupHeader.noTabsBackground": colors.danger.hex(),
     // Background color of the Tabs container.
-    "editorGroupHeader.tabsBackground": colors.principal.hex(),
+    "editorGroupHeader.tabsBackground": colors.interBackground.hex(),
     // Border color of the editor group title header when tabs are enabled.
     "editorGroupHeader.tabsBorder": colors.interBorder.hex(),
 
@@ -351,7 +351,7 @@ module.exports = function (colors) {
     "panel.border": colors.interBorder.hex(),
     "panelTitle.activeBorder": colors.contrast.hex(),
     "panelTitle.activeForeground": colors.text.hex(),
-    "panelTitle.inactiveForeground": colors.principal_5.hex(),
+    "panelTitle.inactiveForeground": colors.principal_4.hex(),
 
     // The Status Bar is shown in the bottom of the workbench.
     "statusBar.background": colors.principal.hex(),
