@@ -408,7 +408,7 @@ module.exports = function (colors) {
     "gitDecoration.deletedResourceForeground": colors.danger.hex(),
     "gitDecoration.untrackedResourceForeground": colors.succes.hex(),
     "gitDecoration.ignoredResourceForeground": colors.principal_3.hex(),
-    "gitDecoration.conflictingResourceForeground": colors.warning.hex(),
+    "gitDecoration.conflictingResourceForeground": colors.danger.hex(),
 
 
     // Background color for the progress bar shown for long running operations.
