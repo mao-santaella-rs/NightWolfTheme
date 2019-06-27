@@ -1,6 +1,41 @@
 const Color = require("color")
 const colors = require("./common-colors")
 
+
+colors.syntaxRed =            Color.rgb(255,56,56) 
+colors.syntaxOrange =         Color.rgb(255,127,66)
+colors.syntaxYellow =         Color.rgb(255,190,88)
+colors.syntaxBeige =          Color.rgb(188,176,136)
+colors.syntaxGreen =          Color.rgb(113,207,66)
+colors.syntaxCyan =           Color.rgb(0,190,190)
+colors.syntaxBlue =           Color.rgb(000,123,255)
+colors.syntaxViolet =         Color.rgb(88,88,255)
+colors.syntaxPurple =         Color.rgb(190,77,255)
+
+colors.syntaxMagenta =        Color.rgb(255,025,255)
+
+colors.contrast =             colors.syntaxMagenta
+colors.contrastLight =        Color.rgb(255,190,255)
+colors.contrastDark =         Color.rgb(150,000,150)
+
+// STATES COLORS
+colors.infoDark =             Color.rgb(040,072,100)
+colors.info =                 Color.rgb(100,180,250)
+colors.infoLight =            Color.rgb(156,217,255)
+
+colors.succesDark =           Color.rgb(044,072,032)
+colors.succes =               Color.rgb(110,180,080)
+colors.succesLight =          Color.rgb(161,216,132)
+
+colors.warningDark =          Color.rgb(102,080,016)
+colors.warning =              Color.rgb(255,200,040)
+colors.warningLight =         Color.rgb(255,227,156)
+
+colors.dangerDark =           Color.rgb(071,032,032)
+colors.danger =               Color.rgb(240,080,080)
+colors.dangerLight =          Color.rgb(216,130,130)
+
+
 // THEME COLORS
 colors.principal =            Color.rgb(240,240,240)
 colors.principal_0 =          Color.rgb(231,230,236)
