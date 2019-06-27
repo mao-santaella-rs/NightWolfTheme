@@ -25,6 +25,7 @@ colors.lineHiglight =         colors.principal_0
 
 colors.gitInsertedBg =        Color.rgb(20,51,46)
 colors.gitRemovedBg =         Color.rgb(30,19,28)
+colors.gitIgnoreExplorer =    Color.rgb(140,140,140)
 
 //INTERFACE COLORS
 colors.interBackground =      colors.principal

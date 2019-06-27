@@ -182,7 +182,7 @@ module.exports = function (colors) {
     // Side Bar background color.
     "sideBar.background": colors.interBackground.hex(),
     // Side Bar foreground color. The Side Bar is the container for views like Explorer and Search.
-    "sideBar.foreground": colors.principal_4.hex(),
+    "sideBar.foreground": colors.principal_5.hex(),
     // Side Bar border color on the side separating the editor.
     "sideBar.border": colors.interBorder.hex(),
     // Side Bar title foreground color.
@@ -407,7 +407,7 @@ module.exports = function (colors) {
     "gitDecoration.modifiedResourceForeground": colors.warning.hex(),
     "gitDecoration.deletedResourceForeground": colors.danger.hex(),
     "gitDecoration.untrackedResourceForeground": colors.succes.hex(),
-    "gitDecoration.ignoredResourceForeground": colors.principal_2.hex(),
+    "gitDecoration.ignoredResourceForeground": colors.gitIgnoreExplorer.hex(),
     "gitDecoration.conflictingResourceForeground": colors.danger.hex(),
 
 
