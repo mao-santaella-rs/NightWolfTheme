@@ -42,20 +42,27 @@ function compile(){
   // loop in every theme file
   for (let compFile of compileJsFiles){
     const source = require(compFile)
-    const dictstring = JSON.stringify(source)
-    const dictstringNi = dictstring.replace(/,"fontStyle":"italic"/g,'')
+    let dictstring = JSON.stringify(source)
+    let dictstringNi = dictstring.replace(/,"fontStyle":"italic"/g,'')
 
-    // create json name
-    let jsonName = compFile.replace('.js','').split("/")
-    jsonName = jsonName[jsonName.length -1]
-    let jsonNameNi = jsonName + '-noitalics'
+    // create json file name
+    let jsonFileName = compFile.replace('.js','').split("/")
+    jsonFileName = jsonFileName[jsonFileName.length -1]
+    let jsonFileNameNi = jsonFileName + '-noitalics'
 
+    // create name field inside the json
+    let jsonName = jsonFileName.replace(/-/g,' ')
+    let jsonNameNi = jsonFileNameNi.replace(/-/g,' ')
+
+    dictstring = dictstring.replace(/themename/g,jsonName)
+    dictstringNi = dictstringNi.replace(/themename/g,jsonNameNi)
+    
     try{
-      fs.writeFileSync(`./themes/${jsonName}.json`, dictstring)
-      fs.writeFileSync(`./themes/${jsonNameNi}.json`, dictstringNi)
+      fs.writeFileSync(`./themes/${jsonFileName}.json`, dictstring)
+      fs.writeFileSync(`./themes/${jsonFileNameNi}.json`, dictstringNi)
     }catch(e){
       console.error("error",e)
     }
-    console.info(`file compiled! ${jsonName}.json`)
+    console.info(`file compiled! ${jsonFileName}.json`)
   }
 }

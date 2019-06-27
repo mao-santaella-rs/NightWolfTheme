@@ -2012,7 +2012,7 @@ module.exports = function (colors) {
   ]
 
   return {
-    name: "Night Wolf",
+    name: "themename",
     type: "dark",
     colors: {
       ...themeColors
