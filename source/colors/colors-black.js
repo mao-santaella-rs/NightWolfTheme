@@ -3,10 +3,10 @@ const colors = require("./common-colors")
 
 // THEME COLORS
 colors.principal =            colors.black
-colors.principal_0 =          Color.rgb(015,015,015)
-colors.principal_1 =          Color.rgb(025,025,025)
-colors.principal_2 =          Color.rgb(050,050,050)
-colors.principal_3 =          Color.rgb(075,075,075)
+colors.principal_0 =          Color.rgb(15,15,15)
+colors.principal_1 =          Color.rgb(25,25,25)
+colors.principal_2 =          Color.rgb(50,50,50)
+colors.principal_3 =          Color.rgb(75,75,75)
 colors.principal_4 =          Color.rgb(100,100,100)
 
 colors.text =                 Color.rgb(200,200,200)
