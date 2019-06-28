@@ -47,16 +47,6 @@
         "label": "Night Wolf [black] (No Italics)",
         "uiTheme": "vs-dark",
         "path": "./themes/night-wolf-black-noitalics.json"
-      },
-      {
-        "label": "Night Wolf [light]",
-        "uiTheme": "vs",
-        "path": "./themes/night-wolf-light.json"
-      },
-      {
-        "label": "Night Wolf [light] (No Italics)",
-        "uiTheme": "vs",
-        "path": "./themes/night-wolf-light-noitalics.json"
       }
     ]
   },
