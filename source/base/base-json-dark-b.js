@@ -403,10 +403,10 @@ module.exports = function (colors) {
     "walkThrough.embeddedEditorBackground": colors.principal.hex(),
 
     // Git colors
-    "gitDecoration.addedResourceForeground": colors.succes.hex(),
-    "gitDecoration.modifiedResourceForeground": colors.warning.hex(),
-    "gitDecoration.deletedResourceForeground": colors.danger.hex(),
-    "gitDecoration.untrackedResourceForeground": colors.succes.hex(),
+    "gitDecoration.addedResourceForeground": colors.succesLight.hex(),
+    "gitDecoration.modifiedResourceForeground": colors.warningLight.hex(),
+    "gitDecoration.deletedResourceForeground": colors.dangerLight.hex(),
+    "gitDecoration.untrackedResourceForeground": colors.succesLight.hex(),
     "gitDecoration.ignoredResourceForeground": colors.gitIgnoreExplorer.hex(),
     "gitDecoration.conflictingResourceForeground": colors.danger.hex(),
 
