@@ -153,7 +153,7 @@ module.exports = function (colors) {
     "input.foreground": colors.text.hex(),
     "input.placeholderForeground": colors.principal_3.hex(),
     // Input Select
-    "inputOption.activeBorder": colors.principal_2.hex(),
+    "inputOption.activeBorder": colors.principal_5.hex(),
     // Input Validation
     "inputValidation.errorBackground": colors.dangerDark.hex(),
     "inputValidation.errorBorder": colors.danger.hex(),
@@ -1202,6 +1202,7 @@ module.exports = function (colors) {
       scope: [
         "entity.other.attribute-name.id",
         "entity.other.attribute-name.id.css",
+        "entity.other.attribute-name.id.css punctuation.definition.entity.css",
         "entity.other.attribute-name.id.scss",
         "entity.other.attribute-name.id.css.sass"
       ],
@@ -1210,9 +1211,20 @@ module.exports = function (colors) {
       }
     },
     {
+      name: "function declaration SASS",
+      scope:[
+        "support.function.name.sass.library",
+        "source.sass entity.name.function"
+      ],
+      settings: {
+        foreground: colors.sassFunction.hex()
+      }
+    },
+    {
       name: "css class selector",
       scope: [
         "entity.other.attribute-name.class.css",
+        "entity.other.attribute-name.class.css punctuation.definition.entity.css",
         "entity.other.attribute-name.class.css.sass",
         "entity.other.attribute-name.class.scss"
       ],
@@ -1235,6 +1247,23 @@ module.exports = function (colors) {
       }
     },
     {
+      name: "CSS Pseudo Class",
+      scope: [
+        //pseudo-class like :hover, :active, :focus, etc.
+        "entity.other.attribute-name.pseudo-class.css",
+        "entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css",
+        "entity.other.pseudo-class.css.sass",
+
+        //pseudo-elements like ::-webkit...
+        "entity.other.attribute-name.pseudo-element.css",
+        "entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css",
+      ],
+      settings:{
+        foreground: colors.cssPseudoClass.hex(),
+        fontStyle: ""
+      }
+    },
+    {
       name: "Property name stylesheets",
       scope: [
         "support.type.property-name.css",
@@ -1246,29 +1275,23 @@ module.exports = function (colors) {
     },
     {
       name: "Values in css",
-      scope: ["support.constant.property-value.css"],
+      scope: [
+        "support.constant.property-value.css"
+      ],
       settings: {
         foreground: colors.cssValue.hex()
       }
     },
     {
-      name: "stylesheet numbers",
-      scope: [
-        "constant.numeric.css",
-        "punctuation.definition.constant.css",
-        "constant.numeric.css.sass"
-      ],
-      settings: {
-        foreground: colors.number.hex()
-      }
-    },
-    {
-      name: "Stylesheet Units",
+      name: "Stylesheet Numbers and Units",
       scope: [
         "keyword.other.unit",
         "keyword.other.unit.css",
         "keyword.other.unit.scss",
-        "keyword.other.unit.css.sass"
+        "keyword.other.unit.css.sass",
+        "constant.numeric.css",
+        "punctuation.definition.constant.css",
+        "constant.numeric.css.sass"
       ],
       settings: {
         foreground: colors.cssUnits.hex()
@@ -1289,14 +1312,32 @@ module.exports = function (colors) {
         fontStyle: ""
       }
     },
-
-
     {
-      // css !importatnt, @
+      name: "Keyword !important",
+      scope: [
+        "keyword.other.important.css",
+        "keyword.other.important.scss"
+      ],
+      settings: {
+        foreground: colors.syntaxRed.hex(),
+        fontStyle: "italic"
+      }
+    },
+    {
+      name: "keyframes rules",
+      scope: [
+        "meta.at-rule.keyframes.body.css",
+        "source.css.scss meta.at-rule.keyframes.scss entity.other.attribute-name.scss"
+      ],
+      settings: {
+        foreground: colors.syntaxPurple.hex(),
+        fontStyle: "italic"
+      }
+    },
+    {
       // keywords for sass
       name: "Keyword",
       scope: [
-
         //@ in at rules
         "punctuation.definition.keyword",
         "entity.name.tag.reference",
@@ -1305,15 +1346,6 @@ module.exports = function (colors) {
         "entity.name.tag.custom.css",
         "entity.name.tag.custom.scss",
         "entity.name.tag.custom.sass",
-
-        "entity.other.attribute-name.css.scss",
-
-        //pseudo-class like :hover, :active, :focus, etc.
-        "entity.other.attribute-name.pseudo-class.css",
-        "entity.other.pseudo-class.css.sass",
-
-        //pseudo-elements like ::-webkit...
-        "entity.other.attribute-name.pseudo-element.css",
 
         // function call
         "support.function.sass",
@@ -1330,7 +1362,7 @@ module.exports = function (colors) {
         "keyword.control.at-rule.css.sass"
       ],
       settings: {
-        foreground: colors.specialWordB.hex(),
+        foreground: colors.cssSpecialWord.hex(),
         fontStyle: "italic"
       }
     },
@@ -1360,20 +1392,45 @@ module.exports = function (colors) {
       }
     },
     {
-      name: "Attribute Name for CSS and SCSS",
+      name: "Attribute Name for CSS, SCSS and LESS",
       scope: [
-        "meta.attribute-selector.css entity.other.attribute-name.attribute",
-        "meta.attribute-selector.scss entity.other.attribute-name.attribute",
-        "meta.attribute-selector.sass entity.other.attribute-name.attribute",
+        "meta.attribute-selector.css entity.other.attribute-name",
         "meta.attribute-selector.less entity.other.attribute-name.attribute",
         "entity.other.attribute-name.css.sass",
         "keyword.operator.attribute-selector.css.sass",
-        "meta.attribute-selector"
+        "meta.attribute-selector",
+
+        // SCSS
+        "source.css.scss entity.other.attribute-name.attribute",
+        "meta.attribute-selector.scss",
+        "meta.attribute-selector.scss keyword.operator.scss",
+        "meta.attribute-selector.scss punctuation.definition.string.begin.scss",
+        "meta.attribute-selector.scss punctuation.definition.string.end.scss",
+        "meta.attribute-selector.scss punctuation.definition.attribute-selector.begin.bracket.square.scss",
+        "meta.attribute-selector.scss punctuation.definition.attribute-selector.end.bracket.square.scss",
+        // SASS
+        "entity.other.attribute-selector.sass",
+        // CSS
+        "meta.attribute-selector.css",
+        "meta.attribute-selector.css keyword.operator.pattern.css",
+        "meta.attribute-selector.css punctuation.definition.entity.begin.bracket.square.css",
+        "meta.attribute-selector.css punctuation.definition.entity.end.bracket.square.css"
       ],
       settings: {
         foreground: colors.cssAttribute.hex()
       }
     },
+    {
+      name: "SASS Interpolation",
+      scope:[
+        "support.function.interpolation.sass",
+        "punctuation.definition.interpolation.begin.bracket.curly.scss",
+        "punctuation.definition.interpolation.end.bracket.curly.scss"
+      ],
+      settings: {
+        foreground: colors.sassInterpolation.hex()
+      }
+    }
   ]
 
   // languages

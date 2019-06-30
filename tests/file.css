@@ -13,6 +13,53 @@
  * general
  */
 
+
+ #container > .box {
+    float: left;
+    padding-bottom: 15px !important;
+}
+h2 ~ p {
+    margin-bottom: 20px;
+}
+p + p {
+    text-indent: 1.5em;
+    margin-bottom: 0;
+ }
+ input[type="text"] {
+    background-color: #444;
+    width: 200px;
+ }
+ a:hover {
+    color: red;
+ }
+
+ .container:before {
+    content: "";
+    display: block;
+    width: 50px;
+    height: 50px;
+    background-color: #141414;
+ }
+ .page-title {
+    margin-top: 0px;
+  }
+  .group-container {
+    white-space: nowrap !important;
+  }
+  .group-container .single-group {
+    vertical-align: top;
+    display: inline-block;
+    white-space: normal;
+  }
+  .jumbotron {
+    position: relative;
+    overflow: hidden;
+    display: block;
+    padding: 0;
+    background-color: #f0f0f0;
+  }
+
+
 /* whitespace */
 #main
 {

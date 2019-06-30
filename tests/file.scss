@@ -12,7 +12,7 @@ div {
 
     // parent selector
     &:hover {
-        text-decoration: underline;
+        text-decoration: underline !important;
     }
     body.firefox & {
         font-weight: normal;
@@ -676,7 +676,19 @@ svg|[fill] { /* attribute */
 
     /* animatable */
     transition-property: height, font-size, visibility;
+    
 }
+
+@mixin corner-icon($name, $top-or-bottom, $left-or-right) {
+    .icon-#{$name} {
+      background-image: url("/icons/#{$name}.svg");
+      position: absolute;
+      #{$top-or-bottom}: 0;
+      #{$left-or-right}: 0;
+    }
+  }
+  
+  @include corner-icon("mail", top, left);
 
 /*
  * modifiers

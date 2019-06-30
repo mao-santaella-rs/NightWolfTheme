@@ -50,4 +50,24 @@ colors.punctuation =          colors.regularText
 colors.deprecated =           colors.danger
 colors.comment =              Color.rgb(100,120,130)
 
+// Markup
+colors.htmlTag =              colors.contrastText
+colors.metaTag =              colors.text
+colors.tagAttribute =         colors.specialWordB
+colors.pugClass =             colors.variable
+
+// Stylesheets
+colors.cssAttribute =         colors.syntaxGreen
+colors.cssValue =             colors.syntaxOrange
+colors.cssTag =               colors.syntaxRed
+colors.cssClass =             colors.syntaxYellow
+colors.cssId =                colors.syntaxBlue
+colors.cssProperty =          colors.syntaxCyan
+colors.cssUnits =             colors.number
+colors.cssSpecialWord =       colors.syntaxViolet
+colors.cssPseudoClass =       colors.syntaxPurple
+colors.sassFunction =         colors.syntaxBlue
+colors.sassInterpolation =    colors.syntaxRed
+
+
 module.exports = colors
