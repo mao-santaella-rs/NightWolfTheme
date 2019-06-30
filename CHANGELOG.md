@@ -2,6 +2,13 @@
 
 All notable changes to the "night-owl" extension are be documented in this file.
 
+## [1.5.1] - 06-30-2019
+
+### Changed
+- Better CSS, SASS, SCSS colors
+
+---
+
 ## [1.5.0] - 06-27-2019
 
 ### Changed
