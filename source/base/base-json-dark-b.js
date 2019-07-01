@@ -546,15 +546,6 @@ module.exports = function (colors) {
       }
     },
     {
-      // pug classes
-      name: "Pug Classes",
-      scope: "entity.other.attribute-name.class.pug",
-      settings: {
-        foreground: colors.pugClass.hex(),
-        fontStyle: "italic"
-      }
-    },
-    {
       // function name
       name: "Support Variable Property",
       scope: "support.variable.property",
@@ -1943,6 +1934,63 @@ module.exports = function (colors) {
       ],
       settings: {
         foreground: colors.regularText.hex()
+      }
+    },
+    // PUG
+    {
+      // pug classes
+      name: "Pug Classes",
+      scope: "entity.other.attribute-name.class.pug",
+      settings: {
+        foreground: colors.pugClass.hex(),
+        fontStyle: "italic"
+      }
+    },
+    {
+      name: "PUG for loop",
+      scope: [
+        "text.pug keyword.control.loop.js"
+      ],
+      settings: {
+        foreground: colors.syntaxPurple.hex(),
+        fontStyle: "italic"
+      }
+    },
+    {
+      name: "PUG operators",
+      scope: [
+        "text.pug keyword.operator.relational.js"
+      ],
+      settings: {
+        foreground: colors.syntaxPurple.hex(),
+      }
+    },
+    {
+      name: "PUG flow",
+      scope:[
+        "text.pug storage.type.function.pug"
+      ],
+      settings: {
+        foreground: colors.syntaxPurple.hex(),
+      }
+    },
+    {
+      name: "PUG string interpolation",
+      scope: [
+        "text.pug string.interpolated.pug"
+      ],
+      settings: {
+        foreground: colors.syntaxRed.hex(),
+      }
+    },
+    {
+      name: "PUG storage type",
+      scope: [
+        "text.pug storage.type.js",
+        "storage.type.import.include.pug"
+      ],
+      settings: {
+        foreground: colors.syntaxCyan.hex(),
       }
     }
   ]
