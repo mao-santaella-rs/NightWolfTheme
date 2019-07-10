@@ -30,6 +30,7 @@ colors.gitIgnoreExplorer =    Color.rgb(140,140,140)
 //INTERFACE COLORS
 colors.interBackground =      colors.principal
 colors.interBorder =          colors.principal_1
+colors.notificationBadge =    colors.infoLight
 
 // SYNTAX COLORS
 colors.variable =             colors.syntaxYellow

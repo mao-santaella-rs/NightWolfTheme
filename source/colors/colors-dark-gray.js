@@ -1,30 +1,36 @@
 const Color = require("color")
 const colors = require("./common-colors")
 
-// THEME COLORS
-colors.principal =            Color.rgb(28,28,28)
-colors.principal_0 =          Color.rgb(20,20,20)
-colors.principal_1 =          Color.rgb(36,36,36)
-colors.principal_2 =          Color.rgb(56,56,56)
-colors.principal_3 =          Color.rgb(84,84,84)
-colors.principal_4 =          Color.rgb(154,154,154)
+colors.principal =            Color.rgb(27,27,27)
+colors.principal_0 =          Color.rgb(36,36,36)
+colors.principal_1 =          Color.rgb(46,46,46)
+colors.principal_2 =          Color.rgb(61,61,61)
+colors.principal_3 =          Color.rgb(82,82,82)
+colors.principal_4 =          Color.rgb(124,124,124)
+colors.principal_5 =          Color.rgb(157,157,157)
 
-colors.text =                 Color.rgb(224,224,244)
+colors.text =                 Color.rgb(206,206,206)
 
-colors.selection =            colors.principal_3
-colors.selectionHighlight =   colors.principal_2
-colors.selectionInactive =    colors.selection
-colors.hoverHiglight =        colors.selection
-colors.wordHighlightStrong =  colors.selection
+colors.selection =            colors.principal_2
+colors.selectionHighlight =   colors.principal_1
+colors.selectionInactive =    colors.principal_2
+colors.hoverHiglight =        colors.principal_1
+colors.wordHighlightStrong =  colors.principal_1
 colors.findMatch =            colors.principal_3
-colors.findHighlight =        colors.selectionHighlight
-colors.rangeHiglight =        colors.principal_1
+colors.findHighlight =        colors.principal_1
+colors.rangeHiglight =        colors.principal_2
 colors.lineHiglight =         colors.principal_0
 
-colors.comment =              Color.rgb(100,120,130)
+colors.gitInsertedBg =        Color.rgb(5,20,5)
+colors.gitRemovedBg =         Color.rgb(20,0,0)
+colors.gitIgnoreExplorer =    Color.rgb(140,140,140)
+
+//INTERFACE COLORS
+colors.interBackground =      colors.principal
+colors.interBorder =          colors.principal_1
+colors.notificationBadge =    colors.white
 
 // SYNTAX COLORS
-// General colors
 colors.variable =             colors.syntaxYellow
 colors.variableProperty =     colors.text
 colors.contrastText =         colors.syntaxRed
@@ -41,6 +47,7 @@ colors.boolean =              colors.contrastText
 colors.nullUnd =              colors.contrastText
 colors.punctuation =          colors.regularText
 colors.deprecated =           colors.danger
+colors.comment =              Color.rgb(100,120,130)
 
 // Markup
 colors.htmlTag =              colors.contrastText
@@ -49,13 +56,16 @@ colors.tagAttribute =         colors.specialWordB
 colors.pugClass =             colors.variable
 
 // Stylesheets
-colors.cssAttribute =         colors.functionName
-colors.cssValue =             colors.text
-colors.cssTag =               colors.contrastText
-colors.cssClass =             colors.variable
-colors.cssId =                colors.specialWordA
-colors.cssProperty =          colors.functionName
+colors.cssAttribute =         colors.syntaxGreen
+colors.cssValue =             colors.syntaxOrange
+colors.cssTag =               colors.syntaxRed
+colors.cssClass =             colors.syntaxYellow
+colors.cssId =                colors.syntaxBlue
+colors.cssProperty =          colors.syntaxCyan
 colors.cssUnits =             colors.number
-colors.cssSpecialWord =       colors.functionName
+colors.cssSpecialWord =       colors.syntaxViolet
+colors.cssPseudoClass =       colors.syntaxPurple
+colors.sassFunction =         colors.syntaxBlue
+colors.sassInterpolation =    colors.syntaxRed
 
 module.exports = colors

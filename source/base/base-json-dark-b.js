@@ -169,7 +169,7 @@ module.exports = function (colors) {
     "scrollbarSlider.hoverBackground": colors.principal_3.hex() + "80",
 
     // Badges are small information labels, for example, search results count.
-    "badge.background": colors.infoLight.hex(),
+    "badge.background": colors.notificationBadge.hex(),
     "badge.foreground": colors.principal.hex(),
 
     // Breadcrumbs
@@ -240,7 +240,7 @@ module.exports = function (colors) {
     // Activity bar item foreground color when it is inactive.
     "activityBar.inactiveForeground": colors.principal_3.hex(),
     // Activity notification badge background color.
-    "activityBarBadge.background": colors.infoLight.hex(),
+    "activityBarBadge.background": colors.notificationBadge.hex(),
     // Activity notification badge foreground color.
     "activityBarBadge.foreground": colors.principal.hex(),
 
