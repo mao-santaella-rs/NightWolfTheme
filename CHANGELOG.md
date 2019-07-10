@@ -2,6 +2,14 @@
 
 All notable changes to the "night-owl" extension are be documented in this file.
 
+## [1.6.0] - 07-10-2019
+
+### Changed
+- Added more colors for Dark Gray Interface
+- Re-arrange colors in Dark Gray Interface for better contrast and legibility
+
+---
+
 ## [1.5.1] - 06-30-2019
 
 ### Changed
