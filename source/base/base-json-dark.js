@@ -1,11 +1,11 @@
 module.exports = function (colors) {
   const themeColors = {
     // Editor general
-    "editor.background": colors.principal.hex(),
+    "editor.background": colors.interBackground.hex(),
     "editor.foreground": colors.text.hex(),
     "editorLineNumber.foreground": colors.principal_2.hex(),
-    "editorLineNumber.activeForeground": colors.principal_4.hex(),
-    "editorCursor.foreground": colors.contrastLight.hex(),
+    "editorLineNumber.activeForeground": colors.principal_5.hex(),
+    "editorCursor.foreground": colors.contrast.hex(),
     "editorLink.activeForeground": null,
 
     // An extra border around active elements to separate them from others for greater contrast.
@@ -13,11 +13,11 @@ module.exports = function (colors) {
     // An extra border around elements to separate them from others for greater contrast.
     "contrastBorder": null,
     // Overall border color for focused elements. This color is only used if not overridden by a component.
-    "focusBorder": colors.principal_2.hex(),
+    "focusBorder": colors.principal_3.hex(),
     // Overall foreground color. This color is only used if not overridden by a component.
     "foreground": colors.text.hex(),
     // Shadow color of widgets such as Find/Replace inside the editor.
-    "widget.shadow": colors.principal_0.hex(),
+    "widget.shadow": colors.black.hex() + "30",
     // Background color of text selections in the workbench (for input fields or text areas, does not apply to selections within the editor and the terminal).
     "selection.background": colors.info.hex(),
     // labels in the welcome page
@@ -28,18 +28,18 @@ module.exports = function (colors) {
     // Links
     "textLink.foreground": colors.syntaxBlue.hex(),
     // Links hover
-    "textLink.activeForeground": colors.syntaxBlue.lighten(0.5).hex(),
+    "textLink.activeForeground": colors.syntaxBlue.darken(0.3).hex(),
 
     // Background color for block quotes in text.
-    "textBlockQuote.background": colors.principal_2.hex(),
+    "textBlockQuote.background": colors.text.hex(),
     // Border color for block quotes in text.
     "textBlockQuote.border": colors.text.hex(),
     // Background color for code blocks in text.
-    "textCodeBlock.background": colors.principal_3.hex(),
+    "textCodeBlock.background": colors.principal_0.hex(),
     // Foreground color for preformatted text segments.
     "textPreformat.foreground": colors.text.hex(),
     // Color for text separators.
-    "textSeparator.foreground": colors.text.hex(),
+    "textSeparator.foreground": colors.principal_0.hex(),
 
     // Color of the editor selection.
     "editor.selectionBackground": colors.selection.hex(),
@@ -76,15 +76,19 @@ module.exports = function (colors) {
     "editor.rangeHighlightForeground": colors.text.hex(),
 
     // cuando me paro en un bracket me muestar los dos con este color
-    "editorBracketMatch.background": colors.principal_2.hex(),
-    "editorBracketMatch.border": null,
+    "editorBracketMatch.background": colors.principal_0.hex(),
+    "editorBracketMatch.border": colors.principal_4.hex(),
+
 
     // cuando se activa la viusualizacion de los whitespaces
-    "editorWhitespace.foreground": colors.principal_2.hex(),
+    "editorWhitespace.foreground": colors.principal_1.hex(),
 
     // linea vertical que indica la indentacion
-    "editorIndentGuide.background": colors.principal_2.hex(),
-    "editorIndentGuide.activeBackground": colors.principal_4.hex(),
+    "editorIndentGuide.background": colors.principal_1.hex(),
+    "editorIndentGuide.activeBackground": colors.principal_3.hex(),
+
+    // la linea vertical en el codigo super fastidiosa!
+    "editorRuler.foreground": colors.principal.hex(),
 
 
 
@@ -99,26 +103,29 @@ module.exports = function (colors) {
     "editorWarning.border": null,
 
     // el editor gutter es la parte donde esta el numero de linea y las indicaciones de git dentro del archivo
-    "editorGutter.background": colors.principal.hex(),
+    "editorGutter.background": colors.interBackground.hex(),
     "editorGutter.modifiedBackground": colors.warning.hex(),
-    "editorGutter.addedBackground": colors.succesLight.hex(),
+    "editorGutter.addedBackground": colors.succes.hex(),
     "editorGutter.deletedBackground": colors.danger.hex(),
 
     // el widget como el find and replace
-    "editorWidget.border": colors.principal_4.hex(),
-    "editorWidget.background": colors.principal_2.hex(),
+    "editorWidget.border": colors.principal_2.hex(),
+    "editorWidget.background": colors.principal_1.hex(),
+    "editorWidget.resizeBorder": colors.infoLight.hex(),
 
     // el cuadro que sale cuando estamos escribiendo proponiendo opciones
-    "editorSuggestWidget.background": colors.principal_1.hex(),
-    "editorSuggestWidget.border": colors.principal_2.hex(),
-    "editorSuggestWidget.foreground": colors.principal_4.hex(),
+    "editorSuggestWidget.background": colors.principal_0.hex(),
+    "editorSuggestWidget.border": colors.principal_1.hex(),
+    "editorSuggestWidget.foreground": colors.principal_5.hex(),
     "editorSuggestWidget.highlightForeground": colors.text.hex(),
-    "editorSuggestWidget.selectedBackground": colors.principal_3.hex(),
-    "editorHoverWidget.background": colors.principal.hex(),
-    "editorHoverWidget.border": colors.principal_4.hex(),
+    "editorSuggestWidget.selectedBackground": colors.principal_1.hex(),
+    
+    // el cuadro que sale cuando ubico el cursor encima de un palabra importante
+    "editorHoverWidget.background": colors.principal_0.hex(),
+    "editorHoverWidget.border": colors.principal_1.hex(),
 
-
-    "editorMarkerNavigation.background": colors.principal_2.hex(),
+    // el cuadro que sale cuando hago click en 'Peek Problem' en el editorHoverWidget
+    "editorMarkerNavigation.background": colors.principal_0.hex(),
     "editorMarkerNavigationInfo.background": colors.info.hex(),
     "editorMarkerNavigationError.background": colors.danger.hex(),
     "editorMarkerNavigationWarning.background": colors.warning.hex(),
@@ -135,17 +142,18 @@ module.exports = function (colors) {
 
     // inputs
     // Dropdowns
-    "dropdown.background": colors.principal.hex(),
-    "dropdown.border": colors.principal_2.hex(),
+    // el background del cuadro del input no del menu como tal
+    "dropdown.background": colors.principal_0.hex(),
+    "dropdown.border": colors.principal_0.hex(),
     "dropdown.foreground": colors.text.hex(),
-    "dropdown.listBackground": colors.principal_1.hex(),
+    "dropdown.listBackground": colors.principal_0.hex(),
     // Inputs text
-    "input.background": colors.principal_1.hex(),
-    "input.border": colors.principal_2.hex(),
+    "input.background": colors.principal.hex(),
+    "input.border": colors.principal_1.hex(),
     "input.foreground": colors.text.hex(),
-    "input.placeholderForeground": colors.principal_4.hex(),
+    "input.placeholderForeground": colors.principal_3.hex(),
     // Input Select
-    "inputOption.activeBorder": colors.principal_4.hex(),
+    "inputOption.activeBorder": colors.principal_5.hex(),
     // Input Validation
     "inputValidation.errorBackground": colors.dangerDark.hex(),
     "inputValidation.errorBorder": colors.danger.hex(),
@@ -156,45 +164,56 @@ module.exports = function (colors) {
 
     // Scrollbar
     "scrollbar.shadow": null,
-    "scrollbarSlider.activeBackground": colors.principal_4.hex() + "50",
-    "scrollbarSlider.background": colors.principal_4.hex() + "50",
-    "scrollbarSlider.hoverBackground": colors.principal_4.hex() + "80",
+    "scrollbarSlider.activeBackground": colors.principal_3.hex() + "50",
+    "scrollbarSlider.background": colors.principal_3.hex() + "50",
+    "scrollbarSlider.hoverBackground": colors.principal_3.hex() + "80",
 
     // Badges are small information labels, for example, search results count.
-    "badge.background": colors.principal_4.hex(),
-    "badge.foreground": colors.white.hex(),
+    "badge.background": colors.notificationBadge.hex(),
+    "badge.foreground": colors.principal.hex(),
 
     // Breadcrumbs
     "breadcrumb.foreground": colors.info.hex(),
     "breadcrumb.focusForeground": colors.infoLight.hex(),
-    "breadcrumb.activeSelectionForeground": colors.white.hex(),
+    "breadcrumb.activeSelectionForeground": colors.infoLight.hex(),
     "breadcrumbPicker.background": colors.principal_0.hex(),
+
+    // It is the bar on the left that contains the tree view and the explorer
+    // Side Bar background color.
+    "sideBar.background": colors.interBackground.hex(),
+    // Side Bar foreground color. The Side Bar is the container for views like Explorer and Search.
+    "sideBar.foreground": colors.principal_5.hex(),
+    // Side Bar border color on the side separating the editor.
+    "sideBar.border": colors.interBorder.hex(),
+    // Side Bar title foreground color.
+    "sideBarTitle.foreground": colors.principal_5.hex(),
+    // Side Bar section header background color.
+    "sideBarSectionHeader.background": colors.principal_0.hex(),
+    // Side Bar section header foreground color.
+    "sideBarSectionHeader.foreground": colors.principal_5.hex(),
+    // Drag and drop feedback color for the side bar sections. The color should have transparency so that the side bar sections can still shine through. The side bar is the container for views like explorer and search.
+    "sideBar.dropBackground": null,
 
     // Barra de la izquierda
     // Colors for list and trees like the File Explorer.
-    // List/Tree background color for the selected item when the list/tree is active.
-    "list.activeSelectionBackground": colors.principal_3.hex(),
-    // List/Tree foreground color for the selected item when the list/tree is active.
-    "list.activeSelectionForeground": colors.white.hex(),
+    // cuando hago click en un archivo
+    "list.activeSelectionBackground": colors.principal_2.hex(),
+    "list.activeSelectionForeground": colors.text.hex(),
+    // cuando me ubico con el cursor en los archivos
+    "list.hoverBackground": colors.principal_0.hex(),
+    "list.hoverForeground": colors.principal_5.hex(),
+    // cuando ya no estoy ubicado en el list tree ej. cuando estoy editando un archivo
+    "list.inactiveSelectionBackground": colors.principal_1.hex(),
+    "list.inactiveSelectionForeground": colors.text.hex(),
+    // Cuando selecciono un archivo con el teclado
+    "list.focusBackground": colors.principal_0.hex(),
+    "list.focusForeground": colors.principal_5.hex(),
     // List/Tree foreground color for invalid items, for example an unresolved root in explorer.
     "list.invalidItemForeground": colors.contrastDark.hex(),
-    // List/Tree drag and drop background when moving items around using the mouse.
-    "list.dropBackground": colors.principal.hex(),
-    // List/Tree background color for the focused item when the list/tree is active.
-    "list.focusBackground": colors.principal_2.hex(),
-    // List/Tree foreground color for the focused item when the list/tree is active. An active list/tree has keyboard focus, an inactive does not.
-    "list.focusForeground": colors.white.hex(),
+    // cuando arrstro un archivo o carpeta a otra carpeta
+    "list.dropBackground": colors.principal_2.hex(),
     // List/Tree foreground color of the match highlights when searching inside the list/tree.
-    "list.highlightForeground": colors.white.hex(),
-    // List/Tree background when hovering over items using the mouse.
-    "list.hoverBackground": colors.principal_1.hex(),
-    // List/Tree foreground when hovering over items using the mouse.
-    "list.hoverForeground": colors.white.hex(),
-    // List/Tree background color for the selected item when the list/tree is inactive.
-    "list.inactiveSelectionBackground": colors.principal_1.hex(),
-    // List/Tree foreground color for the selected item when the list/tree is inactive. An active list/tree has keyboard focus, an inactive does not.
-    "list.inactiveSelectionForeground": colors.white.hex(),
-
+    "list.highlightForeground": colors.principal_5.hex(),
 
     // List background color for the focused item when the list is inactive. An active list has keyboard focus, an inactive does not. Currently only supported in lists.
     "list.inactiveFocusBackground": null,
@@ -209,107 +228,89 @@ module.exports = function (colors) {
     // List/Tree Filter Widget's outline color when no match is found of typed text when searching inside the list/tree.
     "listFilterWidget.noMatchesOutline": null,
 
-
-
-
-
-    // Activity bar es la barra de iconos de la izquierda
+    // Activity bar es la primera barra de iconos de la izquierda
     // Activity Bar background color.
-    "activityBar.background": colors.principal.hex(),
+    "activityBar.background": colors.interBackground.hex(),
     // Drag and drop feedback color for the Activity Bar items.
-    "activityBar.dropBackground": colors.principal_4.hex(),
+    "activityBar.dropBackground": colors.principal_2.hex(),
     // Activity bar foreground color (for example used for the icons).
-    "activityBar.foreground": colors.principal_4.hex(),
+    "activityBar.foreground": colors.principal_5.hex(),
     // Activity Bar border color with the Side Bar.
-    "activityBar.border": colors.principal.hex(),
-    // Activity notification badge background color.
-    "activityBarBadge.background": colors.principal_3.hex(),
-    // Activity notification badge foreground color.
-    "activityBarBadge.foreground": colors.white.hex(),
+    "activityBar.border": null,
     // Activity bar item foreground color when it is inactive.
-    // "activityBar.inactiveForeground": null,
-
-    // It is the bar on the left that contains the tree view and the explorer
-    // Side Bar background color.
-    "sideBar.background": colors.principal.hex(),
-    // Side Bar foreground color. The Side Bar is the container for views like Explorer and Search.
-    "sideBar.foreground": colors.text.hex(),
-    // Side Bar border color on the side separating the editor.
-    "sideBar.border": colors.principal_2.hex(),
-    // Side Bar title foreground color.
-    "sideBarTitle.foreground": colors.principal_4.hex(),
-    // Side Bar section header background color.
-    "sideBarSectionHeader.background": colors.principal.hex(),
-    // Side Bar section header foreground color.
-    "sideBarSectionHeader.foreground": colors.principal_4.hex(),
-    // Drag and drop feedback color for the side bar sections. The color should have transparency so that the side bar sections can still shine through. The side bar is the container for views like explorer and search.
-    // "sideBar.dropBackground": null
+    "activityBar.inactiveForeground": colors.principal_3.hex(),
+    // Activity notification badge background color.
+    "activityBarBadge.background": colors.notificationBadge.hex(),
+    // Activity notification badge foreground color.
+    "activityBarBadge.foreground": colors.principal.hex(),
 
     // Editor Groups are the containers of editors. There can be many editor groups. A Tab is the container of an editor. Multiple Tabs can be opened in one editor group.
-    // Background color when dragging editors around.
-    "editorGroup.background": colors.principal_3.hex(),
     // Color to separate multiple editor groups from each other.
-    "editorGroup.border": colors.principal_2.hex(),
+    "editorGroup.border": colors.interBorder.hex(),
     // Background color when dragging editors around.
     "editorGroup.dropBackground": colors.contrast.hex(),
     // Background color of the editor group title header when Tabs are disabled (set "workbench.editor.showTabs": false).
-    "editorGroupHeader.noTabsBackground": colors.principal.hex(),
+    "editorGroupHeader.noTabsBackground": colors.danger.hex(),
     // Background color of the Tabs container.
-    "editorGroupHeader.tabsBackground": colors.principal.hex(),
+    "editorGroupHeader.tabsBackground": colors.interBackground.hex(),
     // Border color of the editor group title header when tabs are enabled.
-    "editorGroupHeader.tabsBorder": colors.principal_2.hex(),
+    "editorGroupHeader.tabsBorder": colors.interBorder.hex(),
 
     // Las pestanas de los archivos abiertos
-    "tab.activeBackground": colors.principal_1.hex(),
+    "tab.activeBackground": colors.principal_0.hex(),
     "tab.activeForeground": colors.text.hex(),
-    "tab.activeBorder": colors.principal_4.hex(),
-    "tab.border": colors.principal_1.hex(),
-    "tab.inactiveBackground": colors.principal_0.hex(),
+    "tab.activeBorder": colors.contrast.hex(),
+    "tab.border": colors.interBorder.hex(),
+    "tab.inactiveBackground": colors.principal.hex(),
     "tab.inactiveForeground": colors.text.hex(),
     "tab.unfocusedActiveForeground": colors.text.hex(),
-    "tab.unfocusedActiveBorder": colors.principal_3.hex(),
+    "tab.unfocusedActiveBorder": colors.interBorder.hex(),
     "tab.unfocusedInactiveForeground": colors.text.hex(),
 
-    "menubar.selectionForeground": colors.white.hex(),
-    "menubar.selectionBackground": colors.principal_0.hex(),
+    // barra de menus
+    "menubar.selectionForeground": colors.text.hex(),
+    "menubar.selectionBackground": colors.principal_1.hex(),
     "menubar.selectionBorder": null,
-    "menu.foreground": colors.principal_4.hex(),
+    "menu.foreground": colors.principal_5.hex(),
     "menu.background": colors.principal_0.hex(),
-    "menu.selectionForeground": colors.white.hex(),
-    "menu.selectionBackground": colors.principal_3.hex(),
+    "menu.selectionForeground": colors.text.hex(),
+    "menu.selectionBackground": colors.principal_1.hex(),
     "menu.selectionBorder": null,
-    "menu.separatorBackground": colors.principal_3.hex(),
+    "menu.separatorBackground": colors.interBorder.hex(),
 
     // git in editor interfece
-    "diffEditor.insertedTextBackground": colors.succesDark.darken(0.5).hex(),
+    "diffEditor.insertedTextBackground": colors.gitInsertedBg.hex(),
     "diffEditor.insertedTextBorder": null,
-    "diffEditor.removedTextBackground": colors.dangerDark.darken(0.5).hex(),
+    "diffEditor.removedTextBackground": colors.gitRemovedBg.hex(),
     "diffEditor.removedTextBorder": null,
 
     "debugExceptionWidget.background": colors.principal.hex(),
-    "debugExceptionWidget.border": colors.principal_4.hex(),
+    "debugExceptionWidget.border": colors.interBorder.hex(),
 
-    "peekView.border": colors.principal_4.hex(),
+    // cuando selecciono una palabra y doy shift + f12
+    "peekView.border": colors.infoLight.hex(),
     "peekViewEditor.background": colors.principal.hex(),
-    "peekViewEditor.matchHighlightBackground": colors.contrast.hex(),
-    "peekViewResult.background": colors.principal.hex(),
-    "peekViewResult.fileForeground": colors.principal_4.hex(),
-    "peekViewResult.lineForeground": colors.principal_4.hex(),
-    "peekViewResult.matchHighlightBackground": colors.white.hex(),
-    "peekViewResult.selectionBackground": colors.principal_2.hex(),
-    "peekViewResult.selectionForeground": colors.principal_4.hex(),
-    "peekViewTitle.background": colors.principal.hex(),
-    "peekViewTitleDescription.foreground": colors.principal_4.hex(),
-    "peekViewTitleLabel.foreground": colors.principal_4.hex(),
+    "peekViewEditor.matchHighlightBackground": colors.principal_2.hex(),
+    "peekViewResult.background": colors.principal_0.hex(),
+    "peekViewResult.fileForeground": colors.text.hex(),
+    "peekViewResult.lineForeground": colors.text.hex(),
+    "peekViewResult.matchHighlightBackground": colors.principal_2.hex(),
+    "peekViewResult.selectionBackground": colors.principal_1.hex(),
+    "peekViewResult.selectionForeground": colors.text.hex(),
+    "peekViewTitle.background": colors.principal_0.hex(),
+    "peekViewTitleDescription.foreground": colors.text.hex(),
+    "peekViewTitleLabel.foreground": colors.text.hex(),
 
     // GIT MERGE CONFLICTS
-    "merge.currentHeaderBackground": colors.succes.darken(0.55).hex(),
+    "merge.currentHeaderBackground": colors.succesLight.hex() + "50",
     "merge.currentContentBackground": null,
-    "merge.incomingHeaderBackground": colors.info.darken(0.7).hex(),
+    "merge.incomingHeaderBackground": colors.infoLight.hex() + "50",
     "merge.incomingContentBackground": null,
     "merge.border": null,
-    "merge.commonContentBackground": null,
+    "merge.commonContentBackground": colors.warningLight.hex() + "50",
     "merge.commonHeaderBackground": null,
+    
+    // color en el scroll
     "editorOverviewRuler.currentContentForeground": colors.contrast.hex(),
     "editorOverviewRuler.incomingContentForeground": colors.contrast.hex(),
     "editorOverviewRuler.commonContentForeground": colors.contrast.hex(),
@@ -320,15 +321,15 @@ module.exports = function (colors) {
     //  Color of the overview ruler border.
     "editorOverviewRuler.border": null,
     // Overview ruler marker color for find matches. The color must not be opaque so as not to hide underlying decorations.
-    "editorOverviewRuler.findMatchForeground": colors.principal_4.hex(),
+    "editorOverviewRuler.findMatchForeground": colors.principal_1.hex(),
     // Overview ruler marker color for highlighted ranges, like by the Quick Open, Symbol in File and Find features. The color must not be opaque so as not to hide underlying decorations.
-    "editorOverviewRuler.rangeHighlightForeground": colors.white.hex(),
+    "editorOverviewRuler.rangeHighlightForeground": colors.principal_3.hex(),
     // Overview ruler marker color for selection highlights. The color must not be opaque so as not to hide underlying decorations.
-    "editorOverviewRuler.selectionHighlightForeground": colors.principal_3.hex(),
+    "editorOverviewRuler.selectionHighlightForeground": colors.principal_2.hex(),
     // Overview ruler marker color for symbol highlights. The color must not be opaque so as not to hide underlying decorations.
-    "editorOverviewRuler.wordHighlightForeground": colors.white.hex(),
+    "editorOverviewRuler.wordHighlightForeground": colors.principal_4.hex(),
     // Overview ruler marker color for write-access symbol highlights. The color must not be opaque so as not to hide underlying decorations.
-    "editorOverviewRuler.wordHighlightStrongForeground": colors.white.hex(),
+    "editorOverviewRuler.wordHighlightStrongForeground": colors.principal_4.hex(),
     // Overview ruler marker color for modified content.
     "editorOverviewRuler.modifiedForeground": colors.warningLight.hex(),
     // Overview ruler marker color for added content.
@@ -342,63 +343,73 @@ module.exports = function (colors) {
     // Overview ruler marker color for infos.
     "editorOverviewRuler.infoForeground": colors.info.hex(),
     // Overview ruler marker color for matching brackets.
-    "editorOverviewRuler.bracketMatchForeground": colors.text.hex(),
+    "editorOverviewRuler.bracketMatchForeground": colors.principal_2.hex(),
 
 
-
+    // Panels are shown below the editor area and contain views like Output and Integrated Terminal.
     "panel.background": colors.principal.hex(),
-    "panel.border": colors.principal_2.hex(),
-    "panelTitle.activeBorder": colors.principal_4.hex(),
-    "panelTitle.activeForeground": colors.white.hex(),
-    "panelTitle.inactiveForeground": colors.text.hex(),
+    "panel.border": colors.interBorder.hex(),
+    "panelTitle.activeBorder": colors.contrast.hex(),
+    "panelTitle.activeForeground": colors.text.hex(),
+    "panelTitle.inactiveForeground": colors.principal_4.hex(),
 
+    // The Status Bar is shown in the bottom of the workbench.
     "statusBar.background": colors.principal.hex(),
-    "statusBar.foreground": colors.principal_4.hex(),
-    "statusBar.border": colors.principal_2.hex(),
+    "statusBar.foreground": colors.principal_5.hex(),
+    "statusBar.border": colors.interBorder.hex(),
 
     "statusBar.debuggingBackground": colors.warning.hex(),
-    "statusBar.debuggingForeground": colors.principal_0.hex(),
+    "statusBar.debuggingForeground": colors.principal.hex(),
     "statusBar.debuggingBorder": colors.warning.hex(),
 
     "statusBar.noFolderForeground": null,
     "statusBar.noFolderBackground": colors.principal.hex(),
     "statusBar.noFolderBorder": colors.contrast.hex(),
-    "statusBarItem.activeBackground": colors.principal_2.hex(),
-    "statusBarItem.hoverBackground": colors.principal_2.hex(),
-    "statusBarItem.prominentBackground": colors.principal_2.hex(),
-    "statusBarItem.prominentHoverBackground": colors.principal_2.hex(),
+    
+    // cauando doy click en los botones de la barra (onClick)
+    "statusBarItem.activeBackground": colors.principal_0.hex(),
+    "statusBarItem.hoverBackground": colors.principal_1.hex(),
+    "statusBarItem.prominentBackground": colors.principal_3.hex(),
+    "statusBarItem.prominentForeground": colors.text.hex(),
+    "statusBarItem.prominentHoverBackground": colors.principal_3.hex(),
 
+    
     "titleBar.activeBackground": colors.principal.hex(),
-    "titleBar.activeForeground": colors.text.hex(),
-    "titleBar.inactiveBackground": colors.principal_0.hex(),
-    "titleBar.inactiveForeground": null,
+    "titleBar.activeForeground": colors.principal_5.hex(),
+    "titleBar.inactiveBackground": colors.principal.hex(),
+    "titleBar.inactiveForeground": colors.principal_3.hex(),
+
+
+    "notificationCenter.border": colors.interBorder.hex(),
+    "notificationCenterHeader.foreground": colors.principal_5.hex(),
+    "notificationCenterHeader.background": colors.principal_0.hex(),
+    "notificationToast.border": colors.interBorder.hex(),
 
     "notifications.background": colors.principal.hex(),
-    "notifications.foreground": colors.white.hex(),
+    "notifications.foreground": colors.text.hex(),
+    "notifications.border": colors.interBorder.hex(),
     "notificationLink.foreground": colors.contrast.hex(),
 
-    "pickerGroup.foreground": colors.contrastLight.hex(),
-    "pickerGroup.border": colors.principal.hex(),
+    // extra textos en el Command Palette
+    "pickerGroup.foreground": colors.text.hex(),
+    // separador en el Command Palette
+    "pickerGroup.border": colors.interBorder.hex(),
 
     "debugToolBar.background": colors.principal_0.hex(),
     "debugToolBar.border": null,
 
-    "welcomePage.buttonBackground": colors.principal.hex(),
-    "welcomePage.buttonHoverBackground": colors.principal.hex(),
+    "welcomePage.buttonBackground": colors.principal_0.hex(),
+    "welcomePage.buttonHoverBackground": colors.principal_1.hex(),
     "walkThrough.embeddedEditorBackground": colors.principal.hex(),
-
 
     // Git colors
     "gitDecoration.addedResourceForeground": colors.succesLight.hex(),
     "gitDecoration.modifiedResourceForeground": colors.warningLight.hex(),
-    "gitDecoration.deletedResourceForeground": colors.danger.hex(),
+    "gitDecoration.deletedResourceForeground": colors.dangerLight.hex(),
     "gitDecoration.untrackedResourceForeground": colors.succesLight.hex(),
-    "gitDecoration.ignoredResourceForeground": colors.principal_3.hex(),
-    "gitDecoration.conflictingResourceForeground": colors.warningLight.hex(),
+    "gitDecoration.ignoredResourceForeground": colors.gitIgnoreExplorer.hex(),
+    "gitDecoration.conflictingResourceForeground": colors.danger.hex(),
 
-    "source.elm": colors.principal_4.hex(),
-
-    "editorRuler.foreground": colors.principal_2.hex(),
 
     // Background color for the progress bar shown for long running operations.
     "progress.background": colors.contrast.hex(),
@@ -414,7 +425,7 @@ module.exports = function (colors) {
     "terminal.ansiRed": colors.syntaxRed.hex(),
     "terminal.ansiYellow": colors.syntaxYellow.hex(),
     "terminal.ansiBrightWhite": colors.white.hex(),
-    "terminal.ansiBrightBlack": colors.principal_3.hex(),
+    "terminal.ansiBrightBlack": colors.principal_4.hex(),
     "terminal.ansiBrightBlue": colors.syntaxBlue.hex(),
     "terminal.ansiBrightCyan": colors.syntaxCyan.hex(),
     "terminal.ansiBrightGreen": colors.syntaxGreen.hex(),
@@ -914,18 +925,7 @@ module.exports = function (colors) {
       settings: {
         foreground: colors.variable.hex()
       }
-    },
-    {
-      // NO IDEA
-      name: "Variable Property Other object",
-      scope: ["variable.other.object.js"],
-      settings: {
-        // foreground: colors.variable.hex(),
-        foreground: colors.testB.hex(),
-        fontStyle: ""
-      }
-    },
-
+    }
   ]
 
   const tcStrings = [
@@ -1202,6 +1202,7 @@ module.exports = function (colors) {
       scope: [
         "entity.other.attribute-name.id",
         "entity.other.attribute-name.id.css",
+        "entity.other.attribute-name.id.css punctuation.definition.entity.css",
         "entity.other.attribute-name.id.scss",
         "entity.other.attribute-name.id.css.sass"
       ],
@@ -1210,9 +1211,20 @@ module.exports = function (colors) {
       }
     },
     {
+      name: "function declaration SASS",
+      scope:[
+        "support.function.name.sass.library",
+        "source.sass entity.name.function"
+      ],
+      settings: {
+        foreground: colors.sassFunction.hex()
+      }
+    },
+    {
       name: "css class selector",
       scope: [
         "entity.other.attribute-name.class.css",
+        "entity.other.attribute-name.class.css punctuation.definition.entity.css",
         "entity.other.attribute-name.class.css.sass",
         "entity.other.attribute-name.class.scss"
       ],
@@ -1235,6 +1247,23 @@ module.exports = function (colors) {
       }
     },
     {
+      name: "CSS Pseudo Class",
+      scope: [
+        //pseudo-class like :hover, :active, :focus, etc.
+        "entity.other.attribute-name.pseudo-class.css",
+        "entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css",
+        "entity.other.pseudo-class.css.sass",
+
+        //pseudo-elements like ::-webkit...
+        "entity.other.attribute-name.pseudo-element.css",
+        "entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css",
+      ],
+      settings:{
+        foreground: colors.cssPseudoClass.hex(),
+        fontStyle: ""
+      }
+    },
+    {
       name: "Property name stylesheets",
       scope: [
         "support.type.property-name.css",
@@ -1246,29 +1275,23 @@ module.exports = function (colors) {
     },
     {
       name: "Values in css",
-      scope: ["support.constant.property-value.css"],
+      scope: [
+        "support.constant.property-value.css"
+      ],
       settings: {
         foreground: colors.cssValue.hex()
       }
     },
     {
-      name: "stylesheet numbers",
-      scope: [
-        "constant.numeric.css",
-        "punctuation.definition.constant.css",
-        "constant.numeric.css.sass"
-      ],
-      settings: {
-        foreground: colors.number.hex()
-      }
-    },
-    {
-      name: "Stylesheet Units",
+      name: "Stylesheet Numbers and Units",
       scope: [
         "keyword.other.unit",
         "keyword.other.unit.css",
         "keyword.other.unit.scss",
-        "keyword.other.unit.css.sass"
+        "keyword.other.unit.css.sass",
+        "constant.numeric.css",
+        "punctuation.definition.constant.css",
+        "constant.numeric.css.sass"
       ],
       settings: {
         foreground: colors.cssUnits.hex()
@@ -1289,14 +1312,32 @@ module.exports = function (colors) {
         fontStyle: ""
       }
     },
-
-
     {
-      // css !importatnt, @
+      name: "Keyword !important",
+      scope: [
+        "keyword.other.important.css",
+        "keyword.other.important.scss"
+      ],
+      settings: {
+        foreground: colors.syntaxRed.hex(),
+        fontStyle: "italic"
+      }
+    },
+    {
+      name: "keyframes rules",
+      scope: [
+        "meta.at-rule.keyframes.body.css",
+        "source.css.scss meta.at-rule.keyframes.scss entity.other.attribute-name.scss"
+      ],
+      settings: {
+        foreground: colors.syntaxPurple.hex(),
+        fontStyle: "italic"
+      }
+    },
+    {
       // keywords for sass
       name: "Keyword",
       scope: [
-
         //@ in at rules
         "punctuation.definition.keyword",
         "entity.name.tag.reference",
@@ -1305,15 +1346,6 @@ module.exports = function (colors) {
         "entity.name.tag.custom.css",
         "entity.name.tag.custom.scss",
         "entity.name.tag.custom.sass",
-
-        "entity.other.attribute-name.css.scss",
-
-        //pseudo-class like :hover, :active, :focus, etc.
-        "entity.other.attribute-name.pseudo-class.css",
-        "entity.other.pseudo-class.css.sass",
-
-        //pseudo-elements like ::-webkit...
-        "entity.other.attribute-name.pseudo-element.css",
 
         // function call
         "support.function.sass",
@@ -1330,7 +1362,7 @@ module.exports = function (colors) {
         "keyword.control.at-rule.css.sass"
       ],
       settings: {
-        foreground: colors.specialWordB.hex(),
+        foreground: colors.cssSpecialWord.hex(),
         fontStyle: "italic"
       }
     },
@@ -1360,20 +1392,45 @@ module.exports = function (colors) {
       }
     },
     {
-      name: "Attribute Name for CSS and SCSS",
+      name: "Attribute Name for CSS, SCSS and LESS",
       scope: [
-        "meta.attribute-selector.css entity.other.attribute-name.attribute",
-        "meta.attribute-selector.scss entity.other.attribute-name.attribute",
-        "meta.attribute-selector.sass entity.other.attribute-name.attribute",
+        "meta.attribute-selector.css entity.other.attribute-name",
         "meta.attribute-selector.less entity.other.attribute-name.attribute",
         "entity.other.attribute-name.css.sass",
         "keyword.operator.attribute-selector.css.sass",
-        "meta.attribute-selector"
+        "meta.attribute-selector",
+
+        // SCSS
+        "source.css.scss entity.other.attribute-name.attribute",
+        "meta.attribute-selector.scss",
+        "meta.attribute-selector.scss keyword.operator.scss",
+        "meta.attribute-selector.scss punctuation.definition.string.begin.scss",
+        "meta.attribute-selector.scss punctuation.definition.string.end.scss",
+        "meta.attribute-selector.scss punctuation.definition.attribute-selector.begin.bracket.square.scss",
+        "meta.attribute-selector.scss punctuation.definition.attribute-selector.end.bracket.square.scss",
+        // SASS
+        "entity.other.attribute-selector.sass",
+        // CSS
+        "meta.attribute-selector.css",
+        "meta.attribute-selector.css keyword.operator.pattern.css",
+        "meta.attribute-selector.css punctuation.definition.entity.begin.bracket.square.css",
+        "meta.attribute-selector.css punctuation.definition.entity.end.bracket.square.css"
       ],
       settings: {
         foreground: colors.cssAttribute.hex()
       }
     },
+    {
+      name: "SASS Interpolation",
+      scope:[
+        "support.function.interpolation.sass",
+        "punctuation.definition.interpolation.begin.bracket.curly.scss",
+        "punctuation.definition.interpolation.end.bracket.curly.scss"
+      ],
+      settings: {
+        foreground: colors.sassInterpolation.hex()
+      }
+    }
   ]
 
   // languages
@@ -1468,7 +1525,7 @@ module.exports = function (colors) {
         "meta.type.parameters.tsx entity.name.type"
       ],
       settings: {
-        foreground: colors.principal_4.hex()
+        foreground: colors.principal_5.hex()
       }
     },
     {
