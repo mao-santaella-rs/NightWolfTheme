@@ -3,13 +3,13 @@ const colors = require("./common-colors")
 
 colors.principal =            colors.black
 colors.principal_0 =          Color.rgb(20,20,20)
-colors.principal_1 =          Color.rgb(46,46,46)
-colors.principal_2 =          Color.rgb(61,61,61)
-colors.principal_3 =          Color.rgb(82,82,82)
-colors.principal_4 =          Color.rgb(124,124,124)
-colors.principal_5 =          Color.rgb(157,157,157)
+colors.principal_1 =          Color.rgb(40,40,40)
+colors.principal_2 =          Color.rgb(60,60,60)
+colors.principal_3 =          Color.rgb(80,80,80)
+colors.principal_4 =          Color.rgb(120,120,120)
+colors.principal_5 =          Color.rgb(150,150,150)
 
-colors.text =                 Color.rgb(206,206,206)
+colors.text =                 Color.rgb(200,200,200)
 
 colors.selection =            colors.principal_2
 colors.selectionHighlight =   colors.principal_1
