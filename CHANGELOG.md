@@ -2,7 +2,7 @@
 
 All notable changes to the "night-owl" extension are be documented in this file.
 
-## [1.7.0] - 07-11-2019
+## [1.7.1] - 07-11-2019
 
 ### Changed
 - Added more colors for black theme Interface
