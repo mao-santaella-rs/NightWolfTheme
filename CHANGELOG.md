@@ -2,6 +2,13 @@
 
 All notable changes to the "night-owl" extension are be documented in this file.
 
+## [1.7.3] - 07-13-2019
+
+### Changed
+- update the images on README
+
+---
+
 ## [1.7.2] - 07-13-2019
 
 ### Fixed

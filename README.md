@@ -14,13 +14,16 @@ A Visual Studio Code theme based on the Sarah Drasner's [Night owl theme](https:
 ![js](images/js.jpg)
 
 ## Vue
-![js](images/vue.jpg)
+![vue](images/vue.jpg)
+
+## Sass
+![sass](images/sass.jpg)
 
 ## Pug
-![js](images/pug.jpg)
+![pug](images/pug.jpg)
 
 ## Html
-![js](images/html.jpg)
+![html](images/html.jpg)
 
 *big images to preserve details
 
