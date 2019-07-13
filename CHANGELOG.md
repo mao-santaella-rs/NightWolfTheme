@@ -2,6 +2,13 @@
 
 All notable changes to the "night-owl" extension are be documented in this file.
 
+## [1.7.2] - 07-13-2019
+
+### Fixed
+- PHP syntax aren't highlighted, [Issue](https://github.com/maoma87/NightWolfTheme/issues/17) by @quanKM.
+
+---
+
 ## [1.7.1] - 07-11-2019
 
 ### Changed

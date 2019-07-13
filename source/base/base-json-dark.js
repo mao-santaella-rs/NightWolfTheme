@@ -1990,11 +1990,47 @@ module.exports = function (colors) {
 
   const tcPhp = [
     {
+      name: "PHP tag",
+      scope:[
+        "punctuation.section.embedded.begin.php",
+        "punctuation.section.embedded.end.php",
+      ],
+      settings: {
+        foreground: colors.contrastText.hex()
+      }
+    },
+    {
+      name: "other keywords",
+      scope:[
+        "keyword.other.namespace.php",
+        "keyword.other.use.php",
+        "keyword.other.use-as.php",
+        "storage.modifier.php"
+      ],
+      settings: {
+        foreground: colors.specialWordB.hex()
+      }
+    },
+    {
+      name: "references",
+      scope: [
+        "meta.use.php",
+        "meta.use.php punctuation.separator.inheritance.php",
+        "entity.name.type.namespace.php",
+        "entity.name.type.namespace.php punctuation.separator.inheritance.php",
+      ],
+      settings: {
+        foreground: colors.variableInstance.hex()
+      }
+    },
+    {
       name: "PHP Variables",
       scope: [
         "variable.other.php",
         "variable.other.property.php",
-        "punctuation.definition.variable.php"
+        "punctuation.definition.variable.php",
+        "support.class.php",
+        "entity.other.alias.php"
       ],
       settings: {
         foreground: colors.variable.hex()

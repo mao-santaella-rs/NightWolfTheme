@@ -1,4 +1,30 @@
-<?php
+<?php namespace Clockwork\Authentication;
+
+class NullAuthenticator implements AuthenticatorInterface {
+    public function attempt(array $credentials) {
+        return true;
+    }
+    public function check($token) {
+        return true;
+    }
+    public function requires() {
+        return [];
+    }
+}
+
+interface AuthenticatorInterface {
+    const REQUIRES_USERNAME = 'username';
+    const REQUIRES_PASSWORD = 'password';
+    public function attempt(array $credentials);
+    public function check($token);
+    public function requires();
+}
+
+use illuminate\name\anothername\module;
+use illuminate\name\anothername\othermodule as newmodule;
+
+
+
 /**
  * Pandora FMS- http://pandorafms.com
  * ==================================================
