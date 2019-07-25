@@ -11,7 +11,7 @@ colors.principal_5 =          Color.rgb(151,155,161)
 
 colors.text =                 Color.rgb(206,206,206)
 
-colors.contrast =             Color.rgb(88,140,239)
+colors.contrast =             Color.rgb(66,165,245)
 colors.contrastLight =        Color.rgb(173,203,248)
 colors.contrastDark =         Color.rgb(24,98,239)
 
