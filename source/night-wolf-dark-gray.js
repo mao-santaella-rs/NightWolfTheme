@@ -1,4 +1,4 @@
-const colors = require("./colors/colors-gray")
+const colors = require("./colors/colors-dark-gray")
 
 const theme = require("./base/base-json-dark")
 
