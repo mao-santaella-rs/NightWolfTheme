@@ -1,21 +1,19 @@
 const Color = require("color")
 const colors = require("./common-colors")
 
-// THEME COLORS
+colors.principal =            Color.rgb(33,37,43)
+colors.principal_0 =          Color.rgb(41,45,51)
+colors.principal_1 =          Color.rgb(51,55,61)
+colors.principal_2 =          Color.rgb(65,69,75)
+colors.principal_3 =          Color.rgb(85,89,95)
+colors.principal_4 =          Color.rgb(113,117,123)
+colors.principal_5 =          Color.rgb(151,155,161)
 
-colors.principal =            Color.rgb(16,30,44)
-colors.principal_0 =          Color.rgb(20,40,60)
-colors.principal_1 =          Color.rgb(27,50,74)
-colors.principal_2 =          Color.rgb(30,70,103)
-colors.principal_3 =          Color.rgb(48,90,132)
-colors.principal_4 =          Color.rgb(95,130,165)
-colors.principal_5 =          Color.rgb(123,165,207)
+colors.text =                 Color.rgb(206,206,206)
 
-colors.text =                 Color.rgb(189,210,231)
-
-colors.contrast =             colors.syntaxMagenta
-colors.contrastLight =        Color.rgb(255,190,255)
-colors.contrastDark =         Color.rgb(150,0,150)
+colors.contrast =             Color.rgb(66,165,245)
+colors.contrastLight =        Color.rgb(173,203,248)
+colors.contrastDark =         Color.rgb(24,98,239)
 
 colors.selection =            colors.principal_2
 colors.selectionHighlight =   colors.principal_1
@@ -27,14 +25,14 @@ colors.findHighlight =        colors.principal_1
 colors.rangeHiglight =        colors.principal_2
 colors.lineHiglight =         colors.principal_0
 
-colors.gitInsertedBg =        Color.rgb(20,51,46)
-colors.gitRemovedBg =         Color.rgb(30,19,28)
+colors.gitInsertedBg =        Color.rgb(5,20,5)
+colors.gitRemovedBg =         Color.rgb(20,0,0)
 colors.gitIgnoreExplorer =    Color.rgb(140,140,140)
 
 //INTERFACE COLORS
 colors.interBackground =      colors.principal
 colors.interBorder =          colors.principal_1
-colors.notificationBadge =    colors.infoLight
+colors.notificationBadge =    colors.white
 
 // SYNTAX COLORS
 colors.variable =             colors.syntaxYellow
@@ -73,6 +71,5 @@ colors.cssSpecialWord =       colors.syntaxViolet
 colors.cssPseudoClass =       colors.syntaxPurple
 colors.sassFunction =         colors.syntaxBlue
 colors.sassInterpolation =    colors.syntaxRed
-
 
 module.exports = colors

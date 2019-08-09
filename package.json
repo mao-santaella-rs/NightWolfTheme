@@ -31,12 +31,12 @@
       {
         "label": "Night Wolf [dark gray]",
         "uiTheme": "vs-dark",
-        "path": "./themes/night-wolf-gray.json"
+        "path": "./themes/night-wolf-dark-gray.json"
       },
       {
         "label": "Night Wolf [dark gray] (No Italics)",
         "uiTheme": "vs-dark",
-        "path": "./themes/night-wolf-gray-noitalics.json"
+        "path": "./themes/night-wolf-dark-gray-noitalics.json"
       },
       {
         "label": "Night Wolf [black]",
@@ -47,6 +47,16 @@
         "label": "Night Wolf [black] (No Italics)",
         "uiTheme": "vs-dark",
         "path": "./themes/night-wolf-black-noitalics.json"
+      },
+      {
+        "label": "Night Wolf [gray]",
+        "uiTheme": "vs-dark",
+        "path": "./themes/night-wolf-gray.json"
+      },
+      {
+        "label": "Night Wolf [gray] (No Italics)",
+        "uiTheme": "vs-dark",
+        "path": "./themes/night-wolf-gray-noitalics.json"
       }
     ]
   },
