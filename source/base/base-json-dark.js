@@ -855,7 +855,7 @@ module.exports = function (colors) {
         "entity.other.inherited-class.js",
         // classes in ts
         "meta.class entity.name.type.class.tsx",
-
+        // classes in c++
         "entity.name.type.class.cpp",
         "entity.name.type.inherited.cpp"
       ],
@@ -1445,6 +1445,19 @@ module.exports = function (colors) {
   // languages
   const tcJavascript = [
     {
+      name: "javascript classes",
+      scope: [
+        // classes in js
+        "meta.class entity.name.type.class.js",
+        "entity.other.inherited-class.js",
+        // classes in ts
+        "meta.class entity.name.type.class.tsx",
+      ],
+      settings: {
+        fontStyle: "underline"
+      }
+    },
+    {
       name: "javascript portotype methods",
       scope: ["support.variable.property.js"],
       settings: {
@@ -1482,8 +1495,7 @@ module.exports = function (colors) {
     {
       name: "javascript function execution",
       scope: [
-        "meta.function-call.js entity.name.function.js",
-
+        "meta.function-call.js entity.name.function.js"
       ],
       settings: {
         fontStyle: "italic"
