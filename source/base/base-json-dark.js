@@ -847,11 +847,20 @@ module.exports = function (colors) {
     },
     {
       // function name in javascript and mixins and function names in sass & scss
-      name: "Entity Name Function",
-      scope: ["entity.name.function"],
+      name: "Functions & Classes",
+      scope: [
+        "entity.name.function",
+        // classes in js
+        "meta.class entity.name.type.class.js",
+        "entity.other.inherited-class.js",
+        // classes in ts
+        "meta.class entity.name.type.class.tsx",
+
+        "entity.name.type.class.cpp",
+        "entity.name.type.inherited.cpp"
+      ],
       settings: {
-        foreground: colors.functionName.hex(),
-        fontStyle: "italic"
+        foreground: colors.functionName.hex()
       }
     },
     {
@@ -1459,13 +1468,6 @@ module.exports = function (colors) {
       }
     },
     {
-      name: "JavaScript Classes",
-      scope: "meta.class entity.name.type.class.js",
-      settings: {
-        foreground: colors.variable.hex()
-      }
-    },
-    {
       name: "JavaScript module imports and exports",
       scope: [
         "variable.other.meta.import.js",
@@ -1475,6 +1477,16 @@ module.exports = function (colors) {
       ],
       settings: {
         foreground: colors.variable.hex()
+      }
+    },
+    {
+      name: "javascript function execution",
+      scope: [
+        "meta.function-call.js entity.name.function.js",
+
+      ],
+      settings: {
+        fontStyle: "italic"
       }
     },
     {
@@ -1544,8 +1556,10 @@ module.exports = function (colors) {
       }
     },
     {
-      name: "@ in decorator in javascript",
-      scope: ["punctuation.decorator.js"],
+      name: "decorator in javascript",
+      scope: [
+        "punctuation.decorator.js"
+      ],
       settings: {
         foreground: colors.functionName.hex()
       }
@@ -1567,13 +1581,6 @@ module.exports = function (colors) {
       scope: "punctuation.section.embedded",
       settings: {
         foreground: colors.text.hex()
-      }
-    },
-    {
-      name: "TypeScript Classes",
-      scope: "meta.class entity.name.type.class.tsx",
-      settings: {
-        foreground: colors.variable.hex()
       }
     },
     {
@@ -2045,6 +2052,18 @@ module.exports = function (colors) {
     }
   ]
 
+  const tcCc = [
+    {
+      name: "punctuation definition directive",
+      scope: [
+        "keyword.control.directive.include.cpp punctuation.definition.directive.cpp"
+      ],
+      settings: {
+        foreground: colors.specialWordB.hex()
+      }
+    }
+  ]
+
   const tcComments = [
     {
       name: "Comment",
@@ -2136,6 +2155,7 @@ module.exports = function (colors) {
       ...tcMarckdown,
       ...tcGo,
       ...tcPhp,
+      ...tcCc
     ]
   }
 }
