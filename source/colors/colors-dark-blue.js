@@ -13,10 +13,6 @@ colors.principal_5 =          Color.rgb(123,165,207)
 
 colors.text =                 Color.rgb(189,210,231)
 
-colors.contrast =             colors.syntaxMagenta
-colors.contrastLight =        Color.rgb(255,190,255)
-colors.contrastDark =         Color.rgb(150,0,150)
-
 colors.selection =            colors.principal_2
 colors.selectionHighlight =   colors.principal_1
 colors.selectionInactive =    colors.principal_2
