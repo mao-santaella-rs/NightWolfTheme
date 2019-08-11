@@ -39,16 +39,6 @@
         "path": "./themes/night-wolf-dark-gray-noitalics.json"
       },
       {
-        "label": "Night Wolf [black]",
-        "uiTheme": "vs-dark",
-        "path": "./themes/night-wolf-black.json"
-      },
-      {
-        "label": "Night Wolf [black] (No Italics)",
-        "uiTheme": "vs-dark",
-        "path": "./themes/night-wolf-black-noitalics.json"
-      },
-      {
         "label": "Night Wolf [gray]",
         "uiTheme": "vs-dark",
         "path": "./themes/night-wolf-gray.json"
@@ -57,6 +47,16 @@
         "label": "Night Wolf [gray] (No Italics)",
         "uiTheme": "vs-dark",
         "path": "./themes/night-wolf-gray-noitalics.json"
+      },
+      {
+        "label": "Night Wolf [black]",
+        "uiTheme": "vs-dark",
+        "path": "./themes/night-wolf-black.json"
+      },
+      {
+        "label": "Night Wolf [black] (No Italics)",
+        "uiTheme": "vs-dark",
+        "path": "./themes/night-wolf-black-noitalics.json"
       }
     ]
   },
