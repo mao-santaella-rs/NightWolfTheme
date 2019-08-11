@@ -2,6 +2,19 @@
 
 All notable changes to the "night-owl" extension are be documented in this file.
 
+## [1.8.0] - 08-10-2019
+
+### Added
+- Theme gray version. thanks to [@chadhamre](https://github.com/chadhamre)
+
+### Changed
+- Color for javascript classes is more related to the color of the functions
+
+### Fixed
+- C/C++ preprocessor directives should have a single color, [Issue](https://github.com/maoma87/NightWolfTheme/issues/19) by @matter123
+
+---
+
 ## [1.7.3] - 07-13-2019
 
 ### Changed
