@@ -11,19 +11,34 @@ A Visual Studio Code theme based on the Sarah Drasner's [Night owl theme](https:
 *This was based in my own personal taste.
 
 ## Javascript
-![js](images/js.jpg)
+![js1](images/js-1.jpg)
+![js2](images/js-2.jpg)
+![js3](images/js-3.jpg)
+![js4](images/js-4.jpg)
 
 ## Vue
-![vue](images/vue.jpg)
+![vue1](images/vue-1.jpg)
+![vue2](images/vue-2.jpg)
+![vue3](images/vue-3.jpg)
+![vue4](images/vue-4.jpg)
 
 ## Sass
-![sass](images/sass.jpg)
+![sass1](images/sass-1.jpg)
+![sass2](images/sass-2.jpg)
+![sass3](images/sass-3.jpg)
+![sass4](images/sass-4.jpg)
 
 ## Pug
-![pug](images/pug.jpg)
+![pug1](images/pug-1.jpg)
+![pug2](images/pug-2.jpg)
+![pug3](images/pug-3.jpg)
+![pug4](images/pug-4.jpg)
 
 ## Html
-![html](images/html.jpg)
+![html1](images/html-1.jpg)
+![html2](images/html-2.jpg)
+![html3](images/html-3.jpg)
+![html4](images/html-4.jpg)
 
 *big images to preserve details
 
