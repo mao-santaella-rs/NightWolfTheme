@@ -1247,7 +1247,7 @@ module.exports = function (colors) {
         "entity.name.tag.css",
         "entity.name.tag.less",
         "entity.name.tag.custom.css",
-        "entity.name.tag.scss",
+        "entity.name.tag.reference.scss",
         "entity.name.tag.css.sass"
       ],
       settings: {
@@ -2060,6 +2060,16 @@ module.exports = function (colors) {
       scope: "meta.function-call.php punctuation",
       settings: {
         foreground: colors.regularText.hex()
+      }
+    },
+    // BLADE
+    {
+      name: "blade keyword",
+      scope: [
+        "keyword.blade"
+      ],
+      settings: {
+        foreground: colors.specialWordB.hex()
       }
     }
   ]
