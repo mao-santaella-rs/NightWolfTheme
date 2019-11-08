@@ -21,12 +21,12 @@
       {
         "label": "Night Wolf [dark blue]",
         "uiTheme": "vs-dark",
-        "path": "./themes/night-wolf-blue.json"
+        "path": "./themes/night-wolf-dark-blue.json"
       },
       {
         "label": "Night Wolf [dark blue] (No Italics)",
         "uiTheme": "vs-dark",
-        "path": "./themes/night-wolf-blue-noitalics.json"
+        "path": "./themes/night-wolf-dark-blue-noitalics.json"
       },
       {
         "label": "Night Wolf [dark gray]",

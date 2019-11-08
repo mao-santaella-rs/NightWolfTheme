@@ -31,9 +31,9 @@ module.exports = function (colors) {
     "textLink.activeForeground": colors.syntaxBlue.darken(0.3).hex(),
 
     // Background color for block quotes in text.
-    "textBlockQuote.background": colors.text.hex(),
+    "textBlockQuote.background": colors.principal_0.hex(),
     // Border color for block quotes in text.
-    "textBlockQuote.border": colors.text.hex(),
+    "textBlockQuote.border": colors.principal_4.hex(),
     // Background color for code blocks in text.
     "textCodeBlock.background": colors.principal_0.hex(),
     // Foreground color for preformatted text segments.
