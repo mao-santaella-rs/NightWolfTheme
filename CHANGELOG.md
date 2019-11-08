@@ -2,6 +2,13 @@
 
 All notable changes to the "night-owl" extension are be documented in this file.
 
+## [1.8.2] - 11-07-2019
+
+### Fixed
+- Background color overlapping texts, [issue](https://github.com/mao-santaella-rs/NightWolfTheme/issues/23) by [@silviolobo](https://github.com/silviolobo).
+
+---
+
 ## [1.8.1] - 09-04-2019
 
 ### Added
