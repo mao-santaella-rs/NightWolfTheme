@@ -1,7 +1,7 @@
 {
   "name": "night-wolf",
   "displayName": "Night Wolf",
-  "description": "A dark theme based on Night Owl",
+  "description": "Night Wolf is a dark theme based on Night Owl",
   "version": "1.8.2",
   "publisher": "MaoSantaella",
   "license": "SEE LICENSE IN THE LICENSE FILE",
@@ -69,7 +69,8 @@
     "vscode:prepublish": "node theme-compiler prod"
   },
   "devDependencies": {
-    "color": "^3.1.0"
+    "color": "^3.1.0",
+    "prettier": "2.0.2"
   },
   "keywords": [
     "Theme",
