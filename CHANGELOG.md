@@ -2,6 +2,14 @@
 
 All notable changes to the "night-owl" extension are be documented in this file.
 
+## [1.8.4] - 22-08-2020
+
+### Fixed
+
+- Translucent tab when click and drag the tab doesn't work, [issue](https://github.com/mao-santaella-rs/NightWolfTheme/issues/27) by [@grindarius](https://github.com/grindarius).
+
+---
+
 ## [1.8.3] - 31-03-2020
 
 ### Added
