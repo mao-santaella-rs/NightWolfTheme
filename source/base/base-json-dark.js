@@ -1,4 +1,4 @@
-module.exports = function(colors) {
+module.exports = function (colors) {
   const themeColors = {
     // Editor general
     'editor.background': colors.interBackground.hex(),
@@ -244,7 +244,7 @@ module.exports = function(colors) {
     // Color to separate multiple editor groups from each other.
     'editorGroup.border': colors.interBorder.hex(),
     // Background color when dragging editors around.
-    'editorGroup.dropBackground': colors.contrast.hex(),
+    'editorGroup.dropBackground': colors.contrast.hex() + '70',
     // Background color of the editor group title header when Tabs are disabled (set "workbench.editor.showTabs": false).
     'editorGroupHeader.noTabsBackground': colors.danger.hex(),
     // Background color of the Tabs container.
