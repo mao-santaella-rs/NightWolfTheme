@@ -2,6 +2,14 @@
 
 All notable changes to the "night-owl" extension are be documented in this file.
 
+## [1.8.5] - 28-10-2020
+
+### Fixed
+
+- .gitignored files and folder have the same color as the ones included in the repo, [issue](https://github.com/mao-santaella-rs/NightWolfTheme/issues/28) by [@abhijit-hota](https://github.com/abhijit-hota).
+
+---
+
 ## [1.8.4] - 22-08-2020
 
 ### Fixed
