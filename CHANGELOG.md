@@ -2,6 +2,20 @@
 
 All notable changes to the "night-owl" extension are be documented in this file.
 
+## [1.9.0] - 07-03-2021
+
+### Added
+
+- better support for rust
+- bunch of new color configurations
+
+### Fixed
+
+- Better support for rust-lang keyword?, [issue](https://github.com/mao-santaella-rs/NightWolfTheme/issues/30) by [WindSoilder](https://github.com/WindSoilder).
+- The background of editorGroupHeader is red, which bugging me, and different from the screen shot, [issue](https://github.com/mao-santaella-rs/NightWolfTheme/issues/29) by [WindSoilder](https://github.com/WindSoilder).
+
+---
+
 ## [1.8.5] - 28-10-2020
 
 ### Fixed

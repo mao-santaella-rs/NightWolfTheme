@@ -25,10 +25,16 @@ module.exports = function (colors) {
     // Overall foreground color for error messages
     errorForeground: colors.danger.hex(),
 
+    'icon.foreground': colors.text.hex(), //The default color for icons in the workbench.
+
+    'sash.hoverBorder': colors.principal_3.hex(), //The hover border color for draggable borders.
+
+    'window.activeBorder': colors.principal.hex(), // Border color for the active (focused) window.
+    'window.inactiveBorder': colors.principal.hex(), // Border color for the inactive (unfocused) windows.
+
     // Links
-    'textLink.foreground': colors.syntaxBlue.hex(),
-    // Links hover
-    'textLink.activeForeground': colors.syntaxBlue.darken(0.3).hex(),
+    'textLink.foreground': colors.syntaxBlue.hex(), // Links color
+    'textLink.activeForeground': colors.syntaxBlue.darken(0.3).hex(), // Links hover
 
     // Background color for block quotes in text.
     'textBlockQuote.background': colors.principal_0.hex(),
@@ -126,10 +132,24 @@ module.exports = function (colors) {
     'editorMarkerNavigationError.background': colors.danger.hex(),
     'editorMarkerNavigationWarning.background': colors.warning.hex(),
 
+    // Action colors
+    'toolbar.hoverBackground': colors.principal_1.hex(), // Toolbar background when hovering over actions using the mouse
+    'toolbar.hoverOutline': null, // Toolbar outline when hovering over actions using the mouse
+    'toolbar.activeBackground': colors.principal_3.hex(), // Toolbar background when holding the mouse over actions
+
     // Botones
     'button.foreground': colors.white.hex(),
     'button.background': colors.contrast.hex(),
+    'button.border': null,
     'button.hoverBackground': colors.contrastDark.hex(),
+
+    "button.secondaryForeground": colors.white.hex(),
+    "button.secondaryBackground": colors.info.hex(),
+    "button.secondaryHoverBackground": colors.infoDark.hex(),
+
+    "checkbox.background": colors.principal_3.hex(),
+    "checkbox.foreground": colors.white.hex(),
+    "checkbox.border": null,
 
     // Botones de las extenciones
     'extensionButton.prominentForeground': colors.white.hex(),
@@ -159,7 +179,7 @@ module.exports = function (colors) {
     'inputValidation.warningBorder': colors.warning.hex(),
 
     // Scrollbar
-    'scrollbar.shadow': null,
+    'scrollbar.shadow': colors.black.hex() + '50',
     'scrollbarSlider.activeBackground': colors.principal_3.hex() + '50',
     'scrollbarSlider.background': colors.principal_3.hex() + '50',
     'scrollbarSlider.hoverBackground': colors.principal_3.hex() + '80',
@@ -167,6 +187,8 @@ module.exports = function (colors) {
     // Badges are small information labels, for example, search results count.
     'badge.background': colors.notificationBadge.hex(),
     'badge.foreground': colors.principal.hex(),
+
+    "progressBar.background": colors.contrast.hex(),
 
     // Breadcrumbs
     'breadcrumb.foreground': colors.info.hex(),
@@ -224,6 +246,13 @@ module.exports = function (colors) {
     // List/Tree Filter Widget's outline color when no match is found of typed text when searching inside the list/tree.
     'listFilterWidget.noMatchesOutline': null,
 
+    // "list.filterMatchBackground": colors.danger.hex(), // Background color of the filtered matches in lists and trees.
+    // "list.filterMatchBorder": null, // Border color of the filtered matches in lists and trees.
+    // "list.deemphasizedForeground": null, // List/Tree foreground color for items that are deemphasized.
+    // "tree.indentGuidesStroke": null, // Tree Widget's stroke color for indent guides.
+    // "tree.tableColumnsBorder": null, // Tree stroke color for the indentation guides.
+
+
     // Activity bar es la primera barra de iconos de la izquierda
     // Activity Bar background color.
     'activityBar.background': colors.interBackground.hex(),
@@ -246,22 +275,35 @@ module.exports = function (colors) {
     // Background color when dragging editors around.
     'editorGroup.dropBackground': colors.contrast.hex() + '70',
     // Background color of the editor group title header when Tabs are disabled (set "workbench.editor.showTabs": false).
-    'editorGroupHeader.noTabsBackground': colors.danger.hex(),
+    'editorGroupHeader.noTabsBackground': colors.interBackground.hex(),
     // Background color of the Tabs container.
     'editorGroupHeader.tabsBackground': colors.interBackground.hex(),
     // Border color of the editor group title header when tabs are enabled.
     'editorGroupHeader.tabsBorder': colors.interBorder.hex(),
 
     // Las pestanas de los archivos abiertos
+    'tab.border': colors.interBorder.hex(),
+    'tab.hoverBorder': null, // Border to highlight tabs when hovering
+    'tab.hoverBackground': colors.principal_1.hex(), // Tab background color when hovering
+    'tab.hoverForeground': colors.text.hex(), // Tab foreground color when hovering
     'tab.activeBackground': colors.principal_0.hex(),
     'tab.activeForeground': colors.text.hex(),
     'tab.activeBorder': colors.contrast.hex(),
-    'tab.border': colors.interBorder.hex(),
+    'tab.activeModifiedBorder': colors.warningLight.hex(), // Border on the top of modified (dirty) active tabs in an active group.
     'tab.inactiveBackground': colors.principal.hex(),
-    'tab.inactiveForeground': colors.text.hex(),
-    'tab.unfocusedActiveForeground': colors.text.hex(),
+    'tab.inactiveForeground': colors.principal_4.hex(),
+    'tab.inactiveModifiedBorder': colors.warningLight.hex() + 50, // Border on the top of modified (dirty) inactive tabs in an active group.
+    'tab.unfocusedHoverBorder': null, // Border to highlight tabs in an unfocused group when hovering
+    'tab.unfocusedHoverBackground': colors.principal_1.hex(), // Tab background color in an unfocused group when hovering
+    'tab.unfocusedHoverForeground': colors.principal_4.hex(), // Tab foreground color in an unfocused group when hovering
+    'tab.unfocusedActiveForeground': colors.principal_4.hex(),
+    'tab.unfocusedActiveBackground': colors.principal_1.hex() + 60,
     'tab.unfocusedActiveBorder': colors.interBorder.hex(),
-    'tab.unfocusedInactiveForeground': colors.text.hex(),
+    'tab.unfocusedInactiveForeground': colors.principal_3.hex(),
+    'tab.unfocusedInactiveBackground': colors.principal.hex(),
+    'tab.unfocusedActiveModifiedBorder': colors.warningLight.hex() + 70, // Border on the top of modified (dirty) active tabs in an unfocused group.
+    'tab.unfocusedInactiveModifiedBorder': colors.warningLight.hex() + 50, // Border on the top of modified (dirty) inactive tabs in an unfocused group.
+    'editorPane.background': null, // Background color of the editor pane visible on the left and right side of the centered editor layout.
 
     // barra de menus
     'menubar.selectionForeground': colors.text.hex(),
@@ -273,6 +315,19 @@ module.exports = function (colors) {
     'menu.selectionBackground': colors.principal_1.hex(),
     'menu.selectionBorder': null,
     'menu.separatorBackground': colors.interBorder.hex(),
+
+    // Minimap
+    'minimap.findMatchHighlight': colors.succes.hex(), // Highlight color for matches from search within files.
+    'minimap.selectionHighlight': colors.contrast.hex(), //Highlight color for the editor selection.
+    'minimap.errorHighlight': colors.danger.hex(), //Highlight color for errors within the editor.
+    'minimap.warningHighlight': colors.warning.hex(), //Highlight color for warnings within the editor.
+    'minimap.background': colors.principal.hex(), //Minimap background color.
+    'minimapSlider.background': colors.principal_3.hex() + 60, //Minimap slider background color.
+    'minimapSlider.hoverBackground': colors.principal_2.hex() + 60, //Minimap slider background color when hovering.
+    'minimapSlider.activeBackground': colors.principal_4.hex() + 60, //Minimap slider background color when clicked on.
+    'minimapGutter.addedBackground': colors.succes.hex(), //Minimap gutter color for added content.
+    'minimapGutter.modifiedBackground': colors.warning.hex(), //Minimap gutter color for modified content.
+    'minimapGutter.deletedBackground': colors.danger.hex(), //Minimap gutter color for deleted content.
 
     // git in editor interfece
     'diffEditor.insertedTextBackground': colors.gitInsertedBg.hex(),
@@ -346,6 +401,11 @@ module.exports = function (colors) {
     'panelTitle.activeForeground': colors.text.hex(),
     'panelTitle.inactiveForeground': colors.principal_4.hex(),
 
+    'panelSection.dropBackground': colors.contrast.hex(),
+    'panelSectionHeader.background': colors.principal_0.hex(),
+    'panelSectionHeader.foreground': colors.text.hex(),
+    'panelSectionHeader.border': colors.interBorder.hex(),
+
     // The Status Bar is shown in the bottom of the workbench.
     'statusBar.background': colors.principal.hex(),
     'statusBar.foreground': colors.principal_5.hex(),
@@ -405,6 +465,7 @@ module.exports = function (colors) {
     'progress.background': colors.contrast.hex(),
 
     // Terminal colors
+    "terminal.background": colors.principal.hex(),
     'terminal.ansiWhite': colors.text.hex(),
     'terminal.ansiBlack': colors.black.hex(),
     'terminal.ansiBlue': colors.syntaxBlue.hex(),
@@ -2028,6 +2089,49 @@ module.exports = function (colors) {
     },
   ]
 
+  const tcRust = [
+    {
+      name: 'Rust ',
+      scope: [
+        'meta.use.rust',
+        'meta.function.definition.rust',
+        'keyword.other.rust'
+      ],
+      settings: {
+        foreground: colors.specialWordB.hex(),
+      },
+    },
+    {
+      name: 'Rust ',
+      scope: [
+        'entity.name.namespace.rust',
+      ],
+      settings: {
+        foreground: colors.specialWordC.hex(),
+      },
+    },
+    {
+      name: 'Rust ',
+      scope: [
+        'entity.name.namespace.rust',
+      ],
+      settings: {
+        foreground: colors.specialWordC.hex(),
+      },
+    },
+    {
+      name: 'Rust ',
+      scope: [
+        'punctuation.definition.attribute.rust',
+        'punctuation.brackets.attribute.rust',
+        // 'meta.attribute.rust'
+      ],
+      settings: {
+        foreground: colors.syntaxRed.hex(),
+      },
+    },
+  ]
+
   const tcComments = [
     {
       name: 'Comment',
@@ -2117,6 +2221,7 @@ module.exports = function (colors) {
       ...tcElixir,
       ...tcMarckdown,
       ...tcGo,
+      ...tcRust,
       ...tcPhp,
       ...tcCc,
     ],
