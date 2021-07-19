@@ -13,16 +13,6 @@ colors.principal_5 = Color.rgb(123, 165, 207)
 
 colors.text = Color.rgb(189, 210, 231)
 
-colors.selection = colors.principal_2
-colors.selectionHighlight = colors.principal_1
-colors.selectionInactive = colors.principal_2
-colors.hoverHiglight = colors.principal_1
-colors.wordHighlightStrong = colors.principal_1
-colors.findMatch = colors.principal_3
-colors.findHighlight = colors.principal_1
-colors.rangeHiglight = colors.principal_2
-colors.lineHiglight = colors.principal_0
-
 colors.gitInsertedBg = Color.rgb(20, 51, 46)
 colors.gitRemovedBg = Color.rgb(30, 19, 28)
 colors.gitIgnoreExplorer = colors.principal.lighten(1.5)

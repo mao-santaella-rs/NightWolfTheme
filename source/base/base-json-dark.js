@@ -19,7 +19,7 @@ module.exports = function (colors) {
     // Shadow color of widgets such as Find/Replace inside the editor.
     'widget.shadow': colors.black.hex() + '30',
     // Background color of text selections in the workbench (for input fields or text areas, does not apply to selections within the editor and the terminal).
-    'selection.background': colors.info.hex(),
+    'selection.background': colors.principal_5.hex() + '30',
     // labels in the welcome page
     descriptionForeground: colors.text.hex(),
     // Overall foreground color for error messages
@@ -48,41 +48,45 @@ module.exports = function (colors) {
     'textSeparator.foreground': colors.principal_0.hex(),
 
     // Color of the editor selection.
-    'editor.selectionBackground': colors.selection.hex(),
+    'editor.selectionBackground': colors.principal_5.hex() + '30',
     'editor.selectionForeground': colors.text.hex(),
-
-    // the words equal to the selection
-    'editor.selectionHighlightBackground': colors.selectionHighlight.hex(),
-
-    // Color of the selection in an inactive editor.
-    'editor.inactiveSelectionBackground': colors.selectionInactive.hex(),
-
+    // cuando selecciono parcialmente una palabra y vscode selecciona todo
+    'editor.wordHighlightStrongBackground': colors.principal_5.hex() + '20',
+    'editor.wordHighlightStrongBorder': null, // colors.testC.hex(),
+    // palabras iguales a la seleccion
+    'editor.selectionHighlightBackground': colors.principal_0.hex(),
+    'editor.selectionHighlightBorder' : colors.principal_5.hex() + '40',
+    // palabras completas iguales a la seleccion
+    'editor.wordHighlightBackground': colors.principal_5.hex() + '30',
+    'editor.wordHighlightBorder': null, // colors.testC.hex() + '30',
+    
     // cuando ubico el cursor en el medio de una palabra y vscode la selecciona
-    'editor.wordHighlightBackground': colors.hoverHiglight.hex(),
 
     // cuando ubico el puntero encima de una palabra
-    'editor.hoverHighlightBackground': colors.hoverHiglight.hex(),
+    'editor.hoverHighlightBackground': colors.principal_5.hex() + '20',
 
-    // cuando selecciono parcialmente una palabra y vscode selecciona todo
-    'editor.wordHighlightStrongBackground': colors.wordHighlightStrong.hex(),
-
-    // palabra seleccionada por el finder
-    'editor.findMatchBackground': colors.findMatch.hex(),
-
-    // todas las palabras encontradas por el finder
-    'editor.findMatchHighlightBackground': colors.findHighlight.hex(),
-    'editor.findRangeHighlightBackground': null,
+    // Color of the selection in an inactive editor.
+    'editor.inactiveSelectionBackground': colors.principal_5.hex() + '20',
 
     // color de la linea en la que el cursor esta ubicado
-    'editor.lineHighlightBackground': colors.lineHiglight.hex(),
+    'editor.lineHighlightBackground': colors.principal_5.hex() + '10',
     'editor.lineHighlightBorder': null,
 
+
+    // palabra seleccionada por el finder
+    'editor.findMatchBackground': colors.principal_5.hex() + '10',
+    'editor.findMatchBorder': colors.principal_5.hex(),
+
+    // todas las palabras encontradas por el finder
+    'editor.findMatchHighlightBackground': colors.principal_5.hex() + '30',
+    'editor.findRangeHighlightBackground': null,
+
     // fondo de la linea completa cuando se busca
-    'editor.rangeHighlightBackground': colors.rangeHiglight.hex(),
+    'editor.rangeHighlightBackground': colors.principal_5.hex() + '20',
     'editor.rangeHighlightForeground': colors.text.hex(),
 
     // cuando me paro en un bracket me muestar los dos con este color
-    'editorBracketMatch.background': colors.principal_0.hex(),
+    'editorBracketMatch.background': null, //colors.principal_0.hex(),
     'editorBracketMatch.border': colors.principal_4.hex(),
 
     // cuando se activa la viusualizacion de los whitespaces
@@ -268,6 +272,11 @@ module.exports = function (colors) {
     'activityBarBadge.background': colors.notificationBadge.hex(),
     // Activity notification badge foreground color.
     'activityBarBadge.foreground': colors.principal.hex(),
+
+    'activityBar.activeBorder': colors.contrast.hex(), // Activity Bar active indicator border color.
+    'activityBar.activeBackground': colors.principal_0.hex(), // Activity Bar optional background color for the active element.
+    'activityBar.activeFocusBorder': colors.contrast.hex(), // Activity bar focus border color for the active item.
+
 
     // Editor Groups are the containers of editors. There can be many editor groups. A Tab is the container of an editor. Multiple Tabs can be opened in one editor group.
     // Color to separate multiple editor groups from each other.
