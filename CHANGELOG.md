@@ -1,7 +1,18 @@
 # Change Log
 
-All notable changes to the "night-owl" extension are be documented in this file.
+All notable changes to the "night-wolf" extension are be documented in this file.
 
+## [1.9.1] - 07-18-2021
+
+### Added
+
+- activity bar, active contrast
+
+### Fixed
+
+- More contract on selected text?, [issue](https://github.com/mao-santaella-rs/NightWolfTheme/issues/31) by [WindSoilder](https://github.com/WindSoilder).
+
+---
 ## [1.9.0] - 07-03-2021
 
 ### Added
