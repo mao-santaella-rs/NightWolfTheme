@@ -2,6 +2,16 @@
 
 All notable changes to the "night-wolf" extension are be documented in this file.
 
+## [1.10.0] - 08-16-2021
+
+### Added
+
+- Added chroma.js replacing Color.js due to better implementation of hex coloring
+
+### Fixed
+
+- Selected words contrast being too low., [issue](https://github.com/mao-santaella-rs/NightWolfTheme/issues/32) by [grindarius](https://github.com/grindarius).
+
 ## [1.9.1] - 07-18-2021
 
 ### Added
