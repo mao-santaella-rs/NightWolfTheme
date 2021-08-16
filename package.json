@@ -69,7 +69,7 @@
     "vscode:prepublish": "node theme-compiler prod"
   },
   "devDependencies": {
-    "color": "^4.0.0",
+    "chroma-js": "^2.1.2",
     "prettier": "2.0.2"
   },
   "keywords": [

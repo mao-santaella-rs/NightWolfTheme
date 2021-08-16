@@ -1,24 +1,33 @@
-const Color = require("color")
+const chroma = require("chroma-js")
 const colors = require("./common-colors")
 
-colors.principal = Color.rgb(37, 37, 37)
-colors.principal_0 = Color.rgb(45, 45, 45)
-colors.principal_1 = Color.rgb(55, 55, 55)
-colors.principal_2 = Color.rgb(69, 69, 69)
-colors.principal_3 = Color.rgb(89, 89, 89)
-colors.principal_4 = Color.rgb(117, 117, 117)
-colors.principal_5 = Color.rgb(155, 155, 155)
+// THEME COLORS
 
-colors.text = Color.rgb(206, 206, 206)
+colors.principal = chroma(37, 37, 37) // rgb(37, 37, 37)
+colors.principal_0 = chroma(45, 45, 45) // rgb(45, 45, 45)
+colors.principal_1 = chroma(55, 55, 55) // rgb(55, 55, 55)
+colors.principal_2 = chroma(69, 69, 69) // rgb(69, 69, 69)
+colors.principal_3 = chroma(89, 89, 89) // rgb(89, 89, 89)
+colors.principal_4 = chroma(117, 117, 117) // rgb(117, 117, 117)
+colors.principal_5 = chroma(155, 155, 155) // rgb(155, 155, 155)
 
-colors.gitInsertedBg = Color.rgb(5, 20, 5)
-colors.gitRemovedBg = Color.rgb(20, 0, 0)
-colors.gitIgnoreExplorer = colors.principal.lighten(1.5)
+colors.text = chroma(206, 206, 206) // rgb(206, 206, 206)
 
-//INTERFACE COLORS
+colors.gitInsertedBg = chroma(5, 20, 5) // rgb(5, 20, 5)
+colors.gitRemovedBg = chroma(20, 0, 0) // rgb(20, 0, 0)
+colors.gitIgnoreExplorer = colors.principal.brighten(1.5)
+
+// INTERFACE COLORS
 colors.interBackground = colors.principal
 colors.interBorder = colors.principal_1
 colors.notificationBadge = colors.white
+
+// INTERFACE SELECTION
+colors.selection_0 = colors.principal_5.alpha(.1)
+colors.selection_1 = colors.principal_5.alpha(.2)
+colors.selection_2 = colors.principal_5.alpha(.3)
+colors.selection_3 = colors.principal_5.alpha(.4)
+colors.selection_4 = colors.principal_5.alpha(.35)
 
 // SYNTAX COLORS
 colors.variable = colors.syntaxYellow
@@ -37,7 +46,6 @@ colors.boolean = colors.contrastText
 colors.nullUnd = colors.contrastText
 colors.punctuation = colors.regularText
 colors.deprecated = colors.danger
-colors.comment = Color.rgb(100, 120, 130)
 
 // Markup
 colors.htmlTag = colors.contrastText

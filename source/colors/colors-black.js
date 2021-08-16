@@ -1,24 +1,33 @@
-const Color = require("color")
+const chroma = require("chroma-js")
 const colors = require("./common-colors")
 
+// THEME COLORS
+
 colors.principal = colors.black
-colors.principal_0 = Color.rgb(20, 20, 20)
-colors.principal_1 = Color.rgb(40, 40, 40)
-colors.principal_2 = Color.rgb(60, 60, 60)
-colors.principal_3 = Color.rgb(80, 80, 80)
-colors.principal_4 = Color.rgb(120, 120, 120)
-colors.principal_5 = Color.rgb(150, 150, 150)
+colors.principal_0 = chroma(20, 20, 20) // rgb(20, 20, 20)
+colors.principal_1 = chroma(40, 40, 40) // rgb(40, 40, 40)
+colors.principal_2 = chroma(60, 60, 60) // rgb(60, 60, 60)
+colors.principal_3 = chroma(80, 80, 80) // rgb(80, 80, 80)
+colors.principal_4 = chroma(120, 120, 120) // rgb(120, 120, 120)
+colors.principal_5 = chroma(150, 150, 150) // rgb(150, 150, 150)
 
-colors.text = Color.rgb(200, 200, 200)
+colors.text = chroma(200, 200, 200) // rgb(200, 200, 200)
 
-colors.gitInsertedBg = Color.rgb(5, 20, 5)
-colors.gitRemovedBg = Color.rgb(20, 0, 0)
-colors.gitIgnoreExplorer = colors.principal_0.lighten(1.5)
+colors.gitInsertedBg = chroma(5, 20, 5) // rgb(5, 20, 5)
+colors.gitRemovedBg = chroma(20, 0, 0) // rgb(20, 0, 0)
+colors.gitIgnoreExplorer = colors.principal_0.brighten(1.5)
 
-//INTERFACE COLORS
+// INTERFACE COLORS
 colors.interBackground = colors.principal
 colors.interBorder = colors.principal_1
 colors.notificationBadge = colors.white
+
+// INTERFACE SELECTION
+colors.selection_0 = colors.principal_5.alpha(.1)
+colors.selection_1 = colors.principal_5.alpha(.2)
+colors.selection_2 = colors.principal_5.alpha(.3)
+colors.selection_3 = colors.principal_5.alpha(.4)
+colors.selection_4 = colors.principal_5.alpha(.35)
 
 // SYNTAX COLORS
 colors.variable = colors.syntaxYellow
@@ -37,7 +46,6 @@ colors.boolean = colors.contrastText
 colors.nullUnd = colors.contrastText
 colors.punctuation = colors.regularText
 colors.deprecated = colors.danger
-colors.comment = Color.rgb(100, 120, 130)
 
 // Markup
 colors.htmlTag = colors.contrastText

@@ -19,7 +19,7 @@ module.exports = function (colors) {
     // Shadow color of widgets such as Find/Replace inside the editor.
     'widget.shadow': colors.black.hex() + '30',
     // Background color of text selections in the workbench (for input fields or text areas, does not apply to selections within the editor and the terminal).
-    'selection.background': colors.principal_5.hex() + '30',
+    'selection.background': colors.selection_2.hex(),
     // labels in the welcome page
     descriptionForeground: colors.text.hex(),
     // Overall foreground color for error messages
@@ -44,45 +44,42 @@ module.exports = function (colors) {
     'textCodeBlock.background': colors.principal_0.hex(),
     // Foreground color for preformatted text segments.
     'textPreformat.foreground': colors.text.hex(),
-    // Color for text separators.
+    // color for text separators.
     'textSeparator.foreground': colors.principal_0.hex(),
 
-    // Color of the editor selection.
-    'editor.selectionBackground': colors.principal_5.hex() + '30',
+    // color of the editor selection.
+    'editor.selectionBackground': colors.selection_4.hex(),
     'editor.selectionForeground': colors.text.hex(),
     // cuando selecciono parcialmente una palabra y vscode selecciona todo
-    'editor.wordHighlightStrongBackground': colors.principal_5.hex() + '20',
+    'editor.wordHighlightStrongBackground': colors.selection_1.hex(),
     'editor.wordHighlightStrongBorder': null, // colors.testC.hex(),
     // palabras iguales a la seleccion
-    'editor.selectionHighlightBackground': colors.principal_0.hex(),
-    'editor.selectionHighlightBorder' : colors.principal_5.hex() + '40',
+    'editor.selectionHighlightBackground': colors.selection_0.hex(),
+    'editor.selectionHighlightBorder' : colors.selection_2.hex(),
     // palabras completas iguales a la seleccion
-    'editor.wordHighlightBackground': colors.principal_5.hex() + '30',
-    'editor.wordHighlightBorder': null, // colors.testC.hex() + '30',
-    
-    // cuando ubico el cursor en el medio de una palabra y vscode la selecciona
+    'editor.wordHighlightBackground': colors.selection_1.hex(),
+    'editor.wordHighlightBorder': colors.selection_3.hex(),
 
     // cuando ubico el puntero encima de una palabra
-    'editor.hoverHighlightBackground': colors.principal_5.hex() + '20',
+    'editor.hoverHighlightBackground': colors.selection_1.hex(),
 
-    // Color of the selection in an inactive editor.
-    'editor.inactiveSelectionBackground': colors.principal_5.hex() + '20',
+    // color of the selection in an inactive editor.
+    'editor.inactiveSelectionBackground': colors.selection_1.hex(),
 
     // color de la linea en la que el cursor esta ubicado
-    'editor.lineHighlightBackground': colors.principal_5.hex() + '10',
+    'editor.lineHighlightBackground': colors.selection_0.hex(),
     'editor.lineHighlightBorder': null,
 
-
     // palabra seleccionada por el finder
-    'editor.findMatchBackground': colors.principal_5.hex() + '10',
+    'editor.findMatchBackground': colors.selection_0.hex(),
     'editor.findMatchBorder': colors.principal_5.hex(),
 
     // todas las palabras encontradas por el finder
-    'editor.findMatchHighlightBackground': colors.principal_5.hex() + '30',
+    'editor.findMatchHighlightBackground': colors.selection_1.hex(),
     'editor.findRangeHighlightBackground': null,
 
     // fondo de la linea completa cuando se busca
-    'editor.rangeHighlightBackground': colors.principal_5.hex() + '20',
+    'editor.rangeHighlightBackground': colors.selection_0.hex(),
     'editor.rangeHighlightForeground': colors.text.hex(),
 
     // cuando me paro en un bracket me muestar los dos con este color
@@ -279,7 +276,7 @@ module.exports = function (colors) {
 
 
     // Editor Groups are the containers of editors. There can be many editor groups. A Tab is the container of an editor. Multiple Tabs can be opened in one editor group.
-    // Color to separate multiple editor groups from each other.
+    // color to separate multiple editor groups from each other.
     'editorGroup.border': colors.interBorder.hex(),
     // Background color when dragging editors around.
     'editorGroup.dropBackground': colors.contrast.hex() + '70',
@@ -376,7 +373,7 @@ module.exports = function (colors) {
     'editorOverviewRuler.commonContentForeground': colors.contrast.hex(),
 
     // Overview ruler: This ruler is located beneath the scroll bar on the right edge of the editor and gives an overview of the decorations in the editor.
-    //  Color of the overview ruler border.
+    // color of the overview ruler border.
     'editorOverviewRuler.border': null,
     // Overview ruler marker color for find matches. The color must not be opaque so as not to hide underlying decorations.
     'editorOverviewRuler.findMatchForeground': colors.principal_1.hex(),

@@ -1,26 +1,33 @@
-const Color = require("color")
+const chroma = require("chroma-js")
 const colors = require("./common-colors")
 
 // THEME COLORS
 
-colors.principal = Color.rgb(16, 30, 44)
-colors.principal_0 = Color.rgb(20, 40, 60)
-colors.principal_1 = Color.rgb(27, 50, 74)
-colors.principal_2 = Color.rgb(30, 70, 103)
-colors.principal_3 = Color.rgb(48, 90, 132)
-colors.principal_4 = Color.rgb(95, 130, 165)
-colors.principal_5 = Color.rgb(123, 165, 207)
+colors.principal = chroma(16, 30, 44) // rgb(16, 30, 44)
+colors.principal_0 = chroma(20, 40, 60) // rgb(20, 40, 60)
+colors.principal_1 = chroma(27, 50, 74) // rgb(27, 50, 74)
+colors.principal_2 = chroma(30, 70, 103) // rgb(30, 70, 103)
+colors.principal_3 = chroma(48, 90, 132) // rgb(48, 90, 132)
+colors.principal_4 = chroma(95, 130, 165) // rgb(95, 130, 165)
+colors.principal_5 = chroma(123, 165, 207) // rgb(123, 165, 207)
 
-colors.text = Color.rgb(189, 210, 231)
+colors.text = chroma(189, 210, 231) // rgb(189, 210, 231)
 
-colors.gitInsertedBg = Color.rgb(20, 51, 46)
-colors.gitRemovedBg = Color.rgb(30, 19, 28)
-colors.gitIgnoreExplorer = colors.principal.lighten(1.5)
+colors.gitInsertedBg = chroma(20, 51, 46) // rgb(20, 51, 46)
+colors.gitRemovedBg = chroma(30, 19, 28) // rgb(30, 19, 28)
+colors.gitIgnoreExplorer = colors.principal.brighten(1.5)
 
-//INTERFACE COLORS
+// INTERFACE COLORS
 colors.interBackground = colors.principal
 colors.interBorder = colors.principal_1
 colors.notificationBadge = colors.infoLight
+
+// INTERFACE SELECTIO
+colors.selection_0 = colors.principal_5.alpha(.1)
+colors.selection_1 = colors.principal_5.alpha(.2)
+colors.selection_2 = colors.principal_5.alpha(.3)
+colors.selection_3 = colors.principal_5.alpha(.4)
+colors.selection_4 = colors.principal_2.alpha(.6)
 
 // SYNTAX COLORS
 colors.variable = colors.syntaxYellow
@@ -39,7 +46,6 @@ colors.boolean = colors.contrastText
 colors.nullUnd = colors.contrastText
 colors.punctuation = colors.regularText
 colors.deprecated = colors.danger
-colors.comment = Color.rgb(100, 120, 130)
 
 // Markup
 colors.htmlTag = colors.contrastText
