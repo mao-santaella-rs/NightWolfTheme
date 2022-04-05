@@ -19,42 +19,42 @@
   "contributes": {
     "themes": [
       {
-        "label": "Night Wolf [dark blue]",
+        "label": "Night Wolf (dark blue)",
         "uiTheme": "vs-dark",
         "path": "./themes/night-wolf-dark-blue.json"
       },
       {
-        "label": "Night Wolf [dark blue] (No Italics)",
+        "label": "Night Wolf (dark blue) (No Italics)",
         "uiTheme": "vs-dark",
         "path": "./themes/night-wolf-dark-blue-noitalics.json"
       },
       {
-        "label": "Night Wolf [dark gray]",
+        "label": "Night Wolf (dark gray)",
         "uiTheme": "vs-dark",
         "path": "./themes/night-wolf-dark-gray.json"
       },
       {
-        "label": "Night Wolf [dark gray] (No Italics)",
+        "label": "Night Wolf (dark gray) (No Italics)",
         "uiTheme": "vs-dark",
         "path": "./themes/night-wolf-dark-gray-noitalics.json"
       },
       {
-        "label": "Night Wolf [gray]",
+        "label": "Night Wolf (gray)",
         "uiTheme": "vs-dark",
         "path": "./themes/night-wolf-gray.json"
       },
       {
-        "label": "Night Wolf [gray] (No Italics)",
+        "label": "Night Wolf (gray) (No Italics)",
         "uiTheme": "vs-dark",
         "path": "./themes/night-wolf-gray-noitalics.json"
       },
       {
-        "label": "Night Wolf [black]",
+        "label": "Night Wolf (black)",
         "uiTheme": "vs-dark",
         "path": "./themes/night-wolf-black.json"
       },
       {
-        "label": "Night Wolf [black] (No Italics)",
+        "label": "Night Wolf (black) (No Italics)",
         "uiTheme": "vs-dark",
         "path": "./themes/night-wolf-black-noitalics.json"
       }

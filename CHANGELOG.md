@@ -2,6 +2,14 @@
 
 All notable changes to the "night-wolf" extension are be documented in this file.
 
+## [1.11.0] - 04-04-2022
+
+### Fixed
+
+- Some coloring inconsistencies between javascript and typescript 
+- Camelcase HTML tags in Vue.js not working
+- Color customizations changes not taking effect, [issue](https://github.com/mao-santaella-rs/NightWolfTheme/issues/34) by [chalop](https://github.com/chalop).
+
 ## [1.10.0] - 08-16-2021
 
 ### Added

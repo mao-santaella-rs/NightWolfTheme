@@ -4,6 +4,32 @@ import { LineResults } from "../Rendering/LineResults";
 /**
  * Generates language output by merging line results.
  */
+
+
+ var globalVar = Number;
+ let variable = 324;
+ const constant = {
+   propertyA: [2, 'variable'],
+   propertyB: "some string",
+   propertyC: 2019,
+   propertyD: {
+     subPropertyA: true,
+     subPropertyB: false,
+     subPropertyC: null,
+     subPropertyD: undefined,
+     subPropertyE: {
+       subSubPropertyA: "string"
+     }
+   },
+   methodA: (parameterA, parameterB) => {
+     console.log(parameterA, parameterB)
+   }
+ }
+ console.log(constant.propertyD.subPropertyE.subSubPropertyA)
+ 
+ constant.methodA(25, 35)
+ 
+
 export class OutputMerger {
     /**
      * Characters to output for semicolon-ended lines.

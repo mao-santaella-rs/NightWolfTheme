@@ -725,7 +725,7 @@ module.exports = function (colors) {
       name: 'Variable Property Other object property',
       scope: ['variable.other.object.property'],
       settings: {
-        foreground: colors.variableProperty.hex(),
+        foreground: colors.text.darken(0.8).hex(),
         fontStyle: 'italic',
       },
     },
@@ -739,11 +739,22 @@ module.exports = function (colors) {
         'variable.other.instance',
         'variable.readwrite.instance',
         'variable.other.readwrite.instance',
-        'variable.other.property',
       ],
       settings: {
         foreground: colors.variableInstance.hex(),
       },
+    },
+
+    {
+      name: '',
+      scope: [
+        'variable.other.property',
+        'variable.other.property.js',
+        'variable.other.property.ts',],
+        settings: {
+          foreground: colors.variableProperty.hex()
+        }
+
     },
 
     // RED COLOR
@@ -1488,7 +1499,7 @@ module.exports = function (colors) {
     },
     {
       name: 'this word in javascript',
-      scope: ['variable.language.this.js'],
+      scope: ['variable.language.this.js','variable.language.this.ts'],
       settings: {
         foreground: colors.contrastText.hex(),
       },
@@ -1956,12 +1967,24 @@ module.exports = function (colors) {
         'entity.name.tag.tsx',
         'entity.name.tag.js',
         'entity.name.tag',
+        'source.vue entity.name.tag.html invalid.illegal.unrecognized-tag.html',
         'meta.tag.js',
         'meta.tag.tsx',
         'meta.tag.html',
       ],
       settings: {
         foreground: colors.htmlTag.hex(),
+        fontStyle: 'normal',
+      },
+    },
+    {
+      name: 'HTML invalid Tag names',
+      scope: [
+        'invalid.illegal.unrecognized-tag.html entity.name.tag',
+        'meta.tag.other.unrecognized.html entity.name.tag',
+      ],
+      settings: {
+        foreground: colors.regularText.hex(),
         fontStyle: 'normal',
       },
     },
