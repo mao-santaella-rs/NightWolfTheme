@@ -696,8 +696,8 @@ module.exports = function (colors) {
         // Most other languages would introduce new types as classes.
         'support.type',
         // when the framework/library provides classes.
-        'support.class',
-        'entity.name.type.class',
+        // 'support.class',
+        // 'entity.name.type.class',
       ],
       settings: {
         foreground: colors.specialWordB.hex(),
@@ -725,7 +725,7 @@ module.exports = function (colors) {
       name: 'Variable Property Other object property',
       scope: ['variable.other.object.property'],
       settings: {
-        foreground: colors.text.darken(0.8).hex(),
+        foreground: colors.text.hex(),
         fontStyle: 'italic',
       },
     },
@@ -903,14 +903,6 @@ module.exports = function (colors) {
       name: 'Functions & Classes',
       scope: [
         'entity.name.function',
-        // classes in js
-        'meta.class entity.name.type.class.js',
-        'entity.other.inherited-class.js',
-        // classes in ts
-        'meta.class entity.name.type.class.tsx',
-        // classes in c++
-        'entity.name.type.class.cpp',
-        'entity.name.type.inherited.cpp',
       ],
       settings: {
         foreground: colors.functionName.hex(),
@@ -969,9 +961,17 @@ module.exports = function (colors) {
     },
     {
       name: 'Class name',
-      scope: ['entity.name.class', 'meta.class entity.name.type.class'],
+      scope: [
+        'entity.name.class', 
+        'meta.class entity.name.type.class',
+        // classes in js,
+        'meta.class entity.name.type.class.js',
+        'entity.other.inherited-class.js',
+        // classes in ts
+        'meta.class entity.name.type.class.ts',
+      ],
       settings: {
-        foreground: colors.variable.hex(),
+        foreground: colors.specialWordC.hex(),
       },
     },
     {
@@ -995,7 +995,6 @@ module.exports = function (colors) {
       name: 'String Quoted',
       scope: [
         'string.quoted',
-        'variable.other.readwrite.js',
         'string.quoted.single.js',
       ],
       settings: {
@@ -1212,14 +1211,14 @@ module.exports = function (colors) {
         foreground: colors.boolean.hex(),
       },
     },
-    {
-      // code like ~ = &#x7e
-      name: 'entity names',
-      scope: ['entity.name.type'],
-      settings: {
-        foreground: colors.variable.hex(),
-      },
-    },
+    // {
+    //   // code like ~ = &#x7e
+    //   name: 'entity names',
+    //   scope: ['entity.name.type'],
+    //   settings: {
+    //     foreground: colors.variable.hex(),
+    //   },
+    // },
   ]
 
   const tcStylesheets = [
@@ -1469,16 +1468,19 @@ module.exports = function (colors) {
   // languages
   const tcJavascript = [
     {
-      name: 'javascript classes',
+      name: 'js ts interface & alias',
       scope: [
-        // classes in js
-        'meta.class entity.name.type.class.js',
-        'entity.other.inherited-class.js',
-        // classes in ts
-        'meta.class entity.name.type.class.tsx',
+        'entity.name.type.interface.js',
+        'entity.name.type.interface.ts',
+        'entity.name.type.alias.js',
+        'entity.name.type.alias.ts',
+        'entity.name.type.js', 
+        'entity.name.type.ts', 
+        'entity.name.type.module.js',
+        'entity.name.type.module.ts',
       ],
       settings: {
-        fontStyle: 'underline',
+        foreground: colors.specialWordC.hex(),
       },
     },
     {
@@ -1487,6 +1489,13 @@ module.exports = function (colors) {
       settings: {
         foreground: colors.specialWordB.hex(),
         fontStyle: 'italic',
+      },
+    },
+    {
+      name: 'javascript key inside object vue',
+      scope: ['variable.other.property.vue'],
+      settings: {
+        foreground: colors.text.hex(),
       },
     },
     {
@@ -1505,10 +1514,9 @@ module.exports = function (colors) {
       },
     },
     {
-      name: 'Object literla key',
+      name: 'Object literal key',
       scope: [
-        'meta.object.member.js meta.object-literal.key.js',
-        'variable.other.property.js',
+        'meta.objectliteral.js meta.object.member.js meta.object-literal.key.js',
       ],
       settings: {
         foreground: colors.variableProperty.hex(),
@@ -1564,14 +1572,6 @@ module.exports = function (colors) {
       },
     },
     {
-      name: 'TypeScript[React] Entity Name Types',
-      scope: ['entity.name.type.ts', 'entity.name.type.tsx'],
-      settings: {
-        foreground: '#c',
-        foreground: colors.variable.hex(),
-      },
-    },
-    {
       name: 'TypeScript[React] Entity Name Types as Parameters',
       scope: [
         'meta.type.parameters.ts entity.name.type',
@@ -1583,7 +1583,10 @@ module.exports = function (colors) {
     },
     {
       name: 'JavaScript Variable Other ReadWrite',
-      scope: ['variable.other.readwrite.js', 'variable.parameter'],
+      scope: [
+        'variable.other.property',
+        'variable.parameter'
+      ],
       settings: {
         foreground: colors.variable.hex(),
       },
@@ -1663,7 +1666,7 @@ module.exports = function (colors) {
       name: 'JavaScript Entity Name Type',
       scope: ['entity.name.type.js', 'entity.name.type.module.js'],
       settings: {
-        foreground: colors.specialWordB.hex(),
+        foreground: colors.specialWordC.hex(),
         fontStyle: 'normal',
       },
     },

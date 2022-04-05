@@ -245,6 +245,28 @@ export class SourceLineParser {
 }
 
 
+@decorator()
+class NameClass {
+
+}
+declare module name {
+
+}
+
+interface MyInterface { }
+type FooBarAlias = string;
+var x: MyInterface, y: string, z: FooBarAlias;
+
+for (let index = 0; index < array.length; index++) {
+  const element = array[index];
+}
+
+if (constant.parameterA[0] === 3 && variable <= 550) {
+
+} else {
+
+}
+
 
 interface Entity {
     name: string;
