@@ -750,7 +750,10 @@ module.exports = function (colors) {
       scope: [
         'variable.other.property',
         'variable.other.property.js',
-        'variable.other.property.ts',],
+        'variable.other.property.ts',
+        'variable.object.property.ts',
+        '	support.variable.property'
+      ],
         settings: {
           foreground: colors.variableProperty.hex()
         }
@@ -1070,7 +1073,7 @@ module.exports = function (colors) {
       },
     },
     {
-      name: 'TypeScript[React] Import/Export Punctuations',
+      name: 'TypeScript Import/Export Punctuations',
       scope: [
         'meta.import.ts punctuation.definition.block',
         'meta.import.tsx punctuation.definition.block',
@@ -1492,13 +1495,6 @@ module.exports = function (colors) {
       },
     },
     {
-      name: 'javascript key inside object vue',
-      scope: ['variable.other.property.vue'],
-      settings: {
-        foreground: colors.text.hex(),
-      },
-    },
-    {
       // nn
       name: 'Storage type',
       scope: 'storage.type.function.arrow.js',
@@ -1516,7 +1512,8 @@ module.exports = function (colors) {
     {
       name: 'Object literal key',
       scope: [
-        'meta.objectliteral.js meta.object.member.js meta.object-literal.key.js',
+        'meta.objectliteral.js meta.object.member.js meta.object-literal.key.js', 
+        'variable.other.property.vue',
       ],
       settings: {
         foreground: colors.variableProperty.hex(),
@@ -1542,7 +1539,7 @@ module.exports = function (colors) {
       },
     },
     {
-      name: 'TypeScript[React] Punctuation Decorators',
+      name: 'TypeScript Punctuation Decorators',
       scope: [
         'meta.decorator punctuation.decorator.ts',
         'meta.decorator punctuation.decorator.tsx',
@@ -1552,16 +1549,12 @@ module.exports = function (colors) {
       },
     },
     {
-      name: 'TypeScript[React] Variables and Object Properties',
+      name: 'TypeScript Variables and Object Properties',
       scope: [
         'variable.other.readwrite.alias.ts',
         'variable.other.readwrite.alias.tsx',
         'variable.other.readwrite.ts',
         'variable.other.readwrite.tsx',
-        'variable.other.object.ts',
-        'variable.other.object.tsx',
-        'variable.object.property.ts',
-        'variable.object.property.tsx',
         'variable.other.ts',
         'variable.other.tsx',
         'variable.tsx',
@@ -1572,7 +1565,7 @@ module.exports = function (colors) {
       },
     },
     {
-      name: 'TypeScript[React] Entity Name Types as Parameters',
+      name: 'TypeScript Entity Name Types as Parameters',
       scope: [
         'meta.type.parameters.ts entity.name.type',
         'meta.type.parameters.tsx entity.name.type',
@@ -1644,12 +1637,15 @@ module.exports = function (colors) {
       },
     },
     {
-      name: 'JavaScript[React] Variable Other Object',
+      name: 'js & ts Variable Other Object',
       scope: [
         'variable.other.object.js',
         'variable.other.object.jsx',
+        'variable.other.object.ts',
+        'variable.other.object.tsx',
         'variable.object.property.js',
         'variable.object.property.jsx',
+        'support.variable.vue'
       ],
       settings: {
         foreground: colors.variable.hex(),

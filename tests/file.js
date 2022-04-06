@@ -189,6 +189,8 @@ cars instanceof Object;         // Returns true
 cars instanceof String;         // Returns false
 cars instanceof Number;         // Returns false
 
+const form = document.querySelector('.new-item-form')
+
 (function (global, factory) {
 
   "use strict";
