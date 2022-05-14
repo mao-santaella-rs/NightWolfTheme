@@ -2,6 +2,12 @@
 
 All notable changes to the "night-wolf" extension are be documented in this file.
 
+## [1.11.3] - 05-14-2021
+
+### Fixed
+
+- better svelte support 
+
 ## [1.11.2] - 04-06-2021
 
 ### Fixed
