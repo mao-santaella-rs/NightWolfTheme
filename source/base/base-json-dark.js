@@ -55,7 +55,7 @@ module.exports = function (colors) {
     'editor.wordHighlightStrongBorder': null, // colors.testC.hex(),
     // palabras iguales a la seleccion
     'editor.selectionHighlightBackground': colors.selection_0.hex(),
-    'editor.selectionHighlightBorder' : colors.selection_2.hex(),
+    'editor.selectionHighlightBorder': colors.selection_2.hex(),
     // palabras completas iguales a la seleccion
     'editor.wordHighlightBackground': colors.selection_1.hex(),
     'editor.wordHighlightBorder': colors.selection_3.hex(),
@@ -144,13 +144,13 @@ module.exports = function (colors) {
     'button.border': null,
     'button.hoverBackground': colors.contrastDark.hex(),
 
-    "button.secondaryForeground": colors.white.hex(),
-    "button.secondaryBackground": colors.info.hex(),
-    "button.secondaryHoverBackground": colors.infoDark.hex(),
+    'button.secondaryForeground': colors.white.hex(),
+    'button.secondaryBackground': colors.info.hex(),
+    'button.secondaryHoverBackground': colors.infoDark.hex(),
 
-    "checkbox.background": colors.principal_3.hex(),
-    "checkbox.foreground": colors.white.hex(),
-    "checkbox.border": null,
+    'checkbox.background': colors.principal_3.hex(),
+    'checkbox.foreground': colors.white.hex(),
+    'checkbox.border': null,
 
     // Botones de las extenciones
     'extensionButton.prominentForeground': colors.white.hex(),
@@ -189,7 +189,7 @@ module.exports = function (colors) {
     'badge.background': colors.notificationBadge.hex(),
     'badge.foreground': colors.principal.hex(),
 
-    "progressBar.background": colors.contrast.hex(),
+    'progressBar.background': colors.contrast.hex(),
 
     // Breadcrumbs
     'breadcrumb.foreground': colors.info.hex(),
@@ -253,7 +253,6 @@ module.exports = function (colors) {
     // "tree.indentGuidesStroke": null, // Tree Widget's stroke color for indent guides.
     // "tree.tableColumnsBorder": null, // Tree stroke color for the indentation guides.
 
-
     // Activity bar es la primera barra de iconos de la izquierda
     // Activity Bar background color.
     'activityBar.background': colors.interBackground.hex(),
@@ -273,7 +272,6 @@ module.exports = function (colors) {
     'activityBar.activeBorder': colors.contrast.hex(), // Activity Bar active indicator border color.
     'activityBar.activeBackground': colors.principal_0.hex(), // Activity Bar optional background color for the active element.
     'activityBar.activeFocusBorder': colors.contrast.hex(), // Activity bar focus border color for the active item.
-
 
     // Editor Groups are the containers of editors. There can be many editor groups. A Tab is the container of an editor. Multiple Tabs can be opened in one editor group.
     // color to separate multiple editor groups from each other.
@@ -471,7 +469,7 @@ module.exports = function (colors) {
     'progress.background': colors.contrast.hex(),
 
     // Terminal colors
-    "terminal.background": colors.principal.hex(),
+    'terminal.background': colors.principal.hex(),
     'terminal.ansiWhite': colors.text.hex(),
     'terminal.ansiBlack': colors.black.hex(),
     'terminal.ansiBlue': colors.syntaxBlue.hex(),
@@ -592,7 +590,7 @@ module.exports = function (colors) {
     {
       // HTML & PUG atributes
       name: 'Tag attribute',
-      scope: 'entity.other.attribute-name',
+      scope: ['entity.other.attribute-name', 'entity.name.type.svelte'],
       settings: {
         foreground: colors.tagAttribute.hex(),
         fontStyle: 'italic',
@@ -752,12 +750,11 @@ module.exports = function (colors) {
         'variable.other.property.js',
         'variable.other.property.ts',
         'variable.object.property.ts',
-        '	support.variable.property'
+        '	support.variable.property',
       ],
-        settings: {
-          foreground: colors.variableProperty.hex()
-        }
-
+      settings: {
+        foreground: colors.variableProperty.hex(),
+      },
     },
 
     // RED COLOR
@@ -848,6 +845,8 @@ module.exports = function (colors) {
         'keyword.control.conditional.ts',
         'keyword.control.switch.js',
         'keyword.control.switch.ts',
+        'keyword.control.conditional.svelte',
+        'keyword.control.svelte',
       ],
       settings: {
         foreground: colors.specialWordC.hex(),
@@ -904,9 +903,7 @@ module.exports = function (colors) {
     {
       // function name in javascript and mixins and function names in sass & scss
       name: 'Functions & Classes',
-      scope: [
-        'entity.name.function',
-      ],
+      scope: ['entity.name.function'],
       settings: {
         foreground: colors.functionName.hex(),
       },
@@ -965,7 +962,7 @@ module.exports = function (colors) {
     {
       name: 'Class name',
       scope: [
-        'entity.name.class', 
+        'entity.name.class',
         'meta.class entity.name.type.class',
         // classes in js,
         'meta.class entity.name.type.class.js',
@@ -996,10 +993,7 @@ module.exports = function (colors) {
     },
     {
       name: 'String Quoted',
-      scope: [
-        'string.quoted',
-        'string.quoted.single.js',
-      ],
+      scope: ['string.quoted', 'string.quoted.single.js'],
       settings: {
         foreground: colors.string.hex(),
       },
@@ -1477,8 +1471,8 @@ module.exports = function (colors) {
         'entity.name.type.interface.ts',
         'entity.name.type.alias.js',
         'entity.name.type.alias.ts',
-        'entity.name.type.js', 
-        'entity.name.type.ts', 
+        'entity.name.type.js',
+        'entity.name.type.ts',
         'entity.name.type.module.js',
         'entity.name.type.module.ts',
       ],
@@ -1504,7 +1498,7 @@ module.exports = function (colors) {
     },
     {
       name: 'this word in javascript',
-      scope: ['variable.language.this.js','variable.language.this.ts'],
+      scope: ['variable.language.this.js', 'variable.language.this.ts'],
       settings: {
         foreground: colors.contrastText.hex(),
       },
@@ -1512,7 +1506,7 @@ module.exports = function (colors) {
     {
       name: 'Object literal key',
       scope: [
-        'meta.objectliteral.js meta.object.member.js meta.object-literal.key.js', 
+        'meta.objectliteral.js meta.object.member.js meta.object-literal.key.js',
         'variable.other.property.vue',
       ],
       settings: {
@@ -1576,10 +1570,7 @@ module.exports = function (colors) {
     },
     {
       name: 'JavaScript Variable Other ReadWrite',
-      scope: [
-        'variable.other.property',
-        'variable.parameter'
-      ],
+      scope: ['variable.other.property', 'variable.parameter'],
       settings: {
         foreground: colors.variable.hex(),
       },
@@ -1645,7 +1636,7 @@ module.exports = function (colors) {
         'variable.other.object.tsx',
         'variable.object.property.js',
         'variable.object.property.jsx',
-        'support.variable.vue'
+        'support.variable.vue',
       ],
       settings: {
         foreground: colors.variable.hex(),
@@ -1970,6 +1961,10 @@ module.exports = function (colors) {
         'meta.tag.js',
         'meta.tag.tsx',
         'meta.tag.html',
+        'meta.tag.start.svelte',
+        'meta.tag.end.svelte',
+        'meta.tag.start.svelte keyword.control.svelte',
+        'meta.tag.end.svelte keyword.control.svelte',
       ],
       settings: {
         foreground: colors.htmlTag.hex(),
@@ -2123,7 +2118,7 @@ module.exports = function (colors) {
       scope: [
         'meta.use.rust',
         'meta.function.definition.rust',
-        'keyword.other.rust'
+        'keyword.other.rust',
       ],
       settings: {
         foreground: colors.specialWordB.hex(),
@@ -2131,18 +2126,14 @@ module.exports = function (colors) {
     },
     {
       name: 'Rust ',
-      scope: [
-        'entity.name.namespace.rust',
-      ],
+      scope: ['entity.name.namespace.rust'],
       settings: {
         foreground: colors.specialWordC.hex(),
       },
     },
     {
       name: 'Rust ',
-      scope: [
-        'entity.name.namespace.rust',
-      ],
+      scope: ['entity.name.namespace.rust'],
       settings: {
         foreground: colors.specialWordC.hex(),
       },
