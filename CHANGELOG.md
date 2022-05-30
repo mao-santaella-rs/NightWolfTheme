@@ -2,19 +2,25 @@
 
 All notable changes to the "night-wolf" extension are be documented in this file.
 
-## [1.11.3] - 05-14-2021
+## [1.11.4] - 05-29-2022
+
+### Fixed
+
+- better Vue 3 and Typescript support
+
+## [1.11.3] - 05-14-2022
 
 ### Fixed
 
 - better svelte support 
 
-## [1.11.2] - 04-06-2021
+## [1.11.2] - 04-06-2022
 
 ### Fixed
 
 - immprovements in javascript and typescript support in vue.js  
 
-## [1.11.1] - 04-05-2021
+## [1.11.1] - 04-05-2022
 
 ### Added
 

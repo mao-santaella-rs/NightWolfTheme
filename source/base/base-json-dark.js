@@ -855,7 +855,7 @@ module.exports = function (colors) {
     },
     {
       name: 'loops',
-      scope: ['keyword.control.loop'],
+      scope: ['keyword.control.loop.vue', 'keyword.control.conditional.vue'],
       settings: {
         foreground: colors.specialWordC.hex(),
       },
@@ -1482,7 +1482,7 @@ module.exports = function (colors) {
     },
     {
       name: 'javascript portotype methods',
-      scope: ['support.variable.property.js'],
+      scope: ['support.variable.property.js', 'support.variable.property.ts'],
       settings: {
         foreground: colors.specialWordB.hex(),
         fontStyle: 'italic',
@@ -1491,7 +1491,10 @@ module.exports = function (colors) {
     {
       // nn
       name: 'Storage type',
-      scope: 'storage.type.function.arrow.js',
+      scope: [
+        'storage.type.function.arrow.js',
+        'storage.type.function.arrow.ts',
+      ],
       settings: {
         fontStyle: 'normal',
       },
@@ -1958,6 +1961,7 @@ module.exports = function (colors) {
         'entity.name.tag.js',
         'entity.name.tag',
         'source.vue entity.name.tag.html invalid.illegal.unrecognized-tag.html',
+        'source.vue entity.name.tag.html',
         'meta.tag.js',
         'meta.tag.tsx',
         'meta.tag.html',
