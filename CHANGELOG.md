@@ -10,7 +10,7 @@ All notable changes to the "night-wolf" extension are be documented in this file
 - Semantic Highlighting support, [issue](https://github.com/mao-santaella-rs/NightWolfTheme/issues/36) by [wtho](https://github.com/wtho).
 
 ### Changed
-- Engines supported updated (1.x).
+- Engines supported updated (1.76.2).
 - Prettier updated to the latest version (2.8.4).
 
 ### Fixed

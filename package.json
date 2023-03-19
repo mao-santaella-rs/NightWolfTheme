@@ -14,7 +14,7 @@
     "email": "mauriciosantaella@outlook.com"
   },
   "engines": {
-    "vscode": "^1.x"
+    "vscode": "^1.76.2"
   },
   "contributes": {
     "themes": [
