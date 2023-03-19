@@ -14,7 +14,7 @@
     "email": "mauriciosantaella@outlook.com"
   },
   "engines": {
-    "vscode": "^1.32.x"
+    "vscode": "^1.x"
   },
   "contributes": {
     "themes": [
@@ -70,7 +70,7 @@
   },
   "devDependencies": {
     "chroma-js": "^2.1.2",
-    "prettier": "2.0.2"
+    "prettier": "2.8.4"
   },
   "keywords": [
     "Theme",

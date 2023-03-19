@@ -8,6 +8,7 @@ colors.black = chroma(0, 0, 0)
 
 // Syntax Colors
 colors.syntaxRed = chroma(255, 120, 120) // rgb(255, 120, 120)
+colors.syntaxRedIntense = chroma(255, 80, 180) // rgb(255,80,120)
 colors.syntaxOrange = chroma(255, 180, 130) // rgb(255, 180, 130)
 colors.syntaxYellow = chroma(255, 220, 150) // rgb(255, 220, 150)
 colors.syntaxBeige = chroma(219, 212, 186) // rgb(219, 212, 186)
@@ -37,7 +38,7 @@ colors.warningDark = chroma(102, 80, 16) // rgb(102, 80, 16)
 colors.warning = chroma(255, 200, 40) // rgb(255, 200, 40)
 colors.warningLight = chroma(255, 227, 156) // rgb(255, 227, 156)
 
-colors.dangerDark = chroma(071, 32, 32) // rgb(071, 32, 32)
+colors.dangerDark = chroma(71, 32, 32) // rgb(71, 32, 32)
 colors.danger = chroma(240, 80, 80) // rgb(240, 80, 80)
 colors.dangerLight = chroma(216, 130, 130) // rgb(216, 130, 130)
 

@@ -94,7 +94,7 @@ module.exports = function (colors) {
     'editorIndentGuide.activeBackground': colors.principal_3.hex(),
 
     // la linea vertical en el codigo super fastidiosa!
-    'editorRuler.foreground': colors.principal.hex(),
+    'editorRuler.foreground': colors.principal_1.hex(),
 
     // vscode codelens
     'editorCodeLens.foreground': colors.infoLight.hex(),
@@ -414,9 +414,10 @@ module.exports = function (colors) {
     'statusBar.background': colors.principal.hex(),
     'statusBar.foreground': colors.principal_5.hex(),
     'statusBar.border': colors.interBorder.hex(),
+    'statusBar.focusBorder': colors.principal_5.hex(),
 
-    'statusBar.debuggingBackground': colors.warning.hex(),
-    'statusBar.debuggingForeground': colors.principal.hex(),
+    'statusBar.debuggingBackground': colors.principal.hex(),
+    'statusBar.debuggingForeground': colors.principal_5.hex(),
     'statusBar.debuggingBorder': colors.warning.hex(),
 
     'statusBar.noFolderForeground': null,
@@ -429,11 +430,19 @@ module.exports = function (colors) {
     'statusBarItem.prominentBackground': colors.principal_3.hex(),
     'statusBarItem.prominentForeground': colors.text.hex(),
     'statusBarItem.prominentHoverBackground': colors.principal_3.hex(),
+    'statusBarItem.remoteBackground': colors.principal.hex(),
+    'statusBarItem.remoteForeground': colors.principal_5.hex(),
+    'statusBarItem.focusBorder': colors.principal_5.hex(),
+    'statusBarItem.errorBackground': colors.danger.hex(),
+    'statusBarItem.errorForeground': colors.white.hex(),
+    'statusBarItem.warningBackground': colors.warning.hex(),
+    'statusBarItem.warningForeground': colors.white.hex(),
 
     'titleBar.activeBackground': colors.principal.hex(),
     'titleBar.activeForeground': colors.principal_5.hex(),
     'titleBar.inactiveBackground': colors.principal.hex(),
     'titleBar.inactiveForeground': colors.principal_3.hex(),
+    'titleBar.border': null,
 
     'notificationCenter.border': colors.interBorder.hex(),
     'notificationCenterHeader.foreground': colors.principal_5.hex(),
@@ -627,6 +636,9 @@ module.exports = function (colors) {
         'string.regexp',
         'string.regexp keyword.other',
         'string.regexp punctuation.definition.string',
+        'meta.group.regexp',
+        'meta.group.regexp.js',
+        'meta.group.regexp.ts',
         'constant.character.escape.backslash.regexp',
         'constant.other.character-class.set.regexp',
         'constant.character.control.regexp',
@@ -709,6 +721,8 @@ module.exports = function (colors) {
         'support.function',
         // constants (magic values) provided by the framework/library.
         'support.constant',
+        'support.class.promise',
+        'storage.modifier.async',
       ],
       settings: {
         foreground: colors.specialWordB.hex(),
@@ -843,6 +857,7 @@ module.exports = function (colors) {
       scope: [
         'keyword.control.conditional.js',
         'keyword.control.conditional.ts',
+        'keyword.control.conditional.vue',
         'keyword.control.switch.js',
         'keyword.control.switch.ts',
         'keyword.control.conditional.svelte',
@@ -855,7 +870,12 @@ module.exports = function (colors) {
     },
     {
       name: 'loops',
-      scope: ['keyword.control.loop.vue', 'keyword.control.conditional.vue'],
+      scope: [
+        'keyword.control.loop',
+        'keyword.control.loop.js',
+        'keyword.control.loop.ts',
+        'keyword.control.loop.vue',
+      ],
       settings: {
         foreground: colors.specialWordC.hex(),
       },
@@ -966,19 +986,18 @@ module.exports = function (colors) {
         'meta.class entity.name.type.class',
         // classes in js,
         'meta.class entity.name.type.class.js',
-        'entity.other.inherited-class.js',
         // classes in ts
         'meta.class entity.name.type.class.ts',
       ],
       settings: {
-        foreground: colors.specialWordC.hex(),
+        foreground: colors.functionName.hex(),
       },
     },
     {
       name: 'Inherited class',
-      scope: 'entity.other.inherited-class',
+      scope: ['entity.other.inherited-class', 'entity.other.inherited-class.js'],
       settings: {
-        foreground: colors.variable.hex(),
+        foreground: colors.functionName.hex(),
       },
     },
   ]
@@ -1246,10 +1265,7 @@ module.exports = function (colors) {
     },
     {
       name: 'function declaration SASS',
-      scope: [
-        'support.function.name.sass.library',
-        'source.sass entity.name.function',
-      ],
+      scope: ['support.function.name.sass.library', 'source.sass entity.name.function'],
       settings: {
         foreground: colors.sassFunction.hex(),
       },
@@ -1299,10 +1315,7 @@ module.exports = function (colors) {
     },
     {
       name: 'Property name stylesheets',
-      scope: [
-        'support.type.property-name.css',
-        'support.type.property-name.css.sass',
-      ],
+      scope: ['support.type.property-name.css', 'support.type.property-name.css.sass'],
       settings: {
         foreground: colors.cssProperty.hex(),
       },
@@ -1471,10 +1484,6 @@ module.exports = function (colors) {
         'entity.name.type.interface.ts',
         'entity.name.type.alias.js',
         'entity.name.type.alias.ts',
-        'entity.name.type.js',
-        'entity.name.type.ts',
-        'entity.name.type.module.js',
-        'entity.name.type.module.ts',
       ],
       settings: {
         foreground: colors.specialWordC.hex(),
@@ -1491,10 +1500,7 @@ module.exports = function (colors) {
     {
       // nn
       name: 'Storage type',
-      scope: [
-        'storage.type.function.arrow.js',
-        'storage.type.function.arrow.ts',
-      ],
+      scope: ['storage.type.function.arrow.js', 'storage.type.function.arrow.ts'],
       settings: {
         fontStyle: 'normal',
       },
@@ -1540,9 +1546,11 @@ module.exports = function (colors) {
       scope: [
         'meta.decorator punctuation.decorator.ts',
         'meta.decorator punctuation.decorator.tsx',
+        'meta.decorator variable.other.readwrite.ts',
+        'meta.decorator.ts entity.name.function.ts',
       ],
       settings: {
-        foreground: colors.punctuation.hex(),
+        foreground: colors.specialWordB.hex(),
       },
     },
     {
@@ -1595,11 +1603,7 @@ module.exports = function (colors) {
     },
     {
       name: 'Text nested in React tags',
-      scope: [
-        'meta.jsx.children',
-        'meta.jsx.children.js',
-        'meta.jsx.children.tsx',
-      ],
+      scope: ['meta.jsx.children', 'meta.jsx.children.js', 'meta.jsx.children.tsx'],
       settings: {
         foreground: colors.regularText.hex(),
       },
@@ -1656,7 +1660,7 @@ module.exports = function (colors) {
       name: 'JavaScript Entity Name Type',
       scope: ['entity.name.type.js', 'entity.name.type.module.js'],
       settings: {
-        foreground: colors.specialWordC.hex(),
+        foreground: colors.specialWordB.hex(),
         fontStyle: 'normal',
       },
     },
@@ -1665,6 +1669,13 @@ module.exports = function (colors) {
       scope: 'support.class.js',
       settings: {
         foreground: colors.variable.hex(),
+      },
+    },
+    {
+      name: 'TypeScript labels',
+      scope: ['entity.name.label', 'punctuation.separator.label'],
+      settings: {
+        foreground: colors.variable.darken(0.5).hex(),
       },
     },
     {
@@ -1825,10 +1836,7 @@ module.exports = function (colors) {
     },
     {
       name: 'Markdown Links',
-      scope: [
-        'markup.underline.link.markdown',
-        'markup.underline.link.image.markdown',
-      ],
+      scope: ['markup.underline.link.markdown', 'markup.underline.link.image.markdown'],
       settings: {
         foreground: colors.syntaxYellow.hex(),
       },
@@ -1897,6 +1905,13 @@ module.exports = function (colors) {
         foreground: colors.contrastText.hex(),
       },
     },
+    {
+      name: 'Functions & Classes',
+      scope: ['support.function.go'],
+      settings: {
+        foreground: colors.functionName.hex(),
+      },
+    },
   ]
 
   const tcPython = [
@@ -1962,6 +1977,7 @@ module.exports = function (colors) {
         'entity.name.tag',
         'source.vue entity.name.tag.html invalid.illegal.unrecognized-tag.html',
         'source.vue entity.name.tag.html',
+        'source.vue support.class.component.html',
         'meta.tag.js',
         'meta.tag.tsx',
         'meta.tag.html',
@@ -1988,10 +2004,7 @@ module.exports = function (colors) {
     },
     {
       name: '@ : = for html',
-      scope: [
-        'punctuation.separator.key-value.html',
-        'punctuation.definition.tag.html',
-      ],
+      scope: ['punctuation.separator.key-value.html', 'punctuation.definition.tag.html'],
       settings: {
         foreground: colors.regularText.hex(),
       },
@@ -2119,11 +2132,7 @@ module.exports = function (colors) {
   const tcRust = [
     {
       name: 'Rust ',
-      scope: [
-        'meta.use.rust',
-        'meta.function.definition.rust',
-        'keyword.other.rust',
-      ],
+      scope: ['meta.use.rust', 'meta.function.definition.rust', 'keyword.other.rust'],
       settings: {
         foreground: colors.specialWordB.hex(),
       },
@@ -2213,6 +2222,29 @@ module.exports = function (colors) {
     },
   ]
 
+  const semanticTokenColors = {
+    variable: colors.variable.hex(),
+    parameter: colors.variable.hex(),
+    type: colors.specialWordC.hex(),
+    function: colors.functionName.hex(),
+    'function.declaration': {
+      fontStyle: 'bold',
+    },
+    method: colors.functionName.hex(),
+    class: colors.functionName.hex(),
+    'class.declaration': {
+      fontStyle: 'bold',
+    },
+    'class.defaultLibrary': colors.specialWordB.hex(),
+    property: colors.text.hex(),
+    string: colors.string.hex(),
+    number: colors.number.hex(),
+    regexp: colors.syntaxBeige.hex(),
+    comment: colors.comment.hex(),
+    keyword: colors.operator.hex(),
+    interface: colors.specialWordC.hex(),
+  }
+
   return {
     name: 'themename',
     type: 'dark',
@@ -2248,5 +2280,7 @@ module.exports = function (colors) {
       ...tcPhp,
       ...tcCc,
     ],
+    semanticHighlighting: true,
+    semanticTokenColors,
   }
 }

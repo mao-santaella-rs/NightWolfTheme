@@ -1,6 +1,6 @@
 import File from 'File'
 
-var globalVar = Number;
+var globalVar = 1;
 let variable = 324;
 const constant = {
   propertyA: [2, 'variable'],
@@ -13,6 +13,9 @@ const constant = {
     subPropertyD: undefined,
     subPropertyE: {
       subSubPropertyA: "string"
+    },
+    methodF: (parameterA, parameterB) => {
+      console.log(parameterA, parameterB)
     }
   },
   methodA: (parameterA, parameterB) => {
@@ -20,8 +23,11 @@ const constant = {
   }
 }
 console.log(constant.propertyD.subPropertyE.subSubPropertyA)
+console.log(constant.propertyD.subPropertyE.methodF('par1'))
 
 constant.methodA(25, 35)
+
+const newNumber = new Number('222')
 
 // Comment
 
@@ -58,9 +64,9 @@ class AdminUser extends User {
   }
 }
 
-let user = new AdminUser("Mao");
+let userAdmin = new AdminUser("Mao");
 
-user.sayHi();
+userAdmin.sayHi();
 
 /**
  * Constructor for <code>AjaxRequest</code> class
@@ -163,7 +169,33 @@ let my_string = `This is a multiline
 string that also contains
 a template ${y + (4.1 - 2.2)}`;
 
-asdasdasdasd
+function resolveAfter2Seconds() {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve('resolved');
+    }, 2000);
+  });
+}
+
+async function asyncCall() {
+  console.log('calling');
+  const result = await resolveAfter2Seconds();
+  console.log(result);
+  // Expected output: "resolved"
+}
+
+try {
+  try {
+    throw new Error("oops");
+  } catch (ex) {
+    console.error("inner", ex.message);
+  } finally {
+    console.log("finally");
+  }
+} catch (ex) {
+  console.error("outer", ex.message);
+}
+asyncCall();
 
 export default {
   manoA: [2, 'maoma'],
@@ -176,6 +208,8 @@ export default {
     maoma4: undefined
   }
 }
+var pattern = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
 
 var person = { firstName: "John", lastName: "Doe", age: 50, eyeColor: "blue" };
 delete person.age
@@ -258,7 +292,8 @@ class Point {
  * Class representing a dot.
  * @extends Point
  */
-class Dot extends Point {
+
+class PointDot extends Point {
   /**
    * Create a dot.
    * @param {number} x - The x value.

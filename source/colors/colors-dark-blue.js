@@ -13,8 +13,8 @@ colors.principal_5 = chroma(123, 165, 207) // rgb(123, 165, 207)
 
 colors.text = chroma(189, 210, 231) // rgb(189, 210, 231)
 
-colors.gitInsertedBg = chroma(20, 51, 46) // rgb(20, 51, 46)
-colors.gitRemovedBg = chroma(30, 19, 28) // rgb(30, 19, 28)
+colors.gitInsertedBg = chroma(153, 183, 109).alpha(.15) // rgba(153, 183, 109,.15)
+colors.gitRemovedBg = chroma(239, 83, 80).alpha(.15) // rgba(239, 83, 80,.15)
 colors.gitIgnoreExplorer = colors.principal.brighten(1.5)
 
 // INTERFACE COLORS

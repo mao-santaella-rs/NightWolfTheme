@@ -17,7 +17,9 @@
  #container > .box {
     float: left;
     padding-bottom: 15px !important;
+    background-color:hsl(0, 0%, 0%);
 }
+
 h2 ~ p {
     margin-bottom: 20px;
 }

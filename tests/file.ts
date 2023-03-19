@@ -28,7 +28,7 @@ console.log(constant.propertyD.subPropertyE.subSubPropertyA)
 
 @Component
 export default class HelloWorld extends Vue {
-  @Prop() private msg!: string;
+  @Prop() private msg!: string
 }
 
 constant.methodA(25, 35)
@@ -145,11 +145,7 @@ export class SourceLineParser {
    * @param withinParenthesis   Whether this is within a ( parenthesis ) section
    * @returns Next starting index after the last added node.
    */
-  private parseCommandArgs(
-    rawLine: string,
-    start: number,
-    nodes: IGlsNode[],
-  ): number {
+  private parseCommandArgs(rawLine: string, start: number, nodes: IGlsNode[]): number {
     for (let i = start; i < rawLine.length; i += 1) {
       // Sub-command start
       if (rawLine[i] === '{') {
@@ -188,19 +184,12 @@ export class SourceLineParser {
    * @param nodes   Collection of nodes to add the command to.
    * @returns Next starting index after the last added node.
    */
-  private parseSubCommand(
-    rawLine: string,
-    i: number,
-    nodes: IGlsNode[],
-  ): number {
+  private parseSubCommand(rawLine: string, i: number, nodes: IGlsNode[]): number {
     // Move past the starting "{" or "{ "
     i = TextParsing.getNextStartOfWordIndex(rawLine, i + 1)
 
     // Command name
-    const commandNameEnd: number = TextParsing.getNextEndOfCommandNameIndex(
-      rawLine,
-      i,
-    )
+    const commandNameEnd: number = TextParsing.getNextEndOfCommandNameIndex(rawLine, i)
     const commandNameRaw: string = rawLine.substring(i, commandNameEnd)
     const commandName: string = commandNameRaw.trim()
 
@@ -230,15 +219,8 @@ export class SourceLineParser {
    * @param nodes   Collection of nodes to add the command to.
    * @returns Next starting index after the last added node.
    */
-  private parseParenthesis(
-    rawLine: string,
-    i: number,
-    nodes: IGlsNode[],
-  ): number {
-    const nextEndOfWordIndex = TextParsing.getNextEndOfParenthesisWordIndex(
-      rawLine,
-      i,
-    )
+  private parseParenthesis(rawLine: string, i: number, nodes: IGlsNode[]): number {
+    const nextEndOfWordIndex = TextParsing.getNextEndOfParenthesisWordIndex(rawLine, i)
     const textRaw = rawLine.substring(i, nextEndOfWordIndex)
     const text = TextParsing.removeBackslashesFromWord(textRaw)
 
@@ -255,11 +237,7 @@ export class SourceLineParser {
    * @param nodes   Collection of nodes to add the command to.
    * @returns Next starting index after the last added node.
    */
-  private parseTextCommand(
-    rawArgs: string,
-    i: number,
-    nodes: IGlsNode[],
-  ): number {
+  private parseTextCommand(rawArgs: string, i: number, nodes: IGlsNode[]): number {
     const nextEndOfWordIndex = TextParsing.getNextEndOfWordIndex(rawArgs, i)
     const text = rawArgs.substring(i, nextEndOfWordIndex)
 
@@ -309,6 +287,6 @@ let x: Entity | null
 let s = x && x.name // s is of type string | null
 let y = x || { name: 'test' } // y is of type Entity
 
-function validateEntity(e?: Entity) {
+loop1: function validateEntity(e?: Entity) {
   // Throw exception if e is null or invalid entity
 }

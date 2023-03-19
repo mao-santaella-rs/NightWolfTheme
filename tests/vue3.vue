@@ -26,11 +26,11 @@ import SupportIcon from './icons/IconSupport.vue'
     <template #heading>Tooling</template>
 
     This project is served and bundled with
-    <a href="https://vitejs.dev/guide/features.html" target="_blank">Vite</a>.
-    The recommended IDE setup is
+    <a href="https://vitejs.dev/guide/features.html" target="_blank">Vite</a>. The
+    recommended IDE setup is
     <a href="https://code.visualstudio.com/" target="_blank">VSCode</a> +
-    <a href="https://github.com/johnsoncodehk/volar" target="_blank">Volar</a>.
-    If you need to test your components and web pages, check out
+    <a href="https://github.com/johnsoncodehk/volar" target="_blank">Volar</a>. If you
+    need to test your components and web pages, check out
     <a href="https://www.cypress.io/" target="_blank">Cypress</a> and
     <a
       href="https://docs.cypress.io/guides/component-testing/introduction"
@@ -52,13 +52,10 @@ import SupportIcon from './icons/IconSupport.vue'
     Get official tools and libraries for your project:
     <a target="_blank" href="https://pinia.vuejs.org/">Pinia</a>,
     <a target="_blank" href="https://router.vuejs.org/">Vue Router</a>,
-    <a target="_blank" href="https://test-utils.vuejs.org/">Vue Test Utils</a>,
-    and
-    <a target="_blank" href="https://github.com/vuejs/devtools">Vue Dev Tools</a
-    >. If you need more resources, we suggest paying
-    <a target="_blank" href="https://github.com/vuejs/awesome-vue"
-      >Awesome Vue</a
-    >
+    <a target="_blank" href="https://test-utils.vuejs.org/">Vue Test Utils</a>, and
+    <a target="_blank" href="https://github.com/vuejs/devtools">Vue Dev Tools</a>. If you
+    need more resources, we suggest paying
+    <a target="_blank" href="https://github.com/vuejs/awesome-vue">Awesome Vue</a>
     a visit.
   </WelcomeItem>
 
@@ -69,13 +66,13 @@ import SupportIcon from './icons/IconSupport.vue'
     <template #heading>Community</template>
 
     Got stuck? Ask your question on
-    <a target="_blank" href="https://chat.vuejs.org">Vue Land</a>, our official
-    Discord server, or
+    <a target="_blank" href="https://chat.vuejs.org">Vue Land</a>, our official Discord
+    server, or
     <a target="_blank" href="https://stackoverflow.com/questions/tagged/vue.js"
       >StackOverflow</a
     >. You should also subscribe to
-    <a target="_blank" href="https://news.vuejs.org">our mailing list</a> and
-    follow the official
+    <a target="_blank" href="https://news.vuejs.org">our mailing list</a> and follow the
+    official
     <a target="_blank" href="https://twitter.com/vuejs">@vuejs</a>
     twitter account for latest news in the Vue world.
   </WelcomeItem>
@@ -86,48 +83,41 @@ import SupportIcon from './icons/IconSupport.vue'
     </template>
     <template #heading>Support Vue</template>
 
-    As an independent project, Vue relies on community backing for its
-    sustainability. You can help us by
+    As an independent project, Vue relies on community backing for its sustainability. You
+    can help us by
     <a target="_blank" href="https://vuejs.org/sponsor/">becoming a sponsor</a>.
   </WelcomeItem>
 </template>
 
-
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Component, Prop, Vue } from 'vue-property-decorator'
 
 @Component
 export default class HelloWorld extends Vue {
-  @Prop() private msg!: string;
+  @Prop() private msg!: string
 }
 let y = { name: 'test', maoma: 321 } // y is of type Entity
-const anchor = document.querySelector('a')!;
-if(anchor) {
-  console.log(anchor.href);
+const anchor = document.querySelector('a')!
+if (anchor) {
+  console.log(anchor.href)
 }
-console.log(anchor.href);
+console.log(anchor.href)
 
 //const form = document.querySelector('form')!;
-const form = document.querySelector('.new-item-form') as HTMLFormElement;
-console.log(form.children);
+const form = document.querySelector('.new-item-form') as HTMLFormElement
+console.log(form.children)
 
 // inputs
-const type = document.querySelector('#type') as HTMLInputElement;
-const tofrom = document.querySelector('#tofrom') as HTMLInputElement;
-const details = document.querySelector('#details') as HTMLInputElement;
-const amount = document.querySelector('#amount') as HTMLInputElement;
+const type = document.querySelector('#type') as HTMLInputElement
+const tofrom = document.querySelector('#tofrom') as HTMLInputElement
+const details = document.querySelector('#details') as HTMLInputElement
+const amount = document.querySelector('#amount') as HTMLInputElement
 
 form.addEventListener('submit', (e: Event) => {
-  e.preventDefault();
+  e.preventDefault()
 
-  console.log(
-    type.value, 
-    tofrom.value, 
-    details.value, 
-    amount.valueAsNumber
-  );
-});
-
+  console.log(type.value, tofrom.value, details.value, amount.valueAsNumber)
+})
 
 import { BlankNode } from '../Nodes/BlankNode'
 import { CommandNode } from '../Nodes/CommandNode'
@@ -172,11 +162,7 @@ export class SourceLineParser {
    * @param withinParenthesis   Whether this is within a ( parenthesis ) section
    * @returns Next starting index after the last added node.
    */
-  private parseCommandArgs(
-    rawLine: string,
-    start: number,
-    nodes: IGlsNode[],
-  ): number {
+  private parseCommandArgs(rawLine: string, start: number, nodes: IGlsNode[]): number {
     for (let i = start; i < rawLine.length; i += 1) {
       // Sub-command start
       if (rawLine[i] === '{') {
@@ -215,19 +201,12 @@ export class SourceLineParser {
    * @param nodes   Collection of nodes to add the command to.
    * @returns Next starting index after the last added node.
    */
-  private parseSubCommand(
-    rawLine: string,
-    i: number,
-    nodes: IGlsNode[],
-  ): number {
+  private parseSubCommand(rawLine: string, i: number, nodes: IGlsNode[]): number {
     // Move past the starting "{" or "{ "
     i = TextParsing.getNextStartOfWordIndex(rawLine, i + 1)
 
     // Command name
-    const commandNameEnd: number = TextParsing.getNextEndOfCommandNameIndex(
-      rawLine,
-      i,
-    )
+    const commandNameEnd: number = TextParsing.getNextEndOfCommandNameIndex(rawLine, i)
     const commandNameRaw: string = rawLine.substring(i, commandNameEnd)
     const commandName: string = commandNameRaw.trim()
 
@@ -257,15 +236,8 @@ export class SourceLineParser {
    * @param nodes   Collection of nodes to add the command to.
    * @returns Next starting index after the last added node.
    */
-  private parseParenthesis(
-    rawLine: string,
-    i: number,
-    nodes: IGlsNode[],
-  ): number {
-    const nextEndOfWordIndex = TextParsing.getNextEndOfParenthesisWordIndex(
-      rawLine,
-      i,
-    )
+  private parseParenthesis(rawLine: string, i: number, nodes: IGlsNode[]): number {
+    const nextEndOfWordIndex = TextParsing.getNextEndOfParenthesisWordIndex(rawLine, i)
     const textRaw = rawLine.substring(i, nextEndOfWordIndex)
     const text = TextParsing.removeBackslashesFromWord(textRaw)
 
@@ -282,11 +254,7 @@ export class SourceLineParser {
    * @param nodes   Collection of nodes to add the command to.
    * @returns Next starting index after the last added node.
    */
-  private parseTextCommand(
-    rawArgs: string,
-    i: number,
-    nodes: IGlsNode[],
-  ): number {
+  private parseTextCommand(rawArgs: string, i: number, nodes: IGlsNode[]): number {
     const nextEndOfWordIndex = TextParsing.getNextEndOfWordIndex(rawArgs, i)
     const text = rawArgs.substring(i, nextEndOfWordIndex)
 
