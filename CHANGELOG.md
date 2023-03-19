@@ -2,6 +2,27 @@
 
 All notable changes to the "night-wolf" extension are be documented in this file.
 
+## [1.12.0] - 03-19-2023
+
+### Added
+- Functions & Classes colors for golang added.
+- Vue camelCase components in template colors added.
+- Semantic Highlighting support, [issue](https://github.com/mao-santaella-rs/NightWolfTheme/issues/36) by [wtho](https://github.com/wtho).
+
+### Changed
+- Engines supported updated (1.x).
+- Prettier updated to the latest version (2.8.4).
+
+### Fixed
+- Inline diff coloring issue fixed, [issue](https://github.com/mao-santaella-rs/NightWolfTheme/issues/33) by [Avivhdr](https://github.com/Avivhdr).
+- Rulers color fixed, [issue](https://github.com/mao-santaella-rs/NightWolfTheme/issues/43) by [landure](https://github.com/landure).
+- Status bar items colored for danger and warning states.
+- Status bar items improve coloring for debugging state.
+- Js Async Await keywords colors more consistent.
+- Js loops kewords colors more consistent.
+- General coloring fixes.
+
+
 ## [1.11.4] - 05-29-2022
 
 ### Fixed
