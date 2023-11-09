@@ -2,6 +2,12 @@
 
 All notable changes to the "night-wolf" extension are be documented in this file.
 
+## [1.13.0] - 11-09-2023
+### Fixed
+- Better support for SQL, [issue](https://github.com/mao-santaella-rs/NightWolfTheme/issues/46) by [marcosvnmelo](https://github.com/marcosvnmelo)
+- Improoved support for Typescript
+
+
 ## [1.12.0] - 03-19-2023
 
 ### Added
