@@ -516,7 +516,7 @@ module.exports = function (colors) {
         'keyword',
         'punctuation.definintion.string',
         'punctuation',
-        'variable.other.readwrite.js',
+        'variable.other.readwrite',
         'storage.type',
         'source.css',
         'string.quoted',
@@ -637,8 +637,6 @@ module.exports = function (colors) {
         'string.regexp keyword.other',
         'string.regexp punctuation.definition.string',
         'meta.group.regexp',
-        'meta.group.regexp.js',
-        'meta.group.regexp.ts',
         'constant.character.escape.backslash.regexp',
         'constant.other.character-class.set.regexp',
         'constant.character.control.regexp',
@@ -758,14 +756,8 @@ module.exports = function (colors) {
     },
 
     {
-      name: '',
-      scope: [
-        'variable.other.property',
-        'variable.other.property.js',
-        'variable.other.property.ts',
-        'variable.object.property.ts',
-        '	support.variable.property',
-      ],
+      name: 'variable property',
+      scope: ['variable.other.property', 'support.variable.property'],
       settings: {
         foreground: colors.variableProperty.hex(),
       },
@@ -791,7 +783,6 @@ module.exports = function (colors) {
         'punctuation.definition.block.tag',
         // JavaScript Method Declaration e.g. `constructor`
         'meta.method.declaration',
-        'meta.method.declaration storage.type.js',
       ],
       settings: {
         foreground: colors.specialWordA.hex(),
@@ -799,23 +790,16 @@ module.exports = function (colors) {
       },
     },
     {
-      name: 'interface',
-      scope: ['storage.type.interface'],
+      name: 'Storage & interface',
+      scope: ['storage', 'storage.type', 'storage.type.interface'],
       settings: {
         foreground: colors.specialWordA.hex(),
       },
     },
     {
       name: 'Storage',
-      scope: [
-        'storage',
-        'meta.class meta.method.declaration meta.var.expr storage.type.js',
-        'storage.type.property.js',
-        'storage.type.property.ts',
-        'storage.type.property.tsx',
-      ],
+      scope: ['storage'],
       settings: {
-        foreground: colors.specialWordA.hex(),
         fontStyle: 'italic',
       },
     },
@@ -854,15 +838,7 @@ module.exports = function (colors) {
     },
     {
       name: 'Keyword Control Conditional',
-      scope: [
-        'keyword.control.conditional.js',
-        'keyword.control.conditional.ts',
-        'keyword.control.conditional.vue',
-        'keyword.control.switch.js',
-        'keyword.control.switch.ts',
-        'keyword.control.conditional.svelte',
-        'keyword.control.svelte',
-      ],
+      scope: ['keyword.control.conditional'],
       settings: {
         foreground: colors.specialWordC.hex(),
         fontStyle: 'normal',
@@ -870,12 +846,7 @@ module.exports = function (colors) {
     },
     {
       name: 'loops',
-      scope: [
-        'keyword.control.loop',
-        'keyword.control.loop.js',
-        'keyword.control.loop.ts',
-        'keyword.control.loop.vue',
-      ],
+      scope: ['keyword.control.loop'],
       settings: {
         foreground: colors.specialWordC.hex(),
       },
@@ -981,21 +952,7 @@ module.exports = function (colors) {
     },
     {
       name: 'Class name',
-      scope: [
-        'entity.name.class',
-        'meta.class entity.name.type.class',
-        // classes in js,
-        'meta.class entity.name.type.class.js',
-        // classes in ts
-        'meta.class entity.name.type.class.ts',
-      ],
-      settings: {
-        foreground: colors.functionName.hex(),
-      },
-    },
-    {
-      name: 'Inherited class',
-      scope: ['entity.other.inherited-class', 'entity.other.inherited-class.js'],
+      scope: ['entity.name.class', 'meta.class entity.name.type.class'],
       settings: {
         foreground: colors.functionName.hex(),
       },
@@ -1012,7 +969,7 @@ module.exports = function (colors) {
     },
     {
       name: 'String Quoted',
-      scope: ['string.quoted', 'string.quoted.single.js'],
+      scope: ['string.quoted', 'string.quoted.single', 'string.quoted.double'],
       settings: {
         foreground: colors.string.hex(),
       },
@@ -1080,18 +1037,6 @@ module.exports = function (colors) {
         'punctuation.definition.string.begin.markdown',
         'punctuation.definition.string.end.markdown',
         'meta.link.inline.markdown punctuation.definition.string',
-      ],
-      settings: {
-        foreground: colors.punctuation.hex(),
-      },
-    },
-    {
-      name: 'TypeScript Import/Export Punctuations',
-      scope: [
-        'meta.import.ts punctuation.definition.block',
-        'meta.import.tsx punctuation.definition.block',
-        'meta.export.ts punctuation.definition.block',
-        'meta.export.tsx punctuation.definition.block',
       ],
       settings: {
         foreground: colors.punctuation.hex(),
@@ -1402,6 +1347,9 @@ module.exports = function (colors) {
         // @ rules
         'keyword.control.at-rule',
         'keyword.control.at-rule.css.sass',
+
+        'meta.property-value.scss',
+        'meta.property-value.scss support.constant.mathematical-symbols.scss',
       ],
       settings: {
         foreground: colors.cssSpecialWord.hex(),
@@ -1478,19 +1426,106 @@ module.exports = function (colors) {
   // languages
   const tcJavascript = [
     {
-      name: 'js ts interface & alias',
+      name: 'Vars',
       scope: [
-        'entity.name.type.interface.js',
-        'entity.name.type.interface.ts',
-        'entity.name.type.alias.js',
-        'entity.name.type.alias.ts',
+        'variable.other.object.js',
+        'variable.other.object.jsx',
+        'variable.other.object.ts',
+        'variable.other.object.tsx',
+        'support.variable.vue',
+        'variable.other.readwrite.alias.ts',
+        'variable.other.readwrite.alias.tsx',
+        'variable.other.readwrite.ts',
+        'variable.other.readwrite.tsx',
+        'variable.other.js',
+        'variable.other.ts',
+        'variable.other.tsx',
+        'variable.js',
+        'variable.ts',
+        'variable.tsx',
+        'variable.parameter',
+
+        // JavaScript module imports and exports
+        'variable.other.meta.import',
+        'meta.import variable.other',
+        'variable.other.meta.export',
+        'meta.export variable.other',
+
+        'support.class.js', // ???
       ],
       settings: {
-        foreground: colors.specialWordC.hex(),
+        foreground: colors.variable.hex(),
       },
     },
     {
-      name: 'javascript portotype methods',
+      name: 'Variable Property',
+      scope: [
+        'variable.other.property.js',
+        'variable.other.property.ts',
+        'variable.other.property.tsx',
+        'variable.other.property.jsx',
+        'meta.object.member.js meta.object-literal.key.js',
+        'meta.object.member.ts meta.object-literal.key.ts',
+        'meta.object.property.ts',
+        'meta.object.property.tsx',
+        'meta.object.property.js',
+        'meta.object.property.jsx',
+        'meta.other.property.vue',
+
+        // interfce other property ts
+        'meta.interface.ts variable.object.property.ts',
+      ],
+      settings: {
+        foreground: colors.variableProperty.hex(),
+      },
+    },
+    {
+      name: 'Import/Export Punctuations',
+      scope: [
+        'meta.import.js punctuation.definition.block',
+        'meta.import.ts punctuation.definition.block',
+        'meta.import.tsx punctuation.definition.block',
+        'meta.export.js punctuation.definition.block',
+        'meta.export.ts punctuation.definition.block',
+        'meta.export.tsx punctuation.definition.block',
+        'punctuation.section.embedded',
+      ],
+      settings: {
+        foreground: colors.punctuation.hex(),
+      },
+    },
+    {
+      name: 'Function & class declaration',
+      scope: [
+        'meta.definition.function entity.name.function.js',
+        'meta.definition.function entity.name.function.ts',
+        'meta.function-call.ts entity.name.function.js',
+        'meta.function-call.ts entity.name.function.ts',
+
+        'meta.class entity.other.inherited-class',
+        'meta.class.js entity.name.type.class.js',
+        'meta.class.ts entity.name.type.class.ts',
+        'meta.class.js entity.other.inherited-class.js',
+        'meta.class.ts entity.other.inherited-class.ts',
+
+        'punctuation.decorator.js', // ???
+      ],
+      settings: {
+        foreground: colors.functionName.hex(),
+      },
+    },
+    {
+      name: 'Function & class execution',
+      scope: [
+        'meta.function-call.js entity.name.function.js',
+        'meta.function-call.ts entity.name.function.ts',
+      ],
+      settings: {
+        fontStyle: 'italic',
+      },
+    },
+    {
+      name: 'Support properties', // like .length
       scope: ['support.variable.property.js', 'support.variable.property.ts'],
       settings: {
         foreground: colors.specialWordB.hex(),
@@ -1498,202 +1533,159 @@ module.exports = function (colors) {
       },
     },
     {
-      // nn
       name: 'Storage type',
-      scope: ['storage.type.function.arrow.js', 'storage.type.function.arrow.ts'],
+      scope: [
+        'source.js storage.type',
+        'source.ts storage.type',
+        'storage.type.function.arrow.js',
+        'storage.type.function.arrow.ts',
+
+        'meta.class meta.method.declaration meta.var.expr storage.type.js',
+        'storage.type.property.js',
+        'storage.type.property.ts',
+        'storage.type.property.tsx',
+
+        'meta.method.declaration storage.type.js',
+        'meta.method.declaration storage.type.ts',
+        'meta.method.declaration storage.type.tsx',
+
+        // * for function*
+        'meta.function.js keyword.generator.asterisk.js',
+      ],
       settings: {
+        foreground: colors.specialWordA.hex(),
         fontStyle: 'normal',
       },
     },
     {
-      name: 'this word in javascript',
+      name: 'keywords',
+      scope: [
+        'storage.modifier.js',
+        'storage.modifier.ts',
+        'source.js keyword.control',
+        'source.ts keyword.control',
+        'source.js variable.language',
+        'source.ts variable.language',
+      ],
+      settings: {
+        foreground: colors.specialWordB.hex(),
+        fontStyle: 'italic',
+      },
+    },
+    {
+      name: 'loops & Conditionals',
+      scope: [
+        'keyword.control.loop.js',
+        'keyword.control.loop.ts',
+        'keyword.control.loop.vue',
+
+        'keyword.control.conditional.js',
+        'keyword.control.conditional.ts',
+        'keyword.control.conditional.vue',
+        'keyword.control.switch.js',
+        'keyword.control.switch.ts',
+        'keyword.control.conditional.svelte',
+        'keyword.control.svelte',
+      ],
+      settings: {
+        foreground: colors.specialWordC.hex(),
+        fontStyle: 'normal',
+      },
+    },
+    {
+      name: 'interface & alias',
+      scope: [
+        'entity.name.type.interface.js',
+        'entity.name.type.interface.ts',
+        'entity.name.type.alias.ts',
+        'meta.type.parameters.ts entity.name.type',
+        'meta.type.parameters.tsx entity.name.type',
+        'entity.name.type.ts',
+        'entity.name.type.js',
+        'entity.name.type.module.ts',
+        'entity.name.type.module.tsx',
+        'entity.name.type.module.jsx',
+
+        // interface in ts
+        'meta.interface.ts entity.other.inherited-class.ts',
+        'meta.interface.ts entity.other.inherited-class.tsx',
+      ],
+      settings: {
+        foreground: colors.syntaxLightBlue.hex(),
+      },
+    },
+    {
+      name: 'labels',
+      scope: [
+        'entity.name.label.js',
+        'entity.name.label.ts',
+        'punctuation.separator.label.js',
+        'punctuation.separator.label.ts',
+      ],
+      settings: {
+        foreground: colors.variable.darken(0.5).hex(),
+      },
+    },
+    {
+      name: 'this word',
       scope: ['variable.language.this.js', 'variable.language.this.ts'],
       settings: {
         foreground: colors.contrastText.hex(),
       },
     },
     {
-      name: 'Object literal key',
-      scope: [
-        'meta.objectliteral.js meta.object.member.js meta.object-literal.key.js',
-        'variable.other.property.vue',
-      ],
-      settings: {
-        foreground: colors.variableProperty.hex(),
-      },
-    },
-    {
-      name: 'JavaScript module imports and exports',
-      scope: [
-        'variable.other.meta.import.js',
-        'meta.import.js variable.other',
-        'variable.other.meta.export.js',
-        'meta.export.js variable.other',
-      ],
-      settings: {
-        foreground: colors.variable.hex(),
-      },
-    },
-    {
-      name: 'javascript function execution',
-      scope: ['meta.function-call.js entity.name.function.js'],
-      settings: {
-        fontStyle: 'italic',
-      },
-    },
-    {
-      name: 'TypeScript Punctuation Decorators',
+      name: 'TypeScript Decorators',
       scope: [
         'meta.decorator punctuation.decorator.ts',
         'meta.decorator punctuation.decorator.tsx',
         'meta.decorator variable.other.readwrite.ts',
         'meta.decorator.ts entity.name.function.ts',
+        'meta.decorator.ts meta.function-call.ts entity.name.function.ts',
       ],
       settings: {
         foreground: colors.specialWordB.hex(),
       },
     },
     {
-      name: 'TypeScript Variables and Object Properties',
-      scope: [
-        'variable.other.readwrite.alias.ts',
-        'variable.other.readwrite.alias.tsx',
-        'variable.other.readwrite.ts',
-        'variable.other.readwrite.tsx',
-        'variable.other.ts',
-        'variable.other.tsx',
-        'variable.tsx',
-        'variable.ts',
-      ],
-      settings: {
-        foreground: colors.variable.hex(),
-      },
-    },
-    {
-      name: 'TypeScript Entity Name Types as Parameters',
-      scope: [
-        'meta.type.parameters.ts entity.name.type',
-        'meta.type.parameters.tsx entity.name.type',
-      ],
-      settings: {
-        foreground: colors.principal_5.hex(),
-      },
-    },
-    {
-      name: 'JavaScript Variable Other ReadWrite',
-      scope: ['variable.other.property', 'variable.parameter'],
-      settings: {
-        foreground: colors.variable.hex(),
-      },
-    },
-    {
-      name: 'Support Class Component',
-      scope: ['support.class.component.js', 'support.class.component.tsx'],
+      name: 'TypeScript optional operators',
+      scope: ['source.ts meta.interface.ts keyword.operator.optional.ts'],
       settings: {
         foreground: colors.contrastText.hex(),
+      },
+    },
+    {
+      name: 'TypeScript Entity Name Type',
+      scope: [
+        'entity.name.type.js',
+        'entity.name.type.ts',
+        'entity.name.type.module.js',
+        'entity.name.type.module.ts',
+        'entity.name.type.tsx',
+        'entity.name.type.module.tsx',
+      ],
+      settings: {
+        foreground: colors.specialWordB.hex(),
         fontStyle: 'normal',
       },
     },
     {
-      name: 'decorator in javascript',
-      scope: ['punctuation.decorator.js'],
-      settings: {
-        foreground: colors.functionName.hex(),
-      },
-    },
-    {
-      name: 'Text nested in React tags',
-      scope: ['meta.jsx.children', 'meta.jsx.children.js', 'meta.jsx.children.tsx'],
+      name: 'Text nested in jsx tags',
+      scope: [
+        'meta.jsx.children',
+        'meta.jsx.children.js',
+        'meta.jsx.children.ts',
+        'meta.jsx.children.tsx',
+      ],
       settings: {
         foreground: colors.regularText.hex(),
       },
     },
     {
-      // {} jsx react
-      name: 'Punctuation Section Embedded',
-      scope: 'punctuation.section.embedded',
+      name: 'Support Class Component', // ???
+      scope: ['support.class.component.js'],
       settings: {
-        foreground: colors.text.hex(),
-      },
-    },
-    {
-      name: 'TypeScript Entity Name Type',
-      scope: ['entity.name.type.tsx', 'entity.name.type.module.tsx'],
-      settings: {
-        foreground: colors.specialWordB.hex(),
+        foreground: colors.contrastText.hex(),
         fontStyle: 'normal',
-      },
-    },
-    {
-      name: 'TypeScript Method Declaration e.g. `constructor`',
-      scope: [
-        'meta.method.declaration storage.type.ts',
-        'meta.method.declaration storage.type.tsx',
-      ],
-      settings: {
-        foreground: colors.specialWordA.hex(),
-      },
-    },
-    {
-      name: 'js & ts Variable Other Object',
-      scope: [
-        'variable.other.object.js',
-        'variable.other.object.jsx',
-        'variable.other.object.ts',
-        'variable.other.object.tsx',
-        'variable.object.property.js',
-        'variable.object.property.jsx',
-        'support.variable.vue',
-      ],
-      settings: {
-        foreground: colors.variable.hex(),
-      },
-    },
-    {
-      name: 'JavaScript Variables',
-      scope: ['variable.js', 'variable.other.js'],
-      settings: {
-        foreground: colors.variable.hex(),
-      },
-    },
-    {
-      name: 'JavaScript Entity Name Type',
-      scope: ['entity.name.type.js', 'entity.name.type.module.js'],
-      settings: {
-        foreground: colors.specialWordB.hex(),
-        fontStyle: 'normal',
-      },
-    },
-    {
-      name: 'JavaScript Support Classes',
-      scope: 'support.class.js',
-      settings: {
-        foreground: colors.variable.hex(),
-      },
-    },
-    {
-      name: 'TypeScript labels',
-      scope: ['entity.name.label', 'punctuation.separator.label'],
-      settings: {
-        foreground: colors.variable.darken(0.5).hex(),
-      },
-    },
-    {
-      name: 'Keyword, imports, returns javascript and typescript',
-      scope: [
-        'keyword.control.flow.js',
-        'keyword.control.flow.ts',
-        'keyword.control.flow.tsx',
-        'keyword.control.import.js',
-        'keyword.control.import.ts',
-        'keyword.control.import.tsx',
-        'keyword.control.from.js',
-        'keyword.control.from.ts',
-        'keyword.control.from.tsx',
-      ],
-      settings: {
-        foreground: colors.specialWordB.hex(),
-        fontStyle: 'italic',
       },
     },
   ]
@@ -1971,14 +1963,17 @@ module.exports = function (colors) {
         'entity.name.tag',
         'meta.tag.other.html',
         'meta.tag.other.js',
+        'meta.tag.other.ts',
         'meta.tag.other.tsx',
-        'entity.name.tag.tsx',
         'entity.name.tag.js',
+        'entity.name.tag.ts',
+        'entity.name.tag.tsx',
         'entity.name.tag',
         'source.vue entity.name.tag.html invalid.illegal.unrecognized-tag.html',
         'source.vue entity.name.tag.html',
         'source.vue support.class.component.html',
         'meta.tag.js',
+        'meta.tag.ts',
         'meta.tag.tsx',
         'meta.tag.html',
         'meta.tag.start.svelte',

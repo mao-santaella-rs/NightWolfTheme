@@ -19,12 +19,60 @@ const constant = {
     subPropertyE: {
       subSubPropertyA: 'string',
     },
+    methodF: (parameterA) => {
+      console.log(parameterA)
+    },
   },
   methodA: (parameterA, parameterB) => {
     console.log(parameterA, parameterB)
   },
 }
+console.log(constant.propertyD.subPropertyE.subSubPropertyA);
+console.log(constant.propertyD.methodF('par1'))
+
+constant.methodA(25, 35)
 console.log(constant.propertyD.subPropertyE.subSubPropertyA)
+
+function getGreeting() {
+  return 'howdy'
+}
+
+var pattern = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+getGreeting()
+
+class Greeter {}
+class MyGreeter extends Greeter {}
+
+declare namespace GreetingLib {
+  interface LogOptions {
+    verbose?: boolean
+  }
+  interface AlertOptions {
+    modal: boolean
+    title?: string
+    color?: string
+  }
+}
+export class Vue {}
+
+export const sss = 'sss'
+
+const mao: GreetingLib.LogOptions = {
+  verbose: true,
+}
+
+const myGreeter = new Greeter('hello, world')
+myGreeter.greeting = 'howdy'
+myGreeter.showGreeting()
+
+class SpecialGreeter extends Greeter {
+  constructor() {
+    super('Very special greetings')
+  }
+}
+
+declare function getWidget(s: string): Widget[]
 
 @Component
 export default class HelloWorld extends Vue {
@@ -35,7 +83,7 @@ constant.methodA(25, 35)
 
 export class OutputMerger {
   /**
-   * Characters to output for semicolon-ended lines.
+   * Characters to output for semicolon-ended lines.q
    */
   private semicolon: string
 
@@ -266,27 +314,118 @@ if (constant.parameterA[0] === 3 && variable <= 550) {
 interface Entity {
   name: string
 }
-const constant = {
-  propertyA: [2, 'variable'],
-  propertyB: 'some string',
-  propertyC: 2019,
-  propertyD: {
-    subPropertyA: true,
-    subPropertyB: false,
-    subPropertyC: null,
-    subPropertyD: undefined,
-    subPropertyE: {
-      subSubPropertyA: 'string',
-    },
-  },
-  methodA: (parameterA, parameterB) => {
-    console.log(parameterA, parameterB)
-  },
-}
 let x: Entity | null
+let p: string | null = null // Assert that x is non-null and access name
 let s = x && x.name // s is of type string | null
 let y = x || { name: 'test' } // y is of type Entity
 
-loop1: function validateEntity(e?: Entity) {
-  // Throw exception if e is null or invalid entity
+// The first for statement is labeled "loop1"
+loop1: for (let i = 0; i < 3; i++) {
+  // The second for statement is labeled "loop2"
+  loop2: for (let j = 0; j < 3; j++) {
+    if (i === 1 && j === 1) {
+      continue loop1;
+    }
+    console.log(`i = ${i}, j = ${j}`);
+  }
 }
+
+
+
+// A class declaration with a name
+class Person {
+  // A constructor method that initializes the object properties
+  constructor(name, age, gender) {
+    this.name = name;
+    this.age = age;
+    this.gender = gender;
+  }
+
+  // A public instance method that returns a greeting
+  greet() {
+    return `Hello, my name is ${this.name} and I am ${this.age} years old.`;
+  }
+
+  // A public instance getter that returns the birth year
+  get birthYear() {
+    const date = new Date();
+    return date.getFullYear() - this.age;
+  }
+
+  // A public instance setter that updates the age
+  set age(newAge) {
+    if (newAge > 0 && newAge < 120) {
+      this.age = newAge;
+    } else {
+      throw new Error("Invalid age");
+    }
+  }
+
+  // A public static method that returns the average age of an array of persons
+  static averageAge(persons) {
+    let sum = 0;
+    for (let person of persons) {
+      sum += person.age;
+    }
+    return sum / persons.length;
+  }
+
+  // A private instance field that stores the favorite color
+  #favoriteColor = "blue";
+
+  // A private instance method that returns the favorite color
+  #getFavoriteColor() {
+    return this.#favoriteColor;
+  }
+
+  // A public instance method that calls the private instance method
+  revealFavoriteColor() {
+    return `My favorite color is ${this.#getFavoriteColor()}.`;
+  }
+}
+
+// A class expression that extends the Person class
+const Student = class extends Person {
+  // A constructor method that calls the super constructor and initializes the student properties
+  constructor(name, age, gender, school, major) {
+    super(name, age, gender); // Call the parent constructor
+    this.school = school;
+    this.major = major;
+  }
+
+  // A public instance method that overrides the parent method
+  greet() {
+    return `Hi, I'm ${this.name} and I study ${this.major} at ${this.school}.`;
+  }
+
+  // A public instance getter that returns the graduation year
+  get graduationYear() {
+    const date = new Date();
+    return date.getFullYear() + 4 - this.age / 5;
+  }
+
+  // A public static method that returns the number of students in an array of students
+  static countStudents(students) {
+    return students.length;
+  }
+  // A static initialization block that runs some code when the class is defined
+  static {
+    console.log("Student class is defined");
+  }
+};
+
+
+// Creating some instances of the classes
+const alice = new Person("Alice", 25, "female");
+const bob = new Student("Bob", 20, "male", "MIT", "Computer Science");
+const charlie = new Student("Charlie", 19, "male", "Harvard", "Mathematics");
+
+// Calling some methods and getters on the instances
+console.log(alice.greet()); // Hello, my name is Alice and I am 25 years old.
+console.log(bob.greet()); // Hi, I'm Bob and I study Computer Science at MIT.
+console.log(charlie.graduationYear); // 2028
+console.log(alice.revealFavoriteColor()); // My favorite color is blue.
+
+// Calling some static methods on the classes
+console.log(Person.averageAge([alice, bob, charlie])); // 21.333333333333332
+console.log(Student.countStudents([bob, charlie])); // 2
