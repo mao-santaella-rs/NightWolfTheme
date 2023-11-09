@@ -2222,6 +2222,38 @@ module.exports = function (colors) {
     },
   ]
 
+  const sql = [
+    {
+      name: 'SQL Punctuation',
+      scope: ['meta.create.sql', 'keyword.other.insert.sql', 'meta.create.from.sql'],
+      settings: {
+        foreground: colors.syntaxRed.hex(),
+      },
+    },
+    {
+      name: 'SQL Keywords',
+      scope: [
+        'keyword.other.DDL.sql',
+        'keyword.other.select.sql',
+        'keyword.other.select.set_op.sql',
+      ],
+      settings: {
+        foreground: colors.syntaxViolet.hex(),
+      },
+    },
+    {
+      name: 'SQL Variables',
+      scope: [
+        'keyword.other.select.join.sql',
+        'keyword.other.DML.sql',
+        'keyword.other.alias.sql',
+      ],
+      settings: {
+        foreground: colors.syntaxPurple.hex(),
+      },
+    },
+  ]
+
   const semanticTokenColors = {
     variable: colors.variable.hex(),
     parameter: colors.variable.hex(),
@@ -2279,6 +2311,7 @@ module.exports = function (colors) {
       ...tcRust,
       ...tcPhp,
       ...tcCc,
+      ...sql,
     ],
     semanticHighlighting: true,
     semanticTokenColors,
