@@ -108,7 +108,7 @@ module.exports = function (colors) {
     // el editor gutter es la parte donde esta el numero de linea y las indicaciones de git dentro del archivo
     'editorGutter.background': colors.interBackground.hex(),
     'editorGutter.modifiedBackground': colors.warning.hex(),
-    'editorGutter.addedBackground': colors.succes.hex(),
+    'editorGutter.addedBackground': colors.success.hex(),
     'editorGutter.deletedBackground': colors.danger.hex(),
 
     // el widget como el find and replace
@@ -321,7 +321,7 @@ module.exports = function (colors) {
     'menu.separatorBackground': colors.interBorder.hex(),
 
     // Minimap
-    'minimap.findMatchHighlight': colors.succes.hex(), // Highlight color for matches from search within files.
+    'minimap.findMatchHighlight': colors.success.hex(), // Highlight color for matches from search within files.
     'minimap.selectionHighlight': colors.contrast.hex(), //Highlight color for the editor selection.
     'minimap.errorHighlight': colors.danger.hex(), //Highlight color for errors within the editor.
     'minimap.warningHighlight': colors.warning.hex(), //Highlight color for warnings within the editor.
@@ -329,7 +329,7 @@ module.exports = function (colors) {
     'minimapSlider.background': colors.principal_3.hex() + 60, //Minimap slider background color.
     'minimapSlider.hoverBackground': colors.principal_2.hex() + 60, //Minimap slider background color when hovering.
     'minimapSlider.activeBackground': colors.principal_4.hex() + 60, //Minimap slider background color when clicked on.
-    'minimapGutter.addedBackground': colors.succes.hex(), //Minimap gutter color for added content.
+    'minimapGutter.addedBackground': colors.success.hex(), //Minimap gutter color for added content.
     'minimapGutter.modifiedBackground': colors.warning.hex(), //Minimap gutter color for modified content.
     'minimapGutter.deletedBackground': colors.danger.hex(), //Minimap gutter color for deleted content.
 
@@ -357,7 +357,7 @@ module.exports = function (colors) {
     'peekViewTitleLabel.foreground': colors.text.hex(),
 
     // GIT MERGE CONFLICTS
-    'merge.currentHeaderBackground': colors.succesLight.hex() + '50',
+    'merge.currentHeaderBackground': colors.successLight.hex() + '50',
     'merge.currentContentBackground': null,
     'merge.incomingHeaderBackground': colors.infoLight.hex() + '50',
     'merge.incomingContentBackground': null,
@@ -386,7 +386,7 @@ module.exports = function (colors) {
     // Overview ruler marker color for modified content.
     'editorOverviewRuler.modifiedForeground': colors.warningLight.hex(),
     // Overview ruler marker color for added content.
-    'editorOverviewRuler.addedForeground': colors.succesLight.hex(),
+    'editorOverviewRuler.addedForeground': colors.successLight.hex(),
     // Overview ruler marker color for deleted content.
     'editorOverviewRuler.deletedForeground': colors.danger.hex(),
     // Overview ruler marker color for errors.
@@ -467,10 +467,10 @@ module.exports = function (colors) {
     'walkThrough.embeddedEditorBackground': colors.principal.hex(),
 
     // Git colors
-    'gitDecoration.addedResourceForeground': colors.succesLight.hex(),
+    'gitDecoration.addedResourceForeground': colors.successLight.hex(),
     'gitDecoration.modifiedResourceForeground': colors.warningLight.hex(),
     'gitDecoration.deletedResourceForeground': colors.dangerLight.hex(),
-    'gitDecoration.untrackedResourceForeground': colors.succesLight.hex(),
+    'gitDecoration.untrackedResourceForeground': colors.successLight.hex(),
     'gitDecoration.ignoredResourceForeground': colors.gitIgnoreExplorer.hex(),
     'gitDecoration.conflictingResourceForeground': colors.danger.hex(),
 
@@ -514,7 +514,7 @@ module.exports = function (colors) {
         'keyword.operator.type',
         'keyword.operator',
         'keyword',
-        'punctuation.definintion.string',
+        'punctuation.definition.string',
         'punctuation',
         'variable.other.readwrite',
         'storage.type',
@@ -528,7 +528,7 @@ module.exports = function (colors) {
   ]
 
   const tcGlobalSettings = [
-    // gloabal settings
+    // global settings
     {
       name: 'Global settings',
       settings: {
@@ -539,7 +539,7 @@ module.exports = function (colors) {
   ]
 
   const tcGit = [
-    // GIT  colors
+    // GIT colors
     {
       name: 'Changed',
       scope: [
@@ -565,7 +565,7 @@ module.exports = function (colors) {
       name: 'Inserted',
       scope: 'markup.inserted.diff',
       settings: {
-        foreground: colors.succesLight.hex(),
+        foreground: colors.successLight.hex(),
         fontStyle: 'italic',
       },
     },
@@ -581,11 +581,11 @@ module.exports = function (colors) {
       },
     },
     {
-      // escape sequences like \e
+      // escape sequences like \e, \\, \n
       name: 'Constant Character Escape',
       scope: 'constant.character.escape',
       settings: {
-        foreground: colors.string.hex(),
+        foreground: colors.syntaxViolet.hex(),
       },
     },
     {
@@ -597,7 +597,7 @@ module.exports = function (colors) {
       },
     },
     {
-      // HTML & PUG atributes
+      // HTML & PUG attributes
       name: 'Tag attribute',
       scope: ['entity.other.attribute-name', 'entity.name.type.svelte'],
       settings: {
@@ -686,6 +686,15 @@ module.exports = function (colors) {
         foreground: colors.white.hex(),
       },
     },
+    {
+      name: 'Decorators', // other than typescript
+      scope: [
+        'meta.decorator punctuation.decorator',
+      ],
+      settings: {
+        foreground: colors.specialWordB.hex(),
+      },
+    },
   ]
 
   const tcSpecialWords = [
@@ -704,8 +713,8 @@ module.exports = function (colors) {
         // Most other languages would introduce new types as classes.
         'support.type',
         // when the framework/library provides classes.
-        // 'support.class',
-        // 'entity.name.type.class',
+        'support.class',
+        'entity.name.type.class',
       ],
       settings: {
         foreground: colors.specialWordB.hex(),
@@ -1172,14 +1181,16 @@ module.exports = function (colors) {
         foreground: colors.boolean.hex(),
       },
     },
-    // {
-    //   // code like ~ = &#x7e
-    //   name: 'entity names',
-    //   scope: ['entity.name.type'],
-    //   settings: {
-    //     foreground: colors.variable.hex(),
-    //   },
-    // },
+    {
+      // code class Name {}
+      //            ^^^^
+      name: 'entity names',
+      scope: ['entity.name.type'],
+      settings: {
+        foreground: colors.specialWordB.hex(),
+        fontStyle: 'normal',
+      }
+    },
   ]
 
   const tcStylesheets = [
@@ -1472,7 +1483,7 @@ module.exports = function (colors) {
         'meta.object.property.jsx',
         'meta.other.property.vue',
 
-        // interfce other property ts
+        // interface other property ts
         'meta.interface.ts variable.object.property.ts',
       ],
       settings: {
@@ -1508,7 +1519,9 @@ module.exports = function (colors) {
         'meta.class.js entity.other.inherited-class.js',
         'meta.class.ts entity.other.inherited-class.ts',
 
-        'punctuation.decorator.js', // ???
+        // code like @decorator class A {} using babel
+        //           ^
+        'punctuation.decorator.js',
       ],
       settings: {
         foreground: colors.functionName.hex(),
@@ -1793,7 +1806,7 @@ module.exports = function (colors) {
     },
   ]
 
-  const tcMarckdown = [
+  const tcMarkdown = [
     {
       name: 'Markdown Headings',
       scope: 'markup.heading.markdown',
@@ -2273,7 +2286,6 @@ module.exports = function (colors) {
   }
 
   return {
-    name: 'themename',
     type: 'dark',
     colors: {
       ...themeColors,
@@ -2301,7 +2313,7 @@ module.exports = function (colors) {
       ...tcCoffescript,
       ...tcCsharp,
       ...tcElixir,
-      ...tcMarckdown,
+      ...tcMarkdown,
       ...tcGo,
       ...tcRust,
       ...tcPhp,

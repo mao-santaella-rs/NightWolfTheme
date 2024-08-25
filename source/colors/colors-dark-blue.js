@@ -22,7 +22,7 @@ colors.interBackground = colors.principal
 colors.interBorder = colors.principal_1
 colors.notificationBadge = colors.infoLight
 
-// INTERFACE SELECTIO
+// INTERFACE SELECTION
 colors.selection_0 = colors.principal_5.alpha(.1)
 colors.selection_1 = colors.principal_5.alpha(.2)
 colors.selection_2 = colors.principal_5.alpha(.3)
