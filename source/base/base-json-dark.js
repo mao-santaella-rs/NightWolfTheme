@@ -501,9 +501,6 @@ module.exports = function (colors) {
     {
       name: 'normalize font style of certain components',
       scope: [
-        'meta.property-list.css meta.property-value.css variable.other.less',
-        'meta.property-list.scss variable.scss',
-        'meta.property-list.sass variable.sass',
         'meta.brace',
         'keyword.operator.operator',
         'keyword.operator.or.regexp',
@@ -727,10 +724,6 @@ module.exports = function (colors) {
         fontStyle: 'italic',
       },
     },
-
-    // ORANGE COLOR
-    // object properties before the last property
-    // object.[propertyA.propertyAA].propertyAAA
     {
       name: 'Variable Property Other object property',
       scope: ['variable.other.object.property'],
@@ -1190,9 +1183,30 @@ module.exports = function (colors) {
         'variable.sass',
         'variable.parameter.scss',
         'variable.parameter.sass',
+        'variable.parameter.keyframe-list.css',
+        'meta.at-rule.keyframes.scss entity.name.function.scss',
+        'meta.at-rule.keyframes.scss',
+        'entity.name.function.namespace-prefix.css',
+        'entity.name.namespace-prefix.scss',
       ],
       settings: {
         foreground: colors.variable.hex(),
+      },
+    },
+    {
+      name: 'Other values',
+      scope: ['meta.definition.variable.scss', 'meta.definition.variable.sass'],
+      settings: { foreground: colors.syntaxRed.hex() },
+    },
+    {
+      name: 'Color values',
+      scope: [
+        'constant.language.color.rgb-value.css.sass',
+        'constant.other.color.rgb-value.hex.css',
+        'constant.other.color.rgb-value.hex.css punctuation.definition.constant.css',
+      ],
+      settings: {
+        foreground: colors.regularText.hex(),
       },
     },
     {
@@ -1209,8 +1223,20 @@ module.exports = function (colors) {
       },
     },
     {
-      name: 'function declaration SASS',
-      scope: ['support.function.name.sass.library', 'source.sass entity.name.function'],
+      name: 'function declaration',
+      scope: [
+        'support.function.name.sass.library',
+        'source.sass entity.name.function',
+        'support.function.misc.css',
+        'support.function.misc.scss',
+        'support.function.misc.sass',
+        'support.function.misc.less',
+        'support.function.transform.css',
+        'support.function.transform.scss',
+        'support.function.transform.sass',
+        'support.function.transform.less',
+        'support.function.url.css',
+      ],
       settings: {
         foreground: colors.sassFunction.hex(),
       },
@@ -1221,6 +1247,8 @@ module.exports = function (colors) {
         'entity.other.attribute-name.class.css',
         'entity.other.attribute-name.class.css punctuation.definition.entity.css',
         'entity.other.attribute-name.class.css.sass',
+        'entity.other.attribute-name.class.css.scss',
+        'source.css.scss entity.other.attribute-name.parent-selector-suffix.css punctuation.definition.entity.css',
         'entity.other.attribute-name.class.scss',
       ],
       settings: {
@@ -1260,14 +1288,36 @@ module.exports = function (colors) {
     },
     {
       name: 'Property name stylesheets',
-      scope: ['support.type.property-name.css', 'support.type.property-name.css.sass'],
+      scope: [
+        'support.type.property-name.css',
+        'support.type.property-name.scss',
+        'support.type.property-name.sass',
+        'support.type.property-name.less',
+        'meta.property-name.scss',
+        'support.type.property-name.css.sass.prop.name',
+      ],
       settings: {
         foreground: colors.cssProperty.hex(),
       },
     },
     {
       name: 'Values in css',
-      scope: ['support.constant.property-value.css'],
+      scope: [
+        'meta.property-value.css',
+        'meta.property-value.scss',
+        'meta.property-value.sass',
+        'meta.property-value.less',
+        'support.constant.font-name.css',
+        'support.constant.font-name.scss',
+        'support.constant.font-name.sass',
+        'support.constant.font-name.less',
+        'support.constant.property-value.css',
+        'support.constant.property-value.scss',
+        'support.constant.property-value.sass',
+        'support.constant.property-value.less',
+        'meta.property-value.css.sass',
+        // 'source.sass meta.property-list.css.sass.prop meta.property-value.css.sass support.constant.property-value.css.sass',
+      ],
       settings: {
         foreground: colors.cssValue.hex(),
       },
@@ -1282,6 +1332,8 @@ module.exports = function (colors) {
         'constant.numeric.css',
         'punctuation.definition.constant.css',
         'constant.numeric.css.sass',
+        'meta.property-list.media-query.scss',
+        'meta.property-name.media-query.scss',
       ],
       settings: {
         foreground: colors.cssUnits.hex(),
@@ -1295,6 +1347,8 @@ module.exports = function (colors) {
         'support.type.vendor.property-name',
         'support.constant.vendor.property-value',
         'support.type.property-name',
+        'meta.property-name.media-query.scss support.type.property-name.css',
+        'meta.at-rule.media.header.css',
         'meta.property-list entity.name.tag',
       ],
       settings: {
@@ -1348,12 +1402,24 @@ module.exports = function (colors) {
         'keyword.control.at-rule',
         'keyword.control.at-rule.css.sass',
 
-        'meta.property-value.scss',
         'meta.property-value.scss support.constant.mathematical-symbols.scss',
       ],
       settings: {
         foreground: colors.cssSpecialWord.hex(),
         fontStyle: 'italic',
+      },
+    },
+    {
+      name: 'support.constant.media',
+      scope: [
+        'meta.at-rule.media.header.css support.constant.media.css',
+        'meta.at-rule.media.scss support.constant.media.css',
+        'meta.at-rule.import.scss support.function.misc.scss',
+        'meta.at-rule.import.css support.constant.media.css',
+        'meta.at-rule.page.css',
+      ],
+      settings: {
+        foreground: colors.syntaxLightBlue.hex(),
       },
     },
     {
@@ -1369,7 +1435,6 @@ module.exports = function (colors) {
       },
     },
     {
-      // (*, ^ and $)
       name: 'Wildcard(*) selector in Stylesheets',
       scope: [
         'entity.name.tag.wildcard.css',
@@ -1378,36 +1443,63 @@ module.exports = function (colors) {
         'entity.name.tag.wildcard.sass',
       ],
       settings: {
-        foreground: colors.functionName.hex(),
+        foreground: colors.syntaxRedIntense.hex(),
       },
     },
     {
       name: 'Attribute Name for CSS, SCSS and LESS',
       scope: [
-        'meta.attribute-selector.css entity.other.attribute-name',
         'meta.attribute-selector.less entity.other.attribute-name.attribute',
         'entity.other.attribute-name.css.sass',
         'keyword.operator.attribute-selector.css.sass',
         'meta.attribute-selector',
 
         // SCSS
-        'source.css.scss entity.other.attribute-name.attribute',
         'meta.attribute-selector.scss',
-        'meta.attribute-selector.scss keyword.operator.scss',
         'meta.attribute-selector.scss punctuation.definition.string.begin.scss',
         'meta.attribute-selector.scss punctuation.definition.string.end.scss',
-        'meta.attribute-selector.scss punctuation.definition.attribute-selector.begin.bracket.square.scss',
-        'meta.attribute-selector.scss punctuation.definition.attribute-selector.end.bracket.square.scss',
-        // SASS
-        'entity.other.attribute-selector.sass',
+
         // CSS
         'meta.attribute-selector.css',
-        'meta.attribute-selector.css keyword.operator.pattern.css',
-        'meta.attribute-selector.css punctuation.definition.entity.begin.bracket.square.css',
-        'meta.attribute-selector.css punctuation.definition.entity.end.bracket.square.css',
       ],
       settings: {
         foreground: colors.cssAttribute.hex(),
+      },
+    },
+    {
+      name: 'attribute selector brackets',
+      scope: [
+        'meta.attribute-selector.css punctuation.definition.entity.begin.bracket.square.css',
+        'meta.attribute-selector.css punctuation.definition.entity.end.bracket.square.css',
+        'entity.other.attribute-selector.scss',
+        'entity.other.attribute-selector.sass',
+      ],
+      settings: {
+        foreground: colors.text.hex(),
+      },
+    },
+    {
+      name: 'attribute selector attribute',
+      scope: [
+        'source.css.scss entity.other.attribute-name.attribute',
+        'meta.attribute-selector.scss punctuation.definition.attribute-selector.begin.bracket.square.scss',
+        'meta.attribute-selector.scss punctuation.definition.attribute-selector.end.bracket.square.scss',
+        'meta.attribute-selector.css entity.other.attribute-name',
+      ],
+      settings: {
+        foreground: colors.text.hex(),
+      },
+    },
+    {
+      name: 'url parameter',
+      scope: [
+        'variable.parameter.url.css',
+        'variable.parameter.url.scss',
+        'variable.parameter.url.sass',
+        'variable.parameter.url.less',
+      ],
+      settings: {
+        foreground: colors.syntaxGreen.hex(),
       },
     },
     {
@@ -1471,6 +1563,7 @@ module.exports = function (colors) {
         'meta.object.property.js',
         'meta.object.property.jsx',
         'meta.other.property.vue',
+        'source.ts.embedded.html.vue entity.other.attribute-name.html.vue',
 
         // interfce other property ts
         'meta.interface.ts variable.object.property.ts',

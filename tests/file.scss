@@ -1,151 +1,305 @@
+:root {
+  --main-color: #06c;
+  --accent-color: #006;
+  --padding: 10px;
+  --border-radius: 5px;
+}
+
+.p1 {
+    font-family: "Times New Roman", Times, serif;
+    /* A font family name and a generic family name */
+    font-family: "Gill Sans Extrabold", sans-serif;
+    font-family: "Goudy Bookletter 1911", sans-serif;
+
+    /* A generic family name only */
+    font-family: serif;
+    font-family: sans-serif;
+    font-family: monospace;
+    font-family: cursive;
+    font-family: fantasy;
+    font-family: system-ui;
+    font-family: ui-serif;
+    font-family: ui-sans-serif;
+    font-family: ui-monospace;
+    font-family: ui-rounded;
+    font-family: emoji;
+    font-family: math;
+    font-family: fangsong;
+
+    /* Global values */
+    font-family: inherit;
+    font-family: initial;
+    font-family: revert;
+    font-family: revert-layer;
+    font-family: unset;
+}
+
+.serif {
+    font-family: Times, "Times New Roman", Georgia, serif;
+}
+
+.sansserif {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+.monospace {
+    font-family: "Lucida Console", Courier, monospace;
+}
+
+.cursive {
+    font-family: cursive;
+}
+
+.fantasy {
+    font-family: fantasy;
+}
+
+.emoji {
+    font-family: emoji;
+}
+
+.math {
+    font-family: math;
+}
+
+.fangsong {
+    font-family: fangsong;
+}
+
+.p2 {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.p3 {
+    font-family: "Lucida Console", "Courier New", monospace;
+}
+
+
+.box {
+  padding: var(--padding);
+  border-radius: var(--border-radius);
+  margin-bottom: 15px;
+  &__icon {
+    height: 48px;
+    width: 48px;
+  }
+}
+
+
+[id^='ltk--modal']:has([class^='casting-drawer']) {
+  .casting-drawer {
+    &__header {
+      display: none;
+    }
+  }
+}
+
+// Numbers
+$margin: 10px;
+$padding: 5%;
+
+// Strings
+$title: 'Hello, World!';
+$font-family: 'Open Sans', sans-serif;
+
+// Colors
+$primary-color: #bada55;
+$secondary-color: rgba(173, 216, 230, 0.3);
+
+// Booleans
+$important: true;
+
+// Nulls
+$border: null;
+
+// Lists
+$font-stack: Helvetica, Arial, sans-serif;
+$margin-values: 10px 15px 20px 25px;
+
+// Maps
+$colors: (
+  primary: #bada55,
+  secondary: #add8e6,
+);
+
+// Using the values
+body {
+  margin: $margin;
+  padding: $padding;
+  font-family: $font-stack;
+  color: map-get($colors, primary);
+}
+
+h1 {
+  content: $title;
+  color: $secondary-color;
+}
+
+.box {
+  border: if($important, 1px solid red, $border);
+}
+
 /*
  * css extensions
  */
 
 div {
-    color: #00ff00;
+  color: #00ff00;
 
-    // nested rules
-    #inner.element {
-        color: #000000;
-    }
+  // nested rules
+  #inner.element {
+    color: #000000;
+  }
 
-    // parent selector
-    &:hover {
-        text-decoration: underline !important;
-    }
-    body.firefox & {
-        font-weight: normal;
-    }
-    &__element, // compound selector
+  // parent selector
+  &:hover {
+    text-decoration: underline !important;
+  }
+  body.firefox & {
+    font-weight: normal;
+  }
+  &__element, // compound selector
     &--modifier {
-        border: 1px;
-    }
+    border: 1px;
+  }
 
-    // nested properties
-    font: {
-        family: fantasy;
-        size: 30em;
-        weight: bold;
-    }
-    font: 20px/24px fantasy {
-        weight: bold;
-    }
+  // nested properties
+  font: {
+    family: fantasy;
+    size: 30em;
+    weight: bold;
+  }
+  font: 20px/24px fantasy {
+    weight: bold;
+  }
 }
-
 
 /*
  * variables, data types
  */
 
 // assignment
-$number:                5em;
-$double-quoted-string:  "foo";
-$single-quoted-string:  'bar';
-$not-quoted-string:     baz;
-$true:                  true;
-$false:                 false;
-$null:                  null;
-$parens-spaces-list:    (left top);
-$parens-commas-list:    (1px, 2px, 3px, 4px);
+$number: 5em;
+$double-quoted-string: 'foo';
+$single-quoted-string: 'bar';
+$not-quoted-string: baz;
+$true: true;
+$false: false;
+$null: null;
+$parens-spaces-list: (left top);
+$parens-commas-list: (1px, 2px, 3px, 4px);
 $no-parens-spaces-list: 1px 2px 3px 4px;
 $no-parens-commas-list: arial, some-other-arial, sans-serif;
-$trailing-comma:        (1 2 3,); // a comma-separated list containing a space-separated list
-$bracketed-list:        [5rem 6rem 7rem]; // comma or space separated
-$map:                   (medium: 640, 'large': 960, "x-large": 1280, (xx-large,): 1600); // must have parentheses, be comma separated
-$color:                 #fe57a1;
-$function-reference:    get-function($function-name);
+$trailing-comma: (1 2 3); // a comma-separated list containing a space-separated list
+$bracketed-list: [5rem 6rem 7rem]; // comma or space separated
+$map: (
+  medium: 640,
+  'large': 960,
+  'x-large': 1280,
+  (
+      xx-large,
+    ):
+    1600,
+); // must have parentheses, be comma separated
+$color: #fe57a1;
+$function-reference: get-function($function-name);
 
 // assign if not already assigned to
 $var: 1 !default;
 
 #main {
-    // global variable defined in block
-    $width: 5em !global;
+  // global variable defined in block
+  $width: 5em !global;
 
-    // list of parent selectors
-    $selectors: &;
+  // list of parent selectors
+  $selectors: &;
 
-    // property value
-    width: $width;
+  // property value
+  width: $width;
 }
 
 // media feature test
-@import "foo" ($orientation: $landscape);
+@import 'foo' ($orientation: $landscape);
 @media ($orientation-landscape) {
+  html {
     width: 700px;
+  }
+}
+
+[id^='ltk--modal']:has([class^='casting-drawer']) {
+  width: 100%;
 }
 
 // font feature value
 @font-feature-values Font One {
-    @styleset {
-        nice-style: $value;
-    }
+  @styleset {
+    nice-style: $value;
+  }
 }
 
 // @supports test
 @supports ($animation-name: $test) {
-    body {
-        animation-name: test;
-    }
+  body {
+    animation-name: test;
+  }
 }
 @supports ($animation-name-test) {
-    body {
-        animation-name: test;
-    }
+  body {
+    animation-name: test;
+  }
 }
 
 // @at-root query
 @at-root ($type: $value) {
-    .top-level {
-        background: pink;
-    }
+  .top-level {
+    background: pink;
+  }
 }
 @at-root ($query) {
-    .top-level {
-        background: pink;
-    }
+  .top-level {
+    background: pink;
+  }
 }
-
 
 /*
  * operations
  */
 
 body {
-    // arithmetic operators
-    width: (1px + (2em - 3rem)) * (4 / 5vh) % 6cm;
+  // arithmetic operators
+  width: (1px + (2em - 3rem)) * (4 / 5vh) % 6cm;
 
-    // plain css
-    font: 10px/8px;
-    font: (italic bold 10px/8px);
-    font: #{$font-size}/#{$line-height};
+  // plain css
+  font: 10px/8px;
+  font: (italic bold 10px/8px);
+  font: #{$font-size}/#{$line-height};
 
-    // division
-    width: $width/2;
-    width: round(1.5)/2;
-    width: (500px/2);
-    width: 5px + 8px/2px;
+  // division
+  width: $width/2;
+  width: round(1.5) / 2;
+  width: (500px/2);
+  width: 5px + 8px/2px;
 
-    // minus sign
-    animation-name: a-1; // identifier
-    margin: (5px - 3px) 5px-3px 3-2 (1 -$var); // subtraction
-    margin: 1 -3em; // negative number
-    margin: -$var -(1); // unary negation
+  // minus sign
+  animation-name: a-1; // identifier
+  margin: (5px - 3px) 5px-3px 3-2 (1 -$var); // subtraction
+  margin: 1 -3em; // negative number
+  margin: -$var - (1); // unary negation
 
-    // string concatenation
-    content: "Foo " + Bar; // "Foo Bar"
-    font-family: sans- + "serif"; // sans-serif
+  // string concatenation
+  content: 'Foo ' + Bar; // "Foo Bar"
+  font-family: sans- + 'serif'; // sans-serif
 }
 
 // string concatenation in string-only context
-@keyframes ('foo' + bar) {}
-@keyframes (foo + "bar") {}
+@keyframes ('foo' + bar) {
+}
+@keyframes (foo + "bar") {
+}
 
 // comparison operators, logical operators
 $a: (1 < 2 and 1 > 2) or (1 <= 2) and 1 >= 2;
 $b: not (1 == 2) and 1 != 2;
-
 
 /*
  * interpolation
@@ -172,54 +326,58 @@ d#{'i'}v,
 :not(#{'div'}),
 #{'%placeholder'},
 %pla#{'ceho'}lder {
+  // property name
+  #{'font'}: serif;
+  background-#{'image'}: none;
+  border-#{'bottom'}-width: 0;
 
-    // property name
-    #{'font'}: serif;
-    background-#{'image'}: none;
-    border-#{'bottom'}-width: 0;
+  // property value
+  font-size: #{$font-size};
+  font-family: #{'arial, sans'}-serif;
+  width: #{5 * (3 - 1)}px;
 
-    // property value
-    font-size: #{$font-size};
-    font-family: #{'arial, sans'}-serif;
-    width: #{5 * (3 - 1)}px;
+  // function name
+  background: #{'url' }('image.png');
+  background: u#{'r'}l('image.png');
 
-    // function name
-    background: #{'url'}('image.png');
-    background: u#{'r'}l('image.png');
+  // !important (exclamation mark needs to be inside)
+  width: 0 #{'!important'};
+  width: 0 #{'!import'}ant;
 
-    // !important (exclamation mark needs to be inside)
-    width: 0 #{'!important'};
-    width: 0 #{'!import'}ant;
+  // inside strings
+  content: '#{$var}';
+  content: '#{$var}';
 
-    // inside strings
-    content: "#{$var}";
-    content: '#{$var}';
-
-    // inside comments
-    /* multi-line: #{$yes} */
-    // single line: #{$no}
+  // inside comments
+  /* multi-line: #{$yes} */
+  // single line: #{$no}
 }
 
 // media type, feature test
-@import "foo" #{'screen'} and (#{'orientation'}: #{'landscape'});
+@import 'foo' #{'screen'} and (#{'orientation'}: #{'landscape'});
 // @media #{'screen'} and (#{'orientation: landscape'}) {
 //     width: 700px;
 // }
 
 // font name, font feature custom name, font feature value
 @font-feature-values #{'Font One'} {
-    @styleset { // interpolation not accepted here?
-        #{'nice-style'}: #{12};
-    }
+  @styleset {
+    // interpolation not accepted here?
+    #{'nice-style'}: #{12};
+  }
 }
 
 // inside @import url()
-@import url("http://fonts.googleapis.com/css?family=#{$family}");
+@import url('http://fonts.googleapis.com/css?family=#{$family}');
 
 // @keyframes name, selector
 @keyframes #{'myanim'} {
-    #{'from'} { width: 0; }
-    #{'to'}   { width: 100%; }
+  #{'from'} {
+    width: 0;
+  }
+  #{'to'} {
+    width: 100%;
+  }
 }
 
 // @namespace name
@@ -227,18 +385,19 @@ d#{'i'}v,
 
 // @page custom name, pseudo-page
 @page #{'toc'}, #{':first'} {
-    margin: 0;
+  margin: 0;
 
-    @left-top { // interpolation not accepted here?
-        content: '';
-    }
+  @left-top {
+    // interpolation not accepted here?
+    content: '';
+  }
 }
 
 // @supports test
 @supports (#{'animation-name'}: #{'test'}) {
-    body {
-        animation-name: test;
-    }
+  body {
+    animation-name: test;
+  }
 }
 // @supports (#{'animation-name: test'}) {
 //     body {
@@ -248,207 +407,208 @@ d#{'i'}v,
 
 // @at-root query
 @at-root (#{'without'}: #{'media'}) {
-    .top-level {
-        background: pink;
-    }
+  .top-level {
+    background: pink;
+  }
 }
 @at-root (#{'without: media'}) {
-    .top-level {
-        background: pink;
-    }
+  .top-level {
+    background: pink;
+  }
 }
-
 
 /*
  * functions
  */
 
 body {
-    // single line comments not parsed inside url()
-    background: url(http://example.com/styles.css);
+  // single line comments not parsed inside url()
+  background: url(http://example.com/styles.css);
 
-    // keyword arguments
-    color: hsl($hue: 0, $saturation: 100%, $lightness: 50%);
+  // keyword arguments
+  color: hsl($hue: 0, $saturation: 100%, $lightness: 50%);
 }
-
 
 /*
  * at-rules
  */
 
 // @import
-@import "rounded-corners", "text-shadow"; // multiple files
-#main { // nested @import
-    @import "example"; // but not inside mixins or control directives
+@import 'rounded-corners', 'text-shadow'; // multiple files
+#main {
+  // nested @import
+  @import 'example'; // but not inside mixins or control directives
 }
 
 // nested @media
 @media screen {
-    .sidebar {
-        @media (orientation: landscape) {
-            width: 500px;
-        }
+  .sidebar {
+    @media (orientation: landscape) {
+      width: 500px;
     }
+  }
 }
 
 // @extend
 #main {
-    @extend #hello;
+  @extend #hello;
 
-    // no error if not found
-    @extend .from[the="other-side"] !optional;
+  // no error if not found
+  @extend .from[the='other-side'] !optional;
 
-    // placeholder selector
-    @extend div%placeholder;
+  // placeholder selector
+  @extend div%placeholder;
 }
 
 // @at-root
 #main {
-    @at-root .child {
-        color: red;
-    }
+  @at-root .child {
+    color: red;
+  }
 }
 @media screen {
-    @supports (font-variant-alternates: styleset(nice-style)) {
-        @at-root (without: media supports) { // with query
-            .absolutely-top-level {
-                background: pink;
-            }
-        }
+  @supports (font-variant-alternates: styleset(nice-style)) {
+    @at-root (without: media supports) {
+      // with query
+      .absolutely-top-level {
+        background: pink;
+      }
     }
+  }
 }
 
 // @if/@else if/@else, @debug/@warn/@error
 @if $num-errors == 0 {
-    @debug "$num-errors is 0";
+  @debug '$num-errors is 0';
 } @else if $num-errors > 0 {
-    @warn "oops there are #{$num-errors} errors";
+  @warn "oops there are #{$num-errors} errors";
 } @else {
-    @error "negative errors?!?";
+  @error "negative errors?!?";
 }
 
 // @for
 @for $i from 1 through 3 {
-    .item-#{$i} {
-        width: 2em * $i;
-    }
+  .item-#{$i} {
+    width: 2em * $i;
+  }
 }
 
 // @each
 @each $animal in puma, sea-slug, egret, salamander {
-    .#{$animal}-icon {
-        background-image: url('/images/#{$animal}.png');
-    }
+  .#{$animal}-icon {
+    background-image: url('/images/#{$animal}.png');
+  }
 }
 @each $header, $size in (h1: 2em, h2: 1.5em, h3: 1.2em) {
-    #{$header} {
-        font-size: $size;
-    }
+  #{$header} {
+    font-size: $size;
+  }
 }
 
 // @while
 $i: 6;
 @while $i > 0 {
-    .item-#{$i} {
-        width: 2em * $i;
-    }
-    $i: $i - 2;
+  .item-#{$i} {
+    width: 2em * $i;
+  }
+  $i: $i - 2;
 }
 
 // @mixin
 @mixin large-text {
-    font-size: 128px;
+  font-size: 128px;
 }
-@mixin sexy-border($color, $width: 1in) { // with arguments, default value
-    border: {
-        color: $color;
-        width: $width;
-    }
+@mixin sexy-border($color, $width: 1in) {
+  // with arguments, default value
+  border: {
+    color: $color;
+    width: $width;
+  }
 }
-@mixin box-shadow($shadows...) { // variable arguments
-    box-shadow: $shadows;
+@mixin box-shadow($shadows...) {
+  // variable arguments
+  box-shadow: $shadows;
 }
-@mixin apply-to-ie6-only { // accepts content block
-    * html {
-        @content;
-    }
+@mixin apply-to-ie6-only {
+  // accepts content block
+  * html {
+    @content;
+  }
 }
 
 // @include
 .page-title {
-    @include large-text;
+  @include large-text;
 }
 p {
-    @include sexy-border(blue); // with arguments
+  @include sexy-border(blue); // with arguments
 }
 div {
-    @include sexy-border($color: blue, $width: 10cm); // keyword arguments
+  @include sexy-border($color: blue, $width: 10cm); // keyword arguments
 }
 .primary {
-    @include box-shadow($shadows...); // expand list into arguments
+  @include box-shadow($shadows...); // expand list into arguments
 }
-@include apply-to-ie6-only { // passing content block
-    display: block;
+@include apply-to-ie6-only {
+  // passing content block
+  display: block;
 
-    #main {
-        background: black;
-    }
+  #main {
+    background: black;
+  }
 }
 
 // @function
 @function grid-width($n) {
-    @return $n * $grid-width + ($n - 1) * $gutter-width;
+  @return $n * $grid-width + ($n - 1) * $gutter-width;
 }
 #sidebar {
-    width: grid-width(5);
+  width: grid-width(5);
 }
-
 
 /*
  * test cases
  */
 
 .declarations-or-selectors {
-    // declarations
-    display:block;
-    font-family:arial;
-    font: {
-        family: fantasy;
-        weight: bold;
-    }
-    font: fantasy {
-        size: 20px;
-        style: italic;
-    }
-    #{$property}:block;
-    #{$property}: {
-        color: red;
-    }
-    color:#000;
-    width:#{$width};
+  // declarations
+  display: block;
+  font-family: arial;
+  font: {
+    family: fantasy;
+    weight: bold;
+  }
+  font: fantasy {
+    size: 20px;
+    style: italic;
+  }
+  #{$property}: block;
+  #{$property}: {
+    color: red;
+  }
+  color: #000;
+  width: #{$width};
 
-    // incorrectly highlighted declarations
-    display:block
-    ;
+  // incorrectly highlighted declarations
+  display: block;
 
-    // selectors
-    input:focus {
-        opacity: 0.5;
-    }
-    div:nth-child(2n+1) {
-       background-color: gray;
-    }
-    div:-moz-full-screen {
-        display: block;
-    }
-    a:#{$state} {
-        color: blue;
-    }
-    #{$selector}:focus {
-        color: blue;
-    }
+  // selectors
+  input:focus {
+    opacity: 0.5;
+  }
+  div:nth-child(2n + 1) {
+    background-color: gray;
+  }
+  div:-moz-full-screen {
+    display: block;
+  }
+  a:#{$state} {
+    color: blue;
+  }
+  #{$selector}:focus {
+    color: blue;
+  }
 }
-
 
 // from file.css
 
@@ -461,24 +621,18 @@ div {
  */
 
 /* whitespace */
-#main
-{
-    color:aqua;
-    float: left!important;
-    margin  :  0  ;
-    width
-        :
-        100%
-        !
-        important
+#main {
+  color: aqua;
+  float: left !important;
+  margin: 0;
+  width: 100% !important
         ;
 }
 
 /* case insensitivity */
 Body {
-    FONT: 12Px/16pX iTaLiC sans-SERIF;
+  font: 12px/16px iTaLiC sans-SERIF;
 }
-
 
 /*
  * selectors
@@ -489,16 +643,18 @@ Body {
 .someclass,    /* class */
 div,           /* type */
 *,             /* universal */
-[lang|="zh"] { /* attribute */
-    color: black;
+[lang|="zh"] {
+  /* attribute */
+  color: black;
 }
 
 /* combinators */
 header + main, /* adjacent sibling */
 li ~ li,       /* general sibling */
 ul > li,       /* child */
-ul ul {        /* descendant */
-    color: blue;
+ul ul {
+  /* descendant */
+  color: blue;
 }
 
 /* pseudo-elements */
@@ -506,7 +662,7 @@ ul ul {        /* descendant */
 ::after,
 ::placeholder,
 ::selection {
-    color: green;
+  color: green;
 }
 
 /* pseudo-classes */
@@ -514,11 +670,11 @@ ul ul {        /* descendant */
 :required,
 :lang(fr),
 :not(div#sidebar.fancy),
-:nth-child(n+1),
+:nth-child(n + 1),
 :nth-last-child(-2n - 30),
 :nth-of-type(5),
 :nth-last-of-type(even) {
-    color: yellow;
+  color: yellow;
 }
 
 /* pseudo-classes with invalid arguments */
@@ -527,8 +683,9 @@ ul ul {        /* descendant */
 :not(p:not(:lang(en))),   /* nested :not */
 :nth-child(1.2n),         /* non-integer */
 :nth-child(.5),           /* non-integer */
-:nth-child(n+-1) {        /* number sign */
-    color: red;
+:nth-child(n+-1) {
+  /* number sign */
+  color: red;
 }
 
 /* namespace qualified */
@@ -537,69 +694,70 @@ svg|a,       /* type in specified namespace */
 |a,          /* type in no namespace */
 *|a,         /* type in all namespaces (including no namespace) */
 svg|*,       /* universal */
-svg|[fill] { /* attribute */
-    color: white;
+svg|[fill] {
+  /* attribute */
+  color: white;
 }
-
 
 /*
  * basic data types
  */
 
 #main {
-    /* angle */
-    transform: rotate(+33.333e+3deg);
+  /* angle */
+  transform: rotate(+33.333e3deg);
 
-    /* color */
-    color: #f00;
-    color: #f00f; /* #rgba */
-    color: #ff0000;
-    color: #ff0000ff; /* #rrggbbaa */
-    color: red;
-    color: lightgoldenrodyellow;
-    color: rebeccapurple;
-    color: currentColor;
+  /* color */
+  color: #f00;
+  color: #f00f; /* #rgba */
+  color: #ff0000;
+  color: #ff0000ff; /* #rrggbbaa */
+  color: red;
+  color: lightgoldenrodyellow;
+  color: rebeccapurple;
+  color: currentColor;
 
-    /* freqency (not currently used for any property) */
-    content: 44.1kHz;
+  /* freqency (not currently used for any property) */
+  content: 44.1khz;
 
-    /* integer */
-    z-index: +255;
-    z-index: -1;
+  /* integer */
+  z-index: +255;
+  z-index: -1;
 
-    /* length */
-    width: 10px;
-    width: 10.5rem;
-    width: -10e-2vw;
+  /* length */
+  width: 10px;
+  width: 10.5rem;
+  width: -10e-2vw;
 
-    /* number */
-    opacity: .5;
-    opacity: 0.3333;
-    opacity: 1;
-    opacity: 2e-34;
+  /* number */
+  opacity: 0.5;
+  opacity: 0.3333;
+  opacity: 1;
+  opacity: 2e-34;
 
-    /* percentage */
-    width: 100%;
+  /* percentage */
+  width: 100%;
 
-    /* string */
-    content: "double quoted";
-    content: 'single quoted';
+  /* string */
+  content: 'double quoted';
+  content: 'single quoted';
 
-    /* time */
-    transition-duration: .4s;
-    transition-duration: 400ms;
+  /* time */
+  transition-duration: 0.4s;
+  transition-duration: 400ms;
 
-    /* unicode range */
-    unicode-range: U+0025-00FF;
-    unicode-range: U+4??; /* wildcard range */
+  /* unicode range */
+  unicode-range: U+0025-00FF;
+  unicode-range: U+4??; /* wildcard range */
 }
 
 /* ratio */
-@media (min-aspect-ratio: 16/9) {}
+@media (min-aspect-ratio: 16/9) {
+}
 
 /* resolution */
-@media (min-resolution: +2.54dpcm) {}
-
+@media (min-resolution: +2.54dpcm) {
+}
 
 /*
  * identifiers
@@ -607,23 +765,24 @@ svg|[fill] { /* attribute */
 
 /* leading hyphens */
 #-here.-there,
-#-- .--everywhere { /* two hyphens: https://stackoverflow.com/a/30822662 */
-    color: blue;
+#-- .--everywhere {
+  /* two hyphens: https://stackoverflow.com/a/30822662 */
+  color: blue;
 }
 
 /* non-ASCII */
 #español,
 #你好,
 .❤♫ {
-    color: green;
+  color: green;
 }
 
 /* invalid identifiers */
 #1id,      /* starts with digit */
-.-2class { /* starts with hyphen digit */
-    color: maroon;
+.-2class {
+  /* starts with hyphen digit */
+  color: maroon;
 }
-
 
 /*
  * escaping
@@ -634,78 +793,80 @@ svg|[fill] { /* attribute */
 #\E9 dition .\0000E9dition .motion_\e9motion, /* Unicode character escape */
 .\e33 div,                                    /* trailing space terminates Unicode character escape */
 .\e33  div,                                   /* extra space to denote separate tokens */
-.\31 23 {                                     /* escape leading digit of identifier */
+.\31 23 {
+  /* escape leading digit of identifier */
 
-    /* property value */
-    content: "\E9 dition \
-              \"\0000E9dition\" \
-              \e9motion";
+  /* property value */
+  content: '\E9 dition \
+              "\0000E9dition" \
+              \e9motion';
 
-    /* function name */
-    background: \u\72\l(image.png);
+  /* function name */
+  background: \u\72\l(image.png);
 }
-
 
 /*
  * functions
  */
 
 #main {
-    /* url */
-    background: url("image.svg");
+  /* url */
+  background: url('image.svg');
 
-    /* function argument keywords */
-    background-image: linear-gradient(to left top, #fff, blue);
-    grid-template-columns: repeat(2, minmax(max-content, 300px) 1fr) 100px;
+  /* function argument keywords */
+  background-image: linear-gradient(to left top, #fff, blue);
+  grid-template-columns: repeat(2, minmax(max-content, 300px) 1fr) 100px;
 }
-
 
 /*
  * style properties
  */
 
 #main {
-    /* svg */
-    fill: url(#pattern);
-    text-rendering: optimizeLegibility;
+  /* svg */
+  fill: url(#pattern);
+  text-rendering: optimizeLegibility;
 
-    /* css3 */
-    font-variant-east-asian: jis04;
-    size: letter;
-    transition-timing-function: ease-in;
+  /* css3 */
+  font-variant-east-asian: jis04;
+  size: letter;
+  transition-timing-function: ease-in;
 
-    /* animatable */
-    transition-property: height, font-size, visibility;
-    
+  /* animatable */
+  transition-property: height, font-size, visibility;
 }
 
 @mixin corner-icon($name, $top-or-bottom, $left-or-right) {
-    .icon-#{$name} {
-      background-image: url("/icons/#{$name}.svg");
-      position: absolute;
-      #{$top-or-bottom}: 0;
-      #{$left-or-right}: 0;
-    }
+  .icon-#{$name} {
+    background-image: url('/icons/#{$name}.svg');
+    position: absolute;
+    #{$top-or-bottom}: 0;
+    #{$left-or-right}: 0;
   }
-  
-  @include corner-icon("mail", top, left);
+}
+
+@include corner-icon('mail', top, left);
 
 /*
  * modifiers
  */
 body {
-    background: pink !important;
+  background: pink !important;
 }
-
 
 /*
  * media queries
  */
 
-@media screen, (orientation: portrait) {}
-@media not (print and (min-monochrome: 16) and (color)) {}
-@media only screen {} @media not print {}
-
+@media screen, (orientation: portrait) {
+}
+@media not screen and (color), print and (color) {
+  /* … */
+}
+@media only screen {
+}
+@media not print {
+}
 
 /*
  * at-rules
@@ -713,152 +874,161 @@ body {
 
 /* @font-face */
 @font-face {
-    font-family: MyHelvetica;
-    src: local("Helvetica Neue"),
-         local("HelveticaNeue"),
-         url(MgOpenModerna.ttf);
+  font-family: MyHelvetica;
+  src: local('Helvetica Neue'), local('HelveticaNeue'), url(MgOpenModerna.ttf);
 }
 
 /* @font-feature-values */
 @font-feature-values Font One {
-    @styleset {
-        nice-style: 12;
-    }
+  @styleset {
+    nice-style: 12;
+  }
 }
 .nice-look {
-    font-variant-alternates: styleset(nice-style);
+  font-variant-alternates: styleset(nice-style);
 }
 
 /* @import */
-@import URL("fineprint.css");
+@import URL('fineprint.css');
 @import 'custom.css';
-@import url('landscape.css') screen and (orientation: landscape), print;
+@import url('landscape.css') ;
+@import url("fineprint.css") print;
+@import url("bluish.css") print, screen;
+@import "common.css" screen;
+@import url("landscape.css") screen and (orientation: landscape);
 
 /* @keyframes */
 @keyframes myanim {
-    from { opacity: 0.0; }
-    50%  { opacity: 0.5; }
-    to   { opacity: 1.0; }
+  from {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 /* @media */
 @media all {
+  body {
+    background: gray;
+  }
+  @media screen, (orientation: portrait) {
     body {
-        background: gray;
+      background: grey;
     }
-    @media screen, (orientation: portrait) {
-        body {
-            background: grey;
-        }
-    }
+  }
 }
 
 /* @namespace */
-@namespace "http://www.w3.org/1999/xhtml";
+@namespace 'http://www.w3.org/1999/xhtml';
 @namespace svg url(http://www.w3.org/2000/svg);
 
 /* @page */
 @page {
-    bleed: 1cm;
+  bleed: 1cm;
 }
 @page toc, :blank {
-    margin: 2cm;
-    marks: crop cross;
+  margin: 2cm;
+  marks: crop cross;
 }
 @page index:left {
-    size: A4;
+  size: A4;
 
-    @top-right {
-        content: "Page " counter(page);
-    }
+  @top-right {
+    content: 'Page ' counter(page);
+  }
 }
 
 /* @supports */
 @supports (animation-name: test) {
-    @keyframes 'my-complicated-animation' {
-        0%   { width: 0; }
-        100% { width: 100%; }
+  @keyframes 'my-complicated-animation' {
+    0% {
+      width: 0;
     }
+    100% {
+      width: 100%;
+    }
+  }
 }
-
 
 /*
  * vendor-specific extensions
  */
 
 /* pseudo-elements */
-input[type="number"]::-webkit-outer-spin-button,
-input[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
 }
-input[type="number"] {
-    -moz-appearance: textfield;
+input[type='number'] {
+  -moz-appearance: textfield;
 }
 
 /* pseudo-classes */
 #page:-moz-full-screen,
 #page:-ms-fullscreen,
 #page:-webkit-full-screen {
-    background: silver;
+  background: silver;
 }
 
 /* functions */
 .footer {
-    background-image: -webkit-linear-gradient(to left top, #fff, blue);
+  background-image: -webkit-linear-gradient(to left top, #fff, blue);
 }
 
 /* style properties */
 #sidebar {
-    -ms-overflow-style: -ms-autohiding-scrollbar;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
 }
 @supports not ((text-align-last: justify) or (-moz-text-align-last: justify)) {
-    body {
-        text-align: justify;
-    }
+  body {
+    text-align: justify;
+  }
 }
-
-
-
-
 
 @charset "UTF-8"
 
 @font-face {
-    font-family: 'MyWebFont';
-    src:    url('myfont.woff2') format('woff2'),
-            url('myfont.woff') format('woff');
+  font-family: 'MyWebFont';
+  src: url('myfont.woff2') format('woff2'), url('myfont.woff') format('woff');
 }
 
 @keyframes pulse {
-    0% {
-      background-color: #001f3f;
-    }
-    100% {
-      background-color: #ff4136;
-    }
+  0% {
+    background-color: #001f3f;
+  }
+  100% {
+    background-color: #ff4136;
+  }
 }
 
 @page :first {
-    margin: 1in;
+  margin: 1in;
 }
 
 @supports (display: flex) {
-    .module { display: flex; }
+  .module {
+    display: flex;
+  }
 }
 
 @supports (display: flex) and (-webkit-appearance: checkbox) {
-    .module { display: flex; }
+  .module {
+    display: flex;
+  }
 }
 
 // the @ is ilegal
-@mixin my-padding-mixin($some-number,$somoOtherNumber,@-moz-document) {
-    padding: $some-number;
+@mixin my-padding-mixin($some-number, $somoOtherNumber, @-moz-document) {
+  padding: $some-number;
 }
 
 @namespace url(http://www.w3.org/1999/xhtml);
 
-@document 
-    /* Rules for a specific page */
+@document /* Rules for a specific page */
     url(http://css-tricks.com/),
 
     /* Rules for pages with a URL that begin with... */
@@ -868,89 +1038,90 @@ input[type="number"] {
     domain(css-tricks.com),
 
     /* Rules for all secure pages */
-    regexp("https:.*")
-{
-  
-    /* Start styling */
-    body { font-family: Comic Sans; }
-
+    regexp("https:.*") {
+  /* Start styling */
+  body {
+    font-family: Comic Sans;
+  }
 }
 
-@import "sample1", "sample2", "sample3";
+@import 'sample1', 'sample2', 'sample3';
 
 .master {
-    color:  black;
-    font-size: 12px;
+  color: black;
+  font-size: 12px;
 }
 
 .emphasis {
-    @extend .master;
-    font-weight: bold;
+  @extend .master;
+  font-weight: bold;
 }
 
-
-
 .top {
-    .first {
-        font-size: 12px;
+  .first {
+    font-size: 12px;
+  }
+  @at-root {
+    .second {
+      font-size: 14px;
     }
-    @at-root {
-        .second {
-            font-size: 14px;
-        }
-        .third {
-            font-size: 16px;
-        }
+    .third {
+      font-size: 16px;
     }
-    .fourth {
-        font-size: 18px;
-    }
+  }
+  .fourth {
+    font-size: 18px;
+  }
 }
 
 @media screen {
-    .main {
-        @media (max-width: 600px) {
-            width: 100%;
-        }
-        @media (min-width: 700px) {
-            width: 70%;
-        }
+  .main {
+    @media (max-width: 600px) {
+      width: 100%;
+    }
+    @media (min-width: 700px) {
+      width: 70%;
     }
   }
+}
 
 /* at-rules */
 @-webkit-keyframes myanim {
-    from { opacity: 0.0; }
-    50%  { opacity: 0.5; }
-    to   { opacity: 1.0; }
+  from {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  to {
+    opacity: 1;
+  }
 }
-
 
 .top {
-    .first {
-        font-size: 12px;
+  .first {
+    font-size: 12px;
+  }
+  @at-root {
+    .second {
+      font-size: 14px;
     }
-    @at-root {
-        .second {
-        font-size: 14px;
-        }
-        .third {
-        font-size: 16px;
-        }
+    .third {
+      font-size: 16px;
     }
-    .fourth {
-        font-size: 18px;
-    }
+  }
+  .fourth {
+    font-size: 18px;
+  }
 }
 @media print {
-    .copy {
-        color: black;
-        @at-root (without: media) {
-            width: 100%;
-        }
+  .copy {
+    color: black;
+    @at-root (without: media) {
+      width: 100%;
     }
+  }
 }
-
 
 $wrn: 20px;
 @warn "#{$wrn}";
@@ -959,3 +1130,60 @@ $test: 1px;
 @error "#{$test}";
 
 @debug 10px + 20px;
+
+@supports not ((text-align-last: justify) or (-moz-text-align-last: justify)) {
+  body {
+    text-align: justify;
+  }
+}
+
+/* at-rules */
+@-webkit-keyframes myanim {
+  from {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@media print {
+  body {
+    font-size: 10pt;
+  }
+}
+
+@media screen {
+  body {
+    font-size: 13px;
+  }
+}
+
+@media screen, print {
+  body {
+    line-height: 1.2;
+  }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 480px) and (resolution: 150dpi) {
+  body {
+    line-height: 1.4;
+  }
+}
+
+@media (height > 600px) {
+  body {
+    line-height: 1.4;
+  }
+}
+
+@media (400px <=width <=700px) {
+  body {
+    line-height: 1.4;
+  }
+}
