@@ -1,4 +1,3 @@
-
 <template>
   <header>
     <img
@@ -41,22 +40,22 @@
 
 
 			- var friends = 10
-					case friends
-						when 0
-							p you have no friends
-						when 1
-							p you have a friend
-						default
-							p you have #{friends} friends
+				case friends
+					when 0
+						p you have no friends
+					when 1
+						p you have a friend
+					default
+						p you have #{friends} friends
 
 			- for (var x = 0; x < 3; x++)
 				li item
-						
+
 
 
 			-
 				var list = ["Uno", "Dos", "Tres", "Cuatro", "Cinco", "Seis"]
-				
+
 				each item in list
 					li= item
 
@@ -79,7 +78,7 @@
 				else
 					h2.red Description
 					p.description User has no description
-					
+
 
 			//- index.pug
 			doctype html
@@ -120,42 +119,42 @@
 </template>
 
 <script>
-export default {	
+export default {
 	name: "vfamilynode",
-	props: ["datos","personas"],
+	props: ["datos", "personas"],
 	data() {
 		return {
 		};
 	},
 	watch: {},
 	methods: {
-		parentsFlag(couple){
+		parentsFlag(couple) {
 			let classNames = ""
-			if(couple.length > 1){
+			if (couple.length > 1) {
 				let cl1 = "a"
 				let cl2 = "a"
-				for (let i = 0; i < couple.length; i++){
+				for (let i = 0; i < couple.length; i++) {
 					cl1 = cl1 + couple[i]
 				}
-				for (let i = couple.length - 1; i >= 0; i--){
+				for (let i = couple.length - 1; i >= 0; i--) {
 					cl2 = cl2 + couple[i]
 				}
 				return classNames = cl1 + " " + cl2
-			}else{
+			} else {
 				return null
 			}
 		},
-		dateTransform(timestamp){
+		dateTransform(timestamp) {
 			var a = new Date(0);
 			a.setUTCSeconds(timestamp);
-			var months = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
+			var months = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
 			var year = a.getUTCFullYear();
 			var month = months[a.getUTCMonth()];
 			var date = a.getUTCDate();
-			var time = date + ' ' + month + ' ' + year ;
+			var time = date + ' ' + month + ' ' + year;
 			return time;
 		},
-		makeLines(){
+		makeLines() {
 			const app = this
 			const svg_id = 'linea-1'
 			// cual es el row <
@@ -166,13 +165,13 @@ export default {
 			let currentRow = app.personas[currentPerson].row
 			// console.log(currentRow)
 			// esto es porque el ultimo componente en terminar es el primero
-			if(currentRow == lowestRow){
+			if (currentRow == lowestRow) {
 				// SCROLLING LEFT START
 				const fmly_wrapper = document.querySelector("#app")
 				let fmly_wrapper_bcr = fmly_wrapper.getBoundingClientRect()
 				const $fmly_row = document.querySelector('.fmly-row')
 				let $family_row_bcr = $fmly_row.getBoundingClientRect()
-				
+
 				fmly_wrapper.scrollLeft += ($family_row_bcr.width / 2) - (fmly_wrapper_bcr.width / 2)
 				// SCROLLING LEFT END
 				// old line
@@ -184,18 +183,18 @@ export default {
 				// line object
 				const $line = document.getElementById('line')
 				// console.log($line)
-				let svg_width =	$line.offsetWidth
+				let svg_width = $line.offsetWidth
 				let svg_height = $line.offsetHeight
 				// console.log(svg_width + '-' + svg_height)
 				// creacion de svg
-				let $svg = fnCreateSvg($line,svg_id,svg_width,svg_height)
+				let $svg = fnCreateSvg($line, svg_id, svg_width, svg_height)
 				// loop in $store.lines
-				for (let key in app.lines){
-					
+				for (let key in app.lines) {
+
 					// if $store.lines[key] has data
-					if(app.lines[key]){
+					if (app.lines[key]) {
 						// console.log(app.personas[key].name)
-						
+
 						const $lineCords = $line.getBoundingClientRect()
 						// person object and cords
 						const $person = document.querySelector("." + 'a' + key)
@@ -206,54 +205,54 @@ export default {
 						const $parentCords = $parent.getBoundingClientRect()
 						// console.log($parentCords)
 						// create line between person and parent
-						createPolyLine($svg, $parentCords.x - $lineCords.x + ($parentCords.width /2), $parentCords.bottom - $lineCords.y - 10, $personCords.x - $lineCords.x + ($personCords.width /2), $personCords.y - $lineCords.y + 10)
+						createPolyLine($svg, $parentCords.x - $lineCords.x + ($parentCords.width / 2), $parentCords.bottom - $lineCords.y - 10, $personCords.x - $lineCords.x + ($personCords.width / 2), $personCords.y - $lineCords.y + 10)
 						// console.log("--------------------");
 					}
-					
+
 				}
-				
+
 			}
 			// CREAR SVG EN EL DOM
-			function fnCreateSvg(csctnr,csid,cswidth,csheight){
+			function fnCreateSvg(csctnr, csid, cswidth, csheight) {
 				var NS = "http://www.w3.org/2000/svg"
 				var svg = document.createElementNS(NS, "svg")
-				svg.setAttribute("id",csid)
-				svg.setAttribute("xmlns:xlink","http://www.w3.org/1999/xlink")
+				svg.setAttribute("id", csid)
+				svg.setAttribute("xmlns:xlink", "http://www.w3.org/1999/xlink")
 				svg.setAttribute("viewBox", "0 0 " + cswidth + " " + csheight)
-				
+
 				csctnr.appendChild(svg)
 				return svg
 			}
 			// CREAR LINEA DENTRO DEL SVG
-			function createLine(clctnr,clx1,cly1,clx2,cly2){
+			function createLine(clctnr, clx1, cly1, clx2, cly2) {
 				var NS = "http://www.w3.org/2000/svg"
 				var line = document.createElementNS(NS, "line")
-				line.setAttribute("x1",clx1)
-				line.setAttribute("y1",cly1)
-				line.setAttribute("x2",clx2)
-				line.setAttribute("y2",cly2)
-				
+				line.setAttribute("x1", clx1)
+				line.setAttribute("y1", cly1)
+				line.setAttribute("x2", clx2)
+				line.setAttribute("y2", cly2)
+
 				clctnr.appendChild(line)
 			}
 			// CREAR POLYLINEA DENTRO DEL SVG
-			function createPolyLine(clctnr,clx1,cly1,clx2,cly2){
+			function createPolyLine(clctnr, clx1, cly1, clx2, cly2) {
 				var NS = "http://www.w3.org/2000/svg"
 				var line = document.createElementNS(NS, "polyline")
-				var hWay =	cly2 - 35 
+				var hWay = cly2 - 35
 				var cords = clx1 + "," + cly1 + " " + clx1 + "," + hWay + " " + clx2 + "," + hWay + " " + clx2 + "," + cly2
-				line.setAttribute("points",cords)
-				
+				line.setAttribute("points", cords)
+
 				clctnr.appendChild(line)
 			}
 			// console.log("triguer________")
 		}
 	},
-	computed:{
-		lines(){
+	computed: {
+		lines() {
 			return this.$store.state.lines
 		}
 	},
-	created() {},
+	created() { },
 	mounted() {
 		this.$nextTick(function () {
 			this.makeLines()
