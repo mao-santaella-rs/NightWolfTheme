@@ -1,309 +1,509 @@
-<script setup lang="ts">
-import WelcomeItem from './WelcomeItem.vue'
-import DocumentationIcon from './icons/IconDocumentation.vue'
-import ToolingIcon from './icons/IconTooling.vue'
-import EcosystemIcon from './icons/IconEcosystem.vue'
-import CommunityIcon from './icons/IconCommunity.vue'
-import SupportIcon from './icons/IconSupport.vue'
-</script>
-
 <template>
-  <WelcomeItem>
-    <template #icon>
-      <DocumentationIcon />
+  <div class="comprehensive-example" :id="componentId">
+    <h1>{{ reactiveState.title }} - {{ simpleRef }}</h1>
+    <p>Static text alongside {{ dynamicText }}.</p>
+
+    <img
+      :src="imageUrl"
+      :alt="altText"
+      :class="{ active: isActive, 'text-danger': hasError }"
+      :style="styleObject"
+    />
+    <button :disabled="isDisabled">Dynamic Disable</button>
+    <a :href="url">Link</a>
+    <input type="checkbox" :checked="isChecked" />
+
+    <button v-on:click="handleSimpleClick">Click Me (Longhand)</button>
+    <button @click="counter++">Increment Counter</button>
+    <button @mouseover="handleMouseOver">Hover Me</button>
+    <form @submit.prevent="handleSubmit">
+      <input @keyup.enter="submitForm" @keydown.esc.stop="cancelAction" />
+      <button type="submit">Submit (Prevent Default)</button>
+    </form>
+
+    <input type="text" v-model="inputText" placeholder="Text Input" />
+    <input type="checkbox" v-model="isChecked" id="checkbox1" />
+    <label for="checkbox1">Is Checked: {{ isChecked }}</label>
+    <input type="radio" v-model="radioValue" value="one" id="radio1" />
+    <label for="radio1">One</label>
+    <input type="radio" v-model="radioValue" value="two" id="radio2" />
+    <label for="radio2">Two</label>
+    <select v-model="selectedValue">
+      <option disabled value="">Please select one</option>
+      <option>A</option>
+      <option>B</option>
+      <option>C</option>
+    </select>
+    <textarea v-model="textAreaContent" placeholder="Text Area"></textarea>
+    <input type="text" v-model.lazy="lazyInput" placeholder="Lazy Input" />
+    <input type="text" v-model.number="numericInput" placeholder="Numeric Input" />
+    <input type="text" v-model.trim="trimmedInput" placeholder="Trimmed Input" />
+
+    <div v-if="type === 'A'">Type A Content</div>
+    <div v-else-if="type === 'B'">Type B Content</div>
+    <div v-else>Fallback Content</div>
+    <template v-if="showGroup">
+      <p>Group Paragraph 1</p>
+      <p>Group Paragraph 2</p>
     </template>
-    <template #heading>Documentation</template>
 
-    Vue’s
-    <a target="_blank" href="https://vuejs.org/">official documentation</a>
-    provides you with all information you need to get started.
-  </WelcomeItem>
-
-  <WelcomeItem>
-    <template #icon>
-      <ToolingIcon />
+    <ul>
+      <li v-for="item in listItems" :key="item.id">
+        {{ item.text }}
+      </li>
+    </ul>
+    <ul>
+      <li v-for="(value, key, index) in objectItems" :key="key">
+        {{ index }}. {{ key }}: {{ value }}
+      </li>
+    </ul>
+    <span v-for="n in 5" :key="n">{{ n }} </span>
+    <template v-for="item in listItems" :key="'tpl-' + item.id">
+      <div>{{ item.text }}</div>
+      <hr />
     </template>
-    <template #heading>Tooling</template>
+    <div v-for="item in listItems" :key="'cond-' + item.id">
+      <span v-if="item.id % 2 === 0">{{ item.text }} (Even ID)</span>
+    </div>
 
-    This project is served and bundled with
-    <a href="https://vitejs.dev/guide/features.html" target="_blank">Vite</a>. The
-    recommended IDE setup is
-    <a href="https://code.visualstudio.com/" target="_blank">VSCode</a> +
-    <a href="https://github.com/johnsoncodehk/volar" target="_blank">Volar</a>. If you
-    need to test your components and web pages, check out
-    <a href="https://www.cypress.io/" target="_blank">Cypress</a> and
-    <a
-      href="https://docs.cypress.io/guides/component-testing/introduction"
-      target="_blank"
-      >Cypress Component Testing</a
-    >.
+    <p v-show="isVisible">This paragraph is controlled by v-show.</p>
 
-    <br />
+    <div v-html="rawHtmlContent"></div>
 
-    More instructions are available in <code>README.md</code>.
-  </WelcomeItem>
+    <div v-pre>{{ This will not be compiled }}</div>
 
-  <WelcomeItem>
-    <template #icon>
-      <EcosystemIcon />
-    </template>
-    <template #heading>Ecosystem</template>
+    <div v-once>This content will only render once: {{ initialValue }}</div>
 
-    Get official tools and libraries for your project:
-    <a target="_blank" href="https://pinia.vuejs.org/">Pinia</a>,
-    <a target="_blank" href="https://router.vuejs.org/">Vue Router</a>,
-    <a target="_blank" href="https://test-utils.vuejs.org/">Vue Test Utils</a>, and
-    <a target="_blank" href="https://github.com/vuejs/devtools">Vue Dev Tools</a>. If you
-    need more resources, we suggest paying
-    <a target="_blank" href="https://github.com/vuejs/awesome-vue">Awesome Vue</a>
-    a visit.
-  </WelcomeItem>
+    <div v-cloak>This is hidden until Vue is ready.</div>
 
-  <WelcomeItem>
-    <template #icon>
-      <CommunityIcon />
-    </template>
-    <template #heading>Community</template>
+    <input type="text" ref="inputRef" placeholder="Template Ref Input" />
+    <button @click="focusInput">Focus Input Ref</button>
 
-    Got stuck? Ask your question on
-    <a target="_blank" href="https://chat.vuejs.org">Vue Land</a>, our official Discord
-    server, or
-    <a target="_blank" href="https://stackoverflow.com/questions/tagged/vue.js"
-      >StackOverflow</a
-    >. You should also subscribe to
-    <a target="_blank" href="https://news.vuejs.org">our mailing list</a> and follow the
-    official
-    <a target="_blank" href="https://twitter.com/vuejs">@vuejs</a>
-    twitter account for latest news in the Vue world.
-  </WelcomeItem>
+    <MyChildComponent
+      :prop-a="someData"
+      :prop-b="123"
+      boolean-prop
+      @custom-event="handleCustomEvent"
+    />
+    <my-child-component />
+    <MyChildComponent />
 
-  <WelcomeItem>
-    <template #icon>
-      <SupportIcon />
-    </template>
-    <template #heading>Support Vue</template>
+    <MyLayoutComponent>
+      <p>This goes into the default slot.</p>
 
-    As an independent project, Vue relies on community backing for its sustainability. You
-    can help us by
-    <a target="_blank" href="https://vuejs.org/sponsor/">becoming a sponsor</a>.
-  </WelcomeItem>
+      <template v-slot:header>
+        <h2>Layout Header</h2>
+      </template>
+
+      <template #footer>
+        <p>Layout Footer - Year {{ currentYear }}</p>
+      </template>
+
+      <template #item="{ itemData, itemIndex }">
+        <li>Item {{ itemIndex }}: {{ itemData.name }}</li>
+      </template>
+    </MyLayoutComponent>
+
+    <keep-alive>
+      <component :is="currentComponent" :some-prop="dynamicProp"></component>
+    </keep-alive>
+    <button @click="switchComponent">Switch Component</button>
+
+    <Transition name="fade">
+      <p v-if="showTransition">Fading paragraph</p>
+    </Transition>
+    <button @click="showTransition = !showTransition">Toggle Transition</button>
+
+    <Teleport to="body">
+      <div class="modal" v-if="showModal">Modal Content Teleported to Body</div>
+    </Teleport>
+    <button @click="showModal = !showModal">Toggle Modal</button>
+
+    <Suspense>
+      <template #default>
+        <AsyncComponent />
+      </template>
+      <template #fallback>
+        <div>Loading asynchronous component...</div>
+      </template>
+    </Suspense>
+  </div>
 </template>
 
-<script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+<script setup lang="ts">
+// 1. Imports
+import {
+  ref,
+  reactive,
+  computed,
+  watch,
+  watchEffect,
+  onMounted,
+  onUnmounted,
+  provide,
+  inject,
+  nextTick,
+  defineAsyncComponent,
+  type Ref,
+} from 'vue'
+import MyChildComponent from './MyChildComponent.vue' // Assuming a child component exists
+import MyLayoutComponent from './MyLayoutComponent.vue' // Assuming a layout component exists
+import type { PropType } from 'vue' // Type import
 
-@Component
-export default class HelloWorld extends Vue {
-  @Prop() private msg!: string
+// 2. Async Component Definition
+const AsyncComponent = defineAsyncComponent(
+  () => import('./MyAsyncComponent.vue'), // Assuming an async component
+)
+
+// 3. Props Definition (Example - this component doesn't actually receive props here)
+interface ComplexProp {
+  id: number
+  label?: string
+  tags: string[]
 }
-let y = { name: 'test', maoma: 321 } // y is of type Entity
-const anchor = document.querySelector('a')!
-if (anchor) {
-  console.log(anchor.href)
-}
-console.log(anchor.href)
-
-//const form = document.querySelector('form')!;
-const form = document.querySelector('.new-item-form') as HTMLFormElement
-console.log(form.children)
-
-// inputs
-const type = document.querySelector('#type') as HTMLInputElement
-const tofrom = document.querySelector('#tofrom') as HTMLInputElement
-const details = document.querySelector('#details') as HTMLInputElement
-const amount = document.querySelector('#amount') as HTMLInputElement
-
-form.addEventListener('submit', (e: Event) => {
-  e.preventDefault()
-
-  console.log(type.value, tofrom.value, details.value, amount.valueAsNumber)
+const props = defineProps({
+  initialCounter: {
+    type: Number,
+    required: false,
+    default: 0,
+  },
+  message: String, // Simple type
+  complexProp: Object as PropType<ComplexProp>,
+  validatorProp: {
+    validator: (value: unknown) =>
+      typeof value === 'string' &&
+      ['success', 'warning', 'error'].includes(value as string),
+  },
 })
 
-import { BlankNode } from '../Nodes/BlankNode'
-import { CommandNode } from '../Nodes/CommandNode'
-import { IGlsNode } from '../Nodes/IGlsNode'
-import { TextNode } from '../Nodes/TextNode'
-import { TextParsing } from './TextParsing'
+// 4. Emits Definition
+const emit = defineEmits<{
+  (e: 'customEvent', payload: { data: string; timestamp: number }): void
+  (e: 'update:modelValue', value: string): void // For v-model usage on the component itself
+}>()
 
-/**
- * Parses individual lines of raw syntax into GLS nodes.
- */
-export class SourceLineParser {
-  /**
-   * Parses a line of raw source syntax into a GLS nodes.
-   *
-   * @param rawLine   Raw line of source syntax.
-   */
-  public parseLine(rawLine: string): IGlsNode {
-    rawLine = rawLine.trim()
-    if (rawLine === '') {
-      return new BlankNode()
-    }
-
-    const colonIndex: number = rawLine.indexOf(':')
-    if (colonIndex === -1) {
-      return new CommandNode(rawLine.trim(), [])
-    }
-
-    const command: string = rawLine.substring(0, colonIndex).trim()
-    const args: IGlsNode[] = []
-
-    this.parseCommandArgs(rawLine, colonIndex + 1, args)
-
-    return new CommandNode(command, args)
-  }
-
-  /**
-   * Parses the args for a command.
-   *
-   * @param rawLine   Raw line containing the command.
-   * @param start   Starting index of the args within the line.
-   * @param nodes   Collection of nodes to add the command to.
-   * @param withinParenthesis   Whether this is within a ( parenthesis ) section
-   * @returns Next starting index after the last added node.
-   */
-  private parseCommandArgs(rawLine: string, start: number, nodes: IGlsNode[]): number {
-    for (let i = start; i < rawLine.length; i += 1) {
-      // Sub-command start
-      if (rawLine[i] === '{') {
-        i = this.parseSubCommand(rawLine, i, nodes)
-        continue
-      }
-
-      // Sub-command end
-      if (rawLine[i] === '}') {
-        return i + 1
-      }
-
-      // Parenthesis start
-      if (rawLine[i] === '(') {
-        i = this.parseParenthesis(rawLine, i + 1, nodes)
-        continue
-      }
-
-      // Space (do nothing)
-      if (rawLine[i] === ' ') {
-        continue
-      }
-
-      // Regular text start
-      i = this.parseTextCommand(rawLine, i, nodes)
-    }
-
-    return rawLine.length
-  }
-
-  /**
-   * Recurses into a command-within-a-command.
-   *
-   * @param rawLine   Raw line containing the command.
-   * @param start   Starting index of the args within the line.
-   * @param nodes   Collection of nodes to add the command to.
-   * @returns Next starting index after the last added node.
-   */
-  private parseSubCommand(rawLine: string, i: number, nodes: IGlsNode[]): number {
-    // Move past the starting "{" or "{ "
-    i = TextParsing.getNextStartOfWordIndex(rawLine, i + 1)
-
-    // Command name
-    const commandNameEnd: number = TextParsing.getNextEndOfCommandNameIndex(rawLine, i)
-    const commandNameRaw: string = rawLine.substring(i, commandNameEnd)
-    const commandName: string = commandNameRaw.trim()
-
-    // Either "}" (command end) or ":" (command args start)
-    i = TextParsing.getNextNonSpaceIndex(rawLine, commandNameEnd)
-
-    // "}" (command end)
-    if (rawLine[i] === '}') {
-      nodes.push(new CommandNode(commandName, []))
-      return i + 1
-    }
-
-    // ":" (command args start)
-    const commandArgs: IGlsNode[] = []
-    i = this.parseCommandArgs(rawLine, i + 1, commandArgs)
-
-    nodes.push(new CommandNode(commandName, commandArgs))
-
-    return i
-  }
-
-  /**
-   * Collects the text contents between parenthesis.
-   *
-   * @param rawLine   Raw line containing the command.
-   * @param start   Starting index of the args within the line.
-   * @param nodes   Collection of nodes to add the command to.
-   * @returns Next starting index after the last added node.
-   */
-  private parseParenthesis(rawLine: string, i: number, nodes: IGlsNode[]): number {
-    const nextEndOfWordIndex = TextParsing.getNextEndOfParenthesisWordIndex(rawLine, i)
-    const textRaw = rawLine.substring(i, nextEndOfWordIndex)
-    const text = TextParsing.removeBackslashesFromWord(textRaw)
-
-    nodes.push(new TextNode(text))
-
-    return nextEndOfWordIndex
-  }
-
-  /**
-   * Parses raw text.
-   *
-   * @param rawLine   Raw line containing the command.
-   * @param start   Starting index of the args within the line.
-   * @param nodes   Collection of nodes to add the command to.
-   * @returns Next starting index after the last added node.
-   */
-  private parseTextCommand(rawArgs: string, i: number, nodes: IGlsNode[]): number {
-    const nextEndOfWordIndex = TextParsing.getNextEndOfWordIndex(rawArgs, i)
-    const text = rawArgs.substring(i, nextEndOfWordIndex)
-
-    nodes.push(new TextNode(text))
-
-    return nextEndOfWordIndex
-  }
-}
-
-@decorator()
-class NameClass {}
-declare module name {}
-
-interface MyInterface {}
-type FooBarAlias = string
-var x: MyInterface, y: string, z: FooBarAlias
-
-for (let index = 0; index < array.length; index++) {
-  const element = array[index]
-}
-
-if (constant.parameterA[0] === 3 && variable <= 550) {
-} else {
-}
-
-interface Entity {
-  name: string
-}
-const constant = {
-  propertyA: [2, 'variable'],
-  propertyB: 'some string',
-  propertyC: 2019,
-  propertyD: {
-    subPropertyA: true,
-    subPropertyB: false,
-    subPropertyC: null,
-    subPropertyD: undefined,
-    subPropertyE: {
-      subSubPropertyA: 'string',
-    },
+// 5. Reactive State
+const simpleRef = ref<string>('Simple Ref Text') // Ref with type argument
+const counter = ref(props.initialCounter)
+const isChecked = ref(true)
+const inputText = ref('')
+const lazyInput = ref('')
+const numericInput = ref<number | null>(null) // Allow null for empty input
+const trimmedInput = ref('')
+const radioValue = ref('one')
+const selectedValue = ref('')
+const textAreaContent = ref(`Multiline content here.`)
+const isVisible = ref(true)
+const showGroup = ref(false)
+const showTransition = ref(false)
+const showModal = ref(false)
+const currentComponent = ref('MyChildComponent') // For dynamic component
+const dynamicProp = ref('hello')
+const reactiveState = reactive({
+  title: 'Vue 3 Syntax Showcase',
+  nested: {
+    count: 0,
+    flag: true,
   },
-  methodA: (parameterA, parameterB) => {
-    console.log(parameterA, parameterB)
-  },
-}
-let x: Entity | null
-let s = x && x.name // s is of type string | null
+  list: ['apple', 'banana', 'cherry'],
+})
 
-function validateEntity(e?: Entity) {
-  // Throw exception if e is null or invalid entity
+// 6. Constants and Static Data
+const componentId = 'main-component'
+const imageUrl = '/path/to/image.jpg' // Example path
+const altText = 'Descriptive alt text'
+const url = 'https://vuejs.org'
+const rawHtmlContent = '<span style="color: red;">This is raw HTML</span>' // Caution!
+const initialValue = Date.now()
+const listItems = ref([
+  { id: 1, text: 'Learn Vue' },
+  { id: 2, text: 'Build Something' },
+  { id: 3, text: 'Test Theme' },
+])
+const objectItems = reactive({
+  propA: 'Value A',
+  propB: 100,
+  propC: false,
+})
+const someData = 'Data for child'
+const currentYear = new Date().getFullYear()
+
+// 7. Computed Properties
+const dynamicText = computed(() => `Counter is ${counter.value}`)
+const styleObject = computed(() => ({
+  color: hasError.value ? 'red' : 'blue',
+  fontSize: `${12 + counter.value}px`,
+}))
+const isActive = computed(() => counter.value > 5)
+const hasError = computed(() => counter.value < 0)
+const isDisabled = computed(() => !inputText.value)
+const type = computed(() => {
+  if (counter.value < 3) return 'A'
+  if (counter.value < 7) return 'B'
+  return 'C'
+})
+
+// 8. Methods / Functions
+const handleSimpleClick = () => {
+  console.log('Button clicked!')
+  alert('Simple Click Handler Triggered!')
 }
+
+function handleMouseOver(event: MouseEvent): void {
+  console.log('Mouse over event:', event.target)
+}
+
+const handleSubmit = async () => {
+  console.log('Form submitted (default prevented)')
+  // Example async operation
+  try {
+    await new Promise((resolve) => setTimeout(resolve, 500))
+    console.log('Fake async operation complete')
+  } catch (error) {
+    console.error('Error during submit:', error)
+  } finally {
+    console.log('Submit handler finished.')
+  }
+}
+
+const submitForm = () => {
+  console.log('Submitting via Enter key')
+  emit('customEvent', { data: inputText.value, timestamp: Date.now() })
+}
+
+const cancelAction = () => {
+  console.log('Action cancelled via Escape key')
+}
+
+const handleCustomEvent = (payload: { data: string; timestamp: number }) => {
+  console.log('Received custom event from child:', payload)
+  alert(`Child event received: ${payload.data}`)
+}
+
+const switchComponent = () => {
+  currentComponent.value =
+    currentComponent.value === 'MyChildComponent'
+      ? 'MyOtherComponent'
+      : 'MyChildComponent'
+  dynamicProp.value = currentComponent.value === 'MyChildComponent' ? 'hello' : 'world'
+  // Assume MyOtherComponent is globally registered or imported if used
+}
+
+// 9. Template Refs Access
+const inputRef: Ref<HTMLInputElement | null> = ref(null) // Typed template ref
+
+const focusInput = () => {
+  inputRef.value?.focus() // Optional chaining
+}
+
+// 10. Watchers
+watch(counter, (newValue, oldValue) => {
+  console.log(`Counter changed from ${oldValue} to ${newValue}`)
+})
+
+watch(
+  () => reactiveState.nested.count,
+  (newCount) => {
+    console.log(`Nested count changed: ${newCount}`)
+  },
+)
+
+// Watch multiple sources
+watch(
+  [inputText, isChecked],
+  ([newText, newChecked], [oldText, oldChecked]) => {
+    console.log(
+      `Input text or checkbox changed. Text: ${newText}, Checked: ${newChecked}`,
+    )
+  },
+  { deep: false },
+) // `deep` option example
+
+watchEffect(() => {
+  // Runs immediately and tracks dependencies automatically
+  console.log(
+    `WatchEffect: Current counter is ${counter.value} and input is ${inputText.value}`,
+  )
+})
+
+// 11. Lifecycle Hooks
+onMounted(() => {
+  console.log('Component has been mounted.')
+  focusInput() // Example: focus input on mount
+  // Accessing DOM element directly (use template refs preferably)
+  const rootEl = document.getElementById(componentId)
+  console.log('Root Element:', rootEl)
+  nextTick(() => {
+    console.log('DOM updated after mount (using nextTick)')
+  })
+})
+
+onUnmounted(() => {
+  console.log('Component is about to be unmounted.')
+  // Cleanup logic here (e.g., remove event listeners)
+})
+
+// onErrorCaptured((err, instance, info) => { ... }); // Example error capture
+
+// 12. Provide / Inject (Example)
+provide('theme', {
+  color: 'dark',
+  fontSize: ref(14), // Provided ref
+})
+// In a child component, you would use: const theme = inject('theme');
+
+// 13. TypeScript Specific Syntax
+enum Status {
+  Pending = 'PENDING',
+  Success = 'SUCCESS',
+  Failed = 'FAILED',
+}
+let currentStatus: Status = Status.Pending
+
+type UserID = string | number
+let userId: UserID = 'user-123'
+userId = 456
+
+// Optional Chaining and Nullish Coalescing
+const potentialNull = ref<{ detail?: { value: number } } | null>(null)
+const detailValue = computed(() => potentialNull.value?.detail?.value ?? 'Not Available')
+
+// Regular Expression
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+const isValidEmail = computed(() => emailRegex.test(inputText.value))
+
+// Template Literal Type (less common in components, more in lib definitions)
+type Position = `${'top' | 'bottom'}-${'left' | 'right'}`
+let menuPosition: Position = 'top-left'
+
+// 14. Expose (Optional - if this component needed to expose methods/props to parent via template ref)
+// defineExpose({
+//   focusInput,
+//   counterValue: counter
+// });
+
+// Final setup log
+console.log('Script setup executed.')
 </script>
+
+<style lang="scss">
+/* Global styles (not scoped) */
+body {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+}
+
+/* v-cloak directive styling */
+[v-cloak] {
+  display: none;
+}
+</style>
+
+<style lang="scss" scoped>
+/* Scoped styles specific to this component */
+$primary-color: #42b983; // SCSS variable
+$danger-color: #dc3545;
+$font-stack: Helvetica, sans-serif;
+
+.comprehensive-example {
+  padding: 20px;
+  border: 1px solid #ccc;
+  max-width: 800px;
+  margin: 20px auto;
+  font-family: $font-stack; // Use SCSS variable
+
+  h1 {
+    color: $primary-color; // Use SCSS variable
+    text-align: center;
+  }
+
+  button {
+    margin: 5px;
+    padding: 8px 15px;
+    cursor: pointer;
+    border: 1px solid $primary-color;
+    background-color: white;
+    color: $primary-color;
+    transition: all 0.3s ease; // SCSS nesting & transitions
+
+    &:hover {
+      background-color: $primary-color;
+      color: white;
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      background-color: #eee;
+      border-color: #ccc;
+      color: #999;
+    }
+  }
+
+  input[type='text'],
+  input[type='checkbox'],
+  input[type='radio'],
+  select,
+  textarea {
+    margin: 5px;
+    padding: 8px;
+    border: 1px solid #ccc;
+  }
+
+  .text-danger {
+    color: $danger-color; // Use SCSS variable
+  }
+
+  ul {
+    list-style: square; // Different list style
+    padding-left: 30px;
+  }
+
+  /* Deep selector for child components */
+  :deep(.child-component-class) {
+    border: 1px dashed blue;
+  }
+
+  /* Slotted content selector */
+  :slotted(h2) {
+    color: purple;
+  }
+
+  /* Global selector within scoped style */
+  :global(.modal) {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background: lightyellow;
+    padding: 10px;
+    border: 1px solid gold;
+    z-index: 9999;
+  }
+
+  /* Transitions */
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: opacity 0.5s ease;
+  }
+
+  .fade-enter-from,
+  .fade-leave-to {
+    opacity: 0;
+  }
+
+  /* v-bind in CSS */
+  .dynamic-style-via-v-bind {
+    // Note: v-bind() is experimental and syntax might evolve slightly
+    // color: v-bind(dynamicColor); // Requires dynamicColor ref/prop in <script>
+    font-size: v-bind('styleObject.fontSize'); // Accessing nested reactive property
+  }
+}
+</style>
+
+<style module>
+/* CSS Modules example */
+.moduleClass {
+  background-color: lightblue;
+  padding: 5px;
+  border: 1px solid blue;
+}
+</style>

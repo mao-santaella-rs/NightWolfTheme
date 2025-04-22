@@ -1,6 +1,6 @@
-const chroma = require("chroma-js")
+import chroma from 'chroma-js'
 
-let colors = {}
+const colors = {}
 
 //basic colors
 colors.white = chroma(255, 255, 255)
@@ -55,4 +55,4 @@ colors.bluePastel = chroma(182,147,223)         // rgb(182 147 223)
 colors.greenPastel = chroma(243,251,151)        // rgb(243 251 151)
 colors.purplePastel = chroma(4,250,210)         // rgb(4 250 210)
 
-module.exports = colors
+export default colors

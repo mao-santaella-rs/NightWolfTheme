@@ -1,69 +1,92 @@
-const fs = require('fs')
+import fs from 'fs'
 
 const sourcePath = './source'
-const paths = fs.readdirSync(sourcePath)
-let compileJsFiles = []
-let watchJsFiles = []
-let folders = [sourcePath]
-
-// gather the folders paths
-for (let path of paths) {
-  if (!path.endsWith('.js')) {
-    folders.push(sourcePath + '/' + path)
-  }
-}
-// gather the .js files
-for (let folder of folders) {
-  let subContent = fs.readdirSync(folder)
-  let subJsFiles = subContent.filter(path => path.endsWith('.js'))
-  for (let file of subJsFiles) {
-    if (folder === sourcePath) compileJsFiles.push(folder + '/' + file)
-    watchJsFiles.push(folder + '/' + file)
-  }
-}
+const { files, folders } = getFilesAndFoldersFromPath(sourcePath)
 
 if (process.argv[2] === 'dev') {
-  console.info('Watching files:')
-  for (let file of watchJsFiles) {
-    fs.watchFile(file, compile)
-    console.info(file)
+  for (let folder of [sourcePath, ...folders]) {
+    fs.watch(folder, async () => {
+      try {
+        await compile()
+      } catch (e) {
+        console.error(e)
+      }
+    })
   }
+  await compile()
 } else if (process.argv[2] === 'prod') {
-  compile()
+  await compile()
   process.exit()
 }
 
-function compile() {
-  // delete cache
-  for (let path in require.cache) {
-    if (path.endsWith('.js')) delete require.cache[path]
-  }
+async function compile() {
+  // Filter the array directly using the constant prefix
+  const themeVersions = files.filter(
+    (path) => path.replace(sourcePath + '/', '').indexOf('/') === -1,
+  )
 
-  // loop in every theme file
-  for (let compFile of compileJsFiles) {
-    const source = require(compFile)
-    let dictstring = JSON.stringify(source)
-
-    let dictstringNi = dictstring.replace(
-      /"fontStyle":"italic"/g,
-      '"fontStyle":"normal"',
-    )
-
-    // create json file name
-    let jsonName = compFile.replace('.js', '').split('/')
-    jsonName = jsonName[jsonName.length - 1]
-    let jsonNameNi = jsonName + '-noitalics'
-
-    // change name field inside the json
-    dictstring = dictstring.replace(/themename/g, jsonName)
-    dictstringNi = dictstringNi.replace(/themename/g, jsonNameNi)
-
+  for (let themeVersionPath of themeVersions) {
     try {
-      fs.writeFileSync(`./themes/${jsonName}.json`, dictstring)
-      fs.writeFileSync(`./themes/${jsonNameNi}.json`, dictstringNi)
+      const [versionName] = themeVersionPath.replace('.js', '').split('/').slice(-1)
+      const versionConstructor = await getImportDefault(themeVersionPath)
+
+      const colorsPath = files.find(
+        (path) => path.includes(versionName) && path.includes('/colors/'),
+      )
+      const colors = await getImportDefault(colorsPath)
+
+      const variantsPaths = files.filter(
+        (path) => path.includes(versionName) && path.includes('/variants/'),
+      )
+
+      for (let variantPath of variantsPaths) {
+        try {
+          const [variantName] = variantPath.replace('.js', '').split('/').slice(-1)
+          const variantFileName = `night-wolf-${variantName}`
+          const variantFileNameNi = `${variantFileName}-noitalics`
+          const variantModifier = await getImportDefault(variantPath)
+          const varianColors = variantModifier(colors)
+          const variant = versionConstructor(varianColors)
+          const variantStringified = JSON.stringify({ name: variantFileName, ...variant })
+          const variantStringifiedNi = JSON.stringify(
+            { name: variantFileNameNi, ...variant },
+            (key, value) =>
+              key === 'fontStyle' && value === 'italic' ? 'normal' : value,
+          )
+          fs.writeFileSync(`./themes/${variantFileName}.json`, variantStringified)
+          fs.writeFileSync(`./themes/${variantFileNameNi}.json`, variantStringifiedNi)
+          console.info(
+            `${variantFileName}.json and ${variantFileNameNi}.json files compiled!`,
+          )
+        } catch (e) {
+          console.error(e)
+        }
+      }
     } catch (e) {
-      console.error('error', e)
+      console.error(e)
     }
-    console.info(`${jsonName}.json and ${jsonNameNi}.json files compiled!`)
   }
+  console.info('----------------done----------------')
+  console.info('')
+}
+
+function getFilesAndFoldersFromPath(path) {
+  const result = { files: [], folders: [] }
+  const subPaths = fs.readdirSync(path)
+  subPaths.forEach((subPath) => {
+    const fullPath = `${path}/${subPath}`
+    if (fs.statSync(fullPath).isDirectory()) {
+      result.folders.push(fullPath)
+      const subResult = getFilesAndFoldersFromPath(fullPath)
+      result.files.push(...subResult.files)
+      result.folders.push(...subResult.folders)
+    } else {
+      result.files.push(fullPath)
+    }
+  })
+  return result
+}
+
+async function getImportDefault(path) {
+  return (await import(`${path}?t=${Date.now()}&r=${Math.random()}`)).default
 }

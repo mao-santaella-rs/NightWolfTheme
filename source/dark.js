@@ -1,4 +1,4 @@
-module.exports = function (colors) {
+export default function (colors) {
   const themeColors = {
     // Editor general
     'editor.background': colors.interBackground.hex(),
@@ -680,7 +680,7 @@ module.exports = function (colors) {
       scope: 'invalid',
       settings: {
         background: colors.danger.hex(),
-        foreground: colors.white.hex(),
+        foreground: colors.text.hex(),
       },
     },
   ]
@@ -893,8 +893,7 @@ module.exports = function (colors) {
       },
     },
     {
-      name:
-        'Support Constant, `new` keyword, Special Method Keyword, `debugger`, other keywords',
+      name: 'Support Constant, `new` keyword, Special Method Keyword, `debugger`, other keywords',
       scope: [
         'support.constant',
         'keyword.other.special-method',
@@ -1188,6 +1187,16 @@ module.exports = function (colors) {
         'meta.at-rule.keyframes.scss',
         'entity.name.function.namespace-prefix.css',
         'entity.name.namespace-prefix.scss',
+        'source.css.scss meta.at-rule',
+        'source.css.sass meta.at-rule',
+        'source.css.scss meta.at-rule support.type.property-name.css',
+        'source.css.sass meta.at-rule support.type.property-name.css',
+        'source.css.scss meta.at-rule meta.property-name.scss',
+        'source.css.sass meta.at-rule meta.property-name.sass',
+        'source.css.scss meta.property-list.scss meta.property-list.scss meta.at-rule.media.scss meta.property-list.media-query.scss meta.property-name.media-query.scss support.type.property-name.media.css',
+        'source.css.sass meta.property-list.sass meta.property-list.sass meta.at-rule.media.sass meta.property-list.media-query.sass meta.property-name.media-query.sass support.type.property-name.media.css',
+
+        'meta.property-name.media-query.scss',
       ],
       settings: {
         foreground: colors.variable.hex(),
@@ -1316,6 +1325,7 @@ module.exports = function (colors) {
         'support.constant.property-value.sass',
         'support.constant.property-value.less',
         'meta.property-value.css.sass',
+        'support.constant.color',
         // 'source.sass meta.property-list.css.sass.prop meta.property-value.css.sass support.constant.property-value.css.sass',
       ],
       settings: {
@@ -1333,7 +1343,6 @@ module.exports = function (colors) {
         'punctuation.definition.constant.css',
         'constant.numeric.css.sass',
         'meta.property-list.media-query.scss',
-        'meta.property-name.media-query.scss',
       ],
       settings: {
         foreground: colors.cssUnits.hex(),
