@@ -2006,6 +2006,20 @@ export default function (colors) {
         foreground: colors.functionName.hex(),
       },
     },
+    {
+      name: 'embedded sql',
+      scope: ['meta.embedded.sql'],
+      settings: {
+        foreground: colors.text.hex(),
+      },
+    },
+    {
+      name: 'Go types',
+      scope: ['entity.name.type.go'],
+      settings: {
+        foreground: colors.variable.hex(),
+      },
+    },
   ]
 
   const tcPython = [
@@ -2344,6 +2358,8 @@ export default function (colors) {
         'keyword.other.select.join.sql',
         'keyword.other.DML.sql',
         'keyword.other.alias.sql',
+        'keyword.other.sql',
+        'keyword.other.DDL.create.II.sql',
       ],
       settings: {
         foreground: colors.syntaxPurple.hex(),
@@ -2356,14 +2372,8 @@ export default function (colors) {
     parameter: colors.variable.hex(),
     type: colors.specialWordC.hex(),
     function: colors.functionName.hex(),
-    'function.declaration': {
-      fontStyle: 'bold',
-    },
     method: colors.functionName.hex(),
     class: colors.functionName.hex(),
-    'class.declaration': {
-      fontStyle: 'bold',
-    },
     'class.defaultLibrary': colors.specialWordB.hex(),
     property: colors.text.hex(),
     string: colors.string.hex(),

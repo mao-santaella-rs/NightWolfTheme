@@ -1,15 +1,619 @@
-"use strict"
+'use strict'
 
 import File from 'File'
 import { decorator } from 'decorator'
 import * as Vue from 'vue'
 
+// JavaScript Syntax Showcase
+// Purpose: Demonstrate various JS syntax elements for editor theme testing.
 
-var globalVar = 1;
-let variable = 324;
+;('use strict') // 1. Strict Mode Declaration
+
+// --- 2. Comments ---
+// This is a single-line comment.
+
+/*
+ * This is a multi-line comment block.
+ * It can span several lines.
+ */
+
+/**
+ * JSDoc style comment block.
+ * @param {string} param1 Description of parameter 1.
+ * @returns {number} Description of the return value.
+ */
+function jsdocExample(param1) {
+  return param1.length
+}
+
+// --- 3. Variable Declarations ---
+var legacyVar = "I'm using var (function-scoped or global)" // Avoid using var
+let blockScopedLet = 10 // Block-scoped, can be reassigned
+const constantVar = 'I cannot be reassigned' // Block-scoped, must be initialized, cannot be reassigned
+
+blockScopedLet = 20 // Reassignment is allowed for let
+// constantVar = "New value"; // TypeError: Assignment to constant variable.
+
+// --- 4. Data Types ---
+const stringType = 'Hello, world!'
+const stringTypeAlt = 'Double quotes work too.'
+const templateLiteral = `String with ${blockScopedLet} embedded.` // Template literal
+const numberType = 42
+const floatType = 3.14159
+const bigIntType = 9007199254740991n // BigInt literal
+const booleanTypeTrue = true
+const booleanTypeFalse = false
+const nullType = null // Represents the intentional absence of any object value
+let undefinedType // Variable declared but not assigned
+const symbolType = Symbol('uniqueDescription') // Unique and immutable primitive
+
+// Objects
+const objectLiteral = {
+  key1: 'value1',
+  'key-with-hyphen': 'value2', // Quoted key
+  numericKey: 123,
+  booleanKey: true,
+  nestedObject: {
+    innerKey: 'innerValue',
+  },
+  method() {
+    // Shorthand method definition
+    console.log('Method called inside objectLiteral')
+  },
+  [symbolType]: 'Value for symbol key', // Computed property name using Symbol
+}
+
+// Arrays
+const arrayLiteral = [1, 'two', true, null, { id: 3 }, [4, 5]]
+const emptyArray = []
+const multiLineArray = ['apple', 'banana', 'cherry']
+
+// --- 5. Operators ---
+
+// Arithmetic
+let sum = 5 + 3 // 8
+let difference = 10 - 4 // 6
+let product = 6 * 7 // 42
+let quotient = 20 / 5 // 4
+let remainder = 10 % 3 // 1
+let exponent = 2 ** 4 // 16
+let increment = 5
+increment++ // 6
+let decrement = 10
+decrement-- // 9
+
+// Assignment
+let x = 10
+x += 5 // x = x + 5 (15)
+x -= 3 // x = x - 3 (12)
+x *= 2 // x = x * 2 (24)
+x /= 4 // x = x / 4 (6)
+x %= 5 // x = x % 5 (1)
+x **= 3 // x = x ** 3 (1)
+
+// Comparison
+console.log(5 == '5') // true (loose equality, type coercion)
+console.log(5 === '5') // false (strict equality, no type coercion)
+console.log(5 != '5') // false
+console.log(5 !== '5') // true
+console.log(10 > 5) // true
+console.log(10 < 5) // false
+console.log(10 >= 10) // true
+console.log(5 <= 4) // false
+
+// Logical
+console.log(true && false) // false (AND)
+console.log(true || false) // true (OR)
+console.log(!true) // false (NOT)
+
+// Bitwise (less common in typical web dev)
+console.log(5 & 1) // 1 (0101 & 0001 = 0001)
+console.log(5 | 1) // 5 (0101 | 0001 = 0101)
+console.log(5 ^ 1) // 4 (0101 ^ 0001 = 0100)
+console.log(~5) // -6 (bitwise NOT)
+console.log(5 << 1) // 10 (left shift)
+console.log(5 >> 1) // 2 (sign-propagating right shift)
+console.log(5 >>> 1) // 2 (zero-fill right shift)
+
+// Ternary
+const age = 25
+const status = age >= 18 ? 'adult' : 'minor' // status = 'adult'
+
+// Typeof
+console.log(typeof 'hello') // "string"
+console.log(typeof 123) // "number"
+console.log(typeof true) // "boolean"
+console.log(typeof undefinedType) // "undefined"
+console.log(typeof nullType) // "object" (historical quirk)
+console.log(typeof symbolType) // "symbol"
+console.log(typeof bigIntType) // "bigint"
+console.log(typeof {}) // "object"
+console.log(typeof []) // "object" (arrays are objects)
+console.log(typeof function () {}) // "function"
+
+// Instanceof
+console.log(arrayLiteral instanceof Array) // true
+console.log(objectLiteral instanceof Object) // true
+console.log(new Date() instanceof Date) // true
+
+// Delete (usually for object properties)
+const tempObj = { prop: 1 }
+delete tempObj.prop
+console.log(tempObj.prop) // undefined
+
+// Spread and Rest
+const arr1 = [1, 2, 3]
+const arr2 = [4, 5, 6]
+const combinedArray = [...arr1, 0, ...arr2] // Spread syntax for arrays
+console.log(combinedArray) // [1, 2, 3, 0, 4, 5, 6]
+
+const obj1 = { a: 1, b: 2 }
+const obj2 = { c: 3, d: 4 }
+const combinedObject = { ...obj1, b: 99, ...obj2 } // Spread syntax for objects
+console.log(combinedObject) // { a: 1, b: 99, c: 3, d: 4 }
+
+function sumNumbers(...numbers) {
+  // Rest parameter
+  return numbers.reduce((acc, current) => acc + current, 0)
+}
+console.log(sumNumbers(1, 2, 3, 4)) // 10
+
+// Optional Chaining (?.) and Nullish Coalescing (??)
+const userProfile = {
+  id: 1,
+  details: {
+    name: 'Alice',
+    // address: { street: '123 Main St', city: 'Anytown' }
+  },
+}
+const street = userProfile.details?.address?.street // undefined (no error)
+console.log(street)
+const city = userProfile.details?.address?.city ?? 'City Not Provided' // 'City Not Provided'
+console.log(city)
+const defaultName = null ?? 'Default Name' // 'Default Name'
+console.log(defaultName)
+
+// --- 6. Control Flow ---
+
+// If / Else If / Else
+let score = 75
+if (score >= 90) {
+  console.log('Grade: A')
+} else if (score >= 80) {
+  console.log('Grade: B')
+} else if (score >= 70) {
+  console.log('Grade: C')
+} else {
+  console.log('Grade: D or F')
+}
+
+// Switch
+const day = new Date().getDay() // 0 = Sunday, 1 = Monday, ...
+switch (day) {
+  case 0:
+    console.log('Sunday')
+    break // Important!
+  case 6:
+    console.log('Saturday')
+    break
+  case 1:
+  case 2:
+  case 3:
+  case 4:
+  case 5:
+    console.log('Weekday')
+    break // break applies to the grouped cases
+  default:
+    console.log('Invalid day')
+  // no break needed for default if it's the last case
+}
+
+// For loop
+console.log('For loop:')
+for (let i = 0; i < 3; i++) {
+  console.log(`Iteration ${i}`)
+}
+
+// While loop
+console.log('While loop:')
+let countWhile = 0
+while (countWhile < 3) {
+  console.log(`Count is ${countWhile}`)
+  countWhile++
+}
+
+// Do...While loop (executes at least once)
+console.log('Do...While loop:')
+let countDo = 3
+do {
+  console.log(`Do count is ${countDo}`) // Will print "Do count is 3" once
+  countDo++
+} while (countDo < 3)
+
+// For...in loop (iterates over enumerable property names of an object)
+console.log('For...in loop:')
+const person = { name: 'Bob', age: 30, city: 'New York' }
+for (const key in person) {
+  // It's often good practice to check if the property is directly on the object
+  if (Object.hasOwnProperty.call(person, key)) {
+    console.log(`${key}: ${person[key]}`)
+  }
+}
+
+// For...of loop (iterates over iterable objects like Arrays, Strings, Maps, Sets)
+console.log('For...of loop (Array):')
+const colors = ['red', 'green', 'blue']
+for (const color of colors) {
+  console.log(color)
+}
+
+console.log('For...of loop (String):')
+const greeting = 'Hi!'
+for (const char of greeting) {
+  console.log(char)
+}
+
+// Break and Continue
+console.log('Break and Continue:')
+for (let j = 0; j < 10; j++) {
+  if (j === 3) {
+    continue // Skip iteration 3
+  }
+  if (j === 7) {
+    break // Exit loop when j is 7
+  }
+  console.log(`j = ${j}`)
+}
+
+// --- 7. Functions ---
+
+// Function Declaration (hoisted)
+function declaredFunction(param1, param2 = 'default') {
+  // Default parameter
+  console.log(`Declared function called with: ${param1}, ${param2}`)
+  return param1 + param2
+}
+declaredFunction('Arg1')
+
+// Function Expression (not hoisted)
+const functionExpression = function (name) {
+  console.log(`Function expression called for ${name}`)
+}
+functionExpression('Charlie')
+
+// Arrow Functions (lexical `this`)
+const arrowFunctionSimple = () => console.log('Simple arrow function')
+const arrowFunctionParams = (a, b) => {
+  const result = a + b
+  console.log(`Arrow function with params: ${a} + ${b} = ${result}`)
+  return result // Explicit return needed for block body
+}
+const arrowFunctionSingleParam = (message) =>
+  console.log(`Arrow with one param: ${message}`) // Parentheses optional for single param
+const arrowFunctionImplicitReturn = (x, y) => x * y // Implicit return for single expression
+
+arrowFunctionSimple()
+arrowFunctionParams(5, 10)
+arrowFunctionSingleParam('A message')
+console.log(`Implicit return result: ${arrowFunctionImplicitReturn(4, 5)}`)
+
+// Immediately Invoked Function Expression (IIFE)
+;(function () {
+  const iifeVar = 'This is private to the IIFE scope'
+  console.log('IIFE executed!', iifeVar)
+})()
+// console.log(iifeVar); // ReferenceError: iifeVar is not defined
+
+// Generator Function
+function* idGenerator() {
+  let id = 1
+  while (true) {
+    yield id++ // Pauses execution and yields a value
+  }
+}
+const gen = idGenerator()
+console.log('Generator:', gen.next().value) // 1
+console.log('Generator:', gen.next().value) // 2
+
+// Async/Await (for handling Promises)
+async function fetchDataAsync(url) {
+  console.log(`Fetching data from ${url}...`)
+  try {
+    // Simulate network request
+    const response = await new Promise((resolve, reject) => {
+      setTimeout(() => {
+        if (url.includes('example')) {
+          resolve({ status: 200, data: { message: 'Success!' } })
+        } else {
+          reject(new Error('Invalid URL for mock fetch'))
+        }
+      }, 1500)
+    })
+
+    if (response.status !== 200) {
+      throw new Error(`HTTP error! status: ${response.status}`)
+    }
+    const data = response.data // In real fetch: await response.json();
+    console.log('Async Data Received:', data)
+    return data
+  } catch (error) {
+    console.error('Error fetching data async:', error.message)
+    throw error // Re-throw or handle as needed
+  }
+}
+// Call the async function (it returns a Promise)
+fetchDataAsync('[https://api.example.com/users](https://api.example.com/users)')
+  .then((data) => console.log('Async function call successful.'))
+  .catch((error) => console.log('Async function call failed.'))
+
+// --- 8. Objects (Advanced) ---
+
+// Object Destructuring
+const {
+  key1,
+  nestedObject: { innerKey },
+  nonExistent = 'defaultVal',
+} = objectLiteral
+console.log(key1, innerKey, nonExistent) // value1 innerValue defaultVal
+
+// Renaming variables during destructuring
+const { key1: renamedKey } = objectLiteral
+console.log(renamedKey) // value1
+
+// Object Shorthand Properties
+const name = 'Alice'
+const userAge = 30
+const userObject = { name, userAge } // { name: 'Alice', userAge: 30 }
+console.log(userObject)
+
+// Getters and Setters
+const account = {
+  _balance: 1000, // Convention for "private" property
+  get balance() {
+    console.log('Getter called')
+    return this._balance
+  },
+  set balance(value) {
+    if (value < 0) {
+      console.error('Balance cannot be negative.')
+      return
+    }
+    console.log('Setter called')
+    this._balance = value
+  },
+}
+console.log(account.balance) // Access using getter
+account.balance = 1500 // Access using setter
+console.log(account.balance)
+account.balance = -50 // Setter validation
+
+// --- 9. Arrays (Advanced) ---
+
+// Array Destructuring
+const [first, second, , fourth] = arrayLiteral // Skip third element
+console.log(first, second, fourth) // 1 'two' null
+
+// Rest element in array destructuring
+const [head, ...tail] = colors
+console.log(head) // red
+console.log(tail) // ['green', 'blue']
+
+// Array Methods
+const numbers = [1, 2, 3, 4, 5]
+const doubled = numbers.map((n) => n * 2) // [2, 4, 6, 8, 10]
+const evens = numbers.filter((n) => n % 2 === 0) // [2, 4]
+const sumOfNumbers = numbers.reduce((accumulator, current) => accumulator + current, 0) // 15
+console.log('map:', doubled, 'filter:', evens, 'reduce:', sumOfNumbers)
+
+console.log('forEach:')
+numbers.forEach((n, index) => console.log(`Index ${index}: ${n}`))
+
+const hasEven = numbers.some((n) => n % 2 === 0) // true
+const allPositive = numbers.every((n) => n > 0) // true
+const found = numbers.find((n) => n > 3) // 4
+const foundIndex = numbers.findIndex((n) => n > 3) // 3
+
+console.log(
+  'some:',
+  hasEven,
+  'every:',
+  allPositive,
+  'find:',
+  found,
+  'findIndex:',
+  foundIndex,
+)
+
+numbers.push(6) // Add to end
+console.log('push:', numbers)
+const last = numbers.pop() // Remove from end
+console.log('pop:', last, numbers)
+numbers.unshift(0) // Add to beginning
+console.log('unshift:', numbers)
+const firstRemoved = numbers.shift() // Remove from beginning
+console.log('shift:', firstRemoved, numbers)
+
+// Slice (non-mutating) vs Splice (mutating)
+const sliced = numbers.slice(1, 3) // Elements at index 1 and 2
+console.log('slice:', sliced, numbers) // Original array unchanged
+const spliced = numbers.splice(1, 2, 98, 99) // Remove 2 elements starting at index 1, insert 98, 99
+console.log('splice removed:', spliced, 'array after splice:', numbers)
+
+// --- 10. Classes ---
+class Vehicle {
+  constructor(make, model) {
+    this.make = make
+    this.model = model
+    this._engineStarted = false // "Protected" convention
+  }
+
+  // Instance method
+  startEngine() {
+    if (this._engineStarted) {
+      console.log(`${this.make} ${this.model} engine already running.`)
+    } else {
+      this._engineStarted = true
+      console.log(`${this.make} ${this.model} engine started.`)
+    }
+  }
+
+  // Getter
+  get isEngineRunning() {
+    return this._engineStarted
+  }
+
+  // Static method (called on the class itself)
+  static getVehicleInfo() {
+    return 'This is a generic vehicle class.'
+  }
+}
+
+// Inheritance
+class Car extends Vehicle {
+  constructor(make, model, numDoors) {
+    super(make, model) // Call parent constructor
+    this.numDoors = numDoors
+  }
+
+  // Override parent method
+  startEngine() {
+    super.startEngine() // Call parent method if needed
+    console.log(`Car specific start sequence for ${this.make} ${this.model}.`)
+  }
+
+  // Car specific method
+  honk() {
+    console.log(`${this.make} ${this.model} says: Beep beep!`)
+  }
+}
+
+const myCar = new Car('Toyota', 'Camry', 4)
+myCar.startEngine()
+myCar.honk()
+console.log(`Is ${myCar.make} engine running?`, myCar.isEngineRunning)
+console.log(Car.getVehicleInfo()) // Call static method
+
+// --- 11. Modules (ES Modules Syntax - typically used across multiple files) ---
+/*
+// --- file: utils.js ---
+export const PI = 3.14159;
+export function double(n) {
+  return n * 2;
+}
+export default class Logger { // Default export
+  log(message) { console.log(message); }
+}
+
+// --- file: main.js ---
+import Logger, { PI, double as multiplyByTwo } from './utils.js'; // Import default and named exports (renaming)
+import * as utils from './utils.js'; // Import all named exports as an object
+
+console.log(PI);
+console.log(multiplyByTwo(5)); // Use renamed import
+const logger = new Logger();
+logger.log('Module system example');
+console.log(utils.PI); // Access via namespace import
+*/
+
+// --- 12. Regular Expressions ---
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+const testEmail1 = 'test@example.com'
+const testEmail2 = 'invalid-email'
+console.log(`Email "${testEmail1}" valid?`, emailRegex.test(testEmail1)) // true
+console.log(`Email "${testEmail2}" valid?`, emailRegex.test(testEmail2)) // false
+
+const text = 'The quick brown fox jumps over the lazy dog.'
+const foxMatch = text.match(/brown (fox)/i) // Case-insensitive match, capture group
+if (foxMatch) {
+  console.log('Regex match found:', foxMatch[0]) // Full match: "brown fox"
+  console.log('Captured group:', foxMatch[1]) // Captured group: "fox"
+}
+const replacedText = text.replace(/lazy/g, 'energetic') // Global replace
+console.log('Replaced text:', replacedText)
+
+// --- 13. Promises ---
+const myPromise = new Promise((resolve, reject) => {
+  console.log('Promise executor running...')
+  const success = Math.random() > 0.3 // Simulate success/failure
+  setTimeout(() => {
+    if (success) {
+      resolve({ data: 'Promise resolved successfully!' })
+    } else {
+      reject(new Error('Promise rejected!'))
+    }
+  }, 1000)
+})
+
+myPromise
+  .then((result) => {
+    console.log('Promise .then():', result.data)
+    return 'Value passed to next then' // Chain promises
+  })
+  .then((nextResult) => {
+    console.log('Second .then():', nextResult)
+  })
+  .catch((error) => {
+    console.error('Promise .catch():', error.message)
+  })
+  .finally(() => {
+    console.log('Promise .finally(): Runs regardless of success or failure.')
+  })
+
+// Promise.all, Promise.race etc.
+const p1 = Promise.resolve(1)
+const p2 = new Promise((resolve) => setTimeout(() => resolve(2), 500))
+const p3 = Promise.reject('Error in p3')
+
+Promise.all([p1, p2]).then((results) => console.log('Promise.all success:', results)) // [1, 2]
+Promise.all([p1, p2, p3]).catch((error) => console.error('Promise.all failure:', error)) // Error in p3
+
+Promise.race([p2, p3])
+  .then((result) => console.log('Promise.race success:', result)) // depends on timing
+  .catch((error) => console.error('Promise.race failure:', error)) // depends on timing
+
+// --- 14. Error Handling ---
+try {
+  console.log('Entering try block...')
+  // Simulate an error
+  if (Math.random() < 0.5) {
+    throw new Error('This is a custom thrown error!')
+  }
+  console.log('No error occurred in try block.')
+  // undefinedVariable; // This would cause a ReferenceError
+} catch (error) {
+  console.error('Caught an error:', error.name, '-', error.message)
+  // console.error(error.stack); // Stack trace
+} finally {
+  console.log('Finally block executed (always runs).')
+}
+
+console.log('Script execution continues after try/catch/finally.')
+
+// --- 15. Date Object ---
+const now = new Date()
+console.log('Current Date/Time:', now)
+console.log('Year:', now.getFullYear())
+console.log('Month (0-indexed):', now.getMonth())
+console.log('ISO String:', now.toISOString())
+console.log('Locale String:', now.toLocaleString())
+
+// --- 16. JSON ---
+const jsonString = '{"name": "Gadget", "id": 123, "enabled": true}'
+const jsonObject = JSON.parse(jsonString) // Parse JSON string to object
+console.log('Parsed JSON:', jsonObject.name)
+
+const objectToParse = { type: 'Sensor', values: [10, 20, 15], timestamp: new Date() }
+const stringifiedJson = JSON.stringify(objectToParse, null, 2) // Convert object to JSON string (pretty-printed)
+console.log('Stringified JSON:\n', stringifiedJson)
+
+// --- End of Showcase ---
+console.log('JavaScript Syntax Showcase Complete.')
+
+var globalVar = 1
+let variable = 324
 const constant = {
   propertyA: [2, 'variable'],
-  propertyB: "some string",
+  propertyB: 'some string',
   propertyC: 2019,
   propertyD: {
     subPropertyA: true,
@@ -17,15 +621,15 @@ const constant = {
     subPropertyC: null,
     subPropertyD: undefined,
     subPropertyE: {
-      subSubPropertyA: "string"
+      subSubPropertyA: 'string',
     },
     methodF: (parameterA, parameterB) => {
       console.log(parameterA, parameterB)
-    }
+    },
   },
   methodA: (parameterA, parameterB) => {
     console.log(parameterA, parameterB)
-  }
+  },
 }
 
 window.onload = function () {}
@@ -41,43 +645,39 @@ const newNumber = new Number('222')
 
 const func = () => {}
 
-const variableN = 0 || 1 || 2 || 3 || 4 || 5 || 6 || 7 || 8 || 9;
+const variableN = 0 || 1 || 2 || 3 || 4 || 5 || 6 || 7 || 8 || 9
 
 // Comment
 
-let templateLiteral = `some text ${5 + (4.1 - variable)} more text`
-
 class User {
   constructor(name) {
-    this.name = name;
-    this.text = templateLiteral;
+    this.name = name
+    this.text = templateLiteral
     this.file = File
   }
   sayHi() {
-    alert(this.name);
+    alert(this.name)
   }
 }
-const user = new User("John");
+const user = new User('John')
 
 class PowerArray extends User {
   isEmpty() {
-    return this.length === 0;
+    return this.length === 0
   }
 
   // built-in methods will use this as the constructor
   static get [Symbol.species]() {
-    return Array;
+    return Array
   }
 }
 
 for (let index = 0; index < array.length; index++) {
-  const element = array[index];
+  const element = array[index]
 }
 
 if (constant.parameterA[0] === 3 && variable <= 550) {
-
 } else {
-
 }
 
 class AdminUser extends User {
@@ -89,9 +689,9 @@ class AdminUser extends User {
   }
 }
 
-let userAdmin = new AdminUser("Mao");
+let userAdmin = new AdminUser('Mao')
 
-userAdmin.sayHi();
+userAdmin.sayHi()
 
 /**
  * Constructor for <code>AjaxRequest</code> class
@@ -99,30 +699,26 @@ userAdmin.sayHi();
  */
 
 function AjaxRequest(url) {
-  var urls = ["www.cnn.com", 5, globalVar];
-  this.request = new XMLHttpRequest();
-  url = url.replace(/^\s*(.*)/, "$1"); // skip leading whitespace
+  var urls = ['www.cnn.com', 5, globalVar]
+  this.request = new XMLHttpRequest()
+  url = url.replace(/^\s*(.*)/, '$1') // skip leading whitespace
   /* check the url to be in urls */
-  var a = "aldskfs;ldkfsd;lfksd f;ls";
-  this.foo = new function () { };
-  foo();
-  this.request.open("GET", url, true);
-  var hello = () => console.log("hello")
+  var a = 'aldskfs;ldkfsd;lfksd f;ls'
+  this.foo = new (function () {})()
+  foo()
+  this.request.open('GET', url, true)
+  var hello = () => console.log('hello')
 }
 
 @decorator()
-class NameClass {
-
-}
+class NameClass {}
 
 for (let index = 0; index < array.length; index++) {
-  const element = array[index];
+  const element = array[index]
 }
 
 if (constant.parameterA[0] === 3 && variable <= 550) {
-
 } else {
-
 }
 
 switch (labelKey) {
@@ -140,19 +736,21 @@ switch (labelKey) {
 }
 
 // Regular expressions:
-/abc/
-x = /abc/;
-function_with_regex_arg(/abc/);
-[/abc/, /def/];
-{ regex: /abc/ };
-(1 === 0) ? /abc/ : /def/;
-/abc/; /* Comment */
-  / abc /; // Comment
-var matches = /abc/.exec('Alphabet ... that should contain abc, right?');
+;/abc/
+x = /abc/
+function_with_regex_arg(/abc/)
+;[/abc/, /def/]
+{
+  regex: /abc/
+}
+1 === 0 ? /abc/ : /def/
+;/abc/ /* Comment */
+;/ abc / // Comment
+var matches = /abc/.exec('Alphabet ... that should contain abc, right?')
 
-// No regex here: 
-a = [thing / thing, thing / thing];
-x = a / b / c / d;
+// No regex here:
+a = [thing / thing, thing / thing]
+x = a / b / c / d
 
 // // Character groups with backslashes:
 // /[ab\\]/ // a, b or backslash
@@ -168,11 +766,11 @@ x = a / b / c / d;
 // '\u{1D306}'            // Unicode code point escape
 //   /\cJ /;                  // Control escape
 
-    // ES2015 binary and octal numbers:
+// ES2015 binary and octal numbers:
 let binary1 = 0b1010
-let binary2 = 0B00001111;
-let octal1 = 0o0123;
-let octal2 = 0O4567;
+let binary2 = 0b00001111
+let octal1 = 0o0123
+let octal2 = 0o4567
 
 // Template strings
 // ----------------
@@ -180,85 +778,81 @@ let octal2 = 0O4567;
 // can span multiple lines. They allow for expressions that inside
 // of a dollar-sign plus curly-bracket construct (${...}).
 
-console.log(`The sum of 2 and 2 is ${2 + 2}`);
+console.log(`The sum of 2 and 2 is ${2 + 2}`)
 
-let y = 8;
+let y = 8
 let my_string = `This is a multiline
 string that also contains
-a template ${y + (4.1 - 2.2)}`;
+a template ${y + (4.1 - 2.2)}`
 
 function resolveAfter2Seconds() {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     setTimeout(() => {
-      resolve('resolved');
-    }, 2000);
-  });
+      resolve('resolved')
+    }, 2000)
+  })
 }
 
 async function asyncCall() {
-  console.log('calling');
-  const result = await resolveAfter2Seconds();
-  console.log(result);
+  console.log('calling')
+  const result = await resolveAfter2Seconds()
+  console.log(result)
   // Expected output: "resolved"
 }
 
 try {
   try {
-    throw new Error("oops");
+    throw new Error('oops')
   } catch (ex) {
-    console.error("inner", ex.message);
+    console.error('inner', ex.message)
   } finally {
-    console.log("finally");
+    console.log('finally')
   }
 } catch (ex) {
-  console.error("outer", ex.message);
+  console.error('outer', ex.message)
 }
-asyncCall();
+asyncCall()
 
 export default {
   manoA: [2, 'maoma'],
-  nanoB: "elmaoma askd",
+  nanoB: 'elmaoma askd',
   nanoC: 2019,
   nmanoD: {
-    maoma1: "maskdm",
+    maoma1: 'maskdm',
     maoma2: false,
     maoma3: null,
-    maoma4: undefined
-  }
+    maoma4: undefined,
+  },
 }
-var pattern = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+var pattern =
+  /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
-
-var person = { firstName: "John", lastName: "Doe", age: 50, eyeColor: "blue" };
+var person = { firstName: 'John', lastName: 'Doe', age: 50, eyeColor: 'blue' }
 delete person.age
 
-var cars = ["Saab", "Volvo", "BMW"];
-"Saab" in cars
+var cars = ['Saab', 'Volvo', 'BMW']
+'Saab' in cars
 
-var cars = ["Saab", "Volvo", "BMW"];
-cars instanceof Array;          // Returns true
-cars instanceof Object;         // Returns true
-cars instanceof String;         // Returns false
-cars instanceof Number;         // Returns false
+var cars = ['Saab', 'Volvo', 'BMW']
+cars instanceof Array // Returns true
+cars instanceof Object // Returns true
+cars instanceof String // Returns false
+cars instanceof Number // Returns false
 
-const form = document.querySelector('.new-item-form')
+const form = document.querySelector('.new-item-form')(function (global, factory) {
+  'use strict'
 
-(function (global, factory) {
-
-  "use strict";
-
-  if (typeof module === "object" && typeof module.exports === "object") {
-
-    module.exports = global.document ?
-      factory(global, true) :
-      function (w) {
-        if (!w.document) {
-          throw new Error("jQuery requires a window with a document");
+  if (typeof module === 'object' && typeof module.exports === 'object') {
+    module.exports = global.document
+      ? factory(global, true)
+      : function (w) {
+          if (!w.document) {
+            throw new Error('jQuery requires a window with a document')
+          }
+          return factory(w)
         }
-        return factory(w);
-      };
   } else {
-    factory(global);
+    factory(global)
   }
 
   // Pass this if window is not defined yet
@@ -303,9 +897,6 @@ class Point {
   }
 }
 
-
-
-
 /**
  * Class representing a dot.
  * @extends Point
@@ -331,56 +922,55 @@ class PointDot extends Point {
   }
 }
 
-
 // A class declaration with a name
 class Person {
   // A constructor method that initializes the object properties
   constructor(name, age, gender) {
-    this.name = name;
-    this.age = age;
-    this.gender = gender;
+    this.name = name
+    this.age = age
+    this.gender = gender
   }
 
   // A public instance method that returns a greeting
   greet() {
-    return `Hello, my name is ${this.name} and I am ${this.age} years old.`;
+    return `Hello, my name is ${this.name} and I am ${this.age} years old.`
   }
 
   // A public instance getter that returns the birth year
   get birthYear() {
-    const date = new Date();
-    return date.getFullYear() - this.age;
+    const date = new Date()
+    return date.getFullYear() - this.age
   }
 
   // A public instance setter that updates the age
   set age(newAge) {
     if (newAge > 0 && newAge < 120) {
-      this.age = newAge;
+      this.age = newAge
     } else {
-      throw new Error("Invalid age");
+      throw new Error('Invalid age')
     }
   }
 
   // A public static method that returns the average age of an array of persons
   static averageAge(persons) {
-    let sum = 0;
+    let sum = 0
     for (let person of persons) {
-      sum += person.age;
+      sum += person.age
     }
-    return sum / persons.length;
+    return sum / persons.length
   }
 
   // A private instance field that stores the favorite color
-  #favoriteColor = "blue";
+  #favoriteColor = 'blue'
 
   // A private instance method that returns the favorite color
   #getFavoriteColor() {
-    return this.#favoriteColor;
+    return this.#favoriteColor
   }
 
   // A public instance method that calls the private instance method
   revealFavoriteColor() {
-    return `My favorite color is ${this.#getFavoriteColor()}.`;
+    return `My favorite color is ${this.#getFavoriteColor()}.`
   }
 }
 
@@ -388,60 +978,59 @@ class Person {
 const Student = class extends Person {
   // A constructor method that calls the super constructor and initializes the student properties
   constructor(name, age, gender, school, major) {
-    super(name, age, gender); // Call the parent constructor
-    this.school = school;
-    this.major = major;
+    super(name, age, gender) // Call the parent constructor
+    this.school = school
+    this.major = major
   }
 
   // A public instance method that overrides the parent method
   greet() {
-    return `Hi, I'm ${this.name} and I study ${this.major} at ${this.school}.`;
+    return `Hi, I'm ${this.name} and I study ${this.major} at ${this.school}.`
   }
 
   // A public instance getter that returns the graduation year
   get graduationYear() {
-    const date = new Date();
-    return date.getFullYear() + 4 - this.age / 5;
+    const date = new Date()
+    return date.getFullYear() + 4 - this.age / 5
   }
 
   // A public static method that returns the number of students in an array of students
   static countStudents(students) {
-    return students.length;
+    return students.length
   }
   // A static initialization block that runs some code when the class is defined
   static {
-    console.log("Student class is defined");
+    console.log('Student class is defined')
   }
-};
-
-
-// Creating some instances of the classes
-const alice = new Person("Alice", 25, "female");
-const bob = new Student("Bob", 20, "male", "MIT", "Computer Science");
-const charlie = new Student("Charlie", 19, "male", "Harvard", "Mathematics");
-
-// Calling some methods and getters on the instances
-console.log(alice.greet()); // Hello, my name is Alice and I am 25 years old.
-console.log(bob.greet()); // Hi, I'm Bob and I study Computer Science at MIT.
-console.log(charlie.graduationYear); // 2028
-console.log(alice.revealFavoriteColor()); // My favorite color is blue.
-
-// Calling some static methods on the classes
-console.log(Person.averageAge([alice, bob, charlie])); // 21.333333333333332
-console.log(Student.countStudents([bob, charlie])); // 2
-
-function* generator() {
-  yield 1;
-  yield 2;
-  yield 3;
 }
 
-const sym1 = Symbol();
-const sym2 = Symbol("foo");
-const sym3 = Symbol("foo");
+// Creating some instances of the classes
+const alice = new Person('Alice', 25, 'female')
+const bob = new Student('Bob', 20, 'male', 'MIT', 'Computer Science')
+const charlie = new Student('Charlie', 19, 'male', 'Harvard', 'Mathematics')
 
-const number = 5 * 3;
+// Calling some methods and getters on the instances
+console.log(alice.greet()) // Hello, my name is Alice and I am 25 years old.
+console.log(bob.greet()) // Hi, I'm Bob and I study Computer Science at MIT.
+console.log(charlie.graduationYear) // 2028
+console.log(alice.revealFavoriteColor()) // My favorite color is blue.
+
+// Calling some static methods on the classes
+console.log(Person.averageAge([alice, bob, charlie])) // 21.333333333333332
+console.log(Student.countStudents([bob, charlie])) // 2
+
+function* generator() {
+  yield 1
+  yield 2
+  yield 3
+}
+
+const sym1 = Symbol()
+const sym2 = Symbol('foo')
+const sym3 = Symbol('foo')
+
+const number = 5 * 3
 
 with ([1, 2, 3]) {
-  console.log(toString()); // 1,2,3
+  console.log(toString()) // 1,2,3
 }
