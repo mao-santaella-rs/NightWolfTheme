@@ -2,6 +2,12 @@
 
 All notable changes to the "night-wolf" extension are be documented in this file.
 
+## [1.13.1] - 04-23-2023
+### Fixed
+- Improoved support for scss and sass
+- Removed the semanticTokenColors configuration where the classes and function declarations where set as bold
+- Better support for inline SQL in GO files, [issue](https://github.com/mao-santaella-rs/NightWolfTheme/issues/48) by [coscoaj1](https://github.com/coscoaj1)
+
 ## [1.13.0] - 11-09-2023
 ### Fixed
 - Better support for SQL, [issue](https://github.com/mao-santaella-rs/NightWolfTheme/issues/46) by [marcosvnmelo](https://github.com/marcosvnmelo)
