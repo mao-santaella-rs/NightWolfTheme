@@ -32,9 +32,9 @@ colors.infoDark = chroma(40, 72, 100)           // rgb(40, 72, 100)
 colors.info = chroma(100, 180, 250)             // rgb(100, 180, 250)
 colors.infoLight = chroma(156, 217, 255)        // rgb(156, 217, 255)
 
-colors.succesDark = chroma(44, 72, 32)          // rgb(44, 72, 32)
-colors.succes = chroma(110, 180, 80)            // rgb(110, 180, 80)
-colors.succesLight = chroma(161, 216, 132)      // rgb(161, 216, 132)
+colors.successDark = chroma(44, 72, 32)          // rgb(44, 72, 32)
+colors.success = chroma(110, 180, 80)            // rgb(110, 180, 80)
+colors.successLight = chroma(161, 216, 132)      // rgb(161, 216, 132)
 
 colors.warningDark = chroma(102, 80, 16)        // rgb(102, 80, 16)
 colors.warning = chroma(255, 200, 40)           // rgb(255, 200, 40)

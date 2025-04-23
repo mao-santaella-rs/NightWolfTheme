@@ -52,3 +52,4 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+*.vsix
