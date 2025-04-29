@@ -1,371 +1,618 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
-<!-- Comment -->
-<html>
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="HTML syntax highlighting test page with various elements and attributes."
+    />
+    <meta name="keywords" content="html, test, syntax, highlight, vscode, theme" />
+    <meta name="author" content="Theme Tester" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="refresh" content="300" />
+    <title>HTML Syntax Highlighting Test &lt;Example&gt;</title>
 
-<head>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preload" href="important.js" as="script" />
+    <base href="/" target="_blank" />
+    <style>
+      /* Basic CSS rules for testing */
+      body {
+        font-family: 'Arial', sans-serif; /* Font stack */
+        line-height: 1.6;
+        color: #333; /* Hex color */
+        background-color: rgb(245, 245, 245); /* RGB color */
+      }
 
-	<HelloWorld msg="You did it!" />
-	<title>Hi there!</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=us-ascii">
-	<style type="text/css">
-		a.summary-letter {
-			text-decoration: none
-		}
-		pre.display {
-			font-family: serif
-		}
-		pre.format {
-			font-family: serif
-		}	
-	</style>
-</head>
+      h1,
+      h2,
+      h3 {
+        color: navy;
+      }
 
-<body>
-	<h1>
-		<span>Hi there!</span>
-	</h1>
-	<applet></applet>
+      .highlight {
+        background-color: yellow !important; /* Important flag */
+        border: 1px solid #ccc; /* Border style */
+      }
 
-	<div id="app" class="app">
-		<div id="home">
-			<header id="header" class="landing-header">
-				<div class="container">
-					<nav class="landing-nav">
-						<div class="logo-container"><a href="https://www.instagram.com/g3holding/" target="_blank" class="logo"><img
-									src="http://g3co.co/images/logo-header-white_201903122330.png" alt=""></a></div>
-						<ul>
-							<li><a href="#restaurantes" class="btn-nav">restaurantes</a></li>
-							<li><a href="#reservaciones" class="btn-nav">reservaciones</a></li>
-							<li><a href="#nosotros" class="btn-nav">nosotros</a></li>
-							<li><a href="#contacto" class="btn-nav">contacto</a></li>
-						</ul>
-					</nav>
-					<a href="#reservas" class="btn-reserva"><span>RESERVA AQU?</span></a>
-				</div>
-			</header>
-			<div id="restaurantes" class="restaurantes section">
-				<section id="restaurantes" class="banner-principal"
-					style="background-image: url(&quot;http://g3co.co/images/mianonna-img-01_201903122246.jpg&quot;);">
-					<div class="container">
-						<div class="restaurantes-header"><img src="img/logo-g3-white.svg" alt=""></div>
-						<div class="restaurantes-body"><a href="#/info/restaurante1" class="restaurante-item">
-								<div class="restaurante-container"></div>
-								<div class="restaurante-img"
-									style="background-image: url(&quot;http://g3co.co/images/zekkei-img-01_201903122247.jpg&quot;);"><img
-										src="img/cuadro.svg" alt=""></div>
-								<div class="restaurante-logo-container"><img
-										src="http://g3co.co/images/zekkei-logo-white_201903122259.svg" alt="" class="restaurante-logo"><img
-										src="img/cuadro.svg" alt=""></div>
-							</a><a href="#/info/restaurante2" class="restaurante-item">
-								<div class="restaurante-container"></div>
-								<div class="restaurante-img"
-									style="background-image: url(&quot;http://g3co.co/images/cortes-img-01_201903122247.jpg&quot;);"><img
-										src="img/cuadro.svg" alt=""></div>
-								<div class="restaurante-logo-container"><img
-										src="http://g3co.co/images/cortes-logo-white_201903122259.svg" alt="" class="restaurante-logo"><img
-										src="img/cuadro.svg" alt=""></div>
-							</a><a href="#/info/restaurante3" class="restaurante-item">
-								<div class="restaurante-container"></div>
-								<div class="restaurante-img"
-									style="background-image: url(&quot;http://g3co.co/images/mianonna-img-01_201903122246.jpg&quot;);">
-									<img src="img/cuadro.svg" alt=""></div>
-								<div class="restaurante-logo-container"><img
-										src="http://g3co.co/images/miamonna-logo-white_201903122259.svg" alt=""
-										class="restaurante-logo"><img src="img/cuadro.svg" alt=""></div>
-							</a><a href="#/info/restaurante5" class="restaurante-item">
-								<div class="restaurante-container"></div>
-								<div class="restaurante-img"
-									style="background-image: url(&quot;http://g3co.co/images/var-img-01_201903122248.jpg&quot;);"><img
-										src="img/cuadro.svg" alt=""></div>
-								<div class="restaurante-logo-container"><img src="http://g3co.co/images/var-logo-white_201903302036.svg"
-										alt="" class="restaurante-logo"><img src="img/cuadro.svg" alt=""></div>
-							</a><a href="#/info/restaurante4" class="restaurante-item">
-								<div class="restaurante-container"></div>
-								<div class="restaurante-img"
-									style="background-image: url(&quot;http://g3co.co/images/goood-img-01_201903122248.jpg&quot;);"><img
-										src="img/cuadro.svg" alt=""></div>
-								<div class="restaurante-logo-container"><img
-										src="http://g3co.co/images/goood-logo-white_201903122259.svg" alt="" class="restaurante-logo"><img
-										src="img/cuadro.svg" alt=""></div>
-							</a></div>
-					</div>
-				</section>
-			</div>
-			<div id="reservas" class="reservas section">
-				<section id="reservaciones" class="index-reservas d-flex justify-content-center align-items-center">
-					<div class="container reservas__form">
-						<div class="row justify-content-center align-items-center reservas__row">
-							<div class="col-12 col-sm-10 col-md-12 col-lg-10">
-								<div class="section-titulo">
-									<h3>Reservaci?n</h3>
-								</div>
-								<div class="row form">
-									<div class="col-12 col-md-4 form__header">
-										<h6>Restaurante</h6><span class="span-requerido">*</span>
-									</div>
-									<div class="col-12 col-md-8 form__body">
-										<div class="form-rest__container">
-											<div class="form-rest__logo"><a href="" class="rest_link"><img
-														src="http://g3co.co/images/zekkei-logo-white_201903122259.svg" alt=""></a></div>
-											<div class="form-rest__logo"><a href="" class="rest_link"><img
-														src="http://g3co.co/images/cortes-logo-white_201903122259.svg" alt=""></a></div>
-											<div class="form-rest__logo"><a href="" class="rest_link"><img
-														src="http://g3co.co/images/miamonna-logo-white_201903122259.svg" alt=""></a></div>
-											<div class="form-rest__logo"><a href="" class="rest_link"><img
-														src="http://g3co.co/images/var-logo-white_201903302036.svg" alt=""></a></div>
-											<!---->
-										</div>
-									</div>
-								</div>
-								<div class="row form">
-									<div class="col-12 col-md-4 form__header">
-										<h6>Personas</h6><span class="span-requerido">*</span>
-									</div>
-									<div class="col-12 col-md-8 form__body">
-										<div class="form-personas">
-											<div class="form-personas__numero"><span>0</span></div>
-											<div class="form-personas__slider"><input type="range" min="2" max="15" value="0" class="slider">
-											</div>
-											<!---->
-										</div>
-									</div>
-								</div>
-								<div class="row form">
-									<div class="col-12 col-md-4 form__header">
-										<h6>Fecha y Hora</h6><span class="span-requerido">*</span>
-									</div>
-									<div class="col-12 col-md-8 form__body">
-										<div class="calendar">
-											<div class="calendar__header">
-												<div class="day">Do</div>
-												<div class="day">Lu</div>
-												<div class="day">Ma</div>
-												<div class="day">Mi</div>
-												<div class="day">Ju</div>
-												<div class="day">Vi</div>
-												<div class="day">Sa</div>
-											</div>
-											<div class="calendar__item">
-												<div class="calendar__month"><span>marzo</span></div>
-												<div class="calendar__days"><a href="" class="day">31</a></div>
-											</div>
-											<div class="calendar__item">
-												<div class="calendar__month"><span>abril</span></div>
-												<div class="calendar__days">
-													<div class="day day-null"></div>
-													<a href="" class="day">1</a><a href="" class="day">2</a><a href="" class="day">3</a><a href=""
-														class="day">4</a><a href="" class="day">5</a><a href="" class="day">6</a><a href=""
-														class="day">7</a><a href="" class="day">8</a><a href="" class="day">9</a><a href=""
-														class="day">10</a><a href="" class="day">11</a><a href="" class="day">12</a><a href=""
-														class="day">13</a><a href="" class="day">14</a><a href="" class="day">15</a><a href=""
-														class="day">16</a><a href="" class="day">17</a><a href="" class="day">18</a><a href=""
-														class="day">19</a><a href="" class="day">20</a><a href="" class="day">21</a><a href=""
-														class="day">22</a><a href="" class="day">23</a><a href="" class="day">24</a><a href=""
-														class="day">25</a><a href="" class="day">26</a><a href="" class="day">27</a><a href=""
-														class="day">28</a><a href="" class="day">29</a><a href="" class="day">30</a><a href=""
-														class="day">31</a>
-												</div>
-											</div>
-										</div>
-										<!---->
-									</div>
-								</div>
-								<div class="row form">
-									<div class="col-12 col-md-4 form__header">
-										<h6>Adicional</h6>
-									</div>
-									<div class="col-12 col-md-8 form__body">
-										<div class="row input-container input-container-grande">
-											<div class="col-4"><label for="reserva_motivo" class="">Motivo
-													<!----></label></div>
-											<div class="col-8 col-lg-6"><select name="reserva_motivo" id="reserva_motivo" class="">
-													<option value="Amigos">Amigos</option>
-													<option value="Aniversario">Aniversario</option>
-													<option value="Bienvenida">Bienvenida</option>
-													<option value="Cumplea?os">Cumplea?os</option>
-													<option value="Despedida">Despedida</option>
-													<option value="Familiar">Familiar</option>
-													<option value="Negocios">Negocios</option>
-												</select></div>
-											<!---->
-											<!---->
-											<div class="col-4"><label for="reserva_sugerencias" class="">Sugerencias
-													<!----></label></div>
-											<div class="col-8 col-lg-6"><textarea rows="4" cols="50" id="reserva_sugerencias"
-													placeholder="?C?mo podemos ser m?s especiales con su reserva?" class=""></textarea></div>
-										</div>
-									</div>
-								</div>
-								<div class="row form">
-									<div class="col-12">
-										<h6 class="mb-5">Datos personales:</h6>
-									</div>
-									<div class="col-12 col-md-6">
-										<div class="row input-container">
-											<div class="col-4"><label for="name" class="">Nombres<span class="span-requerido">*</span></label>
-											</div>
-											<div class="col-8"><input type="text" id="name" class=""></div>
-										</div>
-									</div>
-									<div class="col-12 col-md-6">
-										<div class="row input-container">
-											<div class="col-4"><label for="lastName" class="">Apellidos<span
-														class="span-requerido">*</span></label></div>
-											<div class="col-8"><input type="text" id="lastName" class=""></div>
-										</div>
-									</div>
-									<div class="col-12 col-md-6">
-										<div class="row input-container">
-											<div class="col-4"><label for="phone" class="">Celular<span
-														class="span-requerido">*</span></label>
-											</div>
-											<div class="col-8"><input type="text" id="phone" class=""><span>*Celular para novedades y
-													confirmaci?n</span>
-											</div>
-										</div>
-									</div>
-									<div class="col-12 col-md-6">
-										<div class="row input-container">
-											<div class="col-4"><label for="email" class="">E-mail<span class="span-requerido">*</span></label>
-											</div>
-											<div class="col-8"><input type="text" id="email" class=""><span>*Email para novedades y
-													confirmaci?n</span></div>
-										</div>
-									</div>
-								</div>
-								<div class="row justify-content-center">
-									<div class="col-12 col-md-8 reserva-politicas">
-										<div class="checkbox checkbox__lg"><input type="checkbox" id="checkbox-1"><label for="checkbox-1"
-												class="chkbx"></label>
-										</div>
-										<div class="reserva-politicas__texto">
-											<p>Al seleccionar ?Completar Reserva? usted autoriza
-												voluntariamente las <a
-													href="http://g3co.co/files/poltica-tratamiento-datos-personales_201810082300.pdf"
-													target="_blank">Finalidades
-													y Pol?ticas de tratamiento de datos personales </a>y esta de acuerdo con las <a
-													href="http://g3co.co/files/poltica-tratamiento-datos-personales_201810082301.pdf"
-													target="_blank">Pol?ticas
-													de reservas </a>del restaurante</p><span>*Campos requeridos</span>
-										</div>
-									</div>
-									<div class="col-12 col-sm-6 col-md-4 reserva-action"><a href="" class="btn-tipo-a">Hacer Reserva</a>
-									</div>
-									<!---->
-									<!---->
-								</div>
-							</div>
-						</div>
-					</div>
-				</section>
-			</div>
-			<div id="nosotros" class="historia section">
-				<div class="container">
-					<div class="row justify-content-center">
-						<div class="col-12 col-sm-10 col-md-12 col-lg-10">
-							<div class="section-titulo">
-								<h3>Nuestra historia</h3>
-							</div>
-						</div>
-						<div class="col-md-9 col-lg-8 col-xl-6 historia__contenido">
-							<div class="historia__item">
-								<div class="historia__ano">
-									<h4>1997</h4><span>Lorem ipsum dolor sit amet</span>
-								</div>
-								<div class="historia__text">
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer interdum
-										dui sed lacinia condimentum. Maecenas viverra, purus a efficitur porta, mauris nisi imperdiet eros,
-										vitae elementum eros odio et tortor. Duis elementum gravida congue. Vivamus feugiat at nulla iaculis
-										efficitur. Cras ipsum odio, dapibus ac rhoncus nec, gravida quis velit.</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="historia__sifras">
-					<div class="historia__sifras__logo"><img src="img/logo-g3-white.svg"></div>
-					<div class="historia__sifras__texto"><span class="hnumber">1000</span><span>EMPLEOS DIRECTOS</span><br><span
-							class="hnumber">15.000</span><span>EMPLEOS INDIRECTOS</span><br><span
-							class="hnumber">10</span><span>MARCAS</span><span class="hnumber">27</span><span>RESTAURANTES</span></div>
-				</div>
-			</div>
-			<div id="contacto" class="contacto section">
-				<div class="container">
-					<div class="row justify-content-center">
-						<div class="col-12 col-sm-10 col-md-12 col-lg-10">
-							<div class="section-titulo">
-								<h3>Contacto</h3>
-							</div>
-						</div>
-						<div class="col-12 col-sm-6">
-							<div class="contacto__form">
-								<div class="contacto__form__item">
-									<div class="contacto__form__item__input-cont"><input type="text" placeholder="Nombre completo"></div>
-									<!---->
-								</div>
-								<div class="contacto__form__item">
-									<div class="contacto__form__item__input-cont"><input type="text" placeholder="Correo Electr?nico">
-									</div>
-									<!---->
-								</div>
-								<div class="contacto__form__item">
-									<div class="contacto__form__item__input-cont"><input type="text" placeholder="Tel?fono"></div>
-									<!---->
-								</div>
-								<div class="contacto__form__item">
-									<div class="contacto__form__item__input-cont"><select>
-											<option>Ubicaci?n</option>
-											<option>BOGOT?</option>
-											<option>BUCARAMANGA</option>
-											<option>MEDELLIN</option>
-										</select></div>
-									<!---->
-								</div>
-								<div class="contacto__form__item">
-									<div class="contacto__form__item__input-cont"><input type="text" placeholder="Asunto"></div>
-									<!---->
-								</div>
-								<div class="contacto__form__item">
-									<div class="contacto__form__item__input-cont"><textarea rows="5"
-											placeholder="Escribe aqu? tu mensaje"></textarea>
-									</div>
-									<!---->
-								</div>
-								<div class="contacto__form__item contacto__drop-zone">
-									<!---->
-								</div>
-								<!---->
-								<div class="contacto__form__item contacto__action"><a class="lnk-contacto"><span>Adjuntar
-											archivo</span></a><a class="btn-tipo-a">Enviar</a></div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div id="footer">
-				<footer id="contacto">
-					<div class="container">
-						<div class="row">
-							<div class="col">
-								<div class="contact-container">
-									<p>
-										<div>Para comunicar sus peticiones, quejas, sugerencias o reclamos, escriba al correo hola@g3co.co
-										</div>
-									</p>
-								</div>
-							</div>
-							<div class="col d-flex justify-content-end align-items-end footer-icons">
-								<!---->
-								<!----><a href="https://www.instagram.com/g3holding/" target="_blank" class="btn-icon"><img
-										src="img/icons/icon_instagram.svg" alt="instagram"></a></div>
-						</div>
-					</div>
-				</footer>
-			</div>
-		</div>
-	</div>
+      #main-content > p:first-child {
+        /* Complex selector */
+        font-weight: bold;
+      }
 
+      /* Pseudo-classes and pseudo-elements */
+      a:hover {
+        text-decoration: none;
+        color: hsl(210, 100%, 50%); /* HSL color */
+      }
+      p::first-line {
+        font-style: italic;
+      }
 
-</body>
+      @media (max-width: 600px) {
+        /* Media query */
+        body {
+          font-size: 14px;
+        }
+      }
+    </style>
 
+    <script>
+      // Basic JavaScript for testing
+      const siteName = 'HTML Test Page'
+      let counter = 0
+
+      function greet(name = 'World') {
+        console.log(`Hello, ${name}! from embedded script.`)
+        // Simple DOM manipulation example
+        const statusElement = document.getElementById('js-status')
+        if (statusElement) {
+          statusElement.textContent = 'JavaScript seems to be running!'
+        }
+        return true // Boolean return
+      }
+
+      // Immediately Invoked Function Expression (IIFE)
+      ;(function () {
+        console.log('IIFE executed.')
+        counter++
+      })()
+
+      // Event listener (usually added after DOM is loaded)
+      document.addEventListener('DOMContentLoaded', () => {
+        greet('User')
+        const button = document.querySelector('button[type="button"]')
+        if (button) {
+          button.addEventListener('click', (event) => {
+            alert(`Button clicked! Counter: ${++counter}`)
+            event.preventDefault() // Prevent default action
+          })
+        }
+      })
+    </script>
+
+    <script src="scripts/external.js" defer></script>
+    <script src="scripts/analytics.js" async></script>
+
+    <noscript>
+      <p>
+        Warning: JavaScript is disabled or not supported in your browser. Some features
+        may not work.
+      </p>
+      <link rel="stylesheet" href="no-js-styles.css" />
+    </noscript>
+  </head>
+
+  <body>
+    <header role="banner">
+      <h1>HTML Element &amp; Syntax Test</h1>
+      <nav aria-label="Main Navigation">
+        <ul>
+          <li><a href="#text" class="nav-link active">Text Formatting</a></li>
+          <li><a href="#lists" class="nav-link">Lists</a></li>
+          <li><a href="#tables" class="nav-link" target="_self">Tables</a></li>
+          <li><a href="#forms" download="form-info.txt">Forms</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="main-content" class="container" role="main">
+      <section id="entities">
+        <h2>HTML Entities &amp; Special Characters</h2>
+        <p>Less than: &lt; (or &#60; or &#x3C;)</p>
+        <p>Greater than: &gt; (or &#62;)</p>
+        <p>Ampersand: &amp; (or &#38;)</p>
+        <p>Double quote: &quot; (or &#34;)</p>
+        <p>Single quote: &apos; (or &#39;)</p>
+        <p>Non-breaking space:&nbsp;&nbsp;&nbsp;here.</p>
+        <p>
+          Copyright: &copy; (or &#169;), Registered: &reg; (or &#174;), Trademark: &trade;
+          (or &#8482;)
+        </p>
+      </section>
+
+      <section id="text" aria-labelledby="text-heading">
+        <h2 id="text-heading">Text Formatting</h2>
+        <p>
+          This is a standard paragraph. <b>Bold text</b> and
+          <strong>strong importance text</strong>. <i>Italic text</i> and
+          <em>emphasized text</em>. <u>Underlined text (use with caution)</u>.
+          <small>Small text</small>. Text with <sub>subscript</sub> and
+          <sup>superscript</sup>.
+        </p>
+        <p>
+          <mark>Marked/highlighted text</mark>. <del>Deleted text</del> and
+          <ins>Inserted text</ins>.
+        </p>
+        <p>
+          Inline code: <code>const x = 10;</code> Keyboard input:
+          <kbd>Ctrl</kbd>+<kbd>C</kbd>. Sample output:
+          <samp>File not found.</samp> Variable: <var>y</var>.
+        </p>
+        <blockquote cite="http://example.com/source">
+          This is a blockquote, often used for longer quotations.
+          <p>It can contain multiple paragraphs.</p>
+          <footer>&mdash; <cite>Source Name</cite></footer>
+        </blockquote>
+        <p>This is a short inline quotation: <q>To be or not to be</q>.</p>
+        <p>
+          The <abbr title="World Wide Web Consortium">W3C</abbr> defines web standards.
+          <dfn>HTML</dfn> is HyperText Markup Language.
+        </p>
+        <p>
+          Event starts at
+          <time datetime="2025-10-26T19:00-04:00">October 26th, 7 PM EDT</time>.
+        </p>
+        <pre><code>
+					// Preformatted text with code
+					function syntaxHighlightTest() {
+							let testVar = "highlight me";
+							return testVar.toUpperCase();
+					}
+				</code></pre>
+        <address>
+          Contact us at:<br />
+          123 Example St.<br />
+          Anytown, USA 12345
+        </address>
+        <hr />
+      </section>
+
+      <section id="lists">
+        <h2>Lists</h2>
+        <h3>Unordered List</h3>
+        <ul>
+          <li>Item 1</li>
+          <li class="highlight">Item 2 (highlighted)</li>
+          <li>
+            Item 3
+            <ul>
+              <li>Nested Item 3.1</li>
+              <li>Nested Item 3.2</li>
+            </ul>
+          </li>
+        </ul>
+        <h3>Ordered List</h3>
+        <ol start="5" reversed type="A">
+          <li>Item A (starts at 5, reversed E)</li>
+          <li>Item B (D)</li>
+          <li>Item C (C)</li>
+        </ol>
+        <h3>Definition List</h3>
+        <dl>
+          <dt>HTML</dt>
+          <dd>HyperText Markup Language</dd>
+          <dt>CSS</dt>
+          <dd>Cascading Style Sheets</dd>
+        </dl>
+      </section>
+
+      <section id="tables">
+        <h2>Tables</h2>
+        <table border="1" style="border-collapse: collapse; width: 50%">
+          <caption>
+            Monthly Expenses
+          </caption>
+          <colgroup>
+            <col span="1" style="background-color: #f0f0f0" />
+            <col span="2" />
+          </colgroup>
+          <thead>
+            <tr>
+              <th scope="col">Category</th>
+              <th scope="col">Budgeted</th>
+              <th scope="col">Actual</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Rent</th>
+              <td>$1200.00</td>
+              <td>$1200.00</td>
+            </tr>
+            <tr>
+              <th scope="row">Groceries</th>
+              <td>$400.00</td>
+              <td>$450.50</td>
+            </tr>
+            <tr>
+              <th scope="row" rowspan="2">Utilities</th>
+              <td>$150.00</td>
+              <td>$165.20</td>
+            </tr>
+            <tr>
+              <td>$50.00 (Internet)</td>
+              <td>$50.00</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <th scope="row">Total</th>
+              <td colspan="2">$1855.70 (Actual)</td>
+            </tr>
+          </tfoot>
+        </table>
+      </section>
+
+      <section id="forms">
+        <h2>Forms</h2>
+        <form
+          action="/submit-form"
+          method="post"
+          id="test-form"
+          class="form-class"
+          autocomplete="on"
+        >
+          <fieldset>
+            <legend>Personal Information</legend>
+            <div>
+              <label for="name-input">Name:</label>
+              <input
+                type="text"
+                id="name-input"
+                name="username"
+                placeholder="Enter your name"
+                required
+                autofocus
+              />
+            </div>
+            <div>
+              <label for="email-input">Email:</label>
+              <input type="email" id="email-input" name="email" required multiple />
+            </div>
+            <div>
+              <label for="password-input">Password:</label>
+              <input
+                type="password"
+                id="password-input"
+                name="password"
+                required
+                minlength="8"
+              />
+            </div>
+            <div>
+              <label for="bio-textarea">Bio:</label>
+              <textarea
+                id="bio-textarea"
+                name="bio"
+                rows="4"
+                cols="50"
+                maxlength="200"
+                placeholder="Tell us about yourself..."
+              ></textarea>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Preferences</legend>
+            <div>
+              <label>Interests:</label>
+              <input
+                type="checkbox"
+                id="interest1"
+                name="interests"
+                value="coding"
+                checked
+              />
+              <label for="interest1">Coding</label>
+              <input type="checkbox" id="interest2" name="interests" value="music" />
+              <label for="interest2">Music</label>
+              <input
+                type="checkbox"
+                id="interest3"
+                name="interests"
+                value="sports"
+                disabled
+              />
+              <label for="interest3">Sports (disabled)</label>
+            </div>
+            <div>
+              <label>Contact Method:</label>
+              <input
+                type="radio"
+                id="contact-email"
+                name="contact_method"
+                value="email"
+                checked
+              />
+              <label for="contact-email">Email</label>
+              <input
+                type="radio"
+                id="contact-phone"
+                name="contact_method"
+                value="phone"
+              />
+              <label for="contact-phone">Phone</label>
+            </div>
+            <div>
+              <label for="country-select">Country:</label>
+              <select id="country-select" name="country">
+                <option value="" disabled selected>-- Select Country --</option>
+                <optgroup label="North America">
+                  <option value="us">United States</option>
+                  <option value="ca">Canada</option>
+                </optgroup>
+                <optgroup label="Europe">
+                  <option value="gb">United Kingdom</option>
+                  <option value="de">Germany</option>
+                </optgroup>
+              </select>
+            </div>
+            <div>
+              <label for="browser-input">Browser:</label>
+              <input list="browsers" id="browser-input" name="browser" />
+              <datalist id="browsers">
+                <option value="Chrome"></option>
+                <option value="Firefox"></option>
+                <option value="Safari"></option>
+                <option value="Edge"></option>
+                <option value="Opera"></option>
+              </datalist>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Other Input Types</legend>
+            <label for="quantity">Quantity (1-5):</label>
+            <input
+              type="number"
+              id="quantity"
+              name="quantity"
+              min="1"
+              max="5"
+              value="1"
+            />
+            <br />
+
+            <label for="volume">Volume:</label>
+            <input
+              type="range"
+              id="volume"
+              name="volume"
+              min="0"
+              max="100"
+              value="50"
+              step="1"
+            />
+            <br />
+
+            <label for="meeting-time">Meeting Time:</label>
+            <input type="datetime-local" id="meeting-time" name="meeting_time" /> <br />
+
+            <label for="favcolor">Favorite Color:</label>
+            <input type="color" id="favcolor" name="favcolor" value="#0000ff" /> <br />
+
+            <label for="upload">Upload File:</label>
+            <input
+              type="file"
+              id="upload"
+              name="userfile"
+              accept="image/png, image/jpeg"
+            />
+            <br />
+
+            <label for="search-term">Search:</label>
+            <input type="search" id="search-term" name="q" placeholder="Search..." />
+            <br />
+
+            <input type="hidden" name="session_id" value="abcdef12345" />
+            <input type="reset" value="Reset Form" />
+          </fieldset>
+
+          <div>
+            <button
+              type="submit"
+              name="action"
+              value="save"
+              onclick="console.log('Submit button clicked via onclick attribute');"
+            >
+              Submit Data
+            </button>
+            <button type="button">Generic Button</button>
+            <button type="submit" disabled>Submit (Disabled)</button>
+          </div>
+
+          <output name="result" for="quantity volume"></output>
+          <label for="file">File progress:</label>
+          <progress id="file" max="100" value="70">70%</progress><br />
+          <label for="disk_d">Disk usage D:</label>
+          <meter id="disk_d" min="0" max="100" low="30" high="70" optimum="10" value="85">
+            at 85/100
+          </meter>
+        </form>
+      </section>
+
+      <section id="media">
+        <h2>Media and Embedding</h2>
+        <img
+          src="images/small.jpg"
+          alt="A small placeholder image"
+          width="300"
+          height="200"
+          srcset="images/medium.jpg 1000w, images/large.jpg 2000w"
+          sizes="(max-width: 600px) 100vw, 50vw"
+        />
+
+        <picture>
+          <source media="(min-width: 800px)" srcset="images/large_banner.jpg" />
+          <source media="(min-width: 400px)" srcset="images/medium_banner.jpg" />
+          <img
+            src="images/small_banner.jpg"
+            alt="A banner image adapting to screen size"
+          />
+        </picture>
+
+        <audio controls preload="metadata" loop muted>
+          <source src="audio/track.mp3" type="audio/mpeg" />
+          <source src="audio/track.ogg" type="audio/ogg" />
+          Your browser does not support the audio element.
+          <track kind="captions" src="captions_en.vtt" srclang="en" label="English" />
+        </audio>
+
+        <video
+          controls
+          width="400"
+          poster="images/video_poster.jpg"
+          preload="auto"
+          autoplay
+        >
+          <source src="video/movie.mp4" type="video/mp4" />
+          <source src="video/movie.webm" type="video/webm" />
+          <track kind="subtitles" src="subtitles_es.vtt" srclang="es" label="Spanish" />
+          Sorry, your browser doesn't support embedded videos.
+        </video>
+
+        <h3>Iframe Example</h3>
+        <iframe
+          src="https://example.com"
+          width="90%"
+          height="300"
+          sandbox="allow-scripts allow-same-origin"
+          loading="lazy"
+          title="Example Iframe"
+        >
+          Fallback content for browsers that don't support iframes.
+        </iframe>
+
+        <object data="vector.svg" type="image/svg+xml" width="100" height="100">
+          <param name="paramName" value="paramValue" />
+          <img src="fallback.png" alt="SVG could not be loaded" />
+        </object>
+      </section>
+
+      <section id="semantic">
+        <h2>Other Semantic & Structural Elements</h2>
+        <article class="news-item" data-id="123" data-category="tech">
+          <h3>Article Title</h3>
+          <p>Content of the article...</p>
+        </article>
+        <aside role="complementary">
+          <h4>Related Links</h4>
+          <p>Content for the sidebar.</p>
+        </aside>
+        <details>
+          <summary>Click to see details</summary>
+          <p>Here are the details that were initially hidden.</p>
+        </details>
+        <figure>
+          <img src="images/chart.png" alt="Data chart" />
+          <figcaption>Fig.1 - Data distribution chart.</figcaption>
+        </figure>
+        <dialog id="myDialog">
+          <p>This is a dialog window.</p>
+          <button onclick="document.getElementById('myDialog').close()">Close</button>
+        </dialog>
+      </section>
+
+      <section id="svg">
+        <h2>Inline SVG</h2>
+        <svg
+          width="100"
+          height="100"
+          viewBox="0 0 100 100"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <defs>
+            <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color: rgb(255, 255, 0); stop-opacity: 1" />
+              <stop offset="100%" style="stop-color: rgb(255, 0, 0); stop-opacity: 1" />
+            </linearGradient>
+          </defs>
+          <circle
+            cx="50"
+            cy="50"
+            r="40"
+            stroke="green"
+            stroke-width="4"
+            fill="url(#grad1)"
+          />
+          <rect
+            x="10"
+            y="10"
+            width="30"
+            height="30"
+            style="
+              fill: blue;
+              stroke: black;
+              stroke-width: 1;
+              fill-opacity: 0.7;
+              stroke-opacity: 0.9;
+            "
+          />
+          <path d="M50 10 L90 90 L10 90 Z" fill="none" stroke="purple" stroke-width="2" />
+          <text x="10" y="90" fill="red">SVG Text</text>
+        </svg>
+      </section>
+
+      <section id="mathml">
+        <h2>Inline MathML</h2>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+          <mi>E</mi>
+          <mo>=</mo>
+          <mi>m</mi>
+          <msup>
+            <mi>c</mi>
+            <mn>2</mn>
+          </msup>
+        </math>
+        <br />
+        <math>
+          <mfrac>
+            <mrow>
+              <mi>a</mi>
+              <mo>+</mo>
+              <mi>b</mi>
+            </mrow>
+            <mn>2</mn>
+          </mfrac>
+        </math>
+      </section>
+
+      <section id="web-components">
+        <h2>Web Components Placeholders</h2>
+        <template id="my-template">
+          <style>
+            p {
+              color: red;
+            }
+          </style>
+          <p>Content from template: <slot name="my-text">Default text</slot></p>
+        </template>
+      </section>
+    </main>
+
+    <footer role="contentinfo">
+      <p id="js-status" aria-live="polite">JavaScript status unknown.</p>
+      <p>
+        &copy; <time datetime="2025">2025</time> Syntax Test Corp. All rights reserved. |
+        <a href="#top">Back to top</a>
+      </p>
+      <div role="navigation" aria-label="Footer Links">
+        <a href="/privacy">Privacy Policy</a> | <a href="/terms">Terms of Service</a>
+      </div>
+    </footer>
+  </body>
 </html>

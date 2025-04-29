@@ -394,6 +394,9 @@ svg|[fill] {
 
     /* animatable */
     transition-property: height, font-size, visibility;
+    color: black;
+
+    transition-property: height, font-size, visibility;
 }
 
 /*
@@ -403,6 +406,10 @@ body {
     background: pink !important;
 }
 
+
+[id^='ltk--modal']:has([class^='casting-drawer']) {
+    width: 100%;
+}
 
 /*
  * media queries
@@ -561,6 +568,8 @@ input[type="number"] {
 /* functions */
 .footer {
     background-image: -webkit-linear-gradient(to left top, #fff, blue);
+    z-index: +233;
+    z-index: -233;
 }
 
 /* style properties */

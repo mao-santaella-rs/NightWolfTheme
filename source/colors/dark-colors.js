@@ -50,9 +50,9 @@ colors.testB = chroma(0, 255, 0)                // rgb(0, 255, 0)
 colors.testC = chroma(255, 100, 0)              // rgb(255, 100, 0)
 
 colors.redPastel = chroma(48,118,174)           // rgb(248 118 174)
-colors.yellowPastel = chroma(252,154,193)       // rgb(252 154 193)
-colors.bluePastel = chroma(182,147,223)         // rgb(182 147 223)
-colors.greenPastel = chroma(243,251,151)        // rgb(243 251 151)
-colors.purplePastel = chroma(4,250,210)         // rgb(4 250 210)
+colors.pinkPastel = chroma(252,154,193)         // rgb(252 154 193)
+colors.purplePastel = chroma(182,147,223)       // rgb(182 147 223)
+colors.yellowPastel = chroma(243,251,151)       // rgb(243 251 151)
+colors.greenPastel = chroma(4,250,210)          // rgb(4 250 210)
 
 export default colors

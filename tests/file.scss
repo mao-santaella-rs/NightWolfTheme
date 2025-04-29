@@ -577,15 +577,15 @@ div {
   font: {
     family: fantasy;
     weight: bold;
-  }
+  };
   font: fantasy {
     size: 20px;
     style: italic;
-  }
+  };
   #{$property}: block;
   #{$property}: {
     color: red;
-  }
+  };
   color: #000;
   width: #{$width};
 
@@ -595,7 +595,7 @@ div {
   // selectors
   input:focus {
     opacity: 0.5;
-  }
+  };
   div:nth-child(2n + 1) {
     background-color: gray;
   }
@@ -1187,3 +1187,219 @@ $test: 1px;
     line-height: 1.4;
   }
 }
+
+@use "sass:map"; // Needed for map functions
+
+/**
+ * Safely retrieves a color value from a theme map by key.
+ *
+ * @param {String} $key - The key (name) of the color to retrieve (e.g., "primary", "danger").
+ * @param {Map} $color-map [$theme-colors] - The map containing theme colors (defaults to global $theme-colors).
+ * @param {Color | Null} $fallback [null] - A fallback color to return if the key is not found.
+ * @return {Color | Null} The color value if found, otherwise the fallback value (or null).
+ */
+@function get-theme-color($key, $color-map, $fallback: null) {
+  // Check if the provided map is actually a map
+  @if type-of($color-map) != 'map' {
+    @error "Invalid argument type for $color-map: Expected Map, got #{type-of($color-map)}.";
+  }
+
+  // Check if the key exists in the map
+  @if map.has-key($color-map, $key) {
+    @return map.get($color-map, $key); // Return the color
+  } @else {
+    @warn "Color key '#{$key}' not found in the provided theme map.";
+    @return $fallback; // Return the fallback value (or null if no fallback provided)
+  }
+}
+
+// --- Usage Example for get-theme-color ---
+
+// Assume this map is defined earlier or passed in:
+$my-colors: (
+  "primary": #007bff,
+  "accent": #ffc107,
+  "neutral-gray": #6c757d
+);
+
+.button-primary {
+  // Get the primary color, fallback to red if not found (it will be found here)
+  background-color: get-theme-color("primary", $my-colors, red);
+  color: white;
+}
+
+.alert-warning {
+  // Get the accent color
+  border-color: get-theme-color("accent", $my-colors);
+}
+
+.text-subtle {
+  // Try to get a non-existent key, using gray as fallback
+  color: get-theme-color("subtle-text", $my-colors, #888); // Will trigger a warning
+}
+
+.element-no-fallback {
+  // Try to get non-existent key, no fallback provided (function returns null)
+  // Note: Setting a CSS property to 'null' might render differently or be invalid
+  // depending on the property. Often used internally in other mixins/functions.
+  border-top-color: get-theme-color("border-fancy", $my-colors);
+}
+
+
+// --- SCSS Maps Example ---
+
+// 1. Map Definitions
+// ==================
+
+// Simple map for breakpoints
+$breakpoints: (
+  "small": 480px,
+  "medium": 768px,
+  "large": 1024px,
+  "xlarge": 1200px, // Trailing comma is allowed
+);
+
+// More complex map for font styles (nested maps, lists, colors)
+$typography: (
+  "base": (
+    "family": ('Helvetica Neue', Arial, sans-serif), // List value
+    "size": 1rem,
+    "weight": 400,
+    "line-height": 1.6,
+    "color": #333
+  ),
+  "heading": (
+    "family": ('Georgia', serif),
+    "size": 2.2rem,
+    "weight": 700,
+    "line-height": 1.3,
+    "color": #111
+  ),
+  "code": (
+    "family": (Consolas, 'Courier New', monospace),
+    "size": 0.9rem,
+    "color": #d63384, // Example color
+    "background": #f8f9fa
+  )
+);
+
+// Map for spacing scale
+$spacing: (
+  "xs": 0.25rem,
+  "sm": 0.5rem,
+  "md": 1rem,
+  "lg": 1.5rem,
+  "xl": 3rem
+);
+
+
+// 2. Accessing Map Values
+// =======================
+
+.container {
+  // Simple access
+  max-width: map.get($breakpoints, "large"); // Access 'large' breakpoint
+  padding: map.get($spacing, "md");      // Access 'md' spacing
+
+  // Check if a key exists before using it
+  @if map.has-key($breakpoints, "xlarge") {
+    border: 1px solid black; // Style differently if xlarge exists
+  } @else {
+    border: 1px solid blue;
+  }
+}
+
+h1 {
+  // Accessing nested map values
+  $heading-styles: map.get($typography, "heading"); // Get the nested map first
+  font-family: map.get($heading-styles, "family");
+  font-size: map.get($heading-styles, "size");
+  font-weight: map.get($heading-styles, "weight");
+  line-height: map.get($heading-styles, "line-height");
+
+  // Direct nested access (more verbose)
+  color: map.get(map.get($typography, "heading"), "color");
+}
+
+code, pre {
+  // Accessing code styles
+  $code-styles: map.get($typography, "code");
+  font-family: map.get($code-styles, "family");
+  font-size: map.get($code-styles, "size");
+  color: map.get($code-styles, "color");
+  background-color: map.get($code-styles, "background");
+  padding: 0.1em 0.3em;
+  border-radius: 3px;
+}
+
+// Handling non-existent keys (map.get returns null)
+.special-feature {
+  // 'special' key doesn't exist in $typography map
+  font-style: if(map.get($typography, "special") != null, italic, normal); // Use if() function or @if
+}
+
+
+// 3. Iterating Over Maps with @each
+// ================================
+
+// Generate margin utility classes from spacing map
+@each $key, $value in $spacing {
+  // Use interpolation to create dynamic class names and apply values
+  .m-#{$key} { // e.g., .m-xs
+    margin: $value;
+  }
+  .mt-#{$key} { // e.g., .mt-sm
+    margin-top: $value;
+  }
+  .mb-#{$key} { // e.g., .mb-md
+    margin-bottom: $value;
+  }
+  // Add ml, mr, mx, my as needed...
+}
+
+// Apply base font styles using the map
+body {
+  $base-styles: map.get($typography, "base");
+  @each $property, $value in $base-styles {
+    // Use interpolation for dynamic property names
+    #{$property}: $value;
+  }
+}
+
+
+// 4. Using Other Map Functions (e.g., map.merge)
+// ==============================================
+
+$button-colors: (
+  "background": #007bff,
+  "text": #ffffff,
+  "border": darken(#007bff, 10%)
+);
+
+$button-hover-colors: (
+  "background": darken(#007bff, 8%),
+  "text": #f8f8f8 // Slightly different text on hover
+);
+
+// Merge base and hover states (hover overrides matching keys)
+$button-merged-hover: map.merge($button-colors, $button-hover-colors);
+
+.button {
+  display: inline-block;
+  padding: map.get($spacing, "sm") map.get($spacing, "md");
+  background-color: map.get($button-colors, "background");
+  color: map.get($button-colors, "text");
+  border: 1px solid map.get($button-colors, "border");
+  border-radius: 4px;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    // Using the merged map for hover state
+    background-color: map.get($button-merged-hover, "background");
+    color: map.get($button-merged-hover, "text");
+    border-color: map.get($button-merged-hover, "border"); // Still uses the hover background darkened
+  }
+}
+
+// --- End SCSS Maps Example ---

@@ -1,47 +1,281 @@
+//- Pug Syntax Highlighting Test File
+//- This file demonstrates various Pug features for theme testing.
+//- Note: This requires a Pug compiler to render to HTML, but is used here
+//- purely for testing syntax highlighting in VS Code.
+
+// --- JavaScript Variables (Defined for use in the template) ---
+- var pageTitle = "Pug Syntax Test & Examples";
+- var user = { name: "Alice", id: 123, isAdmin: true, description: "<p>User Bio</p>" };
+- var items = ["Apple", "Banana", "Cherry"];
+- var chapters = { 'ch1': 'Introduction', 'ch2': 'Core Concepts', 'ch3': 'Advanced Topics' };
+- var isActive = true;
+- var maybeDisabled = false;
+- var count = 5;
+- var rawHtmlSnippet = "<strong>Raw HTML</strong> using != operator";
+- var imagePath = "/images/logo.png";
+- var customClasses = ['btn', 'btn-large', 'btn-primary'];
+- var conditionalClasses = { 'active-feature': user.isAdmin, 'guest-user': !user.isAdmin };
+- var styleObject = { color: 'blue', 'font-size': '16px', border: '1px solid #ccc' }; //- Style object
+
+// --- Doctype ---
 doctype html
-html(lang='es')
 
+// --- Basic Structure & Attributes ---
+html(lang="en", data-version="1.0")
+
+  // --- Head Section ---
   head
-    meta(charset='utf-8')
-    meta(http-equiv='X-UA-Compatible', content='IE=edge')
-    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
-    title WEBSITE
-    link(rel='stylesheet', href='css/main.css')
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    //- Title with interpolation
+    title= pageTitle + " | Pug Test"
+    //- Linking CSS and Scripts
+    link(rel="stylesheet", href="/css/style.css")
+    script(src="/js/script.js", async)
+    //- Embedded CSS using filter
+    style.
+      /* Embedded CSS Test */
+      body { font-family: sans-serif; }
+      .special { color: purple; }
+    //- Embedded JS using filter
+    script
+      :javascript
+        // Embedded JS Test
+        console.log('Pug embedded JS filter executed.');
+        function testFunc(msg) { alert('Message: ' + msg); }
 
-  body
+  // --- Body Section ---
+  body#page-body.theme-light(class=customClasses, class=conditionalClasses, data-user-id="user-" + user.id)
 
-  .card.text-center
-    .card-header Bootstrap 4 card example
-    .card-body
-      .card-title Hello World, this is PugHtml
-      i.fa.fa-home.fa-2x.text-primary
-        a(href="http://", target="_blank")
-          span Link
-    .card-footer.text-muted powered by Bibooki
+    // --- Comments ---
+    // This is a Pug comment (won't appear in HTML output)
+    //- This is also a hidden Pug comment (buffered)
 
-    - var friends = 10
-        case friends
-          when 0
-            p you have no friends
-          when 1
-            p you have a friend
+    //
+      This is an HTML comment.
+      It will appear in the HTML output.
+      It spans multiple lines.
+
+    //if IE 9
+      p This is an IE conditional comment.
+
+    // --- Tags, IDs, Classes ---
+    header#main-header.site-header(role="banner")
+      //- Implicit div tag with ID and classes
+      #logo.logo-container
+        //- Boolean attribute (true value)
+        img(src=imagePath, alt=`Logo for ${pageTitle}`, data-loaded=true)
+      nav.main-navigation.navbar.navbar-expand
+        ul.nav-list
+          li.nav-item: a(href="/home") Home // Implicit nested tag with colon
+          li.nav-item.active: a(href="/about") About
+
+    main#content.container(aria-live="polite")
+
+      // --- Text Content & Interpolation ---
+      h1 Hello, #{user.name}! // Escaped interpolation
+      //- Unescaped interpolation
+      p!= "Welcome! Your description: " + user.description
+      p Raw HTML Snippet: != rawHtmlSnippet
+
+      //- Inline text
+      p This paragraph has inline text directly after the tag.
+
+      //- Piped text (multi-line block)
+      p
+        | This text block uses pipes.
+        | Each line starts with a pipe character.
+        | It allows for longer content easily.
+        br //- Self-closing tag example
+        | Another line after a break.
+
+      //- Plain text block using dot notation
+      div.plain-text-block
+        .
+          This text block uses a dot.
+          It is treated as plain text without pipes.
+          Indentation matters here too.
+
+      //- Block Expansion
+      a(href="#"): strong Clickable Text: Showing block expansion.
+
+      // --- Attributes ---
+      section(data-section-name='attributes-test')
+        h2 Attribute Examples
+        //- Standard string attributes (single and double quotes)
+        a(href='http://example.com', title="Example Link") Example Site
+        //- JavaScript expression in attribute
+        p(data-user-level=(user.isAdmin ? 'admin' : 'standard')) User Level
+        //- Boolean attributes (true/false/null expression)
+        input(type="checkbox", name="active", checked=isActive)
+        input(type="text", name="maybe", disabled=maybeDisabled, readonly=null) //- null/false disables
+        //- Style attribute from object
+        div(style=styleObject) Styled Div
+        //- Class attribute from array/object (merged with existing if any)
+        button.base-btn(type="button", class=customClasses, class=conditionalClasses) Merged Classes Button
+        //- Unescaped attribute value
+        div(data-unsafe-html!=rawHtmlSnippet)
+
+      // --- Code (Unbuffered, Buffered, Unescaped) ---
+      section#code-examples
+        h2 Code Examples
+        //- Unbuffered code (for logic)
+        - var calculatedValue = count * 10;
+        - var statusMessage = user.isAdmin ? "Administrator" : "Regular User";
+        //- Buffered code (output escaped)
+        p Calculated Value: #{calculatedValue}
+        p Status: = statusMessage
+        //- Unescaped buffered code (output raw)
+        div!= user.description
+
+      // --- Control Flow ---
+      section#control-flow
+        h2 Control Flow
+        //- If / Else If / Else
+        if user.isAdmin
+          p.status.admin Welcome, Admin!
+        else if user.name === "Alice"
+          p.status.special Welcome back, Alice!
+        else
+          p.status.guest Welcome, Guest!
+
+        //- Unless (opposite of if)
+        unless maybeDisabled
+          p This section is NOT disabled.
+
+        //- Each loop (Array)
+        h3 Item List
+        ul.item-list
+          each item, index in items
+            li(class=`item-${index}`) Item #{index + 1}: #{item}
+          else
+            li No items in the list.
+
+        //- Each loop (Object)
+        h3 Chapters
+        dl.chapter-list
+          each title, key in chapters
+            dt Chapter: #{key}
+            dd Title: #{title}
+          else
+            p No chapters available.
+
+        //- While loop
+        h3 While Loop
+        - var i = 0;
+        ul
+          while i < count
+            li Iteration #{i++} // Use JS increment within interpolation
+            //- Need to manually increment i if not done above
+            //- - i++;
+
+      // --- Mixins ---
+      section#mixins
+        h2 Mixins
+
+        //- Mixin Definition: Simple
+        mixin simpleMessage
+          p.mixin-message This is a simple mixin message.
+
+        //- Mixin Definition: With arguments & defaults
+        mixin userCard(name, role='User', score=0)
+          .user-card
+            h4= name
+            p Role: #{role}
+            if score > 0
+              p Score: #{score}
+
+        //- Mixin Definition: With block content
+        mixin panel(title)
+          .panel
+            .panel-heading= title
+            .panel-body
+              if block
+                block // Yields to the block passed when calling
+              else
+                p.empty-panel No content provided for this panel.
+
+        //- Mixin Definition: Using &attributes
+        mixin iconButton(iconName, ...args) // Rest arguments
+          button.icon-btn&attributes(attributes)
+            i(class=`icon-${iconName}`)
+            span= args.join(' ') // Example using rest args
+
+        //- Mixin Usage
+        +simpleMessage
+
+        +userCard(user.name, user.isAdmin ? 'Admin' : 'User', 75)
+        +userCard('Bob') // Using default role and score
+
+        +panel('Important Information')
+          p This is content passed into the panel mixin's block.
+          ul
+            li Point 1
+            li Point 2
+
+        +panel('Empty Panel') // Calling mixin without a block
+
+        +iconButton('save', 'Save', 'Changes')(class="btn-save", type="submit", id="save-btn") // Passing attributes
+
+
+      // --- Includes and Extends (Example Syntax - assumes files exist) ---
+      section#includes-extends
+        h2 Includes & Extends (Syntax Examples)
+        //- include partials/header.pug // Include another Pug file
+        //- include ../data/content.md // Include plain text/markdown
+
+        //- Extends example (usually at the top of the file)
+        //- extends layouts/base.pug
+
+        //- Block definition/overriding (used with extends)
+        //- block content
+        //-   p This content replaces the 'content' block in layouts/base.pug
+
+        //- append footerScripts
+        //-   script(src="/js/page-specific.js")
+
+        //- prepend pageStyles
+        //-   link(rel="stylesheet", href="/css/page-specific.css")
+
+
+      // --- Filters ---
+      section#filters
+        h2 Filters
+        //- Markdown Filter (requires markdown-it or similar)
+        :markdown
+          ## Markdown Filter
+          This text will be rendered as **Markdown**.
+          * Item 1
+          * Item 2
+          [Link](http://example.com)
+
+        //- CoffeeScript Filter (example - requires CoffeeScript compiler)
+        //- :coffeescript
+        //-   console.log "Hello from CoffeeScript!"
+        //-   square = (x) -> x * x
+
+        //- CDATA Filter
+        :cdata
+          <sender>John Doe</sender>
+          CDATA sections are treated as raw text blocks in XML/HTML.
+
+
+      // --- Case Statement ---
+      section#case-statement
+        h2 Case Statement
+        - var userRole = user.isAdmin ? 'admin' : 'guest';
+        case userRole
+          when 'admin'
+            p Welcome, powerful administrator!
+          when 'editor'
+            p You have editing privileges.
+          when 'guest'
+            p Welcome, guest user. Please sign in.
           default
-            p you have #{friends} friends
+            p Unknown user role.
 
-    - for (var x = 0; x < 3; x++)
-      li item
-
-    - var list = ["Uno", "Dos", "Tres", "Cuatro", "Cinco", "Seis"]
-      
-      each item in list
-        li= item
-
-    ul
-      each val, index in ['zero', 'one', 'two']
-        li= index + ': ' + val
-
-    include _includes/pug/module.pug
-
-    script(src='js/scripts.js')
-    script(src='js/app.js')
-    script(src='js/functions.js')
+    // --- Footer ---
+    footer.site-footer
+      p &copy; #{new Date().getFullYear()} #{pageTitle}. All rights reserved. // Using JS Date object
+      //- Escaped attribute example for security context
+      a(href=`/profile?id=${user.id}`, title=`View profile for ${user.name}`) Profile Link

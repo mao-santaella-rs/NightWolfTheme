@@ -244,20 +244,19 @@ $warn: #dfa612
     margin-right: 10px
 
   // You can even use it as an argument to pseudo-class selectors.
-  :not(&)
+  &:not(&)
     opacity: 0.8
 
-// ===
-// .alert:hover {
-//   font-weight: bold;
-// }
-// [dir=rtl] .alert {
-//   margin-left: 0;
-//   margin-right: 10px;
-// }
-// :not(.alert) {
-//   opacity: 0.8;
-// }
+===
+.alert:hover
+  font-weight: bold
+
+[dir=rtl] .alert
+  margin-left: 0
+  margin-right: 10px
+
+:not(.alert)
+  opacity: 0.8
 
 .accordion
   max-width: 600px
@@ -265,6 +264,7 @@ $warn: #dfa612
   width: 90%
   font-family: "Raleway", sans-serif
   background: #f4f4f4
+  color: black
 
   &__copy
     display: none
@@ -406,7 +406,7 @@ $theme-colors: ("success": #28a745, "info": #17a2b8, "warning": #ffc107)
   margin-left: pow(4, 3) * 1px
 
 // This comment won't be included in the CSS.
-   This is also commented out.
+// This is also commented out.
 
 /* But this comment will, except in compressed mode.
 
@@ -416,7 +416,7 @@ $theme-colors: ("success": #28a745, "info": #17a2b8, "warning": #ffc107)
 /*! This comment will be included even in compressed mode.
 
 p .sans
-  font: Helvetica, /* Inline comments must be closed.*/ sans-serif
+  font: Helvetica
 
   @function my-calculation-function($some-number, $another-number)
   @return $some-number + $another-number
@@ -515,12 +515,12 @@ div
   $null: null
   $parens-spaces-list: (left top)
   $parens-commas-list: (1px, 2px, 3px, 4px)
-$no-parens-spaces-list: 1px 2px 3px 4px
-$no-parens-commas-list: arial, some-other-arial, sans-serif
-$trailing-comma: (1 2 3,) // a comma-separated list containing a space-separated list
-$bracketed-list: [5rem 6rem 7rem] // comma or space separated
-$map: (medium: 640, 'large': 960, "x-large": 1280, (xx-large,): 1600) // must have parentheses, be comma separated
-$color: #fe57a1
+  $no-parens-spaces-list: 1px 2px 3px 4px
+  $no-parens-commas-list: arial, some-other-arial, sans-serif
+  $trailing-comma: (1 2 3,) // a comma-separated list containing a space-separated list
+  $bracketed-list: [5rem 6rem 7rem] // comma or space separated
+  $map: (medium: 640, 'large': 960, "x-large": 1280, (xx-large,): 1600) // must have parentheses, be comma separated
+  $color: #fe57a1
 $function-reference: get-function($function-name)
 
 // assign if not already assigned to
@@ -896,18 +896,27 @@ Body
  */
 
 /* simple selectors */
-#testID,       /* id */
-.someclass,    /* class */
-div,           /* type */
-*,             /* universal */
-[lang|="zh"] /* attribute */
+/* id */
+#testID,
+/* class */
+.someclass,
+/* type */
+div,
+/* universal */
+*,
+/* attribute */
+[lang|="zh"] 
   color: black
 
 /* combinators */
-header + main, /* adjacent sibling */
-li ~ li,       /* general sibling */
-ul > li,       /* child */
-ul ul        /* descendant */
+/* adjacent sibling */
+header + main, 
+/* general sibling */
+li ~ li,
+/* child */
+ul > li,
+/* descendant */
+ul ul
   color: blue
 
 /* pseudo-elements */
@@ -932,12 +941,18 @@ body
 
 /* pseudo-classes with invalid arguments */
 body
-  &:not(div:before),         /* pseudo-element */
-  &:not(input::placeholder), /* pseudo-element */
-  &:not(p:not(:lang(en))),   /* nested :not */
-  &:nth-child(1.2n),         /* non-integer */
-  &:nth-child(.5),           /* non-integer */
-  &:nth-child(n+-1)        /* number sign */
+  /* pseudo-element */
+  &:not(div:before),
+  /* pseudo-element */
+  &:not(input::placeholder),
+  /* nested :not */
+  &:not(p:not(:lang(en))),
+  /* non-integer */
+  &:nth-child(1.2n),
+  /* non-integer */
+  &:nth-child(.5),
+  /* number sign */
+  &:nth-child(n+-1)
     color: red
 
 /* namespace qualified */
@@ -972,12 +987,12 @@ svg|[fill] /* attribute */
 
   /* integer */
   z-index: +255
-  z-index: -1
+  z-index: -221
 
   /* length */
   width: 10px
   width: 10.5rem
-  width: -10e-2vw
+  width: -10e -2vw
 
   /* number */
   opacity: .5

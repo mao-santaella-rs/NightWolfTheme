@@ -1,431 +1,565 @@
-import { CommandResult } from '../Rendering/Commands/CommandResult'
-import { LineResults } from '../Rendering/LineResults'
-
+// -*- coding: utf-8 -*-
 /**
- * Generates language output by merging line results.
+ * TypeScript Syntax Highlighting Test File
+ *
+ * This file includes a variety of TypeScript and JavaScript constructs
+ * to test syntax highlighting in code editors and themes.
+ * Covers types, interfaces, classes, generics, modules, decorators, etc.
  */
 
-var globalVar = Number
-let variable = 324
-const constant = {
-  propertyA: [2, 'variable'],
-  propertyB: 'some string',
-  propertyC: 2019,
-  propertyD: {
-    subPropertyA: true,
-    subPropertyB: false,
-    subPropertyC: null,
-    subPropertyD: undefined,
-    subPropertyE: {
-      subSubPropertyA: 'string',
-    },
-    methodF: (parameterA) => {
-      console.log(parameterA)
-    },
-  },
-  methodA: (parameterA, parameterB) => {
-    console.log(parameterA, parameterB)
-  },
+// --- Triple Slash Directives ---
+/// <reference path="some-other-file.d.ts" />
+/// <reference types="node" />
+
+// --- Imports & Exports ---
+import * as fs from 'fs' // Namespace import
+import { EventEmitter } from 'events' // Named import
+import DefaultExport, { HelperClass, helperFunction as renamedHelper } from './my-module' // Default, named, and renamed imports
+import type { SomeType, AnotherType } from './my-types' // Type-only import
+
+export const PI = 3.14159 // Exported constant
+export default class MainApplication extends EventEmitter {
+  // Exported default class
+  // ... class body ...
 }
-console.log(constant.propertyD.subPropertyE.subSubPropertyA);
-console.log(constant.propertyD.methodF('par1'))
+export { helperFunction } from './another-module' // Re-export
 
-constant.methodA(25, 35)
-console.log(constant.propertyD.subPropertyE.subSubPropertyA)
-
-function getGreeting() {
-  return 'howdy'
-}
-
-var pattern = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
-getGreeting()
-
-class Greeter {}
-class MyGreeter extends Greeter {}
-
-declare namespace GreetingLib {
-  interface LogOptions {
-    verbose?: boolean
-  }
-  interface AlertOptions {
-    modal: boolean
-    title?: string
-    color?: string
-  }
-}
-export class Vue {}
-
-export const sss = 'sss'
-
-const mao: GreetingLib.LogOptions = {
-  verbose: true,
-}
-
-const myGreeter = new Greeter('hello, world')
-myGreeter.greeting = 'howdy'
-myGreeter.showGreeting()
-
-class SpecialGreeter extends Greeter {
-  constructor() {
-    super('Very special greetings')
-  }
-}
-
-declare function getWidget(s: string): Widget[]
-
-@Component
-export default class HelloWorld extends Vue {
-  @Prop() private msg!: string
-}
-
-constant.methodA(25, 35)
-
-export class OutputMerger {
-  /**
-   * Characters to output for semicolon-ended lines.q
-   */
-  private semicolon: string
-
-  /**
-   * Initializes a new instance of the OutputMerger class.
-   *
-   * @param semicolon   Characters to output for semicolon-ended lines.
-   */
-  public constructor(semicolon: string) {
-    this.semicolon = semicolon
-  }
-
-  /**
-   * Generates language output by merging a file's line results.
-   *
-   * @param fileLineResults   GLS line results from a file.
-   * @return Language output from the line results.
-   */
-  public mergeFileLineResults(fileLineResults: LineResults[]): string[] {
-    const output: string[] = []
-    let indentation = 0
-
-    for (const lineResults of fileLineResults) {
-      const commandResults: CommandResult[] = lineResults.commandResults
-
-      for (const result of commandResults) {
-        if (result.indentation < 0) {
-          indentation += result.indentation
-        }
-
-        if (result.text === '') {
-          output.push('')
-        } else if (result.text !== '\0') {
-          output.push(this.generateTabs(indentation) + result.text)
-        }
-
-        if (result.indentation > 0) {
-          indentation += result.indentation
-        }
-      }
-
-      if (lineResults.addSemicolon) {
-        output[output.length - 1] += this.semicolon
-      }
-    }
-
-    return output
-  }
-
-  /**
-   * Generates spaces equivalent to 4-space code tabbing.
-   *
-   * @param amount   How many tabs should be added.
-   * @returns An all-spaces String of length = amount * 4.
-   */
-  private generateTabs(amount: number): string {
-    let output = ''
-
-    for (let i = 0; i < amount; i += 1) {
-      output += '    '
-    }
-
-    return output
-  }
-}
-
-import { BlankNode } from '../Nodes/BlankNode'
-import { CommandNode } from '../Nodes/CommandNode'
-import { IGlsNode } from '../Nodes/IGlsNode'
-import { TextNode } from '../Nodes/TextNode'
-import { TextParsing } from './TextParsing'
-
+// --- Comments ---
+// This is a single-line comment.
+/* This is a
+   multi-line comment. */
 /**
- * Parses individual lines of raw syntax into GLS nodes.
+ * This is a JSDoc comment.
+ * @param input Some input parameter.
+ * @returns A processed string.
  */
-export class SourceLineParser {
-  /**
-   * Parses a line of raw source syntax into a GLS nodes.
-   *
-   * @param rawLine   Raw line of source syntax.
-   */
-  public parseLine(rawLine: string): IGlsNode {
-    rawLine = rawLine.trim()
-    if (rawLine === '') {
-      return new BlankNode()
-    }
+// TODO: Implement feature X
+// FIXME: Fix bug Y
 
-    const colonIndex: number = rawLine.indexOf(':')
-    if (colonIndex === -1) {
-      return new CommandNode(rawLine.trim(), [])
-    }
+// --- Basic Variables & Literals ---
+let message: string = 'Hello, TypeScript!'
+const count: number = 42
+let isDone: boolean = false
+const bigIntValue: bigint = 9007199254740991n
+let nullableValue: string | null = null
+let undefinedValue: number | undefined = undefined
+let anyValue: any = 'can be anything' // Avoid 'any' if possible
+let unknownValue: unknown = 123 // Safer alternative to 'any'
 
-    const command: string = rawLine.substring(0, colonIndex).trim()
-    const args: IGlsNode[] = []
+const templateString = `Count is ${count}, message is: "${message}"`
+const regexLiteral: RegExp = /ab+c/i
 
-    this.parseCommandArgs(rawLine, colonIndex + 1, args)
+const list: number[] = [1, 2, 3]
+const genericList: Array<string> = ['a', 'b', 'c']
+const tupleType: [string, number, boolean?] = ['hello', 10, true] // Optional element
 
-    return new CommandNode(command, args)
+const objectLiteral = {
+  key: 'value',
+  'another-key': 100,
+  nested: {
+    flag: true,
+  },
+}
+
+// --- Enums ---
+enum Color {
+  Red, // Starts at 0
+  Green, // 1
+  Blue, // 2
+}
+enum Status {
+  Pending = 'PENDING',
+  Processing = 'PROCESSING',
+  Completed = 'COMPLETED',
+  Failed = 'FAILED',
+}
+
+let colorVal: Color = Color.Green
+let statusVal: Status = Status.Processing
+
+// --- Interfaces ---
+interface Point {
+  readonly x: number // Readonly property
+  y: number
+  z?: number // Optional property
+  label?: string
+}
+
+interface Movable {
+  move(distance: number): void
+}
+
+interface Shape extends Movable {
+  // Interface inheritance
+  getArea: () => number // Function type property
+  [propName: string]: any // Index signature
+}
+
+// Implementing an interface
+class Square implements Shape {
+  // Parameter properties (shortcut for declaring and initializing)
+  constructor(
+    public side: number,
+    public label: string = 'Default Square',
+  ) {}
+
+  move(distance: number): void {
+    console.log(`Square moved ${distance} units.`)
   }
 
-  /**
-   * Parses the args for a command.
-   *
-   * @param rawLine   Raw line containing the command.
-   * @param start   Starting index of the args within the line.
-   * @param nodes   Collection of nodes to add the command to.
-   * @param withinParenthesis   Whether this is within a ( parenthesis ) section
-   * @returns Next starting index after the last added node.
-   */
-  private parseCommandArgs(rawLine: string, start: number, nodes: IGlsNode[]): number {
-    for (let i = start; i < rawLine.length; i += 1) {
-      // Sub-command start
-      if (rawLine[i] === '{') {
-        i = this.parseSubCommand(rawLine, i, nodes)
-        continue
-      }
+  getArea(): number {
+    return this.side * this.side
+  }
 
-      // Sub-command end
-      if (rawLine[i] === '}') {
-        return i + 1
-      }
+  // Fulfills the index signature implicitly or explicitly
+  customProp: boolean = true
+}
 
-      // Parenthesis start
-      if (rawLine[i] === '(') {
-        i = this.parseParenthesis(rawLine, i + 1, nodes)
-        continue
-      }
+// --- Type Aliases ---
+type StringOrNumber = string | number
+type PointCoords = { x: number; y: number } // Object type alias
+type UserID = number
+type CallbackFn = (error: Error | null, result?: string) => void // Function type alias
+type LiteralType = 'click' | 'hover' | 'focus'
+type CombinedType = PointCoords & { z: number } // Intersection type
 
-      // Space (do nothing)
-      if (rawLine[i] === ' ') {
-        continue
-      }
+let userId: UserID = 12345
+let eventType: LiteralType = 'click'
+let mixedVar: StringOrNumber = 'hello'
+mixedVar = 100
 
-      // Regular text start
-      i = this.parseTextCommand(rawLine, i, nodes)
+// --- Functions ---
+function add(x: number, y: number): number {
+  return x + y
+}
+
+const subtract = (a: number, b: number): number => a - b // Arrow function
+
+function greet(name: string, greeting: string = 'Hello'): string {
+  // Default parameter
+  return `${greeting}, ${name}!`
+}
+
+function processItems(prefix: string, ...items: string[]): void {
+  // Rest parameter
+  items.forEach((item) => console.log(`${prefix}: ${item}`))
+}
+
+// Function Overloads
+function formatData(data: string): string
+function formatData(data: number, decimals: number): string
+function formatData(data: any, decimals?: number): string {
+  if (typeof data === 'string') {
+    return data.toUpperCase()
+  } else if (typeof data === 'number' && decimals !== undefined) {
+    return data.toFixed(decimals)
+  }
+  return String(data)
+}
+
+let formattedString = formatData('test')
+let formattedNumber = formatData(123.456, 2)
+
+// --- Classes ---
+abstract class Animal {
+  // Abstract class
+  protected name: string // Protected member
+  private age: number // Private member
+
+  constructor(name: string, age: number) {
+    this.name = name
+    this.age = age
+  }
+
+  abstract makeSound(): void // Abstract method
+
+  public move(distance: number = 0): void {
+    // Public method (default)
+    console.log(`${this.name} moved ${distance}m.`)
+  }
+
+  get animalAge(): number {
+    // Getter
+    return this.age
+  }
+
+  set animalAge(newAge: number) {
+    // Setter
+    if (newAge > 0) {
+      this.age = newAge
     }
-
-    return rawLine.length
   }
 
-  /**
-   * Recurses into a command-within-a-command.
-   *
-   * @param rawLine   Raw line containing the command.
-   * @param start   Starting index of the args within the line.
-   * @param nodes   Collection of nodes to add the command to.
-   * @returns Next starting index after the last added node.
-   */
-  private parseSubCommand(rawLine: string, i: number, nodes: IGlsNode[]): number {
-    // Move past the starting "{" or "{ "
-    i = TextParsing.getNextStartOfWordIndex(rawLine, i + 1)
-
-    // Command name
-    const commandNameEnd: number = TextParsing.getNextEndOfCommandNameIndex(rawLine, i)
-    const commandNameRaw: string = rawLine.substring(i, commandNameEnd)
-    const commandName: string = commandNameRaw.trim()
-
-    // Either "}" (command end) or ":" (command args start)
-    i = TextParsing.getNextNonSpaceIndex(rawLine, commandNameEnd)
-
-    // "}" (command end)
-    if (rawLine[i] === '}') {
-      nodes.push(new CommandNode(commandName, []))
-      return i + 1
-    }
-
-    // ":" (command args start)
-    const commandArgs: IGlsNode[] = []
-    i = this.parseCommandArgs(rawLine, i + 1, commandArgs)
-
-    nodes.push(new CommandNode(commandName, commandArgs))
-
-    return i
-  }
-
-  /**
-   * Collects the text contents between parenthesis.
-   *
-   * @param rawLine   Raw line containing the command.
-   * @param start   Starting index of the args within the line.
-   * @param nodes   Collection of nodes to add the command to.
-   * @returns Next starting index after the last added node.
-   */
-  private parseParenthesis(rawLine: string, i: number, nodes: IGlsNode[]): number {
-    const nextEndOfWordIndex = TextParsing.getNextEndOfParenthesisWordIndex(rawLine, i)
-    const textRaw = rawLine.substring(i, nextEndOfWordIndex)
-    const text = TextParsing.removeBackslashesFromWord(textRaw)
-
-    nodes.push(new TextNode(text))
-
-    return nextEndOfWordIndex
-  }
-
-  /**
-   * Parses raw text.
-   *
-   * @param rawLine   Raw line containing the command.
-   * @param start   Starting index of the args within the line.
-   * @param nodes   Collection of nodes to add the command to.
-   * @returns Next starting index after the last added node.
-   */
-  private parseTextCommand(rawArgs: string, i: number, nodes: IGlsNode[]): number {
-    const nextEndOfWordIndex = TextParsing.getNextEndOfWordIndex(rawArgs, i)
-    const text = rawArgs.substring(i, nextEndOfWordIndex)
-
-    nodes.push(new TextNode(text))
-
-    return nextEndOfWordIndex
+  static staticMethod() {
+    // Static method
+    console.log('This is a static method from Animal')
   }
 }
 
-@decorator()
-class NameClass {}
-declare module name {}
-
-interface MyInterface {}
-type FooBarAlias = string
-var x: MyInterface, y: string, z: FooBarAlias
-
-for (let index = 0; index < array.length; index++) {
-  const element = array[index]
-}
-
-if (constant.parameterA[0] === 3 && variable <= 550) {
-} else {
-}
-
-interface Entity {
-  name: string
-}
-let x: Entity | null
-let p: string | null = null // Assert that x is non-null and access name
-let s = x && x.name // s is of type string | null
-let y = x || { name: 'test' } // y is of type Entity
-
-// The first for statement is labeled "loop1"
-loop1: for (let i = 0; i < 3; i++) {
-  // The second for statement is labeled "loop2"
-  loop2: for (let j = 0; j < 3; j++) {
-    if (i === 1 && j === 1) {
-      continue loop1;
-    }
-    console.log(`i = ${i}, j = ${j}`);
-  }
-}
-
-
-
-// A class declaration with a name
-class Person {
-  // A constructor method that initializes the object properties
-  constructor(name, age, gender) {
-    this.name = name;
-    this.age = age;
-    this.gender = gender;
+class Dog extends Animal implements Movable {
+  // Inheritance and implementation
+  constructor(name: string, age: number) {
+    super(name, age)
   }
 
-  // A public instance method that returns a greeting
+  makeSound(): void {
+    // Implementation of abstract method
+    console.log('Woof! Woof!')
+  }
+
+  // Implementation of Movable interface method is inherited from Animal
+}
+
+const dog = new Dog('Buddy', 5)
+dog.move(10)
+dog.makeSound()
+console.log(`Dog's age: ${dog.animalAge}`)
+dog.animalAge = 6
+Animal.staticMethod()
+
+// 4. size on Map
+const myMap = new Map()
+myMap.set('a', 1)
+myMap.set('b', 2)
+myMap.set('c', 3)
+console.log('\nMap:', myMap)
+console.log('myMap.size:', myMap.size) // Output: 3 (number of key/value pairs)
+// 'size' is read-only
+
+// 5. size on Set
+const mySet = new Set()
+mySet.add(10)
+mySet.add(20)
+mySet.add(10) // Duplicate ignored
+mySet.add(30)
+console.log('\nSet:', mySet)
+console.log('mySet.size:', mySet.size) // Output: 3 (number of unique elements)
+// 'size' is read-only
+
+// --- Generics ---
+function identity<T>(arg: T): T {
+  return arg
+}
+let output = identity<string>('myString')
+let outputNum = identity(123) // Type inference
+
+interface Lengthwise {
+  length: number
+}
+function loggingIdentity<T extends Lengthwise>(arg: T): T {
+  // Generic constraint
+  console.log(arg.length)
+  return arg
+}
+loggingIdentity({ length: 10, value: 3 })
+// loggingIdentity(3); // Error: number doesn't have length property
+
+class GenericContainer<T> {
+  private value: T
+  constructor(value: T) {
+    this.value = value
+  }
+  getValue(): T {
+    return this.value
+  }
+}
+let stringContainer = new GenericContainer<string>('Test')
+let numberContainer = new GenericContainer(42) // Type inference
+
+// --- Decorator Definition ---
+function Sealed(constructor: Function) {
+  console.log(`Sealing the constructor: ${constructor.name}`)
+  Object.seal(constructor) // Prevents adding new properties to the constructor itself
+  Object.seal(constructor.prototype) // Prevents adding new properties to the prototype (instances)
+}
+
+function* generator() {
+  yield 1
+  yield 2
+  yield 3
+}
+
+// --- Usage ---
+@Sealed
+class Greeter {
+  greeting: string
+
+  constructor(message: string) {
+    this.greeting = message
+    console.log('Greeter instance created')
+  }
+
   greet() {
-    return `Hello, my name is ${this.name} and I am ${this.age} years old.`;
-  }
-
-  // A public instance getter that returns the birth year
-  get birthYear() {
-    const date = new Date();
-    return date.getFullYear() - this.age;
-  }
-
-  // A public instance setter that updates the age
-  set age(newAge) {
-    if (newAge > 0 && newAge < 120) {
-      this.age = newAge;
-    } else {
-      throw new Error("Invalid age");
-    }
-  }
-
-  // A public static method that returns the average age of an array of persons
-  static averageAge(persons) {
-    let sum = 0;
-    for (let person of persons) {
-      sum += person.age;
-    }
-    return sum / persons.length;
-  }
-
-  // A private instance field that stores the favorite color
-  #favoriteColor = "blue";
-
-  // A private instance method that returns the favorite color
-  #getFavoriteColor() {
-    return this.#favoriteColor;
-  }
-
-  // A public instance method that calls the private instance method
-  revealFavoriteColor() {
-    return `My favorite color is ${this.#getFavoriteColor()}.`;
+    return 'Hello, ' + this.greeting
   }
 }
 
-// A class expression that extends the Person class
-const Student = class extends Person {
-  // A constructor method that calls the super constructor and initializes the student properties
-  constructor(name, age, gender, school, major) {
-    super(name, age, gender); // Call the parent constructor
-    this.school = school;
-    this.major = major;
+// Test
+const g = new Greeter('world')
+console.log(g.greet())
+
+// Try to add properties (will fail silently or throw in strict mode if already sealed)
+try {
+  // (Greeter.prototype as any).newMethod = () => { console.log('new method'); }; // Fails
+  // (g as any).newProp = 'test'; // Fails
+} catch (e) {
+  console.error('Error trying to modify sealed object:', e)
+}
+
+console.log('Is Greeter sealed?', Object.isSealed(Greeter))
+console.log('Is Greeter.prototype sealed?', Object.isSealed(Greeter.prototype))
+
+// interface GenericPair<K, V> {
+//   key: K;
+//   value: V;
+// }
+// let pair: GenericPair<number, string> = { key: 1, value: "one" };
+
+// // --- Type Assertions & Guards ---
+// let someValue: unknown = "this is a string";
+// let strLength: number = (someValue as string).length; // 'as' syntax
+// let strLength2: number = (<string>someValue).length; // '<>' syntax (avoid in JSX/TSX)
+
+// function isNumber(value: any): value is number { // Type predicate
+//   return typeof value === 'number';
+// }
+// if (isNumber(unknownValue)) {
+//   console.log(unknownValue.toFixed(2)); // unknownValue is treated as number here
+// }
+
+// // Non-null assertion operator
+// function processNullable(value: string | null | undefined) {
+//     const upper = value!.toUpperCase(); // Asserts 'value' is not null/undefined
+//     console.log(upper);
+// }
+// // processNullable(null); // This would cause a runtime error
+
+// // --- Operators ---
+// let sum = 5 + 3;
+// let fullName = "John" + " " + "Doe";
+// let isGreater = 10 > 5;
+// let isAuth = true && isDone;
+// let hasAccess = isAuth || colorVal === Color.Red;
+// let bitwiseAnd = 5 & 3; // 1
+// let bitwiseOr = 5 | 3; // 7
+
+// // Optional Chaining (?.) and Nullish Coalescing (??)
+// const user = {
+//   id: 1,
+//   profile: {
+//     name: "Alice",
+//     // address: { street: "123 Main St" } // Address might be missing
+//   }
+// };
+// const streetName = user.profile?.address?.street ?? "Address not provided"; // Use ?? for default
+// console.log(`Street: ${streetName}`);
+
+// // Spread operator
+// const arr1 = [1, 2];
+// const arr2 = [...arr1, 3, 4];
+// const obj1 = { a: 1, b: 2 };
+// const obj2 = { ...obj1, c: 3 };
+
+// // --- Control Flow ---
+// if (count > 50) {
+//   console.log("Count is large");
+// } else if (count > 10) {
+//   console.log("Count is medium");
+// } else {
+//   console.log("Count is small");
+// }
+
+// switch (colorVal) {
+//   case Color.Red:
+//     console.log("Color is Red");
+//     break;
+//   case Color.Green:
+//   case Color.Blue:
+//     console.log("Color is Green or Blue");
+//     break;
+//   default:
+//     const exhaustiveCheck: never = colorVal; // Exhaustiveness check
+//     console.log("Unknown color");
+// }
+
+// for (let i = 0; i < 3; i++) {
+//   console.log(`For loop: ${i}`);
+// }
+
+// for (const key in objectLiteral) {
+//   if (objectLiteral.hasOwnProperty(key)) {
+//     console.log(`For...in key: ${key}`);
+//   }
+// }
+
+// for (const item of genericList) {
+//   console.log(`For...of item: ${item}`);
+// }
+
+// let whileCounter = 0;
+// while (whileCounter < 2) {
+//   console.log(`While loop: ${whileCounter}`);
+//   whileCounter++;
+// }
+
+// try {
+//   throw new Error("Something went wrong!");
+// } catch (error) {
+//   if (error instanceof Error) {
+//     console.error(`Caught error: ${error.message}`);
+//   } else {
+//     console.error(`Caught unknown error: ${error}`);
+//   }
+// } finally {
+//   console.log("Finally block executed.");
+// }
+
+// // --- Decorators (Requires "experimentalDecorators": true in tsconfig.json) ---
+// function sealed(constructor: Function) {
+//   console.log("Sealing the constructor");
+//   Object.seal(constructor);
+//   Object.seal(constructor.prototype);
+// }
+
+// function enumerable(value: boolean) {
+//   return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
+//     console.log(`Setting enumerability of ${propertyKey} to ${value}`);
+//     descriptor.enumerable = value;
+//   };
+// }
+
+// function logParameter(target: any, propertyKey: string, parameterIndex: number) {
+//     console.log(`Logging parameter ${parameterIndex} for method ${propertyKey}`);
+// }
+
+@sealed
+class DecoratedClass {
+  private _prop: string = 'test'
+
+  @enumerable(false)
+  greet(@logParameter message: string): string {
+    return `Hello, ${message}, prop is ${this._prop}`
   }
+}
 
-  // A public instance method that overrides the parent method
-  greet() {
-    return `Hi, I'm ${this.name} and I study ${this.major} at ${this.school}.`;
+// --- Modules and Namespaces ---
+namespace Validation {
+  export interface StringValidator {
+    isAcceptable(s: string): boolean
   }
-
-  // A public instance getter that returns the graduation year
-  get graduationYear() {
-    const date = new Date();
-    return date.getFullYear() + 4 - this.age / 5;
+  const lettersRegexp = /^[A-Za-z]+$/
+  export class LettersOnlyValidator implements StringValidator {
+    isAcceptable(s: string) {
+      return lettersRegexp.test(s)
+    }
   }
+}
+let validator = new Validation.LettersOnlyValidator()
+console.log(`Is "Hello" valid? ${validator.isAcceptable('Hello')}`)
 
-  // A public static method that returns the number of students in an array of students
-  static countStudents(students) {
-    return students.length;
-  }
-  // A static initialization block that runs some code when the class is defined
-  static {
-    console.log("Student class is defined");
-  }
-};
+// // --- Advanced Types ---
+// type Keys = keyof Point; // 'x' | 'y' | 'z' | 'label'
+// type PointXType = Point['x']; // number
 
+// // Mapped Types
+// type ReadonlyPoint = { readonly [P in keyof Point]: Point[P] };
+// type OptionalPoint = { [P in keyof Point]?: Point[P] };
+// type NullablePoint = { [P in keyof Point]: Point[P] | null };
 
-// Creating some instances of the classes
-const alice = new Person("Alice", 25, "female");
-const bob = new Student("Bob", 20, "male", "MIT", "Computer Science");
-const charlie = new Student("Charlie", 19, "male", "Harvard", "Mathematics");
+// // Conditional Types
+// type TypeName<T> =
+//   T extends string ? "string" :
+//   T extends number ? "number" :
+//   T extends boolean ? "boolean" :
+//   T extends undefined ? "undefined" :
+//   T extends Function ? "function" :
+//   "object";
 
-// Calling some methods and getters on the instances
-console.log(alice.greet()); // Hello, my name is Alice and I am 25 years old.
-console.log(bob.greet()); // Hi, I'm Bob and I study Computer Science at MIT.
-console.log(charlie.graduationYear); // 2028
-console.log(alice.revealFavoriteColor()); // My favorite color is blue.
+// type T0 = TypeName<string>;  // "string"
+// type T1 = TypeName<() => void>; // "function"
+// type T2 = TypeName<string[]>; // "object"
 
-// Calling some static methods on the classes
-console.log(Person.averageAge([alice, bob, charlie])); // 21.333333333333332
-console.log(Student.countStudents([bob, charlie])); // 2
+// // --- Async/Await ---
+// function delay(ms: number): Promise<void> {
+//   return new Promise(resolve => setTimeout(resolve, ms));
+// }
+
+// async function asyncFunctionExample(): Promise<string> {
+//   console.log("Async function started...");
+//   await delay(100); // Pauses execution
+//   console.log("...resumed after delay.");
+//   const result = await Promise.resolve("Async result");
+//   return result;
+// }
+
+// async function runAsync() {
+//   try {
+//     const data = await asyncFunctionExample();
+//     console.log(`Received async data: ${data}`);
+//   } catch (error) {
+//       console.error("Error in async operation:", error);
+//   }
+// }
+
+// runAsync(); // Call the async function
+
+// // --- Built-in Objects & Methods ---
+// console.log("Logging to console");
+const dateNow: Date = new Date()
+// const randomNumber: number = Math.random();
+// const jsonString: string = JSON.stringify({ a: 1, b: [2, 3] });
+// const parsedObject: any = JSON.parse(jsonString);
+
+// // --------------------------------------------------------------------------
+// // --- JSX Syntax (Relevant for .tsx files, requires "jsx": "react" or similar in tsconfig) ---
+// // --------------------------------------------------------------------------
+
+// /*
+// // This section should be placed in a .tsx file to be parsed correctly.
+// // You'll also need React types: npm install --save-dev @types/react
+
+// import React from 'react'; // Assuming React environment
+
+// // Functional Component with props type
+// interface MyComponentProps {
+//   title: string;
+//   count?: number; // Optional prop
+//   children?: React.ReactNode; // Type for children elements
+// }
+
+// const MyComponent: React.FC<MyComponentProps> = ({ title, count = 0, children }) => {
+//   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+//     console.log('Button clicked!', event.currentTarget);
+//   };
+
+//   // JSX Syntax: tags, attributes, embedded expressions, children
+//   return (
+//     <div className="my-component" data-title={title}>
+//       <h1>{title.toUpperCase()}</h1>
+//       {count > 0 && <p>Count: {count}</p>}
+//       <button onClick={handleClick} disabled={count <= 0}>
+//         Click Me
+//       </button>
+//       <div style={{ border: '1px solid red', padding: 10 }}>
+//         {children ? children : <p>No children provided.</p>}
+//       </div>
+//     </div>
+//   );
+// };
+
+// // Using the component
+// const App = () => (
+//   <div>
+//     <MyComponent title="Test Component" count={5}>
+//       <span>This is a child element</span>
+//       <> {/* Fragment shorthand */}
+//         <p>Another child</p>
+//       </>
+//     </MyComponent>
+//     <MyComponent title="Another Instance" />
+//   </div>
+// );
+// */
+
+// // --- End of Test File ---
+// console.log("\n--- End of TypeScript Syntax Test ---");

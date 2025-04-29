@@ -1,12 +1,83 @@
 {
-	"hi": -1.1e1, "b": 2,
-	"abc": "hi",
-	"dce": [
-		1.2, 2e10, -3,
-		1, 2,
-		"string"
-	],
-	"fgh": {
-		"a": 1
-	}
+  "syntax_highlighting_test_file": {
+    "description": "A comprehensive JSON file to test syntax highlighting.",
+    "version": 1.2,
+    "valid_json_spec": true,
+    "comment_note": "Standard JSON spec does not support comments (like // or /* */). They are included here ONLY for theme highlighting testing.",
+    "string_types": {
+      "simple_string": "Hello, World!",
+      "string_with_escapes": "Quotes \" and backslash \\ and forward slash \/. Newline\n Tab\t Backspace\b Formfeed\f CarriageReturn\r.",
+      "string_with_unicode": "Unicode characters: Sigma \u03A3, Copyright \u00A9, Emoji Face \uD83D\uDE00 (requires surrogate pair)",
+      "string_with_numbers": "12345",
+      "empty_string": "",
+      "long_string": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+    },
+    "number_types": {
+      "integer": 1234567890,
+      "negative_integer": -987,
+      "zero": 0,
+      "floating_point": 3.1415926535,
+      "negative_float": -0.001,
+      "exponent_positive": 1.23e10,
+      "exponent_negative": 9.87e-5,
+      "large_number": 999999999999999999999
+    },
+    "boolean_types": {
+      "literal_true": true,
+      "literal_false": false
+    },
+    "null_type": {
+      "literal_null": null
+    },
+    "array_types": {
+      "simple_number_array": [1, 2, 3, 10, 100],
+      "simple_string_array": ["apple", "banana", "cherry"],
+      "simple_boolean_array": [true, false, true],
+      "array_of_nulls": [null, null],
+      "mixed_type_array": [
+        "string",
+        42,
+        true,
+        null,
+        { "nested_key": "nested_value" },
+        [10, 20]
+      ],
+      "array_of_arrays": [
+        [1, 2],
+        [3, 4],
+        [5, 6]
+      ],
+      "array_of_objects": [
+        { "id": 1, "status": "active" },
+        { "id": 2, "status": "inactive", "reason": null },
+        { "id": 3, "status": "pending", "tags": ["urgent", "review"] }
+      ],
+      "empty_array": []
+    },
+    "object_types": {
+      "simple_object": {
+        "key1": "value1",
+        "key2": 100
+      },
+      "nested_object": {
+        "level1": {
+          "message": "Level 1 reached",
+          "level2": {
+            "enabled": true,
+            "data": [null, null, null]
+          }
+        }
+      },
+      "object_with_special_key_names": {
+        "key with spaces": "Value for key with spaces",
+        "key-with-hyphens": 123,
+        "key_with_underscores": true,
+        "key.with.dots": null,
+        "123key_starts_with_number": "Valid JSON key",
+        "$key_with_symbols%": "Also valid",
+        "": "Empty string key"
+      },
+      "empty_object": {}
+    }
+  }
 }

@@ -1,441 +1,633 @@
-use pulldown_cmark::{Parser, Event, Tag};
-use std::{cmp::Ordering, fs};
-use futures::future::{select_all, BoxFuture, FutureExt};
-use std::collections::{BTreeSet, BTreeMap};
-use serde::{Serialize, Deserialize};
-use lazy_static::lazy_static;
-use std::time;
-use log::{warn, debug, info};
-use std::io::Write;
-use reqwest::{Client, redirect::Policy, StatusCode, header, Url};
-use regex::Regex;
-use failure::{Fail, Error, format_err};
-use chrono::{Local, DateTime, Duration};
-use std::env;
-use tokio::sync::Semaphore;
-use tokio::sync::SemaphorePermit;
+//! Crate-level documentation comment for the syntax test module.
+//! This file showcases various Rust syntax elements. Supports **Markdown**.
+#![allow(dead_code)] // Allow unused code for demonstration purposes
+#![allow(unused_variables)]
+#![allow(unused_mut)]
+#![allow(unused_imports)]
+#![allow(unreachable_code)]
+#![allow(unused_assignments)]
+#![warn(unsafe_op_in_unsafe_fn)] // Example warning attribute
+// #![feature(type_alias_impl_trait)] // Example feature gate (usually needs nightly)
 
-#[derive(Debug, Fail, Serialize, Deserialize)]
-enum CheckerError {
-    #[fail(display = "failed to try url")]
-    NotTried, // Generally shouldn't happen, but useful to have
+// --- Imports and Module Structure ---
+use std::collections::{HashMap, HashSet}; // Use specific items
+use std::fmt::{self, Debug, Display}; // Use nested items and rename
+use std::io::{self, Write as IoWrite}; // Rename with 'as'
+use std::ops::{Add, Mul}; // Use traits
+use std::rc::Rc; // Reference counting pointer
+use std::sync::{Arc, Mutex}; // Thread-safe types
+// use std::thread::*; // Wildcard import (glob) - generally discouraged
 
-    #[fail(display = "http error: {}", status)]
-    HttpError {
-        status: u16,
-        location: Option<String>,
-    },
+// --- Constants and Static Variables ---
+const MAX_POINTS: u32 = 100_000; // Constant (type inferred or explicit)
+static PROGRAM_NAME: &str = "Rust Syntax Test"; // Static variable (must have 'static lifetime)
+static mut COUNTER: u32 = 0; // Mutable static (requires unsafe to access/modify)
 
-    #[fail(display = "too many requests")]
-    TooManyRequests,    
+// --- Type Alias ---
+type PointId = u64;
+type CoordinateMap = HashMap<PointId, (f64, f64)>;
+// type ComplexFunction = dyn Fn(i32) -> Result<String, io::Error>; // Using dyn Trait
 
-    #[fail(display = "reqwest error: {}", error)]
-    ReqwestError {
-        error: String,
-    },
-
-    #[fail(display = "travis build is unknown")]
-    TravisBuildUnknown,
-
-    #[fail(display = "travis build image with no branch")]
-    TravisBuildNoBranch,
-
-    #[fail(display = "github actions image with no branch")]
-    GithubActionNoBranch,
+// --- Struct Definitions ---
+/// A struct representing a point in 2D space.
+#[derive(Debug, Clone, PartialEq, Default)] // Procedural macro attribute (derive)
+struct Point {
+    x: f64, // Field
+    y: f64,
 }
 
-fn formatter(err: &CheckerError, url: &String) -> String {
-    match err {
-        CheckerError::HttpError {status, location} => {
-            match location {
-                Some(loc) => {
-                    format!("[{}] {} -> {}", status, url, loc)
-                }
-                None => {
-                    format!("[{}] {}", status, url)
-                }
-            }
-        }
-        CheckerError::TravisBuildUnknown => {
-            format!("[Unknown travis build] {}", url)
-        }
-        CheckerError::TravisBuildNoBranch => {
-            format!("[Travis build image with no branch specified] {}", url)
-        }
-        CheckerError::GithubActionNoBranch => {
-            format!("[Github action image with no branch specified] {}", url)
-        }
-        _ => {
-            format!("{:?}", err)
+/// A generic struct holding a value.
+#[derive(Copy)] // Can only be derived if T is Copy
+struct GenericStruct<T: Copy> { // Generic struct with trait bound
+    value: T,
+}
+
+/// A tuple struct for RGB colors.
+struct Color(u8, u8, u8);
+
+/// A unit struct (no fields).
+struct EmptyStruct;
+
+// --- Enum Definitions ---
+/// An enum representing different message types.
+#[derive(Debug)]
+enum Message {
+    Quit,                       // Unit variant
+    Move { x: i32, y: i32 },    // Struct variant
+    Write(String),              // Tuple variant
+    ChangeColor(u8, u8, u8), // Tuple variant with multiple fields
+}
+
+/// A generic Option-like enum.
+enum Maybe<T> {
+    Something(T),
+    Nothing,
+}
+
+// --- Union Definition (requires unsafe to access fields) ---
+#[repr(C)] // Common representation for FFI
+union IntOrFloat {
+    i: i32,
+    f: f32,
+}
+
+// --- Trait Definition ---
+/// A trait for objects that can be summarized.
+trait Summary {
+    // Associated constant
+    const SUMMARY_PREFIX: &'static str = "Summary";
+
+    // Associated type
+    type Metadata;
+
+    // Required method signature with lifetime 'a
+    fn summarize_author<'a>(&'a self) -> &'a str;
+
+    // Required method with default implementation
+    fn summarize(&self) -> String where Self: Debug { // Trait bound using 'where' clause
+        format!("{}: Read more from {}... Content: {:?}",
+                Self::SUMMARY_PREFIX, // Access associated const
+                self.summarize_author(),
+                self) // Using Debug derived implementation
+    }
+
+    // Static method in trait
+    fn default_metadata() -> Self::Metadata;
+}
+
+// --- Implementation Blocks (impl) ---
+
+// Inherent methods for Point
+impl Point {
+    // Associated function (static method / constructor pattern)
+    fn new(x: f64, y: f64) -> Self { // 'Self' refers to the type 'Point'
+        Point { x, y } // Field init shorthand
+    }
+
+    // Instance method (takes self)
+    fn distance_from_origin(&self) -> f64 { // '&self' is shorthand for 'self: &Self'
+        (self.x.powi(2) + self.y.powi(2)).sqrt()
+    }
+
+    // Mutable instance method
+    fn translate(&mut self, dx: f64, dy: f64) { // '&mut self' is shorthand for 'self: &mut Self'
+        self.x += dx;
+        self.y += dy;
+    }
+}
+
+// Implementing a trait for Point
+impl Summary for Point {
+    const SUMMARY_PREFIX: &'static str = "Point Summary"; // Override associated const
+    type Metadata = String; // Define associated type
+
+    fn summarize_author<'a>(&'a self) -> &'a str {
+        "Geometry Engine" // Return a static string slice
+    }
+
+    // Override default method implementation
+    fn summarize(&self) -> String {
+        format!("Point({}, {}) by {}", self.x, self.y, self.summarize_author())
+    }
+
+    fn default_metadata() -> String {
+        "2D Coordinate".to_string()
+    }
+}
+
+// Implementing a standard library trait (Add) for Point
+impl Add for Point {
+    type Output = Self; // Associated type from Add trait
+
+    fn add(self, other: Self) -> Self::Output { // 'self' takes ownership
+        Point {
+            x: self.x + other.x,
+            y: self.y + other.y,
         }
     }
 }
 
-struct MaxHandles {
-    remaining: Semaphore
-}
-
-struct Handle<'a> {
-    _permit: SemaphorePermit<'a>
-}
-
-impl MaxHandles {
-    fn new(max: usize) -> MaxHandles {
-        MaxHandles { remaining: Semaphore::new(max) }
-    }
-
-    async fn get<'a>(&'a self) -> Handle<'a> {
-        let permit = self.remaining.acquire().await.unwrap();
-        return Handle { _permit: permit };
+// Generic implementation
+impl<T: Copy + Debug> GenericStruct<T> {
+    fn get_value(&self) -> T {
+        println!("Getting value: {:?}", self.value);
+        self.value
     }
 }
 
-impl<'a> Drop for Handle<'a> {
-    fn drop(&mut self) {
-        debug!("Dropping");
+// --- Function Definitions ---
+
+/// The main entry point of the application.
+/// Contains various syntax examples.
+fn main() -> Result<(), io::Error> { // Return type using Result for error handling
+    println!("--- {} Starting (MAX_POINTS={}) ---", PROGRAM_NAME, MAX_POINTS);
+
+    // --- Variables, Mutability, Shadowing ---
+    let immutable_var = 10; // Immutable by default
+    let mut mutable_var = 20; // Mutable variable
+    mutable_var += 5;
+
+    let x = 5;
+    let x = x + 1; // Shadowing previous x
+    let x = x * 2; // Shadowing again
+
+    let spaces = "   ";
+    let spaces = spaces.len(); // Shadowing with different type
+
+    // Type annotation
+    let explicit_float: f32 = 3.14;
+
+    // --- Literals ---
+    let integer_literal = 1_23_456; // Underscores for readability
+    let hex_literal = 0xff;
+    let octal_literal = 0o77;
+    let binary_literal = 0b1101_0010;
+    let byte_literal: u8 = b'A'; // Byte literal (u8)
+
+    let float_literal = 2.0; // f64 by default
+    let float_suffix: f32 = 3.0f32;
+
+    let char_literal = '😻'; // Unicode character
+    let char_escape = '\n'; // Escape sequence
+
+    let string_literal = "Hello, \"world\"!\n\t Escapes work.";
+    let raw_string = r#"This is a raw string. Escapes \n are not processed."#;
+    let byte_string = b"This is a byte string literal."; // &[u8; N]
+    let raw_byte_string = br#"Raw \ byte \ string"#;
+
+    let boolean_true = true;
+    let boolean_false = false;
+
+    // --- Data Structures ---
+    let tuple: (i32, f64, char) = (500, 6.4, 'a');
+    let (t1, t2, t3) = tuple; // Destructuring tuple
+    println!("Tuple element: {}", tuple.1); // Access by index
+
+    let array: [i32; 3] = [1, 2, 3]; // Fixed-size array [Type; Size]
+    let first_element = array[0];
+    let array_init = [0; 5]; // Initialize array with 5 zeros
+
+    let slice: &[i32] = &array[1..3]; // Slice referencing part of the array
+
+    // --- Operators ---
+    let sum = 5 + 10;
+    let difference = 9.5 - 4.3;
+    let product = 4 * 30;
+    let quotient = 56.7 / 32.2;
+    let remainder = 43 % 5;
+
+    let logical_and = true && false;
+    let logical_or = true || false;
+    let logical_not = !true;
+
+    let bitwise_and = 0b1010 & 0b1100;
+    let bitwise_or = 0b1010 | 0b1100;
+    let bitwise_xor = 0b1010 ^ 0b1100;
+    let bitwise_not = !0b1010i32;
+    let left_shift = 0b101 << 2;
+    let right_shift = 0b1010 >> 1;
+
+    let range = 1..5; // Exclusive range
+    let inclusive_range = 1..=5; // Inclusive range
+
+    // --- Control Flow ---
+
+    // If/Else If/Else
+    let number = 6;
+    if number % 4 == 0 {
+        println!("Number is divisible by 4");
+    } else if number % 3 == 0 {
+        println!("Number is divisible by 3");
+    } else {
+        println!("Number is not divisible by 4 or 3");
+    }
+
+    // If let (destructuring Option)
+    let maybe_number = Some(7);
+    if let Some(value) = maybe_number {
+        println!("Got a value from Option: {}", value);
+    } else {
+        println!("Got None");
+    }
+
+    // If as expression
+    let condition = true;
+    let result = if condition { 5 } else { 10 }; // Both branches must return same type
+
+    // Loop (infinite loop)
+    let mut counter = 0;
+    loop {
+        println!("Loop iteration {}", counter);
+        counter += 1;
+        if counter == 3 {
+            break; // Exit loop
+        }
+    }
+
+    // Loop returning a value
+    counter = 0;
+    let result_from_loop = loop {
+        counter += 1;
+        if counter == 5 {
+            break counter * 2; // Return value from loop
+        }
+    };
+    println!("Result from loop: {}", result_from_loop);
+
+    // While loop
+    let mut number = 3;
+    while number != 0 {
+        println!("While: {}!", number);
+        number -= 1;
+    }
+
+    // While let
+    let mut stack = vec![1, 2, 3];
+    while let Some(top) = stack.pop() {
+        println!("Popped from stack: {}", top);
+    }
+
+    // For loop (iterating over collection)
+    let a = [10, 20, 30, 40, 50];
+    for element in a.iter() { // Use .iter() for references
+        println!("For loop element: {}", element);
+    }
+
+    // For loop (iterating over range)
+    for num in (1..=4).rev() { // Reverse range
+        println!("Countdown: {}!", num);
+    }
+
+    // --- Match Statement (Pattern Matching) ---
+    let value_to_match = 3;
+    match value_to_match {
+        1 => println!("One"),
+        2 | 3 | 5 | 7 => println!("This is a prime"), // Or pattern
+        num @ 13..=19 => println!("A teen: {}", num), // Range and @ binding
+        _ => println!("Ain't special"), // Wildcard (matches anything)
+    }
+
+    let point = Point { x: 0.0, y: 5.0 };
+    match point {
+        Point { x: 0.0, y: y_val } => println!("On the y-axis at {}", y_val), // Struct pattern
+        Point { x, y: 0.0 } => println!("On the x-axis at {}", x),
+        Point { x, y } => println!("Somewhere else: ({}, {})", x, y),
+    }
+
+    let msg = Message::Move { x: 10, y: -5 };
+    match msg {
+        Message::Quit => println!("Quit message"),
+        Message::Move { x, y } if y < 0 => println!("Move down-left/right to ({}, {})", x, y), // Match guard
+        Message::Move { x, y } => println!("Move to ({}, {})", x, y),
+        Message::Write(text) => println!("Text message: {}", text),
+        Message::ChangeColor(r, g, b) => println!("Change color to RGB({}, {}, {})", r, g, b),
+    }
+
+    // --- Ownership, Borrowing, Lifetimes ---
+    let s1 = String::from("hello");
+    // let s2 = s1; // Move (s1 is no longer valid)
+    // println!("{}, world!", s1); // Compile Error: value borrowed here after move
+
+    let s2 = s1.clone(); // Explicit clone for deep copy
+    println!("s1 = {}, s2 = {}", s1, s2);
+
+    take_ownership(s2); // s2 moved into function
+    // println!("After take_ownership: {}", s2); // Compile Error
+
+    let x = 5;
+    make_copy(x); // i32 is Copy, so x is still valid
+    println!("After make_copy: {}", x);
+
+    let s3 = gives_ownership();
+    let s4 = takes_and_gives_back(s3); // s3 moved in, ownership transferred to s4
+
+    let len = calculate_length(&s4); // Borrow s4 (immutable reference)
+    println!("The length of '{}' is {}.", s4, len);
+
+    let mut s5 = String::from("mutable");
+    change_string(&mut s5); // Mutable borrow
+    println!("Changed string: {}", s5);
+
+    // Explicit lifetimes
+    let string1 = String::from("abcd");
+    let string2 = "xyz";
+    let result_lifetime = longest(string1.as_str(), string2); // Lifetime elision works here too
+    println!("The longest string is '{}'", result_lifetime);
+
+    // --- Structs and Enums Usage ---
+    let p1 = Point::new(3.0, 4.0);
+    let mut p2 = Point { x: 1.0, ..p1 }; // Struct update syntax (using fields from p1)
+    p2.translate(0.5, 0.5);
+    println!("Point p2: {:?}, distance: {}", p2, p2.distance_from_origin()); // {:?} uses Debug trait
+
+    let color = Color(255, 165, 0); // Tuple struct instance
+    println!("Color: R={}, G={}, B={}", color.0, color.1, color.2);
+
+    let quit_msg = Message::Quit;
+    let write_msg = Message::Write(String::from("Hello from enum"));
+
+    // --- Traits Usage ---
+    println!("{}", p1.summarize()); // Call trait method
+    notify(&p1); // Pass anything implementing Summary
+    // let item = returns_summarizable(); // Using 'impl Trait' as return type
+
+    // --- Error Handling ---
+    match read_username_from_file() {
+        Ok(username) => println!("Username from file: {}", username),
+        Err(e) => println!("Error reading username: {}", e),
+    }
+    // Using '?' operator (requires function to return Result or Option)
+    let username_propagated = read_username_propagated()?;
+    println!("Propagated username: {}", username_propagated);
+
+    // Panic (unrecoverable error)
+    // panic!("Farewell, cruel world!");
+
+    // --- Closures ---
+    let intensity = 10;
+    // Closure capturing 'intensity' from environment
+    let expensive_closure = |num: u32| -> u32 {
+        println!("Calculating slowly...");
+        // std::thread::sleep(std::time::Duration::from_secs(1)); // Simulate work
+        num + intensity // Captures 'intensity' by reference implicitly
+    };
+    println!("Closure result: {}", expensive_closure(5));
+
+    // 'move' closure forces capturing by value
+    let data = vec![1, 2, 3];
+    let move_closure = move || println!("Captured data by value: {:?}", data);
+    move_closure();
+    // println!("Data after move closure: {:?}", data); // Compile Error: data moved
+
+    // Passing closure to function
+    let list = vec![1, 2, 3];
+    apply_closure(&list, |x| x * x);
+
+    // --- Smart Pointers ---
+    let b = Box::new(5); // Allocate on heap
+    println!("b = {}", b);
+
+    // --- Macros ---
+    println!("This uses the println! macro. PI = {}", PI); // Built-in macro
+    let my_vec = vec![1, 2, 3]; // vec! macro
+    let formatted = format!("Formatted string: x={}, y={}", p1.x, p1.y); // format! macro
+    assert_eq!(p1.x, 3.0); // assert_eq! macro
+
+    // Custom macro usage
+    custom_macro!(hello);
+    let expr_result = custom_macro!(1 + 2);
+    println!("Custom macro expr result: {}", expr_result);
+
+    // --- Async/Await (Syntax only, requires runtime like tokio/async-std to run) ---
+    // let async_result = run_async_tasks().await; // '.await' used inside async fn/block
+    // println!("Async result: {}", async_result);
+
+    // --- Unsafe Code ---
+    let mut num = 5;
+    let r1 = &num as *const i32; // Immutable raw pointer
+    let r2 = &mut num as *mut i32; // Mutable raw pointer
+
+    unsafe { // Unsafe block required for dereferencing raw pointers and accessing static mut
+        println!("r1 is: {}", *r1);
+        *r2 = 10; // Modify through mutable raw pointer
+        println!("r2 is now: {}", *r2);
+
+        // Accessing mutable static variable
+        COUNTER += 1;
+        println!("Static COUNTER: {}", COUNTER);
+
+        // Calling unsafe function
+        dangerous_function();
+
+        // Accessing union field
+        let u = IntOrFloat { i: 42 };
+        println!("Union as int: {}", u.i);
+        // println!("Union as float: {}", u.f); // Accessing inactive field is UB
+    }
+
+    println!("--- {} Finishing ---", PROGRAM_NAME);
+    Ok(()) // Return Ok for main function's Result
+}
+
+// --- Helper Function Definitions ---
+
+/// Takes ownership of a String.
+fn take_ownership(some_string: String) {
+    println!("Took ownership of: {}", some_string);
+} // `some_string` goes out of scope and `drop` is called.
+
+/// Makes a copy of an integer.
+fn make_copy(some_integer: i32) {
+    println!("Made copy of: {}", some_integer);
+} // `some_integer` goes out of scope. Nothing special happens.
+
+/// Gives ownership of a String.
+fn gives_ownership() -> String {
+    let some_string = String::from("yours");
+    some_string // Returned, ownership moves out
+}
+
+/// Takes and returns ownership of a String.
+fn takes_and_gives_back(a_string: String) -> String {
+    a_string // Returned, ownership moves out
+}
+
+/// Calculates length by borrowing a String.
+fn calculate_length(s: &String) -> usize { // `s` is a reference (borrow)
+    s.len()
+} // `s` goes out of scope, but what it refers to is not dropped.
+
+/// Modifies a String through a mutable borrow.
+fn change_string(some_string: &mut String) {
+    some_string.push_str(", world");
+}
+
+/// Function with explicit lifetimes.
+/// Returns the longest of two string slices.
+fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {
+    // The returned reference must be valid for the shorter of 'a from x and y
+    if x.len() > y.len() {
+        x
+    } else {
+        y
+    }
+}
+// Example struct using lifetimes (not used in main, just for syntax)
+struct ImportantExcerpt<'a> {
+    part: &'a str,
+}
+
+/// Function demonstrating generic type parameters and trait bounds.
+fn notify<T: Summary>(item: &T) { // Accepts any type implementing Summary trait
+    println!("Breaking news! {}", item.summarize());
+}
+// Alternative trait bound syntax with 'where' clause
+// fn notify<T>(item: &T) where T: Summary { ... }
+
+/// Function returning a type that implements a trait.
+// fn returns_summarizable() -> impl Summary { // `impl Trait` syntax
+//     Point { x: 1.0, y: 1.0 } // Can return any concrete type implementing Summary
+// }
+
+/// Example function demonstrating error propagation with '?'.
+fn read_username_from_file() -> Result<String, io::Error> {
+    // Long way
+    let f = std::fs::File::open("username.txt");
+    let mut f = match f {
+        Ok(file) => file,
+        Err(e) => return Err(e), // Return error early
+    };
+    let mut s = String::new();
+    match f.read_to_string(&mut s) {
+        Ok(_) => Ok(s),
+        Err(e) => Err(e),
     }
 }
 
-lazy_static! {
-    static ref CLIENT: Client = Client::builder()
-        .danger_accept_invalid_certs(true) // because some certs are out of date
-        .user_agent("Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:68.0) Gecko/20100101 Firefox/68.0") // so some sites (e.g. sciter.com) don't reject us
-        .redirect(Policy::none())
-        .pool_max_idle_per_host(0)
-        .timeout(time::Duration::from_secs(20))
-        .build().unwrap();
-
-    // This is to avoid errors with running out of file handles, so we only do 20 requests at a time
-    static ref HANDLES: MaxHandles = MaxHandles::new(20);
+/// More concise error propagation using '?'.
+fn read_username_propagated() -> Result<String, io::Error> {
+    let mut s = String::new();
+    // '?' operator returns the Err variant early if operation fails
+    std::fs::File::open("username.txt")?.read_to_string(&mut s)?;
+    // Can be chained further:
+    // let mut s = std::fs::read_to_string("username.txt")?;
+    Ok(s)
 }
 
-fn get_url(url: String) -> BoxFuture<'static, (String, Result<(), CheckerError>)> {
-    debug!("Need handle for {}", url);
-    async move {
-        let _handle = HANDLES.get().await;
-        return get_url_core(url).await;
-    }.boxed()
+/// Function that accepts a closure.
+fn apply_closure<F>(data: &[i32], func: F)
+    where F: Fn(i32) -> i32 // Closure trait bound
+{
+    for &item in data {
+        println!("Applying closure: {} -> {}", item, func(item));
+    }
 }
 
-fn get_url_core(url: String) -> BoxFuture<'static, (String, Result<(), CheckerError>)> {
-    async move {
-        let mut res = Err(CheckerError::NotTried);
-        for _ in 0..5u8 {
-            debug!("Running {}", url);
-            lazy_static! {
-                static ref GITHUB_REPO_REGEX: Regex = Regex::new(r"^https://github.com/(?P<org>[^/]+)/(?P<repo>[^/]+)$").unwrap();
-                static ref GITHUB_API_REGEX: Regex = Regex::new(r"https://api.github.com/").unwrap();
-            }
-            if env::var("GITHUB_USERNAME").is_ok() && env::var("GITHUB_TOKEN").is_ok() && GITHUB_REPO_REGEX.is_match(&url) {
-                let rewritten = GITHUB_REPO_REGEX.replace_all(&url, "https://api.github.com/repos/$org/$repo");
-                info!("Replacing {} with {} to workaround rate limits on Github", url, rewritten);
-                let (_new_url, res) = get_url_core(rewritten.to_string()).await;
-                return (url, res);
-            }
-            let mut req = CLIENT
-                .get(&url)
-                .header(header::ACCEPT, "image/svg+xml, text/html, */*;q=0.8");
-
-            if GITHUB_API_REGEX.is_match(&url) {
-                if let Ok(username) = env::var("GITHUB_USERNAME") {
-                    if let Ok(password) = env::var("GITHUB_TOKEN") {
-                        // needs a token with at least public_repo scope
-                        info!("Using basic auth for {}", url);
-                        req = req.basic_auth(username, Some(password));
-                    }
-                }
-            }
-
-            let resp = req.send().await;
-            match resp {
-                Err(err) => {
-                    warn!("Error while getting {}, retrying: {}", url, err);
-                    res = Err(CheckerError::ReqwestError{error: err.to_string()});
-                    continue;
-                }
-                Ok(ok) => {
-                    let status = ok.status();
-                    if status != StatusCode::OK {
-                        lazy_static! {
-                            static ref ACTIONS_REGEX: Regex = Regex::new(r"https://github.com/(?P<org>[^/]+)/(?P<repo>[^/]+)/actions(?:\?workflow=.+)?").unwrap();
-                            static ref YOUTUBE_VIDEO_REGEX: Regex = Regex::new(r"https://www.youtube.com/watch\?v=(?P<video_id>.+)").unwrap();
-                            static ref YOUTUBE_PLAYLIST_REGEX: Regex = Regex::new(r"https://www.youtube.com/playlist\?list=(?P<playlist_id>.+)").unwrap();
-                            static ref YOUTUBE_CONSENT_REGEX: Regex = Regex::new(r"https://consent.youtube.com/m\?continue=.+").unwrap();
-                            static ref AZURE_BUILD_REGEX: Regex = Regex::new(r"https://dev.azure.com/[^/]+/[^/]+/_build").unwrap();
-                        }
-                        if status == StatusCode::NOT_FOUND && ACTIONS_REGEX.is_match(&url) {
-                            let rewritten = ACTIONS_REGEX.replace_all(&url, "https://github.com/$org/$repo");
-                            warn!("Got 404 with Github actions, so replacing {} with {}", url, rewritten);
-                            let (_new_url, res) = get_url_core(rewritten.to_string()).await;
-                            return (url, res);
-                        }
-                        if status == StatusCode::FOUND && YOUTUBE_VIDEO_REGEX.is_match(&url) {
-                            // Based off of https://gist.github.com/tonY1883/a3b85925081688de569b779b4657439b
-                            // Guesswork is that the img feed will cause less 302's than the main url
-                            // See https://github.com/rust-unofficial/awesome-rust/issues/814 for original issue
-                            let rewritten = YOUTUBE_VIDEO_REGEX.replace_all(&url, "http://img.youtube.com/vi/$video_id/mqdefault.jpg");
-                            warn!("Got 302 with Youtube, so replacing {} with {}", url, rewritten);
-                            let (_new_url, res) = get_url_core(rewritten.to_string()).await;
-                            return (url, res);
-                        };
-                        if status == StatusCode::FOUND && YOUTUBE_PLAYLIST_REGEX.is_match(&url) {
-                            let location = ok.headers().get("LOCATION").map(|h| h.to_str().unwrap()).unwrap_or_default();
-                            if YOUTUBE_CONSENT_REGEX.is_match(location) {
-                                warn!("Got Youtube consent link for {}, so assuming playlist is ok", url);
-                                return (url, Ok(()));
-                            }
-                        };
-                        if status == StatusCode::FOUND && AZURE_BUILD_REGEX.is_match(&url) {
-                            // Azure build urls always redirect to a particular build id, so no stable url guarantees
-                            let redirect = ok.headers().get(header::LOCATION).unwrap().to_str().unwrap();
-                            let merged_url = Url::parse(&url).unwrap().join(redirect).unwrap();
-                            info!("Got 302 from Azure devops, so replacing {} with {}", url, merged_url);
-                            let (_new_url, res) = get_url_core(merged_url.into_string()).await;
-                            return (url, res);
-                        }
-
-                        if status == StatusCode::TOO_MANY_REQUESTS {
-                            // We get a lot of these, and we should not retry as they'll just fail again
-                            warn!("Error while getting {}: {}", url, status);
-                            return (url, Err(CheckerError::TooManyRequests));
-                        }
-
-                        warn!("Error while getting {}, retrying: {}", url, status);
-                        if status.is_redirection() {
-                            res = Err(CheckerError::HttpError {status: status.as_u16(), location: ok.headers().get(header::LOCATION).and_then(|h| h.to_str().ok()).map(|x| x.to_string())});
-                            break;
-                        } else {
-                            res = Err(CheckerError::HttpError {status: status.as_u16(), location: None});
-                            continue;
-                        }
-                    }
-                    lazy_static! {
-                        static ref TRAVIS_IMG_REGEX: Regex = Regex::new(r"https://api.travis-ci.(?:com|org)/[^/]+/.+\.svg(\?.+)?").unwrap();
-                        static ref GITHUB_ACTIONS_REGEX: Regex = Regex::new(r"https://github.com/[^/]+/[^/]+/workflows/[^/]+/badge.svg(\?.+)?").unwrap();
-                    }
-                    if let Some(matches) = TRAVIS_IMG_REGEX.captures(&url) {
-                        // Previously we checked the Content-Disposition headers, but sometimes that is incorrect
-                        // We're now looking for the explicit text "unknown" in the middle of the SVG
-                        let content = ok.text().await.unwrap();
-                        if content.contains("unknown") {
-                            res = Err(CheckerError::TravisBuildUnknown);
-                            break;
-                        }
-                        let query = matches.get(1).map(|x| x.as_str()).unwrap_or("");
-                        if !query.starts_with("?") || query.find("branch=").is_none() {
-                            res = Err(CheckerError::TravisBuildNoBranch);
-                            break;
-                        }
-                    }
-                    if let Some(matches) = GITHUB_ACTIONS_REGEX.captures(&url) {
-                        debug!("Github actions match {:?}", matches);
-                        let query = matches.get(1).map(|x| x.as_str()).unwrap_or("");
-                        if !query.starts_with("?") || query.find("branch=").is_none() {
-                            res = Err(CheckerError::GithubActionNoBranch);
-                            break;
-                        }
-                    }
-                    debug!("Finished {}", url);
-                    res = Ok(());
-                    break;
-                }
-            }
-        }
-        (url, res)
-    }.boxed()
+// --- Async Function Example ---
+/// Example async function (requires runtime).
+async fn async_fetch_data(url: &str) -> Result<String, String> {
+    println!("Fetching data from {}...", url);
+    // In real code: use reqwest or similar library with .await
+    // await reqwest::get(url)?.text().await;
+    tokio::time::sleep(std::time::Duration::from_millis(50)).await; // Simulate async work
+    Ok(format!("Data from {}", url))
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-enum Working {
-    Yes,
-    No(CheckerError)
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-struct Link {
-    last_working: Option<DateTime<Local>>,
-    updated_at: DateTime<Local>,
-    working: Working,
-}
-
-type Results = BTreeMap<String, Link>;
-
-#[tokio::main]
-async fn main() -> Result<(), Error> {
-    env_logger::init();
-    let markdown_input = fs::read_to_string("README.md").expect("Can't read README.md");
-    let parser = Parser::new(&markdown_input);
-
-    let mut used: BTreeSet<String> = BTreeSet::new();
-    let mut results: Results = fs::read_to_string("results/results.yaml")
-        .map_err(|e| format_err!("{}", e))
-        .and_then(|x| serde_yaml::from_str(&x).map_err(|e| format_err!("{}", e)))
-        .unwrap_or(Results::new());
-
-    let mut url_checks = vec![];
-
-    let min_between_checks: Duration = Duration::days(3);
-    let max_allowed_failed: Duration = Duration::days(7);
-    let mut do_check = |url: String| {
-        if !url.starts_with("http") {
-            return;
-        }
-        used.insert(url.clone());
-        if let Some(link) = results.get(&url) {
-            if let Working::Yes = link.working {
-                let since = Local::now() - link.updated_at;
-                if since < min_between_checks {
-                    return;
-                }
-            }
-        }
-        let check = get_url(url).boxed();
-        url_checks.push(check);
+/// Example function running multiple async tasks.
+async fn run_async_tasks() -> String {
+    let task1 = async_fetch_data("http://example.com");
+    let task2 = async { // Async block
+        println!("Starting short async block");
+        tokio::time::sleep(std::time::Duration::from_millis(10)).await;
+        "Short task done".to_string()
     };
 
-    let mut to_check: Vec<String> = vec![];
+    // Run tasks concurrently (example using hypothetical join)
+    // let (result1, result2) = tokio::join!(task1, task2);
+    let result1 = task1.await; // Simple sequential await for syntax demo
+    let result2 = task2.await;
 
-    for (event, _range) in parser.into_offset_iter() {
-        match event {
-            Event::Start(tag) => {
-                match tag {
-                    Tag::Link(_link_type, url, _title) | Tag::Image(_link_type, url, _title) => {
-                        to_check.push(url.to_string());
-                    }
-                    _ => {}
-                }
-            }
-            Event::Html(content) => {
-                return Err(format_err!("Contains HTML content, not markdown: {}", content));
-            }
-            _ => {}
-        }
+    format!("Results: {:?} | {}", result1, result2)
+}
+
+
+// --- Unsafe Function and FFI ---
+/// An example of an unsafe function.
+unsafe fn dangerous_function() {
+    println!("Called an unsafe function!");
+    // Must be called within an unsafe block
+}
+
+// External C function declaration
+extern "C" {
+    fn abs(input: i32) -> i32; // Link to C standard library function
+}
+
+// Defining a function to be called from C
+#[no_mangle] // Preserve function name
+pub extern "C" fn rust_callable_function(x: i32) -> i32 {
+    println!("Rust function called from C with {}", x);
+    x * 2
+}
+
+
+// --- Custom Macro Definition ---
+/// A simple declarative macro example.
+macro_rules! custom_macro {
+    // Matcher for a single identifier 'hello'
+    (hello) => {
+        println!("Custom macro says hello!");
+    };
+    // Matcher for an expression
+    ($expression:expr) => {
+        // Return the value of the expression
+        $expression
+    };
+}
+
+// --- Module for Tests ---
+#[cfg(test)] // Only compile when running tests
+mod tests {
+    use super::*; // Import items from outer module
+
+    #[test] // Test attribute
+    fn test_point_addition() {
+        let p1 = Point { x: 1.0, y: 2.0 };
+        let p2 = Point { x: 3.0, y: 4.0 };
+        let expected = Point { x: 4.0, y: 6.0 };
+        assert_eq!(p1 + p2, expected); // assert_eq! macro
     }
 
-    to_check.sort_by(|a,b| {
-        let get_time = |k| {
-            let res = results.get(k);
-            if let Some(link) = res {
-                if let Some(last_working) = link.last_working {
-                    Some(last_working)
-                } else {
-                    None
-                }
-            } else {
-                None
-            }
-        };
-        let res_a = get_time(a);
-        let res_b = get_time(b);
-        if res_a.is_none() {
-            if res_b.is_none() {
-                return a.cmp(b);
-            } else {
-                Ordering::Less
-            }
-        } else if res_b.is_none() {
-            Ordering::Greater
-        } else {
-            res_a.unwrap().cmp(&res_b.unwrap())
-        }
-    });
-
-    for url in to_check {
-        do_check(url)
+    #[test]
+    #[ignore] // Ignore this test
+    fn expensive_test() {
+        // assert!(false, "This test failed intentionally"); // assert! macro with message
     }
 
-    let results_keys = results.keys().cloned().collect::<BTreeSet<String>>();
-    let old_links = results_keys.difference(&used);
-    for link in old_links {
-        results.remove(link).unwrap();
-    }
-    fs::write("results/results.yaml", serde_yaml::to_string(&results)?)?;
-
-    let mut not_written = 0;
-    let mut last_written = Local::now();
-    while url_checks.len() > 0 {
-        debug!("Waiting for {}", url_checks.len());
-        let ((url, res), _index, remaining) = select_all(url_checks).await;
-        url_checks = remaining;
-        match res {
-            Ok(_) => {
-                print!("\u{2714} ");
-                if let Some(link) = results.get_mut(&url) {
-                    link.updated_at = Local::now();
-                    link.last_working = Some(Local::now());
-                    link.working = Working::Yes;
-                } else {
-                    results.insert(url.clone(), Link {
-                        updated_at: Local::now(),
-                        last_working: Some(Local::now()),
-                        working: Working::Yes
-                    });
-                }
-            },
-            Err(err) => {
-                print!("\u{2718} ");
-                if let Some(link) = results.get_mut(&url) {
-                    link.updated_at = Local::now();
-                    link.working = Working::No(err);
-                } else {
-                    results.insert(url.clone(), Link {
-                        updated_at: Local::now(),
-                        working: Working::No(err),
-                        last_working: None
-                    });
-                }
-            }
-        }
-        std::io::stdout().flush().unwrap();
-
-        not_written += 1;
-        let duration = Local::now() - last_written;
-        if duration > Duration::seconds(5) || not_written > 20 {
-            fs::write("results/results.yaml", serde_yaml::to_string(&results)?)?;
-            not_written = 0;
-            last_written = Local::now();
-        }
-    }
-    fs::write("results/results.yaml", serde_yaml::to_string(&results)?)?;
-    println!("");
-    let mut failed: u32 = 0;
-
-    for (url, link) in results.iter() {
-        if let Working::No(ref err) = link.working {
-            match err {
-                CheckerError::HttpError {status, ..} if *status == 301 || *status == 302 || *status == 404 => {
-                    println!("{} {:?}", url, link);
-                    failed +=1;
-                    continue;
-                }
-                CheckerError::TooManyRequests => {
-                    // too many tries
-                    if link.last_working.is_some() {
-                        info!("Ignoring 429 failure on {} as we've seen success before", url);
-                        continue;
-                    }
-                }
-                _ => {}
-            };
-            if let Some(last_working) = link.last_working {
-                let since = Local::now() - last_working;
-                if since > max_allowed_failed {
-                    println!("{} {:?}", url, link);
-                    failed +=1;
-                } else {
-                    println!("Failure occurred but only {}, so we're not worrying yet: {}", chrono_humanize::HumanTime::from(-since), formatter(err, url));
-                }
-            } else {
-                println!("{} {:?}", url, link);
-                failed +=1;
-                continue;
-            }
-        }
-    }
-    if failed == 0 {
-        println!("No errors!");
-        Ok(())
-    } else {
-        Err(format_err!("{} urls with errors", failed))
+    #[test]
+    #[should_panic(expected = "index out of bounds")] // Test expected panic
+    fn test_out_of_bounds() {
+        let v = vec![1, 2, 3];
+        v[99]; // This will panic
     }
 }

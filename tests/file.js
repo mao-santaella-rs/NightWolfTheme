@@ -3,10 +3,26 @@
 import File from 'File'
 import { decorator } from 'decorator'
 import * as Vue from 'vue'
+import React from 'react'
+
+class MyComponent extends React.Component {
+  // <-- 'Component' might get this scope
+  render() {
+    return <div>Hello</div>
+  }
+}
+
+class MyCustomElement extends HTMLElement {
+  // <-- 'HTMLElement' might get this scope
+  constructor() {
+    super()
+    // ...
+  }
+}
+customElements.define('my-custom-element', MyCustomElement)
 
 // JavaScript Syntax Showcase
 // Purpose: Demonstrate various JS syntax elements for editor theme testing.
-
 ;('use strict') // 1. Strict Mode Declaration
 
 // --- 2. Comments ---
@@ -268,7 +284,7 @@ for (let j = 0; j < 10; j++) {
 // --- 7. Functions ---
 
 // Function Declaration (hoisted)
-function declaredFunction(param1, param2 = 'default') {
+function declaredFunction(param1, param2 = 'default', param3 = () => {}) {
   // Default parameter
   console.log(`Declared function called with: ${param1}, ${param2}`)
   return param1 + param2
@@ -632,7 +648,7 @@ const constant = {
   },
 }
 
-window.onload = function () {}
+window.onload = function (param1, param2) {}
 
 window.getElementsByClassName('class')
 
@@ -693,6 +709,25 @@ let userAdmin = new AdminUser('Mao')
 
 userAdmin.sayHi()
 
+// 4. size on Map
+const myMap = new Map()
+myMap.set('a', 1)
+myMap.set('b', 2)
+myMap.set('c', 3)
+console.log('\nMap:', myMap)
+console.log('myMap.size:', myMap.size) // Output: 3 (number of key/value pairs)
+// 'size' is read-only
+
+// 5. size on Set
+const mySet = new Set()
+mySet.add(10)
+mySet.add(20)
+mySet.add(10) // Duplicate ignored
+mySet.add(30)
+console.log('\nSet:', mySet)
+console.log('mySet.size:', mySet.size) // Output: 3 (number of unique elements)
+// 'size' is read-only
+
 /**
  * Constructor for <code>AjaxRequest</code> class
  * @param url the url for the request<p/>
@@ -734,6 +769,35 @@ switch (labelKey) {
   default:
     labelData = Vue.decimalConversion(tooltipItem.yLabel)
 }
+// Label for the outer loop
+outerLoop: for (let i = 0; i < 3; i++) {
+  console.log('Outer loop:', i)
+  // Label for the inner loop (optional here)
+  innerLoop: for (let j = 0; j < 3; j++) {
+    console.log('  Inner loop:', j)
+    if (i === 1 && j === 1) {
+      console.log('    Breaking outer loop!')
+      break outerLoop // Exits BOTH loops
+    }
+    if (j === 2) {
+      // break; // This would only exit the inner loop
+    }
+  }
+}
+// Label for the outer loop
+outerLoop: for (let i = 0; i < 3; i++) {
+  console.log('Outer loop:', i)
+  for (let j = 0; j < 3; j++) {
+    if (i === 1 && j === 1) {
+      console.log('    Continuing outer loop!')
+      continue outerLoop // Skips the rest of outer loop's current iteration (i=1)
+      // and goes directly to the next iteration (i=2)
+    }
+    console.log(` Inner loop: i=<span class="math-inline">\{i\}, j\=</span>{j}`)
+  }
+  console.log(' End of outer loop iteration', i) // This line is skipped when continue outerLoop happens
+}
+console.log('Finished.')
 
 // Regular expressions:
 ;/abc/
@@ -996,6 +1060,7 @@ const Student = class extends Person {
 
   // A public static method that returns the number of students in an array of students
   static countStudents(students) {
+    const maoma = Math.random()
     return students.length
   }
   // A static initialization block that runs some code when the class is defined
@@ -1034,3 +1099,290 @@ const number = 5 * 3
 with ([1, 2, 3]) {
   console.log(toString()) // 1,2,3
 }
+
+/**
+ * JavaScript Regex Syntax Highlighting Test File
+ *
+ * This file contains examples of various ways to create and use Regular Expressions
+ * in JavaScript. It's intended for testing syntax highlighting in code editors
+ * and themes like VS Code.
+ */
+
+console.log('--- JavaScript Regex Syntax Test Starting ---')
+
+// --- Section 1: Regex Creation ---
+
+// 1a: Regex Literal Syntax (/pattern/flags)
+console.log('\n--- 1a: Regex Literal Creation ---')
+
+const regexLiteralSimple = /abc/ // Simple literal
+const regexLiteralFlags = /abc/gi // With global (g) and case-insensitive (i) flags
+const regexLiteralCharset = /[a-zA-Z0-9_]/ // Character set
+const regexLiteralQuantifier = /a{2,4}b+c*/ // Quantifiers {n,m}, +, *
+const regexLiteralGroups = /(group1)(group2)/ // Capturing groups
+const regexLiteralNonCapturing = /(?:nonCapture)abc/ // Non-capturing group
+const regexLiteralAnchor = /^start|end$/ // Anchors ^ and $
+const regexLiteralLookaround = /abc(?=def)/ // Positive lookahead
+const regexLiteralNegativeLookahead = /abc(?!def)/ // Negative lookahead
+const regexLiteralLookbehind = /(?<=prefix)abc/ // Positive lookbehind (ES2018)
+const regexLiteralNegativeLookbehind = /(?<!prefix)abc/ // Negative lookbehind (ES2018)
+const regexLiteralCharClasses = /\d\s\w\./ // Character classes (\d digit, \s space, \w word char) and escaped dot
+const regexLiteralUnicode = /\p{Script=Greek}/u // Unicode property escapes (u flag required)
+const regexLiteralDotAll = /begin.*end/s // Dot matches newline (s flag ES2018)
+const regexLiteralSticky = /abc/y // Sticky flag (matches only at lastIndex)
+const regexLiteralEmpty = /()/ // Empty group
+const regexLiteralEscapedChars = /\/\*\$\^\+/ // Escaped special characters
+
+// Example usage of a literal
+let testString1 = 'Find abc and ABC.'
+console.log('Literal /abc/gi test:', regexLiteralFlags.test(testString1)) // true
+
+// 1b: RegExp Constructor (new RegExp("pattern", "flags"))
+console.log('\n--- 1b: RegExp Constructor Creation ---')
+
+const patternString = 'constructor'
+const flagsString = 'i'
+const regexConstructorSimple = new RegExp(patternString, flagsString)
+
+// Note: Double escaping is required for special characters within the string pattern
+const regexConstructorEscape = new RegExp('word\\d+', 'g') // Matches word1, word23 etc. Needs \\d
+const regexConstructorBackslash = new RegExp('\\\\section') // Matches \section. Needs \\\\
+const regexConstructorComplex = new RegExp('^(\\w+)-(\\d{4})$', 'm') // Multiline flag
+
+// Building pattern dynamically
+let userSearchTerm = 'dynamic term'
+// Escape user input for literal use in regex pattern (simple example, robust escaping is complex)
+let escapedTerm = userSearchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+const regexFromVariable = new RegExp(`^${escapedTerm}$`, 'i')
+
+// Creating from another regex (copies pattern and flags)
+const regexCopy = new RegExp(regexLiteralFlags)
+
+// Example usage of a constructor regex
+let testString2 = 'Testing word1 and word22.'
+console.log('Constructor /word\\d+/g test:', regexConstructorEscape.test(testString2)) // true
+
+// --- Section 2: Using Regex - RegExp Methods ---
+
+// 2a: RegExp.prototype.test() - Checks for a match (returns true/false)
+console.log('\n--- 2a: regex.test(string) ---')
+
+const patternExists = /exists/
+const stringExists = 'The pattern exists here.'
+const stringNotExists = 'The pattern is not here.'
+console.log(`/exists/.test("${stringExists}"):`, patternExists.test(stringExists)) // true
+console.log(`/exists/.test("${stringNotExists}"):`, patternExists.test(stringNotExists)) // false
+
+// test() with global flag advances lastIndex
+const globalTester = /a/g
+let testStrGlobal = 'ababa'
+console.log(
+  `/a/g.test("${testStrGlobal}") iteration 1:`,
+  globalTester.test(testStrGlobal),
+  `lastIndex: ${globalTester.lastIndex}`,
+) // true, lastIndex: 1
+console.log(
+  `/a/g.test("${testStrGlobal}") iteration 2:`,
+  globalTester.test(testStrGlobal),
+  `lastIndex: ${globalTester.lastIndex}`,
+) // true, lastIndex: 3
+console.log(
+  `/a/g.test("${testStrGlobal}") iteration 3:`,
+  globalTester.test(testStrGlobal),
+  `lastIndex: ${globalTester.lastIndex}`,
+) // true, lastIndex: 5
+console.log(
+  `/a/g.test("${testStrGlobal}") iteration 4:`,
+  globalTester.test(testStrGlobal),
+  `lastIndex: ${globalTester.lastIndex}`,
+) // false, lastIndex: 0 (reset)
+
+// 2b: RegExp.prototype.exec() - Finds first match and details (returns array or null)
+console.log('\n--- 2b: regex.exec(string) ---')
+
+const findDetails = /q(uick) brown (fox)/i // Capturing groups
+const execString = 'The Quick brown Fox jumps'
+const execResult = findDetails.exec(execString)
+console.log(`/q(uick) brown (fox)/i.exec("${execString}"):`, execResult)
+// Output: ["Quick brown Fox", "uick", "Fox", index: 4, input: "The Quick brown Fox jumps", groups: undefined]
+if (execResult) {
+  console.log('Full match:', execResult[0])
+  console.log('Group 1:', execResult[1])
+  console.log('Group 2:', execResult[2])
+  console.log('Match index:', execResult.index)
+}
+
+const noMatchExec = findDetails.exec('Lazy dog')
+console.log(`/q(uick) brown (fox)/i.exec("Lazy dog"):`, noMatchExec) // null
+
+// exec() with global flag in a loop to find all matches
+const findAllWords = /(\b\w{4}\b)/g // Find all 4-letter words
+const wordsString = 'The quick brown fox jumps over the lazy dog'
+let matchExec
+console.log('Finding all 4-letter words with exec() loop:')
+while ((matchExec = findAllWords.exec(wordsString)) !== null) {
+  console.log(
+    ` - Found '${matchExec[1]}' at index ${matchExec.index}. Next search starts at ${findAllWords.lastIndex}`,
+  )
+}
+
+// Named capture groups (ES2018)
+const namedGroupRegex = /(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})/g
+const dateString = 'Dates: 2025-04-28, 2026-01-15'
+let namedMatch
+console.log('Finding dates with named capture groups:')
+while ((namedMatch = namedGroupRegex.exec(dateString)) !== null) {
+  if (namedMatch.groups) {
+    console.log(
+      `  - Found: ${namedMatch[0]}, Year: ${namedMatch.groups.year}, Month: ${namedMatch.groups.month}`,
+    )
+  }
+}
+
+// --- Section 3: Using Regex - String Methods ---
+
+// 3a: String.prototype.match() - Finds matches based on global flag
+console.log('\n--- 3a: string.match(regex) ---')
+
+const matchText = 'Rain rain go away, come again another day.'
+const matchNonGlobal = /rain/i // Non-global, case-insensitive
+const matchGlobal = /rain/gi // Global, case-insensitive
+
+const resultMatchNonGlobal = matchText.match(matchNonGlobal)
+console.log(`match() non-global (/rain/i):`, resultMatchNonGlobal)
+// Output: ["Rain", index: 0, input: "...", groups: undefined] (like exec)
+
+const resultMatchGlobal = matchText.match(matchGlobal)
+console.log(`match() global (/rain/gi):`, resultMatchGlobal)
+// Output: ["Rain", "rain", "again"] (array of matching strings only)
+
+const resultMatchNone = matchText.match(/sunshine/)
+console.log(`match() no match (/sunshine/):`, resultMatchNone) // null
+
+// 3b: String.prototype.matchAll() - Iterator for all detailed matches (ES2020)
+console.log('\n--- 3b: string.matchAll(regex) ---')
+
+const matchAllText = 'Event: START Time: 10:30, Event: END Time: 11:45'
+// Requires global flag
+const matchAllRegex = /Event:\s*(?<event>\w+)\s+Time:\s*(?<time>\d{2}:\d{2})/gi
+
+// Using try/catch because matchAll throws if regex is not global
+try {
+  const allMatches = matchAllText.matchAll(matchAllRegex)
+  console.log('Iterating through matchAll results:')
+  for (const match of allMatches) {
+    console.log(
+      ` - Full: "${match[0]}", Event: ${match.groups.event}, Time: ${match.groups.time}, Index: ${match.index}`,
+    )
+  }
+} catch (e) {
+  console.error('matchAll error:', e)
+}
+
+// Example showing the error if 'g' flag is missing
+const matchAllRegexNoG = /Event:\s*(\w+)/i
+try {
+  matchAllText.matchAll(matchAllRegexNoG)
+} catch (e) {
+  console.error('matchAll error without global flag:', e.message) // TypeError expected
+}
+
+// 3c: String.prototype.search() - Finds index of first match (returns number or -1)
+console.log('\n--- 3c: string.search(regex) ---')
+
+const searchText = 'Can you find the hidden word?'
+const searchRegex = /hidden/
+const searchRegexNotFound = /missing/
+
+console.log(`search(/hidden/): Index`, searchText.search(searchRegex)) // 18
+console.log(`search(/missing/): Index`, searchText.search(searchRegexNotFound)) // -1
+console.log(`search(/WORD/i): Index`, searchText.search(/WORD/i)) // 25 (ignores global flag)
+
+// 3d: String.prototype.replace() - Replaces first or all matches
+console.log('\n--- 3d: string.replace(regex, replacement) ---')
+
+const replaceText = 'the quick brown fox and the slow fox'
+const replaceRegexFirst = /fox/ // Non-global
+const replaceRegexAll = /fox/g // Global
+
+console.log('replace() first match:', replaceText.replace(replaceRegexFirst, 'cat'))
+// Output: "the quick brown cat and the slow fox"
+console.log('replace() all matches:', replaceText.replace(replaceRegexAll, 'cat'))
+// Output: "the quick brown cat and the slow cat"
+
+// Using capture groups in replacement ($1, $2, etc.)
+const nameSwapText = 'Doe, John'
+const nameSwapRegex = /(\w+),\s*(\w+)/
+console.log(
+  'replace() with capture groups:',
+  nameSwapText.replace(nameSwapRegex, '$2 $1'),
+)
+// Output: "John Doe"
+
+// Using a replacer function
+const textWithNumbers = 'Item1, Item2, Item3'
+function replacerFunc(match, group1) {
+  let num = parseInt(group1)
+  return 'Product-' + num * 10
+}
+console.log(
+  'replace() with function:',
+  textWithNumbers.replace(/Item(\d)/g, replacerFunc),
+)
+// Output: "Product-10, Product-20, Product-30"
+
+// Special replacement patterns: $& (entire match), $` (text before), $' (text after), $$ (literal $)
+console.log('replace() special patterns:', 'abc'.replace(/b/, "$& ($`) ($') $$"))
+// Output: "ab ($a) (c) $c"
+
+// 3e: String.prototype.replaceAll() - Replaces all matches (ES2021)
+console.log('\n--- 3e: string.replaceAll(regex | substr, replacement) ---')
+
+const replaceAllText = 'blue car, red car, blue bike'
+
+// Using string replacement
+console.log('replaceAll() with string:', replaceAllText.replaceAll('blue', 'green'))
+// Output: "green car, red car, green bike"
+
+// Using regex replacement (MUST have global flag 'g')
+const replaceAllRegex = /car/g // Must be global
+console.log(
+  'replaceAll() with regex:',
+  replaceAllText.replaceAll(replaceAllRegex, 'truck'),
+)
+// Output: "blue truck, red truck, blue bike"
+
+// Example showing error if regex is not global
+const replaceAllRegexNoG = /car/
+try {
+  replaceAllText.replaceAll(replaceAllRegexNoG, 'truck')
+} catch (e) {
+  console.error("replaceAll() regex error without 'g' flag:", e.message) // TypeError expected
+}
+
+// 3f: String.prototype.split() - Splits string into an array
+console.log('\n--- 3f: string.split(separator | regex, limit) ---')
+
+const csvData = 'apple,banana,orange,grape'
+console.log('split() with string separator:', csvData.split(','))
+// Output: ["apple", "banana", "orange", "grape"]
+
+const spacedData = 'word1  word2\tword3\nword4'
+const whitespaceRegex = /\s+/ // Split on one or more whitespace chars
+console.log('split() with regex separator:', spacedData.split(whitespaceRegex))
+// Output: ["word1", "word2", "word3", "word4"]
+
+// Using limit
+console.log('split() with limit:', csvData.split(',', 2))
+// Output: ["apple", "banana"]
+
+// Split with capturing group in regex includes captured results
+const dataWithCapturedDelim = 'section1-dataA-section2-dataB'
+const splitCaptureRegex = /-(\w+)-/ // Capture the letters between dashes
+console.log(
+  'split() with captured delimiters:',
+  dataWithCapturedDelim.split(splitCaptureRegex),
+)
+// Output: ["section1", "dataA", "section2", "dataB", ""]
+
+console.log('\n--- JavaScript Regex Syntax Test Finished ---')

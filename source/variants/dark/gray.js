@@ -57,10 +57,9 @@ export default function (colors) {
   colors.cssValue = colors.syntaxOrange
   colors.cssTag = colors.syntaxRed
   colors.cssClass = colors.syntaxYellow
-  colors.cssId = colors.syntaxBlue
   colors.cssProperty = colors.syntaxCyan
   colors.cssUnits = colors.number
-  colors.cssSpecialWord = colors.syntaxViolet
+  colors.cssSpecialWord = colors.syntaxLightBlue
   colors.cssPseudoClass = colors.syntaxPurple
   colors.sassFunction = colors.syntaxBlue
   colors.sassInterpolation = colors.syntaxRed

@@ -52,7 +52,7 @@ export default function (colors) {
     'editor.selectionForeground': colors.text.hex(),
     // cuando selecciono parcialmente una palabra y vscode selecciona todo
     'editor.wordHighlightStrongBackground': colors.selection_1.hex(),
-    'editor.wordHighlightStrongBorder': null, // colors.testC.hex(),
+    'editor.wordHighlightStrongBorder': null,
     // palabras iguales a la seleccion
     'editor.selectionHighlightBackground': colors.selection_0.hex(),
     'editor.selectionHighlightBorder': colors.selection_2.hex(),
@@ -497,7 +497,7 @@ export default function (colors) {
     'terminal.ansiBrightYellow': colors.syntaxYellow.hex(),
   }
 
-  const tcNormalize = [
+  const normalize = [
     {
       name: 'normalize font style of certain components',
       scope: [
@@ -513,7 +513,7 @@ export default function (colors) {
         'keyword',
         'punctuation.definition.string',
         'punctuation',
-        'variable.other.readwrite',
+        'variable.other',
         'storage.type',
         'source.css',
         'string.quoted',
@@ -524,8 +524,7 @@ export default function (colors) {
     },
   ]
 
-  const tcGlobalSettings = [
-    // global settings
+  const globalSettings = [
     {
       name: 'Global settings',
       settings: {
@@ -533,10 +532,46 @@ export default function (colors) {
         foreground: colors.text.hex(),
       },
     },
+    {
+      name: 'Italics',
+      scope: ['italic', 'markup.italic'],
+      settings: {
+        fontStyle: 'italic',
+      },
+    },
+    {
+      name: 'Bold',
+      scope: ['bold', 'markup.bold'],
+      settings: {
+        fontStyle: 'bold',
+      },
+    },
+    {
+      name: 'Quote',
+      scope: 'quote',
+      settings: {
+        fontStyle: 'italic',
+      },
+    },
+    {
+      name: 'Invalid',
+      scope: 'invalid',
+      settings: {
+        background: colors.danger.hex(),
+        foreground: colors.text.hex(),
+      },
+    },
+    {
+      name: 'Invalid deprecated',
+      scope: 'invalid.deprecated',
+      settings: {
+        background: colors.dangerDark.hex(),
+        foreground: colors.deprecated.hex(),
+      },
+    },
   ]
 
   const tcGit = [
-    // GIT  colors
     {
       name: 'Changed',
       scope: [
@@ -568,23 +603,68 @@ export default function (colors) {
     },
   ]
 
-  const tcGeneral = [
+  const general = [
     {
       // reserved language variables like this, super, self, etc.
-      name: 'Language Variable',
-      scope: 'variable.language',
+      name: 'Variables',
+      scope: [
+        'variable',
+        'variable.language',
+        'variable.other',
+
+        // Built-in constant
+        'punctuation.definition.constant',
+        'variable.other.constant',
+
+        //User-defined constant
+        'constant.character',
+        'constant.other',
+      ],
       settings: {
-        foreground: colors.specialWordA.hex(),
+        foreground: colors.variable.hex(),
       },
     },
     {
-      // escape sequences like \e
-      name: 'Constant Character Escape',
-      scope: 'constant.character.escape',
+      name: 'object key',
+      scope: [
+        'variable.other.object.property',
+        'meta.object-literal.key',
+        // 'meta.var.expr',
+        'variable.object.property',
+        'variable.other.property',
+        'support.variable.property',
+        'support.type.map.key',
+      ],
+      settings: {
+        foreground: colors.variableProperty.hex(),
+      },
+    },
+    {
+      name: 'String',
+      scope: [
+        'string',
+        'string.quoted',
+        'string.quoted.single',
+        'string.quoted.double',
+        'string.template punctuation.definition.string',
+        'punctuation.definition.string',
+
+        // escape sequences like \e
+        'constant.character.escape',
+      ],
       settings: {
         foreground: colors.string.hex(),
       },
     },
+    {
+      // ${}
+      name: 'Template Literals expressions',
+      scope: ['punctuation.definition.template-expression'],
+      settings: {
+        foreground: colors.contrastText.hex(),
+      },
+    },
+    // template / markup tags
     {
       // the </> of the tag & (,) in pug
       name: 'Meta Tag',
@@ -603,37 +683,13 @@ export default function (colors) {
       },
     },
     {
-      // pug classes
-      name: 'Pug Classes',
-      scope: 'entity.other.attribute-name.class.pug',
-      settings: {
-        foreground: colors.pugClass.hex(),
-        fontStyle: 'italic',
-      },
-    },
-    {
-      // function name
-      name: 'Support Variable Property',
-      scope: 'support.variable.property',
-      settings: {
-        foreground: colors.functionName.hex(),
-      },
-    },
-    {
-      name: 'Invalid deprecated',
-      scope: 'invalid.deprecated',
-      settings: {
-        foreground: colors.deprecated.hex(),
-        background: colors.dangerDark.hex(),
-      },
-    },
-    {
+      // regex
       name: 'RegExp String',
       scope: [
         'string.regexp',
-        'string.regexp keyword.other',
         'string.regexp punctuation.definition.string',
         'meta.group.regexp',
+        'string.regexp keyword.other',
         'constant.character.escape.backslash.regexp',
         'constant.other.character-class.set.regexp',
         'constant.character.control.regexp',
@@ -650,91 +706,222 @@ export default function (colors) {
         foreground: colors.regularText.hex(),
       },
     },
+    // code languages
+    {
+      // words like function, var, let, const
+      name: 'Storage type',
+      scope: [
+        'storage',
+        // var let const class function type
+        'storage.type',
+        // @param, @returns
+        'punctuation.definition.block.tag',
+        // JavaScript Method Declaration e.g. `constructor`
+        'meta.method.declaration',
+        // function keyword
+        'keyword.function',
+        // class keyword
+        'keyword.class',
+        // interface keyword
+        'keyword.interface',
+        // var keyword
+        'keyword.var',
+      ],
+      settings: {
+        foreground: colors.specialWordA.hex(),
+        fontStyle: 'italic',
+      },
+    },
+    {
+      // special words
+      name: 'Library (function & constant)',
+      scope: [
+        // constants (magic values) provided by the language or framework/library.
+        'support.constant',
+        'support.class.promise',
+        'storage.modifier.async',
 
-    {
-      name: 'Italics',
-      scope: 'italic',
+        'keyword.control.flow',
+
+        // mainly related to flow control like continue, while, return, etc.
+        // at rule name in css & scss & sass
+        'keyword.control',
+
+        'keyword.other.special-method',
+      ],
       settings: {
-        foreground: '',
+        foreground: colors.specialWordB.hex(),
         fontStyle: 'italic',
       },
     },
     {
-      name: 'Bold',
-      scope: 'bold',
+      name: 'Conditionals',
+      scope: ['keyword.control.conditional'],
       settings: {
-        foreground: colors.string.hex(),
-        fontStyle: 'bold',
+        foreground: colors.specialWordC.hex(),
+        fontStyle: 'normal',
       },
     },
     {
-      name: 'Quote',
-      scope: 'quote',
+      name: 'loops',
+      scope: ['keyword.control.loop'],
       settings: {
-        foreground: colors.string.hex(),
+        foreground: colors.specialWordC.hex(),
         fontStyle: 'italic',
       },
     },
     {
-      name: 'Invalid',
-      scope: 'invalid',
+      // function names & classes names
+      name: 'Functions & Classes',
+      scope: [
+        'entity.name.function',
+        'entity.name.class',
+        'meta.function-call',
+        'support.variable.property',
+        'entity.name.type.class',
+        'meta.class',
+        'entity.other.inherited-class',
+      ],
       settings: {
-        background: colors.danger.hex(),
-        foreground: colors.text.hex(),
+        foreground: colors.functionName.hex(),
+      },
+    },
+    {
+      name: 'Function & classes execution',
+      scope: ['meta.function-call', 'meta.function-call entity.name.function'],
+      settings: {
+        fontStyle: 'italic',
+      },
+    },
+    {
+      name: 'function arguments',
+      scope: ['variable.parameter.function', 'variable.parameter'],
+      settings: {
+        foreground: colors.variable.hex(),
+      },
+    },
+    {
+      // numbers
+      name: 'Number',
+      scope: ['constant.numeric', 'constant.character.numeric'],
+      settings: {
+        foreground: colors.number.hex(),
+        fontStyle: 'normal',
+      },
+    },
+    {
+      name: 'Null and undefined',
+      scope: ['constant.language.null', 'constant.language.undefined'],
+      settings: {
+        foreground: colors.nullUnd.hex(),
+      },
+    },
+    {
+      name: 'Boolean',
+      scope: ['constant.language.boolean'],
+      settings: {
+        foreground: colors.boolean.hex(),
+      },
+    },
+    {
+      // when constant like true, false, None, null are not defined in the language
+      name: 'Other constants',
+      scope: ['constant.language'],
+      settings: {
+        foreground: colors.contrastText.hex(),
+      },
+    },
+    {
+      name: 'Type',
+      scope: [
+        // like boolean, string ...
+        'support.type',
+      ],
+      settings: {
+        foreground: colors.specialWordB.hex(),
+      },
+    },
+    {
+      // () [] {} .
+      name: 'Punctuation',
+      scope: [
+        'punctuation',
+        'punctuation.separator',
+        'meta.property-list.css.sass',
+        'punctuation.accessor',
+        // dot (.) for object property e.g. object.property
+        'punctuation.accessor',
+
+        // ()
+        'meta.brace',
+
+        // {}
+        'punctuation.definition',
+
+        'punctuation.terminator.expression',
+        'punctuation.section.array',
+        'meta.array',
+
+        'punctuation.separator.arguments',
+      ],
+      settings: {
+        foreground: colors.punctuation.hex(),
+      },
+    },
+    {
+      name: 'Operators',
+      scope: [
+        'keyword.operator',
+        'keyword.operator.expression',
+
+        // += -= *= /= %= &= |= ^= <<= and >>=
+        'keyword.operator.assignment',
+
+        // + - * / % ** ++ --
+        'keyword.operator.arithmetic',
+
+        // & | ^ ~ << >> >>>
+        'keyword.operator.bitwise',
+
+        // ++ --
+        'keyword.operator.increment',
+        'keyword.operator.decrement',
+
+        // ? :
+        'keyword.operator.ternary',
+
+        // word new
+        'keyword.other.new',
+      ],
+      settings: {
+        foreground: colors.operator.hex(),
+      },
+    },
+    {
+      name: 'Operators Logical & Relational',
+      scope: [
+        // && || ! == != >= <= > <
+        'keyword.operator.logical',
+
+        // == != >= <= > <
+        'keyword.operator.comparison',
+        'keyword.operator.relational',
+      ],
+      settings: {
+        foreground: colors.specialWordC.hex(),
+      },
+    },
+    {
+      name: 'this keyword',
+      scope: ['variable.language.this'],
+      settings: {
+        foreground: colors.contrastText.hex(),
       },
     },
   ]
 
-  const tcSpecialWords = [
-    // SPECIAL WORDS
-
-    // VIOLET COLOR
-
-    {
-      // types provided by the framework/library,
-      name: 'Library class/type',
-      scope: [
-        // variables provided by the framework/library. For example global in javascript
-        'support.variable',
-        // types provided by the framework/library, this is probably only used for
-        // languages derived from C, which has typedef (and struct).
-        // Most other languages would introduce new types as classes.
-        'support.type',
-        // when the framework/library provides classes.
-        // 'support.class',
-        // 'entity.name.type.class',
-      ],
-      settings: {
-        foreground: colors.specialWordB.hex(),
-      },
-    },
-    {
-      name: 'Library (function & constant)',
-      scope: [
-        // functions provided by the framework/library
-        // like log in console.log()
-        'support.function',
-        // constants (magic values) provided by the framework/library.
-        'support.constant',
-        'support.class.promise',
-        'storage.modifier.async',
-      ],
-      settings: {
-        foreground: colors.specialWordB.hex(),
-        fontStyle: 'italic',
-      },
-    },
-    {
-      name: 'Variable Property Other object property',
-      scope: ['variable.other.object.property'],
-      settings: {
-        foreground: colors.text.hex(),
-        fontStyle: 'italic',
-      },
-    },
-
-    // Last object property
-    // object.propertyA.propertyAA.[propertyAAA]
+  const specialWords = [
+    // not sure about this ones
     {
       name: 'Variable Instances',
       scope: [
@@ -747,57 +934,6 @@ export default function (colors) {
         foreground: colors.variableInstance.hex(),
       },
     },
-
-    {
-      name: 'variable property',
-      scope: ['variable.other.property', 'support.variable.property'],
-      settings: {
-        foreground: colors.variableProperty.hex(),
-      },
-    },
-
-    // RED COLOR
-    {
-      // Math in Math.random() in javascript
-      name: 'Support Constant Math',
-      scope: 'support.constant.math',
-      settings: {
-        foreground: colors.contrastText.hex(),
-      },
-    },
-
-    // BLUE COLOR
-    {
-      name: 'Storage type',
-      scope: [
-        // var let const class function type
-        'storage.type',
-        // @param, @returns
-        'punctuation.definition.block.tag',
-        // JavaScript Method Declaration e.g. `constructor`
-        'meta.method.declaration',
-      ],
-      settings: {
-        foreground: colors.specialWordA.hex(),
-        fontStyle: 'italic',
-      },
-    },
-    {
-      name: 'Storage & interface',
-      scope: ['storage', 'storage.type', 'storage.type.interface'],
-      settings: {
-        foreground: colors.specialWordA.hex(),
-      },
-    },
-    {
-      name: 'Storage',
-      scope: ['storage'],
-      settings: {
-        fontStyle: 'italic',
-      },
-    },
-
-    // PURPLE COLOR
     {
       name: 'Entity Name Tag Custom',
       scope: 'entity.name.tag.custom',
@@ -821,55 +957,7 @@ export default function (colors) {
         fontStyle: 'italic',
       },
     },
-    {
-      name: 'Doctypes',
-      scope: ['entity.name.tag.doctype', 'meta.tag.sgml.doctype'],
-      settings: {
-        foreground: colors.specialWordC.hex(),
-        fontStyle: 'italic',
-      },
-    },
-    {
-      name: 'Keyword Control Conditional',
-      scope: ['keyword.control.conditional'],
-      settings: {
-        foreground: colors.specialWordC.hex(),
-        fontStyle: 'normal',
-      },
-    },
-    {
-      name: 'loops',
-      scope: ['keyword.control.loop'],
-      settings: {
-        foreground: colors.specialWordC.hex(),
-      },
-    },
-    {
-      // mainly related to flow control like continue, while, return, etc.
-      // at rule name in css & scss & sass
-      name: 'import control keyword',
-      scope: 'keyword.control',
-      settings: {
-        foreground: colors.specialWordB.hex(),
-      },
-    },
 
-    // CYAN COLOR
-    {
-      name: 'Variable Parameter Function',
-      scope: 'variable.parameter.function',
-      settings: {
-        foreground: colors.functionName.hex(),
-        fontStyle: 'normal',
-      },
-    },
-    {
-      name: 'function call',
-      scope: 'meta.function-call',
-      settings: {
-        fontStyle: 'italic',
-      },
-    },
     {
       name: 'Meta Property Name',
       scope: 'meta.property-name',
@@ -885,327 +973,90 @@ export default function (colors) {
       },
     },
     {
-      // function name in javascript and mixins and function names in sass & scss
-      name: 'Functions & Classes',
-      scope: ['entity.name.function'],
-      settings: {
-        foreground: colors.functionName.hex(),
-      },
-    },
-    {
       name: 'Support Constant, `new` keyword, Special Method Keyword, `debugger`, other keywords',
-      scope: [
-        'support.constant',
-        'keyword.other.special-method',
-        'keyword.other.new',
-        'keyword.other.debugger',
-      ],
+      scope: ['support.constant', 'keyword.other.debugger'],
       settings: {
-        foreground: colors.functionName.hex(),
+        foreground: colors.specialWordB.hex(),
       },
     },
   ]
 
-  const tcStorageNames = [
-    // Storage names
+  const comments = [
     {
-      name: 'object key',
-      scope: ['meta.var.expr', 'meta.object-literal.key'],
-      settings: {
-        foreground: colors.variableProperty.hex(),
-        fontStyle: 'normal',
-      },
-    },
-    {
-      name: 'Variable',
-      scope: 'variable',
-      settings: {
-        foreground: colors.variable.hex(),
-        fontStyle: 'normal',
-      },
-    },
-    {
-      name: 'Built-in constant',
+      name: 'Comment',
       scope: [
-        'constant.language',
-        'punctuation.definition.constant',
-        'variable.other.constant',
+        'comment',
+        'comment.block.documentation punctuation.definition.bracket.curly',
       ],
       settings: {
-        foreground: colors.variable.hex(),
-      },
-    },
-    {
-      name: 'User-defined constant',
-      scope: ['constant.character', 'constant.other'],
-      settings: {
-        foreground: colors.variable.hex(),
-      },
-    },
-    {
-      name: 'Class name',
-      scope: ['entity.name.class', 'meta.class entity.name.type.class'],
-      settings: {
-        foreground: colors.functionName.hex(),
-      },
-    },
-  ]
-
-  const tcStrings = [
-    {
-      name: 'String',
-      scope: 'string',
-      settings: {
-        foreground: colors.string.hex(),
-      },
-    },
-    {
-      name: 'String Quoted',
-      scope: ['string.quoted', 'string.quoted.single', 'string.quoted.double'],
-      settings: {
-        foreground: colors.string.hex(),
-      },
-    },
-    {
-      name: 'Backtics(``) in Template Strings',
-      scope: 'string.template punctuation.definition.string',
-      settings: {
-        foreground: colors.string.hex(),
-      },
-    },
-    {
-      name: 'Punctuation Definition String',
-      scope: 'punctuation.definition.string',
-      settings: {
-        foreground: colors.string.hex(),
-      },
-    },
-  ]
-
-  const tcPunctuation = [
-    {
-      name: 'Punctuation',
-      scope: [
-        'punctuation',
-        'punctuation.separator',
-        'meta.property-list.css.sass',
-        'punctuation.accessor',
-        // dot (.) for object property e.g. object.property
-        'punctuation.accessor',
-      ],
-      settings: {
-        foreground: colors.punctuation.hex(),
-      },
-    },
-    {
-      name: 'Punctuation Tweaks',
-      scope: [
-        'punctuation.terminator.expression',
-        'punctuation.definition.arguments',
-        'punctuation.definition.array',
-        'punctuation.section.array',
-        'meta.array',
-      ],
-      settings: {
-        foreground: colors.punctuation.hex(),
-      },
-    },
-    {
-      name: 'More Punctuation Tweaks',
-      scope: [
-        'punctuation.definition.list.begin',
-        'punctuation.definition.list.end',
-        'punctuation.separator.arguments',
-        'punctuation.definition.list',
-      ],
-      settings: {
-        foreground: colors.punctuation.hex(),
-      },
-    },
-    {
-      name: 'Markdown Punctuation',
-      scope: [
-        'punctuation.definition.string.markdown',
-        'punctuation.definition.string.begin.markdown',
-        'punctuation.definition.string.end.markdown',
-        'meta.link.inline.markdown punctuation.definition.string',
-      ],
-      settings: {
-        foreground: colors.punctuation.hex(),
-      },
-    },
-    {
-      // () [] {}
-      name: 'Meta Braces and curly brackets',
-      scope: [
-        // () []
-        'meta.brace',
-        // {}
-        'punctuation.definition',
-        // () in function definitions e.g. function fnName()...
-        'punctuation.definition.parameters',
-      ],
-      settings: {
-        foreground: colors.punctuation.hex(),
-      },
-    },
-    {
-      // ${}
-      name: 'Template Literals expressions',
-      scope: ['punctuation.definition.template-expression'],
-      settings: {
-        foreground: colors.contrastText.hex(),
-      },
-    },
-
-    // KEYWORD OPERATORS
-    {
-      name: 'Keyword Operator',
-      scope: 'keyword.operator',
-      settings: {
-        foreground: colors.operator.hex(),
-        fontStyle: 'normal',
-      },
-    },
-    {
-      name: 'Keyword operator expressions',
-      scope: ['keyword.operator.expression'],
-      settings: {
-        foreground: colors.operator.hex(),
-      },
-    },
-    {
-      // += -= *= /= %= &= |= ^= <<= and >>=
-      name: 'Keyword Operator Assignment',
-      scope: 'keyword.operator.assignment',
-      settings: {
-        foreground: colors.operator.hex(),
-      },
-    },
-    {
-      // + - * / % ** ++ --
-      name: 'Keyword Operator Arithmetic',
-      scope: 'keyword.operator.arithmetic',
-      settings: {
-        foreground: colors.operator.hex(),
-      },
-    },
-    {
-      // & | ^ ~ << >> >>>
-      name: 'Keyword Operator Bitwise',
-      scope: 'keyword.operator.bitwise',
-      settings: {
-        foreground: colors.operator.hex(),
-      },
-    },
-    {
-      // ++
-      name: 'Keyword Operator Increment',
-      scope: ['keyword.operator.increment', 'keyword.operator.decrement'],
-      settings: {
-        foreground: colors.operator.hex(),
-      },
-    },
-    {
-      // ? :
-      name: 'Keyword Operator Ternary',
-      scope: 'keyword.operator.ternary',
-      settings: {
-        foreground: colors.operator.hex(),
-      },
-    },
-    {
-      name: 'Keyword Operator Logical',
-      scope: 'keyword.operator.logical',
-      settings: {
-        foreground: colors.specialWordC.hex(),
-        fontStyle: 'normal',
-      },
-    },
-    {
-      // <= >=
-      name: 'keyword Operator Comparison',
-      scope: ['keyword.operator.comparison'],
-      settings: {
-        foreground: colors.specialWordC.hex(),
-      },
-    },
-    {
-      // =	≠	>	<	≥	≤
-      name: 'Keyword Operator Relational',
-      scope: 'keyword.operator.relational',
-      settings: {
-        foreground: colors.specialWordC.hex(),
+        foreground: colors.comment.hex(),
         fontStyle: 'italic',
       },
     },
-  ]
-
-  const tcSpecialValues = [
     {
-      name: 'Number',
-      scope: ['constant.numeric', 'constant.character.numeric'],
-      settings: {
-        foreground: colors.number.hex(),
-        fontStyle: 'normal',
-      },
-    },
-    {
-      name: 'Null and undefined',
-      scope: ['constant.language.null', 'constant.language.undefined'],
-      settings: {
-        foreground: colors.nullUnd.hex(),
-      },
-    },
-    {
-      name: 'Boolean',
-      scope: ['constant.language.boolean'],
-      settings: {
-        foreground: colors.boolean.hex(),
-      },
-    },
-    // {
-    //   // code like ~ = &#x7e
-    //   name: 'entity names',
-    //   scope: ['entity.name.type'],
-    //   settings: {
-    //     foreground: colors.variable.hex(),
-    //   },
-    // },
-  ]
-
-  const tcStylesheets = [
-    {
-      name: 'SCSS & SASS Variable',
+      name: 'Double-Slashed Comment',
       scope: [
-        'variable.scss',
-        'variable.sass',
-        'variable.parameter.scss',
-        'variable.parameter.sass',
-        'variable.parameter.keyframe-list.css',
-        'meta.at-rule.keyframes.scss entity.name.function.scss',
-        'meta.at-rule.keyframes.scss',
-        'entity.name.function.namespace-prefix.css',
-        'entity.name.namespace-prefix.scss',
-        'source.css.scss meta.at-rule',
-        'source.css.sass meta.at-rule',
-        'source.css.scss meta.at-rule support.type.property-name.css',
-        'source.css.sass meta.at-rule support.type.property-name.css',
-        'source.css.scss meta.at-rule meta.property-name.scss',
-        'source.css.sass meta.at-rule meta.property-name.sass',
-        'source.css.scss meta.property-list.scss meta.property-list.scss meta.at-rule.media.scss meta.property-list.media-query.scss meta.property-name.media-query.scss support.type.property-name.media.css',
-        'source.css.sass meta.property-list.sass meta.property-list.sass meta.at-rule.media.sass meta.property-list.media-query.sass meta.property-name.media-query.sass support.type.property-name.media.css',
-
-        'meta.property-name.media-query.scss',
+        'comment.line.double-slash',
+        'punctuation.definition.comment',
+        'punctuation.whitespace.comment',
+        'string.comment.buffered.block.pug',
       ],
       settings: {
-        foreground: colors.variable.hex(),
+        foreground: colors.comment.hex(),
+      },
+    },
+    //documentation inside comments
+    {
+      name: 'Data Type in commented documentation',
+      scope: [
+        'comment.block.documentation entity.name.type.instance.jsdoc',
+        'comment.block.documentation entity.name.type.instance.phpdoc',
+      ],
+      settings: {
+        foreground: colors.specialWordB.hex() + '80',
       },
     },
     {
-      name: 'Other values',
-      scope: ['meta.definition.variable.scss', 'meta.definition.variable.sass'],
-      settings: { foreground: colors.syntaxRed.hex() },
+      name: 'Variables in commented documentation',
+      scope: [
+        'comment.block.documentation variable.other.jsdoc',
+        'comment.block.documentation variable.other.phpdoc',
+      ],
+      settings: {
+        foreground: colors.variable.hex() + '80',
+      },
+    },
+    {
+      name: '@tags in commented documentation',
+      scope: [
+        'comment.block.documentation storage.type.class.jsdoc',
+        'comment.block.documentation punctuation.definition.block.tag.jsdoc',
+      ],
+      settings: {
+        foreground: colors.specialWordA.hex() + '80',
+      },
+    },
+  ]
+
+  // languages
+  const styleSheets = [
+    {
+      name: 'css',
+      scope: 'source.css',
+      settings: {
+        foreground: colors.regularText.hex(),
+      },
+    },
+    {
+      name: 'Comparators and primitive values',
+      scope: [
+        'meta.definition.variable.scss',
+        'meta.definition.variable.sass',
+        'sass.script.maps support.type.property-name.css.sass',
+      ],
+      settings: {
+        foreground: colors.syntaxRed.hex(),
+      },
     },
     {
       name: 'Color values',
@@ -1222,29 +1073,25 @@ export default function (colors) {
       name: 'css and pug ID selector',
       scope: [
         'entity.other.attribute-name.id',
-        'entity.other.attribute-name.id.css',
-        'entity.other.attribute-name.id.css punctuation.definition.entity.css',
-        'entity.other.attribute-name.id.scss',
-        'entity.other.attribute-name.id.css.sass',
+        'entity.other.attribute-name.id punctuation.definition',
       ],
       settings: {
-        foreground: colors.cssId.hex(),
+        foreground: colors.syntaxBlue.hex(),
       },
     },
     {
       name: 'function declaration',
       scope: [
-        'support.function.name.sass.library',
+        'support.function.misc',
+        'entity.name.function.scss',
+        'support.function.url',
+        'source.sass support.function.name.sass.library',
+        'sass.script.maps support.function.name',
+        'meta.property-list.css entity.name.function',
+        'support.function.gradient',
+        'support.function.name.sass entity.name.function',
         'source.sass entity.name.function',
-        'support.function.misc.css',
-        'support.function.misc.scss',
-        'support.function.misc.sass',
-        'support.function.misc.less',
-        'support.function.transform.css',
-        'support.function.transform.scss',
-        'support.function.transform.sass',
-        'support.function.transform.less',
-        'support.function.url.css',
+        'punctuation.section.function.scss',
       ],
       settings: {
         foreground: colors.sassFunction.hex(),
@@ -1254,11 +1101,8 @@ export default function (colors) {
       name: 'css class selector',
       scope: [
         'entity.other.attribute-name.class.css',
-        'entity.other.attribute-name.class.css punctuation.definition.entity.css',
-        'entity.other.attribute-name.class.css.sass',
-        'entity.other.attribute-name.class.css.scss',
-        'source.css.scss entity.other.attribute-name.parent-selector-suffix.css punctuation.definition.entity.css',
-        'entity.other.attribute-name.class.scss',
+        'entity.other.inherited-class.placeholder-selector.css',
+        'entity.other.attribute-name.parent-selector-suffix.css punctuation.definition',
       ],
       settings: {
         foreground: colors.cssClass.hex(),
@@ -1268,10 +1112,7 @@ export default function (colors) {
       name: 'Tag selectors and &',
       scope: [
         'entity.name.tag.css',
-        'entity.name.tag.less',
-        'entity.name.tag.custom.css',
-        'entity.name.tag.reference.scss',
-        'entity.name.tag.css.sass',
+        'meta.property-list.scss entity.name.tag.reference.scss',
       ],
       settings: {
         foreground: colors.cssTag.hex(),
@@ -1281,14 +1122,10 @@ export default function (colors) {
     {
       name: 'CSS Pseudo Class',
       scope: [
-        //pseudo-class like :hover, :active, :focus, etc.
-        'entity.other.attribute-name.pseudo-class.css',
-        'entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css',
-        'entity.other.pseudo-class.css.sass',
-
-        //pseudo-elements like ::-webkit...
         'entity.other.attribute-name.pseudo-element.css',
         'entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css',
+        'entity.other.attribute-name.pseudo-class.css',
+        'entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css',
       ],
       settings: {
         foreground: colors.cssPseudoClass.hex(),
@@ -1299,11 +1136,8 @@ export default function (colors) {
       name: 'Property name stylesheets',
       scope: [
         'support.type.property-name.css',
-        'support.type.property-name.scss',
-        'support.type.property-name.sass',
-        'support.type.property-name.less',
-        'meta.property-name.scss',
-        'support.type.property-name.css.sass.prop.name',
+        'meta.property-list.scss entity.name.tag.css',
+        'support.type.vendored.property-name.css',
       ],
       settings: {
         foreground: colors.cssProperty.hex(),
@@ -1312,6 +1146,7 @@ export default function (colors) {
     {
       name: 'Values in css',
       scope: [
+        // 'support.constant.property-value.css',
         'meta.property-value.css',
         'meta.property-value.scss',
         'meta.property-value.sass',
@@ -1320,13 +1155,13 @@ export default function (colors) {
         'support.constant.font-name.scss',
         'support.constant.font-name.sass',
         'support.constant.font-name.less',
+
+        'support.constant.vendored.property-value.css',
+        'keyword.operator.gradient.css',
         'support.constant.property-value.css',
-        'support.constant.property-value.scss',
-        'support.constant.property-value.sass',
-        'support.constant.property-value.less',
-        'meta.property-value.css.sass',
-        'support.constant.color',
-        // 'source.sass meta.property-list.css.sass.prop meta.property-value.css.sass support.constant.property-value.css.sass',
+        'source.css meta.property-value',
+        'support.constant.color.w3c-standard-color-name.css',
+        'meta.property-value.scss support.type.property-name.css',
       ],
       settings: {
         foreground: colors.cssValue.hex(),
@@ -1343,6 +1178,7 @@ export default function (colors) {
         'punctuation.definition.constant.css',
         'constant.numeric.css.sass',
         'meta.property-list.media-query.scss',
+        'keyword.control.unit.css.sass',
       ],
       settings: {
         foreground: colors.cssUnits.hex(),
@@ -1353,12 +1189,13 @@ export default function (colors) {
       // (min-aspect-ratio), (min-resolution)
       name: 'Support Type Property Name & entity name tags',
       scope: [
-        'support.type.vendor.property-name',
+        'support.type.vendor.property-name.media',
         'support.constant.vendor.property-value',
         'support.type.property-name',
         'meta.property-name.media-query.scss support.type.property-name.css',
         'meta.at-rule.media.header.css',
         'meta.property-list entity.name.tag',
+        'meta.at-rule.media.header.css punctuation.definition.parameters',
       ],
       settings: {
         foreground: colors.cssSpecialWord.hex(),
@@ -1389,8 +1226,9 @@ export default function (colors) {
       name: 'Keyword',
       scope: [
         //@ in at rules
-        'punctuation.definition.keyword',
+        'keyword.control.at-rule punctuation.definition',
         'entity.name.tag.reference',
+        'meta.at-rule keyword.control punctuation.definition',
 
         // font-feature-values
         'entity.name.tag.custom.css',
@@ -1414,7 +1252,7 @@ export default function (colors) {
         'meta.property-value.scss support.constant.mathematical-symbols.scss',
       ],
       settings: {
-        foreground: colors.cssSpecialWord.hex(),
+        foreground: colors.syntaxViolet.hex(),
         fontStyle: 'italic',
       },
     },
@@ -1423,7 +1261,6 @@ export default function (colors) {
       scope: [
         'meta.at-rule.media.header.css support.constant.media.css',
         'meta.at-rule.media.scss support.constant.media.css',
-        'meta.at-rule.import.scss support.function.misc.scss',
         'meta.at-rule.import.css support.constant.media.css',
         'meta.at-rule.page.css',
       ],
@@ -1456,26 +1293,6 @@ export default function (colors) {
       },
     },
     {
-      name: 'Attribute Name for CSS, SCSS and LESS',
-      scope: [
-        'meta.attribute-selector.less entity.other.attribute-name.attribute',
-        'entity.other.attribute-name.css.sass',
-        'keyword.operator.attribute-selector.css.sass',
-        'meta.attribute-selector',
-
-        // SCSS
-        'meta.attribute-selector.scss',
-        'meta.attribute-selector.scss punctuation.definition.string.begin.scss',
-        'meta.attribute-selector.scss punctuation.definition.string.end.scss',
-
-        // CSS
-        'meta.attribute-selector.css',
-      ],
-      settings: {
-        foreground: colors.cssAttribute.hex(),
-      },
-    },
-    {
       name: 'attribute selector brackets',
       scope: [
         'meta.attribute-selector.css punctuation.definition.entity.begin.bracket.square.css',
@@ -1488,15 +1305,27 @@ export default function (colors) {
       },
     },
     {
-      name: 'attribute selector attribute',
+      name: 'attribute selector',
       scope: [
         'source.css.scss entity.other.attribute-name.attribute',
         'meta.attribute-selector.scss punctuation.definition.attribute-selector.begin.bracket.square.scss',
         'meta.attribute-selector.scss punctuation.definition.attribute-selector.end.bracket.square.scss',
         'meta.attribute-selector.css entity.other.attribute-name',
+        'meta.attribute-selector.scss keyword.operator',
+        'meta.attribute-selector.css keyword.operator.pattern.css',
+        'meta.attribute-selector.less entity.other.attribute-name.attribute',
+        'entity.other.attribute-name.css.sass',
+        'keyword.operator.attribute-selector.css.sass',
+        'meta.attribute-selector',
+        'meta.attribute-selector.scss',
+        'meta.attribute-selector.scss punctuation.definition.string',
+        'meta.attribute-selector.css',
+        'entity.other.attribute-selector.sass',
+        'meta.attribute-selector.css punctuation.definition.entity.begin.bracket.square.css',
+        'meta.attribute-selector.css punctuation.definition.entity.end.bracket.square.css',
       ],
       settings: {
-        foreground: colors.text.hex(),
+        foreground: colors.cssAttribute.hex(),
       },
     },
     {
@@ -1514,6 +1343,7 @@ export default function (colors) {
     {
       name: 'SASS Interpolation',
       scope: [
+        // like #{}
         'support.function.interpolation.sass',
         'punctuation.definition.interpolation.begin.bracket.curly.scss',
         'punctuation.definition.interpolation.end.bracket.curly.scss',
@@ -1524,148 +1354,45 @@ export default function (colors) {
     },
   ]
 
-  // languages
-  const tcJavascript = [
+  const javascript = [
     {
-      name: 'Vars',
-      scope: [
-        'variable.other.object.js',
-        'variable.other.object.jsx',
-        'variable.other.object.ts',
-        'variable.other.object.tsx',
-        'support.variable.vue',
-        'variable.other.readwrite.alias.ts',
-        'variable.other.readwrite.alias.tsx',
-        'variable.other.readwrite.ts',
-        'variable.other.readwrite.tsx',
-        'variable.other.js',
-        'variable.other.ts',
-        'variable.other.tsx',
-        'variable.js',
-        'variable.ts',
-        'variable.tsx',
-        'variable.parameter',
-
-        // JavaScript module imports and exports
-        'variable.other.meta.import',
-        'meta.import variable.other',
-        'variable.other.meta.export',
-        'meta.export variable.other',
-
-        'support.class.js', // ???
-      ],
+      name: 'Variable Property',
+      scope: ['source.ts entity.name.type.enum'],
       settings: {
         foreground: colors.variable.hex(),
       },
     },
     {
-      name: 'Variable Property',
+      name: 'Support properties',
       scope: [
-        'variable.other.property.js',
-        'variable.other.property.ts',
-        'variable.other.property.tsx',
-        'variable.other.property.jsx',
-        'meta.object.member.js meta.object-literal.key.js',
-        'meta.object.member.ts meta.object-literal.key.ts',
-        'meta.object.property.ts',
-        'meta.object.property.tsx',
-        'meta.object.property.js',
-        'meta.object.property.jsx',
-        'meta.other.property.vue',
-        'source.ts.embedded.html.vue entity.other.attribute-name.html.vue',
-
-        // interfce other property ts
-        'meta.interface.ts variable.object.property.ts',
+        // like .length
+        'source.js support.variable.property',
+        'source.ts support.variable.property',
       ],
-      settings: {
-        foreground: colors.variableProperty.hex(),
-      },
-    },
-    {
-      name: 'Import/Export Punctuations',
-      scope: [
-        'meta.import.js punctuation.definition.block',
-        'meta.import.ts punctuation.definition.block',
-        'meta.import.tsx punctuation.definition.block',
-        'meta.export.js punctuation.definition.block',
-        'meta.export.ts punctuation.definition.block',
-        'meta.export.tsx punctuation.definition.block',
-        'punctuation.section.embedded',
-      ],
-      settings: {
-        foreground: colors.punctuation.hex(),
-      },
-    },
-    {
-      name: 'Function & class declaration',
-      scope: [
-        'meta.definition.function entity.name.function.js',
-        'meta.definition.function entity.name.function.ts',
-        'meta.function-call.ts entity.name.function.js',
-        'meta.function-call.ts entity.name.function.ts',
-
-        'meta.class entity.other.inherited-class',
-        'meta.class.js entity.name.type.class.js',
-        'meta.class.ts entity.name.type.class.ts',
-        'meta.class.js entity.other.inherited-class.js',
-        'meta.class.ts entity.other.inherited-class.ts',
-
-        'punctuation.decorator.js', // code like @decorator class A {} using babel
-      ],
-      settings: {
-        foreground: colors.functionName.hex(),
-      },
-    },
-    {
-      name: 'Function & class execution',
-      scope: [
-        'meta.function-call.js entity.name.function.js',
-        'meta.function-call.ts entity.name.function.ts',
-      ],
-      settings: {
-        fontStyle: 'italic',
-      },
-    },
-    {
-      name: 'Support properties', // like .length
-      scope: ['support.variable.property.js', 'support.variable.property.ts'],
       settings: {
         foreground: colors.specialWordB.hex(),
         fontStyle: 'italic',
       },
     },
     {
-      name: 'Storage type',
+      name: 'function*',
       scope: [
-        'source.js storage.type',
-        'source.ts storage.type',
-        'storage.type.function.arrow.js',
-        'storage.type.function.arrow.ts',
-
-        'meta.class meta.method.declaration meta.var.expr storage.type.js',
-        'storage.type.property.js',
-        'storage.type.property.ts',
-        'storage.type.property.tsx',
-
-        'meta.method.declaration storage.type.js',
-        'meta.method.declaration storage.type.ts',
-        'meta.method.declaration storage.type.tsx',
-
-        // * for function*
-        'meta.function.js keyword.generator.asterisk.js',
+        'source.js meta.function keyword.generator.asterisk',
+        'source.ts meta.function keyword.generator.asterisk',
       ],
       settings: {
-        foreground: colors.specialWordA.hex(),
+        foreground: colors.functionName.hex(),
         fontStyle: 'normal',
       },
     },
     {
       name: 'keywords',
       scope: [
-        'storage.modifier.js',
-        'storage.modifier.ts',
-        'source.js keyword.control',
-        'source.ts keyword.control',
+        // like static in classes
+        'source.js storage.modifier',
+        'source.ts storage.modifier',
+
+        // words like super() and extends (for classes)
         'source.js variable.language',
         'source.ts variable.language',
       ],
@@ -1675,99 +1402,48 @@ export default function (colors) {
       },
     },
     {
-      name: 'loops & Conditionals',
-      scope: [
-        'keyword.control.loop.js',
-        'keyword.control.loop.ts',
-        'keyword.control.loop.vue',
-
-        'keyword.control.conditional.js',
-        'keyword.control.conditional.ts',
-        'keyword.control.conditional.vue',
-        'keyword.control.switch.js',
-        'keyword.control.switch.ts',
-        'keyword.control.conditional.svelte',
-        'keyword.control.svelte',
-      ],
-      settings: {
-        foreground: colors.specialWordC.hex(),
-        fontStyle: 'normal',
-      },
-    },
-    {
-      name: 'interface & alias',
-      scope: [
-        'entity.name.type.interface.js',
-        'entity.name.type.interface.ts',
-        'entity.name.type.alias.ts',
-        'meta.type.parameters.ts entity.name.type',
-        'meta.type.parameters.tsx entity.name.type',
-        'entity.name.type.ts',
-        'entity.name.type.js',
-        'entity.name.type.module.ts',
-        'entity.name.type.module.tsx',
-        'entity.name.type.module.jsx',
-
-        // interface in ts
-        'meta.interface.ts entity.other.inherited-class.ts',
-        'meta.interface.ts entity.other.inherited-class.tsx',
-      ],
-      settings: {
-        foreground: colors.syntaxLightBlue.hex(),
-      },
-    },
-    {
       name: 'labels',
       scope: [
-        'entity.name.label.js',
-        'entity.name.label.ts',
-        'punctuation.separator.label.js',
-        'punctuation.separator.label.ts',
+        'source.js entity.name.label',
+        'source.ts entity.name.label',
+        'source.js punctuation.separator.label',
+        'source.ts punctuation.separator.label',
       ],
       settings: {
-        foreground: colors.variable.darken(0.5).hex(),
-      },
-    },
-    {
-      name: 'this word',
-      scope: ['variable.language.this.js', 'variable.language.this.ts'],
-      settings: {
-        foreground: colors.contrastText.hex(),
+        foreground: colors.pinkPastel.hex(),
       },
     },
     {
       name: 'TypeScript Decorators',
       scope: [
-        'meta.decorator punctuation.decorator.ts',
-        'meta.decorator punctuation.decorator.tsx',
-        'meta.decorator variable.other.readwrite.ts',
-        'meta.decorator.ts entity.name.function.ts',
-        'meta.decorator.ts meta.function-call.ts entity.name.function.ts',
+        'source.ts meta.decorator punctuation.decorator',
+        'source.tsx meta.decorator punctuation.decorator',
+        'source.ts meta.decorator variable.other.readwrite',
+        'source.ts meta.decorator entity.name.function',
+        'source.ts meta.decorator meta.function-call entity.name.function',
       ],
       settings: {
         foreground: colors.specialWordB.hex(),
       },
     },
     {
-      name: 'TypeScript optional operators',
-      scope: ['source.ts meta.interface.ts keyword.operator.optional.ts'],
-      settings: {
-        foreground: colors.contrastText.hex(),
-      },
-    },
-    {
-      name: 'TypeScript Entity Name Type',
+      name: 'interface & alias',
       scope: [
-        'entity.name.type.js',
-        'entity.name.type.ts',
-        'entity.name.type.module.js',
-        'entity.name.type.module.ts',
-        'entity.name.type.tsx',
-        'entity.name.type.module.tsx',
+        'source.ts entity.name.type.interface',
+        'source.tsx entity.name.type.interface',
+        'source.ts entity.name.type.alias',
+        'source.tsx entity.name.type.alias',
+        'source.ts meta.type.declaration entity.name.type',
+        'source.tsx meta.type.declaration entity.name.type',
+        'source.ts meta.type.annotation entity.name.type',
+        'source.tsx meta.type.annotation entity.name.type',
+        'source.ts meta.type.parameters entity.name.type',
+        'source.tsx meta.type.parameters entity.name.type',
+        'source.ts meta.interface entity.other.inherited-class',
+        'source.tsx meta.interface entity.other.inherited-class',
       ],
       settings: {
-        foreground: colors.specialWordB.hex(),
-        fontStyle: 'normal',
+        foreground: colors.syntaxLightBlue.hex(),
       },
     },
     {
@@ -1782,141 +1458,21 @@ export default function (colors) {
         foreground: colors.regularText.hex(),
       },
     },
-    {
-      name: 'Support Class Component', // ???
-      scope: ['support.class.component.js'],
-      settings: {
-        foreground: colors.contrastText.hex(),
-        fontStyle: 'normal',
-      },
-    },
   ]
 
-  const tcCoffescript = [
-    {
-      name: 'CoffeScript Variable Assignment',
-      scope: 'variable.assignment.coffee',
-      settings: {
-        foreground: colors.variable.hex(),
-      },
-    },
-    {
-      name: 'CoffeScript Parameter Function',
-      scope: 'variable.parameter.function.coffee',
-      settings: {
-        foreground: colors.functionName.hex(),
-      },
-    },
-    {
-      name: 'meta arguments',
-      scope: ['meta.arguments.coffee', 'variable.parameter.function.coffee'],
-      settings: {
-        foreground: colors.variable.hex(),
-      },
-    },
-  ]
-
-  const tcCsharp = [
-    {
-      name: 'C# Readwrite Variables',
-      scope: 'variable.other.readwrite.cs',
-      settings: {
-        foreground: colors.variable.hex(),
-      },
-    },
-    {
-      name: 'C# Classes & Storage types',
-      scope: ['entity.name.type.class.cs', 'storage.type.cs'],
-      settings: {
-        foreground: colors.specialWordB.hex(),
-      },
-    },
-    {
-      name: 'C# Namespaces',
-      scope: 'entity.name.type.namespace.cs',
-      settings: {
-        foreground: colors.syntaxYellow.hex(),
-      },
-    },
-  ]
-
-  const tcElixir = [
-    {
-      name: 'Elixir Classes',
-      scope: [
-        'source.elixir support.type.elixir',
-        'source.elixir meta.module.elixir entity.name.class.elixir',
-      ],
-      settings: {
-        foreground: colors.specialWordB.hex(),
-      },
-    },
-    {
-      name: 'Elixir Functions',
-      scope: 'source.elixir entity.name.function',
-      settings: {
-        foreground: colors.functionName.hex(),
-      },
-    },
-    {
-      name: 'Elixir Constants',
-      scope: [
-        'source.elixir constant.other.symbol.elixir',
-        'source.elixir constant.other.keywords.elixir',
-      ],
-      settings: {
-        foreground: colors.specialWordB.hex(),
-      },
-    },
-    {
-      name: 'Elixir String Punctuations',
-      scope: 'source.elixir punctuation.definition.string',
-      settings: {
-        foreground: colors.string.hex(),
-      },
-    },
-    {
-      name: 'Elixir',
-      scope: [
-        'source.elixir variable.other.readwrite.module.elixir',
-        'source.elixir variable.other.readwrite.module.elixir punctuation.definition.variable.elixir',
-      ],
-      settings: {
-        foreground: colors.syntaxGreen.hex(),
-      },
-    },
-    {
-      name: 'Elixir Binary Punctuations',
-      scope: 'source.elixir .punctuation.binary.elixir',
-      settings: {
-        foreground: colors.specialWordC.hex(),
-        fontStyle: 'italic',
-      },
-    },
-  ]
-
-  const tcMarkdown = [
+  const markdown = [
     {
       name: 'Markdown Headings',
-      scope: 'markup.heading.markdown',
+      scope: ['markup.heading.markdown', 'heading punctuation.definition.heading'],
       settings: {
         foreground: colors.syntaxViolet.hex(),
         fontStyle: 'bold',
       },
     },
     {
-      name: 'Markdown Italics',
-      scope: 'markup.italic.markdown',
-      settings: {
-        foreground: colors.syntaxOrange.hex(),
-        fontStyle: 'italic',
-      },
-    },
-    {
       name: 'Markdown Bold',
       scope: 'markup.bold.markdown',
       settings: {
-        foreground: colors.syntaxOrange.hex(),
         fontStyle: 'bold',
       },
     },
@@ -1932,7 +1488,7 @@ export default function (colors) {
       name: 'Markdown Links',
       scope: ['markup.underline.link.markdown', 'markup.underline.link.image.markdown'],
       settings: {
-        foreground: colors.syntaxYellow.hex(),
+        foreground: colors.syntaxLightBlue.hex(),
       },
     },
     {
@@ -1942,7 +1498,7 @@ export default function (colors) {
         'string.other.link.description.markdown',
       ],
       settings: {
-        foreground: colors.syntaxYellow.hex(),
+        foreground: colors.syntaxBeige.hex(),
       },
     },
     {
@@ -1968,24 +1524,12 @@ export default function (colors) {
     },
   ]
 
-  const tcGo = [
+  const go = [
     {
       name: 'Go Keywords',
-      scope: [
-        'source.go keyword.package.go',
-        'source.go keyword.import.go',
-        'source.go keyword.function.go',
-        'source.go keyword.type.go',
-        'source.go keyword.struct.go',
-        'source.go keyword.interface.go',
-        'source.go keyword.const.go',
-        'source.go keyword.var.go',
-        'source.go keyword.map.go',
-        'source.go keyword.channel.go',
-        'source.go keyword.control.go',
-      ],
+      scope: ['source.go keyword'],
       settings: {
-        foreground: colors.specialWordC.hex(),
+        foreground: colors.specialWordA.hex(),
         fontStyle: 'italic',
       },
     },
@@ -2020,59 +1564,36 @@ export default function (colors) {
         foreground: colors.variable.hex(),
       },
     },
-  ]
-
-  const tcPython = [
     {
-      name: 'Language Constants in Python',
-      scope: 'constant.language.python',
-      settings: {
-        foreground: colors.contrastText.hex(),
-      },
-    },
-    {
-      name: 'Python Function Parameter and Arguments',
-      scope: [
-        'variable.parameter.function.python',
-        'meta.function-call.arguments.python',
-      ],
+      name: 'Go types',
+      scope: ['source.go storage.type'],
       settings: {
         foreground: colors.specialWordB.hex(),
-        fontStyle: 'italic',
       },
     },
     {
-      name: 'Python Function Call',
-      scope: ['meta.function-call.python', 'meta.function-call.generic.python'],
-      settings: {
-        foreground: colors.functionName.hex(),
-        fontStyle: 'italic',
-      },
-    },
-    {
-      name: 'Punctuations in Python',
-      scope: 'punctuation.python',
-      settings: {
-        foreground: colors.regularText.hex(),
-      },
-    },
-    {
-      name: 'Decorator Functions in Python',
-      scope: 'entity.name.function.decorator.python',
-      settings: {
-        foreground: colors.contrastText.hex(),
-      },
-    },
-    {
-      name: 'Python Language Variable',
-      scope: 'source.python variable.language.special',
+      name: 'Go packages',
+      scope: ['source.go entity.name.type.package'],
       settings: {
         foreground: colors.variable.hex(),
       },
     },
   ]
 
-  const tcHtml = [
+  const python = [
+    {
+      name: 'Decorator Functions in Python',
+      scope: [
+        'entity.name.function.decorator.python',
+        'entity.name.function.decorator.python punctuation.definition.decorator',
+      ],
+      settings: {
+        foreground: colors.specialWordB.hex(),
+      },
+    },
+  ]
+
+  const html = [
     {
       name: 'HTML Tag names',
       scope: [
@@ -2120,9 +1641,27 @@ export default function (colors) {
         foreground: colors.regularText.hex(),
       },
     },
+    {
+      name: 'text',
+      scope: ['text.html'],
+      settings: {
+        foreground: colors.regularText.hex(),
+      },
+    },
+    {
+      name: 'especial characters',
+      scope: [
+        'text.html.derivative constant.character',
+        'text.html.derivative constant.character punctuation.definition',
+      ],
+      settings: {
+        foreground: colors.syntaxBeige.hex(),
+        // foreground: colors.testB.hex(),
+      },
+    },
   ]
 
-  const tcJson = [
+  const json = [
     {
       name: 'JSON Property Names',
       scope: 'support.type.property-name.json',
@@ -2130,39 +1669,16 @@ export default function (colors) {
         foreground: colors.variable.hex(),
       },
     },
-    {
-      // also in javascript
-      name: 'JSON Support Constants',
-      scope: 'support.constant.json',
-      settings: {
-        foreground: colors.contrastText.hex(),
-      },
-    },
-    {
-      name: 'JSON Property values (string)',
-      scope: 'meta.structure.dictionary.value.json string.quoted.double',
-      settings: {
-        foreground: colors.string.hex(),
-      },
-    },
-    {
-      name: 'Strings in JSON values',
-      scope: 'string.quoted.double.json punctuation.definition.string.json',
-      settings: {
-        foreground: colors.string.hex(),
-      },
-    },
-    {
-      name: 'Specific JSON Property values like null',
-      scope:
-        'meta.structure.dictionary.json meta.structure.dictionary.value constant.language',
-      settings: {
-        foreground: colors.contrastText.hex(),
-      },
-    },
   ]
 
-  const tcPhp = [
+  const php = [
+    {
+      name: 'PHP Constants',
+      scope: 'entity.name.type.enum.php',
+      settings: {
+        foreground: colors.variable.hex(),
+      },
+    },
     {
       name: 'PHP tag',
       scope: [
@@ -2180,6 +1696,7 @@ export default function (colors) {
         'keyword.other.use.php',
         'keyword.other.use-as.php',
         'storage.modifier.php',
+        'keyword.other.type.php',
       ],
       settings: {
         foreground: colors.specialWordB.hex(),
@@ -2194,20 +1711,7 @@ export default function (colors) {
         'entity.name.type.namespace.php punctuation.separator.inheritance.php',
       ],
       settings: {
-        foreground: colors.variableInstance.hex(),
-      },
-    },
-    {
-      name: 'PHP Variables',
-      scope: [
-        'variable.other.php',
-        'variable.other.property.php',
-        'punctuation.definition.variable.php',
-        'support.class.php',
-        'entity.other.alias.php',
-      ],
-      settings: {
-        foreground: colors.variable.hex(),
+        foreground: colors.syntaxOrange.hex(),
       },
     },
     {
@@ -2215,44 +1719,39 @@ export default function (colors) {
       scope: 'meta.function-call.php punctuation',
       settings: {
         foreground: colors.regularText.hex(),
+        foreground: colors.testB.hex(),
         fontStyle: 'italic',
       },
     },
-    // BLADE
     {
-      name: 'blade keyword',
-      scope: ['keyword.blade'],
+      name: 'echo',
+      scope: ['support.function.construct.output.php'],
       settings: {
-        foreground: colors.specialWordB.hex(),
+        foreground: colors.specialWordC.hex(),
+      },
+    },
+    {
+      name: 'interface',
+      scope: ['entity.name.type.interface.php', 'entity.name.type.trait.php'],
+      settings: {
+        foreground: colors.syntaxLightBlue.hex(),
       },
     },
   ]
 
-  const tcCc = [
+  const rust = [
     {
-      name: 'punctuation definition directive',
-      scope: [
-        'keyword.control.directive.include.cpp punctuation.definition.directive.cpp',
-      ],
-      settings: {
-        foreground: colors.specialWordB.hex(),
-      },
-    },
-  ]
-
-  const tcRust = [
-    {
-      name: 'Rust ',
+      name: 'Rust Special words',
       scope: ['meta.use.rust', 'meta.function.definition.rust', 'keyword.other.rust'],
       settings: {
         foreground: colors.specialWordB.hex(),
       },
     },
     {
-      name: 'Rust ',
-      scope: ['entity.name.namespace.rust'],
+      name: 'rust storage type',
+      scope: ['keyword.other.fn.rust'],
       settings: {
-        foreground: colors.specialWordC.hex(),
+        foreground: colors.specialWordA.hex(),
       },
     },
     {
@@ -2267,68 +1766,23 @@ export default function (colors) {
       scope: [
         'punctuation.definition.attribute.rust',
         'punctuation.brackets.attribute.rust',
-        // 'meta.attribute.rust'
       ],
       settings: {
         foreground: colors.syntaxRed.hex(),
       },
     },
-  ]
-
-  const tcComments = [
     {
-      name: 'Comment',
-      scope: [
-        'comment',
-        'comment.block.documentation punctuation.definition.bracket.curly',
-      ],
+      name: 'Rust ',
+      scope: ['entity.name.type.rust', 'entity.name.type.struct.rust'],
       settings: {
-        foreground: colors.comment.hex(),
-        fontStyle: 'italic',
+        foreground: colors.syntaxLightBlue.hex(),
       },
     },
     {
-      name: 'Double-Slashed Comment',
-      scope: [
-        'comment.line.double-slash',
-        'punctuation.definition.comment',
-        'punctuation.whitespace.comment',
-        'string.comment.buffered.block.pug',
-      ],
+      name: 'Rust ',
+      scope: ['entity.name.type.struct.rust'],
       settings: {
-        foreground: colors.comment.hex(),
-      },
-    },
-
-    //documentation inside comments
-    {
-      name: 'Data Type in commented documentation',
-      scope: [
-        'comment.block.documentation entity.name.type.instance.jsdoc',
-        'comment.block.documentation entity.name.type.instance.phpdoc',
-      ],
-      settings: {
-        foreground: colors.specialWordB.hex() + '80',
-      },
-    },
-    {
-      name: 'Variables in commented documentation',
-      scope: [
-        'comment.block.documentation variable.other.jsdoc',
-        'comment.block.documentation variable.other.phpdoc',
-      ],
-      settings: {
-        foreground: colors.variable.hex() + '80',
-      },
-    },
-    {
-      name: '@tags in commented documentation',
-      scope: [
-        'comment.block.documentation storage.type.class.jsdoc',
-        'comment.block.documentation punctuation.definition.block.tag.jsdoc',
-      ],
-      settings: {
-        foreground: colors.specialWordA.hex() + '80',
+        foreground: colors.syntaxOrange.hex(),
       },
     },
   ]
@@ -2353,7 +1807,7 @@ export default function (colors) {
       },
     },
     {
-      name: 'SQL Variables',
+      name: 'especial words',
       scope: [
         'keyword.other.select.join.sql',
         'keyword.other.DML.sql',
@@ -2391,33 +1845,21 @@ export default function (colors) {
       ...themeColors,
     },
     tokenColors: [
-      ...tcGlobalSettings,
-      ...tcNormalize,
+      ...globalSettings,
+      ...normalize,
       ...tcGit,
-
-      ...tcGeneral,
-      ...tcSpecialWords,
-      ...tcStorageNames,
-      ...tcStrings,
-
-      ...tcPunctuation,
-      ...tcComments,
-      ...tcSpecialValues,
-
-      ...tcStylesheets,
-
-      ...tcJavascript,
-      ...tcHtml,
-      ...tcJson,
-      ...tcPython,
-      ...tcCoffescript,
-      ...tcCsharp,
-      ...tcElixir,
-      ...tcMarkdown,
-      ...tcGo,
-      ...tcRust,
-      ...tcPhp,
-      ...tcCc,
+      ...general,
+      ...specialWords,
+      ...comments,
+      ...styleSheets,
+      ...javascript,
+      ...html,
+      ...json,
+      ...python,
+      ...markdown,
+      ...go,
+      ...rust,
+      ...php,
       ...sql,
     ],
     semanticHighlighting: true,
