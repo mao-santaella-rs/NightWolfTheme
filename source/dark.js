@@ -1656,7 +1656,6 @@ export default function (colors) {
       ],
       settings: {
         foreground: colors.syntaxBeige.hex(),
-        // foreground: colors.testB.hex(),
       },
     },
   ]
@@ -1719,7 +1718,6 @@ export default function (colors) {
       scope: 'meta.function-call.php punctuation',
       settings: {
         foreground: colors.regularText.hex(),
-        foreground: colors.testB.hex(),
         fontStyle: 'italic',
       },
     },

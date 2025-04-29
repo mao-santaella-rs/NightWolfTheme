@@ -2,7 +2,12 @@
 
 All notable changes to the "night-wolf" extension are be documented in this file.
 
-## [1.13.1] - 04-23-2023
+## [2.0.0] - 04-29-2025
+### Added
+- Overhaul of all the theme scopes, improoving the experience accross all languages
+
+
+## [1.13.1] - 04-23-2025
 ### Fixed
 - Improoved support for scss and sass
 - Removed the semanticTokenColors configuration where the classes and function declarations where set as bold
