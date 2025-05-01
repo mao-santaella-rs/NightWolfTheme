@@ -703,7 +703,7 @@ export default function (colors) {
       name: 'Constant Other Color',
       scope: 'constant.other.color',
       settings: {
-        foreground: colors.regularText.hex(),
+        foreground: colors.text.hex(),
       },
     },
     // code languages
@@ -1044,7 +1044,7 @@ export default function (colors) {
       name: 'css',
       scope: 'source.css',
       settings: {
-        foreground: colors.regularText.hex(),
+        foreground: colors.text.hex(),
       },
     },
     {
@@ -1066,7 +1066,7 @@ export default function (colors) {
         'constant.other.color.rgb-value.hex.css punctuation.definition.constant.css',
       ],
       settings: {
-        foreground: colors.regularText.hex(),
+        foreground: colors.text.hex(),
       },
     },
     {
@@ -1455,7 +1455,7 @@ export default function (colors) {
         'meta.jsx.children.tsx',
       ],
       settings: {
-        foreground: colors.regularText.hex(),
+        foreground: colors.text.hex(),
       },
     },
   ]
@@ -1630,7 +1630,7 @@ export default function (colors) {
         'meta.tag.other.unrecognized.html entity.name.tag',
       ],
       settings: {
-        foreground: colors.regularText.hex(),
+        foreground: colors.text.hex(),
         fontStyle: 'normal',
       },
     },
@@ -1638,14 +1638,14 @@ export default function (colors) {
       name: '@ : = for html',
       scope: ['punctuation.separator.key-value.html', 'punctuation.definition.tag.html'],
       settings: {
-        foreground: colors.regularText.hex(),
+        foreground: colors.text.hex(),
       },
     },
     {
       name: 'text',
       scope: ['text.html'],
       settings: {
-        foreground: colors.regularText.hex(),
+        foreground: colors.text.hex(),
       },
     },
     {
@@ -1717,7 +1717,7 @@ export default function (colors) {
       name: 'Punctuations in PHP function calls',
       scope: 'meta.function-call.php punctuation',
       settings: {
-        foreground: colors.regularText.hex(),
+        foreground: colors.text.hex(),
         fontStyle: 'italic',
       },
     },

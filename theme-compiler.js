@@ -33,7 +33,7 @@ async function compile() {
       const colorsPath = files.find(
         (path) => path.includes(versionName) && path.includes('/colors/'),
       )
-      const colors = await getImportDefault(colorsPath)
+      const baseColors = await getImportDefault(colorsPath)
 
       const variantsPaths = files.filter(
         (path) => path.includes(versionName) && path.includes('/variants/'),
@@ -45,7 +45,7 @@ async function compile() {
           const variantFileName = `night-wolf-${variantName}`
           const variantFileNameNi = `${variantFileName}-noitalics`
           const variantModifier = await getImportDefault(variantPath)
-          const varianColors = variantModifier(colors)
+          const varianColors = variantModifier(baseColors)
           const variant = versionConstructor(varianColors)
           const variantStringified = JSON.stringify({ name: variantFileName, ...variant })
           const variantStringifiedNi = JSON.stringify(
