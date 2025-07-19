@@ -2,6 +2,12 @@
 
 All notable changes to the "night-wolf" extension are be documented in this file.
 
+## [2.1.0] - 07-19-2025
+### Added
+- Better support for Markdown
+### Fixed
+- Some TS type coloring issues fixed
+
 ## [2.0.0] - 04-29-2025
 ### Added
 - Overhaul of all the theme scopes, improoving the experience accross all languages
