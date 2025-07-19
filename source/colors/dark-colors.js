@@ -55,40 +55,4 @@ colors.purplePastel = chroma(182,147,223)       // rgb(182 147 223)
 colors.yellowPastel = chroma(243,251,151)       // rgb(243 251 151)
 colors.greenPastel = chroma(4,250,210)          // rgb(4 250 210)
 
-// SYNTAX COLORS
-colors.text = colors.white
-colors.variable = colors.syntaxYellow
-colors.variableProperty = colors.text
-colors.contrastText = colors.syntaxRed
-colors.variableInstance = colors.syntaxOrange
-colors.specialWordA = colors.syntaxBlue
-colors.specialWordB = colors.syntaxViolet
-colors.specialWordC = colors.syntaxPurple
-colors.functionName = colors.syntaxCyan
-colors.string = colors.syntaxGreen
-colors.operator = colors.contrastText
-colors.number = colors.syntaxOrange
-colors.boolean = colors.contrastText
-colors.nullUnd = colors.contrastText
-colors.punctuation = colors.text
-colors.deprecated = colors.danger
-
-// Markup
-colors.htmlTag = colors.contrastText
-colors.metaTag = colors.text
-colors.tagAttribute = colors.specialWordB
-colors.pugClass = colors.variable
-
-// Stylesheets
-colors.cssAttribute = colors.syntaxGreen
-colors.cssValue = colors.syntaxOrange
-colors.cssTag = colors.syntaxRed
-colors.cssClass = colors.syntaxYellow
-colors.cssProperty = colors.syntaxCyan
-colors.cssUnits = colors.number
-colors.cssSpecialWord = colors.syntaxLightBlue
-colors.cssPseudoClass = colors.syntaxPurple
-colors.sassFunction = colors.syntaxBlue
-colors.sassInterpolation = colors.syntaxRed
-
 export default colors

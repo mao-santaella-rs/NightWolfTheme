@@ -62,6 +62,10 @@ const booleanTypeFalse = false
 const nullType = null // Represents the intentional absence of any object value
 let undefinedType // Variable declared but not assigned
 const symbolType = Symbol('uniqueDescription') // Unique and immutable primitive
+// prettier-ignore
+const select = "Select this string" // Example of a string variable
+const selectB = `Select this string`
+const selectC = 'Select this string'
 
 // Objects
 const objectLiteral = {

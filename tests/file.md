@@ -1,255 +1,167 @@
+# Markdown Syntax Example
 
-__Advertisement :)__
+## 1. Headings
 
-- __[pica](https://nodeca.github.io/pica/demo/)__ 
-  - high quality and fast image resize in browser.
-
-- __[babelfish](https://github.com/nodeca/babelfish/)__ 
-  - developer friendly i18n with plurals support and easy syntax.
-
-- .sdfsdfsdfsdf sdfsdfsdfs
-
-1. maoma
-2. fasdf
-3. adasfsd
-  > sdasda
-  >> dasdasdas
-
-* sdasda lkasd
-* asdkj fskdljf sd
-
-You will like those projects!
+# H1 Heading
+## H2 Heading
+### H3 Heading
+#### H4 Heading
+##### H5 Heading
+###### H6 Heading
 
 ---
-sdfaasdf
+
+## 2. Emphasis
+
+*Italic*  
+_Italic_  
+**Bold**  
+__Bold__  
+***Bold and Italic***  
+~~StrikeThrough~~
+
 ---
 
-# h1 Heading 8-)
-## h2 Heading
-### h3 Heading
-#### h4 Heading
-##### h5 Heading
-###### h6 Heading
+## 3. Lists
 
+### Unordered List
 
-## Horizontal Rules
+- Item 1
+- Item 2
+  - Subitem 2.1
+  - Subitem 2.2
+    - Sub-subitem 2.2.1
+* Item 3
++ Item 4
 
-___
+### Ordered List
+
+1. First item
+2. Second item
+   1. Subitem 2.1
+   2. Subitem 2.2
+3. Third item
+
+---
+
+## 4. Links
+
+[Inline Link](https://www.example.com)  
+[Reference Link][ref-link]  
+<https://www.example.com>
+
+[ref-link]: https://www.example.com "Example Website"
+
+---
+
+## 5. Images
+
+![Alt text](https://via.placeholder.com/150 "Optional Title")  
+![Reference Image][img-ref]
+
+[img-ref]: https://via.placeholder.com/100 "Placeholder Image"
+
+---
+
+## 6. Blockquotes
+
+> This is a blockquote.
+>
+> > Nested blockquote.
+
+---
+
+## 7. Code
+
+Inline code: `console.log('Hello, world!')`
+
+### Code Block (fenced)
+
+```js
+// JavaScript example
+function greet(name) {
+  console.log(`Hello, ${name}!`);
+}
+greet('Mao');
+```
+
+### Indented Code Block
+
+    # Python example
+    def hello():
+        print("Hello, world!")
+
+---
+
+## 8. Horizontal Rule
+
 ---
 ***
+___
 
+---
 
-## Typographic replacements
+## 9. Tables
 
-Enable typographer option to see result.
+| Syntax | Description | Example |
+|--------|-------------|---------|
+| Header | Title       | Text    |
+| Cell   | Cell        | Cell    |
 
-(c) (C) (r) (R) (tm) (TM) (p) (P) +-
+---
 
-test.. test... test..... test?..... test!....
+## 10. Task Lists
 
-!!!!!! ???? ,,  -- ---
+- [x] Write the outline
+- [ ] Add more examples
+- [ ] Review the file
 
-"Smartypants, double quotes" and 'single quotes'
+---
 
+## 11. HTML in Markdown
 
-## Emphasis
+<div style="color: red;">This is HTML inside Markdown!</div>
 
-**This is bold text**
+---
 
-__This is bold text__
+## 12. Escaping Characters
 
-*This is italic text*
+\*This text is not italicized\*
 
-_This is italic text_
+---
 
-~~Strikethrough~~
+## 13. Footnotes
 
+Here is a footnote reference.[^1]
 
-## Blockquotes
+[^1]: Here is the footnote.
 
-> Blockquotes can also be nested...
->> ...by using additional greater-than signs right next to each other...
-> > > ...or with spaces between arrows.
+---
 
-## Lists
-
-Unordered
-
-+ Create a list by starting a line with `+`, `-`, or `*`
-+ Sub-lists are made by indenting 2 spaces:
-  - Marker character change forces new list start:
-    * Ac tristique libero volutpat at
-    + Facilisis in pretium nisl aliquet
-    - Nulla volutpat aliquam velit
-+ Very easy!
-
-Ordered
-
-1. Lorem ipsum dolor sit amet
-2. Consectetur adipiscing elit
-3. Integer molestie lorem at massa
-
-
-1. You can use sequential numbers...
-1. ...or keep all the numbers as `1.`
-
-Start numbering with offset:
-
-57. foo
-1. bar
-
-
-## Code
-
-Inline `code`
-
-Indented code
-
-    // Some comments
-    line 1 of code
-    line 2 of code
-    line 3 of code
-
-
-Block code "fences"
-
-```
-Sample text here...
-```
-
-Syntax highlighting
-
-``` js
-var foo = function (bar) {
-  return bar++;
-};
-
-console.log(foo(5));
-```
-
-## Tables
-
-| Option | Description |
-| ------ | ----------- |
-| data   | path to data files to supply the data that will be passed into templates. |
-| engine | engine to be used for processing templates. Handlebars is the default. |
-| ext    | extension to be used for dest files. |
-
-Right aligned columns
-
-| Option | Description |
-| ------:| -----------:|
-| data   | path to data files to supply the data that will be passed into templates. |
-| engine | engine to be used for processing templates. Handlebars is the default. |
-| ext    | extension to be used for dest files. |
-
-
-## Links
-
-[link text](http://dev.nodeca.com)
-
-[link with title](http://nodeca.github.io/pica/demo/ "title text!")
-
-Autoconverted link https://github.com/nodeca/pica (enable linkify to see)
-
-
-## Images
-
-![Minion](https://octodex.github.com/images/minion.png)
-![Stormtroopocat](https://octodex.github.com/images/stormtroopocat.jpg "The Stormtroopocat")
-
-Like links, Images also have a footnote style syntax
-
-![Alt text][id]
-
-With a reference later in the document defining the URL location:
-
-[id]: https://octodex.github.com/images/dojocat.jpg  "The Dojocat"
-
-
-## Plugins
-
-The killer feature of `markdown-it` is very effective support of
-[syntax plugins](https://www.npmjs.org/browse/keyword/markdown-it-plugin).
-
-
-### [Emojies](https://github.com/markdown-it/markdown-it-emoji)
-
-> Classic markup: :wink: :crush: :cry: :tear: :laughing: :yum:
->
-> Shortcuts (emoticons): :-) :-( 8-) ;)
-
-see [how to change output](https://github.com/markdown-it/markdown-it-emoji#change-output) with twemoji.
-
-
-### [Subscript](https://github.com/markdown-it/markdown-it-sub) / [Superscript](https://github.com/markdown-it/markdown-it-sup)
-
-- 19^th^
-- H~2~O
-
-
-### [\<ins>](https://github.com/markdown-it/markdown-it-ins)
-
-++Inserted text++
-
-
-### [\<mark>](https://github.com/markdown-it/markdown-it-mark)
-
-==Marked text==
-
-
-### [Footnotes](https://github.com/markdown-it/markdown-it-footnote)
-
-Footnote 1 link[^first].
-
-Footnote 2 link[^second].
-
-Inline footnote^[Text of inline footnote] definition.
-
-Duplicated footnote reference[^second].
-
-[^first]: Footnote **can have markup**
-
-    and multiple paragraphs.
-
-[^second]: Footnote text.
-
-
-### [Definition lists](https://github.com/markdown-it/markdown-it-deflist)
+## 14. Definition Lists (not standard, but supported in some flavors)
 
 Term 1
-
 :   Definition 1
-with lazy continuation.
-
-Term 2 with *inline markup*
-
-:   Definition 2
-
-        { some code, part of Definition 2 }
-
-    Third paragraph of definition 2.
-
-_Compact style:_
-
-Term 1
-  ~ Definition 1
 
 Term 2
-  ~ Definition 2a
-  ~ Definition 2b
+:   Definition 2
 
+---
 
-### [Abbreviations](https://github.com/markdown-it/markdown-it-abbr)
+## 15. Emoji (GitHub Flavored)
 
-This is HTML abbreviation example.
+:smile: :rocket: :+1:
 
-It converts "HTML", but keep intact partial entries like "xxxHTMLyyy" and so on.
+---
 
-*[HTML]: Hyper Text Markup Language
+## 16. Math (if supported)
 
-### [Custom containers](https://github.com/markdown-it/markdown-it-container)
+Inline math: \( E = mc^2 \)
 
-::: warning
-*here be dragons*
-:::
+Block math:
+
+$$
+\int_{-\infty}^{\infty} e^{-x^2} dx = \sqrt{\pi}
+$$
+
+---

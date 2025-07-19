@@ -756,7 +756,7 @@ export default function (colors) {
     },
     {
       name: 'Conditionals',
-      scope: ['keyword.control.conditional'],
+      scope: ['keyword.control.conditional', 'keyword.control.switch'],
       settings: {
         foreground: colors.specialWordC.hex(),
         fontStyle: 'normal',
@@ -780,6 +780,7 @@ export default function (colors) {
         'support.variable.property',
         'entity.name.type.class',
         'meta.class',
+        'meta.function',
         'entity.other.inherited-class',
       ],
       settings: {
@@ -1414,7 +1415,7 @@ export default function (colors) {
       },
     },
     {
-      name: 'TypeScript Decorators',
+      name: 'TS Decorators',
       scope: [
         'source.ts meta.decorator punctuation.decorator',
         'source.tsx meta.decorator punctuation.decorator',
@@ -1427,18 +1428,18 @@ export default function (colors) {
       },
     },
     {
-      name: 'interface & alias',
+      name: 'TS interface & alias',
       scope: [
-        'source.ts entity.name.type.interface',
-        'source.tsx entity.name.type.interface',
-        'source.ts entity.name.type.alias',
-        'source.tsx entity.name.type.alias',
-        'source.ts meta.type.declaration entity.name.type',
-        'source.tsx meta.type.declaration entity.name.type',
-        'source.ts meta.type.annotation entity.name.type',
-        'source.tsx meta.type.annotation entity.name.type',
-        'source.ts meta.type.parameters entity.name.type',
-        'source.tsx meta.type.parameters entity.name.type',
+        'source.ts meta.type.annotation',
+        'source.tsx meta.type.annotation',
+        'source.ts meta.type.declaration',
+        'source.tsx meta.type.declaration',
+        'source.ts meta.interface',
+        'source.tsx meta.interface',
+        'source.ts meta.type.parameters variable.other.object',
+        'source.tsx meta.type.parameters variable.other.object',
+        'source.ts meta.type.parameters variable.other.property',
+        'source.tsx meta.type.parameters variable.other.property',
         'source.ts meta.interface entity.other.inherited-class',
         'source.tsx meta.interface entity.other.inherited-class',
       ],
@@ -1448,12 +1449,7 @@ export default function (colors) {
     },
     {
       name: 'Text nested in jsx tags',
-      scope: [
-        'meta.jsx.children',
-        'meta.jsx.children.js',
-        'meta.jsx.children.ts',
-        'meta.jsx.children.tsx',
-      ],
+      scope: ['meta.jsx.children'],
       settings: {
         foreground: colors.text.hex(),
       },
@@ -1463,22 +1459,18 @@ export default function (colors) {
   const markdown = [
     {
       name: 'Markdown Headings',
-      scope: ['markup.heading.markdown', 'heading punctuation.definition.heading'],
+      scope: [
+        'text.html.markdown markup.heading.markdown',
+        'text.html.markdown punctuation.definition.heading',
+      ],
       settings: {
         foreground: colors.syntaxViolet.hex(),
         fontStyle: 'bold',
       },
     },
     {
-      name: 'Markdown Bold',
-      scope: 'markup.bold.markdown',
-      settings: {
-        fontStyle: 'bold',
-      },
-    },
-    {
       name: 'Markdown Quote + others',
-      scope: 'markup.quote.markdown',
+      scope: 'text.html.markdown markup.quote.markdown',
       settings: {
         foreground: colors.syntaxGreen.hex(),
         fontStyle: 'italic',
@@ -1486,7 +1478,10 @@ export default function (colors) {
     },
     {
       name: 'Markdown Links',
-      scope: ['markup.underline.link.markdown', 'markup.underline.link.image.markdown'],
+      scope: [
+        'text.html.markdown markup.underline.link.markdown',
+        'text.html.markdown markup.underline.link.image.markdown',
+      ],
       settings: {
         foreground: colors.syntaxLightBlue.hex(),
       },
@@ -1494,32 +1489,59 @@ export default function (colors) {
     {
       name: 'Markdown Link Title and Description',
       scope: [
-        'string.other.link.title.markdown',
-        'string.other.link.description.markdown',
+        'text.html.markdown string.other.link.title.markdown',
+        'text.html.markdown string.other.link.description.markdown',
       ],
       settings: {
-        foreground: colors.syntaxBeige.hex(),
-      },
-    },
-    {
-      name: 'Markdown MetaData Punctuation',
-      scope: ['punctuation.definition.metadata.markdown'],
-      settings: {
-        foreground: colors.text.hex(),
+        foreground: colors.syntaxBlue.hex(),
       },
     },
     {
       name: 'Markdown List Punctuation',
-      scope: ['beginning.punctuation.definition.list.markdown'],
+      scope: ['text.html.markdown punctuation.definition.list.begin.markdown'],
       settings: {
-        foreground: colors.syntaxGreen.hex(),
+        foreground: colors.syntaxYellow.hex(),
       },
     },
     {
-      name: 'Markdown Inline Raw String',
-      scope: 'markup.inline.raw.string.markdown',
+      name: 'Markdown tables',
+      scope: [
+        'text.html.markdown punctuation.definition.table.markdown',
+        'text.html.markdown punctuation.separator.table.markdown',
+      ],
       settings: {
-        foreground: colors.string.hex(),
+        foreground: colors.syntaxPurple.hex(),
+      },
+    },
+    {
+      name: 'Markdown separators',
+      scope: ['text.html.markdown meta.separator.markdown'],
+      settings: {
+        foreground: colors.syntaxOrange.hex(),
+      },
+    },
+    {
+      name: 'Emphasis punctuation definitions',
+      scope: [
+        'text.html.markdown punctuation.definition.italic.markdown',
+        'text.html.markdown punctuation.definition.bold.markdown',
+        'text.html.markdown punctuation.definition.strikethrough.markdown',
+      ],
+      settings: {
+        foreground: colors.syntaxLightBlue.hex(),
+      },
+    },
+    {
+      name: 'Markdown code',
+      scope: [
+        'text.html.markdown fenced_code.block.language.markdown',
+        'text.html.markdown markup.fenced_code.block.markdown punctuation.definition.markdown',
+        'text.html.markdown markup.inline.raw.string.markdown',
+        'text.html.markdown markup.inline.raw.string.markdown punctuation.definition.raw.markdown',
+        `text.html.markdown punctuation.definition.math`,
+      ],
+      settings: {
+        foreground: colors.syntaxBeige.hex(),
       },
     },
   ]
@@ -1788,7 +1810,11 @@ export default function (colors) {
   const sql = [
     {
       name: 'SQL Punctuation',
-      scope: ['meta.create.sql', 'keyword.other.insert.sql', 'meta.create.from.sql'],
+      scope: [
+        'source.sql meta.create.sql',
+        'source.sql keyword.other.insert.sql',
+        'source.sql meta.create.from.sql',
+      ],
       settings: {
         foreground: colors.syntaxRed.hex(),
       },
@@ -1796,9 +1822,9 @@ export default function (colors) {
     {
       name: 'SQL Keywords',
       scope: [
-        'keyword.other.DDL.sql',
-        'keyword.other.select.sql',
-        'keyword.other.select.set_op.sql',
+        'source.sql keyword.other.DDL.sql',
+        'source.sql keyword.other.select.sql',
+        'source.sql keyword.other.select.set_op.sql',
       ],
       settings: {
         foreground: colors.syntaxViolet.hex(),
@@ -1807,11 +1833,14 @@ export default function (colors) {
     {
       name: 'especial words',
       scope: [
-        'keyword.other.select.join.sql',
-        'keyword.other.DML.sql',
-        'keyword.other.alias.sql',
-        'keyword.other.sql',
-        'keyword.other.DDL.create.II.sql',
+        'source.sql keyword.other.select.join.sql',
+        'source.sql keyword.other.DML.sql',
+        'source.sql keyword.other.alias.sql',
+        'source.sql keyword.other.sql',
+        'source.sql keyword.other.DDL.create.II.sql',
+        'source.sql keyword.other.authorization.sql',
+        'source.sql keyword.other.LUW.sql',
+        'source.sql keyword.other.create',
       ],
       settings: {
         foreground: colors.syntaxPurple.hex(),

@@ -1,3 +1,272 @@
+// types.ts
+
+// 1. Basic Types
+let id: number = 123
+let name: string = 'Mao'
+let isActive: boolean = true
+let nothing: null = null
+let notDefined: undefined = undefined
+let symbolValue: symbol = Symbol('unique')
+
+// 2. Arrays & Tuples
+let numbers: number[] = [1, 2, 3]
+let strings: Array<string> = ['a', 'b']
+let tuple: [string, number, boolean] = ['foo', 42, true]
+
+// 3. Enums
+enum Direction {
+  Up,
+  Down,
+  Left,
+  Right,
+}
+let dir: Direction = Direction.Up
+
+// 4. Objects & Type Aliases
+type User = {
+  id: number
+  name: string
+  isAdmin?: boolean // optional property
+  readonly email: string // readonly property
+}
+const user: User = { id: 1, name: 'Mao', email: 'mao@example.com' }
+
+// 5. Interfaces
+interface Product {
+  id: number
+  name: string
+  price: number
+  tags?: string[]
+}
+const product: Product = { id: 1, name: 'Book', price: 9.99 }
+
+// 6. Functions & Function Types
+function add(a: number, b: number): number {
+  return a + b
+}
+type MathOp = (x: number, y: number) => number
+const multiply: MathOp = (x, y) => x * y
+
+// 7. Union & Intersection Types
+type StringOrNumber = string | number
+type Admin = User & { adminLevel: number }
+const admin: Admin = {
+  id: 2,
+  name: 'Admin',
+  email: 'admin@example.com',
+  adminLevel: 1,
+}
+
+// 8. Literal Types
+type DirectionLiteral = 'up' | 'down' | 'left' | 'right'
+let move: DirectionLiteral = 'up'
+
+// 9. Type Assertions
+let someValue: any = 'hello'
+let strLength: number = (someValue as string).length
+
+// 10. Unknown & Never
+function fail(msg: string): never {
+  throw new Error(msg)
+}
+let input: unknown = 'test'
+if (typeof input === 'string') {
+  // type guard
+  console.log(input.toUpperCase())
+}
+
+// 11. Generics
+function identity<T>(value: T): T {
+  return value
+}
+let num = identity<number>(123)
+let str = identity('abc')
+
+type Pair<T, U> = { first: T; second: U }
+const pair: Pair<number, string> = { first: 1, second: 'one' }
+
+// 12. Generic Constraints
+function getLength<T extends { length: number }>(item: T): number {
+  return item.length
+}
+
+// 13. Keyof, typeof, and Indexed Access Types
+type UserKeys = keyof User // "id" | "name" | "isAdmin" | "email"
+type EmailType = User['email'] // string
+
+const userKeys: UserKeys = 'name'
+
+// 14. Mapped Types
+type ReadonlyUser = { readonly [K in keyof User]: User[K] }
+
+// 15. Conditional Types
+type IsString<T> = T extends string ? true : false
+type Test1 = IsString<string> // true
+type Test2 = IsString<number> // false
+
+// 16. Utility Types
+type PartialUser = Partial<User>
+type RequiredUser = Required<User>
+type PickUser = Pick<User, 'id' | 'name'>
+type OmitUser = Omit<User, 'email'>
+type RecordType = Record<'a' | 'b', number>
+
+// 17. Template Literal Types
+type EventName = `on${Capitalize<DirectionLiteral>}` // "onUp" | "onDown" | ...
+
+// 18. Recursive Types
+type Json = string | number | boolean | null | Json[] | { [key: string]: Json }
+
+// 19. Discriminated Unions
+type Shape =
+  | { kind: 'circle'; radius: number }
+  | { kind: 'square'; size: number }
+  | { kind: 'rectangle'; width: number; height: number }
+
+function area(shape: Shape): number {
+  switch (shape.kind) {
+    case 'circle':
+      return Math.PI * shape.radius ** 2
+    case 'square':
+      return shape.size ** 2
+    case 'rectangle':
+      return shape.width * shape.height
+  }
+}
+
+// 20. This Types
+interface Counter {
+  count: number
+  inc(this: Counter): void
+}
+const counter: Counter = {
+  count: 0,
+  inc() {
+    this.count++
+  },
+}
+
+// 21. Type Guards & Custom Type Predicates
+function isString(x: unknown): x is string {
+  return typeof x === 'string'
+}
+
+// 22. Intersection with Interfaces
+interface A {
+  a: string
+}
+interface B {
+  b: number
+}
+type AB = A & B
+const ab: AB = { a: 'foo', b: 42 }
+
+// 23. Optional Chaining & Nullish Coalescing
+const maybeUser: User | null = null
+const userName = maybeUser?.name ?? 'Guest'
+
+// 24. Indexed Signatures
+interface Dictionary {
+  [key: string]: string | number
+}
+const dict: Dictionary = { foo: 'bar', baz: 42 }
+
+// 25. Module Augmentation (Advanced)
+declare global {
+  interface Array<T> {
+    first(): T | undefined
+  }
+}
+Array.prototype.first = function () {
+  return this.length > 0 ? this[0] : undefined
+}
+
+// 26. Symbol as Property Key
+const uniqueKey = Symbol('unique')
+type WithSymbol = {
+  [uniqueKey]: string
+}
+const obj: WithSymbol = { [uniqueKey]: 'value' }
+
+// 27. Readonly and Const Assertions
+const arr = [1, 2, 3] as const
+type ArrType = typeof arr // readonly [1, 2, 3]
+
+// 28. Function Overloads
+function reverse(str: string): string
+function reverse<T>(arr: T[]): T[]
+function reverse(arg: any): any {
+  if (typeof arg === 'string') {
+    return arg.split('').reverse().join('')
+  }
+  return arg.slice().reverse()
+}
+
+// 29. Abstract Classes
+abstract class Animal {
+  abstract speak(): void
+}
+class Dog extends Animal {
+  speak() {
+    console.log('Woof!')
+  }
+}
+
+// 30. Constructor Types
+type Constructor<T = {}> = new (...args: any[]) => T
+function withTimestamp<TBase extends Constructor>(Base: TBase) {
+  return class extends Base {
+    timestamp = Date.now()
+  }
+}
+
+type SlashSplit<T extends string> = T extends ``
+  ? []
+  : T extends `/${infer TSingle}`
+    ? [...SlashSplit<TSingle>]
+    : T extends `${infer TDouble1}/${infer TDouble2}`
+      ? [TDouble1, ...SlashSplit<TDouble2>]
+      : [T]
+
+type PartialRoute<S extends string> = S extends `[[...]]`
+  ? { [K in `...`]?: string }
+  : S extends `[...]`
+    ? { [K in `...`]: string }
+    : S extends `[[...${infer OptionalArrayName}]]`
+      ? { [K in OptionalArrayName]?: string[] }
+      : S extends `[[${infer OptionalStringName}]]`
+        ? { [K in OptionalStringName]?: string }
+        : S extends `[...${infer ArrayName}]`
+          ? { [K in ArrayName]: string[] }
+          : S extends `[${infer StringName}]`
+            ? { [K in StringName as StringName extends '' ? never : K]: string }
+            : {}
+
+type ObjectValue<T> = T[keyof T]
+
+type PathObject<S extends string[], Obj = {}, AddedArrayAndNoString = false> = S extends [
+  infer FirstElem extends string,
+  ...infer Rest extends string[],
+]
+  ? string[] extends ObjectValue<PartialRoute<FirstElem>>
+    ? // if we have added an array without a string in between then it is invalid
+      AddedArrayAndNoString extends true
+      ? never
+      : PathObject<Rest, PartialRoute<FirstElem> & Obj, true>
+    : // no dynamic params case
+      ObjectValue<PartialRoute<FirstElem>> extends never
+      ? PathObject<Rest, PartialRoute<FirstElem> & Obj, false>
+      : PathObject<Rest, PartialRoute<FirstElem> & Obj, AddedArrayAndNoString>
+  : Obj
+
+// this type is necessary because apparently { foo: string } & { bar: string }
+// is not equivalent to { foo: string, bar: string }, learnt something new
+type Mix<Obj> = {
+  [K in keyof Obj]: Obj[K]
+}
+
+type DynamicRoute<T extends string> = Mix<PathObject<SlashSplit<T>>>
+
 // -*- coding: utf-8 -*-
 /**
  * TypeScript Syntax Highlighting Test File
