@@ -1430,6 +1430,8 @@ export default function (colors) {
     {
       name: 'TS interface & alias',
       scope: [
+        'source.ts entity.name.type',
+        'source.tsx entity.name.type',
         'source.ts meta.type.annotation',
         'source.tsx meta.type.annotation',
         'source.ts meta.type.declaration',
