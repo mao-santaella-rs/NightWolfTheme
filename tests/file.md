@@ -17,9 +17,17 @@
 _Italic_  
 **Bold**  
 __Bold__  
-***Bold and Italic***  
+***Bold and Italic***
+_**bold and italic**_
+**_bold and italic_**
 ~~StrikeThrough~~
-
+~~*StrikeThrough*~~
+*~~italic and StrikeThrough~~*
+~~*italic and StrikeThrough*~~
+**~~bold and StrikeThrough~~**
+~~**bold and StrikeThrough**~~
+***~~bold, italic and StrikeThrough~~***
+~~_**bold, italic and StrikeThrough**_~~
 ---
 
 ## 3. Lists
