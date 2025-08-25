@@ -2,6 +2,14 @@
 
 All notable changes to the "night-wolf" extension are be documented in this file.
 
+## [2.3.0] - 08-25-2025
+### Added
+- Better main interface color support
+
+## [2.2.1] - 08-15-2025
+### Fixed
+- Some TS improvements
+
 ## [2.1.0] - 07-19-2025
 ### Added
 - Better support for Markdown
