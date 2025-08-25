@@ -788,13 +788,17 @@ export default function (colors) {
     // PORTS
     // 'ports.iconRunningProcessForeground': colors.testA.hex(),
 
-    // OTHERS
+    // COMMENTS VIEW
     // 'commentsView.resolvedIcon': colors.testA.hex(),
     // 'commentsView.unresolvedIcon': colors.testA.hex(),
-    // 'actionBar.toggledBackground': colors.testA.hex(),
+
+    // BANNER
     // 'banner.background': colors.testA.hex(),
     // 'banner.foreground': colors.testA.hex(),
     // 'banner.iconForeground': colors.testA.hex(),
+
+    // ACTIONBAR
+    // 'actionBar.toggledBackground': colors.testA.hex(),
 
     // https://code.visualstudio.com/api/references/theme-color
   }
