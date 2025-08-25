@@ -5,6 +5,8 @@ import { decorator } from 'decorator'
 import * as Vue from 'vue'
 import React from 'react'
 
+const other = 'こんにちは 今日は'
+
 class MyComponent extends React.Component {
   // <-- 'Component' might get this scope
   render() {
@@ -1390,3 +1392,30 @@ console.log(
 // Output: ["section1", "dataA", "section2", "dataB", ""]
 
 console.log('\n--- JavaScript Regex Syntax Test Finished ---')
+
+/*
+ * This is a sample JavaScript file to demonstrate Git conflicts.
+ */
+
+const express = require('express');
+const app = express();
+
+const port = 3000;
+
+app.get('/', (req, res) => {
+    res.send('Hello, world! This is the main branch.');
+});
+
+<<<<<<< HEAD
+// This is the line that will cause a conflict.
+// Feature 1 change: Add a log message.
+console.log('Feature 1: Server started.');
+=======
+// This is the line that will cause a conflict.
+// Feature 1 change: Add a log message.
+console.log('Feature 2: Server is listening.');
+>>>>>>> feature-2
+
+app.listen(port, () => {
+    console.log('Server listening at http://localhost:' + port);
+});

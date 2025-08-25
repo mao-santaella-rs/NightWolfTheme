@@ -12,10 +12,6 @@ export default function (colors) {
 
   colors.text = chroma(206, 206, 206) // rgb(206, 206, 206)
 
-  colors.gitInsertedBg = chroma(153, 183, 109).alpha(0.15) // rgba(153, 183, 109,.15)
-  colors.gitRemovedBg = chroma(239, 83, 80).alpha(0.15) // rgba(239, 83, 80,.15)
-  colors.gitIgnoreExplorer = colors.principal.brighten(1.5)
-
   // INTERFACE COLORS
   colors.interBackground = colors.principal
   colors.interBorder = colors.principal_1

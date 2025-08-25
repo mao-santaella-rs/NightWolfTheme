@@ -69,11 +69,51 @@ class QTstyle_Test
     int (*handler)(int a,int b);
 };
 
+// Forward declarations of dummy structs to simulate Vulkan types
+struct MyDevice {};
+struct MyAllocationCallbacks {};
+struct MyDeviceMemory {};
+struct MyAllocateInfo {
+    size_t allocationSize;
+    // other members...
+};
 
+// A dummy enum to represent a result code
+enum MyResult {
+    MY_SUCCESS = 0,
+    MY_ERROR_OUT_OF_MEMORY = 1
+};
 
+/**
+ * @brief Allocates memory for a hypothetical device.
+ * @param device The device to allocate memory from.
+ * @param pAllocateInfo Pointer to a structure specifying the allocation parameters.
+ * @param pAllocator Pointer to optional allocation callbacks.
+ * @param pMemory Pointer to a handle in which the memory object is returned.
+ * @return MyResult indicating the success or failure of the operation.
+ */
+MyResult myAllocateMemory(MyDevice* device, const MyAllocateInfo* pAllocateInfo, const MyAllocationCallbacks* pAllocator, MyDeviceMemory* pMemory) {
+    if (pAllocateInfo->allocationSize > 1000) {
+        std::cerr << "Error: Allocation size too large." << std::endl;
+        return MY_ERROR_OUT_OF_MEMORY;
+    }
 
+    // Dummy allocation logic
+    *pMemory = MyDeviceMemory{}; // Simulating an allocation by assigning a value
+    std::cout << "Memory successfully allocated." << std::endl;
+    return MY_SUCCESS;
+}
 
+int main() {
+    // Example usage of the function
+    MyDevice device;
+    MyAllocateInfo allocateInfo;
+    allocateInfo.allocationSize = 512;
+    MyDeviceMemory memory;
 
-
-
-
+    // When you type 'myAllocateMemory(' the signature help would appear.
+    // When you hover over the function name, or use a shortcut, this info is shown.
+    myAllocateMemory(&device, &allocateInfo, nullptr, &memory);
+    
+    return 0;
+}

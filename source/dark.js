@@ -73,14 +73,23 @@ export default function (colors) {
     // palabra seleccionada por el finder
     'editor.findMatchBackground': colors.selection_0.hex(),
     'editor.findMatchBorder': colors.principal_5.hex(),
+    'editor.findMatchHighlightBorder': colors.selection_3.hex(),
 
     // todas las palabras encontradas por el finder
     'editor.findMatchHighlightBackground': colors.selection_1.hex(),
-    'editor.findRangeHighlightBackground': null,
+
+    // Border color the range limiting the search (Enable 'Find in Selection' in the find widget).
+    'editor.findRangeHighlightBackground': colors.selection_0.hex(),
+    'editor.findRangeHighlightBorder': null,
 
     // fondo de la linea completa cuando se busca
     'editor.rangeHighlightBackground': colors.selection_0.hex(),
     'editor.rangeHighlightForeground': colors.text.hex(),
+
+    // placeholder de inputs del editor
+    'editor.placeholder.foreground': colors.principal_4.hex(),
+
+    // 'editor.compositionBorder': colors.testB.hex(),
 
     // cuando me paro en un bracket me muestar los dos con este color
     'editorBracketMatch.background': null, //colors.principal_0.hex(),
@@ -112,20 +121,24 @@ export default function (colors) {
     'editorGutter.deletedBackground': colors.danger.hex(),
 
     // el widget como el find and replace
+    'editorWidget.foreground': colors.text.hex(),
+    'editorWidget.background': colors.principal_0.hex(),
     'editorWidget.border': colors.principal_2.hex(),
-    'editorWidget.background': colors.principal_1.hex(),
     'editorWidget.resizeBorder': colors.infoLight.hex(),
 
     // el cuadro que sale cuando estamos escribiendo proponiendo opciones
     'editorSuggestWidget.background': colors.principal_0.hex(),
     'editorSuggestWidget.border': colors.principal_1.hex(),
     'editorSuggestWidget.foreground': colors.principal_5.hex(),
-    'editorSuggestWidget.highlightForeground': colors.text.hex(),
+    'editorSuggestWidget.highlightForeground': colors.syntaxYellow.hex(),
     'editorSuggestWidget.selectedBackground': colors.principal_1.hex(),
 
     // el cuadro que sale cuando ubico el cursor encima de un palabra importante
     'editorHoverWidget.background': colors.principal_0.hex(),
     'editorHoverWidget.border': colors.principal_1.hex(),
+    'editorHoverWidget.foreground': colors.text.hex(),
+    'editorHoverWidget.highlightForeground': colors.syntaxOrange.hex(),
+    'editorHoverWidget.statusBarBackground': colors.principal_1.hex(),
 
     // el cuadro que sale cuando hago click en 'Peek Problem' en el editorHoverWidget
     'editorMarkerNavigation.background': colors.principal_0.hex(),
@@ -151,6 +164,18 @@ export default function (colors) {
     'checkbox.background': colors.principal_3.hex(),
     'checkbox.foreground': colors.white.hex(),
     'checkbox.border': null,
+    'checkbox.disabled.background': colors.principal_0.hex(),
+    'checkbox.disabled.foreground': colors.principal_3.hex(),
+    // 'checkbox.selectBackground': colors.testB.hex(),
+    // 'checkbox.selectBorder': colors.testB.hex(),
+
+    // 'radio.activeForeground': colors.testB.hex(),
+    // 'radio.activeBackground': colors.testB.hex(),
+    // 'radio.activeBorder': colors.testB.hex(),
+    // 'radio.inactiveForeground': colors.testB.hex(),
+    // 'radio.inactiveBackground': colors.testB.hex(),
+    // 'radio.inactiveBorder': colors.testB.hex(),
+    // 'radio.inactiveHoverBackground': colors.testB.hex(),
 
     // Botones de las extenciones
     'extensionButton.prominentForeground': colors.white.hex(),
@@ -168,9 +193,17 @@ export default function (colors) {
     'input.background': colors.principal.hex(),
     'input.border': colors.principal_1.hex(),
     'input.foreground': colors.text.hex(),
-    'input.placeholderForeground': colors.principal_3.hex(),
+    'input.placeholderForeground': colors.principal_4.hex(),
+
     // Input Select
     'inputOption.activeBorder': colors.principal_5.hex(),
+    // 'inputOption.activeForeground': colors.testA.hex(),
+    // 'inputOption.hoverBackground': colors.testA.hex(),
+
+    // 'inputValidation.errorForeground': colors.testA.hex(),
+    // 'inputValidation.infoForeground': colors.testA.hex(),
+    // 'inputValidation.warningForeground': colors.testA.hex(),
+
     // Input Validation
     'inputValidation.errorBackground': colors.dangerDark.hex(),
     'inputValidation.errorBorder': colors.danger.hex(),
@@ -192,9 +225,10 @@ export default function (colors) {
     'progressBar.background': colors.contrast.hex(),
 
     // Breadcrumbs
-    'breadcrumb.foreground': colors.info.hex(),
-    'breadcrumb.focusForeground': colors.infoLight.hex(),
-    'breadcrumb.activeSelectionForeground': colors.infoLight.hex(),
+    'breadcrumb.background': null,
+    'breadcrumb.foreground': colors.principal_4.hex(),
+    'breadcrumb.focusForeground': colors.info.hex(),
+    'breadcrumb.activeSelectionForeground': colors.info.hex(),
     'breadcrumbPicker.background': colors.principal_0.hex(),
 
     // It is the bar on the left that contains the tree view and the explorer
@@ -218,12 +252,16 @@ export default function (colors) {
     // cuando hago click en un archivo
     'list.activeSelectionBackground': colors.principal_2.hex(),
     'list.activeSelectionForeground': colors.text.hex(),
+    'list.focusAndSelectionOutline': colors.principal_3.hex(),
+    'list.focusOutline': colors.principal_3.hex(),
     // cuando me ubico con el cursor en los archivos
     'list.hoverBackground': colors.principal_0.hex(),
     'list.hoverForeground': colors.principal_5.hex(),
     // cuando ya no estoy ubicado en el list tree ej. cuando estoy editando un archivo
     'list.inactiveSelectionBackground': colors.principal_1.hex(),
     'list.inactiveSelectionForeground': colors.text.hex(),
+    'list.inactiveFocusOutline': colors.principal_1.hex(),
+    'list.inactiveSelectionIconForeground': colors.text.hex(),
     // Cuando selecciono un archivo con el teclado
     'list.focusBackground': colors.principal_0.hex(),
     'list.focusForeground': colors.principal_5.hex(),
@@ -247,11 +285,16 @@ export default function (colors) {
     // List/Tree Filter Widget's outline color when no match is found of typed text when searching inside the list/tree.
     'listFilterWidget.noMatchesOutline': null,
 
-    // "list.filterMatchBackground": colors.danger.hex(), // Background color of the filtered matches in lists and trees.
-    // "list.filterMatchBorder": null, // Border color of the filtered matches in lists and trees.
-    // "list.deemphasizedForeground": null, // List/Tree foreground color for items that are deemphasized.
-    // "tree.indentGuidesStroke": null, // Tree Widget's stroke color for indent guides.
-    // "tree.tableColumnsBorder": null, // Tree stroke color for the indentation guides.
+    // 'list.focusHighlightForeground': colors.testA.hex(),
+    // 'list.deemphasizedForeground': colors.testA.hex(),
+    // 'list.filterMatchBackground': colors.testA.hex(),
+    // 'list.filterMatchBorder': colors.testA.hex(),
+    // 'list.dropBetweenBackground': colors.testA.hex(),
+
+    // 'tree.indentGuidesStroke': colors.testA.hex(),
+    // 'tree.inactiveIndentGuidesStroke': colors.testA.hex(),
+    // 'tree.tableColumnsBorder': colors.testA.hex(),
+    // 'tree.tableOddRowsBackground': colors.testA.hex(),
 
     // Activity bar es la primera barra de iconos de la izquierda
     // Activity Bar background color.
@@ -269,9 +312,22 @@ export default function (colors) {
     // Activity notification badge foreground color.
     'activityBarBadge.foreground': colors.principal.hex(),
 
+    'activityWarningBadge.foreground': colors.warningDark.hex(),
+    'activityWarningBadge.background': colors.warningLight.hex(),
+    'activityErrorBadge.foreground': colors.dangerDark.hex(),
+    'activityErrorBadge.background': colors.danger.hex(),
+
     'activityBar.activeBorder': colors.contrast.hex(), // Activity Bar active indicator border color.
     'activityBar.activeBackground': colors.principal_0.hex(), // Activity Bar optional background color for the active element.
     'activityBar.activeFocusBorder': colors.contrast.hex(), // Activity bar focus border color for the active item.
+
+    // Activity Bar Top background color.
+    'activityBarTop.foreground': colors.principal_5.hex(),
+    'activityBarTop.activeBorder': colors.contrast.hex(),
+    'activityBarTop.inactiveForeground': colors.principal_3.hex(),
+    'activityBarTop.dropBorder': colors.contrast.hex(),
+    'activityBarTop.background': colors.interBackground.hex(),
+    'activityBarTop.activeBackground': colors.principal_1.hex(),
 
     // Editor Groups are the containers of editors. There can be many editor groups. A Tab is the container of an editor. Multiple Tabs can be opened in one editor group.
     // color to separate multiple editor groups from each other.
@@ -334,10 +390,27 @@ export default function (colors) {
     'minimapGutter.deletedBackground': colors.danger.hex(), //Minimap gutter color for deleted content.
 
     // git in editor interfece
-    'diffEditor.insertedTextBackground': colors.gitInsertedBg.hex(),
-    'diffEditor.insertedTextBorder': null,
-    'diffEditor.removedTextBackground': colors.gitRemovedBg.hex(),
-    'diffEditor.removedTextBorder': null,
+    'diffEditor.diagonalFill': colors.principal_1.hex(),
+    'diffEditor.border': null,
+    'diffEditor.insertedTextBackground': colors.success.hex() + '30', // background of the text
+    'diffEditor.removedTextBackground': colors.danger.hex() + '30', // background of the text
+    'diffEditor.insertedTextBorder': null, // Border color for inserted text in the diff editor.
+    'diffEditor.removedTextBorder': null, // Border color for removed text in the diff editor.
+    'diffEditor.insertedLineBackground': colors.success.hex() + '10', // background of the line
+    'diffEditor.removedLineBackground': colors.danger.hex() + '10', // background of the line
+    'diffEditorGutter.insertedLineBackground': colors.success.hex() + '15', // line count indicator
+    'diffEditorGutter.removedLineBackground': colors.danger.hex() + '15', // line count indicator
+    'diffEditorOverview.insertedForeground': colors.success.hex() + '80', // mini map colors
+    'diffEditorOverview.removedForeground': colors.danger.hex() + '80', // mini map colors
+    'diffEditor.unchangedRegionBackground': colors.principal_0.hex(),
+    'diffEditor.unchangedRegionForeground': colors.principal_5.hex(),
+    'diffEditor.unchangedRegionShadow': null,
+    'diffEditor.unchangedCodeBackground': colors.principal_0.hex(),
+    // 'diffEditor.move.border': colors.testC.hex(),
+    // 'diffEditor.moveActive.border': colors.testC.hex(),
+    // 'multiDiffEditor.headerBackground': colors.testC.hex(),
+    // 'multiDiffEditor.background': colors.testC.hex(),
+    // 'multiDiffEditor.border': colors.testC.hex(),
 
     'debugExceptionWidget.background': colors.principal.hex(),
     'debugExceptionWidget.border': colors.interBorder.hex(),
@@ -345,7 +418,9 @@ export default function (colors) {
     // cuando selecciono una palabra y doy shift + f12
     'peekView.border': colors.infoLight.hex(),
     'peekViewEditor.background': colors.principal.hex(),
+    'peekViewEditorGutter.background': colors.principal.hex(),
     'peekViewEditor.matchHighlightBackground': colors.principal_2.hex(),
+    'peekViewEditor.matchHighlightBorder': colors.principal_4.hex(),
     'peekViewResult.background': colors.principal_0.hex(),
     'peekViewResult.fileForeground': colors.text.hex(),
     'peekViewResult.lineForeground': colors.text.hex(),
@@ -355,6 +430,8 @@ export default function (colors) {
     'peekViewTitle.background': colors.principal_0.hex(),
     'peekViewTitleDescription.foreground': colors.text.hex(),
     'peekViewTitleLabel.foreground': colors.text.hex(),
+    'peekViewEditorStickyScroll.background': colors.principal_0.hex(),
+    'peekViewEditorStickyScrollGutter.background': colors.principal_0.hex(),
 
     // GIT MERGE CONFLICTS
     'merge.currentHeaderBackground': colors.successLight.hex() + '50',
@@ -397,6 +474,21 @@ export default function (colors) {
     'editorOverviewRuler.infoForeground': colors.info.hex(),
     // Overview ruler marker color for matching brackets.
     'editorOverviewRuler.bracketMatchForeground': colors.principal_2.hex(),
+
+    'editor.findMatchBackground': colors.principal_2.hex(),
+    'editor.findMatchForeground': null,
+    'editor.findMatchHighlightForeground': null,
+
+    // when ctrl + click on a symbol`
+    'editor.symbolHighlightBackground': colors.principal_0.hex(),
+    'editor.symbolHighlightBorder': colors.success.hex(),
+
+    // palabras completas iguales a la seleccion
+    'editor.wordHighlightTextBackground': colors.principal_1.hex(),
+    'editor.wordHighlightTextBorder': colors.principal_3.hex(),
+
+    // While you’re typing, both the opening and closing tags <> </> are highlighted
+    'editor.linkedEditingBackground': colors.principal_0.hex(),
 
     // Panels are shown below the editor area and contain views like Output and Integrated Terminal.
     'panel.background': colors.principal.hex(),
@@ -471,7 +563,7 @@ export default function (colors) {
     'gitDecoration.modifiedResourceForeground': colors.warningLight.hex(),
     'gitDecoration.deletedResourceForeground': colors.dangerLight.hex(),
     'gitDecoration.untrackedResourceForeground': colors.successLight.hex(),
-    'gitDecoration.ignoredResourceForeground': colors.gitIgnoreExplorer.hex(),
+    'gitDecoration.ignoredResourceForeground': colors.principal.brighten(1.5).hex(),
     'gitDecoration.conflictingResourceForeground': colors.danger.hex(),
 
     // Background color for the progress bar shown for long running operations.
@@ -495,6 +587,216 @@ export default function (colors) {
     'terminal.ansiBrightMagenta': colors.syntaxMagenta.hex(),
     'terminal.ansiBrightRed': colors.syntaxRed.hex(),
     'terminal.ansiBrightYellow': colors.syntaxYellow.hex(),
+
+    // PROFILES
+    'profileBadge.background': colors.info.hex(),
+    'profileBadge.foreground': colors.infoDark.hex(),
+    'profiles.sashBorder': colors.interBorder.hex(),
+
+    // SIDE BAR STICKY SCROLL
+    'sideBarStickyScroll.background': colors.principal_0.hex(),
+    'sideBarStickyScroll.border': colors.principal_3.hex(),
+    'sideBarStickyScroll.shadow': null,
+
+    // Inlay hints
+    // 'editorInlayHint.background': colors.testB.hex(),
+    // 'editorInlayHint.foreground': colors.testB.hex(),
+    // 'editorInlayHint.typeForeground': colors.testB.hex(),
+    // 'editorInlayHint.typeBackground': colors.testB.hex(),
+    // 'editorInlayHint.parameterForeground': colors.testB.hex(),
+    // 'editorInlayHint.parameterBackground': colors.testB.hex(),
+
+    // Lightbulbs
+    'editorLightBulb.foreground': colors.warning.hex(),
+    'editorLightBulbAutoFix.foreground': colors.contrastLight.hex(),
+    // 'editorLightBulbAi.foreground': colors.testC.hex(),
+
+    // Bracket highlight
+    'editorBracketHighlight.foreground1': colors.syntaxYellow.hex(),
+    'editorBracketHighlight.foreground2': colors.syntaxRed.hex(),
+    'editorBracketHighlight.foreground3': colors.syntaxBlue.hex(),
+    'editorBracketHighlight.foreground4': colors.syntaxOrange.hex(),
+    'editorBracketHighlight.foreground5': colors.syntaxPurple.hex(),
+    'editorBracketHighlight.foreground6': colors.syntaxGreen.hex(),
+    'editorBracketHighlight.unexpectedBracket.foreground': colors.syntaxMagenta.hex(),
+
+    // Bracket pair guides
+    'editorBracketPairGuide.activeBackground1': colors.syntaxYellow.hex() + '90',
+    'editorBracketPairGuide.activeBackground2': colors.syntaxRed.hex() + '90',
+    'editorBracketPairGuide.activeBackground3': colors.syntaxBlue.hex() + '90',
+    'editorBracketPairGuide.activeBackground4': colors.syntaxOrange.hex() + '90',
+    'editorBracketPairGuide.activeBackground5': colors.syntaxPurple.hex() + '90',
+    'editorBracketPairGuide.activeBackground6': colors.syntaxGreen.hex() + '90',
+    'editorBracketPairGuide.background1': colors.syntaxYellow.hex() + '30',
+    'editorBracketPairGuide.background2': colors.syntaxRed.hex() + '30',
+    'editorBracketPairGuide.background3': colors.syntaxBlue.hex() + '30',
+    'editorBracketPairGuide.background4': colors.syntaxOrange.hex() + '30',
+    'editorBracketPairGuide.background5': colors.syntaxPurple.hex() + '30',
+    'editorBracketPairGuide.background6': colors.syntaxGreen.hex() + '30',
+
+    // Folding
+    'editor.foldBackground': colors.principal_0.hex(),
+    'editor.foldPlaceholderForeground': null,
+
+    // Unnecessary code
+    'editorUnnecessaryCode.border': null,
+    'editorUnnecessaryCode.opacity': colors.black.hex() + '80',
+
+    // COPILOT CHAT
+    'chat.requestBorder': colors.principal_5.hex(),
+    'chat.requestBubbleBackground': colors.principal_1.hex(),
+    'chat.requestBubbleHoverBackground': colors.principal_2.hex(),
+    'chat.checkpointSeparator': colors.principal_5.hex(),
+
+    // 'chat.requestBackground': colors.testA.hex(),
+    // 'chat.slashCommandBackground': colors.testA.hex(),
+    // 'chat.slashCommandForeground': colors.testA.hex(),
+    // 'chat.avatarBackground': colors.testA.hex(),
+    // 'chat.avatarForeground': colors.testA.hex(),
+    // 'chat.editedFileForeground': colors.testA.hex(),
+    // 'chat.linesAddedForeground': colors.testA.hex(),
+    // 'chat.linesRemovedForeground': colors.testA.hex(),
+    // 'chat.requestCodeBorder': colors.testA.hex(),
+
+    // COPILOT INLINE CHAT
+    'inlineChatDiff.inserted': null,
+    'inlineChat.foreground': colors.principal_5.hex(),
+    'inlineChat.border': colors.principal_5.hex(),
+
+    // 'inlineChatInput.background': colors.testA.hex(),
+    // 'inlineChat.border': colors.infoLight.hex(),
+    // 'inlineChat.background': colors.testA.hex(),
+    // 'inlineChat.shadow': colors.testA.hex(),
+    // 'inlineChatInput.border': colors.testA.hex(),
+    // 'inlineChatInput.focusBorder': colors.testA.hex(),
+    // 'inlineChatInput.placeholderForeground': colors.testA.hex(),
+    // 'inlineChatDiff.removed': colors.testA.hex(),
+
+    // TESTING
+    'testing.iconQueued': colors.yellowPastel.hex(), // icon color when the test is queued
+    'testing.iconPassed': colors.successLight.hex(),
+    'testing.iconErrored': colors.dangerLight.hex(),
+    'testing.iconFailed': colors.dangerLight.hex(),
+
+    'testing.message.error.badgeBackground': colors.dangerLight.hex(),
+    'testing.message.error.badgeBorder': colors.danger.hex(),
+    'testing.message.error.badgeForeground': colors.dangerDark.hex(),
+
+    // 'testing.runAction': colors.testC.hex(),
+    // 'testing.iconUnset': colors.testB.hex(),
+    // 'testing.iconSkipped': colors.testB.hex(),
+    // 'testing.peekBorder': colors.testB.hex(),
+    // 'testing.peekHeaderBackground': colors.testB.hex(),
+    // 'testing.message.error.lineBackground': colors.testB.hex(),
+    // 'testing.message.info.decorationForeground': colors.testB.hex(),
+    // 'testing.message.info.lineBackground': colors.testB.hex(),
+    // 'testing.messagePeekBorder': colors.testB.hex(),
+    // 'testing.messagePeekHeaderBackground': colors.testB.hex(),
+    // 'testing.coveredBackground': colors.testB.hex(),
+    // 'testing.coveredBorder': colors.testB.hex(),
+    // 'testing.coveredGutterBackground': colors.testB.hex(),
+    // 'testing.uncoveredBranchBackground': colors.testB.hex(),
+    // 'testing.uncoveredBackground': colors.testB.hex(),
+    // 'testing.uncoveredBorder': colors.testB.hex(),
+    // 'testing.uncoveredGutterBackground': colors.testB.hex(),
+    // 'testing.coverCountBadgeBackground': colors.testB.hex(),
+    // 'testing.coverCountBadgeForeground': colors.testB.hex(),
+
+    // CHARTS
+    'charts.red': colors.syntaxRedIntense.hex(),
+    'charts.blue': colors.syntaxBlue.hex(),
+    'charts.yellow': colors.syntaxYellow.hex(),
+    'charts.orange': colors.syntaxDarkOrange.hex(),
+    'charts.green': colors.syntaxGreen.hex(),
+    'charts.purple': colors.syntaxMagenta.hex(),
+
+    // 'charts.foreground': colors.testA.hex(),
+    // 'charts.lines': colors.testA.hex(),
+    // 'chart.line': colors.testA.hex(),
+    // 'chart.axis': colors.testA.hex(),
+    // 'chart.guide': colors.testA.hex(),
+
+    // KEYBINDINGS
+    'keybindingLabel.background': colors.infoLight.hex(),
+    'keybindingLabel.foreground': colors.infoDark.hex(),
+    'keybindingLabel.border': null,
+    'keybindingLabel.bottomBorder': null,
+    'keybindingTable.headerBackground': colors.principal_1.hex(),
+    'keybindingTable.rowsBackground': colors.principal_0.hex(),
+
+    // NOTEBOOK
+    // 'notebook.editorBackground': colors.principal.hex(),
+    // 'notebook.cellBorderColor': colors.principal.hex(),
+    // 'notebook.cellHoverBackground': colors.principal.hex(),
+    // 'notebook.cellInsertionIndicator': colors.principal.hex(),
+    // 'notebook.cellStatusBarItemHoverBackground': colors.principal.hex(),
+    // 'notebook.cellToolbarSeparator': colors.principal.hex(),
+    // 'notebook.cellEditorBackground': colors.principal.hex(),
+    // 'notebook.focusedCellBackground': colors.principal.hex(),
+    // 'notebook.focusedCellBorder': colors.principal.hex(),
+    // 'notebook.focusedEditorBorder': colors.principal.hex(),
+    // 'notebook.inactiveFocusedCellBorder': colors.principal.hex(),
+    // 'notebook.inactiveSelectedCellBorder': colors.principal.hex(),
+    // 'notebook.outputContainerBackgroundColor': colors.principal.hex(),
+    // 'notebook.outputContainerBorderColor': colors.principal.hex(),
+    // 'notebook.selectedCellBackground': colors.principal.hex(),
+    // 'notebook.selectedCellBorder': colors.principal.hex(),
+    // 'notebook.symbolHighlightBackground': colors.principal.hex(),
+    // 'notebookScrollbarSlider.activeBackground': colors.principal.hex(),
+    // 'notebookScrollbarSlider.background': colors.principal.hex(),
+    // 'notebookScrollbarSlider.hoverBackground': colors.principal.hex(),
+    // 'notebookStatusErrorIcon.foreground': colors.principal.hex(),
+    // 'notebookStatusRunningIcon.foreground': colors.principal.hex(),
+    // 'notebookStatusSuccessIcon.foreground': colors.principal.hex(),
+    // 'notebookEditorOverviewRuler.runningCellForeground': colors.principal.hex(),
+
+    // SYMBOL ICONS
+    // 'symbolIcon.arrayForeground': colors.testA.hex(),
+    // 'symbolIcon.booleanForeground': colors.testA.hex(),
+    // 'symbolIcon.classForeground': colors.testA.hex(),
+    // 'symbolIcon.colorForeground': colors.testA.hex(),
+    // 'symbolIcon.constantForeground': colors.testA.hex(),
+    // 'symbolIcon.constructorForeground': colors.testA.hex(),
+    // 'symbolIcon.enumeratorForeground': colors.testA.hex(),
+    // 'symbolIcon.enumeratorMemberForeground': colors.testA.hex(),
+    // 'symbolIcon.eventForeground': colors.testA.hex(),
+    // 'symbolIcon.fieldForeground': colors.testA.hex(),
+    // 'symbolIcon.fileForeground': colors.testA.hex(),
+    // 'symbolIcon.folderForeground': colors.testA.hex(),
+    // 'symbolIcon.functionForeground': colors.testA.hex(),
+    // 'symbolIcon.interfaceForeground': colors.testA.hex(),
+    // 'symbolIcon.keyForeground': colors.testA.hex(),
+    // 'symbolIcon.keywordForeground': colors.testA.hex(),
+    // 'symbolIcon.methodForeground': colors.testA.hex(),
+    // 'symbolIcon.moduleForeground': colors.testA.hex(),
+    // 'symbolIcon.namespaceForeground': colors.testA.hex(),
+    // 'symbolIcon.nullForeground': colors.testA.hex(),
+    // 'symbolIcon.numberForeground': colors.testA.hex(),
+    // 'symbolIcon.objectForeground': colors.testA.hex(),
+    // 'symbolIcon.operatorForeground': colors.testA.hex(),
+    // 'symbolIcon.packageForeground': colors.testA.hex(),
+    // 'symbolIcon.propertyForeground': colors.testA.hex(),
+    // 'symbolIcon.referenceForeground': colors.testA.hex(),
+    // 'symbolIcon.snippetForeground': colors.testA.hex(),
+    // 'symbolIcon.stringForeground': colors.testA.hex(),
+    // 'symbolIcon.structForeground': colors.testA.hex(),
+    // 'symbolIcon.textForeground': colors.testA.hex(),
+    // 'symbolIcon.typeParameterForeground': colors.testA.hex(),
+    // 'symbolIcon.unitForeground': colors.testA.hex(),
+    // 'symbolIcon.variableForeground': colors.testA.hex(),
+
+    // PORTS
+    // 'ports.iconRunningProcessForeground': colors.testA.hex(),
+
+    // OTHERS
+    // 'commentsView.resolvedIcon': colors.testA.hex(),
+    // 'commentsView.unresolvedIcon': colors.testA.hex(),
+    // 'actionBar.toggledBackground': colors.testA.hex(),
+    // 'banner.background': colors.testA.hex(),
+    // 'banner.foreground': colors.testA.hex(),
+    // 'banner.iconForeground': colors.testA.hex(),
+
+    // https://code.visualstudio.com/api/references/theme-color
   }
 
   const normalize = [
