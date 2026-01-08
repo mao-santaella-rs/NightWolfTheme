@@ -938,6 +938,7 @@ export default function (colors) {
         // 'meta.var.expr',
         'variable.object.property',
         'variable.other.property',
+        'variable.other.constant.property',
         'support.variable.property',
         'support.type.map.key',
       ],
@@ -1281,7 +1282,12 @@ export default function (colors) {
     },
     {
       name: 'Support Constant, `new` keyword, Special Method Keyword, `debugger`, other keywords',
-      scope: ['support.constant', 'keyword.other.debugger'],
+      scope: [
+        'support.constant',
+        'keyword.other.debugger',
+        'support.class.builtin',
+        'support.class.error',
+      ],
       settings: {
         foreground: colors.specialWordB.hex(),
       },
@@ -1352,6 +1358,13 @@ export default function (colors) {
       scope: 'source.css',
       settings: {
         foreground: colors.text.hex(),
+      },
+    },
+    {
+      name: 'css variables',
+      scope: 'source.css variable',
+      settings: {
+        foreground: colors.variableName.hex(),
       },
     },
     {
@@ -1636,13 +1649,8 @@ export default function (colors) {
       },
     },
     {
-      name: 'url parameter',
-      scope: [
-        'variable.parameter.url.css',
-        'variable.parameter.url.scss',
-        'variable.parameter.url.sass',
-        'variable.parameter.url.less',
-      ],
+      name: 'parameter',
+      scope: ['source.css variable.parameter'],
       settings: {
         foreground: colors.syntaxGreen.hex(),
       },
@@ -1936,9 +1944,9 @@ export default function (colors) {
         'entity.name.tag.ts',
         'entity.name.tag.tsx',
         'entity.name.tag',
-        'source.vue entity.name.tag.html invalid.illegal.unrecognized-tag.html',
-        'source.vue entity.name.tag.html',
-        'source.vue support.class.component.html',
+        'text.html.vue entity.name.tag.html invalid.illegal.unrecognized-tag.html',
+        'text.html.vue entity.name.tag.html',
+        'text.html.vue support.class.component.html',
         'meta.tag.js',
         'meta.tag.ts',
         'meta.tag.tsx',

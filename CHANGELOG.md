@@ -2,49 +2,71 @@
 
 All notable changes to the "night-wolf" extension are be documented in this file.
 
+## [2.3.1] - 01-07-2026
+
+### Fixed
+
+- Some Vue compatibility
+- Better css variable coloring
+
 ## [2.3.0] - 08-25-2025
+
 ### Added
+
 - Better main interface color support
 
 ## [2.2.1] - 08-15-2025
+
 ### Fixed
+
 - Some TS improvements
 
 ## [2.1.0] - 07-19-2025
+
 ### Added
+
 - Better support for Markdown
+
 ### Fixed
+
 - Some TS type coloring issues fixed
 
 ## [2.0.0] - 04-29-2025
+
 ### Added
+
 - Overhaul of all the theme scopes, improoving the experience accross all languages
 
-
 ## [1.13.1] - 04-23-2025
+
 ### Fixed
+
 - Improoved support for scss and sass
 - Removed the semanticTokenColors configuration where the classes and function declarations where set as bold
 - Better support for inline SQL in GO files, [issue](https://github.com/mao-santaella-rs/NightWolfTheme/issues/48) by [coscoaj1](https://github.com/coscoaj1)
 
 ## [1.13.0] - 11-09-2023
+
 ### Fixed
+
 - Better support for SQL, [issue](https://github.com/mao-santaella-rs/NightWolfTheme/issues/46) by [marcosvnmelo](https://github.com/marcosvnmelo)
 - Improoved support for Typescript
-
 
 ## [1.12.0] - 03-19-2023
 
 ### Added
+
 - Functions & Classes colors for golang added.
 - Vue camelCase components in template colors added.
 - Semantic Highlighting support, [issue](https://github.com/mao-santaella-rs/NightWolfTheme/issues/36) by [wtho](https://github.com/wtho).
 
 ### Changed
+
 - Engines supported updated (1.76.2).
 - Prettier updated to the latest version (2.8.4).
 
 ### Fixed
+
 - Inline diff coloring issue fixed, [issue](https://github.com/mao-santaella-rs/NightWolfTheme/issues/33) by [Avivhdr](https://github.com/Avivhdr).
 - Rulers color fixed, [issue](https://github.com/mao-santaella-rs/NightWolfTheme/issues/43) by [landure](https://github.com/landure).
 - Status bar items colored for danger and warning states.
@@ -52,7 +74,6 @@ All notable changes to the "night-wolf" extension are be documented in this file
 - Js Async Await keywords colors more consistent.
 - Js loops kewords colors more consistent.
 - General coloring fixes.
-
 
 ## [1.11.4] - 05-29-2022
 
@@ -64,25 +85,25 @@ All notable changes to the "night-wolf" extension are be documented in this file
 
 ### Fixed
 
-- better svelte support 
+- better svelte support
 
 ## [1.11.2] - 04-06-2022
 
 ### Fixed
 
-- immprovements in javascript and typescript support in vue.js  
+- immprovements in javascript and typescript support in vue.js
 
 ## [1.11.1] - 04-05-2022
 
 ### Added
 
-- better javascript and typescript support 
+- better javascript and typescript support
 
 ## [1.11.0] - 04-04-2022
 
 ### Fixed
 
-- Some coloring inconsistencies between javascript and typescript 
+- Some coloring inconsistencies between javascript and typescript
 - Camelcase HTML tags in Vue.js not working
 - Color customizations changes not taking effect, [issue](https://github.com/mao-santaella-rs/NightWolfTheme/issues/34) by [chalop](https://github.com/chalop).
 
@@ -107,6 +128,7 @@ All notable changes to the "night-wolf" extension are be documented in this file
 - More contract on selected text?, [issue](https://github.com/mao-santaella-rs/NightWolfTheme/issues/31) by [WindSoilder](https://github.com/WindSoilder).
 
 ---
+
 ## [1.9.0] - 07-03-2021
 
 ### Added

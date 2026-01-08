@@ -5,75 +5,133 @@
   --border-radius: 5px;
 }
 
+.menu-item {
+  --item-spacing: 20px;
+  --item-transition-duration: 0.3s;
+
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    border-top-left-radius: calc(infinity * 1px);
+    border-bottom-left-radius: calc(infinity * 1px);
+    pointer-events: none;
+    transition: width var(--item-transition-duration) ease-out;
+  }
+  &.active {
+    &::before {
+      background-color: var(--color-base-100);
+      width: 90%;
+    }
+    & > * {
+      position: relative;
+    }
+    b {
+      pointer-events: none;
+      display: block;
+      width: 100%;
+      height: var(--item-spacing);
+      background-color: var(--color-base-100);
+      position: absolute;
+      transition: border-radius var(--item-transition-duration) ease-out;
+      &::after {
+        content: '';
+        display: block;
+        width: 100%;
+        height: var(--item-spacing);
+        background-image: var(--aside-menu-gradient);
+        position: absolute;
+        inset: 0;
+      }
+      &:nth-child(1) {
+        top: calc(var(--item-spacing) * -1);
+        &::after {
+          animation: fade-in-b-1 calc(var(--item-transition-duration) / 3) ease-out
+            forwards;
+        }
+      }
+      &:nth-child(2) {
+        bottom: calc(var(--item-spacing) * -1);
+        &::after {
+          animation: fade-in-b-2 calc(var(--item-transition-duration) / 3) ease-out
+            forwards;
+        }
+      }
+    }
+  }
+}
+
 .p1 {
-    font-family: "Times New Roman", Times, serif;
-    /* A font family name and a generic family name */
-    font-family: "Gill Sans Extrabold", sans-serif;
-    font-family: "Goudy Bookletter 1911", sans-serif;
+  font-family: 'Times New Roman', Times, serif;
+  /* A font family name and a generic family name */
+  font-family: 'Gill Sans Extrabold', sans-serif;
+  font-family: 'Goudy Bookletter 1911', sans-serif;
 
-    /* A generic family name only */
-    font-family: serif;
-    font-family: sans-serif;
-    font-family: monospace;
-    font-family: cursive;
-    font-family: fantasy;
-    font-family: system-ui;
-    font-family: ui-serif;
-    font-family: ui-sans-serif;
-    font-family: ui-monospace;
-    font-family: ui-rounded;
-    font-family: emoji;
-    font-family: math;
-    font-family: fangsong;
+  /* A generic family name only */
+  font-family: serif;
+  font-family: sans-serif;
+  font-family: monospace;
+  font-family: cursive;
+  font-family: fantasy;
+  font-family: system-ui;
+  font-family: ui-serif;
+  font-family: ui-sans-serif;
+  font-family: ui-monospace;
+  font-family: ui-rounded;
+  font-family: emoji;
+  font-family: math;
+  font-family: fangsong;
 
-    /* Global values */
-    font-family: inherit;
-    font-family: initial;
-    font-family: revert;
-    font-family: revert-layer;
-    font-family: unset;
+  /* Global values */
+  font-family: inherit;
+  font-family: initial;
+  font-family: revert;
+  font-family: revert-layer;
+  font-family: unset;
 }
 
 .serif {
-    font-family: Times, "Times New Roman", Georgia, serif;
+  font-family: Times, 'Times New Roman', Georgia, serif;
 }
 
 .sansserif {
-    font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
 }
 
 .monospace {
-    font-family: "Lucida Console", Courier, monospace;
+  font-family: 'Lucida Console', Courier, monospace;
 }
 
 .cursive {
-    font-family: cursive;
+  font-family: cursive;
 }
 
 .fantasy {
-    font-family: fantasy;
+  font-family: fantasy;
 }
 
 .emoji {
-    font-family: emoji;
+  font-family: emoji;
 }
 
 .math {
-    font-family: math;
+  font-family: math;
 }
 
 .fangsong {
-    font-family: fangsong;
+  font-family: fangsong;
 }
 
 .p2 {
-    font-family: Arial, Helvetica, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .p3 {
-    font-family: "Lucida Console", "Courier New", monospace;
+  font-family: 'Lucida Console', 'Courier New', monospace;
 }
-
 
 .box {
   padding: var(--padding);
@@ -84,7 +142,6 @@
     width: 48px;
   }
 }
-
 
 [id^='ltk--modal']:has([class^='casting-drawer']) {
   .casting-drawer {
@@ -196,10 +253,7 @@ $map: (
   medium: 640,
   'large': 960,
   'x-large': 1280,
-  (
-      xx-large,
-    ):
-    1600,
+  (xx-large): 1600,
 ); // must have parentheses, be comma separated
 $color: #fe57a1;
 $function-reference: get-function($function-name);
@@ -577,15 +631,15 @@ div {
   font: {
     family: fantasy;
     weight: bold;
-  };
+  }
   font: fantasy {
     size: 20px;
     style: italic;
-  };
+  }
   #{$property}: block;
   #{$property}: {
     color: red;
-  };
+  }
   color: #000;
   width: #{$width};
 
@@ -595,7 +649,7 @@ div {
   // selectors
   input:focus {
     opacity: 0.5;
-  };
+  }
   div:nth-child(2n + 1) {
     background-color: gray;
   }
@@ -718,7 +772,7 @@ svg|[fill] {
   color: currentColor;
 
   /* freqency (not currently used for any property) */
-  content: 44.1khz;
+  content: 44.1kHz;
 
   /* integer */
   z-index: +255;
@@ -891,11 +945,11 @@ body {
 /* @import */
 @import URL('fineprint.css');
 @import 'custom.css';
-@import url('landscape.css') ;
-@import url("fineprint.css") print;
-@import url("bluish.css") print, screen;
-@import "common.css" screen;
-@import url("landscape.css") screen and (orientation: landscape);
+@import url('landscape.css');
+@import url('fineprint.css') print;
+@import url('bluish.css') print, screen;
+@import 'common.css' screen;
+@import url('landscape.css') screen and (orientation: landscape);
 
 /* @keyframes */
 @keyframes myanim {
@@ -993,7 +1047,9 @@ input[type='number'] {
 
 @font-face {
   font-family: 'MyWebFont';
-  src: url('myfont.woff2') format('woff2'), url('myfont.woff') format('woff');
+  src:
+    url('myfont.woff2') format('woff2'),
+    url('myfont.woff') format('woff');
 }
 
 @keyframes pulse {
@@ -1400,6 +1456,4 @@ $button-merged-hover: map.merge($button-colors, $button-hover-colors);
     color: map.get($button-merged-hover, "text");
     border-color: map.get($button-merged-hover, "border"); // Still uses the hover background darkened
   }
-}
-
-// --- End SCSS Maps Example ---
+}; // --- End SCSS Maps Example ---

@@ -23,13 +23,14 @@ export default function (colors) {
   colors.pugClass = colors.variable
 
   // Stylesheets
+  colors.variableName = colors.syntaxLightBlue
   colors.cssAttribute = colors.syntaxGreen
   colors.cssValue = colors.syntaxOrange
   colors.cssTag = colors.syntaxRed
   colors.cssClass = colors.syntaxYellow
   colors.cssProperty = colors.syntaxCyan
   colors.cssUnits = colors.number
-  colors.cssSpecialWord = colors.syntaxLightBlue
+  colors.cssSpecialWord = colors.syntaxViolet
   colors.cssPseudoClass = colors.syntaxPurple
   colors.sassFunction = colors.syntaxBlue
   colors.sassInterpolation = colors.syntaxRed
