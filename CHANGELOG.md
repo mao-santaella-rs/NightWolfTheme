@@ -2,6 +2,17 @@
 
 All notable changes to the "night-wolf" extension are be documented in this file.
 
+## [2.4.0] - 01-27-2026
+
+### Added
+
+- Expanded UI coverage with explicit colors for composition borders, input option states, tree indent guides, keybinding labels, comments view icons, Copilot Chat slash commands and diff lines, and testing coverage/run icons.
+- New example files across multiple languages.
+
+### Changed
+
+- Theme compiler now logs variant compilation and elapsed build time for better feedback during development.
+
 ## [2.3.1] - 01-07-2026
 
 ### Fixed
