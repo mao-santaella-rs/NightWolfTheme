@@ -89,7 +89,8 @@ export default function (colors) {
     // placeholder de inputs del editor
     'editor.placeholder.foreground': colors.principal_4.hex(),
 
-    // 'editor.compositionBorder': colors.testB.hex(),
+    // cuando estoy en modo composicion de texto (ej. IME para japones)
+    'editor.compositionBorder': colors.info.hex(),
 
     // cuando me paro en un bracket me muestar los dos con este color
     'editorBracketMatch.background': null, //colors.principal_0.hex(),
@@ -197,19 +198,20 @@ export default function (colors) {
 
     // Input Select
     'inputOption.activeBorder': colors.principal_5.hex(),
-    // 'inputOption.activeForeground': colors.testA.hex(),
-    // 'inputOption.hoverBackground': colors.testA.hex(),
-
-    // 'inputValidation.errorForeground': colors.testA.hex(),
-    // 'inputValidation.infoForeground': colors.testA.hex(),
-    // 'inputValidation.warningForeground': colors.testA.hex(),
+    'inputOption.activeForeground': colors.white.hex(),
+    'inputOption.hoverBackground': colors.principal_3.hex(),
 
     // Input Validation
     'inputValidation.errorBackground': colors.dangerDark.hex(),
+    'inputValidation.errorForeground': colors.white.hex(),
     'inputValidation.errorBorder': colors.danger.hex(),
+
     'inputValidation.infoBackground': colors.infoDark.hex(),
+    'inputValidation.infoForeground': colors.white.hex(),
     'inputValidation.infoBorder': colors.info.hex(),
+
     'inputValidation.warningBackground': colors.warningDark.hex(),
+    'inputValidation.warningForeground': colors.white.hex(),
     'inputValidation.warningBorder': colors.warning.hex(),
 
     // Scrollbar
@@ -291,8 +293,8 @@ export default function (colors) {
     // 'list.filterMatchBorder': colors.testA.hex(),
     // 'list.dropBetweenBackground': colors.testA.hex(),
 
-    // 'tree.indentGuidesStroke': colors.testA.hex(),
-    // 'tree.inactiveIndentGuidesStroke': colors.testA.hex(),
+    'tree.indentGuidesStroke': colors.principal_2.hex(),
+    'tree.inactiveIndentGuidesStroke': colors.principal_1.hex(),
     // 'tree.tableColumnsBorder': colors.testA.hex(),
     // 'tree.tableOddRowsBackground': colors.testA.hex(),
 
@@ -598,18 +600,10 @@ export default function (colors) {
     'sideBarStickyScroll.border': colors.principal_3.hex(),
     'sideBarStickyScroll.shadow': null,
 
-    // Inlay hints
-    // 'editorInlayHint.background': colors.testB.hex(),
-    // 'editorInlayHint.foreground': colors.testB.hex(),
-    // 'editorInlayHint.typeForeground': colors.testB.hex(),
-    // 'editorInlayHint.typeBackground': colors.testB.hex(),
-    // 'editorInlayHint.parameterForeground': colors.testB.hex(),
-    // 'editorInlayHint.parameterBackground': colors.testB.hex(),
-
     // Lightbulbs
     'editorLightBulb.foreground': colors.warning.hex(),
     'editorLightBulbAutoFix.foreground': colors.contrastLight.hex(),
-    // 'editorLightBulbAi.foreground': colors.testC.hex(),
+    'editorLightBulbAi.foreground': colors.infoLight.hex(),
 
     // Bracket highlight
     'editorBracketHighlight.foreground1': colors.syntaxYellow.hex(),
@@ -642,20 +636,32 @@ export default function (colors) {
     'editorUnnecessaryCode.border': null,
     'editorUnnecessaryCode.opacity': colors.black.hex() + '80',
 
+    // KEYBINDINGS
+    'keybindingLabel.background': colors.infoLight.hex(),
+    'keybindingLabel.foreground': colors.infoDark.hex(),
+    'keybindingLabel.border': null,
+    'keybindingLabel.bottomBorder': null,
+    'keybindingTable.headerBackground': colors.principal_1.hex(),
+    'keybindingTable.rowsBackground': colors.principal_0.hex(),
+
+    // COMMENTS VIEW
+    'commentsView.resolvedIcon': colors.successLight.hex(),
+    'commentsView.unresolvedIcon': colors.warningLight.hex(),
+
     // COPILOT CHAT
     'chat.requestBorder': colors.principal_5.hex(),
     'chat.requestBubbleBackground': colors.principal_1.hex(),
     'chat.requestBubbleHoverBackground': colors.principal_2.hex(),
     'chat.checkpointSeparator': colors.principal_5.hex(),
+    'chat.slashCommandBackground': colors.principal_3.hex(),
+    'chat.slashCommandForeground': colors.text.hex(),
+    'chat.linesAddedForeground': colors.successLight.hex(),
+    'chat.linesRemovedForeground': colors.dangerLight.hex(),
 
     // 'chat.requestBackground': colors.testA.hex(),
-    // 'chat.slashCommandBackground': colors.testA.hex(),
-    // 'chat.slashCommandForeground': colors.testA.hex(),
     // 'chat.avatarBackground': colors.testA.hex(),
     // 'chat.avatarForeground': colors.testA.hex(),
     // 'chat.editedFileForeground': colors.testA.hex(),
-    // 'chat.linesAddedForeground': colors.testA.hex(),
-    // 'chat.linesRemovedForeground': colors.testA.hex(),
     // 'chat.requestCodeBorder': colors.testA.hex(),
 
     // COPILOT INLINE CHAT
@@ -682,9 +688,21 @@ export default function (colors) {
     'testing.message.error.badgeBorder': colors.danger.hex(),
     'testing.message.error.badgeForeground': colors.dangerDark.hex(),
 
-    // 'testing.runAction': colors.testC.hex(),
-    // 'testing.iconUnset': colors.testB.hex(),
-    // 'testing.iconSkipped': colors.testB.hex(),
+    'testing.runAction': colors.successLight.hex(),
+    'testing.iconUnset': colors.warning.hex(),
+    'testing.iconSkipped': colors.principal_5.hex(),
+
+    'testing.coveredBackground': colors.successDark.hex(),
+    'testing.coveredBorder': colors.success.hex(),
+    'testing.coveredGutterBackground': colors.success.hex(),
+    'testing.coverCountBadgeBackground': colors.successLight.hex(),
+    'testing.coverCountBadgeForeground': colors.successDark.hex(),
+
+    'testing.uncoveredBranchBackground': colors.danger.hex(),
+    'testing.uncoveredBackground': colors.dangerDark.hex(),
+    'testing.uncoveredBorder': colors.danger.hex(),
+    'testing.uncoveredGutterBackground': colors.danger.hex(),
+
     // 'testing.peekBorder': colors.testB.hex(),
     // 'testing.peekHeaderBackground': colors.testB.hex(),
     // 'testing.message.error.lineBackground': colors.testB.hex(),
@@ -692,15 +710,6 @@ export default function (colors) {
     // 'testing.message.info.lineBackground': colors.testB.hex(),
     // 'testing.messagePeekBorder': colors.testB.hex(),
     // 'testing.messagePeekHeaderBackground': colors.testB.hex(),
-    // 'testing.coveredBackground': colors.testB.hex(),
-    // 'testing.coveredBorder': colors.testB.hex(),
-    // 'testing.coveredGutterBackground': colors.testB.hex(),
-    // 'testing.uncoveredBranchBackground': colors.testB.hex(),
-    // 'testing.uncoveredBackground': colors.testB.hex(),
-    // 'testing.uncoveredBorder': colors.testB.hex(),
-    // 'testing.uncoveredGutterBackground': colors.testB.hex(),
-    // 'testing.coverCountBadgeBackground': colors.testB.hex(),
-    // 'testing.coverCountBadgeForeground': colors.testB.hex(),
 
     // CHARTS
     'charts.red': colors.syntaxRedIntense.hex(),
@@ -716,13 +725,13 @@ export default function (colors) {
     // 'chart.axis': colors.testA.hex(),
     // 'chart.guide': colors.testA.hex(),
 
-    // KEYBINDINGS
-    'keybindingLabel.background': colors.infoLight.hex(),
-    'keybindingLabel.foreground': colors.infoDark.hex(),
-    'keybindingLabel.border': null,
-    'keybindingLabel.bottomBorder': null,
-    'keybindingTable.headerBackground': colors.principal_1.hex(),
-    'keybindingTable.rowsBackground': colors.principal_0.hex(),
+    // Inlay hints
+    // 'editorInlayHint.background': colors.testB.hex(),
+    // 'editorInlayHint.foreground': colors.testB.hex(),
+    // 'editorInlayHint.typeForeground': colors.testB.hex(),
+    // 'editorInlayHint.typeBackground': colors.testB.hex(),
+    // 'editorInlayHint.parameterForeground': colors.testB.hex(),
+    // 'editorInlayHint.parameterBackground': colors.testB.hex(),
 
     // NOTEBOOK
     // 'notebook.editorBackground': colors.principal.hex(),
@@ -787,10 +796,6 @@ export default function (colors) {
 
     // PORTS
     // 'ports.iconRunningProcessForeground': colors.testA.hex(),
-
-    // COMMENTS VIEW
-    // 'commentsView.resolvedIcon': colors.testA.hex(),
-    // 'commentsView.unresolvedIcon': colors.testA.hex(),
 
     // BANNER
     // 'banner.background': colors.testA.hex(),

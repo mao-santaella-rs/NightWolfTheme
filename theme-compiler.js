@@ -20,6 +20,7 @@ if (process.argv[2] === 'dev') {
 }
 
 async function compile() {
+  const startTime = performance.now()
   // Filter the array directly using the constant prefix
   const themeVersions = files.filter(
     (path) => path.replace(sourcePath + '/', '').indexOf('/') === -1,
@@ -73,7 +74,9 @@ async function compile() {
       console.error(e)
     }
   }
-  console.info('----------------done----------------')
+  const endTime = performance.now()
+  const elapsedTime = (endTime - startTime).toFixed(2)
+  console.info(`----------------done in ${elapsedTime}ms----------------`)
   console.info('')
 }
 

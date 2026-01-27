@@ -396,10 +396,27 @@ d#{'i'}v,
 
   // !important (exclamation mark needs to be inside)
   width: 0 #{'!important'};
+  width: 0 !#{'important'};
+
+  // Multiple interpolations
+  #{$prefix}-#{$property}: #{$value};
+
+  // Interpolation in calc
+  width: calc(100% - #{$sidebar-width});
+
+  // Interpolation with operators
+  margin: #{$base-spacing * 2}px;
+
+  // Escaped characters in interpolation
+  content: '#{"\00A0"}'; // non-breaking space
   width: 0 #{'!import'}ant;
 
   // inside strings
   content: '#{$var}';
+  content: "Prefix: #{$var} Suffix";
+    content: "Interpolation with calc: #{10px + 20px}";
+    content: "Multiple: #{$var1} and #{$var2}";
+    content: "With function: #{darken($color, 10%)}";
   content: '#{$var}';
 
   // inside comments

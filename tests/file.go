@@ -467,3 +467,411 @@ func main() {
 		}
 	}
 }
+
+// --- Goroutines and Channels Example ---
+
+package main
+
+import (
+	"fmt"
+	"sync"
+	"time"
+)
+
+func worker(id int, jobs <-chan int, results chan<- int, wg *sync.WaitGroup) {
+	defer wg.Done()
+	for job := range jobs {
+		fmt.Printf("Worker %d processing job %d\n", id, job)
+		time.Sleep(time.Second)
+		results <- job * 2
+	}
+}
+
+func main() {
+	const numWorkers = 3
+	const numJobs = 10
+
+	jobs := make(chan int, numJobs)
+	results := make(chan int, numJobs)
+	var wg sync.WaitGroup
+
+	// Start workers
+	for w := 1; w <= numWorkers; w++ {
+		wg.Add(1)
+		go worker(w, jobs, results, &wg)
+	}
+
+	// Send jobs
+	go func() {
+		for j := 1; j <= numJobs; j++ {
+			jobs <- j
+		}
+		close(jobs)
+	}()
+
+	// Collect results
+	go func() {
+		wg.Wait()
+		close(results)
+	}()
+
+	for result := range results {
+		fmt.Println("Result:", result)
+	}
+}
+
+// --- Interface and Type Assertion Example ---
+
+package main
+
+import "fmt"
+
+type Reader interface {
+	Read() string
+}
+
+type FileReader struct {
+	name string
+}
+
+func (f FileReader) Read() string {
+	return fmt.Sprintf("Reading from file: %s", f.name)
+}
+
+type NetworkReader struct {
+	url string
+}
+
+func (n NetworkReader) Read() string {
+	return fmt.Sprintf("Reading from URL: %s", n.url)
+}
+
+func processReader(r Reader) {
+	fmt.Println(r.Read())
+
+	// Type assertion
+	if fr, ok := r.(FileReader); ok {
+		fmt.Printf("It's a FileReader: %+v\n", fr)
+	}
+
+	if nr, ok := r.(NetworkReader); ok {
+		fmt.Printf("It's a NetworkReader: %+v\n", nr)
+	}
+}
+
+func main() {
+	file := FileReader{name: "data.txt"}
+	network := NetworkReader{url: "https://example.com"}
+
+	processReader(file)
+	processReader(network)
+}
+
+// --- Error Handling with Custom Errors ---
+
+package main
+
+import (
+	"fmt"
+)
+
+type ValidationError struct {
+	Field   string
+	Message string
+}
+
+func (e ValidationError) Error() string {
+	return fmt.Sprintf("validation error on field %q: %s", e.Field, e.Message)
+}
+
+func validateEmail(email string) error {
+	if email == "" {
+		return ValidationError{
+			Field:   "email",
+			Message: "email cannot be empty",
+		}
+	}
+	if len(email) < 5 {
+		return ValidationError{
+			Field:   "email",
+			Message: "email must be at least 5 characters",
+		}
+	}
+	return nil
+}
+
+func main() {
+	if err := validateEmail(""); err != nil {
+		fmt.Printf("Error: %v\n", err)
+	}
+
+	if err := validateEmail("ab@cd"); err == nil {
+		fmt.Println("Email is valid")
+	} else {
+		fmt.Printf("Error: %v\n", err)
+	}
+}
+
+// --- File I/O Example ---
+
+package main
+
+import (
+	"bufio"
+	"fmt"
+	"io/ioutil"
+	"log"
+	"os"
+)
+
+func main() {
+	// Write to file
+	content := []byte("Hello, World!\nGo file I/O example")
+	err := ioutil.WriteFile("output.txt", content, 0644)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	// Read entire file
+	data, err := ioutil.ReadFile("output.txt")
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Printf("File contents:\n%s\n", string(data))
+
+	// Read file line by line
+	file, err := os.Open("output.txt")
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer file.Close()
+
+	scanner := bufio.NewScanner(file)
+	fmt.Println("\nLine by line:")
+	for scanner.Scan() {
+		fmt.Println(scanner.Text())
+	}
+
+	if err := scanner.Err(); err != nil {
+		log.Fatal(err)
+	}
+}
+
+// --- Defer, Panic, and Recover ---
+
+package main
+
+import (
+	"fmt"
+	"log"
+)
+
+func safeDivide(a, b int) {
+	defer func() {
+		if r := recover(); r != nil {
+			log.Printf("Recovered from panic: %v\n", r)
+		}
+	}()
+
+	if b == 0 {
+		panic("division by zero")
+	}
+	fmt.Printf("%d / %d = %d\n", a, b, a/b)
+}
+
+func cleanup() {
+	defer fmt.Println("1. Defer - executed last")
+	defer fmt.Println("2. Defer - executed second")
+	defer fmt.Println("3. Defer - executed first")
+	fmt.Println("Main function body")
+}
+
+func main() {
+	safeDivide(10, 0)
+	safeDivide(10, 2)
+	cleanup()
+}
+
+// --- Map and Slice Operations ---
+
+package main
+
+import (
+	"fmt"
+	"sort"
+)
+
+func main() {
+	// Map operations
+	scores := make(map[string]int)
+	scores["Alice"] = 95
+	scores["Bob"] = 87
+	scores["Charlie"] = 92
+
+	if score, exists := scores["Alice"]; exists {
+		fmt.Printf("Alice's score: %d\n", score)
+	}
+
+	delete(scores, "Bob")
+	fmt.Printf("Scores after deleting Bob: %v\n", scores)
+
+	// Slice operations
+	numbers := []int{5, 2, 8, 1, 9, 3}
+	fmt.Printf("Original: %v\n", numbers)
+
+	sort.Ints(numbers)
+	fmt.Printf("Sorted: %v\n", numbers)
+
+	// Slice filtering
+	var evens []int
+	for _, n := range numbers {
+		if n%2 == 0 {
+			evens = append(evens, n)
+		}
+	}
+	fmt.Printf("Even numbers: %v\n", evens)
+}
+
+// --- HTTP Client Request Example ---
+
+package main
+
+import (
+	"encoding/json"
+	"fmt"
+	"io/ioutil"
+	"net/http"
+	"time"
+)
+
+type Post struct {
+	UserID int    `json:"userId"`
+	ID     int    `json:"id"`
+	Title  string `json:"title"`
+	Body   string `json:"body"`
+}
+
+func fetchPost(id int) (*Post, error) {
+	url := fmt.Sprintf("https://jsonplaceholder.typicode.com/posts/%d", id)
+
+	client := &http.Client{
+		Timeout: 10 * time.Second,
+	}
+
+	resp, err := client.Get(url)
+	if err != nil {
+		return nil, fmt.Errorf("failed to fetch post: %w", err)
+	}
+	defer resp.Body.Close()
+
+	if resp.StatusCode != http.StatusOK {
+		return nil, fmt.Errorf("unexpected status code: %d", resp.StatusCode)
+	}
+
+	body, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		return nil, fmt.Errorf("failed to read response body: %w", err)
+	}
+
+	var post Post
+	err = json.Unmarshal(body, &post)
+	if err != nil {
+		return nil, fmt.Errorf("failed to unmarshal JSON: %w", err)
+	}
+
+	return &post, nil
+}
+
+func main() {
+	post, err := fetchPost(1)
+	if err != nil {
+		fmt.Printf("Error: %v\n", err)
+		return
+	}
+	fmt.Printf("Post: %+v\n", post)
+}
+
+// --- Struct Methods and Receivers ---
+
+package main
+
+import "fmt"
+
+type Rectangle struct {
+	width  float64
+	height float64
+}
+
+// Value receiver
+func (r Rectangle) Area() float64 {
+	return r.width * r.height
+}
+
+// Pointer receiver - can modify the struct
+func (r *Rectangle) Scale(factor float64) {
+	r.width *= factor
+	r.height *= factor
+}
+
+func (r Rectangle) String() string {
+	return fmt.Sprintf("Rectangle{width: %.2f, height: %.2f}", r.width, r.height)
+}
+
+func main() {
+	rect := Rectangle{width: 10, height: 5}
+	fmt.Printf("Original: %v\n", rect)
+	fmt.Printf("Area: %.2f\n", rect.Area())
+
+	rect.Scale(2)
+	fmt.Printf("After scaling by 2: %v\n", rect)
+	fmt.Printf("New area: %.2f\n", rect.Area())
+}
+
+// --- JSON Marshal and Unmarshal ---
+
+package main
+
+import (
+	"encoding/json"
+	"fmt"
+	"log"
+)
+
+type User struct {
+	ID    int    `json:"id"`
+	Name  string `json:"name"`
+	Email string `json:"email"`
+	Age   int    `json:"age,omitempty"`
+}
+
+func main() {
+	// Unmarshal JSON to struct
+	jsonData := []byte(`{
+		"id": 1,
+		"name": "John Doe",
+		"email": "john@example.com",
+		"age": 30
+	}`)
+
+	var user User
+	err := json.Unmarshal(jsonData, &user)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Printf("Unmarshaled: %+v\n", user)
+
+	// Marshal struct to JSON
+	user2 := User{ID: 2, Name: "Jane Smith", Email: "jane@example.com"}
+	jsonBytes, err := json.Marshal(user2)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Printf("Marshaled: %s\n", string(jsonBytes))
+
+	// Pretty print JSON
+	prettyJSON, err := json.MarshalIndent(user, "", "  ")
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Printf("Pretty JSON:\n%s\n", string(prettyJSON))
+}
